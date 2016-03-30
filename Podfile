@@ -7,5 +7,6 @@ target 'EggplantButton' do
 
 pod 'Alamofire'
 pod 'Masonry'
+pod ‘Button’, “~> 4”
 
 end

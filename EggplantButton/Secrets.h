@@ -8,3 +8,4 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString * const APP_ID;
