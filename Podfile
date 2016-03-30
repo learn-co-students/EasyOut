@@ -7,5 +7,6 @@ target 'EggplantButton' do
 
 pod 'Alamofire'
 pod 'Masonry'
+pod 'pop', '~> 1.0'
 
 end
