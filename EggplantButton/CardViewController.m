@@ -1,29 +1,22 @@
 //
-//  ContainerViewController.m
+//  CardViewController.m
 //  EggplantButton
 //
 //  Created by Ian Alexander Rahman on 3/31/16.
 //  Copyright © 2016 Team Eggplant Button. All rights reserved.
 //
 
-#import "ContainerViewController.h"
 #import "CardViewController.h"
-#import "MenuViewController.h"
 
-@interface ContainerViewController ()
-
-@property (strong, nonatomic) CardViewController *cardViewController;
-@property (strong, nonatomic) MenuViewController *menuViewController;
+@interface CardViewController ()
 
 @end
 
-@implementation ContainerViewController
+@implementation CardViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
-    
+    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {

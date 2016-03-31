@@ -1,28 +1,29 @@
 //
-//  ContainerViewController.m
+//  MenuViewController.m
 //  EggplantButton
 //
 //  Created by Ian Alexander Rahman on 3/31/16.
 //  Copyright © 2016 Team Eggplant Button. All rights reserved.
 //
 
-#import "ContainerViewController.h"
-#import "CardViewController.h"
 #import "MenuViewController.h"
 
-@interface ContainerViewController ()
-
-@property (strong, nonatomic) CardViewController *cardViewController;
-@property (strong, nonatomic) MenuViewController *menuViewController;
+@interface MenuViewController ()
 
 @end
 
-@implementation ContainerViewController
+@implementation MenuViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // Create buttons for menu bar
+    UIButton *settingsButton = [[UIButton alloc] init];
+    UIButton *priceFilterButton = [[UIButton alloc] init];
+    UIButton *locationFilterButton = [[UIButton alloc] init];
+    UIButton *timeFilterButton = [[UIButton alloc] init];
     
+    // Add buttons to menu bar
     
 }
 

@@ -10,6 +10,8 @@
 		4C0CCC621CAC8103000F8EF1 /* ActivityCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0CCC611CAC8103000F8EF1 /* ActivityCard.m */; };
 		4C270CA81CAB08A2003E0195 /* Secrets.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C270CA71CAB08A2003E0195 /* Secrets.m */; };
 		4C358D381CAD62CE00257756 /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C358D371CAD62CE00257756 /* ContainerViewController.m */; };
+		4C358D3B1CAD6FF600257756 /* CardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C358D3A1CAD6FF600257756 /* CardViewController.m */; };
+		4C358D3E1CAD700C00257756 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C358D3D1CAD700C00257756 /* MenuViewController.m */; };
 		4C9A037D1CAB064200CA9A02 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9A037C1CAB064200CA9A02 /* main.m */; };
 		4C9A03801CAB064200CA9A02 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9A037F1CAB064200CA9A02 /* AppDelegate.m */; };
 		4C9A03861CAB064200CA9A02 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C9A03841CAB064200CA9A02 /* Main.storyboard */; };
@@ -27,6 +29,10 @@
 		4C270CA71CAB08A2003E0195 /* Secrets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Secrets.m; sourceTree = "<group>"; };
 		4C358D361CAD62CE00257756 /* ContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerViewController.h; sourceTree = "<group>"; };
 		4C358D371CAD62CE00257756 /* ContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerViewController.m; sourceTree = "<group>"; };
+		4C358D391CAD6FF600257756 /* CardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardViewController.h; sourceTree = "<group>"; };
+		4C358D3A1CAD6FF600257756 /* CardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardViewController.m; sourceTree = "<group>"; };
+		4C358D3C1CAD700C00257756 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		4C358D3D1CAD700C00257756 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		4C9A03781CAB064200CA9A02 /* EggplantButton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EggplantButton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C9A037C1CAB064200CA9A02 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4C9A037E1CAB064200CA9A02 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -87,6 +93,10 @@
 				4C0CCC611CAC8103000F8EF1 /* ActivityCard.m */,
 				4C358D361CAD62CE00257756 /* ContainerViewController.h */,
 				4C358D371CAD62CE00257756 /* ContainerViewController.m */,
+				4C358D391CAD6FF600257756 /* CardViewController.h */,
+				4C358D3A1CAD6FF600257756 /* CardViewController.m */,
+				4C358D3C1CAD700C00257756 /* MenuViewController.h */,
+				4C358D3D1CAD700C00257756 /* MenuViewController.m */,
 			);
 			path = EggplantButton;
 			sourceTree = "<group>";
@@ -240,6 +250,8 @@
 			files = (
 				4C9A03891CAB064200CA9A02 /* EggplantButton.xcdatamodeld in Sources */,
 				4C0CCC621CAC8103000F8EF1 /* ActivityCard.m in Sources */,
+				4C358D3B1CAD6FF600257756 /* CardViewController.m in Sources */,
+				4C358D3E1CAD700C00257756 /* MenuViewController.m in Sources */,
 				4C358D381CAD62CE00257756 /* ContainerViewController.m in Sources */,
 				4C9A03801CAB064200CA9A02 /* AppDelegate.m in Sources */,
 				4C9A037D1CAB064200CA9A02 /* main.m in Sources */,
