@@ -1,15 +1,13 @@
 //
-//  ViewController.h
+//  ActivityCard.h
 //  EggplantButton
 //
-//  Created by Ian Alexander Rahman on 3/29/16.
+//  Created by Ian Alexander Rahman on 3/30/16.
 //  Copyright © 2016 Team Eggplant Button. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface ActivityCard : UIView
 
 @end
-
