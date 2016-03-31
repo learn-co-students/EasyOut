@@ -7,8 +7,12 @@
 //
 
 #import "ViewController.h"
+#import "RestaurantDataStore.h"
+
 
 @interface ViewController ()
+
+@property (strong, nonatomic) RestaurantDataStore *dataStore;
 
 @end
 
@@ -16,7 +20,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+
+    self.dataStore = [RestaurantDataStore sharedDataStore];
+    
+    [self.dataStore getRestaurantsWithCompletion:^(BOOL success) {
+ 
+        if (success) {
+            
+            NSLog(@"SUCCESS");
+//            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+//                
+//                
+//                 }];
+        }
+        else {
+            NSLog(@"Fail");
+        }
+    }];
+
+
 }
 
 - (void)didReceiveMemoryWarning {
