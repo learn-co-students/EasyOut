@@ -29,14 +29,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
+//-(CATransform3D) transformForFraction:(CGFloat)fraction {
+//    CATransform3DIdentity *identity = [[CATransform3DIdentity alloc] init];
+//    
+//}
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

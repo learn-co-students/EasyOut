@@ -1,14 +1,14 @@
 //
-//  ActivityCard.m
+//  MainContentView.m
 //  EggplantButton
 //
-//  Created by Ian Alexander Rahman on 3/30/16.
+//  Created by Ian Alexander Rahman on 3/31/16.
 //  Copyright © 2016 Team Eggplant Button. All rights reserved.
 //
 
-#import "ActivityCard.h"
+#import "MainContentView.h"
 
-@implementation ActivityCard
+@implementation MainContentView
 
 /*
 // Only override drawRect: if you perform custom drawing.
