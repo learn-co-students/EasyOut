@@ -7,13 +7,11 @@
 //
 
 #import "ContainerViewController.h"
-#import "CardViewController.h"
-#import "MenuViewController.h"
+#import "MenuView.h"
 
 @interface ContainerViewController ()
 
-@property (strong, nonatomic) CardViewController *cardViewController;
-@property (strong, nonatomic) MenuViewController *menuViewController;
+@property (strong, nonatomic) MenuView *menuView;
 
 @end
 
