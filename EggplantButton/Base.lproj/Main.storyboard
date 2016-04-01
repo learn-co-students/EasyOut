@@ -23,79 +23,67 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1xk-lu-wGc" userLabel="Main Content View" customClass="MainContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="660"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yAg-fE-fZI" userLabel="Card Container View">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="VU8-K5-T2e" userLabel="Card Stack View">
                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="VU8-K5-T2e" userLabel="Card Stack View">
-                                                        <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
+                                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X5l-T8-L5E" userLabel="Top Card Scroll View">
+                                                        <rect key="frame" x="0.0" y="0.0" width="600" height="191"/>
                                                         <subviews>
-                                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X5l-T8-L5E" userLabel="Top Card Scroll View">
-                                                                <rect key="frame" x="0.0" y="0.0" width="600" height="191"/>
-                                                                <subviews>
-                                                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F7a-hP-OQA" userLabel="Top Card Scroll Content View" customClass="CardScrollContentView">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="610" height="193"/>
-                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    </view>
-                                                                </subviews>
-                                                                <constraints>
-                                                                    <constraint firstItem="F7a-hP-OQA" firstAttribute="bottom" secondItem="X5l-T8-L5E" secondAttribute="bottom" id="A9K-Sd-GAa"/>
-                                                                    <constraint firstItem="F7a-hP-OQA" firstAttribute="height" secondItem="X5l-T8-L5E" secondAttribute="height" id="AJh-m0-AzV"/>
-                                                                    <constraint firstItem="F7a-hP-OQA" firstAttribute="width" secondItem="X5l-T8-L5E" secondAttribute="width" constant="10" id="Gjb-Ce-kgn"/>
-                                                                    <constraint firstItem="F7a-hP-OQA" firstAttribute="trailing" secondItem="X5l-T8-L5E" secondAttribute="trailing" id="IBd-tC-sPA"/>
-                                                                    <constraint firstItem="F7a-hP-OQA" firstAttribute="leading" secondItem="X5l-T8-L5E" secondAttribute="leading" id="PWU-Kj-nrX"/>
-                                                                    <constraint firstItem="F7a-hP-OQA" firstAttribute="top" secondItem="X5l-T8-L5E" secondAttribute="top" id="r4F-bd-hlU"/>
-                                                                </constraints>
-                                                            </scrollView>
-                                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4rN-OW-F3z" userLabel="Middle Card Scroll View">
-                                                                <rect key="frame" x="0.0" y="194" width="600" height="192"/>
-                                                                <subviews>
-                                                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Gn-0C-Jnc" userLabel="Middle Card Scroll Content View" customClass="CardScrollContentView">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="610" height="194"/>
-                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    </view>
-                                                                </subviews>
-                                                                <constraints>
-                                                                    <constraint firstItem="2Gn-0C-Jnc" firstAttribute="leading" secondItem="4rN-OW-F3z" secondAttribute="leading" id="2fv-OL-8Fc"/>
-                                                                    <constraint firstItem="2Gn-0C-Jnc" firstAttribute="bottom" secondItem="4rN-OW-F3z" secondAttribute="bottom" id="LI4-VE-fF3"/>
-                                                                    <constraint firstItem="2Gn-0C-Jnc" firstAttribute="top" secondItem="4rN-OW-F3z" secondAttribute="top" id="ZCL-6k-YYk"/>
-                                                                    <constraint firstItem="2Gn-0C-Jnc" firstAttribute="width" secondItem="4rN-OW-F3z" secondAttribute="width" constant="10" id="a5u-RA-qSz"/>
-                                                                    <constraint firstItem="2Gn-0C-Jnc" firstAttribute="trailing" secondItem="4rN-OW-F3z" secondAttribute="trailing" id="aqs-re-4gg"/>
-                                                                    <constraint firstItem="2Gn-0C-Jnc" firstAttribute="height" secondItem="4rN-OW-F3z" secondAttribute="height" id="gaa-ZI-8HU"/>
-                                                                </constraints>
-                                                            </scrollView>
-                                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f2P-oz-XwM" userLabel="Bottom Card Scroll View">
-                                                                <rect key="frame" x="0.0" y="389" width="600" height="191"/>
-                                                                <subviews>
-                                                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bjR-Qy-Qfp" userLabel="Bottom Card Scroll Content View" customClass="CardScrollContentView">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="610" height="193"/>
-                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    </view>
-                                                                </subviews>
-                                                                <constraints>
-                                                                    <constraint firstItem="bjR-Qy-Qfp" firstAttribute="leading" secondItem="f2P-oz-XwM" secondAttribute="leading" id="0Pk-ZS-WHw"/>
-                                                                    <constraint firstItem="bjR-Qy-Qfp" firstAttribute="top" secondItem="f2P-oz-XwM" secondAttribute="top" id="3yo-MQ-Zeq"/>
-                                                                    <constraint firstItem="bjR-Qy-Qfp" firstAttribute="trailing" secondItem="f2P-oz-XwM" secondAttribute="trailing" id="5BB-5E-uHg"/>
-                                                                    <constraint firstItem="bjR-Qy-Qfp" firstAttribute="bottom" secondItem="f2P-oz-XwM" secondAttribute="bottom" id="Vi6-Qh-F7v"/>
-                                                                    <constraint firstItem="bjR-Qy-Qfp" firstAttribute="width" secondItem="f2P-oz-XwM" secondAttribute="width" constant="10" id="ipk-Be-XnU"/>
-                                                                    <constraint firstItem="bjR-Qy-Qfp" firstAttribute="height" secondItem="f2P-oz-XwM" secondAttribute="height" id="lfm-CN-8M5"/>
-                                                                </constraints>
-                                                            </scrollView>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F7a-hP-OQA" userLabel="Top Card Scroll Content View" customClass="CardScrollContentView">
+                                                                <rect key="frame" x="0.0" y="0.0" width="610" height="191"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </view>
                                                         </subviews>
                                                         <constraints>
-                                                            <constraint firstItem="4rN-OW-F3z" firstAttribute="width" secondItem="VU8-K5-T2e" secondAttribute="width" id="DRz-ZI-nki"/>
-                                                            <constraint firstItem="f2P-oz-XwM" firstAttribute="width" secondItem="VU8-K5-T2e" secondAttribute="width" id="bHA-Kh-YAo"/>
-                                                            <constraint firstItem="X5l-T8-L5E" firstAttribute="width" secondItem="VU8-K5-T2e" secondAttribute="width" id="ghR-g8-FZv"/>
+                                                            <constraint firstItem="F7a-hP-OQA" firstAttribute="bottom" secondItem="X5l-T8-L5E" secondAttribute="bottom" id="A9K-Sd-GAa"/>
+                                                            <constraint firstItem="F7a-hP-OQA" firstAttribute="height" secondItem="X5l-T8-L5E" secondAttribute="height" id="AJh-m0-AzV"/>
+                                                            <constraint firstItem="F7a-hP-OQA" firstAttribute="width" secondItem="X5l-T8-L5E" secondAttribute="width" constant="10" id="Gjb-Ce-kgn"/>
+                                                            <constraint firstItem="F7a-hP-OQA" firstAttribute="trailing" secondItem="X5l-T8-L5E" secondAttribute="trailing" id="IBd-tC-sPA"/>
+                                                            <constraint firstItem="F7a-hP-OQA" firstAttribute="leading" secondItem="X5l-T8-L5E" secondAttribute="leading" id="PWU-Kj-nrX"/>
+                                                            <constraint firstItem="F7a-hP-OQA" firstAttribute="top" secondItem="X5l-T8-L5E" secondAttribute="top" id="r4F-bd-hlU"/>
                                                         </constraints>
-                                                    </stackView>
+                                                    </scrollView>
+                                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4rN-OW-F3z" userLabel="Middle Card Scroll View">
+                                                        <rect key="frame" x="0.0" y="194" width="600" height="192"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Gn-0C-Jnc" userLabel="Middle Card Scroll Content View" customClass="CardScrollContentView">
+                                                                <rect key="frame" x="0.0" y="0.0" width="610" height="192"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </view>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="2Gn-0C-Jnc" firstAttribute="leading" secondItem="4rN-OW-F3z" secondAttribute="leading" id="2fv-OL-8Fc"/>
+                                                            <constraint firstItem="2Gn-0C-Jnc" firstAttribute="bottom" secondItem="4rN-OW-F3z" secondAttribute="bottom" id="LI4-VE-fF3"/>
+                                                            <constraint firstItem="2Gn-0C-Jnc" firstAttribute="top" secondItem="4rN-OW-F3z" secondAttribute="top" id="ZCL-6k-YYk"/>
+                                                            <constraint firstItem="2Gn-0C-Jnc" firstAttribute="width" secondItem="4rN-OW-F3z" secondAttribute="width" constant="10" id="a5u-RA-qSz"/>
+                                                            <constraint firstItem="2Gn-0C-Jnc" firstAttribute="trailing" secondItem="4rN-OW-F3z" secondAttribute="trailing" id="aqs-re-4gg"/>
+                                                            <constraint firstItem="2Gn-0C-Jnc" firstAttribute="height" secondItem="4rN-OW-F3z" secondAttribute="height" id="gaa-ZI-8HU"/>
+                                                        </constraints>
+                                                    </scrollView>
+                                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f2P-oz-XwM" userLabel="Bottom Card Scroll View">
+                                                        <rect key="frame" x="0.0" y="389" width="600" height="191"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bjR-Qy-Qfp" userLabel="Bottom Card Scroll Content View" customClass="CardScrollContentView">
+                                                                <rect key="frame" x="0.0" y="0.0" width="610" height="191"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </view>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="bjR-Qy-Qfp" firstAttribute="leading" secondItem="f2P-oz-XwM" secondAttribute="leading" id="0Pk-ZS-WHw"/>
+                                                            <constraint firstItem="bjR-Qy-Qfp" firstAttribute="top" secondItem="f2P-oz-XwM" secondAttribute="top" id="3yo-MQ-Zeq"/>
+                                                            <constraint firstItem="bjR-Qy-Qfp" firstAttribute="trailing" secondItem="f2P-oz-XwM" secondAttribute="trailing" id="5BB-5E-uHg"/>
+                                                            <constraint firstItem="bjR-Qy-Qfp" firstAttribute="bottom" secondItem="f2P-oz-XwM" secondAttribute="bottom" id="Vi6-Qh-F7v"/>
+                                                            <constraint firstItem="bjR-Qy-Qfp" firstAttribute="width" secondItem="f2P-oz-XwM" secondAttribute="width" constant="10" id="ipk-Be-XnU"/>
+                                                            <constraint firstItem="bjR-Qy-Qfp" firstAttribute="height" secondItem="f2P-oz-XwM" secondAttribute="height" id="lfm-CN-8M5"/>
+                                                        </constraints>
+                                                    </scrollView>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.92353969812393188" green="0.34779423475265503" blue="0.033654753118753433" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstItem="VU8-K5-T2e" firstAttribute="top" secondItem="yAg-fE-fZI" secondAttribute="top" id="Fcr-Zi-PKt"/>
-                                                    <constraint firstItem="VU8-K5-T2e" firstAttribute="bottom" secondItem="yAg-fE-fZI" secondAttribute="bottom" id="G8o-xe-VgE"/>
-                                                    <constraint firstItem="VU8-K5-T2e" firstAttribute="leading" secondItem="yAg-fE-fZI" secondAttribute="leading" id="lw2-El-JuX"/>
-                                                    <constraint firstItem="VU8-K5-T2e" firstAttribute="trailing" secondItem="yAg-fE-fZI" secondAttribute="trailing" id="ycI-GM-wFv"/>
+                                                    <constraint firstItem="4rN-OW-F3z" firstAttribute="width" secondItem="VU8-K5-T2e" secondAttribute="width" id="DRz-ZI-nki"/>
+                                                    <constraint firstItem="f2P-oz-XwM" firstAttribute="width" secondItem="VU8-K5-T2e" secondAttribute="width" id="bHA-Kh-YAo"/>
+                                                    <constraint firstItem="X5l-T8-L5E" firstAttribute="width" secondItem="VU8-K5-T2e" secondAttribute="width" id="ghR-g8-FZv"/>
                                                 </constraints>
-                                            </view>
+                                            </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TIT-yG-cTd" userLabel="Menu View" customClass="MenuView">
                                                 <rect key="frame" x="0.0" y="580" width="600" height="80"/>
                                                 <color key="backgroundColor" red="0.15540054440498352" green="0.7897377610206604" blue="0.079505287110805511" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -104,20 +92,20 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.11410372704267502" green="0.36716693639755249" blue="0.57023555040359497" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
+                                            <constraint firstItem="TIT-yG-cTd" firstAttribute="top" secondItem="VU8-K5-T2e" secondAttribute="bottom" id="4cF-W1-fif"/>
                                             <constraint firstItem="TIT-yG-cTd" firstAttribute="centerX" secondItem="1xk-lu-wGc" secondAttribute="centerX" id="6JT-fS-jcq"/>
-                                            <constraint firstItem="TIT-yG-cTd" firstAttribute="top" secondItem="yAg-fE-fZI" secondAttribute="bottom" id="9F0-4y-Tql"/>
-                                            <constraint firstItem="yAg-fE-fZI" firstAttribute="trailing" secondItem="1xk-lu-wGc" secondAttribute="trailing" id="OJW-TO-4IP"/>
+                                            <constraint firstItem="VU8-K5-T2e" firstAttribute="leading" secondItem="1xk-lu-wGc" secondAttribute="leading" id="Lpy-FH-dYc"/>
                                             <constraint firstItem="TIT-yG-cTd" firstAttribute="trailing" secondItem="1xk-lu-wGc" secondAttribute="trailing" id="Xh1-1Q-Boc"/>
-                                            <constraint firstItem="yAg-fE-fZI" firstAttribute="top" secondItem="1xk-lu-wGc" secondAttribute="top" id="Y01-eR-uga"/>
-                                            <constraint firstItem="yAg-fE-fZI" firstAttribute="bottom" secondItem="1xk-lu-wGc" secondAttribute="bottom" constant="-80" id="fkG-P7-s32"/>
-                                            <constraint firstItem="yAg-fE-fZI" firstAttribute="leading" secondItem="1xk-lu-wGc" secondAttribute="leading" id="ofr-ne-ZN7"/>
+                                            <constraint firstItem="VU8-K5-T2e" firstAttribute="top" secondItem="1xk-lu-wGc" secondAttribute="top" id="cjb-NQ-BA0"/>
+                                            <constraint firstItem="VU8-K5-T2e" firstAttribute="bottom" secondItem="1xk-lu-wGc" secondAttribute="bottom" constant="-80" id="lTT-Dk-uRD"/>
+                                            <constraint firstItem="VU8-K5-T2e" firstAttribute="trailing" secondItem="1xk-lu-wGc" secondAttribute="trailing" id="mD5-Ix-Xyj"/>
                                             <constraint firstItem="TIT-yG-cTd" firstAttribute="leading" secondItem="1xk-lu-wGc" secondAttribute="leading" id="xLA-6B-dsX"/>
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="1xk-lu-wGc" firstAttribute="leading" secondItem="At9-Qy-VA6" secondAttribute="leading" id="15N-cG-L5p"/>
                                     <constraint firstItem="1xk-lu-wGc" firstAttribute="height" secondItem="At9-Qy-VA6" secondAttribute="height" constant="80" id="DHQ-qF-YdR"/>
