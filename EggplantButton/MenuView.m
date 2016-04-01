@@ -1,21 +1,23 @@
 //
-//  ActivityCard.m
+//  MenuView.m
 //  EggplantButton
 //
-//  Created by Ian Alexander Rahman on 3/30/16.
+//  Created by Ian Alexander Rahman on 3/31/16.
 //  Copyright © 2016 Team Eggplant Button. All rights reserved.
 //
 
-#import "ActivityCard.h"
+#import "MenuView.h"
+#import "ActivityCardView.h"
 #import "RestaurantDataStore.h"
 
-@interface ActivityCard ()
+@interface MenuView ()
 
 @property (strong, nonatomic) RestaurantDataStore *sharedDataStore;
 
 @end
 
-@implementation ActivityCard
+
+@implementation MenuView
 
 -(instancetype)initWithFrame:(CGRect)frame {
     
@@ -29,11 +31,6 @@
         
     }
     return self;
-}
-
--(void)setForecastModel:(CurrentForcast *)forecastModel {
-    _forecastModel = forecastModel;
-    [self updateUI];
 }
 
 

@@ -1,5 +1,5 @@
 //
-//  MenuViewController.h
+//  CardScrollContentView.h
 //  EggplantButton
 //
 //  Created by Ian Alexander Rahman on 3/31/16.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MenuViewController : UIViewController
+@interface CardScrollContentView : UIView
 
 @end

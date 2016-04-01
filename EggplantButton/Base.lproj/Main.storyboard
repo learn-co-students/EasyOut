@@ -20,52 +20,106 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="At9-Qy-VA6">
                                 <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1xk-lu-wGc" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="588"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1xk-lu-wGc" userLabel="Main Content View" customClass="MainContentView">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="660"/>
                                         <subviews>
-                                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5ue-rX-YQQ" userLabel="Card Container View">
-                                                <rect key="frame" x="0.0" y="-80" width="600" height="600"/>
-                                                <connections>
-                                                    <segue destination="87w-Uq-e83" kind="embed" id="NnL-vo-VT6"/>
-                                                </connections>
-                                            </containerView>
-                                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Cw-wg-Xr2" userLabel="Menu Container View">
-                                                <rect key="frame" x="0.0" y="500" width="600" height="80"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="VU8-K5-T2e" userLabel="Card Stack View">
+                                                <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
+                                                <subviews>
+                                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X5l-T8-L5E" userLabel="Top Card Scroll View">
+                                                        <rect key="frame" x="0.0" y="0.0" width="600" height="191"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F7a-hP-OQA" userLabel="Top Card Scroll Content View" customClass="CardScrollContentView">
+                                                                <rect key="frame" x="0.0" y="0.0" width="610" height="191"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </view>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="F7a-hP-OQA" firstAttribute="bottom" secondItem="X5l-T8-L5E" secondAttribute="bottom" id="A9K-Sd-GAa"/>
+                                                            <constraint firstItem="F7a-hP-OQA" firstAttribute="height" secondItem="X5l-T8-L5E" secondAttribute="height" id="AJh-m0-AzV"/>
+                                                            <constraint firstItem="F7a-hP-OQA" firstAttribute="width" secondItem="X5l-T8-L5E" secondAttribute="width" constant="10" id="Gjb-Ce-kgn"/>
+                                                            <constraint firstItem="F7a-hP-OQA" firstAttribute="trailing" secondItem="X5l-T8-L5E" secondAttribute="trailing" id="IBd-tC-sPA"/>
+                                                            <constraint firstItem="F7a-hP-OQA" firstAttribute="leading" secondItem="X5l-T8-L5E" secondAttribute="leading" id="PWU-Kj-nrX"/>
+                                                            <constraint firstItem="F7a-hP-OQA" firstAttribute="top" secondItem="X5l-T8-L5E" secondAttribute="top" id="r4F-bd-hlU"/>
+                                                        </constraints>
+                                                    </scrollView>
+                                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4rN-OW-F3z" userLabel="Middle Card Scroll View">
+                                                        <rect key="frame" x="0.0" y="194" width="600" height="192"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Gn-0C-Jnc" userLabel="Middle Card Scroll Content View" customClass="CardScrollContentView">
+                                                                <rect key="frame" x="0.0" y="0.0" width="610" height="192"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </view>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="2Gn-0C-Jnc" firstAttribute="leading" secondItem="4rN-OW-F3z" secondAttribute="leading" id="2fv-OL-8Fc"/>
+                                                            <constraint firstItem="2Gn-0C-Jnc" firstAttribute="bottom" secondItem="4rN-OW-F3z" secondAttribute="bottom" id="LI4-VE-fF3"/>
+                                                            <constraint firstItem="2Gn-0C-Jnc" firstAttribute="top" secondItem="4rN-OW-F3z" secondAttribute="top" id="ZCL-6k-YYk"/>
+                                                            <constraint firstItem="2Gn-0C-Jnc" firstAttribute="width" secondItem="4rN-OW-F3z" secondAttribute="width" constant="10" id="a5u-RA-qSz"/>
+                                                            <constraint firstItem="2Gn-0C-Jnc" firstAttribute="trailing" secondItem="4rN-OW-F3z" secondAttribute="trailing" id="aqs-re-4gg"/>
+                                                            <constraint firstItem="2Gn-0C-Jnc" firstAttribute="height" secondItem="4rN-OW-F3z" secondAttribute="height" id="gaa-ZI-8HU"/>
+                                                        </constraints>
+                                                    </scrollView>
+                                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f2P-oz-XwM" userLabel="Bottom Card Scroll View">
+                                                        <rect key="frame" x="0.0" y="389" width="600" height="191"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bjR-Qy-Qfp" userLabel="Bottom Card Scroll Content View" customClass="CardScrollContentView">
+                                                                <rect key="frame" x="0.0" y="0.0" width="610" height="191"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </view>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="bjR-Qy-Qfp" firstAttribute="leading" secondItem="f2P-oz-XwM" secondAttribute="leading" id="0Pk-ZS-WHw"/>
+                                                            <constraint firstItem="bjR-Qy-Qfp" firstAttribute="top" secondItem="f2P-oz-XwM" secondAttribute="top" id="3yo-MQ-Zeq"/>
+                                                            <constraint firstItem="bjR-Qy-Qfp" firstAttribute="trailing" secondItem="f2P-oz-XwM" secondAttribute="trailing" id="5BB-5E-uHg"/>
+                                                            <constraint firstItem="bjR-Qy-Qfp" firstAttribute="bottom" secondItem="f2P-oz-XwM" secondAttribute="bottom" id="Vi6-Qh-F7v"/>
+                                                            <constraint firstItem="bjR-Qy-Qfp" firstAttribute="width" secondItem="f2P-oz-XwM" secondAttribute="width" constant="10" id="ipk-Be-XnU"/>
+                                                            <constraint firstItem="bjR-Qy-Qfp" firstAttribute="height" secondItem="f2P-oz-XwM" secondAttribute="height" id="lfm-CN-8M5"/>
+                                                        </constraints>
+                                                    </scrollView>
+                                                </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="80" id="8nh-EN-vQj"/>
+                                                    <constraint firstItem="4rN-OW-F3z" firstAttribute="width" secondItem="VU8-K5-T2e" secondAttribute="width" id="DRz-ZI-nki"/>
+                                                    <constraint firstItem="f2P-oz-XwM" firstAttribute="width" secondItem="VU8-K5-T2e" secondAttribute="width" id="bHA-Kh-YAo"/>
+                                                    <constraint firstItem="X5l-T8-L5E" firstAttribute="width" secondItem="VU8-K5-T2e" secondAttribute="width" id="ghR-g8-FZv"/>
                                                 </constraints>
-                                                <connections>
-                                                    <segue destination="LXp-iM-glB" kind="embed" id="82W-6D-j2a"/>
-                                                </connections>
-                                            </containerView>
+                                            </stackView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TIT-yG-cTd" userLabel="Menu View" customClass="MenuView">
+                                                <rect key="frame" x="0.0" y="580" width="600" height="80"/>
+                                                <color key="backgroundColor" red="0.15540054440498352" green="0.7897377610206604" blue="0.079505287110805511" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="80" id="Yfk-hX-Od2"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.11410372704267502" green="0.36716693639755249" blue="0.57023555040359497" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstItem="5ue-rX-YQQ" firstAttribute="leading" secondItem="1xk-lu-wGc" secondAttribute="leading" id="FIO-5G-27s"/>
-                                            <constraint firstAttribute="trailing" secondItem="5ue-rX-YQQ" secondAttribute="trailing" id="FSU-Gs-DTk"/>
-                                            <constraint firstItem="8Cw-wg-Xr2" firstAttribute="width" secondItem="5ue-rX-YQQ" secondAttribute="width" id="Jqb-WD-0EI"/>
-                                            <constraint firstAttribute="bottom" secondItem="5ue-rX-YQQ" secondAttribute="bottom" constant="68" id="QS1-RJ-pay"/>
-                                            <constraint firstItem="8Cw-wg-Xr2" firstAttribute="centerX" secondItem="5ue-rX-YQQ" secondAttribute="centerX" id="dsN-Uc-Dnf"/>
-                                            <constraint firstItem="5ue-rX-YQQ" firstAttribute="top" secondItem="1xk-lu-wGc" secondAttribute="top" constant="-80" id="wUB-ik-NEW"/>
-                                            <constraint firstItem="8Cw-wg-Xr2" firstAttribute="top" secondItem="5ue-rX-YQQ" secondAttribute="bottom" id="xug-IQ-JgJ"/>
+                                            <constraint firstItem="TIT-yG-cTd" firstAttribute="top" secondItem="VU8-K5-T2e" secondAttribute="bottom" id="4cF-W1-fif"/>
+                                            <constraint firstItem="TIT-yG-cTd" firstAttribute="centerX" secondItem="1xk-lu-wGc" secondAttribute="centerX" id="6JT-fS-jcq"/>
+                                            <constraint firstItem="VU8-K5-T2e" firstAttribute="leading" secondItem="1xk-lu-wGc" secondAttribute="leading" id="Lpy-FH-dYc"/>
+                                            <constraint firstItem="TIT-yG-cTd" firstAttribute="trailing" secondItem="1xk-lu-wGc" secondAttribute="trailing" id="Xh1-1Q-Boc"/>
+                                            <constraint firstItem="VU8-K5-T2e" firstAttribute="top" secondItem="1xk-lu-wGc" secondAttribute="top" id="cjb-NQ-BA0"/>
+                                            <constraint firstItem="VU8-K5-T2e" firstAttribute="bottom" secondItem="1xk-lu-wGc" secondAttribute="bottom" constant="-80" id="lTT-Dk-uRD"/>
+                                            <constraint firstItem="VU8-K5-T2e" firstAttribute="trailing" secondItem="1xk-lu-wGc" secondAttribute="trailing" id="mD5-Ix-Xyj"/>
+                                            <constraint firstItem="TIT-yG-cTd" firstAttribute="leading" secondItem="1xk-lu-wGc" secondAttribute="leading" id="xLA-6B-dsX"/>
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="1xk-lu-wGc" firstAttribute="leading" secondItem="At9-Qy-VA6" secondAttribute="leading" id="15N-cG-L5p"/>
                                     <constraint firstItem="1xk-lu-wGc" firstAttribute="height" secondItem="At9-Qy-VA6" secondAttribute="height" constant="80" id="DHQ-qF-YdR"/>
-                                    <constraint firstAttribute="trailing" secondItem="1xk-lu-wGc" secondAttribute="trailing" id="ZbV-oU-1Zk"/>
+                                    <constraint firstItem="1xk-lu-wGc" firstAttribute="trailing" secondItem="At9-Qy-VA6" secondAttribute="trailing" id="ZbV-oU-1Zk"/>
                                     <constraint firstItem="1xk-lu-wGc" firstAttribute="top" secondItem="At9-Qy-VA6" secondAttribute="top" id="h8I-kS-P2Q"/>
-                                    <constraint firstAttribute="bottom" secondItem="1xk-lu-wGc" secondAttribute="bottom" id="iL9-j4-ptZ"/>
+                                    <constraint firstItem="1xk-lu-wGc" firstAttribute="bottom" secondItem="At9-Qy-VA6" secondAttribute="bottom" id="iL9-j4-ptZ"/>
                                     <constraint firstItem="1xk-lu-wGc" firstAttribute="width" secondItem="At9-Qy-VA6" secondAttribute="width" id="jcU-tU-qkM"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="At9-Qy-VA6" secondAttribute="bottom" id="3Vd-tc-uKr"/>
-                            <constraint firstAttribute="trailing" secondItem="At9-Qy-VA6" secondAttribute="trailing" id="BC6-Cg-Mmh"/>
+                            <constraint firstItem="At9-Qy-VA6" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="3Vd-tc-uKr"/>
+                            <constraint firstItem="At9-Qy-VA6" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="BC6-Cg-Mmh"/>
                             <constraint firstItem="At9-Qy-VA6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Lf9-WH-Yi9"/>
                             <constraint firstItem="At9-Qy-VA6" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="R5v-ag-zXL"/>
                         </constraints>
@@ -74,42 +128,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="420" y="475"/>
-        </scene>
-        <!--Card View Controller-->
-        <scene sceneID="ZTB-Tr-zX4">
-            <objects>
-                <viewController id="87w-Uq-e83" customClass="CardViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="R6o-r8-xi6"/>
-                        <viewControllerLayoutGuide type="bottom" id="owL-c6-cmi"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="yAg-fE-fZI">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.92353969812393188" green="0.34779423475265503" blue="0.033654753118753433" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4AL-ve-xDm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1076" y="475"/>
-        </scene>
-        <!--Menu View Controller-->
-        <scene sceneID="vKm-K7-k8h">
-            <objects>
-                <viewController id="LXp-iM-glB" customClass="MenuViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Od0-MH-XGV"/>
-                        <viewControllerLayoutGuide type="bottom" id="lxs-cl-WlP"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="TIT-yG-cTd">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.15540054440498352" green="0.7897377610206604" blue="0.079505287110805511" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JaV-LO-9Ow" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="420" y="917"/>
         </scene>
     </scenes>
 </document>
