@@ -10,4 +10,9 @@
 
 @interface ActivityCard : UIView
 
+@property (strong, nonatomic) IBOutlet ActivityCard *contentView;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
+@property (weak, nonatomic) IBOutlet UILabel *pricepointLabel;
+
 @end
