@@ -10,4 +10,6 @@
 
 @interface MainContentView : UIView
 
+@property (strong, nonatomic) UIScrollView *top
+
 @end

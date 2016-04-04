@@ -10,4 +10,10 @@
 
 @interface MenuView : UIView
 
+@property (strong, nonatomic) UIButton *locationFilterButton;
+@property (strong, nonatomic) UIButton *priceFilterButton;
+@property (strong, nonatomic) UIButton *timeFilterButton;
+@property (strong, nonatomic) UIButton *settingsMenuButton;
+@property (strong, nonatomic) UIButton *shareButton;
+
 @end

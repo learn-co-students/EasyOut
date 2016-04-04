@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		4C270CA81CAB08A2003E0195 /* Secrets.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C270CA71CAB08A2003E0195 /* Secrets.m */; };
 		4C358D381CAD62CE00257756 /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C358D371CAD62CE00257756 /* ContainerViewController.m */; };
-		4C358D671CADBA0600257756 /* CardScrollContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C358D661CADBA0600257756 /* CardScrollContentView.m */; };
 		4C358D6A1CADBA2000257756 /* MenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C358D691CADBA2000257756 /* MenuView.m */; };
 		4C358D6D1CADC75F00257756 /* MainContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C358D6C1CADC75F00257756 /* MainContentView.m */; };
 		4C358D731CADCDF700257756 /* ActivityCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C358D721CADCDF700257756 /* ActivityCardView.m */; };
@@ -33,8 +32,6 @@
 		4C270CA71CAB08A2003E0195 /* Secrets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Secrets.m; sourceTree = "<group>"; };
 		4C358D361CAD62CE00257756 /* ContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerViewController.h; sourceTree = "<group>"; };
 		4C358D371CAD62CE00257756 /* ContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerViewController.m; sourceTree = "<group>"; };
-		4C358D651CADBA0600257756 /* CardScrollContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardScrollContentView.h; sourceTree = "<group>"; };
-		4C358D661CADBA0600257756 /* CardScrollContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardScrollContentView.m; sourceTree = "<group>"; };
 		4C358D681CADBA2000257756 /* MenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuView.h; sourceTree = "<group>"; };
 		4C358D691CADBA2000257756 /* MenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuView.m; sourceTree = "<group>"; };
 		4C358D6B1CADC75F00257756 /* MainContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainContentView.h; sourceTree = "<group>"; };
@@ -111,8 +108,6 @@
 				4C270CA71CAB08A2003E0195 /* Secrets.m */,
 				4C358D361CAD62CE00257756 /* ContainerViewController.h */,
 				4C358D371CAD62CE00257756 /* ContainerViewController.m */,
-				4C358D651CADBA0600257756 /* CardScrollContentView.h */,
-				4C358D661CADBA0600257756 /* CardScrollContentView.m */,
 				4C358D681CADBA2000257756 /* MenuView.h */,
 				4C358D691CADBA2000257756 /* MenuView.m */,
 				4C358D6B1CADC75F00257756 /* MainContentView.h */,
@@ -275,7 +270,6 @@
 				9A5616B81CAD8A30008D9264 /* RestaurantDataStore.m in Sources */,
 				9A2478E61CAC2EFA00865C6A /* OpenTableAPIClient.m in Sources */,
 				4C9A03891CAB064200CA9A02 /* EggplantButton.xcdatamodeld in Sources */,
-				4C358D671CADBA0600257756 /* CardScrollContentView.m in Sources */,
 				4C358D381CAD62CE00257756 /* ContainerViewController.m in Sources */,
 				4C358D731CADCDF700257756 /* ActivityCardView.m in Sources */,
 				4C9A03801CAB064200CA9A02 /* AppDelegate.m in Sources */,
