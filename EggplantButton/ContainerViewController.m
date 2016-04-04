@@ -24,6 +24,17 @@
 @property (strong, nonatomic) UIStackView *middleCardStackView;
 @property (strong, nonatomic) UIStackView *bottomCardStackView;
 
+@property (strong, nonatomic) NSMutableArray *topActivityCards;
+@property (strong, nonatomic) NSMutableArray *middleActivityCards;
+@property (strong, nonatomic) NSMutableArray *bottomActivityCards;
+
+@property (weak, nonatomic) IBOutlet UIStackView *menuStackView;
+@property (weak, nonatomic) IBOutlet UIButton *locationFilterButton;
+@property (weak, nonatomic) IBOutlet UIButton *timeFilterButton;
+@property (weak, nonatomic) IBOutlet UIButton *shareButton;
+@property (weak, nonatomic) IBOutlet UIButton *priceFilterButton;
+@property (weak, nonatomic) IBOutlet UIButton *settingsButton;
+
 @end
 
 @implementation ContainerViewController
@@ -32,18 +43,8 @@
     
     [super viewDidLoad];
     
-    // Add all the views to the view controller
-    [self.view addSubview:self.verticalScrollView];
-    [self.verticalScrollView addSubview:self.mainContentView];
-    [self.mainContentView addSubview:self.cardStackView];
-    [self.mainContentView addSubview:self.menuView];
-    [self.mainContentView addSubview:self.topCardScrollView];
-    [self.mainContentView addSubview:self.middleCardScrollView];
-    [self.mainContentView addSubview:self.bottomCardScrollView];
-    [self.topCardScrollView addSubview:self.topCardStackView];
-    [self.middleCardScrollView addSubview:self.middleCardStackView];
-    [self.bottomCardScrollView addSubview:self.bottomCardStackView];
-
+    NSLog(@"Container view did load");
+    
     
 }
 
@@ -53,6 +54,25 @@
     
 }
 
+-(IBAction)locationFilterButtonTapped:(id)sender {
+    
+}
+
+-(IBAction)timeFilterButtonTapped:(id)sender {
+    
+}
+
+-(IBAction)shareButtonTapped:(id)sender {
+    // Present share page modally
+}
+
+-(IBAction)priceFilterButtonTapped:(id)sender {
+    // Present price filter
+}
+
+-(IBAction)settingsButtonTapped:(id)sender {
+    // Present settings page modally
+}
 
 
 @end
