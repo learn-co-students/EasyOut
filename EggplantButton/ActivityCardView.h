@@ -9,13 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "RestaurantDataStore.h"
 
+@class Restaurant;
 @interface ActivityCardView : UIView
 
-@property (strong, nonatomic) IBOutlet UIView *contentView;
-
-@property (weak, nonatomic) IBOutlet UIView *imageView;
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
-@property (weak, nonatomic) IBOutlet UILabel *pricepointLabel;
+@property (strong, nonatomic) Restaurant *restaurant;
 
 @end
+ 

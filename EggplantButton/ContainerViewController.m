@@ -10,10 +10,14 @@
 #import "MenuView.h"
 #import "RestaurantDataStore.h"
 
+@class Restaurant;
+
 @interface ContainerViewController ()
 
-@property (strong, nonatomic) MenuView *menuView;
 @property (strong, nonatomic) RestaurantDataStore *dataStore;
+
+
+
 
 @end
 
@@ -22,20 +26,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.dataStore = [[RestaurantDataStore alloc]init];
+    self.dataStore = [RestaurantDataStore sharedDataStore];
+    
     
     [self.dataStore getRestaurantsWithCompletion:^(BOOL success) {
         if(success) {
             
-            [[NSOperationQueue mainQueue] addOperationWithBlock:^{ [self.view reloadInputViews]; }];
+            for(Restaurant *restaurant in self.dataStore.restaurants) {
+                
+                
+            }
+            
         }
-        
         else {
             NSLog(@"fail");
         }
     }];
-    
-    
     
 }
 

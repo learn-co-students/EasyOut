@@ -26,9 +26,6 @@
     if(self) {
      
         self.sharedDataStore = [RestaurantDataStore sharedDataStore];
-        
-        
-        
     }
     return self;
 }
