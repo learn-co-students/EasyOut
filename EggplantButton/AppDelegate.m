@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import <Button/Button.h>
+#import "Secrets.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +18,13 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    /// Allows Button to request Location Permissions
+    [Button allowButtonToRequestLocationPermission:YES];
+    
+    // Replace YOUR_BUTTON_APP_ID with your App ID from the Button Dashboard https://app.usebutton.com
+    [[Button sharedButton] configureWithApplicationId: APP_ID completion:NULL];
+    
     return YES;
 }
 

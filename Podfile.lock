@@ -14,16 +14,22 @@ PODS:
   - AFNetworking/Serialization (3.0.4)
   - AFNetworking/UIKit (3.0.4):
     - AFNetworking/NSURLSession
+  - Button (4.4.2)
+  - DeepLinkKit (1.2.0)
   - Masonry (0.6.4)
   - pop (1.0.9)
 
 DEPENDENCIES:
   - AFNetworking
+  - Button (~> 4)
+  - DeepLinkKit
   - Masonry
   - pop (~> 1.0)
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
+  Button: 49cd2e0f46b40d77e1bc3538561a8b8490ae5b63
+  DeepLinkKit: c5c1b216b8aa00fa7735ffeee6a354e39e7574ac
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
 
