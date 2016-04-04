@@ -8,10 +8,12 @@
 
 #import "ContainerViewController.h"
 #import "MenuView.h"
+#import "RestaurantDataStore.h"
 
 @interface ContainerViewController ()
 
 @property (strong, nonatomic) MenuView *menuView;
+@property (strong, nonatomic) RestaurantDataStore *dataStore;
 
 @end
 
@@ -20,19 +22,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.dataStore = [[RestaurantDataStore alloc]init];
+    
+    [self.dataStore getRestaurantsWithCompletion:^(BOOL success) {
+        if(success) {
+            
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{ [self.view reloadInputViews]; }];
+        }
+        
+        else {
+            NSLog(@"fail");
+        }
+    }];
+    
     
     
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
-
-//-(CATransform3D) transformForFraction:(CGFloat)fraction {
-//    CATransform3DIdentity *identity = [[CATransform3DIdentity alloc] init];
-//    
-//}
 
 
 @end

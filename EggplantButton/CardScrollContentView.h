@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ActivityCardView.h"
 
 @interface CardScrollContentView : UIView
+
+@property (strong, nonatomic) ActivityCardView *card;
 
 @end

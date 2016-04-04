@@ -1,3 +1,4 @@
+
 //
 //  ActivityCardView.m
 //  EggplantButton
@@ -7,10 +8,11 @@
 //
 
 #import "ActivityCardView.h"
+#import "Restaurant.h"
 
 @interface ActivityCardView ()
 
-@property (strong, nonatomic) IBOutlet UIView *activityCardContentView;
+@property (strong, nonatomic) RestaurantDataStore *sharedDataStore;
 
 
 @end
@@ -36,13 +38,37 @@
 }
 
 -(void)commonInit {
-    [[NSBundle mainBundle] loadNibNamed:@"ActivityCardView" owner:self options:nil];
     
-    [self addSubview:self.activityCardContentView];
+    self.sharedDataStore = [RestaurantDataStore sharedDataStore];
+            
+    [[NSBundle mainBundle] loadNibNamed:@"ActivityCard" owner:self options:nil];
+
+    [self addSubview:self.contentView];
     
-    // Create all the common activity card attributes
+    self.translatesAutoresizingMaskIntoConstraints = NO;
+    self.contentView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self.contentView.heightAnchor constraintEqualToAnchor: self.heightAnchor].active = YES;
+    [self.contentView.widthAnchor constraintEqualToAnchor: self.widthAnchor].active = YES;
+    [self.contentView.centerXAnchor constraintEqualToAnchor: self.centerXAnchor].active = YES;
+    [self.contentView.centerYAnchor constraintEqualToAnchor: self.centerYAnchor].active = YES;
     
 }
+
+-(void)setSharedDataStore:(RestaurantDataStore *)sharedDataStore {
+    
+    _sharedDataStore = sharedDataStore;
+    [self updateUI];
+}
+
+-(void)updateUI {
+    
+    
+    
+}
+
+
+
 
 
 
