@@ -7,16 +7,14 @@
 //
 
 #import "ContainerViewController.h"
-#import "MenuView.h"
 #import "MainContentView.h"
 #import "ActivityCardView.h"
 
-@interface ContainerViewController ()
+@interface ContainerViewController () <UIScrollViewDelegate>
 
 @property (strong, nonatomic) UIScrollView *verticalScrollView;
 @property (strong, nonatomic) MainContentView *mainContentView;
 @property (strong, nonatomic) UIStackView *cardStackView;
-@property (strong, nonatomic) MenuView *menuView;
 @property (strong, nonatomic) UIScrollView *topCardScrollView;
 @property (strong, nonatomic) UIScrollView *middleCardScrollView;
 @property (strong, nonatomic) UIScrollView *bottomCardScrollView;
@@ -44,13 +42,23 @@
     [super viewDidLoad];
     
     NSLog(@"Container view did load");
-    
-    
 }
+
+// This method will be used to handle the card scroll views' reactions and delay page-turning
+//-(void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
+//{
+////    CGPoint quoVadis = *targetContentOffset;
+////    targetContentOffset->y
+//    
+//    CGPoint newOffset = CGPointZero;
+//    *targetContentOffset = newOffset;
+//}
+
+
 
 -(void)viewWillAppear:(BOOL)animated {
     
-    
+
     
 }
 
