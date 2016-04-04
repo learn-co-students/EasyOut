@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Setup Button-->
+        <!--testing-->
         <scene sceneID="vlL-zu-nIS">
             <objects>
-                <viewController id="HnD-Ds-l1j" customClass="setupButton" sceneMemberID="viewController">
+                <viewController title="testing" id="HnD-Ds-l1j" customClass="setupButton" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5gG-zo-c7c"/>
                         <viewControllerLayoutGuide type="bottom" id="FbT-rU-vkq"/>
@@ -18,11 +18,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" title="testing" id="Mry-Lj-5aA"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rQU-D7-dEu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="316" y="377"/>
+            <point key="canvasLocation" x="827" y="366"/>
         </scene>
     </scenes>
 </document>

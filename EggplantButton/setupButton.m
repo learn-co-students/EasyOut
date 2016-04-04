@@ -21,13 +21,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setupButton];
-    
-
+    [self setupRezyButton];
 
 }
 
-- (void) setupButton {
+- (void) setupRezyButton {
     
     // Initializing button
     self.button = [[BTNDropinButton alloc] initWithButtonId:YOUR_BUTTON_ID];
@@ -37,9 +35,10 @@
     [[BTNDropinButton appearance] setIconSize:26.0];
     [[BTNDropinButton appearance] setIconLabelSpacing:13.0];
     [[BTNDropinButton appearance] setFont:[UIFont systemFontOfSize:16.0]];
-    [[BTNDropinButton appearance] setTextColor:[UIColor blackColor]];
-    [[BTNDropinButton appearance] setBorderColor:[UIColor blackColor]];
-    [[BTNDropinButton appearance] setBorderWidth:2];
+    [[BTNDropinButton appearance] setTextColor:[UIColor whiteColor]];
+    [[BTNDropinButton appearance] setBorderColor:[UIColor redColor]];
+    [[BTNDropinButton appearance] setBackgroundColor:[UIColor redColor]];
+    [[BTNDropinButton appearance] setBorderWidth:1];
     
 //    // Setup your context.
 //    BTNLocation *userLocation = [BTNLocation locationWithLatitude:<#latitude#> longitude:<#longitude#>];
