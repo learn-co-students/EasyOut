@@ -226,7 +226,6 @@
                     </view>
                     <connections>
                         <outlet property="locationFilterButton" destination="f3L-7f-xMC" id="klH-oU-WUc"/>
-                        <outlet property="menuStackView" destination="I3i-II-yRN" id="hjU-TF-4g3"/>
                         <outlet property="priceFilterButton" destination="N2m-Cy-Kba" id="34m-M8-eaf"/>
                         <outlet property="settingsButton" destination="Rnc-Rf-G8W" id="l7r-kh-zPz"/>
                         <outlet property="shareButton" destination="QJ0-as-K1B" id="Kep-wW-FQn"/>

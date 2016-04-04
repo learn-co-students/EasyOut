@@ -8,7 +8,6 @@
 
 #import "ContainerViewController.h"
 #import "RestaurantDataStore.h"
-#import "MainContentView.h"
 #import "ActivityCardView.h"
 
 @class Restaurant;
@@ -56,14 +55,15 @@
             NSLog(@"fail");
         }
     }];
+ 
     
+    NSLog(@"Container view did load");
+
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-}
 
-    NSLog(@"Container view did load");
 }
 
 // This method will be used to handle the card scroll views' reactions and delay page-turning
