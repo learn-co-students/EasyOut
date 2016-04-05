@@ -8,3 +8,5 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString * const consumerKey;
+extern NSString * const consumerSecret;

@@ -7,10 +7,8 @@
 //
 
 #import "TicketMasterAPIClient.h"
-#import "TicketMasterConstants.h"
 #import "TicketMasterEvent.h"
-
-
+#import "Secrets.h"
 
 @implementation TicketMasterAPIClient
 

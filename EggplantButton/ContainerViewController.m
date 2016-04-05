@@ -56,7 +56,7 @@
             
             for(Restaurant *restaurant in self.dataStore.restaurants) {
                 
-                NSLog(@"Image URL: %@", restaurant.imageURL);
+                NSLog(@"Creating card for %@", restaurant.name);
                 
                 ActivityCardView *newActivityCard =[[ActivityCardView alloc]init];
                 newActivityCard.restaurant = restaurant;

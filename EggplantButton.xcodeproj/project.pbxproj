@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0A05A4EB1CB438AD00EF83CD /* TicketMasterAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A05A4E61CB438AD00EF83CD /* TicketMasterAPIClient.m */; };
-		0A05A4EC1CB438AD00EF83CD /* TicketMasterConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A05A4E81CB438AD00EF83CD /* TicketMasterConstants.m */; };
 		0A05A4ED1CB438AD00EF83CD /* TicketMasterEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A05A4EA1CB438AD00EF83CD /* TicketMasterEvent.m */; };
 		4C270CA81CAB08A2003E0195 /* Secrets.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C270CA71CAB08A2003E0195 /* Secrets.m */; };
 		4C358D381CAD62CE00257756 /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C358D371CAD62CE00257756 /* ContainerViewController.m */; };
@@ -30,8 +29,6 @@
 /* Begin PBXFileReference section */
 		0A05A4E51CB438AD00EF83CD /* TicketMasterAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TicketMasterAPIClient.h; sourceTree = "<group>"; };
 		0A05A4E61CB438AD00EF83CD /* TicketMasterAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TicketMasterAPIClient.m; sourceTree = "<group>"; };
-		0A05A4E71CB438AD00EF83CD /* TicketMasterConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TicketMasterConstants.h; sourceTree = "<group>"; };
-		0A05A4E81CB438AD00EF83CD /* TicketMasterConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TicketMasterConstants.m; sourceTree = "<group>"; };
 		0A05A4E91CB438AD00EF83CD /* TicketMasterEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TicketMasterEvent.h; sourceTree = "<group>"; };
 		0A05A4EA1CB438AD00EF83CD /* TicketMasterEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TicketMasterEvent.m; sourceTree = "<group>"; };
 		0A4E7B30585A1886003A7ED7 /* libPods-EggplantButton.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EggplantButton.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +72,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C9514C81CB44FC6009CF02A /* APIs */ = {
+			isa = PBXGroup;
+			children = (
+				0A05A4E51CB438AD00EF83CD /* TicketMasterAPIClient.h */,
+				0A05A4E61CB438AD00EF83CD /* TicketMasterAPIClient.m */,
+				0A05A4E91CB438AD00EF83CD /* TicketMasterEvent.h */,
+				0A05A4EA1CB438AD00EF83CD /* TicketMasterEvent.m */,
+				9A2478E41CAC2EFA00865C6A /* OpenTableAPIClient.h */,
+				9A2478E51CAC2EFA00865C6A /* OpenTableAPIClient.m */,
+			);
+			name = APIs;
+			sourceTree = "<group>";
+		};
 		4C9A036F1CAB064200CA9A02 = {
 			isa = PBXGroup;
 			children = (
@@ -96,16 +106,8 @@
 		4C9A037A1CAB064200CA9A02 /* EggplantButton */ = {
 			isa = PBXGroup;
 			children = (
-				0A05A4E51CB438AD00EF83CD /* TicketMasterAPIClient.h */,
-				0A05A4E61CB438AD00EF83CD /* TicketMasterAPIClient.m */,
-				0A05A4E71CB438AD00EF83CD /* TicketMasterConstants.h */,
-				0A05A4E81CB438AD00EF83CD /* TicketMasterConstants.m */,
-				0A05A4E91CB438AD00EF83CD /* TicketMasterEvent.h */,
-				0A05A4EA1CB438AD00EF83CD /* TicketMasterEvent.m */,
 				4C9A037E1CAB064200CA9A02 /* AppDelegate.h */,
 				4C9A037F1CAB064200CA9A02 /* AppDelegate.m */,
-				9A2478E41CAC2EFA00865C6A /* OpenTableAPIClient.h */,
-				9A2478E51CAC2EFA00865C6A /* OpenTableAPIClient.m */,
 				9A5616B31CAC68AE008D9264 /* Restaurant.h */,
 				9A5616B41CAC68AE008D9264 /* Restaurant.m */,
 				9A5616B61CAD8A30008D9264 /* RestaurantDataStore.h */,
@@ -124,6 +126,7 @@
 				4C9A03871CAB064200CA9A02 /* EggplantButton.xcdatamodeld */,
 				4C270CA61CAB08A2003E0195 /* Secrets.h */,
 				4C270CA71CAB08A2003E0195 /* Secrets.m */,
+				4C9514C81CB44FC6009CF02A /* APIs */,
 				4C9A037B1CAB064200CA9A02 /* Supporting Files */,
 			);
 			path = EggplantButton;
@@ -284,7 +287,6 @@
 				4C358D381CAD62CE00257756 /* ContainerViewController.m in Sources */,
 				0A05A4EB1CB438AD00EF83CD /* TicketMasterAPIClient.m in Sources */,
 				4C358D731CADCDF700257756 /* ActivityCardView.m in Sources */,
-				0A05A4EC1CB438AD00EF83CD /* TicketMasterConstants.m in Sources */,
 				4C9A03801CAB064200CA9A02 /* AppDelegate.m in Sources */,
 				4C270CA81CAB08A2003E0195 /* Secrets.m in Sources */,
 				9A5616B51CAC68AE008D9264 /* Restaurant.m in Sources */,

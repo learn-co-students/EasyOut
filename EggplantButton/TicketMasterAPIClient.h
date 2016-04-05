@@ -13,5 +13,4 @@
 
 +(void)getEventsFromLocation: (CLLocation *) location completion:(void (^)(NSArray *))completionBlock;
 
-
 @end

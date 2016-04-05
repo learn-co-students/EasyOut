@@ -116,11 +116,11 @@
                                                                     <action selector="priceFilterButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="u6p-rR-2fF"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rnc-Rf-G8W" userLabel="Settings Button">
+                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rnc-Rf-G8W" userLabel="History Button">
                                                                 <rect key="frame" x="482" y="0.0" width="118" height="80"/>
-                                                                <state key="normal" title="Settings"/>
+                                                                <state key="normal" title="History"/>
                                                                 <connections>
-                                                                    <action selector="settingsButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2HJ-Mf-dpo"/>
+                                                                    <action selector="historyButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aH5-zA-Sre"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -169,11 +169,11 @@
                     <connections>
                         <outlet property="bottomCardScrollView" destination="f2P-oz-XwM" id="Yfv-Qm-Pd3"/>
                         <outlet property="bottomCardStackView" destination="Qqw-sX-VYd" id="Kt6-fM-pTd"/>
+                        <outlet property="historyButton" destination="Rnc-Rf-G8W" id="Vws-Ah-zbf"/>
                         <outlet property="locationFilterButton" destination="f3L-7f-xMC" id="klH-oU-WUc"/>
                         <outlet property="middleCardScrollView" destination="4rN-OW-F3z" id="ctq-QG-C1a"/>
                         <outlet property="middleCardStackView" destination="qRB-pF-yqd" id="Qmb-8d-kT2"/>
                         <outlet property="priceFilterButton" destination="N2m-Cy-Kba" id="34m-M8-eaf"/>
-                        <outlet property="settingsButton" destination="Rnc-Rf-G8W" id="l7r-kh-zPz"/>
                         <outlet property="shareButton" destination="QJ0-as-K1B" id="Kep-wW-FQn"/>
                         <outlet property="timeFilterButton" destination="Rx1-or-v5w" id="4rG-T5-aUz"/>
                         <outlet property="topCardScrollView" destination="X5l-T8-L5E" id="hkV-Td-t6I"/>

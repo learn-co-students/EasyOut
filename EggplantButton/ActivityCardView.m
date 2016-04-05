@@ -57,6 +57,7 @@
     [self.contentView.centerXAnchor constraintEqualToAnchor: self.centerXAnchor].active = YES;
     [self.contentView.centerYAnchor constraintEqualToAnchor: self.centerYAnchor].active = YES;
     
+
 }
 
 -(void)setRestaurant:(Restaurant *)restaurant {
@@ -65,12 +66,16 @@
     [self updateUI];
 }
 
+// Add data to activity card view
 -(void)updateUI {
     
+    self.imageView.image = [UIImage imageWithData: [NSData dataWithContentsOfURL:self.restaurant.imageURL]];
     self.nameLabel.text = self.restaurant.name;
     self.addressLabel.text = self.restaurant.address;
     self.pricepointLabel.text = self.restaurant.price;
-    
+
+//    self.imageView.clipsToBounds = YES;
+//    self.imageView.contentMode = UIViewContentModeScaleAspectFill;
 }
 
 
