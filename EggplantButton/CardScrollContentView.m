@@ -39,9 +39,6 @@
     [self.card.centerXAnchor constraintEqualToAnchor:self.centerXAnchor].active = YES;
     [self.card.centerYAnchor constraintEqualToAnchor:self.centerYAnchor].active = YES;
     
-    self.card.backgroundColor = [UIColor yellowColor];
-
-    
 }
 
 

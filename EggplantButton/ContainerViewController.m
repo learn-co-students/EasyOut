@@ -17,13 +17,9 @@
 
 @property (strong, nonatomic) RestaurantDataStore *dataStore;
 
-@property (strong, nonatomic) UIStackView *topCardStackView;
-@property (strong, nonatomic) UIStackView *middleCardStackView;
-@property (strong, nonatomic) UIStackView *bottomCardStackView;
-
-@property (strong, nonatomic) NSMutableArray *topActivityCards;
-@property (strong, nonatomic) NSMutableArray *middleActivityCards;
-@property (strong, nonatomic) NSMutableArray *bottomActivityCards;
+@property (weak, nonatomic) IBOutlet UIStackView *topCardStackView;
+@property (weak, nonatomic) IBOutlet UIStackView *middleCardStackView;
+@property (weak, nonatomic) IBOutlet UIStackView *bottomCardStackView;
 
 @property (weak, nonatomic) IBOutlet UIButton *locationFilterButton;
 @property (weak, nonatomic) IBOutlet UIButton *timeFilterButton;
@@ -41,23 +37,22 @@
     
     self.dataStore = [RestaurantDataStore sharedDataStore];
     
-    
     [self.dataStore getRestaurantsWithCompletion:^(BOOL success) {
         if(success) {
             
             for(Restaurant *restaurant in self.dataStore.restaurants) {
                 
+                ActivityCardView *newActivity =[[ActivityCardView alloc]init];
+                newActivity.restaurant = restaurant;
                 
+                [self.topCardStackView addArrangedSubview: newActivity];
             }
-            
         }
-        else {
-            NSLog(@"fail");
-        }
+
+        
     }];
- 
     
-    NSLog(@"Container view did load");
+    
 
 }
 
