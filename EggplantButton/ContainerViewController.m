@@ -29,7 +29,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *timeFilterButton;
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
 @property (weak, nonatomic) IBOutlet UIButton *priceFilterButton;
-@property (weak, nonatomic) IBOutlet UIButton *settingsButton;
+@property (weak, nonatomic) IBOutlet UIButton *historyButton;
 
 @end
 
@@ -80,26 +80,28 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     
+    NSLog(@"Contianer view will appear");
+    
 }
 
 -(IBAction)locationFilterButtonTapped:(id)sender {
-    
+    NSLog(@"Location filter button tapped");
 }
 
 -(IBAction)timeFilterButtonTapped:(id)sender {
-    
+    NSLog(@"Time filter button tapped");
 }
 
 -(IBAction)shareButtonTapped:(id)sender {
-    // Present share page modally
+    NSLog(@"Share button tapped");
 }
 
 -(IBAction)priceFilterButtonTapped:(id)sender {
-    // Present price filter
+    NSLog(@"Price filter button tapped");
 }
 
--(IBAction)settingsButtonTapped:(id)sender {
-    // Present settings page modally
+-(IBAction)historyButtonTapped:(id)sender {
+    NSLog(@"History button tapped");
 }
 
 @end
