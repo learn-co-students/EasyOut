@@ -22,8 +22,6 @@ NSString *const OT_API_URL = @"http://opentable.herokuapp.com";
     
     [manager GET:opentableURL parameters:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         
-        NSLog(@"%@", responseObject);
-        
         completion(responseObject[@"restaurants"]);
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
