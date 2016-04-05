@@ -34,10 +34,12 @@
     
     [self addSubview: self.card];
     
-    [self.card.heightAnchor constraintEqualToAnchor:self.heightAnchor].active = YES;
-    [self.card.widthAnchor constraintEqualToAnchor:self.widthAnchor].active = YES;
-    [self.card.centerXAnchor constraintEqualToAnchor:self.centerXAnchor].active = YES;
-    [self.card.centerYAnchor constraintEqualToAnchor:self.centerYAnchor].active = YES;
+//    [self.card.heightAnchor constraintEqualToAnchor:self.heightAnchor].active = YES;
+//    [self.card.widthAnchor constraintEqualToAnchor:self.widthAnchor].active = YES;
+//    [self.card.centerXAnchor constraintEqualToAnchor:self.centerXAnchor].active = YES;
+//    [self.card.centerYAnchor constraintEqualToAnchor:self.centerYAnchor].active = YES;
+    
+    self.card.clipsToBounds = YES;
     
 }
 

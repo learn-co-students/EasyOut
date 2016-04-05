@@ -17,6 +17,10 @@
 
 @property (strong, nonatomic) RestaurantDataStore *dataStore;
 
+@property (weak, nonatomic) IBOutlet UIScrollView *topCardScrollView;
+@property (weak, nonatomic) IBOutlet UIScrollView *middleCardScrollView;
+@property (weak, nonatomic) IBOutlet UIScrollView *bottomCardScrollView;
+
 @property (weak, nonatomic) IBOutlet UIStackView *topCardStackView;
 @property (weak, nonatomic) IBOutlet UIStackView *middleCardStackView;
 @property (weak, nonatomic) IBOutlet UIStackView *bottomCardStackView;
@@ -42,18 +46,19 @@
             
             for(Restaurant *restaurant in self.dataStore.restaurants) {
                 
-                ActivityCardView *newActivity =[[ActivityCardView alloc]init];
-                newActivity.restaurant = restaurant;
+                ActivityCardView *newActivityCard =[[ActivityCardView alloc]init];
+                newActivityCard.restaurant = restaurant;
                 
-                [self.topCardStackView addArrangedSubview: newActivity];
+                newActivityCard.translatesAutoresizingMaskIntoConstraints = NO;
+                newActivityCard.translatesAutoresizingMaskIntoConstraints = NO;
+                
+                [self.topCardStackView addArrangedSubview: newActivityCard];
+                
+                [newActivityCard.heightAnchor constraintEqualToAnchor:self.topCardScrollView.heightAnchor].active = YES;
+                [newActivityCard.widthAnchor constraintEqualToAnchor:self.topCardScrollView.widthAnchor].active = YES;
             }
         }
-
-        
     }];
-    
-    
-
 }
 
 - (void)didReceiveMemoryWarning {
