@@ -9,6 +9,7 @@
 #import "ContainerViewController.h"
 #import "RestaurantDataStore.h"
 #import "ActivityCardView.h"
+#import "Restaurant.h"
 
 @class Restaurant;
 
@@ -55,13 +56,15 @@
             
             for(Restaurant *restaurant in self.dataStore.restaurants) {
                 
+                NSLog(@"Image URL: %@", restaurant.imageURL);
+                
                 ActivityCardView *newActivityCard =[[ActivityCardView alloc]init];
                 newActivityCard.restaurant = restaurant;
                 
                 newActivityCard.translatesAutoresizingMaskIntoConstraints = NO;
                 newActivityCard.translatesAutoresizingMaskIntoConstraints = NO;
                 
-                [self.topCardStackView addArrangedSubview: newActivityCard];
+                [self.middleCardStackView addArrangedSubview: newActivityCard];
                 
                 [newActivityCard.heightAnchor constraintEqualToAnchor:self.cardHeightAnchor].active = YES;
                 [newActivityCard.widthAnchor constraintEqualToAnchor:self.cardWidthAnchor].active = YES;

@@ -8,6 +8,7 @@
 
 #import "Restaurant.h"
 
+
 @implementation Restaurant
 
 
@@ -30,6 +31,9 @@
     newRestaurant.latitude = [restaurantDictionary[@"latitude"] stringValue];
     newRestaurant.longitude = [restaurantDictionary[@"longitude"] stringValue];
     newRestaurant.reserveURL = restaurantDictionary[@"reserve_url"];
+    
+    
+//    newRestaurant.image = [UIImage imageWithData:data];
     
     return newRestaurant;
     
