@@ -17,6 +17,9 @@
 
 @property (strong, nonatomic) RestaurantDataStore *dataStore;
 
+@property (strong, strong) NSLayoutDimension *cardHeightAnchor;
+@property (strong, strong) NSLayoutDimension *cardWidthAnchor;
+
 @property (weak, nonatomic) IBOutlet UIScrollView *topCardScrollView;
 @property (weak, nonatomic) IBOutlet UIScrollView *middleCardScrollView;
 @property (weak, nonatomic) IBOutlet UIScrollView *bottomCardScrollView;
@@ -39,8 +42,14 @@
     
     [super viewDidLoad];
     
+    // Set default card height and width anchors
+    self.cardHeightAnchor = self.topCardScrollView.heightAnchor;
+    self.cardWidthAnchor = self.topCardScrollView.widthAnchor;
+    
+    // Call in the shared data store
     self.dataStore = [RestaurantDataStore sharedDataStore];
     
+    // Create cards for each activity in the shared data store
     [self.dataStore getRestaurantsWithCompletion:^(BOOL success) {
         if(success) {
             
@@ -54,8 +63,8 @@
                 
                 [self.topCardStackView addArrangedSubview: newActivityCard];
                 
-                [newActivityCard.heightAnchor constraintEqualToAnchor:self.topCardScrollView.heightAnchor].active = YES;
-                [newActivityCard.widthAnchor constraintEqualToAnchor:self.topCardScrollView.widthAnchor].active = YES;
+                [newActivityCard.heightAnchor constraintEqualToAnchor:self.cardHeightAnchor].active = YES;
+                [newActivityCard.widthAnchor constraintEqualToAnchor:self.cardWidthAnchor].active = YES;
             }
         }
     }];

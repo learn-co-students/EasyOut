@@ -15,7 +15,7 @@
 //@property (strong, nonatomic) RestaurantDataStore *sharedDataStore;
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 
-@property (weak, nonatomic) IBOutlet UIView *imageView;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *pricepointLabel;

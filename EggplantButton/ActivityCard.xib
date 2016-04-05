@@ -10,6 +10,7 @@
             <connections>
                 <outlet property="addressLabel" destination="hUZ-fE-VHe" id="L4D-8u-lVV"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="aio-AN-rsN"/>
+                <outlet property="imageView" destination="p4p-sX-wQq" id="nVY-Mt-Qpi"/>
                 <outlet property="nameLabel" destination="7kA-F1-Mbl" id="PmA-cC-EQg"/>
                 <outlet property="pricepointLabel" destination="ACR-Mx-tLP" id="ufx-rv-a6P"/>
             </connections>
