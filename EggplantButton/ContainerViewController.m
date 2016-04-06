@@ -68,7 +68,7 @@
             
             for(Restaurant *restaurant in self.dataStore.restaurants) {
                 
-                NSLog(@"Creating card for %@", restaurant.name);
+//                NSLog(@"Creating card for %@", restaurant.name);
                 
                 ActivityCardView *newActivityCard =[[ActivityCardView alloc]init];
                 newActivityCard.restaurant = restaurant;
@@ -104,7 +104,7 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     
-    NSLog(@"Contianer view will appear");
+//    NSLog(@"Contianer view will appear");
     
 }
 

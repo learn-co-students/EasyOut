@@ -16,7 +16,7 @@ NSString *const OT_API_URL = @"http://opentable.herokuapp.com";
 
 +(void)getRestaurantWithCompletion:(void (^) (NSArray * restaurants)) completion {
 
-    NSString *opentableURL = [NSString stringWithFormat:@"%@/api/restaurants?zip=11103", OT_API_URL];
+    NSString *opentableURL = [NSString stringWithFormat:@"%@/api/restaurants?zip=07030", OT_API_URL];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
