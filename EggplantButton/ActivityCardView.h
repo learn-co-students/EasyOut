@@ -10,6 +10,7 @@
 #import "RestaurantDataStore.h"
 
 @class Restaurant;
+
 @interface ActivityCardView : UIView
 
 @property (strong, nonatomic) Restaurant *restaurant;

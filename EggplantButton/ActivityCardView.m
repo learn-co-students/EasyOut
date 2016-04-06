@@ -15,7 +15,7 @@
 //@property (strong, nonatomic) RestaurantDataStore *sharedDataStore;
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 
-@property (weak, nonatomic) IBOutlet UIView *imageView;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *pricepointLabel;
@@ -57,6 +57,7 @@
     [self.contentView.centerXAnchor constraintEqualToAnchor: self.centerXAnchor].active = YES;
     [self.contentView.centerYAnchor constraintEqualToAnchor: self.centerYAnchor].active = YES;
     
+
 }
 
 -(void)setRestaurant:(Restaurant *)restaurant {
@@ -65,12 +66,16 @@
     [self updateUI];
 }
 
+// Add data to activity card view
 -(void)updateUI {
     
+    self.imageView.image = [UIImage imageWithData: [NSData dataWithContentsOfURL:self.restaurant.imageURL]];
     self.nameLabel.text = self.restaurant.name;
     self.addressLabel.text = self.restaurant.address;
     self.pricepointLabel.text = self.restaurant.price;
-    
+
+//    self.imageView.clipsToBounds = YES;
+//    self.imageView.contentMode = UIViewContentModeScaleAspectFill;
 }
 
 

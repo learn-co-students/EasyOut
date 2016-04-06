@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIImage.h>
 
 @interface Restaurant : NSObject
 
@@ -21,6 +22,7 @@
 @property (strong, nonatomic) NSString *latitude;
 @property (strong, nonatomic) NSString *longitude;
 @property (strong, nonatomic) NSString *reserveURL;
+@property (strong, nonatomic) NSData *image;
 
 +(Restaurant *)restaurantFromDictionary:(NSDictionary *)restaurantDictionary;
 
