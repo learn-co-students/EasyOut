@@ -10,6 +10,7 @@
 #import "RestaurantDataStore.h"
 #import "ActivityCardView.h"
 #import "Restaurant.h"
+#import "EggplantButton-Swift.h"
 
 @class Restaurant;
 
@@ -42,6 +43,17 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
+    [FireBaseAPIClient getAllUsersWithCompletion:^(BOOL success) {
+        if (success) {
+            
+            
+        }
+    }];
+    
+    
+    FireBaseAPIClient *test = [[FireBaseAPIClient alloc] init];
+    [test sayHi];
     
     // Set default card height and width anchors
     self.cardHeightAnchor = self.topCardScrollView.heightAnchor;
