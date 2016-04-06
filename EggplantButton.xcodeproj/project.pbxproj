@@ -16,8 +16,9 @@
 		4C9A03891CAB064200CA9A02 /* EggplantButton.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C9A03871CAB064200CA9A02 /* EggplantButton.xcdatamodeld */; };
 		4C9A038B1CAB064200CA9A02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C9A038A1CAB064200CA9A02 /* Assets.xcassets */; };
 		4C9A038E1CAB064200CA9A02 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C9A038C1CAB064200CA9A02 /* LaunchScreen.storyboard */; };
-		78870B951CB2C588008A4D74 /* Secrets.m in Sources */ = {isa = PBXBuildFile; fileRef = 78870B941CB2C588008A4D74 /* Secrets.m */; };
-		78870B9B1CB2C78A008A4D74 /* setupButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 78870B9A1CB2C78A008A4D74 /* setupButton.m */; };
+		785113371CB41137005DC83C /* setupButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 785113361CB41137005DC83C /* setupButton.m */; };
+		7851133C1CB411CC005DC83C /* Button.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 785113381CB411CC005DC83C /* Button.storyboard */; };
+		785113421CB416CB005DC83C /* Secrets.m in Sources */ = {isa = PBXBuildFile; fileRef = 785113411CB416CB005DC83C /* Secrets.m */; };
 		9A2478E61CAC2EFA00865C6A /* OpenTableAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2478E51CAC2EFA00865C6A /* OpenTableAPIClient.m */; };
 		9A5616B51CAC68AE008D9264 /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5616B41CAC68AE008D9264 /* Restaurant.m */; };
 		9A5616B81CAD8A30008D9264 /* RestaurantDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5616B71CAD8A30008D9264 /* RestaurantDataStore.m */; };
@@ -45,8 +46,10 @@
 		4C9A038D1CAB064200CA9A02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4C9A038F1CAB064200CA9A02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B0FD8E68B26336D4AE48A9A /* Pods-EggplantButton.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EggplantButton.release.xcconfig"; path = "Pods/Target Support Files/Pods-EggplantButton/Pods-EggplantButton.release.xcconfig"; sourceTree = "<group>"; };
-		78870B941CB2C588008A4D74 /* Secrets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Secrets.m; sourceTree = "<group>"; };
-		78870B9A1CB2C78A008A4D74 /* setupButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = setupButton.m; sourceTree = "<group>"; };
+		785113351CB41137005DC83C /* setupButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = setupButton.h; sourceTree = "<group>"; };
+		785113361CB41137005DC83C /* setupButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = setupButton.m; sourceTree = "<group>"; };
+		785113381CB411CC005DC83C /* Button.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Button.storyboard; sourceTree = "<group>"; };
+		785113411CB416CB005DC83C /* Secrets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Secrets.m; sourceTree = "<group>"; };
 		9A2478E41CAC2EFA00865C6A /* OpenTableAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenTableAPIClient.h; sourceTree = "<group>"; };
 		9A2478E51CAC2EFA00865C6A /* OpenTableAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenTableAPIClient.m; sourceTree = "<group>"; };
 		9A5616B31CAC68AE008D9264 /* Restaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Restaurant.h; sourceTree = "<group>"; };
@@ -110,6 +113,10 @@
 				4C9A038F1CAB064200CA9A02 /* Info.plist */,
 				4C9A03871CAB064200CA9A02 /* EggplantButton.xcdatamodeld */,
 				4C270CA61CAB08A2003E0195 /* Secrets.h */,
+				785113411CB416CB005DC83C /* Secrets.m */,
+				785113351CB41137005DC83C /* setupButton.h */,
+				785113361CB41137005DC83C /* setupButton.m */,
+				785113381CB411CC005DC83C /* Button.storyboard */,
 				4C9A037B1CAB064200CA9A02 /* Supporting Files */,
 			);
 			path = EggplantButton;
@@ -205,6 +212,7 @@
 				4C9A038E1CAB064200CA9A02 /* LaunchScreen.storyboard in Resources */,
 				4C9A038B1CAB064200CA9A02 /* Assets.xcassets in Resources */,
 				4C9A03861CAB064200CA9A02 /* Main.storyboard in Resources */,
+				7851133C1CB411CC005DC83C /* Button.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,12 +276,12 @@
 				4C9A03891CAB064200CA9A02 /* EggplantButton.xcdatamodeld in Sources */,
 				4C358D671CADBA0600257756 /* CardScrollContentView.m in Sources */,
 				4C358D381CAD62CE00257756 /* ContainerViewController.m in Sources */,
-				78870B951CB2C588008A4D74 /* Secrets.m in Sources */,
 				4C358D731CADCDF700257756 /* ActivityCardView.m in Sources */,
 				4C9A03801CAB064200CA9A02 /* AppDelegate.m in Sources */,
+				785113421CB416CB005DC83C /* Secrets.m in Sources */,
 				9A5616B51CAC68AE008D9264 /* Restaurant.m in Sources */,
 				4C9A037D1CAB064200CA9A02 /* main.m in Sources */,
-				78870B9B1CB2C78A008A4D74 /* setupButton.m in Sources */,
+				785113371CB41137005DC83C /* setupButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

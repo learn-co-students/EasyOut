@@ -17,4 +17,6 @@
 
 - (void) setupRezyButton;
 
+- (void) setupUberButton;
+
 @end

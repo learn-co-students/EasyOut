@@ -9,4 +9,5 @@
 #import <Foundation/Foundation.h>
 
 extern NSString * const APP_ID;
-extern NSString * const YOUR_BUTTON_ID;
+extern NSString * const REZY_BUTTON_ID;
+extern NSString * const UBER_BUTTON_ID;
