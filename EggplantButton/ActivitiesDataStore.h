@@ -10,4 +10,15 @@
 
 @interface ActivitiesDataStore : NSObject
 
+@property (strong, nonatomic) NSMutableArray *restaurants;
+@property (nonatomic,strong) NSMutableArray *events;
+
+
++ (instancetype)sharedDataStore;
+
+
+-(void)getRestaurantsWithCompletion:(void (^)(BOOL success))completionBlock;
+
+
+
 @end
