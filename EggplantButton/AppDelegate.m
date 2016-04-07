@@ -7,6 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import <Button/Button.h>
+#import "Secrets.h"
+#import <DeepLinkKit.h>
+
 
 @interface AppDelegate ()
 
@@ -16,9 +20,46 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    /// Allows Button to request Location Permissions
+    [Button allowButtonToRequestLocationPermission:YES];
+    
+    [[Button sharedButton] configureWithApplicationId: APP_ID completion:NULL];
+    
+    [[Button sharedButton] setDeferredDeeplinkHandler:^(NSURL *deferredDeeplinkURL) {
+        // Handle the deferredDeeplinkURL and open the relevant content.
+        //[self handleURL :deferredDeeplinkURL];
+    }];
+    
     return YES;
 }
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    
+    [[Button sharedButton] handleURL:url];
+    
+    // Handle the url and open the relevant content.
+    //[self handleURL:url];
+    
+    return YES;
+}
+
+
+- (BOOL)application:(UIApplication *)application
+continueUserActivity:(NSUserActivity *)userActivity
+ restorationHandler:(void (^)(NSArray *))restorationHandler {
+    
+    [[Button sharedButton] continueUserActivity:userActivity];
+    
+    // Handle the activity and open the relevant content.
+    //[self handleURL:userActivity.webPageURL];
+    
+    return YES;
+}
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
