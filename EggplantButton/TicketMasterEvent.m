@@ -10,60 +10,50 @@
 
 @implementation TicketMasterEvent
 
--(instancetype)initWithEventID:(NSString *)eventID
-                           url:(NSString *)eventURL
-                          name:(NSString *)name
-                          date:(NSString *)date
-                          time:(NSString *)time
-                       segment:(NSString *)segment
-                         genre:(NSString *)genre
-                      subGenre:(NSString *)subGenre
-                         image:(NSString *)imageURL
-                       address:(NSString *)address
-                          city:(NSString *)city
-                    postalCode:(NSString *)postalCode {
-    
-    self = [super init];
-    if (self) {
-        _eventID = eventID;
-        _eventURL = eventURL;
-        _name = name;
-        _date = date;
-        _time = time;
+-(instancetype)initWithDictionary:(NSDictionary *)eventDictionary{
+
+    self = [super initWithName:eventDictionary[@"name"]
+                       address:eventDictionary[@"_embedded"][@"venues"][0][@"address"][@"line1"]
+                          city:eventDictionary[@"_embedded"][@"venues"][0][@"city"][@"name"]
+                    postalCode:eventDictionary[@"_embedded"][@"venues"][0][@"postalCode"]
+                      imageURL:[NSURL URLWithString: eventDictionary[@"images"][4][@"url"]]];
+    if(self) {
+        
+        _eventID = eventDictionary[@"id"];
+        _eventURL = eventDictionary[@"url"];
+        _date = eventDictionary[@"localDate"];
+        _time = eventDictionary[@"localTime"];
         _segment = segment;
         _genre = genre;
         _subGenre = subGenre;
-        _imageURL = imageURL;
-        _address = address;
-        _city = city;
-        _postalCode = postalCode;
+
     }
+    
     return self;
+
 }
+
 
 
 // +(Restaurant *)restaurantFromDictionary:(NSDictionary *)restaurantDictionary
 +(TicketMasterEvent *)eventFromDictionary:(NSDictionary *)eventDictionary {
     
     TicketMasterEvent *newEvent = [[TicketMasterEvent alloc]init];
-    newEvent.name = eventDictionary[@"name"];
-    newEvent.date = eventDictionary[@"localDate"];
-    newEvent.time = eventDictionary[@"localTime"];
-    
-    newEvent.eventID = eventDictionary[@"id"];
-    newEvent.eventURL = eventDictionary[@"url"];
+
     
     NSArray *image = eventDictionary[@"images"];
-    newEvent.imageURL = image[4][@"url"]; 
+    newEvent.imageURL = [NSURL URLWithString: image[4][@"url"]];
     
     NSArray *venues = eventDictionary[@"_embedded"][@"venues"];
-    newEvent.address = venues[0][@"address"][@"line1"];
-    NSLog(@"This is the address %@",newEvent.address);
-    newEvent.city = venues[0][@"city"][@"name"];
-    NSLog(@"this is the city %@",newEvent.city);
+    newEvent.address = ;
+    newEvent.city = eventDictionary[@"_embedded"][@"venues"][0][@"city"][@"name"];
     
-    newEvent.postalCode = venues[0][@"postalCode"];
-    NSLog(@"This is the postal code %@", newEvent.postalCode);
+    newEvent.postalCode = eventDictionary[@"_embedded"][@"venues"][0][@"postalCode"];
+    
+    NSDictionary *allClassifications = classifications.firstObject;
+    NSString *genre = allClassifications[@"genre"][@"name"];
+    NSString *subGenre = allClassifications[@"subGenre"][@"name"];
+    NSString *segment = allClassifications[@"segment"][@"name"];
     
     
     return newEvent;

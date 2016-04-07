@@ -38,6 +38,10 @@
         for(NSDictionary *restaurant in restaurants) {
             
             [self.restaurants addObject:[Restaurant restaurantFromDictionary:restaurant]];
+            
+            NSLog(@"restaurant num %lu", self. restaurants.count);
+            
+            
         }
         completionBlock(YES);
     }];
