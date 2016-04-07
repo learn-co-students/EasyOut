@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "RestaurantDataStore.h"
-
+#import "TicketMasterEvent.h"
 @class Restaurant;
 
 @interface ActivityCardView : UIView
 
 @property (strong, nonatomic) Restaurant *restaurant;
+@property (strong,nonatomic) TicketMasterEvent *event;
 
 @end
  
