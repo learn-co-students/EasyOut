@@ -10,6 +10,8 @@
 		0A05A4EB1CB438AD00EF83CD /* TicketMasterAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A05A4E61CB438AD00EF83CD /* TicketMasterAPIClient.m */; };
 		0A05A4ED1CB438AD00EF83CD /* TicketMasterEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A05A4EA1CB438AD00EF83CD /* TicketMasterEvent.m */; };
 		0A45ADDC1CB54E5500C63DD6 /* TicketMasterDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A45ADDB1CB54E5500C63DD6 /* TicketMasterDataStore.m */; };
+		0AD755811CB6E586002511A7 /* AppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD755801CB6E586002511A7 /* AppViewController.m */; };
+		0AD755841CB6EC67002511A7 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD755831CB6EC67002511A7 /* LogInViewController.m */; };
 		0AF4FE5D1CB6B89200BCCAB0 /* Secrets.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF4FE5C1CB6B89200BCCAB0 /* Secrets.m */; };
 		4C358D381CAD62CE00257756 /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C358D371CAD62CE00257756 /* ContainerViewController.m */; };
 		4C358D671CADBA0600257756 /* CardScrollContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C358D661CADBA0600257756 /* CardScrollContentView.m */; };
@@ -37,6 +39,10 @@
 		0A45ADDA1CB54E5500C63DD6 /* TicketMasterDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TicketMasterDataStore.h; sourceTree = "<group>"; };
 		0A45ADDB1CB54E5500C63DD6 /* TicketMasterDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TicketMasterDataStore.m; sourceTree = "<group>"; };
 		0A4E7B30585A1886003A7ED7 /* libPods-EggplantButton.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EggplantButton.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0AD7557F1CB6E586002511A7 /* AppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppViewController.h; sourceTree = "<group>"; };
+		0AD755801CB6E586002511A7 /* AppViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppViewController.m; sourceTree = "<group>"; };
+		0AD755821CB6EC67002511A7 /* LogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
+		0AD755831CB6EC67002511A7 /* LogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
 		0AF4FE5C1CB6B89200BCCAB0 /* Secrets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Secrets.m; sourceTree = "<group>"; };
 		478A5D5E5340BA05712F05CE /* Pods-EggplantButton.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EggplantButton.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EggplantButton/Pods-EggplantButton.debug.xcconfig"; sourceTree = "<group>"; };
 		4C270CA61CAB08A2003E0195 /* Secrets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Secrets.h; sourceTree = "<group>"; };
@@ -129,6 +135,10 @@
 				4C358D371CAD62CE00257756 /* ContainerViewController.m */,
 				4C358D661CADBA0600257756 /* CardScrollContentView.m */,
 				4C9A03841CAB064200CA9A02 /* Main.storyboard */,
+				0AD7557F1CB6E586002511A7 /* AppViewController.h */,
+				0AD755801CB6E586002511A7 /* AppViewController.m */,
+				0AD755821CB6EC67002511A7 /* LogInViewController.h */,
+				0AD755831CB6EC67002511A7 /* LogInViewController.m */,
 				4C358D651CADBA0600257756 /* CardScrollContentView.h */,
 				4C9A038A1CAB064200CA9A02 /* Assets.xcassets */,
 				4C9A038C1CAB064200CA9A02 /* LaunchScreen.storyboard */,
@@ -302,8 +312,10 @@
 				0A05A4EB1CB438AD00EF83CD /* TicketMasterAPIClient.m in Sources */,
 				4C358D731CADCDF700257756 /* ActivityCardView.m in Sources */,
 				4C9A03801CAB064200CA9A02 /* AppDelegate.m in Sources */,
+				0AD755841CB6EC67002511A7 /* LogInViewController.m in Sources */,
 				0A45ADDC1CB54E5500C63DD6 /* TicketMasterDataStore.m in Sources */,
 				9A5616B51CAC68AE008D9264 /* Restaurant.m in Sources */,
+				0AD755811CB6E586002511A7 /* AppViewController.m in Sources */,
 				0A05A4ED1CB438AD00EF83CD /* TicketMasterEvent.m in Sources */,
 				4C9A037D1CAB064200CA9A02 /* main.m in Sources */,
 				785113371CB41137005DC83C /* setupButton.m in Sources */,
