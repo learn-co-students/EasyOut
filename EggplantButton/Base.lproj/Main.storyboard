@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="At9-Qy-VA6" userLabel="Vertical Scroll View">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" directionalLockEnabled="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="At9-Qy-VA6" userLabel="Vertical Scroll View">
                                 <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1xk-lu-wGc" userLabel="Menu and Cards View">
@@ -26,24 +26,32 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="VU8-K5-T2e" userLabel="Card Stack View">
                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
                                                 <subviews>
-                                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X5l-T8-L5E" userLabel="Top Card Scroll View">
+                                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" directionalLockEnabled="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X5l-T8-L5E" userLabel="Top Card Scroll View">
                                                         <rect key="frame" x="0.0" y="0.0" width="600" height="191"/>
                                                         <subviews>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="7OF-zH-niF" userLabel="Top Card Stack View">
-                                                                <rect key="frame" x="0.0" y="0.0" width="600" height="191"/>
-                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="7OF-zH-niF" userLabel="Top Card Stack View"/>
                                                         </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="7OF-zH-niF" firstAttribute="leading" secondItem="X5l-T8-L5E" secondAttribute="leading" id="0Gr-1r-sa3"/>
+                                                            <constraint firstItem="7OF-zH-niF" firstAttribute="top" secondItem="X5l-T8-L5E" secondAttribute="top" id="Ik9-K2-Fcv"/>
+                                                            <constraint firstItem="7OF-zH-niF" firstAttribute="bottom" secondItem="X5l-T8-L5E" secondAttribute="bottom" id="Kne-OZ-KKU"/>
+                                                            <constraint firstItem="7OF-zH-niF" firstAttribute="trailing" secondItem="X5l-T8-L5E" secondAttribute="trailing" id="hfA-JV-y9Z"/>
+                                                        </constraints>
                                                         <connections>
                                                             <outlet property="delegate" destination="BYZ-38-t0r" id="8Ej-fg-Xjs"/>
                                                         </connections>
                                                     </scrollView>
-                                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4rN-OW-F3z" userLabel="Middle Card Scroll View">
+                                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" directionalLockEnabled="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4rN-OW-F3z" userLabel="Middle Card Scroll View">
                                                         <rect key="frame" x="0.0" y="194" width="600" height="192"/>
                                                         <subviews>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="qRB-pF-yqd" userLabel="Middle Card Stack View">
-                                                                <rect key="frame" x="0.0" y="0.0" width="600" height="192"/>
-                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="qRB-pF-yqd" userLabel="Middle Card Stack View"/>
                                                         </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="qRB-pF-yqd" firstAttribute="trailing" secondItem="4rN-OW-F3z" secondAttribute="trailing" id="Uwd-gX-Qde"/>
+                                                            <constraint firstItem="qRB-pF-yqd" firstAttribute="bottom" secondItem="4rN-OW-F3z" secondAttribute="bottom" id="btV-EP-Kx8"/>
+                                                            <constraint firstItem="qRB-pF-yqd" firstAttribute="top" secondItem="4rN-OW-F3z" secondAttribute="top" id="ltR-qp-kKJ"/>
+                                                            <constraint firstItem="qRB-pF-yqd" firstAttribute="leading" secondItem="4rN-OW-F3z" secondAttribute="leading" id="yqY-8f-3gD"/>
+                                                        </constraints>
                                                         <connections>
                                                             <outlet property="delegate" destination="BYZ-38-t0r" id="FOK-Un-g1w"/>
                                                         </connections>
@@ -51,16 +59,28 @@
                                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2P-oz-XwM" userLabel="Bottom Card Scroll View">
                                                         <rect key="frame" x="0.0" y="389" width="600" height="191"/>
                                                         <subviews>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Qqw-sX-VYd" userLabel="Bottom Card Stack View">
-                                                                <rect key="frame" x="0.0" y="0.0" width="1200" height="191"/>
-                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Qqw-sX-VYd" userLabel="Bottom Card Stack View"/>
                                                         </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="Qqw-sX-VYd" firstAttribute="bottom" secondItem="f2P-oz-XwM" secondAttribute="bottom" id="AwL-3P-UW5"/>
+                                                            <constraint firstItem="Qqw-sX-VYd" firstAttribute="top" secondItem="f2P-oz-XwM" secondAttribute="top" id="S4H-9N-LOK"/>
+                                                            <constraint firstItem="Qqw-sX-VYd" firstAttribute="leading" secondItem="f2P-oz-XwM" secondAttribute="leading" id="b9r-6e-r9d"/>
+                                                            <constraint firstItem="Qqw-sX-VYd" firstAttribute="trailing" secondItem="f2P-oz-XwM" secondAttribute="trailing" id="oMh-zP-Vfv"/>
+                                                        </constraints>
                                                         <connections>
                                                             <outlet property="delegate" destination="BYZ-38-t0r" id="rod-eu-DIE"/>
                                                         </connections>
                                                     </scrollView>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstItem="X5l-T8-L5E" firstAttribute="trailing" secondItem="VU8-K5-T2e" secondAttribute="trailing" id="IBC-jo-JSy"/>
+                                                    <constraint firstItem="X5l-T8-L5E" firstAttribute="leading" secondItem="VU8-K5-T2e" secondAttribute="leading" id="YHg-HX-6bM"/>
+                                                    <constraint firstItem="f2P-oz-XwM" firstAttribute="trailing" secondItem="VU8-K5-T2e" secondAttribute="trailing" id="b4f-u0-H7D"/>
+                                                    <constraint firstItem="4rN-OW-F3z" firstAttribute="leading" secondItem="VU8-K5-T2e" secondAttribute="leading" id="dO0-iZ-CLa"/>
+                                                    <constraint firstItem="f2P-oz-XwM" firstAttribute="leading" secondItem="VU8-K5-T2e" secondAttribute="leading" id="fdz-X1-rYi"/>
+                                                    <constraint firstItem="4rN-OW-F3z" firstAttribute="trailing" secondItem="VU8-K5-T2e" secondAttribute="trailing" id="n2c-va-Cf9"/>
+                                                </constraints>
                                             </stackView>
                                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rof-DI-nfP" userLabel="Menu Cointainer View">
                                                 <rect key="frame" x="0.0" y="580" width="600" height="80"/>
@@ -96,11 +116,11 @@
                                                                     <action selector="priceFilterButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="u6p-rR-2fF"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rnc-Rf-G8W" userLabel="Settings Button">
+                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rnc-Rf-G8W" userLabel="History Button">
                                                                 <rect key="frame" x="482" y="0.0" width="118" height="80"/>
-                                                                <state key="normal" title="Settings"/>
+                                                                <state key="normal" title="History"/>
                                                                 <connections>
-                                                                    <action selector="settingsButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2HJ-Mf-dpo"/>
+                                                                    <action selector="historyButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aH5-zA-Sre"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -117,7 +137,7 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" red="1" green="0.6721596836" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="VU8-K5-T2e" firstAttribute="leading" secondItem="1xk-lu-wGc" secondAttribute="leading" id="Lpy-FH-dYc"/>
                                             <constraint firstItem="rof-DI-nfP" firstAttribute="top" secondItem="VU8-K5-T2e" secondAttribute="bottom" id="NaE-aU-AFr"/>
@@ -147,19 +167,22 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bottomCardScrollView" destination="f2P-oz-XwM" id="Yfv-Qm-Pd3"/>
                         <outlet property="bottomCardStackView" destination="Qqw-sX-VYd" id="Kt6-fM-pTd"/>
+                        <outlet property="historyButton" destination="Rnc-Rf-G8W" id="Vws-Ah-zbf"/>
                         <outlet property="locationFilterButton" destination="f3L-7f-xMC" id="klH-oU-WUc"/>
+                        <outlet property="middleCardScrollView" destination="4rN-OW-F3z" id="ctq-QG-C1a"/>
                         <outlet property="middleCardStackView" destination="qRB-pF-yqd" id="Qmb-8d-kT2"/>
                         <outlet property="priceFilterButton" destination="N2m-Cy-Kba" id="34m-M8-eaf"/>
-                        <outlet property="settingsButton" destination="Rnc-Rf-G8W" id="l7r-kh-zPz"/>
                         <outlet property="shareButton" destination="QJ0-as-K1B" id="Kep-wW-FQn"/>
                         <outlet property="timeFilterButton" destination="Rx1-or-v5w" id="4rG-T5-aUz"/>
+                        <outlet property="topCardScrollView" destination="X5l-T8-L5E" id="hkV-Td-t6I"/>
                         <outlet property="topCardStackView" destination="7OF-zH-niF" id="eMP-oY-bQd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="420" y="475"/>
+            <point key="canvasLocation" x="404" y="439"/>
         </scene>
     </scenes>
 </document>

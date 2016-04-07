@@ -20,6 +20,19 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>uber</string>
+		<string>reservetable-com.contextoptional.OpenTable-1</string>
+		<string>drizly</string>
+		<string>button</string>
+		<string>ticketmaster</string>
+		<string>resy</string>
+		<string>parkingpanda</string>
+		<string>airbnb</string>
+		<string>zeel</string>
+		<string>glamsquad</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
