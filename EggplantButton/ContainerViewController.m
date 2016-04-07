@@ -7,9 +7,6 @@
 //
 
 #import "ContainerViewController.h"
-#import "RestaurantDataStore.h"
-#import "ActivityCardView.h"
-#import "Restaurant.h"
 #import "EggplantButton-Swift.h"
 
 @class Restaurant;

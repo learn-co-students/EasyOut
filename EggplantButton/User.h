@@ -10,16 +10,7 @@
 
 @interface User : NSObject
 
-@property (strong, nonatomic) NSString *userID;
-@property (strong, nonatomic) NSString *username;
-@property (strong, nonatomic) NSString *email;
-@property (strong, nonatomic) NSString *bio;
-@property (strong, nonatomic) NSString *location;
-@property (strong, nonatomic) NSMutableArray *savedItineraries;
-@property (strong, nonatomic) NSMutableDictionary *preferences;
-@property (strong, nonatomic) NSMutableDictionary *ratings;
-@property (strong, nonatomic) NSMutableDictionary *tips;
-@property (strong, nonatomic) NSData *profilePhoto;
-@property (nonatomic) NSUInteger reputation;
+-(instancetype) initWithEmail:(NSString *)email
+                     password:(NSString *)password;
 
 @end
