@@ -35,6 +35,12 @@ import Firebase
         completion(success: true)
     }
     
+    class func createNewUserWithUsername(username : String) {
+        
+        
+        
+    }
+    
     // Test function
     func sayHi() {
         
