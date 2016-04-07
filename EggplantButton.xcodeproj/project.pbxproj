@@ -24,8 +24,7 @@
 		9A6E09061CB4190D0015A00D /* Itinerary.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6E08FC1CB4190D0015A00D /* Itinerary.m */; };
 		9A6E09071CB4190D0015A00D /* Activity+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6E08FE1CB4190D0015A00D /* Activity+CoreDataProperties.m */; };
 		9A6E09081CB4190D0015A00D /* Activity.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6E09001CB4190D0015A00D /* Activity.m */; };
-		9A6E09091CB4190D0015A00D /* History+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6E09021CB4190D0015A00D /* History+CoreDataProperties.m */; };
-		9A6E090A1CB4190D0015A00D /* History.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6E09041CB4190D0015A00D /* History.m */; };
+		9A6E090D1CB41D820015A00D /* MasterDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6E090C1CB41D820015A00D /* MasterDataStore.m */; };
 		9AA058791CAEAA57000A6AA8 /* ActivityCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AA058781CAEAA57000A6AA8 /* ActivityCard.xib */; };
 		B7C141CFF528986B616A8790 /* libPods-EggplantButton.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4E7B30585A1886003A7ED7 /* libPods-EggplantButton.a */; };
 /* End PBXBuildFile section */
@@ -65,10 +64,8 @@
 		9A6E08FE1CB4190D0015A00D /* Activity+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Activity+CoreDataProperties.m"; sourceTree = "<group>"; };
 		9A6E08FF1CB4190D0015A00D /* Activity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Activity.h; sourceTree = "<group>"; };
 		9A6E09001CB4190D0015A00D /* Activity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Activity.m; sourceTree = "<group>"; };
-		9A6E09011CB4190D0015A00D /* History+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "History+CoreDataProperties.h"; sourceTree = "<group>"; };
-		9A6E09021CB4190D0015A00D /* History+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "History+CoreDataProperties.m"; sourceTree = "<group>"; };
-		9A6E09031CB4190D0015A00D /* History.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = History.h; sourceTree = "<group>"; };
-		9A6E09041CB4190D0015A00D /* History.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = History.m; sourceTree = "<group>"; };
+		9A6E090B1CB41D820015A00D /* MasterDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterDataStore.h; sourceTree = "<group>"; };
+		9A6E090C1CB41D820015A00D /* MasterDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterDataStore.m; sourceTree = "<group>"; };
 		9AA058781CAEAA57000A6AA8 /* ActivityCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityCard.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,10 +110,8 @@
 				9A6E08FE1CB4190D0015A00D /* Activity+CoreDataProperties.m */,
 				9A6E08FF1CB4190D0015A00D /* Activity.h */,
 				9A6E09001CB4190D0015A00D /* Activity.m */,
-				9A6E09011CB4190D0015A00D /* History+CoreDataProperties.h */,
-				9A6E09021CB4190D0015A00D /* History+CoreDataProperties.m */,
-				9A6E09031CB4190D0015A00D /* History.h */,
-				9A6E09041CB4190D0015A00D /* History.m */,
+				9A6E090B1CB41D820015A00D /* MasterDataStore.h */,
+				9A6E090C1CB41D820015A00D /* MasterDataStore.m */,
 				4C9A037E1CAB064200CA9A02 /* AppDelegate.h */,
 				4C9A037F1CAB064200CA9A02 /* AppDelegate.m */,
 				9A2478E41CAC2EFA00865C6A /* OpenTableAPIClient.h */,
@@ -294,12 +289,11 @@
 			files = (
 				9A5616B81CAD8A30008D9264 /* RestaurantDataStore.m in Sources */,
 				9A2478E61CAC2EFA00865C6A /* OpenTableAPIClient.m in Sources */,
+				9A6E090D1CB41D820015A00D /* MasterDataStore.m in Sources */,
 				4C358D671CADBA0600257756 /* CardScrollContentView.m in Sources */,
 				4C358D381CAD62CE00257756 /* ContainerViewController.m in Sources */,
 				4C358D731CADCDF700257756 /* ActivityCardView.m in Sources */,
 				9A6E09051CB4190D0015A00D /* Itinerary+CoreDataProperties.m in Sources */,
-				9A6E090A1CB4190D0015A00D /* History.m in Sources */,
-				9A6E09091CB4190D0015A00D /* History+CoreDataProperties.m in Sources */,
 				9A6E08F81CB414D80015A00D /* EggplantButton.xcdatamodeld in Sources */,
 				4C9A03801CAB064200CA9A02 /* AppDelegate.m in Sources */,
 				4C270CA81CAB08A2003E0195 /* Secrets.m in Sources */,

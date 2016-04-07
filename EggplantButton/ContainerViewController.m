@@ -44,8 +44,10 @@
                 
                 ActivityCardView *newActivity =[[ActivityCardView alloc]init];
                 newActivity.restaurant = restaurant;
-                
-                [self.topCardStackView addArrangedSubview: newActivity];
+                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                    [self.topCardStackView addArrangedSubview: newActivity];
+
+                }];
             }
         }
 
