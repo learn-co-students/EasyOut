@@ -12,13 +12,20 @@ import Firebase
 
 @objc class FireBaseAPIClient: NSObject {
     
-    // Create a reference to a Firebase location
-    let firebaseDataStore = Firebase(url:"https://boiling-torch-1157.firebaseio.com")
+    // Create a reference to root Firebase location
+    let firebaseRootRef = Firebase(url:"https://boiling-torch-1157.firebaseio.com")
     
-    // Write data to Firebase
-//    firebaseDataStore.setValue("Do you have data? You'll love Firebase.")
+    // Create child references within the root reference
+    let usersRef = firebaseRootRef.childByAppendingPath("users")
+    let itinerariesRef = firebaseRootRef.childByAppendingPath("itinieraries")
     
+    // Create test user reference
+    let currentUserRef = firebaseRootRef.childByAppendingPath("user")
     
+    // Create child references for current user
+    let 
+    
+    // Return list of all users
     class func getAllUsersWithCompletion(completion:(success: Bool) -> ()) {
         
         //hit firebase reference (using firebaseURL)
@@ -30,6 +37,7 @@ import Firebase
         
     }
     
+    // Return list of all itineraries
     class func getAllItinerariesWithCompletion(completion:(success: Bool) -> ()) {
         
         
@@ -41,10 +49,10 @@ import Firebase
     func sayHi() {
         
         // Write data to Firebase
-        firebaseDataStore.setValue(["users" : "ian"])
+//        firebaseRootRef.setValue(["users" : "ian"])
         
         // Read data and react to changes
-        firebaseDataStore.observeEventType(.Value, withBlock: {
+        firebaseRootRef.observeEventType(.Value, withBlock: {
             snapshot in
             print("\(snapshot.key) -> \(snapshot.value)")
         })

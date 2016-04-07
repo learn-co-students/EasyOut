@@ -123,6 +123,7 @@
 				4C358D361CAD62CE00257756 /* ContainerViewController.h */,
 				4C358D371CAD62CE00257756 /* ContainerViewController.m */,
 				4CAD0CC41CB568C4008162CE /* FirebaseIntegration.swift */,
+				4CAD0CBF1CB56574008162CE /* EggplantButton-Bridging-Header.h */,
 				4C9A03841CAB064200CA9A02 /* Main.storyboard */,
 				4C9A038A1CAB064200CA9A02 /* Assets.xcassets */,
 				4C9A038C1CAB064200CA9A02 /* LaunchScreen.storyboard */,
@@ -132,7 +133,6 @@
 				4C270CA71CAB08A2003E0195 /* Secrets.m */,
 				4C9514C81CB44FC6009CF02A /* APIs */,
 				4C9A037B1CAB064200CA9A02 /* Supporting Files */,
-				4CAD0CBF1CB56574008162CE /* EggplantButton-Bridging-Header.h */,
 			);
 			path = EggplantButton;
 			sourceTree = "<group>";
