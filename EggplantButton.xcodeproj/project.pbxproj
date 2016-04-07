@@ -7,11 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-
 		0A05A4EB1CB438AD00EF83CD /* TicketMasterAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A05A4E61CB438AD00EF83CD /* TicketMasterAPIClient.m */; };
 		0A05A4ED1CB438AD00EF83CD /* TicketMasterEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A05A4EA1CB438AD00EF83CD /* TicketMasterEvent.m */; };
-		4C270CA81CAB08A2003E0195 /* Secrets.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C270CA71CAB08A2003E0195 /* Secrets.m */; };
-
 		4C358D381CAD62CE00257756 /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C358D371CAD62CE00257756 /* ContainerViewController.m */; };
 		4C358D671CADBA0600257756 /* CardScrollContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C358D661CADBA0600257756 /* CardScrollContentView.m */; };
 		4C358D731CADCDF700257756 /* ActivityCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C358D721CADCDF700257756 /* ActivityCardView.m */; };
@@ -24,6 +21,8 @@
 		785113371CB41137005DC83C /* setupButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 785113361CB41137005DC83C /* setupButton.m */; };
 		7851133C1CB411CC005DC83C /* Button.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 785113381CB411CC005DC83C /* Button.storyboard */; };
 		785113421CB416CB005DC83C /* Secrets.m in Sources */ = {isa = PBXBuildFile; fileRef = 785113411CB416CB005DC83C /* Secrets.m */; };
+		785113441CB58221005DC83C /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785113431CB58221005DC83C /* CoreMotion.framework */; };
+		785113461CB587E2005DC83C /* GameplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785113451CB587E2005DC83C /* GameplayKit.framework */; };
 		9A2478E61CAC2EFA00865C6A /* OpenTableAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2478E51CAC2EFA00865C6A /* OpenTableAPIClient.m */; };
 		9A5616B51CAC68AE008D9264 /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5616B41CAC68AE008D9264 /* Restaurant.m */; };
 		9A5616B81CAD8A30008D9264 /* RestaurantDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5616B71CAD8A30008D9264 /* RestaurantDataStore.m */; };
@@ -59,6 +58,8 @@
 		785113361CB41137005DC83C /* setupButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = setupButton.m; sourceTree = "<group>"; };
 		785113381CB411CC005DC83C /* Button.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Button.storyboard; sourceTree = "<group>"; };
 		785113411CB416CB005DC83C /* Secrets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Secrets.m; sourceTree = "<group>"; };
+		785113431CB58221005DC83C /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		785113451CB587E2005DC83C /* GameplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameplayKit.framework; path = System/Library/Frameworks/GameplayKit.framework; sourceTree = SDKROOT; };
 		9A2478E41CAC2EFA00865C6A /* OpenTableAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenTableAPIClient.h; sourceTree = "<group>"; };
 		9A2478E51CAC2EFA00865C6A /* OpenTableAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenTableAPIClient.m; sourceTree = "<group>"; };
 		9A5616B31CAC68AE008D9264 /* Restaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Restaurant.h; sourceTree = "<group>"; };
@@ -73,6 +74,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				785113461CB587E2005DC83C /* GameplayKit.framework in Frameworks */,
+				785113441CB58221005DC83C /* CoreMotion.framework in Frameworks */,
 				B7C141CFF528986B616A8790 /* libPods-EggplantButton.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -133,15 +136,11 @@
 				4C9A038F1CAB064200CA9A02 /* Info.plist */,
 				4C9A03871CAB064200CA9A02 /* EggplantButton.xcdatamodeld */,
 				4C270CA61CAB08A2003E0195 /* Secrets.h */,
-
 				785113411CB416CB005DC83C /* Secrets.m */,
 				785113351CB41137005DC83C /* setupButton.h */,
 				785113361CB41137005DC83C /* setupButton.m */,
 				785113381CB411CC005DC83C /* Button.storyboard */,
-
-				4C270CA71CAB08A2003E0195 /* Secrets.m */,
 				4C9514C81CB44FC6009CF02A /* APIs */,
-
 				4C9A037B1CAB064200CA9A02 /* Supporting Files */,
 			);
 			path = EggplantButton;
@@ -158,6 +157,8 @@
 		4F35EC6547E403BF1EA8A91A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				785113451CB587E2005DC83C /* GameplayKit.framework */,
+				785113431CB58221005DC83C /* CoreMotion.framework */,
 				0A4E7B30585A1886003A7ED7 /* libPods-EggplantButton.a */,
 			);
 			name = Frameworks;

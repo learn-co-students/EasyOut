@@ -18,6 +18,7 @@ PODS:
   - DeepLinkKit (1.2.0)
   - Masonry (0.6.4)
   - pop (1.0.9)
+  - UIView+Shake (1.1.5)
 
 DEPENDENCIES:
   - AFNetworking
@@ -25,6 +26,7 @@ DEPENDENCIES:
   - DeepLinkKit
   - Masonry
   - pop (~> 1.0)
+  - UIView+Shake
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
@@ -32,5 +34,6 @@ SPEC CHECKSUMS:
   DeepLinkKit: c5c1b216b8aa00fa7735ffeee6a354e39e7574ac
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
+  UIView+Shake: 2d2185006d38ee5daed07f14c0989f703f86682f
 
 COCOAPODS: 0.39.0
