@@ -1,29 +1,19 @@
 //
-//  FirebaseIntegration.swift
+//  Firebase.swift
 //  EggplantButton
 //
-//  Created by Ian Alexander Rahman on 4/6/16.
+//  Created by Ian Alexander Rahman on 4/7/16.
 //  Copyright © 2016 Team Eggplant Button. All rights reserved.
 //
 
 import Foundation
 import Firebase
 
-
 @objc class FireBaseAPIClient: NSObject {
     
     // Create a reference to root Firebase location
-    let firebaseRootRef = Firebase(url:"https://boiling-torch-1157.firebaseio.com")
+    let rootRef = Firebase(url:"https://boiling-torch-1157.firebaseio.com")
     
-    // Create child references within the root reference
-    let usersRef = firebaseRootRef.childByAppendingPath("users")
-    let itinerariesRef = firebaseRootRef.childByAppendingPath("itinieraries")
-    
-    // Create test user reference
-    let currentUserRef = firebaseRootRef.childByAppendingPath("user")
-    
-    // Create child references for current user
-    let 
     
     // Return list of all users
     class func getAllUsersWithCompletion(completion:(success: Bool) -> ()) {
@@ -48,11 +38,25 @@ import Firebase
     // Test function
     func sayHi() {
         
+        // Create child references within the root reference
+        let usersRef = rootRef.childByAppendingPath("users")
+        let itinerariesRef = rootRef.childByAppendingPath("itinieraries")
+        
+        // Create test user reference
+        let userRef = usersRef.childByAppendingPath("user")
+        
+        // Create child references for current user
+        let userName = userRef.childByAppendingPath("username")
+        
+        print(usersRef)
+        print(itinerariesRef)
+        print(userName)
+        
         // Write data to Firebase
-//        firebaseRootRef.setValue(["users" : "ian"])
+        rootRef.setValue(["users" : "ian"])
         
         // Read data and react to changes
-        firebaseRootRef.observeEventType(.Value, withBlock: {
+        rootRef.observeEventType(.Value, withBlock: {
             snapshot in
             print("\(snapshot.key) -> \(snapshot.value)")
         })
