@@ -64,18 +64,20 @@
         if(success) {
             
             for(Restaurant *restaurant in self.dataStore.restaurants) {
+
+                [[NSOperationQueue mainQueue]addOperationWithBlock:^{
+                    
+                    ActivityCardView *newActivityCard =[[ActivityCardView alloc]init];
+                    newActivityCard.restaurant = restaurant;
+                    
+                    newActivityCard.translatesAutoresizingMaskIntoConstraints = NO;
+                    
+                    [self.middleCardStackView addArrangedSubview: newActivityCard];
+                    
+                    [newActivityCard.heightAnchor constraintEqualToAnchor:self.topCardScrollView.heightAnchor].active = YES;
+                    [newActivityCard.widthAnchor constraintEqualToAnchor:self.topCardScrollView.widthAnchor].active = YES;
+                }];
                 
-                NSLog(@"Creating card for %@", restaurant.name);
-                
-                ActivityCardView *newActivityCard =[[ActivityCardView alloc]init];
-                newActivityCard.restaurant = restaurant;
-                
-                newActivityCard.translatesAutoresizingMaskIntoConstraints = NO;
-                
-                [self.middleCardStackView addArrangedSubview: newActivityCard];
-                
-                [newActivityCard.heightAnchor constraintEqualToAnchor:self.topCardScrollView.heightAnchor].active = YES;
-                [newActivityCard.widthAnchor constraintEqualToAnchor:self.topCardScrollView.widthAnchor].active = YES;
             }
         }
         

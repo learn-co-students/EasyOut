@@ -19,7 +19,6 @@
 		4C9A037D1CAB064200CA9A02 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9A037C1CAB064200CA9A02 /* main.m */; };
 		4C9A03801CAB064200CA9A02 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9A037F1CAB064200CA9A02 /* AppDelegate.m */; };
 		4C9A03861CAB064200CA9A02 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C9A03841CAB064200CA9A02 /* Main.storyboard */; };
-		4C9A03891CAB064200CA9A02 /* EggplantButton.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C9A03871CAB064200CA9A02 /* EggplantButton.xcdatamodeld */; };
 		4C9A038B1CAB064200CA9A02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C9A038A1CAB064200CA9A02 /* Assets.xcassets */; };
 		4C9A038E1CAB064200CA9A02 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C9A038C1CAB064200CA9A02 /* LaunchScreen.storyboard */; };
 		785113371CB41137005DC83C /* setupButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 785113361CB41137005DC83C /* setupButton.m */; };
@@ -57,7 +56,6 @@
 		4C9A037E1CAB064200CA9A02 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4C9A037F1CAB064200CA9A02 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		4C9A03851CAB064200CA9A02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		4C9A03881CAB064200CA9A02 /* EggplantButton.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EggplantButton.xcdatamodel; sourceTree = "<group>"; };
 		4C9A038A1CAB064200CA9A02 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C9A038D1CAB064200CA9A02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4C9A038F1CAB064200CA9A02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -143,7 +141,6 @@
 				4C9A038A1CAB064200CA9A02 /* Assets.xcassets */,
 				4C9A038C1CAB064200CA9A02 /* LaunchScreen.storyboard */,
 				4C9A038F1CAB064200CA9A02 /* Info.plist */,
-				4C9A03871CAB064200CA9A02 /* EggplantButton.xcdatamodeld */,
 				4C270CA61CAB08A2003E0195 /* Secrets.h */,
 				0AF4FE5C1CB6B89200BCCAB0 /* Secrets.m */,
 				785113351CB41137005DC83C /* setupButton.h */,
@@ -306,7 +303,6 @@
 			files = (
 				9A5616B81CAD8A30008D9264 /* RestaurantDataStore.m in Sources */,
 				9A2478E61CAC2EFA00865C6A /* OpenTableAPIClient.m in Sources */,
-				4C9A03891CAB064200CA9A02 /* EggplantButton.xcdatamodeld in Sources */,
 				4C358D671CADBA0600257756 /* CardScrollContentView.m in Sources */,
 				4C358D381CAD62CE00257756 /* ContainerViewController.m in Sources */,
 				0A05A4EB1CB438AD00EF83CD /* TicketMasterAPIClient.m in Sources */,
@@ -477,19 +473,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		4C9A03871CAB064200CA9A02 /* EggplantButton.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				4C9A03881CAB064200CA9A02 /* EggplantButton.xcdatamodel */,
-			);
-			currentVersion = 4C9A03881CAB064200CA9A02 /* EggplantButton.xcdatamodel */;
-			path = EggplantButton.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 4C9A03701CAB064200CA9A02 /* Project object */;
 }

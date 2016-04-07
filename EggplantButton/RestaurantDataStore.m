@@ -34,7 +34,7 @@
 -(void)getRestaurantsWithCompletion:(void (^)(BOOL success))completionBlock
 {
     [OpenTableAPIClient getRestaurantWithCompletion:^(NSArray *restaurants) {
- 
+        
         for(NSDictionary *restaurant in restaurants) {
             
             [self.restaurants addObject:[Restaurant restaurantFromDictionary:restaurant]];
