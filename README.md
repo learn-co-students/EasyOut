@@ -26,4 +26,5 @@ Any time you’re wanting to move your stuff into Master, do these steps: (adapt
 6. To fix conflicts, you can open the file and make any changes… or type `git checkout —-theirs FILENAME`or `git checkout —-ours FILENAME` to tell git to JUST Keep either OURS which is the current branch your own or THEIRS which is the branch you’re trying to merge into yours. This keeps one or the other where you don’t then have to review the files. This is especially useful for Storyboard files.
 7. Then go back to Master
 8. Then merge your local branch into master (you should have no conflicts because of the prior steps)
-9. Let your team know that Master has now changed
+9. *RUN THE APP TO MAKE SURE IT WORKS BEFORE YOU PUSH IT TO GITHUB*
+10. Let your team know that Master has now changed
