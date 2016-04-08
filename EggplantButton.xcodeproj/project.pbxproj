@@ -13,6 +13,10 @@
 		4C02D1E41CB6E8A00031F978 /* Itinerary.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C02D1E31CB6E8A00031F978 /* Itinerary.m */; };
 		4C02D1E71CB6EDD40031F978 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C02D1E61CB6EDD40031F978 /* Photo.m */; };
 		4C02D1EA1CB710670031F978 /* Activity.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C02D1E91CB710660031F978 /* Activity.m */; };
+		4C1DE15F1CB8410900AFBCF5 /* LobsterTwo-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4C1DE15A1CB83E5000AFBCF5 /* LobsterTwo-Bold.otf */; };
+		4C1DE1601CB8410900AFBCF5 /* LobsterTwo-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4C1DE15B1CB83E5000AFBCF5 /* LobsterTwo-BoldItalic.otf */; };
+		4C1DE1611CB8410900AFBCF5 /* LobsterTwo-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4C1DE15C1CB83E5000AFBCF5 /* LobsterTwo-Italic.otf */; };
+		4C1DE1621CB8410900AFBCF5 /* LobsterTwo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4C1DE15D1CB83E5000AFBCF5 /* LobsterTwo-Regular.otf */; };
 		4C270CA81CAB08A2003E0195 /* Secrets.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C270CA71CAB08A2003E0195 /* Secrets.m */; };
 		4C358D381CAD62CE00257756 /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C358D371CAD62CE00257756 /* ContainerViewController.m */; };
 		4C358D671CADBA0600257756 /* CardScrollContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C358D661CADBA0600257756 /* CardScrollContentView.m */; };
@@ -45,6 +49,10 @@
 		4C02D1E61CB6EDD40031F978 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Photo.m; path = EggplantButton/Photo.m; sourceTree = "<group>"; };
 		4C02D1E81CB710660031F978 /* Activity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Activity.h; sourceTree = "<group>"; };
 		4C02D1E91CB710660031F978 /* Activity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Activity.m; sourceTree = "<group>"; };
+		4C1DE15A1CB83E5000AFBCF5 /* LobsterTwo-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "LobsterTwo-Bold.otf"; path = "EggplantButton/LobsterTwo-Bold.otf"; sourceTree = "<group>"; };
+		4C1DE15B1CB83E5000AFBCF5 /* LobsterTwo-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "LobsterTwo-BoldItalic.otf"; path = "EggplantButton/LobsterTwo-BoldItalic.otf"; sourceTree = "<group>"; };
+		4C1DE15C1CB83E5000AFBCF5 /* LobsterTwo-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "LobsterTwo-Italic.otf"; path = "EggplantButton/LobsterTwo-Italic.otf"; sourceTree = "<group>"; };
+		4C1DE15D1CB83E5000AFBCF5 /* LobsterTwo-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "LobsterTwo-Regular.otf"; path = "EggplantButton/LobsterTwo-Regular.otf"; sourceTree = "<group>"; };
 		4C270CA61CAB08A2003E0195 /* Secrets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Secrets.h; sourceTree = "<group>"; };
 		4C270CA71CAB08A2003E0195 /* Secrets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Secrets.m; sourceTree = "<group>"; };
 		4C358D361CAD62CE00257756 /* ContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerViewController.h; sourceTree = "<group>"; };
@@ -123,6 +131,18 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		4C1DE15E1CB83E5A00AFBCF5 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				4C1DE15A1CB83E5000AFBCF5 /* LobsterTwo-Bold.otf */,
+				4C1DE15B1CB83E5000AFBCF5 /* LobsterTwo-BoldItalic.otf */,
+				4C1DE15C1CB83E5000AFBCF5 /* LobsterTwo-Italic.otf */,
+				4C1DE15D1CB83E5000AFBCF5 /* LobsterTwo-Regular.otf */,
+			);
+			name = Fonts;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		4C8E5A521CB74E4C005E1625 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -187,6 +207,7 @@
 				4C270CA71CAB08A2003E0195 /* Secrets.m */,
 				4C9514C81CB44FC6009CF02A /* APIs */,
 				4C9A037B1CAB064200CA9A02 /* Supporting Files */,
+				4C1DE15E1CB83E5A00AFBCF5 /* Fonts */,
 			);
 			path = EggplantButton;
 			sourceTree = "<group>";
@@ -284,6 +305,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AA058791CAEAA57000A6AA8 /* ActivityCard.xib in Resources */,
+				4C1DE1621CB8410900AFBCF5 /* LobsterTwo-Regular.otf in Resources */,
+				4C1DE1601CB8410900AFBCF5 /* LobsterTwo-BoldItalic.otf in Resources */,
+				4C1DE1611CB8410900AFBCF5 /* LobsterTwo-Italic.otf in Resources */,
+				4C1DE15F1CB8410900AFBCF5 /* LobsterTwo-Bold.otf in Resources */,
 				4C9A038E1CAB064200CA9A02 /* LaunchScreen.storyboard in Resources */,
 				4C9A038B1CAB064200CA9A02 /* Assets.xcassets in Resources */,
 				4C9A03861CAB064200CA9A02 /* Main.storyboard in Resources */,

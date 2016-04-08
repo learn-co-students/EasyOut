@@ -72,7 +72,7 @@
                                                         </connections>
                                                     </scrollView>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.36960259470811091" green="0.80310696037009033" blue="0.83317307692307696" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="X5l-T8-L5E" firstAttribute="trailing" secondItem="VU8-K5-T2e" secondAttribute="trailing" id="IBC-jo-JSy"/>
                                                     <constraint firstItem="X5l-T8-L5E" firstAttribute="leading" secondItem="VU8-K5-T2e" secondAttribute="leading" id="YHg-HX-6bM"/>
@@ -137,7 +137,7 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.36960259470000001" green="0.80310696039999996" blue="0.83317307689999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="VU8-K5-T2e" firstAttribute="leading" secondItem="1xk-lu-wGc" secondAttribute="leading" id="Lpy-FH-dYc"/>
                                             <constraint firstItem="rof-DI-nfP" firstAttribute="top" secondItem="VU8-K5-T2e" secondAttribute="bottom" id="NaE-aU-AFr"/>
