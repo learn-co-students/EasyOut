@@ -41,16 +41,17 @@
     
     [super viewDidLoad];
     
-    [FireBaseAPIClient getAllUsersWithCompletion:^(BOOL success) {
-        if (success) {
-            
-            
-        }
-    }];
+//    [FireBaseAPIClient getAllUsersWithCompletion:^(BOOL success) {
+//        if (success) {
+//            
+//            
+//            
+//        }
+//    }];
     
     
-    FireBaseAPIClient *test = [[FireBaseAPIClient alloc] init];
-    [test sayHi];
+    FireBaseAPIClient *FBAPI = [[FireBaseAPIClient alloc] init];
+    [FBAPI sayHi];
     
     // Set default card height and width anchors
     self.cardHeightAnchor = self.topCardScrollView.heightAnchor;

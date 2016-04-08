@@ -22,8 +22,7 @@
 @property (strong, nonatomic) NSData *profilePhoto;
 @property (nonatomic) NSUInteger reputation;
 
--(instancetype) initWithEmail:(NSString *)email
-                     password:(NSString *)password;
+-(instancetype) initWithEmail:(NSString *)email;
 
 -(instancetype) initWithUniqueID:(NSString *)uniqueID;
 

@@ -8,10 +8,6 @@
 
 #import "User.h"
 
-@interface User ()
-
-@end
-
 @implementation User
 
 -(instancetype)init {
@@ -23,14 +19,13 @@
     return self;
 }
 
--(instancetype) initWithEmail:(NSString *)email
-                     password:(NSString *)password {
+-(instancetype) initWithEmail:(NSString *)email {
     
     self = [super init];
     
     if (self) {
-        _uniqueID = @"id";
-        _username = @"testUsername";
+        _uniqueID = @"";
+        _username = @"";
         _email = email;
         _bio = @"";
         _location = @"";
