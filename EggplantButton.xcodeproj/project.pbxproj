@@ -49,10 +49,10 @@
 		4C270CA71CAB08A2003E0195 /* Secrets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Secrets.m; sourceTree = "<group>"; };
 		4C358D361CAD62CE00257756 /* ContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerViewController.h; sourceTree = "<group>"; };
 		4C358D371CAD62CE00257756 /* ContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerViewController.m; sourceTree = "<group>"; };
-		4C358D651CADBA0600257756 /* CardScrollContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardScrollContentView.h; sourceTree = "<group>"; };
-		4C358D661CADBA0600257756 /* CardScrollContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardScrollContentView.m; sourceTree = "<group>"; };
-		4C358D711CADCDF700257756 /* ActivityCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCardView.h; sourceTree = "<group>"; };
-		4C358D721CADCDF700257756 /* ActivityCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCardView.m; sourceTree = "<group>"; };
+		4C358D651CADBA0600257756 /* CardScrollContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardScrollContentView.h; path = EggplantButton/CardScrollContentView.h; sourceTree = "<group>"; };
+		4C358D661CADBA0600257756 /* CardScrollContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CardScrollContentView.m; path = EggplantButton/CardScrollContentView.m; sourceTree = "<group>"; };
+		4C358D711CADCDF700257756 /* ActivityCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActivityCardView.h; path = EggplantButton/ActivityCardView.h; sourceTree = "<group>"; };
+		4C358D721CADCDF700257756 /* ActivityCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActivityCardView.m; path = EggplantButton/ActivityCardView.m; sourceTree = "<group>"; };
 		4C9A03781CAB064200CA9A02 /* EggplantButton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EggplantButton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C9A037C1CAB064200CA9A02 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4C9A037E1CAB064200CA9A02 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -72,7 +72,7 @@
 		9A5616B41CAC68AE008D9264 /* Restaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Restaurant.m; path = EggplantButton/Restaurant.m; sourceTree = "<group>"; };
 		9A5616B61CAD8A30008D9264 /* RestaurantDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantDataStore.h; sourceTree = "<group>"; };
 		9A5616B71CAD8A30008D9264 /* RestaurantDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantDataStore.m; sourceTree = "<group>"; };
-		9AA058781CAEAA57000A6AA8 /* ActivityCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityCard.xib; sourceTree = "<group>"; };
+		9AA058781CAEAA57000A6AA8 /* ActivityCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ActivityCard.xib; path = EggplantButton/ActivityCard.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +123,19 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		4C8E5A521CB74E4C005E1625 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9AA058781CAEAA57000A6AA8 /* ActivityCard.xib */,
+				4C358D651CADBA0600257756 /* CardScrollContentView.h */,
+				4C358D661CADBA0600257756 /* CardScrollContentView.m */,
+				4C358D711CADCDF700257756 /* ActivityCardView.h */,
+				4C358D721CADCDF700257756 /* ActivityCardView.m */,
+			);
+			name = Views;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		4C9514C81CB44FC6009CF02A /* APIs */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,17 +170,14 @@
 		4C9A037A1CAB064200CA9A02 /* EggplantButton */ = {
 			isa = PBXGroup;
 			children = (
+				4C02D1D31CB6DD9F0031F978 /* Firebase */,
+				4C8E5A521CB74E4C005E1625 /* Views */,
 				4C02D1DC1CB6E2F40031F978 /* Models */,
 				4C02D1DB1CB6E2E10031F978 /* View Controllers */,
 				4C9A037E1CAB064200CA9A02 /* AppDelegate.h */,
 				4C9A037F1CAB064200CA9A02 /* AppDelegate.m */,
 				9A5616B61CAD8A30008D9264 /* RestaurantDataStore.h */,
 				9A5616B71CAD8A30008D9264 /* RestaurantDataStore.m */,
-				9AA058781CAEAA57000A6AA8 /* ActivityCard.xib */,
-				4C358D651CADBA0600257756 /* CardScrollContentView.h */,
-				4C358D661CADBA0600257756 /* CardScrollContentView.m */,
-				4C358D711CADCDF700257756 /* ActivityCardView.h */,
-				4C358D721CADCDF700257756 /* ActivityCardView.m */,
 				4C9A03841CAB064200CA9A02 /* Main.storyboard */,
 				4C9A038A1CAB064200CA9A02 /* Assets.xcassets */,
 				4C9A038C1CAB064200CA9A02 /* LaunchScreen.storyboard */,
@@ -175,7 +185,6 @@
 				4C9A03871CAB064200CA9A02 /* EggplantButton.xcdatamodeld */,
 				4C270CA61CAB08A2003E0195 /* Secrets.h */,
 				4C270CA71CAB08A2003E0195 /* Secrets.m */,
-				4C02D1D31CB6DD9F0031F978 /* Firebase */,
 				4C9514C81CB44FC6009CF02A /* APIs */,
 				4C9A037B1CAB064200CA9A02 /* Supporting Files */,
 			);
@@ -469,11 +478,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = EggplantButton/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TEB.EggplantButton;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "EggplantButton/EggplantButton-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -486,11 +497,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = EggplantButton/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TEB.EggplantButton;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "EggplantButton/EggplantButton-Bridging-Header.h";
 			};
 			name = Release;

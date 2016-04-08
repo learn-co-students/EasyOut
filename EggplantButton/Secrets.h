@@ -10,3 +10,4 @@
 
 extern NSString * const consumerKey;
 extern NSString * const consumerSecret;
+extern NSString * const firebaseRootRef;

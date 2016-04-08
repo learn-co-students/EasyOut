@@ -12,7 +12,7 @@ import Firebase
 @objc class FireBaseAPIClient: NSObject {
     
     // Create a reference to root Firebase location
-    let rootRef = Firebase(url:"https://boiling-torch-1157.firebaseio.com")
+    let rootRef = Firebase(url:firebaseRootRef)
     
     
     // Return list of all users
@@ -45,8 +45,8 @@ import Firebase
     func sayHi() {
         
         // Create child references within the root reference
-        let usersRef = rootRef.childByAppendingPath("users")
-        let itinerariesRef = rootRef.childByAppendingPath("itinieraries")
+        let usersRef = firebaseRootRef.childByAppendingPath("users")
+        let itinerariesRef = firebaseRootRef.childByAppendingPath("itinieraries")
         
         // Create test user reference
         let userRef = usersRef.childByAppendingPath("user")
@@ -59,10 +59,10 @@ import Firebase
         print(userName)
         
         // Write data to Firebase
-        rootRef.setValue(["users" : "ian"])
+        firebaseRootRef.setValue(["users" : "ian"])
         
         // Read data and react to changes
-        rootRef.observeEventType(.Value, withBlock: {
+        firebaseRootRef.observeEventType(.Value, withBlock: {
             snapshot in
             print("\(snapshot.key) -> \(snapshot.value)")
         })

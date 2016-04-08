@@ -28,7 +28,6 @@
 
 -(instancetype)init {
     self = [self initWithEmail:@"test@e.mail" password:@"password"];
-    
     if (self) {
         
     }
@@ -42,8 +41,20 @@
     self = [super init];
     
     if (self) {
-        // Init all the things
+        _userID = @"id";
+        _username = @"testUsername";
+        _email = email;
+        _bio = @"lol wut";
+        _location = @"over there";
+        _savedItineraries = [@[] mutableCopy];
+        _preferences = [@{} mutableCopy];
+        _ratings = [@{} mutableCopy];
+        _tips = [@{} mutableCopy];
+        _profilePhoto = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"https://avatars3.githubusercontent.com/u/16245367?v=3&s=460"]];
+        _reputation = 1;
     }
+    
+    NSLog(<#NSString * _Nonnull format, ...#>)
     
     return self;
 }
