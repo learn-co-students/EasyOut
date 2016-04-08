@@ -12,7 +12,22 @@ import Firebase
 @objc class FireBaseAPIClient: NSObject {
     
     // Return list of all users
-    class func getAllUsersWithCompletion(completion:(success: Bool) -> ()) {
+    class func getAllUsersWithCompletion(completion:(success: Bool) -> (AnyObject)) {
+        
+        // Create a reference to root Firebase location
+        let ref = Firebase(url:firebaseRootRef)
+        
+        // Create child references within the root reference
+        let usersRef = ref.childByAppendingPath("users")
+        
+        // Attach a closure to read the data at our posts reference
+        ref.observeEventType(.Value, withBlock: { snapshot in
+            print(snapshot.value)
+            }, withCancelBlock: { error in
+                print(error.description)
+        })
+        
+        
         
         //hit firebase reference (using firebaseURL)
         //Use the method firebase provides to do this (get that snapshot stuff)
@@ -60,7 +75,7 @@ import Firebase
             print("\(snapshot.key) -> \(snapshot.value)")
         })
         
-        FireBaseAPIClient.createNewUserWithEmail("email@example.com", password: "correcthorsebatterystaple")
+        FireBaseAPIClient.createNewUserWithEmail("email1@example.com", password: "correcthorsebatterystaple")
     }
     
     class func createNewUserWithEmail(email : String, password : String) {
@@ -69,7 +84,7 @@ import Firebase
         ref.createUser(email, password: password,
                        withValueCompletionBlock: { error, result in
                         if error != nil {
-                            // There was an error creating the account
+                            print("There was an error creating the user: \(error.description)")
                         } else {
                             let uid = result["uid"] as? String
                             
@@ -95,10 +110,26 @@ import Firebase
                                 "reputation" : 0,
                                 "profilePhoto" : "imageID"
                             ])
+                            
+//                            let newUser = 
+                            
+                            print("Created new user: \(userRef)")
                         }
         })
         
         // after creating the user here with standard init data, retrieve the user from firebase and use that to create a user object 
         
+    }
+    
+    class func createNewItineraryWithItinerary(itinerary : Itinerary) -> AnyObject {
+        
+        let ref = Firebase(url:firebaseRootRef)
+        let itinerariesRef = ref.childByAppendingPath("itineraries")
+        
+        var newItineraryRef = itinerariesRef.childByAutoId()
+        newItineraryRef.setValue(Itinerary)
+        var newItineraryID = newItineraryRef.key
+        
+        return newItineraryID
     }
 }
