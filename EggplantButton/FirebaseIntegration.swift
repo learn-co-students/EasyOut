@@ -82,6 +82,7 @@ import Firebase
                         }
         })
         
+        // after creating the user here with standard init data, retrieve the user from firebase and use that to create a user object 
         
     }
 }
