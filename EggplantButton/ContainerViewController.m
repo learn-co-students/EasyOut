@@ -127,8 +127,16 @@
         
         NSLog(@"Shake started");
         
-        // Shake with the default speed
-        [self.middleCardStackView shake:20   // 20 times
+        // Shake top card with the default speed
+        [self.topCardStackView shake:15   // 15 times
+                              withDelta:20   // 20 points wide
+         ];
+        // Shake middle card with the default speed
+        [self.middleCardStackView shake:15   // 15 times
+                              withDelta:20   // 20 points wide
+         ];
+        // Shake bottom card with the default speed
+        [self.bottomCardStackView shake:15   // 15 times
                               withDelta:20   // 20 points wide
          ];
         
@@ -150,12 +158,11 @@
             newActivityCard.translatesAutoresizingMaskIntoConstraints = NO;
             newActivityCard.translatesAutoresizingMaskIntoConstraints = NO;
             
-            [self.middleCardStackView insertArrangedSubview:newActivityCard atIndex:0];
+            [self.middleCardStackView addArrangedSubview:newActivityCard];
             
             [newActivityCard.heightAnchor constraintEqualToAnchor:self.cardHeightAnchor].active = YES;
             [newActivityCard.widthAnchor constraintEqualToAnchor:self.cardWidthAnchor].active = YES;
             
-       //     [newActivityCard removeFromSuperview];
         }
     }
 }
