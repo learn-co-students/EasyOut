@@ -10,18 +10,6 @@
 
 @interface User ()
 
-@property (strong, nonatomic) NSString *uniqueID;
-@property (strong, nonatomic) NSString *username;
-@property (strong, nonatomic) NSString *email;
-@property (strong, nonatomic) NSString *bio;
-@property (strong, nonatomic) NSString *location;
-@property (strong, nonatomic) NSMutableArray *savedItineraries;
-@property (strong, nonatomic) NSMutableDictionary *preferences;
-@property (strong, nonatomic) NSMutableDictionary *ratings;
-@property (strong, nonatomic) NSMutableDictionary *tips;
-@property (strong, nonatomic) NSData *profilePhoto;
-@property (nonatomic) NSUInteger reputation;
-
 @end
 
 @implementation User
@@ -44,10 +32,10 @@
         _uniqueID = @"id";
         _username = @"testUsername";
         _email = email;
-        _bio = @"lol wut";
-        _location = @"over there";
+        _bio = @"";
+        _location = @"";
         _savedItineraries = [@[] mutableCopy];
-        _preferences = [@{} mutableCopy];
+        _preferences = [@{@"default location" : @"New York, NY", @"default price" : @2, @"default start time" : @0} mutableCopy];
         _ratings = [@{} mutableCopy];
         _tips = [@{} mutableCopy];
         _profilePhoto = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"https://avatars3.githubusercontent.com/u/16245367?v=3&s=460"]];
@@ -67,10 +55,10 @@
         _uniqueID = uniqueID;
         _username = @"testUsername";
         _email = @"test@test.test";
-        _bio = @"lol wut";
-        _location = @"over there";
+        _bio = @"";
+        _location = @"";
         _savedItineraries = [@[] mutableCopy];
-        _preferences = [@{} mutableCopy];
+        _preferences = [@{@"default location" : @"New York, NY", @"default price" : @2, @"default start time" : @0} mutableCopy];
         _ratings = [@{} mutableCopy];
         _tips = [@{} mutableCopy];
         _profilePhoto = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"https://avatars3.githubusercontent.com/u/16245367?v=3&s=460"]];

@@ -13,7 +13,7 @@
 #import "User.h"
 #import "Itinerary.h"
 #import "Photo.h"
-//#import "Activity.h"
+#import "Activity.h"
 
 @interface ContainerViewController : UIViewController
 

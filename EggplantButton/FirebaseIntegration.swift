@@ -48,36 +48,10 @@ import Firebase
     
     // Test function
     func sayHi() {
-        
-        // Create a reference to root Firebase location
-        let ref = Firebase(url:firebaseRootRef)
-        
-        // Create child references within the root reference
-        let usersRef = ref.childByAppendingPath("users")
-        let itinerariesRef = ref.childByAppendingPath("itinieraries")
-        
-        // Create test user reference
-        let userRef = usersRef.childByAppendingPath("user")
-        
-        // Create child references for current user
-        let userName = userRef.childByAppendingPath("username")
-        
-        print(usersRef)
-        print(itinerariesRef)
-        print(userName)
-        
-//        // Write data to Firebase
-//        ref.setValue(["users" : "ian"])
-        
-        // Read data and react to changes
-        ref.observeEventType(.Value, withBlock: {
-            snapshot in
-            print("\(snapshot.key) -> \(snapshot.value)")
-        })
-        
         FireBaseAPIClient.createNewUserWithEmail("email1@example.com", password: "correcthorsebatterystaple")
     }
     
+    // Create a new user in firebase given email and password
     class func createNewUserWithEmail(email : String, password : String) {
         
         let ref = Firebase(url:firebaseRootRef)
@@ -111,14 +85,46 @@ import Firebase
                                 "profilePhoto" : "imageID"
                             ])
                             
-//                            let newUser = 
-                            
                             print("Created new user: \(userRef)")
                         }
         })
-        
-        // after creating the user here with standard init data, retrieve the user from firebase and use that to create a user object 
-        
+    }
+    
+    // Create a new user in firebase given a User object and password
+    // **** SHOULD BE DEFAULT FOR USER CREATION ****
+    class func createNewUserWithUser(user : User, password : String) {
+        let ref = Firebase(url:firebaseRootRef)
+        ref.createUser(user.email, password: password,
+                       withValueCompletionBlock: { error, result in
+                        if error != nil {
+                            print("There was an error creating the user: \(error.description)")
+                        } else {
+                            let uid = result["uid"] as? String
+                            
+                            print("Successfully created user account with uid: \(uid)")
+                            
+                            let usersRef = ref.childByAppendingPath("users")
+                            let userRef = usersRef.childByAppendingPath(uid)
+                            
+                            userRef.setValue([
+                                "uniqueID" : uid!,
+                                "username" : user.username,
+                                "email" : user.email,
+                                "bio" : user.bio,
+                                "location" : user.location,
+                                "saved itineraries" : user.savedItineraries,
+                                "preferences" : user.preferences,
+                                "ratings" : user.ratings,
+                                "tips" : user.tips,
+                                "reputation" : user.reputation,
+                                "profilePhoto" : user.profilePhoto
+                                ])
+                            
+                            // We should actually call firebase to pull values for new user and make sure everything was set correctly
+                            print("Created new user: \(userRef)")
+                        }
+        })
+
     }
     
     class func createNewItineraryWithItinerary(itinerary : Itinerary) -> AnyObject {
