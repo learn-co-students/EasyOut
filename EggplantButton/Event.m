@@ -39,8 +39,7 @@
     
     Event *newEvent = [[Event alloc]initWithDictionary:eventDictionary];
     
-    NSLog(@"new event: %@", newEvent.name);
-
+    NSLog(@"NEW EVENT: %@", newEvent.name);
     
     return newEvent;
 }

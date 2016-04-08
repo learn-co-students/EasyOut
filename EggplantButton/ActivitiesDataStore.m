@@ -57,17 +57,17 @@
     
 }
 
--(void)getEventsForLocation:(CLLocation *) location withCompletion: (void (^)(BOOL))successBlock {
+-(void)getEventsForLat:(NSString *)lat lng:(NSString *)lng withCompletion: (void (^)(BOOL success))successBlock {
     
-    [TicketMasterAPIClient getEventsFromLocation:location completion:^(NSArray *events) {
-        
+    [TicketMasterAPIClient getEventsForLat:lat lng:lng withCompletion:^(NSArray *events) {
+
         if (!events) {
             
             successBlock(NO);
             return;
         
         }
-        
+
         for (NSDictionary *eventDictionary in events) {
 
             Event *newEvent = [Event eventFromDictionary:eventDictionary];

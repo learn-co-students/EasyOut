@@ -19,6 +19,7 @@
 
 -(void)getRestaurantsWithCompletion:(void (^)(BOOL success))completionBlock;
 
+-(void)getEventsForLat:(NSString *)lat lng:(NSString *)lng withCompletion:(void (^)(BOOL success))completionBlock;
 
 
 @end

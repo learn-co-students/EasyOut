@@ -8,6 +8,7 @@
 
 #import "OpenTableAPIClient.h"
 #import <AFNetworking.h>
+#import <AFNetworking.h>
 
 
 @implementation OpenTableAPIClient

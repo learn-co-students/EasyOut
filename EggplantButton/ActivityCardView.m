@@ -85,9 +85,6 @@
             break;
     }
 
-    
-//    self.imageView.clipsToBounds = YES;
-//    self.imageView.contentMode = UIViewContentModeScaleAspectFill;
 }
 
 
