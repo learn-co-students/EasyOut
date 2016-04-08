@@ -9,6 +9,7 @@
 
 #import "ActivityCardView.h"
 #import "Restaurant.h"
+#import "TicketMasterEvent.h"
 
 @interface ActivityCardView ()
 
@@ -66,6 +67,12 @@
     [self updateUI];
 }
 
+-(void)setEvent:(TicketMasterEvent *)event{
+    _event = event;
+    [self updateUI]; 
+}
+
+
 // Add data to activity card view
 -(void)updateUI {
     
@@ -74,9 +81,12 @@
     self.addressLabel.text = self.restaurant.address;
     self.pricepointLabel.text = self.restaurant.price;
 
+    
 //    self.imageView.clipsToBounds = YES;
 //    self.imageView.contentMode = UIViewContentModeScaleAspectFill;
 }
+
+
 
 
 @end
