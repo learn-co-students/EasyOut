@@ -10,6 +10,8 @@
 #import "RestaurantDataStore.h"
 #import "ActivityCardView.h"
 #import "Restaurant.h"
+#import <UIView+Shake.h>
+
 
 #import "TicketMasterDataStore.h"
 #import "TicketMasterEvent.h"
@@ -42,6 +44,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
 @property (weak, nonatomic) IBOutlet UIButton *priceFilterButton;
 @property (weak, nonatomic) IBOutlet UIButton *historyButton;
+
 
 @end
 
@@ -174,8 +177,7 @@
 
 
 -(void)viewWillAppear:(BOOL)animated {
-    
-    NSLog(@"Contianer view will appear");
+    NSLog(@"Container view will appear");
     
 }
 
@@ -198,5 +200,69 @@
 -(IBAction)historyButtonTapped:(id)sender {
     NSLog(@"History button tapped");
 }
+
+
+
+- (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event
+{
+    if ( event.subtype == UIEventSubtypeMotionShake )
+    {
+        
+        NSLog(@"Shake started");
+        
+        // Shake top card with the default speed
+        [self.topCardStackView shake:15   // 15 times
+                              withDelta:20   // 20 points wide
+         ];
+        // Shake middle card with the default speed
+        [self.middleCardStackView shake:15   // 15 times
+                              withDelta:20   // 20 points wide
+         ];
+        // Shake bottom card with the default speed
+        [self.bottomCardStackView shake:15   // 15 times
+                              withDelta:20   // 20 points wide
+         ];
+        
+        //shuffle restaurants
+        GKARC4RandomSource *randomSource = [GKARC4RandomSource new];
+        NSArray *shuffledRestaurants = [randomSource arrayByShufflingObjectsInArray:self.dataStore.restaurants];
+        
+        //empties middle card stack
+        [self.middleCardStackView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+
+        //repopulating middle card stack
+        for(Restaurant *restaurant in shuffledRestaurants) {
+            
+            NSLog(@"Creating NEW card for %@", restaurant.name);
+            
+            ActivityCardView *newActivityCard =[[ActivityCardView alloc]init];
+            newActivityCard.restaurant = restaurant;
+            
+            newActivityCard.translatesAutoresizingMaskIntoConstraints = NO;
+            newActivityCard.translatesAutoresizingMaskIntoConstraints = NO;
+            
+            [self.middleCardStackView addArrangedSubview:newActivityCard];
+            
+            [newActivityCard.heightAnchor constraintEqualToAnchor:self.cardHeightAnchor].active = YES;
+            [newActivityCard.widthAnchor constraintEqualToAnchor:self.cardWidthAnchor].active = YES;
+            
+        }
+    }
+}
+
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event
+{
+    if ( event.subtype == UIEventSubtypeMotionShake )
+    {
+        NSLog(@"Shake ended");
+    }
+    
+    if ( [super respondsToSelector:@selector(motionEnded:withEvent:)] )
+        [super motionEnded:motion withEvent:event];
+}
+
+- (BOOL)canBecomeFirstResponder
+{ return YES; }
+
 
 @end

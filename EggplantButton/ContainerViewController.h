@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreMotion/CoreMotion.h>
+#import <GameplayKit/GameplayKit.h>
 
 @interface ContainerViewController : UIViewController 
 

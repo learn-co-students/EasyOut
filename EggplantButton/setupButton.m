@@ -22,9 +22,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-   //[self setupRezyButton];
     
     [self setupUberButton];
+    
+    [self setupRezyButton];
 
 }
 
@@ -34,14 +35,25 @@
     self.rezybutton = [[BTNDropinButton alloc] initWithButtonId:REZY_BUTTON_ID];
     [self.view addSubview:self.rezybutton];
     
-    [[BTNDropinButton appearance] setContentInsets:UIEdgeInsetsMake(0.0, 16.0, 0.0, 15.0)];
+    self.view.translatesAutoresizingMaskIntoConstraints = NO;
+    self.rezybutton.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    
+    
+    [self.rezybutton.widthAnchor constraintEqualToConstant:190].active = YES;
+    [self.rezybutton.heightAnchor constraintEqualToConstant:40].active = YES;
+    [self.rezybutton.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
+    
+    [self.rezybutton.topAnchor constraintEqualToAnchor: self.uberbutton.bottomAnchor constant:20].active = YES;
+    
+    [[BTNDropinButton appearance] setContentInsets:UIEdgeInsetsMake(0.0, 15.0, 0.0, 10.0)];
     [[BTNDropinButton appearance] setIconSize:26.0];
     [[BTNDropinButton appearance] setIconLabelSpacing:13.0];
-    [[BTNDropinButton appearance] setFont:[UIFont systemFontOfSize:10.0]];
-    [[BTNDropinButton appearance] setTextColor:[UIColor whiteColor]];
-    [[BTNDropinButton appearance] setBorderColor:[UIColor redColor]];
-    [[BTNDropinButton appearance] setBackgroundColor:[UIColor redColor]];
+    [[BTNDropinButton appearance] setFont:[UIFont systemFontOfSize:12.0]];
     [[BTNDropinButton appearance] setBorderWidth:1];
+    [[BTNDropinButton appearance] setCornerRadius: 5.0];
+    [[BTNDropinButton appearance] setHighlightedBackgroundColor: [UIColor grayColor]];
+    [[BTNDropinButton appearance] setHighlightedTextColor:[UIColor whiteColor]];
     
 //    // Setup your context.
 //    BTNLocation *userLocation = [BTNLocation locationWithLatitude:<#latitude#> longitude:<#longitude#>];
@@ -68,14 +80,17 @@
     
     //[[BTNDropinButton appearanceWhenContainedInInstancesOfClasses:@[[self.uberbutton class]]] setBackgroundColor:[UIColor blueColor]];
     
- //   [self.uberbutton.bottomAnchor constraintEqualToAnchor: self.view.bottomAnchor].active = YES;
+    self.view.translatesAutoresizingMaskIntoConstraints = NO;
+    self.uberbutton.translatesAutoresizingMaskIntoConstraints = NO;
     
-//    [self.uberbutton.widthAnchor constraintEqualToConstant:180].active = YES;
-//    [self.uberbutton.heightAnchor constraintEqualToConstant:40].active = YES;
-//    [self.uberbutton.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
+    [self.uberbutton.topAnchor constraintEqualToAnchor: self.view.topAnchor constant:20].active = YES;
+    
+    [self.uberbutton.widthAnchor constraintEqualToConstant:190].active = YES;
+    [self.uberbutton.heightAnchor constraintEqualToConstant:40].active = YES;
+    [self.uberbutton.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
     
     
-    [[BTNDropinButton appearance] setContentInsets:UIEdgeInsetsMake(0.0, 16.0, 0.0, 15.0)];
+    [[BTNDropinButton appearance] setContentInsets:UIEdgeInsetsMake(0.0, 15.0, 0.0, 10.0)];
     [[BTNDropinButton appearance] setIconSize:26.0];
     [[BTNDropinButton appearance] setIconLabelSpacing:13.0];
     [[BTNDropinButton appearance] setFont:[UIFont systemFontOfSize:12.0]];
@@ -83,6 +98,7 @@
     [[BTNDropinButton appearance] setCornerRadius: 5.0];
     [[BTNDropinButton appearance] setHighlightedBackgroundColor:[UIColor lightGrayColor]];
     [[BTNDropinButton appearance] setHighlightedTextColor:[UIColor whiteColor]];
+    
     
     //    // Setup your context.
     //    BTNLocation *userLocation = [BTNLocation locationWithLatitude:<#latitude#> longitude:<#longitude#>];
