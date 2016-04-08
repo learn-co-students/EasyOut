@@ -66,23 +66,24 @@
     [self.dataStore getRestaurantsWithCompletion:^(BOOL success) {
         if(success) {
             
-            for(Restaurant *restaurant in self.dataStore.restaurants) {
-
-                [[NSOperationQueue mainQueue]addOperationWithBlock:^{
+                for(Restaurant *restaurant in self.dataStore.restaurants) {
                     
-                    ActivityCardView *newActivityCard =[[ActivityCardView alloc]init];
-                    newActivityCard.restaurant = restaurant;
-                    
-                    newActivityCard.translatesAutoresizingMaskIntoConstraints = NO;
-                    
-                    [self.middleCardStackView addArrangedSubview: newActivityCard];
-                    
-                    [newActivityCard.heightAnchor constraintEqualToAnchor:self.topCardScrollView.heightAnchor].active = YES;
-                    [newActivityCard.widthAnchor constraintEqualToAnchor:self.topCardScrollView.widthAnchor].active = YES;
-                }];
+                    [[NSOperationQueue mainQueue]addOperationWithBlock:^{
+                        
+                        ActivityCardView *newActivityCard =[[ActivityCardView alloc]init];
+                        newActivityCard.restaurant = restaurant;
+                        
+                        newActivityCard.translatesAutoresizingMaskIntoConstraints = NO;
+                        
+                        [self.middleCardStackView addArrangedSubview: newActivityCard];
+                        
+                        [newActivityCard.heightAnchor constraintEqualToAnchor:self.topCardScrollView.heightAnchor].active = YES;
+                        [newActivityCard.widthAnchor constraintEqualToAnchor:self.topCardScrollView.widthAnchor].active = YES;
+                    }];
                 
+
             }
-        }
+                    }
         
         //[self getTicketMasterEvents];
 
@@ -212,7 +213,7 @@
         
         // Shake top card with the default speed
         [self.topCardStackView shake:15   // 15 times
-                              withDelta:20   // 20 points wide
+                              withDelta:20// 20 points wide
          ];
         // Shake middle card with the default speed
         [self.middleCardStackView shake:15   // 15 times
@@ -231,7 +232,9 @@
         [self.middleCardStackView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
 
         //repopulating middle card stack
-        for(Restaurant *restaurant in shuffledRestaurants) {
+        for (NSUInteger i = 0 ; i < 3; i++) {
+            
+            Restaurant *restaurant = [shuffledRestaurants objectAtIndex:i];
             
             NSLog(@"Creating NEW card for %@", restaurant.name);
             
@@ -243,9 +246,8 @@
             
             [self.middleCardStackView addArrangedSubview:newActivityCard];
             
-            [newActivityCard.heightAnchor constraintEqualToAnchor:self.cardHeightAnchor].active = YES;
-            [newActivityCard.widthAnchor constraintEqualToAnchor:self.cardWidthAnchor].active = YES;
-            
+            [newActivityCard.heightAnchor constraintEqualToAnchor:self.topCardScrollView.heightAnchor].active = YES;
+            [newActivityCard.widthAnchor constraintEqualToAnchor:self.topCardScrollView.widthAnchor].active = YES;
         }
     }
 }
