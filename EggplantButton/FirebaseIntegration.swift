@@ -11,10 +11,6 @@ import Firebase
 
 @objc class FireBaseAPIClient: NSObject {
     
-    // Create a reference to root Firebase location
-    let rootRef = Firebase(url:firebaseRootRef)
-    
-    
     // Return list of all users
     class func getAllUsersWithCompletion(completion:(success: Bool) -> ()) {
         
@@ -35,18 +31,15 @@ import Firebase
         completion(success: true)
     }
     
-    class func createNewUserWithUsername(username : String) {
-        
-        
-        
-    }
-    
     // Test function
     func sayHi() {
         
+        // Create a reference to root Firebase location
+        let ref = Firebase(url:firebaseRootRef)
+        
         // Create child references within the root reference
-        let usersRef = firebaseRootRef.childByAppendingPath("users")
-        let itinerariesRef = firebaseRootRef.childByAppendingPath("itinieraries")
+        let usersRef = ref.childByAppendingPath("users")
+        let itinerariesRef = ref.childByAppendingPath("itinieraries")
         
         // Create test user reference
         let userRef = usersRef.childByAppendingPath("user")
@@ -59,12 +52,41 @@ import Firebase
         print(userName)
         
         // Write data to Firebase
-        firebaseRootRef.setValue(["users" : "ian"])
+        ref.setValue(["users" : "ian"])
         
         // Read data and react to changes
-        firebaseRootRef.observeEventType(.Value, withBlock: {
+        ref.observeEventType(.Value, withBlock: {
             snapshot in
             print("\(snapshot.key) -> \(snapshot.value)")
         })
+        
+        FireBaseAPIClient.createNewUserWithEmail("email@example.com", password: "correcthorsebatterystaple")
+    }
+    
+    class func createNewUserWithEmail(email : String, password : String) {
+        
+        let ref = Firebase(url:firebaseRootRef)
+        ref.createUser(email, password: password,
+                       withValueCompletionBlock: { error, result in
+                        if error != nil {
+                            // There was an error creating the account
+                        } else {
+                            let uid = result["uid"] as? String
+                            print("Successfully created user account with uid: \(uid)")
+                        }
+        })
+        
     }
 }
+
+//        @property (strong, nonatomic) NSString *userID;
+//        @property (strong, nonatomic) NSString *username;
+//        @property (strong, nonatomic) NSString *email;
+//        @property (strong, nonatomic) NSString *bio;
+//        @property (strong, nonatomic) NSString *location;
+//        @property (strong, nonatomic) NSMutableArray *savedItineraries;
+//        @property (strong, nonatomic) NSMutableDictionary *preferences;
+//        @property (strong, nonatomic) NSMutableDictionary *ratings;
+//        @property (strong, nonatomic) NSMutableDictionary *tips;
+//        @property (strong, nonatomic) NSData *profilePhoto;
+//        @property (nonatomic) NSUInteger reputation;

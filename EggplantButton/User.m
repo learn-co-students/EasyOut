@@ -27,7 +27,7 @@
 @implementation User
 
 -(instancetype)init {
-    self = [self initWithEmail:@"test@e.mail" password:@"password"];
+    self = [self initWithUserID:@"f83f5ab3-9538-4504-b329-0707d6b5cf9b"];
     if (self) {
         
     }
@@ -54,9 +54,33 @@
         _reputation = 1;
     }
     
-    NSLog(<#NSString * _Nonnull format, ...#>)
+    NSLog(@"User initialized");
     
     return self;
+}
+
+-(instancetype)initWithUserID:(NSString *)userID {
+    
+    self = [super init];
+    
+    if (self) {
+        _userID = userID;
+        _username = @"testUsername";
+        _email = @"test@test.test";
+        _bio = @"lol wut";
+        _location = @"over there";
+        _savedItineraries = [@[] mutableCopy];
+        _preferences = [@{} mutableCopy];
+        _ratings = [@{} mutableCopy];
+        _tips = [@{} mutableCopy];
+        _profilePhoto = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"https://avatars3.githubusercontent.com/u/16245367?v=3&s=460"]];
+        _reputation = 1;
+    }
+    
+    NSLog(@"User initialized");
+    
+    return self;
+
 }
 
 @end
