@@ -6,6 +6,7 @@
 //  Copyright © 2016 Team Eggplant Button. All rights reserved.
 //
 
+#import <CoreLocation/CoreLocation.h>
 #import "ActivitiesDataStore.h"
 #import "OpenTableAPIClient.h"
 #import "Restaurant.h"
@@ -41,11 +42,38 @@
         
         for(NSDictionary *restaurant in restaurants) {
             
-            [self.restaurants addObject:[Restaurant restaurantFromDictionary:restaurant]];
+            if (!restaurants) {
+                
+                completionBlock(NO);
+                return;
+            }
             
+            [self.restaurants addObject:[Restaurant restaurantFromDictionary:restaurant]];
         }
         
         completionBlock(YES);
+    }];
+    
+}
+
+-(void)getEventsForLocation:(CLLocation *) location withCompletion: (void (^)(BOOL))successBlock {
+    
+    [TicketMasterAPIClient getEventsFromLocation:location completion:^(NSArray *events) {
+        
+        if (!events) {
+            
+            successBlock(NO);
+            return;
+        
+        }
+        
+        for (NSDictionary *eventDictionary in events) {
+
+            TicketMasterEvent *newEvent = [TicketMasterEvent eventFromDictionary:eventDictionary];
+            [self.events addObject: newEvent];
+
+             successBlock(YES);
+        }
     }];
     
 }

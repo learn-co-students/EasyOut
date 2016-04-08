@@ -16,7 +16,8 @@
                        address:eventDictionary[@"_embedded"][@"venues"][0][@"address"][@"line1"]
                           city:eventDictionary[@"_embedded"][@"venues"][0][@"city"][@"name"]
                     postalCode:eventDictionary[@"_embedded"][@"venues"][0][@"postalCode"]
-                      imageURL:[NSURL URLWithString: eventDictionary[@"images"][4][@"url"]]];
+                      imageURL:[NSURL URLWithString: eventDictionary[@"images"][4][@"url"]]
+                  activityType:EventType];
     if(self) {
         
         _eventID = eventDictionary[@"id"];

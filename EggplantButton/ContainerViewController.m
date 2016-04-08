@@ -56,7 +56,7 @@
     self.ticketMasterDataStore = [TicketMasterDataStore sharedDataStore];
     
     // this method ask's user for permission to use location
-    //[self setupLocationManager];
+    
 
     
     // Create cards for each activity in the shared data store

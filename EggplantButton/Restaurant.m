@@ -16,12 +16,15 @@
     self = [super initWithName:restaurantDictionary[@"name"]
                        address:restaurantDictionary[@"address"]
                           city:restaurantDictionary[@"city"] postalCode:restaurantDictionary[@"postal_code"]
-                      imageURL:[NSURL URLWithString: restaurantDictionary[@"image_url"]]];
+                      imageURL:[NSURL URLWithString: restaurantDictionary[@"image_url"]]
+                  activityType:RestaurantType];
     
     if(self) {
         _price = [restaurantDictionary[@"price"] stringValue];
         _reserveURL = restaurantDictionary[@"reserve_url"];
         _phonenumber =  restaurantDictionary[@"phone"];
+        _lat = [restaurantDictionary[@"latitude"] integerValue];
+        _lng = [restaurantDictionary[@"longitude"] integerValue];
     }
 
     return self;

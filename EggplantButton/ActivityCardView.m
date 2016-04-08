@@ -13,13 +13,12 @@
 
 @interface ActivityCardView ()
 
-//@property (strong, nonatomic) RestaurantDataStore *sharedDataStore;
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
-@property (weak, nonatomic) IBOutlet UILabel *pricepointLabel;
+@property (weak, nonatomic) IBOutlet UILabel *detailLabel;
 
 
 @end
@@ -61,25 +60,23 @@
 
 }
 
--(void)setRestaurant:(Restaurant *)restaurant {
-
-    _restaurant = restaurant;
+-(void)setActivity:(Activity *)activity {
+    
+    _activity = activity;
     [self updateUI];
-}
-
--(void)setEvent:(TicketMasterEvent *)event{
-    _event = event;
-    [self updateUI]; 
 }
 
 
 // Add data to activity card view
 -(void)updateUI {
     
-    self.imageView.image = [UIImage imageWithData: [NSData dataWithContentsOfURL:self.restaurant.imageURL]];
-    self.nameLabel.text = self.restaurant.name;
-    self.addressLabel.text = self.restaurant.address;
-    self.pricepointLabel.text = self.restaurant.price;
+    self.imageView.image = [UIImage imageWithData: [NSData dataWithContentsOfURL:self.activity.imageURL]];
+    self.nameLabel.text = self.activity.name;
+    self.addressLabel.text = self.activity.address;
+    
+    if([self.activity isKindOfClass:[Restaurant class]]);
+    
+    self.pricepointLabel.text = ()self.activity.price;
 
     
 //    self.imageView.clipsToBounds = YES;

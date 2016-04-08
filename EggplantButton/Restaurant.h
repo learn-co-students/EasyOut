@@ -12,9 +12,12 @@
 
 @interface Restaurant : Activity
 
+
 @property (strong, nonatomic) NSString *price;
 @property (strong, nonatomic) NSString *phonenumber;
 @property (strong, nonatomic) NSURL *reserveURL;
+@property (nonatomic) NSInteger lat;
+@property (nonatomic) NSInteger lng;
 
 -(instancetype)initWithDictionary:(NSDictionary *)restaurantDictionary;
 

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0A05A4EB1CB438AD00EF83CD /* TicketMasterAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A05A4E61CB438AD00EF83CD /* TicketMasterAPIClient.m */; };
 		0A05A4ED1CB438AD00EF83CD /* TicketMasterEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A05A4EA1CB438AD00EF83CD /* TicketMasterEvent.m */; };
-		0A45ADDC1CB54E5500C63DD6 /* TicketMasterDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A45ADDB1CB54E5500C63DD6 /* TicketMasterDataStore.m */; };
 		0AF4FE5D1CB6B89200BCCAB0 /* Secrets.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF4FE5C1CB6B89200BCCAB0 /* Secrets.m */; };
 		4C358D381CAD62CE00257756 /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C358D371CAD62CE00257756 /* ContainerViewController.m */; };
 		4C358D671CADBA0600257756 /* CardScrollContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C358D661CADBA0600257756 /* CardScrollContentView.m */; };
@@ -23,7 +22,6 @@
 		7851133C1CB411CC005DC83C /* Button.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 785113381CB411CC005DC83C /* Button.storyboard */; };
 		9A2478E61CAC2EFA00865C6A /* OpenTableAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2478E51CAC2EFA00865C6A /* OpenTableAPIClient.m */; };
 		9A5616B51CAC68AE008D9264 /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5616B41CAC68AE008D9264 /* Restaurant.m */; };
-		9A5616B81CAD8A30008D9264 /* RestaurantDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5616B71CAD8A30008D9264 /* RestaurantDataStore.m */; };
 		9AA058791CAEAA57000A6AA8 /* ActivityCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AA058781CAEAA57000A6AA8 /* ActivityCard.xib */; };
 		9AD0D0D41CB705D000FDD465 /* ActivitiesDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD0D0D31CB705CF00FDD465 /* ActivitiesDataStore.m */; };
 		9AD0D0D71CB7108000FDD465 /* Activity.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD0D0D61CB7108000FDD465 /* Activity.m */; };
@@ -35,8 +33,6 @@
 		0A05A4E61CB438AD00EF83CD /* TicketMasterAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TicketMasterAPIClient.m; sourceTree = "<group>"; };
 		0A05A4E91CB438AD00EF83CD /* TicketMasterEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TicketMasterEvent.h; sourceTree = "<group>"; };
 		0A05A4EA1CB438AD00EF83CD /* TicketMasterEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TicketMasterEvent.m; sourceTree = "<group>"; };
-		0A45ADDA1CB54E5500C63DD6 /* TicketMasterDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TicketMasterDataStore.h; sourceTree = "<group>"; };
-		0A45ADDB1CB54E5500C63DD6 /* TicketMasterDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TicketMasterDataStore.m; sourceTree = "<group>"; };
 		0A4E7B30585A1886003A7ED7 /* libPods-EggplantButton.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EggplantButton.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AF4FE5C1CB6B89200BCCAB0 /* Secrets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Secrets.m; sourceTree = "<group>"; };
 		478A5D5E5340BA05712F05CE /* Pods-EggplantButton.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EggplantButton.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EggplantButton/Pods-EggplantButton.debug.xcconfig"; sourceTree = "<group>"; };
@@ -63,8 +59,6 @@
 		9A2478E51CAC2EFA00865C6A /* OpenTableAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenTableAPIClient.m; sourceTree = "<group>"; };
 		9A5616B31CAC68AE008D9264 /* Restaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Restaurant.h; sourceTree = "<group>"; };
 		9A5616B41CAC68AE008D9264 /* Restaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Restaurant.m; sourceTree = "<group>"; };
-		9A5616B61CAD8A30008D9264 /* RestaurantDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantDataStore.h; sourceTree = "<group>"; };
-		9A5616B71CAD8A30008D9264 /* RestaurantDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantDataStore.m; sourceTree = "<group>"; };
 		9AA058781CAEAA57000A6AA8 /* ActivityCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityCard.xib; sourceTree = "<group>"; };
 		9AD0D0D21CB705CF00FDD465 /* ActivitiesDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivitiesDataStore.h; sourceTree = "<group>"; };
 		9AD0D0D31CB705CF00FDD465 /* ActivitiesDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivitiesDataStore.m; sourceTree = "<group>"; };
@@ -116,8 +110,8 @@
 		4C9A037A1CAB064200CA9A02 /* EggplantButton */ = {
 			isa = PBXGroup;
 			children = (
-				9AD0D0D61CB7108000FDD465 /* Activity.m */,
 				9AD0D0D51CB7107700FDD465 /* Activity.h */,
+				9AD0D0D61CB7108000FDD465 /* Activity.m */,
 				9A5616B31CAC68AE008D9264 /* Restaurant.h */,
 				9A5616B41CAC68AE008D9264 /* Restaurant.m */,
 				0A05A4E91CB438AD00EF83CD /* TicketMasterEvent.h */,
@@ -126,10 +120,6 @@
 				4C9A037F1CAB064200CA9A02 /* AppDelegate.m */,
 				9AD0D0D21CB705CF00FDD465 /* ActivitiesDataStore.h */,
 				9AD0D0D31CB705CF00FDD465 /* ActivitiesDataStore.m */,
-				9A5616B61CAD8A30008D9264 /* RestaurantDataStore.h */,
-				9A5616B71CAD8A30008D9264 /* RestaurantDataStore.m */,
-				0A45ADDA1CB54E5500C63DD6 /* TicketMasterDataStore.h */,
-				0A45ADDB1CB54E5500C63DD6 /* TicketMasterDataStore.m */,
 				9AA058781CAEAA57000A6AA8 /* ActivityCard.xib */,
 				4C358D711CADCDF700257756 /* ActivityCardView.h */,
 				4C358D721CADCDF700257756 /* ActivityCardView.m */,
@@ -301,7 +291,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A5616B81CAD8A30008D9264 /* RestaurantDataStore.m in Sources */,
 				9A2478E61CAC2EFA00865C6A /* OpenTableAPIClient.m in Sources */,
 				9AD0D0D71CB7108000FDD465 /* Activity.m in Sources */,
 				4C358D671CADBA0600257756 /* CardScrollContentView.m in Sources */,
@@ -310,7 +299,6 @@
 				4C358D731CADCDF700257756 /* ActivityCardView.m in Sources */,
 				9AD0D0D41CB705D000FDD465 /* ActivitiesDataStore.m in Sources */,
 				4C9A03801CAB064200CA9A02 /* AppDelegate.m in Sources */,
-				0A45ADDC1CB54E5500C63DD6 /* TicketMasterDataStore.m in Sources */,
 				9A5616B51CAC68AE008D9264 /* Restaurant.m in Sources */,
 				0A05A4ED1CB438AD00EF83CD /* TicketMasterEvent.m in Sources */,
 				4C9A037D1CAB064200CA9A02 /* main.m in Sources */,
