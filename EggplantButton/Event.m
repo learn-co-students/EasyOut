@@ -6,9 +6,9 @@
 //  Copyright © 2016 Adrian Brown . All rights reserved.
 //
 
-#import "TicketMasterEvent.h"
+#import "Event.h"
 
-@implementation TicketMasterEvent
+@implementation Event
 
 -(instancetype)initWithDictionary:(NSDictionary *)eventDictionary{
 
@@ -35,9 +35,12 @@
 }
 
 
-+(TicketMasterEvent *)eventFromDictionary:(NSDictionary *)eventDictionary {
++(Event *)eventFromDictionary:(NSDictionary *)eventDictionary {
     
-    TicketMasterEvent *newEvent = [[TicketMasterEvent alloc]initWithDictionary:eventDictionary];
+    Event *newEvent = [[Event alloc]initWithDictionary:eventDictionary];
+    
+    NSLog(@"new event: %@", newEvent.name);
+
     
     return newEvent;
 }

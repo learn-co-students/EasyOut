@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "RestaurantDataStore.h"
-#import "TicketMasterEvent.h"
+#import "Event.h"
 
 @class Restaurant;
 

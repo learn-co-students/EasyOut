@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0A05A4EB1CB438AD00EF83CD /* TicketMasterAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A05A4E61CB438AD00EF83CD /* TicketMasterAPIClient.m */; };
-		0A05A4ED1CB438AD00EF83CD /* TicketMasterEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A05A4EA1CB438AD00EF83CD /* TicketMasterEvent.m */; };
+		0A05A4ED1CB438AD00EF83CD /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A05A4EA1CB438AD00EF83CD /* Event.m */; };
 		0AF4FE5D1CB6B89200BCCAB0 /* Secrets.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF4FE5C1CB6B89200BCCAB0 /* Secrets.m */; };
 		4C358D381CAD62CE00257756 /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C358D371CAD62CE00257756 /* ContainerViewController.m */; };
 		4C358D671CADBA0600257756 /* CardScrollContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C358D661CADBA0600257756 /* CardScrollContentView.m */; };
@@ -31,8 +31,8 @@
 /* Begin PBXFileReference section */
 		0A05A4E51CB438AD00EF83CD /* TicketMasterAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TicketMasterAPIClient.h; sourceTree = "<group>"; };
 		0A05A4E61CB438AD00EF83CD /* TicketMasterAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TicketMasterAPIClient.m; sourceTree = "<group>"; };
-		0A05A4E91CB438AD00EF83CD /* TicketMasterEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TicketMasterEvent.h; sourceTree = "<group>"; };
-		0A05A4EA1CB438AD00EF83CD /* TicketMasterEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TicketMasterEvent.m; sourceTree = "<group>"; };
+		0A05A4E91CB438AD00EF83CD /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		0A05A4EA1CB438AD00EF83CD /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		0A4E7B30585A1886003A7ED7 /* libPods-EggplantButton.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EggplantButton.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AF4FE5C1CB6B89200BCCAB0 /* Secrets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Secrets.m; sourceTree = "<group>"; };
 		478A5D5E5340BA05712F05CE /* Pods-EggplantButton.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EggplantButton.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EggplantButton/Pods-EggplantButton.debug.xcconfig"; sourceTree = "<group>"; };
@@ -114,8 +114,8 @@
 				9AD0D0D61CB7108000FDD465 /* Activity.m */,
 				9A5616B31CAC68AE008D9264 /* Restaurant.h */,
 				9A5616B41CAC68AE008D9264 /* Restaurant.m */,
-				0A05A4E91CB438AD00EF83CD /* TicketMasterEvent.h */,
-				0A05A4EA1CB438AD00EF83CD /* TicketMasterEvent.m */,
+				0A05A4E91CB438AD00EF83CD /* Event.h */,
+				0A05A4EA1CB438AD00EF83CD /* Event.m */,
 				4C9A037E1CAB064200CA9A02 /* AppDelegate.h */,
 				4C9A037F1CAB064200CA9A02 /* AppDelegate.m */,
 				9AD0D0D21CB705CF00FDD465 /* ActivitiesDataStore.h */,
@@ -300,7 +300,7 @@
 				9AD0D0D41CB705D000FDD465 /* ActivitiesDataStore.m in Sources */,
 				4C9A03801CAB064200CA9A02 /* AppDelegate.m in Sources */,
 				9A5616B51CAC68AE008D9264 /* Restaurant.m in Sources */,
-				0A05A4ED1CB438AD00EF83CD /* TicketMasterEvent.m in Sources */,
+				0A05A4ED1CB438AD00EF83CD /* Event.m in Sources */,
 				4C9A037D1CAB064200CA9A02 /* main.m in Sources */,
 				785113371CB41137005DC83C /* setupButton.m in Sources */,
 				0AF4FE5D1CB6B89200BCCAB0 /* Secrets.m in Sources */,

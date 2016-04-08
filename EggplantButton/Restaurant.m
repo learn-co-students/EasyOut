@@ -34,7 +34,9 @@
 +(Restaurant *)restaurantFromDictionary:(NSDictionary *)restaurantDictionary {
     
     Restaurant *newRestaurant = [[Restaurant alloc]initWithDictionary:restaurantDictionary];
-        
+    
+    NSLog(@"new restaurant: %@", newRestaurant.name);
+    
     return newRestaurant;
     
 }

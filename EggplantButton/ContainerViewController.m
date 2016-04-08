@@ -7,13 +7,11 @@
 //
 
 #import "ContainerViewController.h"
-#import "RestaurantDataStore.h"
 #import "ActivityCardView.h"
-#import "Restaurant.h"
+#import "ActivitiesDataStore.h"
 
-#import "TicketMasterDataStore.h"
-#import "TicketMasterEvent.h"
-#import "TicketMasterAPIClient.h"
+#import "Restaurant.h"
+#import "Event.h"
 #import <CoreLocation/CoreLocation.h>
 
 @class Restaurant;
@@ -22,8 +20,7 @@
 
 @interface ContainerViewController () <UIScrollViewDelegate, CLLocationManagerDelegate >
 
-@property (strong, nonatomic) RestaurantDataStore *dataStore;
-@property (strong, nonatomic) TicketMasterDataStore *ticketMasterDataStore;
+@property (strong, nonatomic) ActivitiesDataStore *dataStore;
 
 //location Services
 @property (nonatomic, strong) CLLocationManager *locationManager;
@@ -51,15 +48,8 @@
     
     [super viewDidLoad];
     
-    // Call in the shared data store
-    self.dataStore = [RestaurantDataStore sharedDataStore];
-    self.ticketMasterDataStore = [TicketMasterDataStore sharedDataStore];
+    self.dataStore = [ActivitiesDataStore sharedDataStore];
     
-    // this method ask's user for permission to use location
-    
-
-    
-    // Create cards for each activity in the shared data store
     [self.dataStore getRestaurantsWithCompletion:^(BOOL success) {
         if(success) {
             
@@ -68,7 +58,7 @@
                 [[NSOperationQueue mainQueue]addOperationWithBlock:^{
                     
                     ActivityCardView *newActivityCard =[[ActivityCardView alloc]init];
-                    newActivityCard.restaurant = restaurant;
+                    newActivityCard.activity = restaurant;
                     
                     newActivityCard.translatesAutoresizingMaskIntoConstraints = NO;
                     

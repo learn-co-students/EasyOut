@@ -11,7 +11,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface TicketMasterEvent : Activity
+@interface Event : Activity
 
 @property (strong, nonatomic) NSString *eventID;
 @property (strong, nonatomic) NSString *eventURL;
@@ -23,7 +23,7 @@
 
 -(instancetype)initWithDictionary:(NSDictionary *)eventDictionary;
 
-+(TicketMasterEvent *)eventFromDictionary:(NSDictionary *)eventDictionary; 
++(Event *)eventFromDictionary:(NSDictionary *)eventDictionary; 
 
 
 

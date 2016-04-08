@@ -11,7 +11,7 @@
 #import "OpenTableAPIClient.h"
 #import "Restaurant.h"
 #import "TicketMasterAPIClient.h"
-#import "TicketMasterEvent.h"
+#import "Event.h"
 
 
 @implementation ActivitiesDataStore
@@ -49,6 +49,7 @@
             }
             
             [self.restaurants addObject:[Restaurant restaurantFromDictionary:restaurant]];
+            
         }
         
         completionBlock(YES);
@@ -69,7 +70,7 @@
         
         for (NSDictionary *eventDictionary in events) {
 
-            TicketMasterEvent *newEvent = [TicketMasterEvent eventFromDictionary:eventDictionary];
+            Event *newEvent = [Event eventFromDictionary:eventDictionary];
             [self.events addObject: newEvent];
 
              successBlock(YES);

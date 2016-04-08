@@ -9,7 +9,7 @@
 
 #import "ActivityCardView.h"
 #import "Restaurant.h"
-#import "TicketMasterEvent.h"
+#import "Event.h"
 
 @interface ActivityCardView ()
 
@@ -74,9 +74,16 @@
     self.nameLabel.text = self.activity.name;
     self.addressLabel.text = self.activity.address;
     
-    if([self.activity isKindOfClass:[Restaurant class]]);
-    
-    self.pricepointLabel.text = ()self.activity.price;
+    switch (self.activity.activityType) {
+        case RestaurantType:
+            self.detailLabel.text = ((Restaurant *)self.activity).price;
+            break;
+        case EventType:
+            self.detailLabel.text = ((Event *)self.activity).time;
+            break;
+        default:
+            break;
+    }
 
     
 //    self.imageView.clipsToBounds = YES;
