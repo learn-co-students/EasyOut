@@ -78,7 +78,23 @@ import Firebase
                             let usersRef = ref.childByAppendingPath("users")
                             let userRef = usersRef.childByAppendingPath(uid)
                             
-                            userRef.setValue(["uniqueID" : uid!, "email" : email])
+                            userRef.setValue([
+                                "uniqueID" : uid!,
+                                "username" : "username",
+                                "email" : email,
+                                "bio" : "bio",
+                                "location" : "location",
+                                "saved itineraries" : [ "itineraryID" : "itinerary" ],
+                                "preferences" : [
+                                    "default location" : "New York, NY",
+                                    "default price" : 2,
+                                    "default start time" : 1
+                                ],
+                                "ratings" : [ "itineraryID" : 0 ],
+                                "tips" : [ "itineraryID" : "tip" ],
+                                "reputation" : 0,
+                                "profilePhoto" : "imageID"
+                            ])
                         }
         })
         
@@ -86,15 +102,3 @@ import Firebase
         
     }
 }
-
-//        @property (strong, nonatomic) NSString *uniqueID;
-//        @property (strong, nonatomic) NSString *username;
-//        @property (strong, nonatomic) NSString *email;
-//        @property (strong, nonatomic) NSString *bio;
-//        @property (strong, nonatomic) NSString *location;
-//        @property (strong, nonatomic) NSMutableArray *savedItineraries;
-//        @property (strong, nonatomic) NSMutableDictionary *preferences;
-//        @property (strong, nonatomic) NSMutableDictionary *ratings;
-//        @property (strong, nonatomic) NSMutableDictionary *tips;
-//        @property (strong, nonatomic) NSData *profilePhoto;
-//        @property (nonatomic) NSUInteger reputation;
