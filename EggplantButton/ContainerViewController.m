@@ -243,8 +243,8 @@
             
             [self.middleCardStackView addArrangedSubview:newActivityCard];
             
-            [newActivityCard.heightAnchor constraintEqualToAnchor:self.cardHeightAnchor].active = YES;
-            [newActivityCard.widthAnchor constraintEqualToAnchor:self.cardWidthAnchor].active = YES;
+            [newActivityCard.heightAnchor constraintEqualToAnchor:self.middleCardScrollView.heightAnchor].active = YES;
+            [newActivityCard.widthAnchor constraintEqualToAnchor:self.middleCardScrollView.widthAnchor].active = YES;
             
         }
     }
