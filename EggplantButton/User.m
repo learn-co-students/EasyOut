@@ -10,7 +10,7 @@
 
 @interface User ()
 
-@property (strong, nonatomic) NSString *userID;
+@property (strong, nonatomic) NSString *uniqueID;
 @property (strong, nonatomic) NSString *username;
 @property (strong, nonatomic) NSString *email;
 @property (strong, nonatomic) NSString *bio;
@@ -27,7 +27,7 @@
 @implementation User
 
 -(instancetype)init {
-    self = [self initWithUserID:@"f83f5ab3-9538-4504-b329-0707d6b5cf9b"];
+    self = [self initWithUniqueID:@"8455b42e-e7d0-49cb-bcce-2e03331b402f"];
     if (self) {
         
     }
@@ -41,7 +41,7 @@
     self = [super init];
     
     if (self) {
-        _userID = @"id";
+        _uniqueID = @"id";
         _username = @"testUsername";
         _email = email;
         _bio = @"lol wut";
@@ -59,12 +59,12 @@
     return self;
 }
 
--(instancetype)initWithUserID:(NSString *)userID {
+-(instancetype)initWithUniqueID:(NSString *)uniqueID {
     
     self = [super init];
     
     if (self) {
-        _userID = userID;
+        _uniqueID = uniqueID;
         _username = @"testUsername";
         _email = @"test@test.test";
         _bio = @"lol wut";

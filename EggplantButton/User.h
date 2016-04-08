@@ -13,6 +13,6 @@
 -(instancetype) initWithEmail:(NSString *)email
                      password:(NSString *)password;
 
--(instancetype) initWithUserID:(NSString *)userID;
+-(instancetype) initWithUniqueID:(NSString *)uniqueID;
 
 @end

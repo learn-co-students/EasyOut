@@ -51,8 +51,8 @@ import Firebase
         print(itinerariesRef)
         print(userName)
         
-        // Write data to Firebase
-        ref.setValue(["users" : "ian"])
+//        // Write data to Firebase
+//        ref.setValue(["users" : "ian"])
         
         // Read data and react to changes
         ref.observeEventType(.Value, withBlock: {
@@ -72,14 +72,21 @@ import Firebase
                             // There was an error creating the account
                         } else {
                             let uid = result["uid"] as? String
+                            
                             print("Successfully created user account with uid: \(uid)")
+                            
+                            let usersRef = ref.childByAppendingPath("users")
+                            let userRef = usersRef.childByAppendingPath(uid)
+                            
+                            userRef.setValue(["uniqueID" : uid!, "email" : email])
                         }
         })
+        
         
     }
 }
 
-//        @property (strong, nonatomic) NSString *userID;
+//        @property (strong, nonatomic) NSString *uniqueID;
 //        @property (strong, nonatomic) NSString *username;
 //        @property (strong, nonatomic) NSString *email;
 //        @property (strong, nonatomic) NSString *bio;
