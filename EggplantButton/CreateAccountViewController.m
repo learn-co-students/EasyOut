@@ -1,23 +1,25 @@
 //
-//  LogInViewController.m
+//  CreateAccountViewController.m
 //  EggplantButton
 //
-//  Created by Adrian Brown  on 4/7/16.
+//  Created by Adrian Brown  on 4/8/16.
 //  Copyright © 2016 Team Eggplant Button. All rights reserved.
 //
 
-#import "LogInViewController.h"
+#import "CreateAccountViewController.h"
 
-@interface LogInViewController ()
-@property (weak, nonatomic) IBOutlet UILabel *loginLabel;
+@interface CreateAccountViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *createAccountLabel;
+@property (weak, nonatomic) IBOutlet UITextField *nameLabel;
+@property (weak, nonatomic) IBOutlet UITextField *userNameLabel;
 @property (weak, nonatomic) IBOutlet UITextField *emailLabel;
-@property (weak, nonatomic) IBOutlet UITextField *passwordLabel;
-@property (weak, nonatomic) IBOutlet UIButton *loginButtonTapped;
-@property (weak, nonatomic) IBOutlet UIButton *registerButtonTapped;
+@property (weak, nonatomic) IBOutlet UITextField *passWordLabel;
+@property (weak, nonatomic) IBOutlet UITextField *verifyPasswordLabel;
+@property (weak, nonatomic) IBOutlet UIButton *createAccountButtonTapped;
 
 @end
 
-@implementation LogInViewController
+@implementation CreateAccountViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,5 +40,7 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
 
 @end

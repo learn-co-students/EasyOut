@@ -12,6 +12,7 @@
 		0A45ADDC1CB54E5500C63DD6 /* TicketMasterDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A45ADDB1CB54E5500C63DD6 /* TicketMasterDataStore.m */; };
 		0AD755811CB6E586002511A7 /* AppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD755801CB6E586002511A7 /* AppViewController.m */; };
 		0AD755841CB6EC67002511A7 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD755831CB6EC67002511A7 /* LogInViewController.m */; };
+		0AE862721CB7FFB1003B196C /* CreateAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE862711CB7FFB1003B196C /* CreateAccountViewController.m */; };
 		0AF4FE5D1CB6B89200BCCAB0 /* Secrets.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF4FE5C1CB6B89200BCCAB0 /* Secrets.m */; };
 		4C358D381CAD62CE00257756 /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C358D371CAD62CE00257756 /* ContainerViewController.m */; };
 		4C358D671CADBA0600257756 /* CardScrollContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C358D661CADBA0600257756 /* CardScrollContentView.m */; };
@@ -45,6 +46,8 @@
 		0AD755801CB6E586002511A7 /* AppViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppViewController.m; sourceTree = "<group>"; };
 		0AD755821CB6EC67002511A7 /* LogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
 		0AD755831CB6EC67002511A7 /* LogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
+		0AE862701CB7FFB1003B196C /* CreateAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateAccountViewController.h; sourceTree = "<group>"; };
+		0AE862711CB7FFB1003B196C /* CreateAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateAccountViewController.m; sourceTree = "<group>"; };
 		0AF4FE5C1CB6B89200BCCAB0 /* Secrets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Secrets.m; sourceTree = "<group>"; };
 		478A5D5E5340BA05712F05CE /* Pods-EggplantButton.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EggplantButton.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EggplantButton/Pods-EggplantButton.debug.xcconfig"; sourceTree = "<group>"; };
 		4C270CA61CAB08A2003E0195 /* Secrets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Secrets.h; sourceTree = "<group>"; };
@@ -146,6 +149,8 @@
 				0AD755801CB6E586002511A7 /* AppViewController.m */,
 				0AD755821CB6EC67002511A7 /* LogInViewController.h */,
 				0AD755831CB6EC67002511A7 /* LogInViewController.m */,
+				0AE862701CB7FFB1003B196C /* CreateAccountViewController.h */,
+				0AE862711CB7FFB1003B196C /* CreateAccountViewController.m */,
 				4C358D651CADBA0600257756 /* CardScrollContentView.h */,
 				785BF3361CB8128B00F0BE3C /* itineraryShare.storyboard */,
 				4C9A038C1CAB064200CA9A02 /* LaunchScreen.storyboard */,
@@ -323,6 +328,7 @@
 				4C358D731CADCDF700257756 /* ActivityCardView.m in Sources */,
 				4C9A03801CAB064200CA9A02 /* AppDelegate.m in Sources */,
 				0AD755841CB6EC67002511A7 /* LogInViewController.m in Sources */,
+				0AE862721CB7FFB1003B196C /* CreateAccountViewController.m in Sources */,
 				0A45ADDC1CB54E5500C63DD6 /* TicketMasterDataStore.m in Sources */,
 				9A5616B51CAC68AE008D9264 /* Restaurant.m in Sources */,
 				0AD755811CB6E586002511A7 /* AppViewController.m in Sources */,
