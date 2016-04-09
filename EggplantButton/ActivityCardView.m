@@ -8,7 +8,6 @@
 //
 
 #import "ActivityCardView.h"
-#import "Restaurant.h"
 #import "Event.h"
 
 @interface ActivityCardView ()

@@ -7,10 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RestaurantDataStore.h"
 #import "Event.h"
-
-@class Restaurant;
+#import "Restaurant.h"
 
 @interface ActivityCardView : UIView
 
