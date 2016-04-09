@@ -9,6 +9,8 @@
 #import "ContainerViewController.h"
 #import "ActivityCardView.h"
 #import "ActivitiesDataStore.h"
+#import "ActivityCardCollectionViewCell.h"
+#import "Activity.h"
 
 #import "Restaurant.h"
 #import "Event.h"
@@ -17,8 +19,10 @@
 @class Restaurant;
 
 
+//MFMessageControlViewController
 
-@interface ContainerViewController () <UIScrollViewDelegate, CLLocationManagerDelegate >
+
+@interface ContainerViewController () <UIScrollViewDelegate, CLLocationManagerDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (strong, nonatomic) ActivitiesDataStore *dataStore;
 
@@ -27,19 +31,9 @@
 @property (strong, nonatomic) NSString *latitude;
 @property (strong, nonatomic) NSString *longitude;
 
-@property (weak, nonatomic) IBOutlet UIScrollView *topCardScrollView;
-@property (weak, nonatomic) IBOutlet UIScrollView *middleCardScrollView;
-@property (weak, nonatomic) IBOutlet UIScrollView *bottomCardScrollView;
-
-@property (weak, nonatomic) IBOutlet UIStackView *topCardStackView;
-@property (weak, nonatomic) IBOutlet UIStackView *middleCardStackView;
-@property (weak, nonatomic) IBOutlet UIStackView *bottomCardStackView;
-
-@property (weak, nonatomic) IBOutlet UIButton *locationFilterButton;
-@property (weak, nonatomic) IBOutlet UIButton *timeFilterButton;
-@property (weak, nonatomic) IBOutlet UIButton *shareButton;
-@property (weak, nonatomic) IBOutlet UIButton *priceFilterButton;
-@property (weak, nonatomic) IBOutlet UIButton *historyButton;
+@property (weak, nonatomic) IBOutlet UICollectionView *topRowCollection;
+@property (weak, nonatomic) IBOutlet UICollectionView *middleRowCollection;
+@property (weak, nonatomic) IBOutlet UICollectionView *bottomRowCollection;
 
 @end
 
@@ -49,24 +43,13 @@
     
     [super viewDidLoad];
     
+    [self setUpCoreLocation];
     
-    //LOCATION THINGS
-    self.locationManager = [[CLLocationManager alloc] init];
-    self.locationManager.delegate = self;
+    [self.topRowCollection registerClass:[ActivityCardCollectionViewCell class] forCellWithReuseIdentifier:@"cardCell"];
+    [self.middleRowCollection registerClass:[ActivityCardCollectionViewCell class] forCellWithReuseIdentifier:@"cardCell"];
+    [self.bottomRowCollection registerClass:[ActivityCardCollectionViewCell class] forCellWithReuseIdentifier:@"cardCell"];
     
-    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
-    
-        [self.locationManager requestWhenInUseAuthorization];
-    }
-    
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    [self.locationManager startUpdatingLocation];
-    
-    self.latitude = [NSString stringWithFormat: @"%f", self.locationManager.location.coordinate.latitude];
-    self.longitude = [NSString stringWithFormat: @"%f", self.locationManager.location.coordinate.longitude];
-    
-    //DATA THINGS
-    
+
     self.dataStore = [ActivitiesDataStore sharedDataStore];
     
     [self getTicketMasterData];
@@ -81,6 +64,55 @@
     [super didReceiveMemoryWarning];
 
 }
+
+
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+
+    if(collectionView == self.topRowCollection) {
+        
+        NSLog(@"%lu", self.dataStore.events.count);
+        
+        return self.dataStore.events.count;
+
+    }
+    else if (collectionView == self.middleRowCollection) {
+        
+        NSLog(@"%lu", self.dataStore.restaurants.count);
+        
+        return self.dataStore.restaurants.count;
+
+    }
+    else {
+        return 10;
+    }
+    
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UICollectionViewCell *cell = (ActivityCardCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"cardCell" forIndexPath:indexPath];
+    if(collectionView == self.topRowCollection) {
+        
+        Activity *restaurantActivity = self.dataStore.restaurants[indexPath.row];
+        ((ActivityCardCollectionViewCell *)cell).cardView.activity = restaurantActivity;
+        
+    }
+    else if (collectionView == self.middleRowCollection) {
+        
+        Activity *eventActivity = self.dataStore.events[indexPath.row];
+        ((ActivityCardCollectionViewCell *)cell).cardView.activity = eventActivity;
+        
+    }
+    else {
+        
+        NSLog(@"Something else is happening");
+    }
+    
+    return cell;
+}
+
+
 
 
 -(void)getRestaurantData{
@@ -102,12 +134,6 @@
                         ActivityCardView *newActivityCard =[[ActivityCardView alloc]init];
                         newActivityCard.activity = restaurant;
                         
-                        newActivityCard.translatesAutoresizingMaskIntoConstraints = NO;
-                        
-                        [self.middleCardStackView addArrangedSubview: newActivityCard];
-                        
-                        [newActivityCard.heightAnchor constraintEqualToAnchor:self.middleCardScrollView.heightAnchor].active = YES;
-                        [newActivityCard.widthAnchor constraintEqualToAnchor:self.middleCardScrollView.widthAnchor].active = YES;
                     }];
                 }
             }
@@ -128,36 +154,41 @@
                     ActivityCardView *eventActivitycard = [[ActivityCardView alloc]init];
                     eventActivitycard.activity = event;
                     
-                    eventActivitycard.translatesAutoresizingMaskIntoConstraints = NO;
-                    
-                    [self.topCardStackView addArrangedSubview:eventActivitycard];
-                    
-                    [eventActivitycard.heightAnchor constraintEqualToAnchor: self.topCardScrollView.heightAnchor].active = YES;
-                    [eventActivitycard.widthAnchor constraintEqualToAnchor: self.topCardScrollView.widthAnchor].active = YES;
                 }];
-                
-
             }
         }
     }];
 }
 
 
-//- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
-//    NSLog(@"location manager did update locations");
-//    if (self.mostRecentLocation == nil) {
-//        
-//        self.mostRecentLocation = [locations lastObject];
-//        
+-(void)setUpCoreLocation {
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    
+    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        
+        [self.locationManager requestWhenInUseAuthorization];
+    }
+    
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [self.locationManager startUpdatingLocation];
+    
+    self.latitude = [NSString stringWithFormat: @"%f", self.locationManager.location.coordinate.latitude];
+    self.longitude = [NSString stringWithFormat: @"%f", self.locationManager.location.coordinate.longitude];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+    if (self.mostRecentLocation == nil) {
+        
+        self.mostRecentLocation = [locations lastObject];
+        
 //        if (self.mostRecentLocation != nil) {
 ////            [self getEvents];
 //        }
-//    }
-//    
-//    NSLog(@"location: %@", self.mostRecentLocation);
-//    
-//    [self.locationManager stopUpdatingLocation];
-//}
+    }
+    
+    [self.locationManager stopUpdatingLocation];
+}
 
 
 // This method will be used to handle the card scroll views' reactions and delay page-turning
@@ -207,8 +238,6 @@
 
 
 -(void)viewWillAppear:(BOOL)animated {
-    
-    NSLog(@"Contianer view will appear");
     
 }
 
