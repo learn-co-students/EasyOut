@@ -38,9 +38,7 @@
 +(Event *)eventFromDictionary:(NSDictionary *)eventDictionary {
     
     Event *newEvent = [[Event alloc]initWithDictionary:eventDictionary];
-    
-    NSLog(@"NEW EVENT: %@", newEvent.name);
-    
+        
     return newEvent;
 }
 @end

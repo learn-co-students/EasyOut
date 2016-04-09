@@ -30,20 +30,32 @@
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gkc-zr-fUL">
                                                         <rect key="frame" x="0.0" y="0.0" width="600" height="191"/>
                                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="yNZ-cS-u4s">
-                                                            <size key="itemSize" width="55" height="75"/>
+                                                            <size key="itemSize" width="298" height="188"/>
                                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         </collectionViewFlowLayout>
                                                         <cells>
                                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cardCell" id="q3k-bS-TW6" customClass="ActivityCardCollectionViewCell">
-                                                                <rect key="frame" x="0.0" y="0.0" width="55" height="75"/>
+                                                                <rect key="frame" x="0.0" y="2" width="298" height="188"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="55" height="75"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="298" height="188"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
+                                                                    <subviews>
+                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7S4-SW-qie" customClass="ActivityCardView">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="298" height="188"/>
+                                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                        </view>
+                                                                    </subviews>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 </view>
+                                                                <constraints>
+                                                                    <constraint firstItem="7S4-SW-qie" firstAttribute="centerY" secondItem="q3k-bS-TW6" secondAttribute="centerY" id="3Zi-Kw-YNc"/>
+                                                                    <constraint firstItem="7S4-SW-qie" firstAttribute="height" secondItem="q3k-bS-TW6" secondAttribute="height" id="Sa6-P5-n2I"/>
+                                                                    <constraint firstItem="7S4-SW-qie" firstAttribute="centerX" secondItem="q3k-bS-TW6" secondAttribute="centerX" id="TPu-Mr-Wen"/>
+                                                                    <constraint firstItem="7S4-SW-qie" firstAttribute="width" secondItem="q3k-bS-TW6" secondAttribute="width" id="k6x-oz-Ouc"/>
+                                                                </constraints>
                                                             </collectionViewCell>
                                                         </cells>
                                                     </collectionView>
@@ -90,7 +102,7 @@
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="I3i-II-yRN" userLabel="Menu Stack View">
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="I3i-II-yRN" userLabel="Menu Stack View">
                                                 <rect key="frame" x="-8" y="608" width="295" height="80"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f3L-7f-xMC" userLabel="Location Filter Button">
@@ -100,28 +112,28 @@
                                                             <action selector="locationFilterButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jdS-w1-6wR"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rx1-or-v5w" userLabel="Time Filter Button">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rx1-or-v5w" userLabel="Time Filter Button">
                                                         <rect key="frame" x="59" y="0.0" width="59" height="80"/>
                                                         <state key="normal" title="Time"/>
                                                         <connections>
                                                             <action selector="timeFilterButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="u4t-Gt-z4E"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QJ0-as-K1B" userLabel="Share Button">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QJ0-as-K1B" userLabel="Share Button">
                                                         <rect key="frame" x="118" y="0.0" width="59" height="80"/>
                                                         <state key="normal" title="Share"/>
                                                         <connections>
                                                             <action selector="shareButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="l0n-Ii-FXw"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N2m-Cy-Kba" userLabel="Price Filter Button">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N2m-Cy-Kba" userLabel="Price Filter Button">
                                                         <rect key="frame" x="177" y="0.0" width="59" height="80"/>
                                                         <state key="normal" title="Price"/>
                                                         <connections>
                                                             <action selector="priceFilterButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="u6p-rR-2fF"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rnc-Rf-G8W" userLabel="History Button">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rnc-Rf-G8W" userLabel="History Button">
                                                         <rect key="frame" x="236" y="0.0" width="59" height="80"/>
                                                         <state key="normal" title="History"/>
                                                         <connections>

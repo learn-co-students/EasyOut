@@ -44,19 +44,12 @@
     [super viewDidLoad];
     
     [self setUpCoreLocation];
-    
-    [self.topRowCollection registerClass:[ActivityCardCollectionViewCell class] forCellWithReuseIdentifier:@"cardCell"];
-    [self.middleRowCollection registerClass:[ActivityCardCollectionViewCell class] forCellWithReuseIdentifier:@"cardCell"];
-    [self.bottomRowCollection registerClass:[ActivityCardCollectionViewCell class] forCellWithReuseIdentifier:@"cardCell"];
-    
 
     self.dataStore = [ActivitiesDataStore sharedDataStore];
     
     [self getTicketMasterData];
     
-//    [self getRestaurantData];
-    
-    
+    [self getRestaurantData];
     
 }
 
@@ -71,37 +64,37 @@
 
     if(collectionView == self.topRowCollection) {
         
-        NSLog(@"%lu", self.dataStore.events.count);
-        
-        return self.dataStore.events.count;
-
-    }
-    else if (collectionView == self.middleRowCollection) {
-        
-        NSLog(@"%lu", self.dataStore.restaurants.count);
-        
         return self.dataStore.restaurants.count;
 
     }
+    else if (collectionView == self.middleRowCollection) {
+                
+        return self.dataStore.events.count;
+
+    }
     else {
-        return 10;
+        return 0;
     }
     
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    UICollectionViewCell *cell = (ActivityCardCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"cardCell" forIndexPath:indexPath];
+    ActivityCardCollectionViewCell *cell = (ActivityCardCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"cardCell" forIndexPath:indexPath];
     if(collectionView == self.topRowCollection) {
         
         Activity *restaurantActivity = self.dataStore.restaurants[indexPath.row];
-        ((ActivityCardCollectionViewCell *)cell).cardView.activity = restaurantActivity;
+        cell.cardView.activity = restaurantActivity;
+        
+        NSLog(@"%@", cell.cardView.activity.name);
         
     }
     else if (collectionView == self.middleRowCollection) {
         
         Activity *eventActivity = self.dataStore.events[indexPath.row];
-        ((ActivityCardCollectionViewCell *)cell).cardView.activity = eventActivity;
+        cell.cardView.activity = eventActivity;  //THIS IS NOT GETTING SET. WHAT'S HAPPENING?
+        
+        NSLog(@"%@", cell.cardView.activity.name);
         
     }
     else {
@@ -121,21 +114,27 @@
         if(success) {
             
             for(Restaurant *restaurant in self.dataStore.restaurants) {
-                
-                NSInteger maxLat = [self.latitude integerValue] + 0.36;
-                NSInteger minLat = [self.latitude integerValue] - 0.36;
-                NSInteger maxLng = [self.longitude integerValue] + 0.36;
-                NSInteger minLng = [self.longitude integerValue] - 0.36;
- 
-                if(restaurant.lat >= minLat && restaurant.lat <= maxLat && restaurant.lng >= minLng && restaurant.lng <= maxLng) {
-                
+//
+//                NSInteger maxLat = [self.latitude integerValue] + 0.36;
+//                NSInteger minLat = [self.latitude integerValue] - 0.36;
+//                NSInteger maxLng = [self.longitude integerValue] + 0.36;
+//                NSInteger minLng = [self.longitude integerValue] - 0.36;
+// 
+//                if(restaurant.lat >= minLat && restaurant.lat <= maxLat && restaurant.lng >= minLng && restaurant.lng <= maxLng) {
+            
                     [[NSOperationQueue mainQueue]addOperationWithBlock:^{
                         
                         ActivityCardView *newActivityCard =[[ActivityCardView alloc]init];
                         newActivityCard.activity = restaurant;
                         
+                        [self.topRowCollection registerClass:[ActivityCardCollectionViewCell class] forCellWithReuseIdentifier:@"cardCell"];
+                        
+                        self.topRowCollection.delegate = self;
+                        self.topRowCollection.dataSource = self;
+
+                        
                     }];
-                }
+//                }
             }
         }
         
@@ -154,6 +153,18 @@
                     ActivityCardView *eventActivitycard = [[ActivityCardView alloc]init];
                     eventActivitycard.activity = event;
                     
+
+                    
+                    [self.middleRowCollection registerClass:[ActivityCardCollectionViewCell class] forCellWithReuseIdentifier:@"cardCell"];
+                    
+                    self.middleRowCollection.delegate = self;
+                    self.middleRowCollection.dataSource = self;
+                    
+//                    [self.bottomRowCollection registerClass:[ActivityCardCollectionViewCell class] forCellWithReuseIdentifier:@"cardCell"];
+//                    
+//                    self.bottomRowCollection.delegate = self;
+//                    self.bottomRowCollection.dataSource = self;
+                    
                 }];
             }
         }
@@ -162,6 +173,7 @@
 
 
 -(void)setUpCoreLocation {
+    
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
     

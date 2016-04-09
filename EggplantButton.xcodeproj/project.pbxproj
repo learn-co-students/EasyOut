@@ -20,7 +20,6 @@
 		7851133C1CB411CC005DC83C /* Button.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 785113381CB411CC005DC83C /* Button.storyboard */; };
 		9A2478E61CAC2EFA00865C6A /* OpenTableAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2478E51CAC2EFA00865C6A /* OpenTableAPIClient.m */; };
 		9A5616B51CAC68AE008D9264 /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5616B41CAC68AE008D9264 /* Restaurant.m */; };
-		9A7918F81CB807C200313A04 /* ActivityCardContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7918F71CB807C200313A04 /* ActivityCardContainerView.m */; };
 		9A7918FB1CB80E4700313A04 /* ActivityCardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7918FA1CB80E4600313A04 /* ActivityCardCollectionViewCell.m */; };
 		9A7918FF1CB8171E00313A04 /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7918FE1CB8171E00313A04 /* ContainerViewController.m */; };
 		9AA058791CAEAA57000A6AA8 /* ActivityCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AA058781CAEAA57000A6AA8 /* ActivityCard.xib */; };
@@ -56,8 +55,6 @@
 		9A2478E51CAC2EFA00865C6A /* OpenTableAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenTableAPIClient.m; sourceTree = "<group>"; };
 		9A5616B31CAC68AE008D9264 /* Restaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Restaurant.h; sourceTree = "<group>"; };
 		9A5616B41CAC68AE008D9264 /* Restaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Restaurant.m; sourceTree = "<group>"; };
-		9A7918F61CB807C200313A04 /* ActivityCardContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCardContainerView.h; sourceTree = "<group>"; };
-		9A7918F71CB807C200313A04 /* ActivityCardContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCardContainerView.m; sourceTree = "<group>"; };
 		9A7918F91CB80E4600313A04 /* ActivityCardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCardCollectionViewCell.h; sourceTree = "<group>"; };
 		9A7918FA1CB80E4600313A04 /* ActivityCardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCardCollectionViewCell.m; sourceTree = "<group>"; };
 		9A7918FE1CB8171E00313A04 /* ContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerViewController.m; sourceTree = "<group>"; };
@@ -130,8 +127,6 @@
 				9A7918FE1CB8171E00313A04 /* ContainerViewController.m */,
 				9A7918F91CB80E4600313A04 /* ActivityCardCollectionViewCell.h */,
 				9A7918FA1CB80E4600313A04 /* ActivityCardCollectionViewCell.m */,
-				9A7918F61CB807C200313A04 /* ActivityCardContainerView.h */,
-				9A7918F71CB807C200313A04 /* ActivityCardContainerView.m */,
 				4C9A03841CAB064200CA9A02 /* Main.storyboard */,
 				4C9A038A1CAB064200CA9A02 /* Assets.xcassets */,
 				4C9A038C1CAB064200CA9A02 /* LaunchScreen.storyboard */,
@@ -302,7 +297,6 @@
 				0A05A4EB1CB438AD00EF83CD /* TicketMasterAPIClient.m in Sources */,
 				9A7918FB1CB80E4700313A04 /* ActivityCardCollectionViewCell.m in Sources */,
 				4C358D731CADCDF700257756 /* ActivityCardView.m in Sources */,
-				9A7918F81CB807C200313A04 /* ActivityCardContainerView.m in Sources */,
 				9AD0D0D41CB705D000FDD465 /* ActivitiesDataStore.m in Sources */,
 				4C9A03801CAB064200CA9A02 /* AppDelegate.m in Sources */,
 				9A5616B51CAC68AE008D9264 /* Restaurant.m in Sources */,

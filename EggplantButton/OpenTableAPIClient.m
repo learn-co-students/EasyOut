@@ -18,7 +18,9 @@ NSString *const OT_API_URL = @"http://opentable.herokuapp.com";
 +(void)getRestaurantWithCompletion:(void (^) (NSArray * restaurants)) completion {
     
     
-    NSString *opentableURL = [NSString stringWithFormat:@"%@/api/restaurants?city=New York&per_page=100", OT_API_URL];
+    
+#warning change after testing!!!
+    NSString *opentableURL = [NSString stringWithFormat:@"%@/api/restaurants?zip=11103&per_page=100", OT_API_URL];
     
     NSString* urlTextEscaped = [opentableURL stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     

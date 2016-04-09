@@ -8,8 +8,7 @@
 //
 
 #import "ActivityCardView.h"
-#import "Restaurant.h"
-#import "Event.h"
+
 
 @interface ActivityCardView ()
 
@@ -24,6 +23,16 @@
 @end
 
 @implementation ActivityCardView
+
+-(instancetype)init {
+    self = [super init];
+    if(self) {
+        [self commonInit];
+    }
+    
+    return self;
+    
+}
 
 -(instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
@@ -44,7 +53,7 @@
 }
 
 -(void)commonInit {
-
+    
     [[NSBundle mainBundle] loadNibNamed:@"ActivityCard" owner:self options:nil];
 
     [self addSubview:self.contentView];
