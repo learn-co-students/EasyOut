@@ -93,11 +93,13 @@ import Firebase
     // Create a new user in firebase given a User object and password
     // **** SHOULD BE DEFAULT FOR USER CREATION ****
     class func createNewUserWithUser(user : User, password : String) {
+        
         let ref = Firebase(url:firebaseRootRef)
-        ref.createUser(user.email, password: password,
-                       withValueCompletionBlock: { error, result in
+        
+        ref.createUser(user.email, password: password, withValueCompletionBlock: { error, result in
                         if error != nil {
                             print("There was an error creating the user: \(error.description)")
+                            // TODO: Add warning to the user if we encounter an error
                         } else {
                             let uid = result["uid"] as? String
                             
@@ -107,35 +109,54 @@ import Firebase
                             let userRef = usersRef.childByAppendingPath(uid)
                             
                             userRef.setValue([
-                                "uniqueID" : uid!,
-                                "username" : user.username,
-                                "email" : user.email,
-                                "bio" : user.bio,
-                                "location" : user.location,
-                                "saved itineraries" : user.savedItineraries,
-                                "preferences" : user.preferences,
-                                "ratings" : user.ratings,
-                                "tips" : user.tips,
-                                "reputation" : user.reputation,
-                                "profilePhoto" : user.profilePhoto
+                                    "uniqueID" : uid!,
+                                    "username" : user.username,
+                                    "email" : user.email,
+                                    "bio" : user.bio,
+                                    "location" : user.location,
+                                    "saved itineraries" : user.savedItineraries,
+                                    "preferences" : user.preferences,
+                                    "ratings" : user.ratings,
+                                    "tips" : user.tips,
+                                    "reputation" : user.reputation,
+                                    "profilePhoto" : user.profilePhoto
                                 ])
                             
                             // We should actually call firebase to pull values for new user and make sure everything was set correctly
                             print("Created new user: \(userRef)")
                         }
         })
-
     }
     
-    class func createNewItineraryWithItinerary(itinerary : Itinerary) -> AnyObject {
+    class func createNewItineraryWithItinerary(itinerary : Itinerary) -> String {
         
+        // Set references for new itinerary
         let ref = Firebase(url:firebaseRootRef)
         let itinerariesRef = ref.childByAppendingPath("itineraries")
-        
+    
+        // Create firebase reference for given itinerary
         var newItineraryRef = itinerariesRef.childByAutoId()
-        newItineraryRef.setValue(Itinerary)
-        var newItineraryID = newItineraryRef.key
         
+        // Set values of the new itinerary reference with properties on the itinerary
+        var newItineraryID = newItineraryRef.key
+        newItineraryRef.setValue([
+            "itineraryID" : newItineraryID,
+            "creatorID" : itinerary.creatorID,
+            "creationDate" : itinerary.creationDate,
+            "activities" : itinerary.activities,
+            "ratings" : itinerary.ratings,
+            "tips" : itinerary.tips,
+            "photos" : itinerary.photos // TODO: Values for this key should be the keys for every photo attached to the itinerary, and the photo keys should be created in another function
+            ])
+        
+        // Return the new
         return newItineraryID
     }
 }
+
+//@property (strong, nonatomic) NSString *itinieraryID;
+//@property (strong, nonatomic) NSMutableArray *activities;
+//@property (strong, nonatomic) User *creator;
+//@property (strong, nonatomic) NSDate *creationDate;
+//@property (strong, nonatomic) NSMutableArray *photos;
+//@property (strong, nonatomic) NSDictionary *ratings;

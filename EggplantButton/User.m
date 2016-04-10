@@ -19,28 +19,28 @@
     return self;
 }
 
--(instancetype) initWithEmail:(NSString *)email {
-    
-    self = [super init];
-    
-    if (self) {
-        _uniqueID = @"";
-        _username = @"";
-        _email = email;
-        _bio = @"";
-        _location = @"";
-        _savedItineraries = [@[] mutableCopy];
-        _preferences = [@{@"default location" : @"New York, NY", @"default price" : @2, @"default start time" : @0} mutableCopy];
-        _ratings = [@{} mutableCopy];
-        _tips = [@{} mutableCopy];
-        _profilePhoto = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"https://avatars3.githubusercontent.com/u/16245367?v=3&s=460"]];
-        _reputation = 1;
-    }
-    
-    NSLog(@"User initialized");
-    
-    return self;
-}
+//-(instancetype) initWithEmail:(NSString *)email {
+//    
+//    self = [super init];
+//    
+//    if (self) {
+//        _uniqueID = @"";
+//        _username = @"";
+//        _email = email;
+//        _bio = @"";
+//        _location = @"";
+//        _savedItineraries = [@[] mutableCopy];
+//        _preferences = [@{@"default location" : @"New York, NY", @"default price" : @2, @"default start time" : @0} mutableCopy];
+//        _ratings = [@{} mutableCopy];
+//        _tips = [@{} mutableCopy];
+//        _profilePhoto = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"https://avatars3.githubusercontent.com/u/16245367?v=3&s=460"]];
+//        _reputation = 1;
+//    }
+//    
+//    NSLog(@"User initialized");
+//    
+//    return self;
+//}
 
 -(instancetype)initWithUniqueID:(NSString *)uniqueID {
     

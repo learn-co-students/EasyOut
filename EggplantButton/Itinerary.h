@@ -14,9 +14,10 @@
 
 @property (strong, nonatomic) NSString *itinieraryID;
 @property (strong, nonatomic) NSMutableArray *activities;
-@property (strong, nonatomic) User *creator;
+@property (strong, nonatomic) NSString *creatorID;
 @property (strong, nonatomic) NSDate *creationDate;
 @property (strong, nonatomic) NSMutableArray *photos;
 @property (strong, nonatomic) NSDictionary *ratings;
+@property (strong, nonatomic) NSMutableArray *tips;
 
 @end
