@@ -54,7 +54,7 @@
     newEvent.eventURL = eventDictionary[@"url"];
     
     NSArray *image = eventDictionary[@"images"];
-    newEvent.imageURL = image[4][@"url"]; 
+    newEvent.imageURL = image[4][@"url"];
     
     NSArray *venues = eventDictionary[@"_embedded"][@"venues"];
     newEvent.address = venues[0][@"address"][@"line1"];

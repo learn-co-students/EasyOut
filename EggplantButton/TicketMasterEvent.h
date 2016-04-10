@@ -40,7 +40,7 @@
                     postalCode:(NSString *)postalCode;
 
 
-+(TicketMasterEvent *)eventFromDictionary:(NSDictionary *)eventDictionary; 
++(TicketMasterEvent *)eventFromDictionary:(NSDictionary *)eventDictionary;
 
 
 

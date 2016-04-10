@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIImage.h>
+#import "Activity.h"
 
 @interface Restaurant : NSObject
 

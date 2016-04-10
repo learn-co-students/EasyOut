@@ -15,7 +15,7 @@
 NSString *const OT_API_URL = @"http://opentable.herokuapp.com";
 
 +(void)getRestaurantWithCompletion:(void (^) (NSArray * restaurants)) completion {
-
+    
     NSString *opentableURL = [NSString stringWithFormat:@"%@/api/restaurants?city=New York&per_page=100", OT_API_URL];
     
     NSString* urlTextEscaped = [opentableURL stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
@@ -40,7 +40,7 @@ NSString *const OT_API_URL = @"http://opentable.herokuapp.com";
             NSString *pageURL = [NSString stringWithFormat:@"%@/api/restaurants?city=New York&per_page=100&page=%ld", OT_API_URL, (long)currentPage];
             
             NSString* pageUrlTextEscaped = [pageURL stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-                        
+            
             AFHTTPSessionManager *pageManager = [AFHTTPSessionManager manager];
             
             [pageManager GET:pageUrlTextEscaped parameters:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -55,11 +55,11 @@ NSString *const OT_API_URL = @"http://opentable.herokuapp.com";
                 }
                 
             }
-            failure:^(NSURLSessionDataTask *task, NSError *error) {
-                
-                NSLog(@"Fail: %@",error.localizedDescription);
-                
-            }];
+                     failure:^(NSURLSessionDataTask *task, NSError *error) {
+                         
+                         NSLog(@"Fail: %@",error.localizedDescription);
+                         
+                     }];
             
             currentPage++;
             
@@ -72,7 +72,7 @@ NSString *const OT_API_URL = @"http://opentable.herokuapp.com";
         NSLog(@"Fail: %@",error.localizedDescription);
         
     }];
-
+    
 }
 
 @end
