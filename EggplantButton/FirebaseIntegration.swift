@@ -152,6 +152,30 @@ import Firebase
         // Return the new
         return newItineraryID
     }
+    
+    // Create a new image reference in Firebase and return its unique ID
+    class func createNewImageWithImage(image : UIImage) -> String {
+        
+        // Set references for new itinerary
+        let ref = Firebase(url:firebaseRootRef)
+        let imagesRef = ref.childByAppendingPath("images")
+        
+        // Create firebase reference for given itinerary
+        var newImageRef = imagesRef.childByAutoId()
+        
+        // Create data from image
+        var newImageData : NSData = UIImagePNGRepresentation(image)!
+        
+        // Set values of the new itinerary reference with properties on the itinerary
+        var newImageID = newImageRef.key
+        newImageRef.setValue([
+            "imageID" : newImageID,
+            "imageData" : newImageData // TODO: Values for this key should be the keys for every photo attached to the itinerary, and the photo keys should be created in another function
+            ])
+        
+        // Return the new image's ID
+        return newImageID
+    }
 }
 
 //@property (strong, nonatomic) NSString *itinieraryID;
