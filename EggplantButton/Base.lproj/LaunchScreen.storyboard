@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="EasyOut Launch Screen Image" translatesAutoresizingMaskIntoConstraints="NO" id="FC6-OC-DT2">
+                            <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="EasyOutLaunchScreenImage" translatesAutoresizingMaskIntoConstraints="NO" id="FC6-OC-DT2">
                                 <rect key="frame" x="75" y="95" width="450" height="261"/>
                             </imageView>
                         </subviews>
@@ -36,6 +36,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="EasyOut Launch Screen Image" width="690" height="261"/>
+        <image name="EasyOutLaunchScreenImage" width="690" height="261"/>
     </resources>
 </document>

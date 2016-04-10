@@ -49,9 +49,17 @@
 //        }
 //    }];
     
+    // Instantiate new instance of the Firebase API Client
+    FirebaseAPIClient *firebaseAPI = [[FirebaseAPIClient alloc] init];
     
-    FireBaseAPIClient *FBAPI = [[FireBaseAPIClient alloc] init];
-    [FBAPI sayHi];
+    // Create and save test image to Firebase
+    UIImage *image = [UIImage imageNamed:@"EasyOutLaunchScreenImage"];
+    NSString *imageID = [firebaseAPI createNewImageWithImage:image];
+    NSLog(@"Image saved to Firebase with ID: %@", imageID);
+    
+    // Create and save test user to Firebase
+    
+    // Create and save test itinerary to Firebase
     
     // Set default card height and width anchors
     self.cardHeightAnchor = self.topCardScrollView.heightAnchor;

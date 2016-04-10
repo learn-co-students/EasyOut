@@ -9,10 +9,13 @@
 import Foundation
 import Firebase
 
-@objc class FireBaseAPIClient: NSObject {
+@objc class FirebaseAPIClient: NSObject {
+    
+    // TODO: Global save function which calls appropriate API save function based on type of data passed in
+    
     
     // Return list of all users
-    class func getAllUsersWithCompletion(completion:(success: Bool) -> (AnyObject)) {
+    func getAllUsersWithCompletion(completion:(success: Bool) -> (AnyObject)) {
         
         // Create a reference to root Firebase location
         let ref = Firebase(url:firebaseRootRef)
@@ -48,11 +51,11 @@ import Firebase
     
     // Test function
     func sayHi() {
-        FireBaseAPIClient.createNewUserWithEmail("email1@example.com", password: "correcthorsebatterystaple")
+//        FireBaseAPIClient.createNewUserWithEmail("email1@example.com", password: "correcthorsebatterystaple")
     }
     
     // Create a new user in firebase given email and password
-    class func createNewUserWithEmail(email : String, password : String) {
+    func createNewUserWithEmail(email : String, password : String) {
         
         let ref = Firebase(url:firebaseRootRef)
         ref.createUser(email, password: password,
@@ -92,7 +95,7 @@ import Firebase
     
     // Create a new user in firebase given a User object and password
     // **** SHOULD BE DEFAULT FOR USER CREATION ****
-    class func createNewUserWithUser(user : User, password : String) {
+    func createNewUserWithUser(user : User, password : String) {
         
         let ref = Firebase(url:firebaseRootRef)
         
@@ -128,7 +131,7 @@ import Firebase
         })
     }
     
-    class func createNewItineraryWithItinerary(itinerary : Itinerary) -> String {
+    func createNewItineraryWithItinerary(itinerary : Itinerary) -> String {
         
         // Set references for new itinerary
         let ref = Firebase(url:firebaseRootRef)
@@ -154,7 +157,7 @@ import Firebase
     }
     
     // Create a new image reference in Firebase and return its unique ID
-    class func createNewImageWithImage(image : UIImage) -> String {
+    func createNewImageWithImage(image : UIImage) -> String {
         
         // Set references for new itinerary
         let ref = Firebase(url:firebaseRootRef)
@@ -166,21 +169,19 @@ import Firebase
         // Create data from image
         var newImageData : NSData = UIImagePNGRepresentation(image)!
         
+        // Convert image data into base 64 string
+        var newImageBase64String : NSString! = newImageData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.Encoding64CharacterLineLength)
+        
         // Set values of the new itinerary reference with properties on the itinerary
         var newImageID = newImageRef.key
         newImageRef.setValue([
             "imageID" : newImageID,
-            "imageData" : newImageData // TODO: Values for this key should be the keys for every photo attached to the itinerary, and the photo keys should be created in another function
+            "imageBase64String" : newImageBase64String // TODO: Values for this key should be the keys for every photo attached to the itinerary, and the photo keys should be created in another function
             ])
+        
+        print(newImageData)
         
         // Return the new image's ID
         return newImageID
     }
 }
-
-//@property (strong, nonatomic) NSString *itinieraryID;
-//@property (strong, nonatomic) NSMutableArray *activities;
-//@property (strong, nonatomic) User *creator;
-//@property (strong, nonatomic) NSDate *creationDate;
-//@property (strong, nonatomic) NSMutableArray *photos;
-//@property (strong, nonatomic) NSDictionary *ratings;
