@@ -6,17 +6,19 @@
 //  Copyright © 2016 Team Eggplant Button. All rights reserved.
 //
 
-#import "ContainerViewController.h"
-#import "EggplantButton-Swift.h"
 #import <CoreLocation/CoreLocation.h>
 #import "UIView+Shake.h"
-#import <CoreMotion/CoreMotion.h>
-#import <GameplayKit/GameplayKit.h>
+#import "ContainerViewController.h"
+#import "EggplantButton-Swift.h"
+#import "ActivityCardView.h"
+#import "ActivitiesDataStore.h"
+#import "Restaurant.h"
+#import "Event.h"
 
 @class Restaurant;
 
 
-@interface ContainerViewController () <UIScrollViewDelegate>
+@interface ContainerViewController () <UIScrollViewDelegate, CLLocationManagerDelegate >
 
 @property (strong, nonatomic) ActivitiesDataStore *dataStore;
 
@@ -27,6 +29,7 @@
 
 @property (strong, strong) NSLayoutDimension *cardHeightAnchor;
 @property (strong, strong) NSLayoutDimension *cardWidthAnchor;
+
 
 @property (weak, nonatomic) IBOutlet UIScrollView *topCardScrollView;
 @property (weak, nonatomic) IBOutlet UIScrollView *middleCardScrollView;
@@ -41,6 +44,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
 @property (weak, nonatomic) IBOutlet UIButton *priceFilterButton;
 @property (weak, nonatomic) IBOutlet UIButton *historyButton;
+
 
 @end
 
@@ -109,12 +113,26 @@
 //            }
 //        }
 //    }];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
 
 }
+
+
+//- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+//    NSLog(@"location manager did update locations");
+//    if (self.mostRecentLocation == nil) {
+//        
+//        self.mostRecentLocation = [locations lastObject];
+//        
+//        if (self.mostRecentLocation != nil) {
+////            [self getEvents];
+//        }
+//    }
+//    
+//    NSLog(@"location: %@", self.mostRecentLocation);
+//    
+//    [self.locationManager stopUpdatingLocation];
+//}
+
 
 -(void)viewWillAppear:(BOOL)animated {
     
@@ -204,6 +222,7 @@
     }];
 }
 
+
 - (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event
 {
     if ( event.subtype == UIEventSubtypeMotionShake )
@@ -260,6 +279,7 @@
     {
         NSLog(@"Shake ended");
     }
+
     
     if ( [super respondsToSelector:@selector(motionEnded:withEvent:)] )
         [super motionEnded:motion withEvent:event];
