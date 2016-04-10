@@ -6,6 +6,7 @@
 //  Copyright © 2016 Team Eggplant Button. All rights reserved.
 //
 
+
 #import "Activity.h"
 
 @implementation Activity
@@ -14,10 +15,12 @@
                     address:(NSString *)address
                        city:(NSString *)city
                  postalCode:(NSString *)postalCode
-                   imageURL:(NSURL *)imageURL {
+                   imageURL:(NSURL *)imageURL
+               activityType:(ActivityType) activityType{
     
     self = [super init];
     if(self) {
+        _activityType = activityType;
         _name = name;
         _address = address;
         _city = city;

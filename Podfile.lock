@@ -19,6 +19,7 @@ PODS:
   - Firebase (2.5.1)
   - Masonry (1.0.0)
   - pop (1.0.9)
+  - UIView+Shake (1.1.5)
 
 DEPENDENCIES:
   - AFNetworking
@@ -27,6 +28,7 @@ DEPENDENCIES:
   - Firebase
   - Masonry
   - pop (~> 1.0)
+  - UIView+Shake
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -35,5 +37,6 @@ SPEC CHECKSUMS:
   Firebase: 3565ea88b830f28f2c77ecc524622bc71a20d085
   Masonry: b529bb169217897b6354d4b56b1fada6d475b13d
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
+  UIView+Shake: 2d2185006d38ee5daed07f14c0989f703f86682f
 
 COCOAPODS: 0.39.0

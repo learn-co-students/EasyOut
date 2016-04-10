@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
+#import "setupButton.h"
+
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -19,6 +21,7 @@
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
+
 
 
 @end

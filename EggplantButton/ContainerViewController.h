@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RestaurantDataStore.h"
+#import "ActivitiesDataStore.h"
 #import "ActivityCardView.h"
 #import "Restaurant.h"
 #import "User.h"
