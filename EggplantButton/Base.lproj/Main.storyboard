@@ -3,8 +3,109 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
+        <!--App View Controller-->
+        <scene sceneID="Swh-gc-w8W">
+            <objects>
+                <viewController id="jYY-7f-gWi" customClass="AppViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kyk-P0-P0E"/>
+                        <viewControllerLayoutGuide type="bottom" id="4RZ-NM-JFi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zrB-EZ-UJ9">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SWD-Gg-YNl">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="SWD-Gg-YNl" firstAttribute="height" secondItem="zrB-EZ-UJ9" secondAttribute="height" id="aJd-hA-Jm6"/>
+                            <constraint firstItem="SWD-Gg-YNl" firstAttribute="top" secondItem="zrB-EZ-UJ9" secondAttribute="topMargin" id="dXm-af-NgM"/>
+                            <constraint firstItem="SWD-Gg-YNl" firstAttribute="width" secondItem="zrB-EZ-UJ9" secondAttribute="width" id="mbw-NE-7ZO"/>
+                            <constraint firstItem="SWD-Gg-YNl" firstAttribute="leading" secondItem="zrB-EZ-UJ9" secondAttribute="leadingMargin" constant="-20" id="xxb-6f-tLC"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZrK-cY-Lmb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-965" y="46"/>
+        </scene>
+        <!--Log In View Controller-->
+        <scene sceneID="Qbx-Or-WZ2">
+            <objects>
+                <viewController id="ycR-me-pJb" customClass="LogInViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gAu-JX-jU2"/>
+                        <viewControllerLayoutGuide type="bottom" id="k6U-OE-1zq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Wi2-cK-gcV">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log In" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sae-b5-Pl4">
+                                <rect key="frame" x="225" y="140" width="150" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jrO-BT-ydd" userLabel="TextField Stack View">
+                                <rect key="frame" x="150" y="255" width="300" height="90"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="33" translatesAutoresizingMaskIntoConstraints="NO" id="RGq-b2-WvD" userLabel="Text Fields ">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="90"/>
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T0s-ag-bTg">
+                                                <rect key="frame" x="0.0" y="0.0" width="300" height="27"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MKO-5V-zm9">
+                                                <rect key="frame" x="0.0" y="60" width="300" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" tag="11" contentMode="scaleToFill" misplaced="YES" distribution="equalSpacing" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="gbE-8O-d9O" userLabel="Button Stack View">
+                                <rect key="frame" x="251" y="435" width="115" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k0T-Ku-7pc">
+                                        <rect key="frame" x="0.0" y="0.0" width="38" height="30"/>
+                                        <state key="normal" title="Login"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bF0-mB-vMr">
+                                        <rect key="frame" x="54" y="0.0" width="61" height="30"/>
+                                        <state key="normal" title="Register "/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gbE-8O-d9O" firstAttribute="centerY" secondItem="Wi2-cK-gcV" secondAttribute="centerY" multiplier="1.5" id="6lV-mi-TUx"/>
+                            <constraint firstItem="jrO-BT-ydd" firstAttribute="centerY" secondItem="Wi2-cK-gcV" secondAttribute="centerY" id="L5h-qy-hpK"/>
+                            <constraint firstItem="Sae-b5-Pl4" firstAttribute="centerX" secondItem="Wi2-cK-gcV" secondAttribute="centerX" id="Qwk-l7-2TC"/>
+                            <constraint firstItem="jrO-BT-ydd" firstAttribute="height" secondItem="Wi2-cK-gcV" secondAttribute="height" multiplier="0.15" id="SZ8-ux-tLz"/>
+                            <constraint firstItem="Sae-b5-Pl4" firstAttribute="centerY" secondItem="Wi2-cK-gcV" secondAttribute="centerY" multiplier="0.5" id="Y4s-h8-dae"/>
+                            <constraint firstItem="jrO-BT-ydd" firstAttribute="width" secondItem="Wi2-cK-gcV" secondAttribute="width" multiplier="0.5" id="mxY-Od-nAt"/>
+                            <constraint firstItem="jrO-BT-ydd" firstAttribute="centerX" secondItem="Wi2-cK-gcV" secondAttribute="centerX" id="psj-es-5J9"/>
+                            <constraint firstItem="gbE-8O-d9O" firstAttribute="centerX" secondItem="Wi2-cK-gcV" secondAttribute="centerX" id="s0A-ni-Z23"/>
+                            <constraint firstItem="Sae-b5-Pl4" firstAttribute="width" secondItem="Wi2-cK-gcV" secondAttribute="width" multiplier="0.25" id="s9c-aq-SPf"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EfB-zf-4MW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-132" y="-322"/>
+        </scene>
         <!--Container View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -17,7 +118,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" directionalLockEnabled="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="At9-Qy-VA6" userLabel="Vertical Scroll View">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="At9-Qy-VA6" userLabel="Vertical Scroll View">
                                 <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1xk-lu-wGc" userLabel="Menu and Cards View">
@@ -27,7 +128,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
                                                 <subviews>
                                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" directionalLockEnabled="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X5l-T8-L5E" userLabel="Top Card Scroll View">
-                                                        <rect key="frame" x="0.0" y="0.0" width="600" height="191"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="600" height="192"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="7OF-zH-niF" userLabel="Top Card Stack View"/>
                                                         </subviews>
@@ -42,7 +143,7 @@
                                                         </connections>
                                                     </scrollView>
                                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" directionalLockEnabled="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4rN-OW-F3z" userLabel="Middle Card Scroll View">
-                                                        <rect key="frame" x="0.0" y="194" width="600" height="192"/>
+                                                        <rect key="frame" x="0.0" y="195" width="600" height="191"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="qRB-pF-yqd" userLabel="Middle Card Stack View"/>
                                                         </subviews>
@@ -57,7 +158,7 @@
                                                         </connections>
                                                     </scrollView>
                                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2P-oz-XwM" userLabel="Bottom Card Scroll View">
-                                                        <rect key="frame" x="0.0" y="389" width="600" height="191"/>
+                                                        <rect key="frame" x="0.0" y="389" width="600" height="192"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Qqw-sX-VYd" userLabel="Bottom Card Stack View"/>
                                                         </subviews>
@@ -96,7 +197,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rx1-or-v5w" userLabel="Time Filter Button">
-                                                                <rect key="frame" x="121" y="0.0" width="117" height="80"/>
+                                                                <rect key="frame" x="121" y="0.0" width="118" height="80"/>
                                                                 <state key="normal" title="Time"/>
                                                                 <connections>
                                                                     <action selector="timeFilterButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="u4t-Gt-z4E"/>
@@ -110,14 +211,14 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N2m-Cy-Kba" userLabel="Price Filter Button">
-                                                                <rect key="frame" x="362" y="0.0" width="117" height="80"/>
+                                                                <rect key="frame" x="362" y="0.0" width="118" height="80"/>
                                                                 <state key="normal" title="Price"/>
                                                                 <connections>
                                                                     <action selector="priceFilterButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="u6p-rR-2fF"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rnc-Rf-G8W" userLabel="History Button">
-                                                                <rect key="frame" x="482" y="0.0" width="118" height="80"/>
+                                                                <rect key="frame" x="483" y="0.0" width="118" height="80"/>
                                                                 <state key="normal" title="History"/>
                                                                 <connections>
                                                                     <action selector="historyButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aH5-zA-Sre"/>
@@ -182,7 +283,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="404" y="439"/>
+            <point key="canvasLocation" x="-132" y="416"/>
         </scene>
     </scenes>
 </document>

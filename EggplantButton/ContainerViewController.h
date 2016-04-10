@@ -15,6 +15,6 @@
 #import "Photo.h"
 #import "Activity.h"
 
-@interface ContainerViewController : UIViewController
+@interface ContainerViewController : UIViewController 
 
 @end

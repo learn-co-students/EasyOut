@@ -9,12 +9,23 @@
 #import "ContainerViewController.h"
 #import "EggplantButton-Swift.h"
 
+#import "TicketMasterDataStore.h"
+#import "TicketMasterEvent.h"
+#import "TicketMasterAPIClient.h"
+#import <CoreLocation/CoreLocation.h>
+
 @class Restaurant;
 
 
-@interface ContainerViewController () <UIScrollViewDelegate>
+
+@interface ContainerViewController () <UIScrollViewDelegate, CLLocationManagerDelegate >
 
 @property (strong, nonatomic) RestaurantDataStore *dataStore;
+@property (strong, nonatomic) TicketMasterDataStore *ticketMasterDataStore;
+
+// Location Services
+@property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, strong) CLLocation *mostRecentLocation;
 
 @property (strong, strong) NSLayoutDimension *cardHeightAnchor;
 @property (strong, strong) NSLayoutDimension *cardWidthAnchor;
@@ -41,14 +52,6 @@
     
     [super viewDidLoad];
     
-//    [FireBaseAPIClient getAllUsersWithCompletion:^(BOOL success) {
-//        if (success) {
-//            
-//            
-//            
-//        }
-//    }];
-    
     // Instantiate new instance of the Firebase API Client
     FirebaseAPIClient *firebaseAPI = [[FirebaseAPIClient alloc] init];
     
@@ -65,14 +68,33 @@
     self.cardHeightAnchor = self.topCardScrollView.heightAnchor;
     self.cardWidthAnchor = self.topCardScrollView.widthAnchor;
     
+
     // Call in the shared data store
     self.dataStore = [RestaurantDataStore sharedDataStore];
+    self.ticketMasterDataStore = [TicketMasterDataStore sharedDataStore];
+    
+    // this method ask's user for permission to use location
+    //[self setupLocationManager];
+
     
     // Create cards for each activity in the shared data store
     [self.dataStore getRestaurantsWithCompletion:^(BOOL success) {
         if(success) {
             
             for(Restaurant *restaurant in self.dataStore.restaurants) {
+
+                [[NSOperationQueue mainQueue]addOperationWithBlock:^{
+                    
+                    ActivityCardView *newActivityCard =[[ActivityCardView alloc]init];
+                    newActivityCard.restaurant = restaurant;
+                    
+                    newActivityCard.translatesAutoresizingMaskIntoConstraints = NO;
+                    
+                    [self.middleCardStackView addArrangedSubview: newActivityCard];
+                    
+                    [newActivityCard.heightAnchor constraintEqualToAnchor:self.topCardScrollView.heightAnchor].active = YES;
+                    [newActivityCard.widthAnchor constraintEqualToAnchor:self.topCardScrollView.widthAnchor].active = YES;
+                }];
                 
 //                NSLog(@"Creating card for %@", restaurant.name);
                 
@@ -86,9 +108,16 @@
                 
                 [newActivityCard.heightAnchor constraintEqualToAnchor:self.cardHeightAnchor].active = YES;
                 [newActivityCard.widthAnchor constraintEqualToAnchor:self.cardWidthAnchor].active = YES;
+
             }
         }
+        
+        //[self getTicketMasterEvents];
+
     }];
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -105,6 +134,73 @@
 //    CGPoint newOffset = CGPointZero;
 //    *targetContentOffset = newOffset;
 //}
+
+
+/* ADRIAN"S TicketMaster Event Setup ** vvvv 
+ 
+ 
+- (void)setupLocationManager {
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    self.locationManager.distanceFilter = kCLDistanceFilterNone;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [self.locationManager requestWhenInUseAuthorization];
+    [self getTheUsersCurrentLocation];
+}
+
+- (void)getTheUsersCurrentLocation {
+    //after this method fires off, the locationManager didUpdateLocations method below gets called (behind the scenes by the startUpdatingLocation)
+    [self.locationManager startUpdatingLocation];
+}
+- (void)locationManager:(CLLocationManager *)manager
+      didUpdateLocations:(NSArray<CLLocation *> *)locations {
+    
+    NSLog(@"location manager did update locations");
+    if (self.mostRecentLocation == nil) {
+        
+        self.mostRecentLocation = [locations lastObject];
+        
+        if (self.mostRecentLocation != nil) {
+            [self getEvents];
+        }
+    }
+    [self.locationManager stopUpdatingLocation];
+}
+
+
+-(void)getEvents {
+    [self.ticketMasterDataStore getEventsForLocation:self.mostRecentLocation withCompletion:^(BOOL success) {
+        if (success) {
+            [[NSOperationQueue mainQueue]addOperationWithBlock:^{
+                // [self.tableView reloadData];
+            }];
+        }
+    }];
+}
+
+
+-(void)getTicketMasterEvents {
+    
+    [self.ticketMasterDataStore getEventsForLocation:_mostRecentLocation withCompletion:^(BOOL success) {
+        if (success) {
+            for (TicketMasterEvent *event in self.ticketMasterDataStore.allEvents) {
+                NSLog(@"Creating card for %@",event.name);
+                
+                ActivityCardView *eventActivitycard = [[ActivityCardView alloc]init];
+                eventActivitycard.event = event;
+                
+                eventActivitycard.translatesAutoresizingMaskIntoConstraints = NO;
+                
+                [self.topCardStackView addArrangedSubview:eventActivitycard];
+                
+                [eventActivitycard.heightAnchor constraintEqualToAnchor: self.topCardScrollView.heightAnchor].active = YES;
+                [eventActivitycard.widthAnchor constraintEqualToAnchor: self.topCardScrollView.widthAnchor].active = YES;
+            }
+        }
+    }];
+}
+ */
+
 
 
 
