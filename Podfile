@@ -11,5 +11,6 @@ pod 'pop', '~> 1.0'
 pod 'Button', '~> 4'
 pod 'DeepLinkKit'
 pod 'UIView+Shake'
+pod 'Firebase'
 
 end
