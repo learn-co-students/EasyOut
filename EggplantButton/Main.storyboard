@@ -152,12 +152,12 @@
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ay4-iI-2Be">
                                         <rect key="frame" x="0.0" y="90" width="300" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Verify password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Iky-wi-ZCP">
                                         <rect key="frame" x="0.0" y="120" width="300" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                 </subviews>
                             </stackView>
@@ -214,7 +214,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
                                                 <subviews>
                                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" directionalLockEnabled="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X5l-T8-L5E" userLabel="Top Card Scroll View">
-                                                        <rect key="frame" x="0.0" y="0.0" width="600" height="192"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="600" height="191"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="7OF-zH-niF" userLabel="Top Card Stack View"/>
                                                         </subviews>
@@ -229,7 +229,7 @@
                                                         </connections>
                                                     </scrollView>
                                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" directionalLockEnabled="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4rN-OW-F3z" userLabel="Middle Card Scroll View">
-                                                        <rect key="frame" x="0.0" y="195" width="600" height="191"/>
+                                                        <rect key="frame" x="0.0" y="194" width="600" height="192"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="qRB-pF-yqd" userLabel="Middle Card Stack View"/>
                                                         </subviews>
@@ -244,7 +244,7 @@
                                                         </connections>
                                                     </scrollView>
                                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2P-oz-XwM" userLabel="Bottom Card Scroll View">
-                                                        <rect key="frame" x="0.0" y="389" width="600" height="192"/>
+                                                        <rect key="frame" x="0.0" y="389" width="600" height="191"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Qqw-sX-VYd" userLabel="Bottom Card Stack View"/>
                                                         </subviews>
@@ -283,7 +283,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rx1-or-v5w" userLabel="Time Filter Button">
-                                                                <rect key="frame" x="121" y="0.0" width="118" height="80"/>
+                                                                <rect key="frame" x="121" y="0.0" width="117" height="80"/>
                                                                 <state key="normal" title="Time"/>
                                                                 <connections>
                                                                     <action selector="timeFilterButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="u4t-Gt-z4E"/>
@@ -297,14 +297,14 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N2m-Cy-Kba" userLabel="Price Filter Button">
-                                                                <rect key="frame" x="362" y="0.0" width="118" height="80"/>
+                                                                <rect key="frame" x="362" y="0.0" width="117" height="80"/>
                                                                 <state key="normal" title="Price"/>
                                                                 <connections>
                                                                     <action selector="priceFilterButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="u6p-rR-2fF"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rnc-Rf-G8W" userLabel="History Button">
-                                                                <rect key="frame" x="483" y="0.0" width="118" height="80"/>
+                                                                <rect key="frame" x="482" y="0.0" width="118" height="80"/>
                                                                 <state key="normal" title="History"/>
                                                                 <connections>
                                                                     <action selector="historyButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aH5-zA-Sre"/>

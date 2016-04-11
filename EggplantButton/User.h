@@ -10,7 +10,7 @@
 
 @interface User : NSObject
 
-@property (strong, nonatomic) NSString *uniqueID;
+@property (strong, nonatomic) NSString *userID;
 @property (strong, nonatomic) NSString *username;
 @property (strong, nonatomic) NSString *email;
 @property (strong, nonatomic) NSString *bio;
@@ -24,6 +24,6 @@
 
 -(instancetype) initWithEmail:(NSString *)email;
 
--(instancetype) initWithUniqueID:(NSString *)uniqueID;
+-(instancetype) initWithUserID:(NSString *)userID;
 
 @end
