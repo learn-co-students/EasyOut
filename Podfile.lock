@@ -1,30 +1,42 @@
 PODS:
-  - AFNetworking (3.0.4):
-    - AFNetworking/NSURLSession (= 3.0.4)
-    - AFNetworking/Reachability (= 3.0.4)
-    - AFNetworking/Security (= 3.0.4)
-    - AFNetworking/Serialization (= 3.0.4)
-    - AFNetworking/UIKit (= 3.0.4)
-  - AFNetworking/NSURLSession (3.0.4):
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.0.4)
-  - AFNetworking/Security (3.0.4)
-  - AFNetworking/Serialization (3.0.4)
-  - AFNetworking/UIKit (3.0.4):
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - Masonry (0.6.4)
+  - Button (4.4.2)
+  - DeepLinkKit (1.2.1)
+  - Firebase (2.5.1)
+  - Masonry (1.0.0)
   - pop (1.0.9)
+  - UIView+Shake (1.1.5)
 
 DEPENDENCIES:
   - AFNetworking
+  - Button (~> 4)
+  - DeepLinkKit
+  - Firebase
   - Masonry
   - pop (~> 1.0)
+  - UIView+Shake
 
 SPEC CHECKSUMS:
-  AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
-  Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  Button: 49cd2e0f46b40d77e1bc3538561a8b8490ae5b63
+  DeepLinkKit: 4c3a713b7ecc6c6e25ba56c87d0c728f6035a9ef
+  Firebase: 3565ea88b830f28f2c77ecc524622bc71a20d085
+  Masonry: b529bb169217897b6354d4b56b1fada6d475b13d
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
+  UIView+Shake: 2d2185006d38ee5daed07f14c0989f703f86682f
 
 COCOAPODS: 0.39.0

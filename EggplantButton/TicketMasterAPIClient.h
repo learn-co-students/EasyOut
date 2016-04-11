@@ -7,10 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CoreLocation/CoreLocation.h>
 
-@interface TicketMasterAPIClient : NSObject <CLLocationManagerDelegate>
+@interface TicketMasterAPIClient : NSObject
 
-+(void)getEventsFromLocation: (CLLocation *) location completion:(void (^)(NSArray *))completionBlock;
++(void)getEventsForLat:(NSString *)lat lng:(NSString *)lng withCompletion:(void (^)(NSArray * events))completionBlock;
 
 @end

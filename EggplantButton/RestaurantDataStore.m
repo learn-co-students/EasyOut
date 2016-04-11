@@ -34,13 +34,23 @@
 -(void)getRestaurantsWithCompletion:(void (^)(BOOL success))completionBlock
 {
     [OpenTableAPIClient getRestaurantWithCompletion:^(NSArray *restaurants) {
- 
+        
         for(NSDictionary *restaurant in restaurants) {
             
             [self.restaurants addObject:[Restaurant restaurantFromDictionary:restaurant]];
+            
+            NSLog(@"restaurant num %lu", self. restaurants.count);
+            
+            
         }
         completionBlock(YES);
     }];
+    
+    
 }
+
+
+
+
 
 @end

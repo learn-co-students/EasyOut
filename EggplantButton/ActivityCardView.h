@@ -7,13 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RestaurantDataStore.h"
-
-@class Restaurant;
+#import "Event.h"
+#import "Restaurant.h"
 
 @interface ActivityCardView : UIView
 
-@property (strong, nonatomic) Restaurant *restaurant;
+@property (strong, nonatomic) Activity *activity;
 
 @end
  

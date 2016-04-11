@@ -20,6 +20,11 @@
 @property (strong, nonatomic) NSString *genre;
 @property (strong, nonatomic) NSString *subGenre;
 @property (strong, nonatomic) NSString *imageURL;
+@property (strong, nonatomic) NSString *address;
+@property (strong, nonatomic) NSString *city;
+@property (strong, nonatomic) NSString *postalCode;
+
+
 
 -(instancetype)initWithEventID:(NSString *)eventID
                            url:(NSString *)eventURL
@@ -29,10 +34,13 @@
                        segment:(NSString *)segment
                          genre:(NSString *)genre
                       subGenre:(NSString *)subGenre
-                         image:(NSString *)imageURL;
+                         image:(NSString *)imageURL
+                       address:(NSString *)address
+                          city:(NSString*)city
+                    postalCode:(NSString *)postalCode;
 
 
-
++(TicketMasterEvent *)eventFromDictionary:(NSDictionary *)eventDictionary;
 
 
 

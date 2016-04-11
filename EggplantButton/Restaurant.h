@@ -8,21 +8,18 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIImage.h>
+#import "Activity.h"
 
-@interface Restaurant : NSObject
+@interface Restaurant : Activity
 
-@property (strong, nonatomic) NSString *name;
-@property (strong, nonatomic) NSString *address;
-@property (strong, nonatomic) NSString *city;
-@property (strong, nonatomic) NSString *state;
-@property (strong, nonatomic) NSString *zipCode;
-@property (strong, nonatomic) NSString *phonenumber;
+
 @property (strong, nonatomic) NSString *price;
-@property (strong, nonatomic) NSURL *imageURL;
-@property (strong, nonatomic) NSString *latitude;
-@property (strong, nonatomic) NSString *longitude;
-@property (strong, nonatomic) NSString *reserveURL;
-@property (strong, nonatomic) NSData *image;
+@property (strong, nonatomic) NSString *phonenumber;
+@property (strong, nonatomic) NSURL *reserveURL;
+@property (nonatomic) NSInteger lat;
+@property (nonatomic) NSInteger lng;
+
+-(instancetype)initWithDictionary:(NSDictionary *)restaurantDictionary;
 
 +(Restaurant *)restaurantFromDictionary:(NSDictionary *)restaurantDictionary;
 
