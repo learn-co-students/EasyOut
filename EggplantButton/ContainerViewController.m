@@ -160,6 +160,9 @@
     NSLog(@"History button tapped");
 }
 
+
+#pragma mark - Populating Activity Cards
+
 -(void)getRestaurantData{
     
     [self.dataStore getRestaurantsWithCompletion:^(BOOL success) {
@@ -192,9 +195,7 @@
                 }
             }
         }
-        
     }];
-    
 }
 
 -(void)getTicketMasterData{
@@ -215,24 +216,27 @@
                     [eventActivitycard.heightAnchor constraintEqualToAnchor: self.topCardScrollView.heightAnchor].active = YES;
                     [eventActivitycard.widthAnchor constraintEqualToAnchor: self.topCardScrollView.widthAnchor].active = YES;
                 }];
-                
-                
+
             }
         }
     }];
 }
 
+#pragma mark - Shake Gesture Methods
 
 - (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event
 {
     if ( event.subtype == UIEventSubtypeMotionShake )
     {
-        
         NSLog(@"Shake started");
         
+        [self getShuffledTicketMasterData];
+        
+        //[self getShuffledRestaurantData];
+        
         // Shake top card with the default speed
-        [self.topCardStackView shake:15     // 15 times
-                           withDelta:20     // 20 points wide
+        [self.topCardStackView shake:7    // 15 times
+                           withDelta:10     // 20 points wide
          ];
         // Shake middle card with the default speed
         [self.middleCardStackView shake:15   // 15 times
@@ -243,33 +247,7 @@
                               withDelta:20   // 20 points wide
          ];
         
-        //shuffle restaurants
-        GKARC4RandomSource *randomSource = [GKARC4RandomSource new];
-        NSArray *shuffledRestaurants = [randomSource arrayByShufflingObjectsInArray:self.dataStore.restaurants];
         
-        //empties middle card stack
-        [self.middleCardStackView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-        
-        //repopulating middle card stack
-        for (NSUInteger i = 0 ; i < 3; i++) {
-            
-            Restaurant *restaurant = [shuffledRestaurants objectAtIndex:i];
-            
-            NSLog(@"Creating NEW card for %@", restaurant.name);
-            
-            ActivityCardView *newActivityCard =[[ActivityCardView alloc]init];
-            newActivityCard.activity = restaurant;
-            
-            newActivityCard.translatesAutoresizingMaskIntoConstraints = NO;
-            
-            [self.middleCardStackView addArrangedSubview:newActivityCard];
-            
-            
-            [newActivityCard.heightAnchor constraintEqualToAnchor:self.middleCardScrollView.heightAnchor].active = YES;
-            [newActivityCard.widthAnchor constraintEqualToAnchor:self.middleCardScrollView.widthAnchor].active = YES;
-            
-            
-        }
     }
 }
 
@@ -278,6 +256,7 @@
     if ( event.subtype == UIEventSubtypeMotionShake )
     {
         NSLog(@"Shake ended");
+        
     }
 
     
@@ -287,6 +266,88 @@
 
 - (BOOL)canBecomeFirstResponder
 { return YES; }
+
+-(void)getShuffledTicketMasterData{
+    
+    [self.dataStore getEventsForLat:self.latitude lng:self.longitude withCompletion:^(BOOL success) {
+        if (success) {
+            //shuffle restaurants
+            GKARC4RandomSource *randomSource = [GKARC4RandomSource new];
+            NSArray *shuffledEvents = [randomSource arrayByShufflingObjectsInArray:self.dataStore.events];
+            
+            //empties top card stack
+            [self.topCardStackView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+            
+            //repopulating top card stack
+            for (NSUInteger i = 0 ; i < 5; i++) {
+                
+                [[NSOperationQueue mainQueue]addOperationWithBlock:^{
+                    
+                    Event *event = [shuffledEvents objectAtIndex:i];
+                    
+                    ActivityCardView *eventActivitycard = [[ActivityCardView alloc]init];
+                    eventActivitycard.activity = event;
+                    
+                    eventActivitycard.translatesAutoresizingMaskIntoConstraints = NO;
+                    
+                    [self.topCardStackView addArrangedSubview:eventActivitycard];
+                    
+                    [eventActivitycard.heightAnchor constraintEqualToAnchor: self.topCardScrollView.heightAnchor].active = YES;
+                    [eventActivitycard.widthAnchor constraintEqualToAnchor: self.topCardScrollView.widthAnchor].active = YES;
+                }];
+                
+                
+            }
+        }
+    }];
+}
+
+-(void)getShuffledRestaurantData{
+    
+    [self.dataStore getRestaurantsWithCompletion:^(BOOL success) {
+        if(success) {
+            
+            //shuffle restaurants
+            GKARC4RandomSource *randomSource = [GKARC4RandomSource new];
+            NSArray *shuffledRestaurants = [randomSource arrayByShufflingObjectsInArray:self.dataStore.restaurants];
+            
+            //empties middle card stack
+            [self.middleCardStackView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+            
+            //repopulating middle card stack
+            for (NSUInteger i = 0 ; i < 5; i++) {
+                
+                Restaurant *restaurant = [shuffledRestaurants objectAtIndex:i];
+                
+                NSInteger maxLat = [self.latitude integerValue] + 0.36;
+                NSInteger minLat = [self.latitude integerValue] - 0.36;
+                NSInteger maxLng = [self.longitude integerValue] + 0.36;
+                NSInteger minLng = [self.longitude integerValue] - 0.36;
+                
+                if(restaurant.lat >= minLat && restaurant.lat <= maxLat && restaurant.lng >= minLng && restaurant.lng <= maxLng) {
+                    
+                    [[NSOperationQueue mainQueue]addOperationWithBlock:^{
+                        
+                        ActivityCardView *newActivityCard =[[ActivityCardView alloc]init];
+                        newActivityCard.activity = restaurant;
+                        
+                        newActivityCard.translatesAutoresizingMaskIntoConstraints = NO;
+                        
+                        [self.middleCardStackView addArrangedSubview: newActivityCard];
+                        
+                        [newActivityCard.heightAnchor constraintEqualToAnchor:self.middleCardScrollView.heightAnchor].active = YES;
+                        [newActivityCard.widthAnchor constraintEqualToAnchor:self.middleCardScrollView.widthAnchor].active = YES;
+                        
+                        NSLog(@"Creating card for %@", restaurant.name);
+                        
+                    }];
+                }
+            }
+        }
+        
+    }];
+    
+}
 
 //- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
 //    NSLog(@"location manager did update locations");
