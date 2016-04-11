@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="QB9-cg-QB8">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -204,172 +204,138 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" directionalLockEnabled="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="At9-Qy-VA6" userLabel="Vertical Scroll View">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Ip0-ss-x0E">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="VU8-K5-T2e" userLabel="Card Stack View">
+                                <rect key="frame" x="20" y="123" width="560" height="402"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1xk-lu-wGc" userLabel="Menu and Cards View">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="660"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="VU8-K5-T2e" userLabel="Card Stack View">
-                                                <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
-                                                <subviews>
-                                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" directionalLockEnabled="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X5l-T8-L5E" userLabel="Top Card Scroll View">
-                                                        <rect key="frame" x="0.0" y="0.0" width="600" height="191"/>
-                                                        <subviews>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="7OF-zH-niF" userLabel="Top Card Stack View"/>
-                                                        </subviews>
-                                                        <constraints>
-                                                            <constraint firstItem="7OF-zH-niF" firstAttribute="leading" secondItem="X5l-T8-L5E" secondAttribute="leading" id="0Gr-1r-sa3"/>
-                                                            <constraint firstItem="7OF-zH-niF" firstAttribute="top" secondItem="X5l-T8-L5E" secondAttribute="top" id="Ik9-K2-Fcv"/>
-                                                            <constraint firstItem="7OF-zH-niF" firstAttribute="bottom" secondItem="X5l-T8-L5E" secondAttribute="bottom" id="Kne-OZ-KKU"/>
-                                                            <constraint firstItem="7OF-zH-niF" firstAttribute="trailing" secondItem="X5l-T8-L5E" secondAttribute="trailing" id="hfA-JV-y9Z"/>
-                                                        </constraints>
-                                                        <connections>
-                                                            <outlet property="delegate" destination="BYZ-38-t0r" id="8Ej-fg-Xjs"/>
-                                                        </connections>
-                                                    </scrollView>
-                                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" directionalLockEnabled="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4rN-OW-F3z" userLabel="Middle Card Scroll View">
-                                                        <rect key="frame" x="0.0" y="194" width="600" height="192"/>
-                                                        <subviews>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="qRB-pF-yqd" userLabel="Middle Card Stack View"/>
-                                                        </subviews>
-                                                        <constraints>
-                                                            <constraint firstItem="qRB-pF-yqd" firstAttribute="trailing" secondItem="4rN-OW-F3z" secondAttribute="trailing" id="Uwd-gX-Qde"/>
-                                                            <constraint firstItem="qRB-pF-yqd" firstAttribute="bottom" secondItem="4rN-OW-F3z" secondAttribute="bottom" id="btV-EP-Kx8"/>
-                                                            <constraint firstItem="qRB-pF-yqd" firstAttribute="top" secondItem="4rN-OW-F3z" secondAttribute="top" id="ltR-qp-kKJ"/>
-                                                            <constraint firstItem="qRB-pF-yqd" firstAttribute="leading" secondItem="4rN-OW-F3z" secondAttribute="leading" id="yqY-8f-3gD"/>
-                                                        </constraints>
-                                                        <connections>
-                                                            <outlet property="delegate" destination="BYZ-38-t0r" id="FOK-Un-g1w"/>
-                                                        </connections>
-                                                    </scrollView>
-                                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2P-oz-XwM" userLabel="Bottom Card Scroll View">
-                                                        <rect key="frame" x="0.0" y="389" width="600" height="191"/>
-                                                        <subviews>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Qqw-sX-VYd" userLabel="Bottom Card Stack View"/>
-                                                        </subviews>
-                                                        <constraints>
-                                                            <constraint firstItem="Qqw-sX-VYd" firstAttribute="bottom" secondItem="f2P-oz-XwM" secondAttribute="bottom" id="AwL-3P-UW5"/>
-                                                            <constraint firstItem="Qqw-sX-VYd" firstAttribute="top" secondItem="f2P-oz-XwM" secondAttribute="top" id="S4H-9N-LOK"/>
-                                                            <constraint firstItem="Qqw-sX-VYd" firstAttribute="leading" secondItem="f2P-oz-XwM" secondAttribute="leading" id="b9r-6e-r9d"/>
-                                                            <constraint firstItem="Qqw-sX-VYd" firstAttribute="trailing" secondItem="f2P-oz-XwM" secondAttribute="trailing" id="oMh-zP-Vfv"/>
-                                                        </constraints>
-                                                        <connections>
-                                                            <outlet property="delegate" destination="BYZ-38-t0r" id="rod-eu-DIE"/>
-                                                        </connections>
-                                                    </scrollView>
-                                                </subviews>
-                                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstItem="X5l-T8-L5E" firstAttribute="trailing" secondItem="VU8-K5-T2e" secondAttribute="trailing" id="IBC-jo-JSy"/>
-                                                    <constraint firstItem="X5l-T8-L5E" firstAttribute="leading" secondItem="VU8-K5-T2e" secondAttribute="leading" id="YHg-HX-6bM"/>
-                                                    <constraint firstItem="f2P-oz-XwM" firstAttribute="trailing" secondItem="VU8-K5-T2e" secondAttribute="trailing" id="b4f-u0-H7D"/>
-                                                    <constraint firstItem="4rN-OW-F3z" firstAttribute="leading" secondItem="VU8-K5-T2e" secondAttribute="leading" id="dO0-iZ-CLa"/>
-                                                    <constraint firstItem="f2P-oz-XwM" firstAttribute="leading" secondItem="VU8-K5-T2e" secondAttribute="leading" id="fdz-X1-rYi"/>
-                                                    <constraint firstItem="4rN-OW-F3z" firstAttribute="trailing" secondItem="VU8-K5-T2e" secondAttribute="trailing" id="n2c-va-Cf9"/>
-                                                </constraints>
-                                            </stackView>
-                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rof-DI-nfP" userLabel="Menu Cointainer View">
-                                                <rect key="frame" x="0.0" y="580" width="600" height="80"/>
-                                                <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="I3i-II-yRN" userLabel="Menu Stack View">
-                                                        <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
-                                                        <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f3L-7f-xMC" userLabel="Location Filter Button">
-                                                                <rect key="frame" x="0.0" y="0.0" width="118" height="80"/>
-                                                                <state key="normal" title="Location"/>
-                                                                <connections>
-                                                                    <action selector="locationFilterButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jdS-w1-6wR"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rx1-or-v5w" userLabel="Time Filter Button">
-                                                                <rect key="frame" x="121" y="0.0" width="117" height="80"/>
-                                                                <state key="normal" title="Time"/>
-                                                                <connections>
-                                                                    <action selector="timeFilterButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="u4t-Gt-z4E"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QJ0-as-K1B" userLabel="Share Button">
-                                                                <rect key="frame" x="241" y="0.0" width="118" height="80"/>
-                                                                <state key="normal" title="Share"/>
-                                                                <connections>
-                                                                    <action selector="shareButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="l0n-Ii-FXw"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N2m-Cy-Kba" userLabel="Price Filter Button">
-                                                                <rect key="frame" x="362" y="0.0" width="117" height="80"/>
-                                                                <state key="normal" title="Price"/>
-                                                                <connections>
-                                                                    <action selector="priceFilterButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="u6p-rR-2fF"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rnc-Rf-G8W" userLabel="History Button">
-                                                                <rect key="frame" x="482" y="0.0" width="118" height="80"/>
-                                                                <state key="normal" title="History"/>
-                                                                <connections>
-                                                                    <action selector="historyButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aH5-zA-Sre"/>
-                                                                </connections>
-                                                            </button>
-                                                        </subviews>
-                                                        <color key="backgroundColor" red="0.1239771768450737" green="0.9508787989616394" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </stackView>
-                                                </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstItem="I3i-II-yRN" firstAttribute="top" secondItem="rof-DI-nfP" secondAttribute="top" id="2By-mc-3ag"/>
-                                                    <constraint firstItem="I3i-II-yRN" firstAttribute="trailing" secondItem="rof-DI-nfP" secondAttribute="trailing" id="ALt-6h-Gwp"/>
-                                                    <constraint firstAttribute="height" constant="80" id="Vpc-4C-TP6"/>
-                                                    <constraint firstItem="I3i-II-yRN" firstAttribute="leading" secondItem="rof-DI-nfP" secondAttribute="leading" id="rAL-gJ-nsd"/>
-                                                    <constraint firstItem="I3i-II-yRN" firstAttribute="bottom" secondItem="rof-DI-nfP" secondAttribute="bottom" id="vZy-Sv-iVE"/>
-                                                </constraints>
-                                            </view>
-                                        </subviews>
-                                        <color key="backgroundColor" red="0.36960259470000001" green="0.80310696039999996" blue="0.83317307689999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstItem="VU8-K5-T2e" firstAttribute="leading" secondItem="1xk-lu-wGc" secondAttribute="leading" id="Lpy-FH-dYc"/>
-                                            <constraint firstItem="rof-DI-nfP" firstAttribute="top" secondItem="VU8-K5-T2e" secondAttribute="bottom" id="NaE-aU-AFr"/>
-                                            <constraint firstItem="rof-DI-nfP" firstAttribute="trailing" secondItem="1xk-lu-wGc" secondAttribute="trailing" id="aEf-0k-rLt"/>
-                                            <constraint firstItem="VU8-K5-T2e" firstAttribute="top" secondItem="1xk-lu-wGc" secondAttribute="top" id="cjb-NQ-BA0"/>
-                                            <constraint firstItem="rof-DI-nfP" firstAttribute="leading" secondItem="1xk-lu-wGc" secondAttribute="leading" id="l35-xc-TJb"/>
-                                            <constraint firstItem="VU8-K5-T2e" firstAttribute="bottom" secondItem="1xk-lu-wGc" secondAttribute="bottom" constant="-80" id="lTT-Dk-uRD"/>
-                                            <constraint firstItem="VU8-K5-T2e" firstAttribute="trailing" secondItem="1xk-lu-wGc" secondAttribute="trailing" id="mD5-Ix-Xyj"/>
-                                        </constraints>
-                                    </view>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gkc-zr-fUL">
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="121"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="yNZ-cS-u4s">
+                                            <size key="itemSize" width="55" height="58"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cardCell" id="q3k-bS-TW6" customClass="ActivityCardCollectionViewCell">
+                                                <rect key="frame" x="0.0" y="0.0" width="55" height="58"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                    <rect key="frame" x="0.0" y="0.0" width="55" height="58"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
+                                            </collectionViewCell>
+                                        </cells>
+                                    </collectionView>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Buu-E5-ZxL">
+                                        <rect key="frame" x="0.0" y="141" width="560" height="120"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="9lb-FM-leQ">
+                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cardCell" id="1bt-h2-PP9" customClass="ActivityCardCollectionViewCell">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
+                                            </collectionViewCell>
+                                        </cells>
+                                    </collectionView>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7QA-HD-63z">
+                                        <rect key="frame" x="0.0" y="281" width="560" height="121"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="JKB-yy-PM1">
+                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cardCell" id="0SS-t6-o3i" customClass="ActivityCardCollectionViewCell">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
+                                            </collectionViewCell>
+                                        </cells>
+                                    </collectionView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="hhF-uU-Inp" userLabel="Button Stack">
+                                <rect key="frame" x="0.0" y="540" width="600" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vrG-5j-TCQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="298" height="60"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D12-lf-tgx">
+                                        <rect key="frame" x="303" y="0.0" width="297" height="60"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstItem="1xk-lu-wGc" firstAttribute="height" secondItem="At9-Qy-VA6" secondAttribute="height" constant="80" id="DHQ-qF-YdR"/>
-                                    <constraint firstItem="1xk-lu-wGc" firstAttribute="top" secondItem="At9-Qy-VA6" secondAttribute="top" id="h8I-kS-P2Q"/>
-                                    <constraint firstItem="1xk-lu-wGc" firstAttribute="bottom" secondItem="At9-Qy-VA6" secondAttribute="bottom" id="iL9-j4-ptZ"/>
-                                    <constraint firstItem="1xk-lu-wGc" firstAttribute="width" secondItem="At9-Qy-VA6" secondAttribute="width" id="jcU-tU-qkM"/>
+                                    <constraint firstAttribute="height" constant="60" id="xrc-AU-Ej6"/>
                                 </constraints>
-                            </scrollView>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="At9-Qy-VA6" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="3Vd-tc-uKr"/>
-                            <constraint firstItem="At9-Qy-VA6" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="BC6-Cg-Mmh"/>
-                            <constraint firstItem="At9-Qy-VA6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Lf9-WH-Yi9"/>
-                            <constraint firstItem="At9-Qy-VA6" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="R5v-ag-zXL"/>
+                            <constraint firstItem="VU8-K5-T2e" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="5dS-E8-lEo"/>
+                            <constraint firstItem="Ip0-ss-x0E" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="H3J-UA-ad3"/>
+                            <constraint firstItem="VU8-K5-T2e" firstAttribute="top" secondItem="Ip0-ss-x0E" secondAttribute="bottom" constant="15" id="I0s-Pc-FzW"/>
+                            <constraint firstItem="VU8-K5-T2e" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="RA7-c0-rcj"/>
+                            <constraint firstItem="hhF-uU-Inp" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="Zdx-os-ceA"/>
+                            <constraint firstItem="hhF-uU-Inp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cmV-up-7YW"/>
+                            <constraint firstItem="VU8-K5-T2e" firstAttribute="bottom" secondItem="hhF-uU-Inp" secondAttribute="top" constant="-15" id="fpw-Nz-Rpz"/>
+                            <constraint firstItem="Ip0-ss-x0E" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="sko-rh-AmJ"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hhF-uU-Inp" secondAttribute="bottom" id="tLe-Um-Ccv"/>
+                            <constraint firstItem="Ip0-ss-x0E" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="zKy-nD-CGN"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="fEg-oX-WV2">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="31r-AO-Stk"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="QNU-sy-gKX"/>
+                    </navigationItem>
                     <connections>
-                        <outlet property="bottomCardScrollView" destination="f2P-oz-XwM" id="Yfv-Qm-Pd3"/>
-                        <outlet property="bottomCardStackView" destination="Qqw-sX-VYd" id="Kt6-fM-pTd"/>
-                        <outlet property="historyButton" destination="Rnc-Rf-G8W" id="Vws-Ah-zbf"/>
-                        <outlet property="locationFilterButton" destination="f3L-7f-xMC" id="klH-oU-WUc"/>
-                        <outlet property="middleCardScrollView" destination="4rN-OW-F3z" id="ctq-QG-C1a"/>
-                        <outlet property="middleCardStackView" destination="qRB-pF-yqd" id="Qmb-8d-kT2"/>
-                        <outlet property="priceFilterButton" destination="N2m-Cy-Kba" id="34m-M8-eaf"/>
-                        <outlet property="shareButton" destination="QJ0-as-K1B" id="Kep-wW-FQn"/>
-                        <outlet property="timeFilterButton" destination="Rx1-or-v5w" id="4rG-T5-aUz"/>
-                        <outlet property="topCardScrollView" destination="X5l-T8-L5E" id="hkV-Td-t6I"/>
-                        <outlet property="topCardStackView" destination="7OF-zH-niF" id="eMP-oY-bQd"/>
+                        <outlet property="bottomRowCollection" destination="7QA-HD-63z" id="jc0-TU-ogc"/>
+                        <outlet property="middleRowCollection" destination="Buu-E5-ZxL" id="1v6-Oz-s1s"/>
+                        <outlet property="topRowCollection" destination="gkc-zr-fUL" id="HDZ-Jn-Xqg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="532" y="416"/>
+            <point key="canvasLocation" x="1200" y="446"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="nOA-Pe-4kW">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QB9-cg-QB8" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bd2-7L-nQw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="MdW-SK-0DP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fIL-uy-aBb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="388" y="446"/>
         </scene>
     </scenes>
 </document>

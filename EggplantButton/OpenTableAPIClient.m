@@ -45,6 +45,12 @@ NSString *const OT_API_URL = @"http://opentable.herokuapp.com";
                 pagesAddedToArray++;
                 
                 if (pagesAddedToArray == totalPages) {
+                    NSURL *temporaryFile = [[NSURL fileURLWithPath:NSTemporaryDirectory()] URLByAppendingPathComponent:@"nyc_restaurants.plist"];
+                    NSLog(@"writing restaurants to %@", temporaryFile);
+                    [completeResponse writeToURL:temporaryFile atomically:NO];
+                    
+                    
+                    [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"nyc_restaurants" ofType:@"plist"]];
                     
                     completion(completeResponse);
                 }
