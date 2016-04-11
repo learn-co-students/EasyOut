@@ -5,6 +5,21 @@
       location = "group:EggplantButton.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:EggplantButton">
+   </FileRef>
+   <FileRef
+      location = "group:nyc_restaurants.plist">
+   </FileRef>
+   <FileRef
+      location = "group:Podfile">
+   </FileRef>
+   <FileRef
+      location = "group:Podfile.lock">
+   </FileRef>
+   <FileRef
+      location = "group:Pods">
+   </FileRef>
+   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>
