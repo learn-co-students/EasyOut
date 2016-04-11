@@ -53,9 +53,15 @@
     
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    for(UICollectionView *collectionView in @[ self.topRowCollection, self.middleRowCollection, self.bottomRowCollection ]) {
+        UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)collectionView.collectionViewLayout;
+        CGFloat itemWidth = [collectionView superview].bounds.size.width;
+        layout.itemSize = CGSizeMake(itemWidth, collectionView.frame.size.height);
+    }
 }
 
 
@@ -81,6 +87,9 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     ActivityCardCollectionViewCell *cell = (ActivityCardCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"cardCell" forIndexPath:indexPath];
+    
+    NSLog(@"\n\n\ncell: %@\n\n\n",cell);
+    
     if(collectionView == self.topRowCollection) {
         
         Activity *restaurantActivity = self.dataStore.restaurants[indexPath.row];
@@ -92,7 +101,7 @@
     else if (collectionView == self.middleRowCollection) {
         
         Activity *eventActivity = self.dataStore.events[indexPath.row];
-        cell.cardView.activity = eventActivity;  //THIS IS NOT GETTING SET. WHAT'S HAPPENING?
+        cell.cardView.activity = eventActivity;
         
         NSLog(@"%@", cell.cardView.activity.name);
         
@@ -253,24 +262,6 @@
     
 }
 
--(IBAction)locationFilterButtonTapped:(id)sender {
-    NSLog(@"Location filter button tapped");
-}
 
--(IBAction)timeFilterButtonTapped:(id)sender {
-    NSLog(@"Time filter button tapped");
-}
-
--(IBAction)shareButtonTapped:(id)sender {
-    NSLog(@"Share button tapped");
-}
-
--(IBAction)priceFilterButtonTapped:(id)sender {
-    NSLog(@"Price filter button tapped");
-}
-
--(IBAction)historyButtonTapped:(id)sender {
-    NSLog(@"History button tapped");
-}
 
 @end
