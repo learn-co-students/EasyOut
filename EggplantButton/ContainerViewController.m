@@ -6,18 +6,18 @@
 //  Copyright © 2016 Team Eggplant Button. All rights reserved.
 //
 
+#import <CoreLocation/CoreLocation.h>
+#import "UIView+Shake.h"
 #import "ContainerViewController.h"
+#import "EggplantButton-Swift.h"
 #import "ActivityCardView.h"
 #import "ActivitiesDataStore.h"
 #import "ActivityCardCollectionViewCell.h"
 #import "Activity.h"
-
 #import "Restaurant.h"
 #import "Event.h"
-#import <CoreLocation/CoreLocation.h>
 
 @class Restaurant;
-
 
 //MFMessageControlViewController
 
@@ -41,6 +41,7 @@
 
 - (void)viewDidLoad {
     
+
     [super viewDidLoad];
     
     [self setUpCoreLocation];
@@ -50,6 +51,17 @@
     [self getTicketMasterData];
     
     [self getRestaurantData];
+    
+    
+#warning FIREBASE THINGS FOR TESTING. REMOVE LATER
+    //    // Instantiate new instance of the Firebase API Client
+    //    FirebaseAPIClient *firebaseAPI = [[FirebaseAPIClient alloc] init];
+    
+    //    // Create and save test image to Firebase
+    //    UIImage *image = [UIImage imageNamed:@"EasyOutLaunchScreenImage"];
+    //    NSString *imageID = [firebaseAPI createNewImageWithImage:image];
+    //    NSLog(@"Image saved to Firebase with ID: %@", imageID);
+    
     
 }
 
@@ -112,6 +124,9 @@
     }
     
     return cell;
+
+
+
 }
 
 
@@ -131,6 +146,14 @@
 // 
 //                if(restaurant.lat >= minLat && restaurant.lat <= maxLat && restaurant.lng >= minLng && restaurant.lng <= maxLng) {
             
+                
+                NSInteger maxLat = [self.latitude integerValue] + 0.36;
+                NSInteger minLat = [self.latitude integerValue] - 0.36;
+                NSInteger maxLng = [self.longitude integerValue] + 0.36;
+                NSInteger minLng = [self.longitude integerValue] - 0.36;
+                
+                if(restaurant.lat >= minLat && restaurant.lat <= maxLat && restaurant.lng >= minLng && restaurant.lng <= maxLng) {
+                    
                     [[NSOperationQueue mainQueue]addOperationWithBlock:^{
                         
                         ActivityCardView *newActivityCard =[[ActivityCardView alloc]init];
@@ -142,13 +165,14 @@
                         self.topRowCollection.dataSource = self;
 
                         
+
                     }];
-//                }
+                }
             }
         }
         
     }];
-
+    
 }
 
 -(void)getTicketMasterData{
@@ -175,6 +199,7 @@
 //                    self.bottomRowCollection.dataSource = self;
                     
                 }];
+
             }
         }
     }];
@@ -203,13 +228,93 @@
         
         self.mostRecentLocation = [locations lastObject];
         
-//        if (self.mostRecentLocation != nil) {
-////            [self getEvents];
-//        }
+
     }
     
     [self.locationManager stopUpdatingLocation];
 }
+
+
+- (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event
+{
+    if ( event.subtype == UIEventSubtypeMotionShake )
+    {
+        
+        NSLog(@"Shake started");
+        
+        // Shake top card with the default speed
+        [self.topRowCollection shake:15     // 15 times
+                           withDelta:20     // 20 points wide
+         ];
+        // Shake middle card with the default speed
+        [self.middleRowCollection shake:15   // 15 times
+                              withDelta:20   // 20 points wide
+         ];
+        // Shake bottom card with the default speed
+        [self.bottomRowCollection shake:15   // 15 times
+                              withDelta:20   // 20 points wide
+         ];
+        
+        //shuffle restaurants
+        GKARC4RandomSource *randomSource = [GKARC4RandomSource new];
+        NSArray *shuffledRestaurants = [randomSource arrayByShufflingObjectsInArray:self.dataStore.restaurants];
+        
+        //empties middle card stack
+        [self.middleRowCollection.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+        
+        //repopulating middle card stack
+        for (NSUInteger i = 0 ; i < 3; i++) {
+            
+            Restaurant *restaurant = [shuffledRestaurants objectAtIndex:i];
+            
+            NSLog(@"Creating NEW card for %@", restaurant.name);
+            
+            ActivityCardView *newActivityCard =[[ActivityCardView alloc]init];
+            newActivityCard.activity = restaurant;
+            
+            newActivityCard.translatesAutoresizingMaskIntoConstraints = NO;
+            
+            [self.middleRowCollection addSubview:newActivityCard];
+            
+            
+            [newActivityCard.heightAnchor constraintEqualToAnchor:self.middleRowCollection.heightAnchor].active = YES;
+            [newActivityCard.widthAnchor constraintEqualToAnchor:self.middleRowCollection.widthAnchor].active = YES;
+            
+            
+        }
+    }
+}
+
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event
+{
+    if ( event.subtype == UIEventSubtypeMotionShake )
+    {
+        NSLog(@"Shake ended");
+    }
+
+    
+    if ( [super respondsToSelector:@selector(motionEnded:withEvent:)] )
+        [super motionEnded:motion withEvent:event];
+}
+
+- (BOOL)canBecomeFirstResponder
+{ return YES; }
+
+//- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+//    NSLog(@"location manager did update locations");
+//    if (self.mostRecentLocation == nil) {
+//
+//        self.mostRecentLocation = [locations lastObject];
+//
+//        if (self.mostRecentLocation != nil) {
+////            [self getEvents];
+//        }
+//    }
+//
+//    NSLog(@"location: %@", self.mostRecentLocation);
+//
+//    [self.locationManager stopUpdatingLocation];
+//}
 
 
 // This method will be used to handle the card scroll views' reactions and delay page-turning
@@ -217,51 +322,43 @@
 //{
 ////    CGPoint quoVadis = *targetContentOffset;
 ////    targetContentOffset->y
-//    
+//
 //    CGPoint newOffset = CGPointZero;
 //    *targetContentOffset = newOffset;
 //}
 
 
-/* ADRIAN"S TicketMaster Event Setup ** vvvv 
+/* ADRIAN"S TicketMaster Event Setup ** vvvv
  
  
-- (void)setupLocationManager {
-    self.locationManager = [[CLLocationManager alloc] init];
-    self.locationManager.delegate = self;
-    self.locationManager.distanceFilter = kCLDistanceFilterNone;
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    [self.locationManager requestWhenInUseAuthorization];
-    [self getTheUsersCurrentLocation];
-}
-
-- (void)getTheUsersCurrentLocation {
-    //after this method fires off, the locationManager didUpdateLocations method below gets called (behind the scenes by the startUpdatingLocation)
-    [self.locationManager startUpdatingLocation];
-}
-
-
-
--(void)getEvents {
-    [self.ticketMasterDataStore getEventsForLocation:self.mostRecentLocation withCompletion:^(BOOL success) {
-        if (success) {
-            [[NSOperationQueue mainQueue]addOperationWithBlock:^{
-                // [self.tableView reloadData];
-            }];
-        }
-    }];
-}
-
-
+ - (void)setupLocationManager {
+ self.locationManager = [[CLLocationManager alloc] init];
+ self.locationManager.delegate = self;
+ self.locationManager.distanceFilter = kCLDistanceFilterNone;
+ self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+ [self.locationManager requestWhenInUseAuthorization];
+ [self getTheUsersCurrentLocation];
+ }
+ 
+ - (void)getTheUsersCurrentLocation {
+ //after this method fires off, the locationManager didUpdateLocations method below gets called (behind the scenes by the startUpdatingLocation)
+ [self.locationManager startUpdatingLocation];
+ }
+ 
+ 
+ 
+ -(void)getEvents {
+ [self.ticketMasterDataStore getEventsForLocation:self.mostRecentLocation withCompletion:^(BOOL success) {
+ if (success) {
+ [[NSOperationQueue mainQueue]addOperationWithBlock:^{
+ // [self.tableView reloadData];
+ }];
+ }
+ }];
+ }
+ 
+ 
  */
-
-
-
-
--(void)viewWillAppear:(BOOL)animated {
-    
-}
-
 
 
 @end
