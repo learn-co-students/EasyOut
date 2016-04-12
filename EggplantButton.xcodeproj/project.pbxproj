@@ -110,9 +110,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				752C207F8039FC0AF3F24A9C /* Pods_EggplantButton.framework in Frameworks */,
-				785113461CB587E2005DC83C /* GameplayKit.framework in Frameworks */,
-				785113441CB58221005DC83C /* CoreMotion.framework in Frameworks */,
-				DA8B794E8787C67DE6E476D6 /* libPods-EggplantButton.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,9 +291,6 @@
 			isa = PBXGroup;
 			children = (
 				620C2EAF950D8ACD2F96FDC8 /* Pods_EggplantButton.framework */,
-				785113451CB587E2005DC83C /* GameplayKit.framework */,
-				785113431CB58221005DC83C /* CoreMotion.framework */,
-				0A4E7B30585A1886003A7ED7 /* libPods-EggplantButton.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -376,7 +370,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				785BF3371CB8128B00F0BE3C /* itineraryShare.storyboard in Resources */,
 				9AA058791CAEAA57000A6AA8 /* ActivityCard.xib in Resources */,
 				4C1DE1621CB8410900AFBCF5 /* LobsterTwo-Regular.otf in Resources */,
 				4C1DE1601CB8410900AFBCF5 /* LobsterTwo-BoldItalic.otf in Resources */,

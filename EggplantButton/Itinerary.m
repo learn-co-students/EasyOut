@@ -10,4 +10,29 @@
 
 @implementation Itinerary
 
+-(instancetype)initWithItineraryID:(NSString *)itineraryID
+                        activities:(NSMutableArray *) activities
+                         creatorID:(NSString *)creatorID
+                      creationDate:(NSDate *)creationDate
+                            photos:(NSMutableArray *) photos
+                           ratings:(NSDictionary *) ratings
+                              tips:(NSMutableArray *) tips
+{
+    
+    self = [super init];
+    if(self) {
+        _itineraryID = itineraryID;
+        _activities = activities;
+        _creatorID = creatorID;
+        _creationDate = creationDate;
+        _photos = photos;
+        _ratings = ratings;
+        _tips = tips;
+        
+    }
+    
+    return self;
+}
+
+
 @end

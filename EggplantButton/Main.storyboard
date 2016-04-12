@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -201,20 +201,20 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" directionalLockEnabled="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="At9-Qy-VA6" userLabel="Vertical Scroll View">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1xk-lu-wGc" userLabel="Menu and Cards View">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="660"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="628"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="VU8-K5-T2e" userLabel="Card Stack View">
-                                                <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                                                 <subviews>
                                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" directionalLockEnabled="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X5l-T8-L5E" userLabel="Top Card Scroll View">
-                                                        <rect key="frame" x="0.0" y="0.0" width="600" height="192"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="181"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="7OF-zH-niF" userLabel="Top Card Stack View"/>
                                                         </subviews>
@@ -229,7 +229,7 @@
                                                         </connections>
                                                     </scrollView>
                                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" directionalLockEnabled="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4rN-OW-F3z" userLabel="Middle Card Scroll View">
-                                                        <rect key="frame" x="0.0" y="195" width="600" height="191"/>
+                                                        <rect key="frame" x="0.0" y="184" width="320" height="180"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="qRB-pF-yqd" userLabel="Middle Card Stack View"/>
                                                         </subviews>
@@ -244,7 +244,7 @@
                                                         </connections>
                                                     </scrollView>
                                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2P-oz-XwM" userLabel="Bottom Card Scroll View">
-                                                        <rect key="frame" x="0.0" y="389" width="600" height="192"/>
+                                                        <rect key="frame" x="0.0" y="367" width="320" height="181"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Qqw-sX-VYd" userLabel="Bottom Card Stack View"/>
                                                         </subviews>
@@ -270,41 +270,41 @@
                                                 </constraints>
                                             </stackView>
                                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rof-DI-nfP" userLabel="Menu Cointainer View">
-                                                <rect key="frame" x="0.0" y="580" width="600" height="80"/>
+                                                <rect key="frame" x="0.0" y="548" width="320" height="80"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="I3i-II-yRN" userLabel="Menu Stack View">
-                                                        <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f3L-7f-xMC" userLabel="Location Filter Button">
-                                                                <rect key="frame" x="0.0" y="0.0" width="118" height="80"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="62" height="80"/>
                                                                 <state key="normal" title="Location"/>
                                                                 <connections>
                                                                     <action selector="locationFilterButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jdS-w1-6wR"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rx1-or-v5w" userLabel="Time Filter Button">
-                                                                <rect key="frame" x="121" y="0.0" width="118" height="80"/>
+                                                                <rect key="frame" x="65" y="0.0" width="61" height="80"/>
                                                                 <state key="normal" title="Time"/>
                                                                 <connections>
                                                                     <action selector="timeFilterButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="u4t-Gt-z4E"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QJ0-as-K1B" userLabel="Share Button">
-                                                                <rect key="frame" x="241" y="0.0" width="118" height="80"/>
+                                                                <rect key="frame" x="129" y="0.0" width="62" height="80"/>
                                                                 <state key="normal" title="Share"/>
                                                                 <connections>
                                                                     <action selector="shareButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="l0n-Ii-FXw"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N2m-Cy-Kba" userLabel="Price Filter Button">
-                                                                <rect key="frame" x="362" y="0.0" width="118" height="80"/>
+                                                                <rect key="frame" x="194" y="0.0" width="61" height="80"/>
                                                                 <state key="normal" title="Price"/>
                                                                 <connections>
                                                                     <action selector="priceFilterButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="u6p-rR-2fF"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rnc-Rf-G8W" userLabel="History Button">
-                                                                <rect key="frame" x="483" y="0.0" width="118" height="80"/>
+                                                                <rect key="frame" x="258" y="0.0" width="62" height="80"/>
                                                                 <state key="normal" title="History"/>
                                                                 <connections>
                                                                     <action selector="historyButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aH5-zA-Sre"/>
@@ -353,6 +353,7 @@
                             <constraint firstItem="At9-Qy-VA6" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="R5v-ag-zXL"/>
                         </constraints>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="bottomCardScrollView" destination="f2P-oz-XwM" id="Yfv-Qm-Pd3"/>
                         <outlet property="bottomCardStackView" destination="Qqw-sX-VYd" id="Kt6-fM-pTd"/>
@@ -369,7 +370,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="532" y="416"/>
+            <point key="canvasLocation" x="387" y="379"/>
         </scene>
     </scenes>
 </document>
