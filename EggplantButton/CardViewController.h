@@ -1,5 +1,5 @@
 //
-//  ContainerViewController.h
+//  CardViewController.h
 //  EggplantButton
 //
 //  Created by Ian Alexander Rahman on 3/31/16.
@@ -11,6 +11,6 @@
 #import <GameplayKit/GameplayKit.h>
 
 
-@interface ContainerViewController : UIViewController
+@interface CardViewController : UIViewController
 
 @end

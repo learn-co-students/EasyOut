@@ -104,6 +104,25 @@
 
 }
 
+- (IBAction)cardSelected:(UIButton *)sender {
+    
+    if(self.contentView.backgroundColor == [UIColor blackColor]) {
+        
+        self.contentView.backgroundColor = [UIColor whiteColor];
+        self.nameLabel.textColor = [UIColor blackColor];
+        self.addressLabel.textColor = [UIColor blackColor];
+        self.detailLabel.textColor = [UIColor blackColor];
+    }
+    else {
+        
+        self.contentView.backgroundColor = [UIColor blackColor];
+        self.nameLabel.textColor = [UIColor whiteColor];
+        self.addressLabel.textColor = [UIColor whiteColor];
+        self.detailLabel.textColor = [UIColor whiteColor];
+        
+    }
+    
+}
 
 
 

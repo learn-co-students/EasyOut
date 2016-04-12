@@ -61,6 +61,9 @@
                     <rect key="frame" x="310" y="186" width="30" height="30"/>
                     <color key="backgroundColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="X"/>
+                    <connections>
+                        <action selector="cardSelected:" destination="-1" eventType="touchUpInside" id="PNz-im-OkM"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>

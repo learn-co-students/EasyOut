@@ -8,7 +8,7 @@
 
 #import <CoreLocation/CoreLocation.h>
 #import "UIView+Shake.h"
-#import "ContainerViewController.h"
+#import "CardViewController.h"
 #import "EggplantButton-Swift.h"
 #import "ActivitiesDataStore.h"
 #import "ActivityCardCollectionViewCell.h"
@@ -19,7 +19,7 @@
 //MFMessageControlViewController
 
 
-@interface ContainerViewController () <UIScrollViewDelegate, CLLocationManagerDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
+@interface CardViewController () <UIScrollViewDelegate, CLLocationManagerDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (strong, nonatomic) ActivitiesDataStore *dataStore;
 
@@ -32,9 +32,11 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *middleRowCollection;
 @property (weak, nonatomic) IBOutlet UICollectionView *bottomRowCollection;
 
+
+
 @end
 
-@implementation ContainerViewController
+@implementation CardViewController
 
 - (void)viewDidLoad {
     
@@ -263,6 +265,21 @@
 
 - (BOOL)canBecomeFirstResponder
 { return YES; }
+
+
+
+#pragma button things
+
+- (IBAction)saveButtonPressed:(UIButton *)sender {
+    
+    
+
+
+}
+
+
+- (IBAction)randomButtonPressed:(UIButton *)sender {
+}
 
 
 @end
