@@ -44,6 +44,7 @@
 		9A33839E1CBC5A8C004B8EFE /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A33839D1CBC5A8C004B8EFE /* Login.storyboard */; };
 		9A5616B51CAC68AE008D9264 /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5616B41CAC68AE008D9264 /* Restaurant.m */; };
 		9AA058791CAEAA57000A6AA8 /* ActivityCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AA058781CAEAA57000A6AA8 /* ActivityCard.xib */; };
+		9ACC8C151CBD374600909704 /* nyc_restaurants.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9ACC8C141CBD374600909704 /* nyc_restaurants.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,6 +111,7 @@
 		9A5616B31CAC68AE008D9264 /* Restaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Restaurant.h; path = EggplantButton/Restaurant.h; sourceTree = "<group>"; };
 		9A5616B41CAC68AE008D9264 /* Restaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Restaurant.m; path = EggplantButton/Restaurant.m; sourceTree = "<group>"; };
 		9AA058781CAEAA57000A6AA8 /* ActivityCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ActivityCard.xib; path = EggplantButton/ActivityCard.xib; sourceTree = "<group>"; };
+		9ACC8C141CBD374600909704 /* nyc_restaurants.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = nyc_restaurants.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,6 +250,7 @@
 		4C9A037B1CAB064200CA9A02 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9ACC8C141CBD374600909704 /* nyc_restaurants.plist */,
 				4C270CA61CAB08A2003E0195 /* Secrets.h */,
 				4C270CA71CAB08A2003E0195 /* Secrets.m */,
 				4C9A037C1CAB064200CA9A02 /* main.m */,
@@ -383,6 +386,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9ACC8C151CBD374600909704 /* nyc_restaurants.plist in Resources */,
 				9AA058791CAEAA57000A6AA8 /* ActivityCard.xib in Resources */,
 				4C1DE1621CB8410900AFBCF5 /* LobsterTwo-Regular.otf in Resources */,
 				4C1DE1601CB8410900AFBCF5 /* LobsterTwo-BoldItalic.otf in Resources */,
