@@ -68,48 +68,28 @@ import Firebase
         completion(success: true)
     }
     
-    // Test function
-    func sayHi() {
-//        FireBaseAPIClient.createNewUserWithEmail("email1@example.com", password: "correcthorsebatterystaple")
-    }
-    
-    // Create a new user in firebase given email and password
-    func createNewUserWithEmail(email : String, password : String) {
+    // Login and authenticate user given email and password
+    func loginUserWithEmail(email : String, password : String) {
         
+        // Set base
         let ref = Firebase(url:firebaseRootRef)
-        ref.createUser(email, password: password,
-                       withValueCompletionBlock: { error, result in
-                        if error != nil {
-                            print("There was an error creating the user: \(error.description)")
-                        } else {
-                            let uid = result["uid"] as? String
-                            
-                            print("Successfully created user account with uid: \(uid)")
-                            
-                            let usersRef = ref.childByAppendingPath("users")
-                            let userRef = usersRef.childByAppendingPath(uid)
-                            
-                            userRef.setValue([
-                                "userID" : uid!,
-                                "username" : "username",
-                                "email" : email,
-                                "bio" : "bio",
-                                "location" : "location",
-                                "saved itineraries" : [ "itineraryID" : "itinerary" ],
-                                "preferences" : [
-                                    "default location" : "New York, NY",
-                                    "default price" : 2,
-                                    "default start time" : 1
-                                ],
-                                "ratings" : [ "itineraryID" : 0 ],
-                                "tips" : [ "itineraryID" : "tip" ],
-                                "reputation" : 0,
-                                "profilePhoto" : "imageID"
-                            ])
-                            
-                            print("Created new user: \(userRef)")
-                        }
-        })
+        
+        // Attempt user login
+        ref.authUser(email, password: password) {
+            error, authData in
+            if error != nil {
+                print("An error occurred while attempting login: \(error.description)")
+            } else {
+                print("User is logged in, checking authData for data")
+                
+                if authData.auth != nil {
+                    print("authData has data!")
+                } else {
+                    print("authData has no data :(")
+                }
+                
+            }
+        }
     }
     
     // Create a new user in firebase given a User object and password
@@ -145,8 +125,7 @@ import Firebase
                                 ])
                             
                             // We should actually call firebase to pull values for new user and make sure everything was set correctly
-                            print("Created new user: \(userRef)")
-                        }
+                            print("Created new user: \(userRef)")            }
         })
     }
     
@@ -157,19 +136,21 @@ import Firebase
         let itinerariesRef = ref.childByAppendingPath("itineraries")
     
         // Create firebase reference for given itinerary
-        var newItineraryRef = itinerariesRef.childByAutoId()
+        let newItineraryRef = itinerariesRef.childByAutoId()
+        
+        // Access unique key created for new itinerary reference
+        let newItineraryID = newItineraryRef.key
         
         // Set values of the new itinerary reference with properties on the itinerary
-        var newItineraryID = newItineraryRef.key
         newItineraryRef.setValue([
             "itineraryID" : newItineraryID,
-            "creatorID" : itinerary.creatorID,
             "creationDate" : itinerary.creationDate,
             "activities" : itinerary.activities,
             "ratings" : itinerary.ratings,
             "tips" : itinerary.tips,
-            "photos" : itinerary.photos // TODO: Values for this key should be the keys for every photo attached to the itinerary, and the photo keys should be created in another function
-            ])
+            "photos" : itinerary.photos,
+            "userID" : ref.authData.uid
+        ])
         
         // Return the new
         return newItineraryID
@@ -183,16 +164,16 @@ import Firebase
         let imagesRef = ref.childByAppendingPath("images")
         
         // Create firebase reference for given itinerary
-        var newImageRef = imagesRef.childByAutoId()
+        let newImageRef = imagesRef.childByAutoId()
         
         // Create data from image
-        var newImageData : NSData = UIImagePNGRepresentation(image)!
+        let newImageData : NSData = UIImagePNGRepresentation(image)!
         
         // Convert image data into base 64 string
-        var newImageBase64String : NSString! = newImageData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.Encoding64CharacterLineLength)
+        let newImageBase64String : NSString! = newImageData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.Encoding64CharacterLineLength)
         
         // Set values of the new itinerary reference with properties on the itinerary
-        var newImageID = newImageRef.key
+        let newImageID = newImageRef.key
         newImageRef.setValue([
             "imageID" : newImageID,
             "imageBase64String" : newImageBase64String // TODO: Values for this key should be the keys for every photo attached to the itinerary, and the photo keys should be created in another function
