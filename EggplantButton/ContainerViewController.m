@@ -10,12 +10,9 @@
 #import "UIView+Shake.h"
 #import "ContainerViewController.h"
 #import "EggplantButton-Swift.h"
-#import "ActivityCardView.h"
 #import "ActivitiesDataStore.h"
 #import "ActivityCardCollectionViewCell.h"
-#import "Activity.h"
-#import "Restaurant.h"
-#import "Event.h"
+
 
 @class Restaurant;
 
@@ -65,6 +62,45 @@
     
 }
 
+#pragma get API data
+
+-(void)getRestaurantData{
+    
+    [self.topRowCollection registerClass:[ActivityCardCollectionViewCell class] forCellWithReuseIdentifier:@"cardCell"];
+    
+    self.topRowCollection.delegate = self;
+    self.topRowCollection.dataSource = self;
+    
+    
+    [self.dataStore getRestaurantsWithCompletion:^(BOOL success) {
+        if(success) {
+            
+            [self.topRowCollection reloadData];
+        }
+        
+    }];
+    
+}
+
+-(void)getTicketMasterData{
+    
+    
+    [self.middleRowCollection registerClass:[ActivityCardCollectionViewCell class] forCellWithReuseIdentifier:@"cardCell"];
+    
+    self.middleRowCollection.delegate = self;
+    self.middleRowCollection.dataSource = self;
+    
+    
+    [self.dataStore getEventsForLat:self.latitude lng:self.longitude withCompletion:^(BOOL success) {
+        if (success) {
+            
+            [self.middleRowCollection reloadData];
+        }
+    }];
+}
+
+#pragma collection view methods
+
 -(void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
@@ -100,8 +136,6 @@
     
     ActivityCardCollectionViewCell *cell = (ActivityCardCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"cardCell" forIndexPath:indexPath];
     
-    NSLog(@"\n\n\ncell: %@\n\n\n",cell);
-    
     if(collectionView == self.topRowCollection) {
         
         Activity *restaurantActivity = self.dataStore.restaurants[indexPath.row];
@@ -118,18 +152,12 @@
         NSLog(@"%@", cell.cardView.activity.name);
         
     }
-    else {
-        
-        NSLog(@"Something else is happening");
-    }
-    
+
     return cell;
-
-
-
 }
 
 
+<<<<<<< HEAD
 
 
 
@@ -177,36 +205,18 @@
 }
 
 -(void)getTicketMasterData{
-    
-    [self.dataStore getEventsForLat:self.latitude lng:self.longitude withCompletion:^(BOOL success) {
-        if (success) {
-            for (Event *event in self.dataStore.events) {
-                
-                [[NSOperationQueue mainQueue]addOperationWithBlock:^{
-                    
-                    ActivityCardView *eventActivitycard = [[ActivityCardView alloc]init];
-                    eventActivitycard.activity = event;
-                    
-
-                    
-                    [self.middleRowCollection registerClass:[ActivityCardCollectionViewCell class] forCellWithReuseIdentifier:@"cardCell"];
-                    
-                    self.middleRowCollection.delegate = self;
-                    self.middleRowCollection.dataSource = self;
-                    
-//                    [self.bottomRowCollection registerClass:[ActivityCardCollectionViewCell class] forCellWithReuseIdentifier:@"cardCell"];
-//                    
-//                    self.bottomRowCollection.delegate = self;
-//                    self.bottomRowCollection.dataSource = self;
-                    
-                }];
-
-            }
-        }
-    }];
 }
 
-#pragma mark - Shake Gesture Methods
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(ActivityCardCollectionViewCell *)sender {
+    
+    
+    NSLog(@"prepating to segue...");
+    
+    
+}
+
+#pragma core location
+
 
 -(void)setUpCoreLocation {
     
@@ -237,15 +247,18 @@
 }
 
 
+
+#pragma mark - Shake Gesture Methods
+
 - (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event
 {
     if ( event.subtype == UIEventSubtypeMotionShake )
     {
         NSLog(@"Shake started");
         
-        [self getShuffledTicketMasterData];
+        //[self getShuffledTicketMasterData];
         
-        //[self getShuffledRestaurantData];
+        [self getShuffledRestaurantData];
         
         // Shake top card with the default speed
         [self.topRowCollection shake:15     // 15 times
@@ -278,6 +291,7 @@
 
 - (BOOL)canBecomeFirstResponder
 { return YES; }
+
 
 -(void)getShuffledTicketMasterData{
     
@@ -424,5 +438,7 @@
  
  */
 
+=======
+>>>>>>> master
 
 @end

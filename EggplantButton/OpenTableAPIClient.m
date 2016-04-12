@@ -13,7 +13,17 @@
 
 NSString *const OT_API_URL = @"http://opentable.herokuapp.com";
 
-+(void)getRestaurantWithCompletion:(void (^) (NSArray * restaurants)) completion {
++(void)getRestaurantWithCompletion:(void (^) (NSArray *restaurants)) completion
+{
+    NSURL *plistURL = [[NSBundle mainBundle] URLForResource:@"nyc_restaurants" withExtension:@"plist"];
+    NSArray *restaurants = [NSArray arrayWithContentsOfURL:plistURL];
+    
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        completion(restaurants);
+    }];
+}
+
++(void)getRestaurantFromAPIWithCompletion:(void (^) (NSArray * restaurants)) completion {
     
     
     NSString *opentableURL = [NSString stringWithFormat:@"%@/api/restaurants?city=New York&per_page=100", OT_API_URL];
@@ -49,9 +59,6 @@ NSString *const OT_API_URL = @"http://opentable.herokuapp.com";
                     NSLog(@"writing restaurants to %@", temporaryFile);
                     [completeResponse writeToURL:temporaryFile atomically:NO];
                     
-                    
-                    [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"nyc_restaurants" ofType:@"plist"]];
-                    
                     completion(completeResponse);
                 }
                 
@@ -76,7 +83,4 @@ NSString *const OT_API_URL = @"http://opentable.herokuapp.com";
 
 }
 
--(void)generateCompleteArrayOfRestaurnats {
-    
-}
 @end

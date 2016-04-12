@@ -9,6 +9,9 @@
 
 #import "ActivityCardView.h"
 #import "Event.h"
+#import <AFNetworking/AFImageDownloader.h>
+#import <AFNetworking/AFNetworking.h>
+
 
 @interface ActivityCardView ()
 
@@ -67,9 +70,26 @@
 // Add data to activity card view
 -(void)updateUI {
     
-    self.imageView.image = [UIImage imageWithData: [NSData dataWithContentsOfURL:self.activity.imageURL]];
+//    self.imageView.image = [UIImage imageWithData: [NSData dataWithContentsOfURL:self.activity.imageURL]];
     self.nameLabel.text = self.activity.name;
     self.addressLabel.text = self.activity.address;
+    
+    AFImageDownloader *downloader = [[AFImageDownloader alloc] init];
+    downloader.downloadPrioritizaton = AFImageDownloadPrioritizationLIFO;
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:self.activity.imageURL];
+    
+    self.imageView.image = nil;
+    Activity *activityWhoseImageWeAreDownloading = self.activity;
+    
+    [downloader downloadImageForURLRequest:urlRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *responseObject) {
+        // since these views are reused, we need to double check that the image we just got is actually the one that's still
+        // supposed to be seen in the view.
+        
+        if(self.activity == activityWhoseImageWeAreDownloading) {
+            self.imageView.image = responseObject;
+        }
+    } failure:nil];
+    
     
     switch (self.activity.activityType) {
         case RestaurantType:

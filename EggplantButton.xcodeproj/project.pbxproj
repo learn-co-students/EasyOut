@@ -48,6 +48,8 @@
 		9A5616B51CAC68AE008D9264 /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5616B41CAC68AE008D9264 /* Restaurant.m */; };
 		9AA058791CAEAA57000A6AA8 /* ActivityCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AA058781CAEAA57000A6AA8 /* ActivityCard.xib */; };
 		9ACC8C151CBD374600909704 /* nyc_restaurants.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9ACC8C141CBD374600909704 /* nyc_restaurants.plist */; };
+		9ACC8C171CBD398E00909704 /* DetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ACC8C161CBD398E00909704 /* DetailView.storyboard */; };
+		9ACC8C1A1CBD399800909704 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACC8C191CBD399800909704 /* DetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,6 +120,9 @@
 		9A5616B41CAC68AE008D9264 /* Restaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Restaurant.m; path = EggplantButton/Restaurant.m; sourceTree = "<group>"; };
 		9AA058781CAEAA57000A6AA8 /* ActivityCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ActivityCard.xib; path = EggplantButton/ActivityCard.xib; sourceTree = "<group>"; };
 		9ACC8C141CBD374600909704 /* nyc_restaurants.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = nyc_restaurants.plist; sourceTree = "<group>"; };
+		9ACC8C161CBD398E00909704 /* DetailView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DetailView.storyboard; sourceTree = "<group>"; };
+		9ACC8C181CBD399800909704 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		9ACC8C191CBD399800909704 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +152,8 @@
 		4C02D1DB1CB6E2E10031F978 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9ACC8C181CBD399800909704 /* DetailViewController.h */,
+				9ACC8C191CBD399800909704 /* DetailViewController.m */,
 				4CBBC5FC1CBA96DF006683D8 /* AppViewController.h */,
 				4CBBC5FD1CBA96DF006683D8 /* AppViewController.m */,
 				4CBBC5FE1CBA96DF006683D8 /* LogInViewController.h */,
@@ -272,6 +279,7 @@
 		4CBBC5F91CBA957B006683D8 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				9ACC8C161CBD398E00909704 /* DetailView.storyboard */,
 				9A33839D1CBC5A8C004B8EFE /* Login.storyboard */,
 				4CBBC6081CBA97B0006683D8 /* Main.storyboard */,
 				4CBBC5FA1CBA9618006683D8 /* Button.storyboard */,
@@ -399,6 +407,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9ACC8C151CBD374600909704 /* nyc_restaurants.plist in Resources */,
+				9ACC8C171CBD398E00909704 /* DetailView.storyboard in Resources */,
 				9AA058791CAEAA57000A6AA8 /* ActivityCard.xib in Resources */,
 				4C1DE1621CB8410900AFBCF5 /* LobsterTwo-Regular.otf in Resources */,
 				4C1DE1601CB8410900AFBCF5 /* LobsterTwo-BoldItalic.otf in Resources */,
@@ -477,6 +486,7 @@
 				4C358D731CADCDF700257756 /* ActivityCardView.m in Sources */,
 				4C64EC441CBAA78200FB3A45 /* CreateAccountViewController.m in Sources */,
 				4C02D1E11CB6E72C0031F978 /* User.m in Sources */,
+				9ACC8C1A1CBD399800909704 /* DetailViewController.m in Sources */,
 				4C433C031CB9539C00059C92 /* Activity.m in Sources */,
 				9A33839B1CBC5416004B8EFE /* ActivityCardCollectionViewCell.m in Sources */,
 				4C02D1E41CB6E8A00031F978 /* Itinerary.m in Sources */,

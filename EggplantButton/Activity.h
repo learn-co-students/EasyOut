@@ -21,7 +21,6 @@ typedef NS_ENUM(NSInteger, ActivityType) {
 @property (strong, nonatomic) NSString *city;
 @property (strong, nonatomic) NSString *postalCode;
 @property (strong, nonatomic) NSURL *imageURL;
-@property (strong, nonatomic) NSData *imageData;
 
 -(instancetype)initWithName:(NSString *)name
                     address:(NSString *)address
