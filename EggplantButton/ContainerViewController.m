@@ -10,12 +10,9 @@
 #import "UIView+Shake.h"
 #import "ContainerViewController.h"
 #import "EggplantButton-Swift.h"
-#import "ActivityCardView.h"
 #import "ActivitiesDataStore.h"
 #import "ActivityCardCollectionViewCell.h"
-#import "Activity.h"
-#import "Restaurant.h"
-#import "Event.h"
+
 
 @class Restaurant;
 
@@ -65,6 +62,45 @@
     
 }
 
+#pragma get API data
+
+-(void)getRestaurantData{
+    
+    [self.topRowCollection registerClass:[ActivityCardCollectionViewCell class] forCellWithReuseIdentifier:@"cardCell"];
+    
+    self.topRowCollection.delegate = self;
+    self.topRowCollection.dataSource = self;
+    
+    
+    [self.dataStore getRestaurantsWithCompletion:^(BOOL success) {
+        if(success) {
+            
+            [self.topRowCollection reloadData];
+        }
+        
+    }];
+    
+}
+
+-(void)getTicketMasterData{
+    
+    
+    [self.middleRowCollection registerClass:[ActivityCardCollectionViewCell class] forCellWithReuseIdentifier:@"cardCell"];
+    
+    self.middleRowCollection.delegate = self;
+    self.middleRowCollection.dataSource = self;
+    
+    
+    [self.dataStore getEventsForLat:self.latitude lng:self.longitude withCompletion:^(BOOL success) {
+        if (success) {
+            
+            [self.middleRowCollection reloadData];
+        }
+    }];
+}
+
+#pragma collection view methods
+
 -(void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
@@ -100,8 +136,6 @@
     
     ActivityCardCollectionViewCell *cell = (ActivityCardCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"cardCell" forIndexPath:indexPath];
     
-    NSLog(@"\n\n\ncell: %@\n\n\n",cell);
-    
     if(collectionView == self.topRowCollection) {
         
         Activity *restaurantActivity = self.dataStore.restaurants[indexPath.row];
@@ -118,93 +152,20 @@
         NSLog(@"%@", cell.cardView.activity.name);
         
     }
-    else {
-        
-        NSLog(@"Something else is happening");
-    }
-    
+
     return cell;
-
-
-
 }
 
 
-
-
--(void)getRestaurantData{
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(ActivityCardCollectionViewCell *)sender {
     
-    [self.dataStore getRestaurantsWithCompletion:^(BOOL success) {
-        if(success) {
-            
-            for(Restaurant *restaurant in self.dataStore.restaurants) {
-//
-//                NSInteger maxLat = [self.latitude integerValue] + 0.36;
-//                NSInteger minLat = [self.latitude integerValue] - 0.36;
-//                NSInteger maxLng = [self.longitude integerValue] + 0.36;
-//                NSInteger minLng = [self.longitude integerValue] - 0.36;
-// 
-//                if(restaurant.lat >= minLat && restaurant.lat <= maxLat && restaurant.lng >= minLng && restaurant.lng <= maxLng) {
-            
-                
-                NSInteger maxLat = [self.latitude integerValue] + 0.36;
-                NSInteger minLat = [self.latitude integerValue] - 0.36;
-                NSInteger maxLng = [self.longitude integerValue] + 0.36;
-                NSInteger minLng = [self.longitude integerValue] - 0.36;
-                
-                if(restaurant.lat >= minLat && restaurant.lat <= maxLat && restaurant.lng >= minLng && restaurant.lng <= maxLng) {
-                    
-                    [[NSOperationQueue mainQueue]addOperationWithBlock:^{
-                        
-                        ActivityCardView *newActivityCard =[[ActivityCardView alloc]init];
-                        newActivityCard.activity = restaurant;
-                        
-                        [self.topRowCollection registerClass:[ActivityCardCollectionViewCell class] forCellWithReuseIdentifier:@"cardCell"];
-                        
-                        self.topRowCollection.delegate = self;
-                        self.topRowCollection.dataSource = self;
-
-                        
-
-                    }];
-                }
-            }
-        }
-        
-    }];
+    
+    NSLog(@"prepating to segue...");
+    
     
 }
 
--(void)getTicketMasterData{
-    
-    [self.dataStore getEventsForLat:self.latitude lng:self.longitude withCompletion:^(BOOL success) {
-        if (success) {
-            for (Event *event in self.dataStore.events) {
-                
-                [[NSOperationQueue mainQueue]addOperationWithBlock:^{
-                    
-                    ActivityCardView *eventActivitycard = [[ActivityCardView alloc]init];
-                    eventActivitycard.activity = event;
-                    
-
-                    
-                    [self.middleRowCollection registerClass:[ActivityCardCollectionViewCell class] forCellWithReuseIdentifier:@"cardCell"];
-                    
-                    self.middleRowCollection.delegate = self;
-                    self.middleRowCollection.dataSource = self;
-                    
-//                    [self.bottomRowCollection registerClass:[ActivityCardCollectionViewCell class] forCellWithReuseIdentifier:@"cardCell"];
-//                    
-//                    self.bottomRowCollection.delegate = self;
-//                    self.bottomRowCollection.dataSource = self;
-                    
-                }];
-
-            }
-        }
-    }];
-}
-
+#pragma core location
 
 -(void)setUpCoreLocation {
     
@@ -234,6 +195,9 @@
     [self.locationManager stopUpdatingLocation];
 }
 
+
+
+#pragma shake shake
 
 - (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event
 {
@@ -299,66 +263,6 @@
 
 - (BOOL)canBecomeFirstResponder
 { return YES; }
-
-//- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
-//    NSLog(@"location manager did update locations");
-//    if (self.mostRecentLocation == nil) {
-//
-//        self.mostRecentLocation = [locations lastObject];
-//
-//        if (self.mostRecentLocation != nil) {
-////            [self getEvents];
-//        }
-//    }
-//
-//    NSLog(@"location: %@", self.mostRecentLocation);
-//
-//    [self.locationManager stopUpdatingLocation];
-//}
-
-
-// This method will be used to handle the card scroll views' reactions and delay page-turning
-//-(void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
-//{
-////    CGPoint quoVadis = *targetContentOffset;
-////    targetContentOffset->y
-//
-//    CGPoint newOffset = CGPointZero;
-//    *targetContentOffset = newOffset;
-//}
-
-
-/* ADRIAN"S TicketMaster Event Setup ** vvvv
- 
- 
- - (void)setupLocationManager {
- self.locationManager = [[CLLocationManager alloc] init];
- self.locationManager.delegate = self;
- self.locationManager.distanceFilter = kCLDistanceFilterNone;
- self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
- [self.locationManager requestWhenInUseAuthorization];
- [self getTheUsersCurrentLocation];
- }
- 
- - (void)getTheUsersCurrentLocation {
- //after this method fires off, the locationManager didUpdateLocations method below gets called (behind the scenes by the startUpdatingLocation)
- [self.locationManager startUpdatingLocation];
- }
- 
- 
- 
- -(void)getEvents {
- [self.ticketMasterDataStore getEventsForLocation:self.mostRecentLocation withCompletion:^(BOOL success) {
- if (success) {
- [[NSOperationQueue mainQueue]addOperationWithBlock:^{
- // [self.tableView reloadData];
- }];
- }
- }];
- }
- 
- 
- */
 
 
 @end
