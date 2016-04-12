@@ -138,19 +138,21 @@ import Firebase
         let itinerariesRef = ref.childByAppendingPath("itineraries")
     
         // Create firebase reference for given itinerary
-        var newItineraryRef = itinerariesRef.childByAutoId()
+        let newItineraryRef = itinerariesRef.childByAutoId()
+        
+        // Access unique key created for new itinerary reference
+        let newItineraryID = newItineraryRef.key
         
         // Set values of the new itinerary reference with properties on the itinerary
-        var newItineraryID = newItineraryRef.key
         newItineraryRef.setValue([
             "itineraryID" : newItineraryID,
-            "creatorID" : itinerary.creatorID,
             "creationDate" : itinerary.creationDate,
             "activities" : itinerary.activities,
             "ratings" : itinerary.ratings,
             "tips" : itinerary.tips,
-            "photos" : itinerary.photos // TODO: Values for this key should be the keys for every photo attached to the itinerary, and the photo keys should be created in another function
-            ])
+            "photos" : itinerary.photos,
+            "userID" : ref.authData.uid
+        ])
         
         // Return the new
         return newItineraryID
@@ -164,16 +166,16 @@ import Firebase
         let imagesRef = ref.childByAppendingPath("images")
         
         // Create firebase reference for given itinerary
-        var newImageRef = imagesRef.childByAutoId()
+        let newImageRef = imagesRef.childByAutoId()
         
         // Create data from image
-        var newImageData : NSData = UIImagePNGRepresentation(image)!
+        let newImageData : NSData = UIImagePNGRepresentation(image)!
         
         // Convert image data into base 64 string
-        var newImageBase64String : NSString! = newImageData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.Encoding64CharacterLineLength)
+        let newImageBase64String : NSString! = newImageData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.Encoding64CharacterLineLength)
         
         // Set values of the new itinerary reference with properties on the itinerary
-        var newImageID = newImageRef.key
+        let newImageID = newImageRef.key
         newImageRef.setValue([
             "imageID" : newImageID,
             "imageBase64String" : newImageBase64String // TODO: Values for this key should be the keys for every photo attached to the itinerary, and the photo keys should be created in another function

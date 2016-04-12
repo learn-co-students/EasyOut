@@ -12,12 +12,20 @@
 
 @interface Itinerary : NSObject
 
-@property (strong, nonatomic) NSString *itinieraryID;
+@property (strong, nonatomic) NSString *itineraryID;
 @property (strong, nonatomic) NSMutableArray *activities;
-@property (strong, nonatomic) NSString *creatorID;
+@property (strong, nonatomic) NSString *userID;
 @property (strong, nonatomic) NSDate *creationDate;
 @property (strong, nonatomic) NSMutableArray *photos;
 @property (strong, nonatomic) NSDictionary *ratings;
 @property (strong, nonatomic) NSMutableArray *tips;
+
+-(instancetype)initWithItineraryID:(NSString *)itineraryID
+                        activities:(NSMutableArray *) activities
+                            userID:(NSString *)userID
+                      creationDate:(NSDate *)creationDate
+                            photos:(NSMutableArray *) photos
+                           ratings:(NSDictionary *) ratings
+                              tips:(NSMutableArray *) tips;
 
 @end
