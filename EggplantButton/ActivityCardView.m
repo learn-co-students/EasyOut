@@ -115,7 +115,7 @@
     
     if(self.backgroundColor == [UIColor blackColor]) {
         
-        self.contentView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.4];
+        self.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.4];
         self.nameLabel.textColor = [UIColor blackColor];
         self.addressLabel.textColor = [UIColor blackColor];
         self.detailLabel.textColor = [UIColor blackColor];
