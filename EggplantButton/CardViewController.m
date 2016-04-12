@@ -9,7 +9,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import "UIView+Shake.h"
-#import "ContainerViewController.h"
+#import "CardViewController.h"
 #import "EggplantButton-Swift.h"
 #import "ActivitiesDataStore.h"
 #import "ActivityCardCollectionViewCell.h"
@@ -20,7 +20,7 @@
 //MFMessageControlViewController
 
 
-@interface ContainerViewController () <UIScrollViewDelegate, CLLocationManagerDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
+@interface CardViewController () <UIScrollViewDelegate, CLLocationManagerDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (strong, nonatomic) ActivitiesDataStore *dataStore;
 
@@ -33,14 +33,17 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *middleRowCollection;
 @property (weak, nonatomic) IBOutlet UICollectionView *bottomRowCollection;
 
+
+
 @end
 
-@implementation ContainerViewController
+@implementation CardViewController
 
 - (void)viewDidLoad {
     
-
     [super viewDidLoad];
+    
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"nyc"]]];
     
     [self setUpCoreLocation];
 
@@ -50,6 +53,9 @@
     
     [self getRestaurantData];
     
+    self.topRowCollection.backgroundColor = [UIColor clearColor];
+    self.middleRowCollection.backgroundColor = [UIColor clearColor];
+    self.bottomRowCollection.backgroundColor = [UIColor clearColor];
     
 #warning FIREBASE THINGS FOR TESTING. REMOVE LATER
     //    // Instantiate new instance of the Firebase API Client
@@ -63,7 +69,12 @@
     
 }
 
-#pragma mark - get API data
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+}
+
+#pragma get API data
 
 -(void)getRestaurantData{
     
@@ -142,28 +153,27 @@
         Activity *restaurantActivity = self.dataStore.restaurants[indexPath.row];
         cell.cardView.activity = restaurantActivity;
         
-        NSLog(@"%@", cell.cardView.activity.name);
-        
     }
     else if (collectionView == self.middleRowCollection) {
         
         Activity *eventActivity = self.dataStore.events[indexPath.row];
         cell.cardView.activity = eventActivity;
-        
-        NSLog(@"%@", cell.cardView.activity.name);
-        
+                
     }
 
     return cell;
 }
 
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSLog(@"PICKED CELL %lu", indexPath.row);
+    
+    [self performSegueWithIdentifier:@"detailSegue" sender:self];
+    
+}
 
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(ActivityCardCollectionViewCell *)sender {
-    
-    
-    NSLog(@"prepating to segue...");
-    
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UICollectionViewCell *)sender {
     
 }
 
@@ -344,6 +354,21 @@
  
  */
 
+
+
+
+#pragma button things
+
+- (IBAction)saveButtonPressed:(UIButton *)sender {
+    
+    
+
+
+}
+
+
+- (IBAction)randomButtonPressed:(UIButton *)sender {
+}
 
 
 @end

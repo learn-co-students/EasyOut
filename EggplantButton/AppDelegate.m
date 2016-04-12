@@ -31,6 +31,9 @@
         //[self handleURL :deferredDeeplinkURL];
     }];
     
+    [UINavigationBar appearance].backgroundColor =[UIColor blackColor];
+    
+    
     return YES;
 }
 
