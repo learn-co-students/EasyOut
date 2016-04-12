@@ -9,6 +9,9 @@
 
 #import "ActivityCardView.h"
 #import "Event.h"
+#import <AFNetworking/AFImageDownloader.h>
+#import <AFNetworking/AFNetworking.h>
+
 
 @interface ActivityCardView ()
 
@@ -19,10 +22,14 @@
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *detailLabel;
 
+@property (weak, nonatomic) IBOutlet UIButton *checkButton;
+
+
 
 @end
 
 @implementation ActivityCardView
+
 
 -(instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
@@ -43,12 +50,11 @@
 }
 
 -(void)commonInit {
-
+    
     [[NSBundle mainBundle] loadNibNamed:@"ActivityCard" owner:self options:nil];
 
     [self addSubview:self.contentView];
     
-    self.translatesAutoresizingMaskIntoConstraints = NO;
     self.contentView.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self.contentView.heightAnchor constraintEqualToAnchor: self.heightAnchor].active = YES;
@@ -56,7 +62,9 @@
     [self.contentView.centerXAnchor constraintEqualToAnchor: self.centerXAnchor].active = YES;
     [self.contentView.centerYAnchor constraintEqualToAnchor: self.centerYAnchor].active = YES;
     
-
+    self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
+    self.checkButton.layer.borderColor = [[UIColor blackColor] colorWithAlphaComponent:0.6].CGColor;
+    self.checkButton.layer.borderWidth = 3;
 }
 
 -(void)setActivity:(Activity *)activity {
@@ -69,9 +77,26 @@
 // Add data to activity card view
 -(void)updateUI {
     
-    self.imageView.image = [UIImage imageWithData: [NSData dataWithContentsOfURL:self.activity.imageURL]];
+//    self.imageView.image = [UIImage imageWithData: [NSData dataWithContentsOfURL:self.activity.imageURL]];
     self.nameLabel.text = self.activity.name;
     self.addressLabel.text = self.activity.address;
+    
+    AFImageDownloader *downloader = [[AFImageDownloader alloc] init];
+    downloader.downloadPrioritizaton = AFImageDownloadPrioritizationLIFO;
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:self.activity.imageURL];
+    
+    self.imageView.image = nil;
+    Activity *activityWhoseImageWeAreDownloading = self.activity;
+    
+    [downloader downloadImageForURLRequest:urlRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *responseObject) {
+        // since these views are reused, we need to double check that the image we just got is actually the one that's still
+        // supposed to be seen in the view.
+        
+        if(self.activity == activityWhoseImageWeAreDownloading) {
+            self.imageView.image = responseObject;
+        }
+    } failure:nil];
+    
     
     switch (self.activity.activityType) {
         case RestaurantType:
@@ -86,6 +111,25 @@
 
 }
 
+- (IBAction)cardSelected:(UIButton *)sender {
+    
+    if(self.backgroundColor == [UIColor blackColor]) {
+        
+        self.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.4];
+        self.nameLabel.textColor = [UIColor blackColor];
+        self.addressLabel.textColor = [UIColor blackColor];
+        self.detailLabel.textColor = [UIColor blackColor];
+    }
+    else {
+        
+        self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
+        self.nameLabel.textColor = [UIColor whiteColor];
+        self.addressLabel.textColor = [UIColor whiteColor];
+        self.detailLabel.textColor = [UIColor whiteColor];
+        
+    }
+    
+}
 
 
 

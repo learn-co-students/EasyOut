@@ -1,5 +1,5 @@
 //
-//  CardScrollContentView.h
+//  CardViewController.h
 //  EggplantButton
 //
 //  Created by Ian Alexander Rahman on 3/31/16.
@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ActivityCardView.h"
+#import <CoreMotion/CoreMotion.h>
+#import <GameplayKit/GameplayKit.h>
 
-@interface CardScrollContentView : UIView
 
-@property (strong, nonatomic) ActivityCardView *card;
+@interface CardViewController : UIViewController
 
 @end

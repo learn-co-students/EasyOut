@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Event.h"
 #import "Restaurant.h"
+#import "Event.h"
+#import "Activity.h"
+
 
 @interface ActivityCardView : UIView
+
+
 
 @property (strong, nonatomic) Activity *activity;
 

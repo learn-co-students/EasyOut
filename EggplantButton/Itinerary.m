@@ -39,8 +39,8 @@
     }
     
     return self;
+    
 }
-
 // initwith avtivity, userID, creationDate with default
 
 -(instancetype)initWithItineraryID:(NSString *)itineraryID {
@@ -48,6 +48,5 @@
     
     return self;
 }
-
 
 @end

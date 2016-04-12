@@ -35,6 +35,7 @@
 //    [client getAllUsersWithCompletion:^(BOOL success) {
 //    
 //    }];
+    [UINavigationBar appearance].backgroundColor =[UIColor blackColor];
     
     return YES;
 }
