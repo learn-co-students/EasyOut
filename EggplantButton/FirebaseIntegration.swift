@@ -49,48 +49,28 @@ import Firebase
         completion(success: true)
     }
     
-    // Test function
-    func sayHi() {
-//        FireBaseAPIClient.createNewUserWithEmail("email1@example.com", password: "correcthorsebatterystaple")
-    }
-    
-    // Create a new user in firebase given email and password
-    func createNewUserWithEmail(email : String, password : String) {
+    // Login and authenticate user given email and password
+    func loginUserWithEmail(email : String, password : String) {
         
+        // Set base
         let ref = Firebase(url:firebaseRootRef)
-        ref.createUser(email, password: password,
-                       withValueCompletionBlock: { error, result in
-                        if error != nil {
-                            print("There was an error creating the user: \(error.description)")
-                        } else {
-                            let uid = result["uid"] as? String
-                            
-                            print("Successfully created user account with uid: \(uid)")
-                            
-                            let usersRef = ref.childByAppendingPath("users")
-                            let userRef = usersRef.childByAppendingPath(uid)
-                            
-                            userRef.setValue([
-                                "userID" : uid!,
-                                "username" : "username",
-                                "email" : email,
-                                "bio" : "bio",
-                                "location" : "location",
-                                "saved itineraries" : [ "itineraryID" : "itinerary" ],
-                                "preferences" : [
-                                    "default location" : "New York, NY",
-                                    "default price" : 2,
-                                    "default start time" : 1
-                                ],
-                                "ratings" : [ "itineraryID" : 0 ],
-                                "tips" : [ "itineraryID" : "tip" ],
-                                "reputation" : 0,
-                                "profilePhoto" : "imageID"
-                            ])
-                            
-                            print("Created new user: \(userRef)")
-                        }
-        })
+        
+        // Attempt user login
+        ref.authUser(email, password: password) {
+            error, authData in
+            if error != nil {
+                print("An error occurred while attempting login: \(error.description)")
+            } else {
+                print("User is logged in, checking authData for data")
+                
+                if authData.auth != nil {
+                    print("authData has data!")
+                } else {
+                    print("authData has no data :(")
+                }
+                
+            }
+        }
     }
     
     // Create a new user in firebase given a User object and password
@@ -126,8 +106,7 @@ import Firebase
                                 ])
                             
                             // We should actually call firebase to pull values for new user and make sure everything was set correctly
-                            print("Created new user: \(userRef)")
-                        }
+                            print("Created new user: \(userRef)")            }
         })
     }
     

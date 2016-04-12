@@ -1,6 +1,6 @@
 //
-//  TicketMasterEvents.m
-//  ticketMasterApi
+//  Event.m
+//  EggplantButton
 //
 //  Created by Adrian Brown  on 4/4/16.
 //  Copyright © 2016 Adrian Brown . All rights reserved.

@@ -20,12 +20,8 @@
 @property (strong, nonatomic) NSDictionary *ratings;
 @property (strong, nonatomic) NSMutableArray *tips;
 
--(instancetype)initWithItineraryID:(NSString *)itineraryID
-                        activities:(NSMutableArray *) activities
-                            userID:(NSString *)userID
-                      creationDate:(NSDate *)creationDate
-                            photos:(NSMutableArray *) photos
-                           ratings:(NSDictionary *) ratings
-                              tips:(NSMutableArray *) tips;
+-(instancetype)initWithActivities:(NSMutableArray *) activities
+                           userID:(NSString *)userID
+                     creationDate:(NSDate *)creationDate;
 
 @end

@@ -10,32 +10,29 @@
 
 @implementation Itinerary
 
--(instancetype)init {
-    
-    self = [super init];
-    
-    if (self) {
-        
-    }
-    
-    return self;
-}
+//-(instancetype)init {
+//    
+//    self = [super init];
+//    
+//    if (self) {
+//        
+//    }
+//    
+//    return self;
+//}
 
--(instancetype)initWithItineraryID:(NSString *)itineraryID
-                        activities:(NSMutableArray *) activities
-                            userID:(NSString *)userID
-                      creationDate:(NSDate *)creationDate
-                            photos:(NSMutableArray *) photos
-                           ratings:(NSMutableDictionary *) ratings
-                              tips:(NSMutableArray *) tips
+// Initialize a new Itinerary object when saving an itinerary from the main view controller
+-(instancetype)initWithActivities:(NSMutableArray *) activities
+                           userID:(NSString *)userID
+                     creationDate:(NSDate *)creationDate
 {
     self = [super init];
     
     if(self) {
-        _itineraryID = itineraryID;
+        _itineraryID = @"";
         _activities = activities;
         _userID = userID;
-        _creationDate = [NSDate date];
+        _creationDate = creationDate;
         _photos = [[NSMutableArray alloc] init];
         _ratings = [[NSMutableDictionary alloc] init];
         _tips = [[NSMutableArray alloc] init];
