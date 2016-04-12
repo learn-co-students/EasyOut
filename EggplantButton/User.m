@@ -11,7 +11,7 @@
 @implementation User
 
 -(instancetype)init {
-    self = [self initWithUniqueID:@"8455b42e-e7d0-49cb-bcce-2e03331b402f"];
+    self = [self initWithUserID:@"8455b42e-e7d0-49cb-bcce-2e03331b402f"];
     if (self) {
         
     }
@@ -24,7 +24,7 @@
     self = [super init];
     
     if (self) {
-        _uniqueID = @"";
+        _userID = @"";
         _username = @"";
         _email = email;
         _bio = @"";
@@ -42,12 +42,12 @@
     return self;
 }
 
--(instancetype)initWithUniqueID:(NSString *)uniqueID {
+-(instancetype)initWithUserID:(NSString *)userID {
     
     self = [super init];
     
     if (self) {
-        _uniqueID = uniqueID;
+        _userID =userID;
         _username = @"testUsername";
         _email = @"test@test.test";
         _bio = @"";

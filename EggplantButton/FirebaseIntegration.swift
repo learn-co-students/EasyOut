@@ -71,7 +71,7 @@ import Firebase
                             let userRef = usersRef.childByAppendingPath(uid)
                             
                             userRef.setValue([
-                                "uniqueID" : uid!,
+                                "userID" : uid!,
                                 "username" : "username",
                                 "email" : email,
                                 "bio" : "bio",
@@ -112,7 +112,7 @@ import Firebase
                             let userRef = usersRef.childByAppendingPath(uid)
                             
                             userRef.setValue([
-                                    "uniqueID" : uid!,
+                                    "userID" : uid!,
                                     "username" : user.username,
                                     "email" : user.email,
                                     "bio" : user.bio,

@@ -24,6 +24,7 @@
 
 @implementation ActivityCardView
 
+
 -(instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if(self) {
@@ -43,20 +44,17 @@
 }
 
 -(void)commonInit {
-
+    
     [[NSBundle mainBundle] loadNibNamed:@"ActivityCard" owner:self options:nil];
 
     [self addSubview:self.contentView];
     
-    self.translatesAutoresizingMaskIntoConstraints = NO;
     self.contentView.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self.contentView.heightAnchor constraintEqualToAnchor: self.heightAnchor].active = YES;
     [self.contentView.widthAnchor constraintEqualToAnchor: self.widthAnchor].active = YES;
     [self.contentView.centerXAnchor constraintEqualToAnchor: self.centerXAnchor].active = YES;
     [self.contentView.centerYAnchor constraintEqualToAnchor: self.centerYAnchor].active = YES;
-    
-
 }
 
 -(void)setActivity:(Activity *)activity {

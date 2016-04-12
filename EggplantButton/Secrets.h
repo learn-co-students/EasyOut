@@ -16,3 +16,5 @@ extern NSString * const UBER_BUTTON_ID;
 extern NSString * const consumerKey;
 extern NSString * const consumerSecret;
 extern NSString * const firebaseRootRef;
+
+extern NSString * const firebaseRootRef;
