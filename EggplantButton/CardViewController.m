@@ -7,6 +7,7 @@
 //
 
 #import <CoreLocation/CoreLocation.h>
+#import <AudioToolbox/AudioToolbox.h>
 #import "UIView+Shake.h"
 #import "CardViewController.h"
 #import "EggplantButton-Swift.h"
@@ -216,6 +217,9 @@
     if ( event.subtype == UIEventSubtypeMotionShake )
     {
         NSLog(@"Shake started");
+        
+        //makes the phone vibrate
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         
         [self getShuffledTicketMasterData];
         
