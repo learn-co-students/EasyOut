@@ -3,12 +3,14 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActivityCardView">
             <connections>
                 <outlet property="addressLabel" destination="hUZ-fE-VHe" id="L4D-8u-lVV"/>
+                <outlet property="checkButton" destination="slJ-ga-gfT" id="B6C-hG-O74"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="Tyv-dh-g2q"/>
                 <outlet property="detailLabel" destination="ACR-Mx-tLP" id="SOo-89-ZPl"/>
                 <outlet property="imageView" destination="p4p-sX-wQq" id="nVY-Mt-Qpi"/>
@@ -58,9 +60,10 @@
                     </subviews>
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="slJ-ga-gfT">
-                    <rect key="frame" x="310" y="186" width="30" height="30"/>
-                    <color key="backgroundColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="X"/>
+                    <rect key="frame" x="305" y="181" width="30" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="slJ-ga-gfT" secondAttribute="height" multiplier="1:1" id="1rP-Sq-DsK"/>
+                    </constraints>
                     <connections>
                         <action selector="cardSelected:" destination="-1" eventType="touchUpInside" id="PNz-im-OkM"/>
                     </connections>
@@ -69,8 +72,8 @@
             <constraints>
                 <constraint firstItem="gVT-HT-AsC" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.9" id="8rj-X6-4Nu"/>
                 <constraint firstItem="gVT-HT-AsC" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.9" id="LE3-D7-AJG"/>
-                <constraint firstItem="slJ-ga-gfT" firstAttribute="bottom" secondItem="gVT-HT-AsC" secondAttribute="bottom" id="gjH-OD-e2Q"/>
-                <constraint firstItem="slJ-ga-gfT" firstAttribute="trailing" secondItem="gVT-HT-AsC" secondAttribute="trailing" id="hJJ-IA-mOf"/>
+                <constraint firstItem="slJ-ga-gfT" firstAttribute="bottom" secondItem="gVT-HT-AsC" secondAttribute="bottom" constant="-5" id="gjH-OD-e2Q"/>
+                <constraint firstItem="slJ-ga-gfT" firstAttribute="trailing" secondItem="gVT-HT-AsC" secondAttribute="trailing" constant="-5" id="hJJ-IA-mOf"/>
                 <constraint firstItem="gVT-HT-AsC" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="vG7-bk-xUF"/>
                 <constraint firstItem="gVT-HT-AsC" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="vSy-U6-4oT"/>
             </constraints>

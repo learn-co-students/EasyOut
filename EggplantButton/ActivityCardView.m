@@ -22,6 +22,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *detailLabel;
 
+@property (weak, nonatomic) IBOutlet UIButton *checkButton;
+
+
 
 @end
 
@@ -60,6 +63,8 @@
     [self.contentView.centerYAnchor constraintEqualToAnchor: self.centerYAnchor].active = YES;
     
     self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
+    self.checkButton.layer.borderColor = [[UIColor blackColor] colorWithAlphaComponent:0.6].CGColor;
+    self.checkButton.layer.borderWidth = 3;
 }
 
 -(void)setActivity:(Activity *)activity {
@@ -110,14 +115,14 @@
     
     if(self.backgroundColor == [UIColor blackColor]) {
         
-        self.contentView.backgroundColor = [UIColor whiteColor];
+        self.contentView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.4];
         self.nameLabel.textColor = [UIColor blackColor];
         self.addressLabel.textColor = [UIColor blackColor];
         self.detailLabel.textColor = [UIColor blackColor];
     }
     else {
         
-        self.backgroundColor = [UIColor blackColor];
+        self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
         self.nameLabel.textColor = [UIColor whiteColor];
         self.addressLabel.textColor = [UIColor whiteColor];
         self.detailLabel.textColor = [UIColor whiteColor];
