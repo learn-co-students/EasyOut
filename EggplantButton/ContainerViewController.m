@@ -62,7 +62,7 @@
     
 }
 
-#pragma get API data
+#pragma mark - get API data
 
 -(void)getRestaurantData{
     
@@ -99,7 +99,7 @@
     }];
 }
 
-#pragma collection view methods
+#pragma mark - Collection View
 
 -(void)viewDidLayoutSubviews
 {
@@ -157,55 +157,6 @@
 }
 
 
-<<<<<<< HEAD
-
-
-
-#pragma mark - Populating Activity Cards
-
--(void)getRestaurantData{
-    
-    [self.dataStore getRestaurantsWithCompletion:^(BOOL success) {
-        if(success) {
-            
-            for(Restaurant *restaurant in self.dataStore.restaurants) {
-//
-//                NSInteger maxLat = [self.latitude integerValue] + 0.36;
-//                NSInteger minLat = [self.latitude integerValue] - 0.36;
-//                NSInteger maxLng = [self.longitude integerValue] + 0.36;
-//                NSInteger minLng = [self.longitude integerValue] - 0.36;
-// 
-//                if(restaurant.lat >= minLat && restaurant.lat <= maxLat && restaurant.lng >= minLng && restaurant.lng <= maxLng) {
-            
-                
-                NSInteger maxLat = [self.latitude integerValue] + 0.36;
-                NSInteger minLat = [self.latitude integerValue] - 0.36;
-                NSInteger maxLng = [self.longitude integerValue] + 0.36;
-                NSInteger minLng = [self.longitude integerValue] - 0.36;
-                
-                if(restaurant.lat >= minLat && restaurant.lat <= maxLat && restaurant.lng >= minLng && restaurant.lng <= maxLng) {
-                    
-                    [[NSOperationQueue mainQueue]addOperationWithBlock:^{
-                        
-                        ActivityCardView *newActivityCard =[[ActivityCardView alloc]init];
-                        newActivityCard.activity = restaurant;
-                        
-                        [self.topRowCollection registerClass:[ActivityCardCollectionViewCell class] forCellWithReuseIdentifier:@"cardCell"];
-                        
-                        self.topRowCollection.delegate = self;
-                        self.topRowCollection.dataSource = self;
-
-                        
-
-                    }];
-                }
-            }
-        }
-    }];
-}
-
--(void)getTicketMasterData{
-}
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(ActivityCardCollectionViewCell *)sender {
     
@@ -215,7 +166,7 @@
     
 }
 
-#pragma core location
+#pragma mark - Core Location
 
 
 -(void)setUpCoreLocation {
@@ -248,7 +199,7 @@
 
 
 
-#pragma mark - Shake Gesture Methods
+#pragma mark - Shake Gesture
 
 - (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event
 {
@@ -256,7 +207,7 @@
     {
         NSLog(@"Shake started");
         
-        //[self getShuffledTicketMasterData];
+        [self getShuffledTicketMasterData];
         
         [self getShuffledRestaurantData];
         
@@ -289,47 +240,6 @@
         [super motionEnded:motion withEvent:event];
 }
 
-- (BOOL)canBecomeFirstResponder
-{ return YES; }
-
-
--(void)getShuffledTicketMasterData{
-    
-    [self.dataStore getEventsForLat:self.latitude lng:self.longitude withCompletion:^(BOOL success) {
-        if (success) {
-            //shuffle restaurants
-            GKARC4RandomSource *randomSource = [GKARC4RandomSource new];
-            NSArray *shuffledEvents = [randomSource arrayByShufflingObjectsInArray:self.dataStore.events];
-            
-            //empties top card stack
-            [self.topRowCollection.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-            
-            //repopulating top card stack
-            for (NSUInteger i = 0 ; i < 5; i++) {
-                
-                [[NSOperationQueue mainQueue]addOperationWithBlock:^{
-                    
-                    Event *event = [shuffledEvents objectAtIndex:i];
-                    
-                    ActivityCardView *eventActivitycard = [[ActivityCardView alloc]init];
-                    eventActivitycard.activity = event;
-                    
-                    eventActivitycard.translatesAutoresizingMaskIntoConstraints = NO;
-                    
-                    [self.middleRowCollection registerClass:[ActivityCardCollectionViewCell class] forCellWithReuseIdentifier:@"cardCell"];
-                    
-                    self.middleRowCollection.delegate = self;
-                    self.middleRowCollection.dataSource = self;
-                    
-                    NSLog(@"Creating NEW card for %@", event.name);
-                }];
-                
-                
-            }
-        }
-    }];
-}
-
 -(void)getShuffledRestaurantData{
     
     [self.dataStore getRestaurantsWithCompletion:^(BOOL success) {
@@ -337,46 +247,38 @@
             
             //shuffle restaurants
             GKARC4RandomSource *randomSource = [GKARC4RandomSource new];
-            NSArray *shuffledRestaurants = [randomSource arrayByShufflingObjectsInArray:self.dataStore.restaurants];
+            self.dataStore.restaurants = [[randomSource arrayByShufflingObjectsInArray:self.dataStore.restaurants] mutableCopy];
             
-            //empties middle card stack
-            [self.middleRowCollection.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+            //reloading top collection
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                [self.topRowCollection reloadData];
+            }];
+            NSLog(@"topRow reloaded");
             
-            //repopulating middle card stack
-            for (NSUInteger i = 0 ; i < 5; i++) {
-                
-                Restaurant *restaurant = [shuffledRestaurants objectAtIndex:i];
-                
-                NSInteger maxLat = [self.latitude integerValue] + 0.36;
-                NSInteger minLat = [self.latitude integerValue] - 0.36;
-                NSInteger maxLng = [self.longitude integerValue] + 0.36;
-                NSInteger minLng = [self.longitude integerValue] - 0.36;
-                
-                if(restaurant.lat >= minLat && restaurant.lat <= maxLat && restaurant.lng >= minLng && restaurant.lng <= maxLng) {
-                
-                    [[NSOperationQueue mainQueue]addOperationWithBlock:^{
-                        
-                        ActivityCardView *newActivityCard =[[ActivityCardView alloc]init];
-                        newActivityCard.activity = restaurant;
-                        
-                        newActivityCard.translatesAutoresizingMaskIntoConstraints = NO;
-                        
-                        [self.topRowCollection registerClass:[ActivityCardCollectionViewCell class] forCellWithReuseIdentifier:@"cardCell"];
-                        
-                        self.topRowCollection.delegate = self;
-                        self.topRowCollection.dataSource = self;
-
-                        
-                        NSLog(@"Creating NEW card for %@", restaurant.name);
-                        
-                    }];
-                }
-            }
         }
         
     }];
     
 }
+
+-(void)getShuffledTicketMasterData{
+    
+    [self.dataStore getEventsForLat:self.latitude lng:self.longitude withCompletion:^(BOOL success) {
+        if (success) {
+            //shuffle events
+            GKARC4RandomSource *randomSource = [GKARC4RandomSource new];
+            self.dataStore.events = [[randomSource arrayByShufflingObjectsInArray:self.dataStore.events]mutableCopy];
+
+            //reloading middle collection
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                [self.middleRowCollection reloadData];
+            }];
+            NSLog(@"middleRow reloaded");
+        }
+    }];
+}
+
+
 
 //- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
 //    NSLog(@"location manager did update locations");
@@ -438,7 +340,6 @@
  
  */
 
-=======
->>>>>>> master
+
 
 @end
