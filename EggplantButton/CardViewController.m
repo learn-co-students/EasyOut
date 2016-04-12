@@ -40,8 +40,9 @@
 
 - (void)viewDidLoad {
     
-
     [super viewDidLoad];
+    
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"nyc"]]];
     
     [self setUpCoreLocation];
 
@@ -51,6 +52,9 @@
     
     [self getRestaurantData];
     
+    self.topRowCollection.backgroundColor = [UIColor clearColor];
+    self.middleRowCollection.backgroundColor = [UIColor clearColor];
+    self.bottomRowCollection.backgroundColor = [UIColor clearColor];
     
 #warning FIREBASE THINGS FOR TESTING. REMOVE LATER
     //    // Instantiate new instance of the Firebase API Client
@@ -61,6 +65,11 @@
     //    NSString *imageID = [firebaseAPI createNewImageWithImage:image];
     //    NSLog(@"Image saved to Firebase with ID: %@", imageID);
     
+    
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
     
 }
 
@@ -143,16 +152,12 @@
         Activity *restaurantActivity = self.dataStore.restaurants[indexPath.row];
         cell.cardView.activity = restaurantActivity;
         
-        NSLog(@"%@", cell.cardView.activity.name);
-        
     }
     else if (collectionView == self.middleRowCollection) {
         
         Activity *eventActivity = self.dataStore.events[indexPath.row];
         cell.cardView.activity = eventActivity;
-        
-        NSLog(@"%@", cell.cardView.activity.name);
-        
+                
     }
 
     return cell;

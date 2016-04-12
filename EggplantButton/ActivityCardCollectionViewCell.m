@@ -31,7 +31,7 @@
 
 -(void)commonInit
 {
-    self.cardView = [[ActivityCardView alloc]init];
+    self.cardView = [[ActivityCardView alloc]initWithFrame:CGRectZero];
     
     [self.contentView addSubview:self.cardView];
     
