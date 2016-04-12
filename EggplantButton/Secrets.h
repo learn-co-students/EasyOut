@@ -25,4 +25,4 @@ extern NSString * const GenericViewControllerNotificationName;
 
 // StoryboardIDs
 extern NSString * const LoginViewControllerStoryBoardID;
-extern NSString * const GenericViewControllerStoryBoardID;
+extern NSString * const mainViewControllerStoryBoardID;

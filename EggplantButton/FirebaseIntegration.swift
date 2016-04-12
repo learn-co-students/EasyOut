@@ -91,7 +91,6 @@ import Firebase
             }
         }
     }
-    
     // Create a new user in firebase given a User object and password
     // **** SHOULD BE DEFAULT FOR USER CREATION ****
     func createNewUserWithUser(user : User, password : String) {

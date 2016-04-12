@@ -30,18 +30,21 @@
     [ref observeAuthEventWithBlock:^(FAuthData *authData) {
         if (authData) {
             // user authenticated
-            
-            
-            
-            NSLog(@"%@", authData);
+            self.currentViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:mainViewControllerStoryBoardID];
+            [self.containerView addSubview:self.currentViewController.view];
+            self.currentViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
+            [self constrainSubView:self.currentViewController.view toParentView:self.containerView];
+
+            NSLog(@"User is logged in %@!!!!!!", authData);
         } else {
             // No user is signed in
-            
             // Set up and present initial view controller
             self.currentViewController = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:LoginViewControllerStoryBoardID];
             [self.containerView addSubview:self.currentViewController.view];
             self.currentViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
             [self constrainSubView:self.currentViewController.view toParentView:self.containerView];
+
+            
         }
     }];
     
@@ -57,8 +60,9 @@
     // Generic notification observer (for example only)
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(handleGenericViewControllerSelected)
-                                                 name:GenericViewControllerNotificationName
+                                                 name:mainViewControllerStoryBoardID
                                                object:nil];
+    
     
 }
      
@@ -77,7 +81,7 @@
     NSLog(@"generic notification received");
     
     // 1. Instantiate new view controller
-    UIViewController *newVC = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:GenericViewControllerStoryBoardID];
+    UIViewController *newVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:mainViewControllerStoryBoardID];
     
     /// BREAK OUT INTO SEPARATE METHOD ///
     
@@ -101,6 +105,7 @@
 
     // 7. Call layoutIfNeeded on container view
     [self.containerView layoutIfNeeded];
+    NSLog(@"I switched over to the right place !");
 
     
     // 8. Add final constaints for new VC
@@ -121,6 +126,9 @@
         [newVC didMoveToParentViewController:self];
         self.currentViewController = nil;
         self.currentViewController = newVC;
+        
+        NSLog(@"I switched over to the right place !");
+
     }];
     
 }

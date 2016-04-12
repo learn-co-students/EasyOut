@@ -71,7 +71,7 @@
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rkh-0r-4yP">
                                                 <rect key="frame" x="0.0" y="60" width="300" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -118,24 +118,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="COc-JL-Ikk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-249" y="-10"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="HeQ-P9-M1A">
-            <objects>
-                <viewController storyboardIdentifier="GenericViewController" id="wTB-27-rHR" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ESJ-ok-36U"/>
-                        <viewControllerLayoutGuide type="bottom" id="24D-J4-pro"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="CQt-m5-bJ6">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.73661443150000006" green="0.8776273537" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5EA-K5-0SG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-637" y="657"/>
         </scene>
     </scenes>
 </document>
