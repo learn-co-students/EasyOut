@@ -43,7 +43,7 @@
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <connections>
-                                                    <segue destination="cZd-me-Cbf" kind="show" id="lgO-gw-fZU"/>
+                                                    <segue destination="cZd-me-Cbf" kind="show" identifier="detailSegue" id="lgO-gw-fZU"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
@@ -66,7 +66,7 @@
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <connections>
-                                                    <segue destination="cZd-me-Cbf" kind="show" id="kc8-fC-vZm"/>
+                                                    <segue destination="cZd-me-Cbf" kind="show" identifier="detailSegue" id="kc8-fC-vZm"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
@@ -90,7 +90,7 @@
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <connections>
-                                                    <segue destination="cZd-me-Cbf" kind="show" id="sVv-zh-GNS"/>
+                                                    <segue destination="cZd-me-Cbf" kind="show" identifier="detailSegue" id="sVv-zh-GNS"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
@@ -176,6 +176,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="sVv-zh-GNS"/>
+        <segue reference="kc8-fC-vZm"/>
     </inferredMetricsTieBreakers>
 </document>

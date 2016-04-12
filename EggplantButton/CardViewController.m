@@ -163,11 +163,18 @@
     return cell;
 }
 
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSLog(@"PICKED CELL %lu", indexPath.row);
+    
+    [self performSegueWithIdentifier:@"detailSegue" sender:self];
+    
+}
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(ActivityCardCollectionViewCell *)sender {
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UICollectionViewCell *)sender {
     
     
-    NSLog(@"prepating to segue...");
     
     
 }
