@@ -7,6 +7,7 @@
 //
 
 #import "LogInViewController.h"
+#import "Secrets.h"
 
 @interface LogInViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *loginLabel;
@@ -22,6 +23,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+
+}
+
+-(void)testIfAlive {
+    NSLog(@"Are you still breathing?");
+}
+
+- (IBAction)login:(id)sender {
+    
+    // Use Firebase to login
+    // method should be some type of completion
+    // if success, post success notification
+    // else post error notification
+    
+    
+    // Send post notification to app view controller to load generic VC
+    [[NSNotificationCenter defaultCenter] postNotificationName:GenericViewControllerNotificationName object:nil];
+    
 }
 
 - (void)didReceiveMemoryWarning {

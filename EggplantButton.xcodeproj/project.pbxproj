@@ -10,6 +10,7 @@
 		0A05A4EB1CB438AD00EF83CD /* TicketMasterAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A05A4E61CB438AD00EF83CD /* TicketMasterAPIClient.m */; };
 		0A05A4ED1CB438AD00EF83CD /* TicketMasterEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A05A4EA1CB438AD00EF83CD /* TicketMasterEvent.m */; };
 		0A1DFA8C1CBBF21B0071EEDB /* CreateAccountStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A1DFA8B1CBBF21B0071EEDB /* CreateAccountStoryBoard.storyboard */; };
+		0AD3650D1CBD43C000DD3617 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AD3650C1CBD43C000DD3617 /* Login.storyboard */; };
 		4C02D1E11CB6E72C0031F978 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C02D1E01CB6E72C0031F978 /* User.m */; };
 		4C02D1E41CB6E8A00031F978 /* Itinerary.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C02D1E31CB6E8A00031F978 /* Itinerary.m */; };
 		4C02D1E71CB6EDD40031F978 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C02D1E61CB6EDD40031F978 /* Photo.m */; };
@@ -51,6 +52,7 @@
 		0A05A4E91CB438AD00EF83CD /* TicketMasterEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TicketMasterEvent.h; path = EggplantButton/TicketMasterEvent.h; sourceTree = "<group>"; };
 		0A05A4EA1CB438AD00EF83CD /* TicketMasterEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TicketMasterEvent.m; path = EggplantButton/TicketMasterEvent.m; sourceTree = "<group>"; };
 		0A1DFA8B1CBBF21B0071EEDB /* CreateAccountStoryBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateAccountStoryBoard.storyboard; sourceTree = "<group>"; };
+		0AD3650C1CBD43C000DD3617 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		478A5D5E5340BA05712F05CE /* Pods-EggplantButton.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EggplantButton.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EggplantButton/Pods-EggplantButton.debug.xcconfig"; sourceTree = "<group>"; };
 		4C02D1DF1CB6E72C0031F978 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = EggplantButton/User.h; sourceTree = "<group>"; };
 		4C02D1E01CB6E72C0031F978 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = EggplantButton/User.m; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				4CBBC6081CBA97B0006683D8 /* Main.storyboard */,
+				0AD3650C1CBD43C000DD3617 /* Login.storyboard */,
 				4CBBC5FA1CBA9618006683D8 /* Button.storyboard */,
 				4C64EC411CBAA78200FB3A45 /* itineraryShare.storyboard */,
 				4C9A038C1CAB064200CA9A02 /* LaunchScreen.storyboard */,
@@ -386,6 +389,7 @@
 				4C64EC471CBAA78200FB3A45 /* itineraryShare.storyboard in Resources */,
 				4CBBC5FB1CBA9618006683D8 /* Button.storyboard in Resources */,
 				4C1DE15F1CB8410900AFBCF5 /* LobsterTwo-Bold.otf in Resources */,
+				0AD3650D1CBD43C000DD3617 /* Login.storyboard in Resources */,
 				4CBBC6091CBA97B0006683D8 /* Main.storyboard in Resources */,
 				4C9A038E1CAB064200CA9A02 /* LaunchScreen.storyboard in Resources */,
 				4C9A038B1CAB064200CA9A02 /* Assets.xcassets in Resources */,
