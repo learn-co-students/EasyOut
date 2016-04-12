@@ -10,7 +10,7 @@
 #import <Button/Button.h>
 #import "Secrets.h"
 #import "DeepLinkKit.h"
-
+#import "EggplantButton-Swift.h"
 
 @interface AppDelegate ()
 
@@ -30,6 +30,11 @@
         // Handle the deferredDeeplinkURL and open the relevant content.
         //[self handleURL :deferredDeeplinkURL];
     }];
+    
+//    FirebaseAPIClient *client = [[FirebaseAPIClient alloc] init];
+//    [client getAllUsersWithCompletion:^(BOOL success) {
+//    
+//    }];
     
     return YES;
 }

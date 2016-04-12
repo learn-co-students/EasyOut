@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -112,85 +112,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EfB-zf-4MW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-249" y="-10"/>
-        </scene>
-        <!--Create Account View Controller-->
-        <scene sceneID="eNv-ub-fFL">
-            <objects>
-                <viewController id="Zxx-Es-SfO" customClass="CreateAccountViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="LbW-d0-izJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="v1x-LH-iPV"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="DID-Zq-3Kc">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create an account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ese-Ws-Kms">
-                                <rect key="frame" x="150" y="65" width="300" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Xtl-Sd-hcs" userLabel="Text Field Stack View">
-                                <rect key="frame" x="150" y="225" width="300" height="150"/>
-                                <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lby-nJ-02V">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E5I-Hz-XXx">
-                                        <rect key="frame" x="0.0" y="30" width="300" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u4U-Xc-fij">
-                                        <rect key="frame" x="0.0" y="60" width="300" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ay4-iI-2Be">
-                                        <rect key="frame" x="0.0" y="90" width="300" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                    </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Verify password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Iky-wi-ZCP">
-                                        <rect key="frame" x="0.0" y="120" width="300" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                    </textField>
-                                </subviews>
-                            </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YLA-Iw-Ec0">
-                                <rect key="frame" x="247" y="435" width="107" height="30"/>
-                                <state key="normal" title="Create Account"/>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="YLA-Iw-Ec0" firstAttribute="centerY" secondItem="DID-Zq-3Kc" secondAttribute="centerY" multiplier="1.5" id="3to-fB-jIK"/>
-                            <constraint firstItem="Xtl-Sd-hcs" firstAttribute="centerY" secondItem="DID-Zq-3Kc" secondAttribute="centerY" id="8zF-lM-xKG"/>
-                            <constraint firstItem="Xtl-Sd-hcs" firstAttribute="centerX" secondItem="DID-Zq-3Kc" secondAttribute="centerX" id="O7o-ZJ-mZ2"/>
-                            <constraint firstItem="ese-Ws-Kms" firstAttribute="centerX" secondItem="DID-Zq-3Kc" secondAttribute="centerX" id="RiQ-Tt-t5u"/>
-                            <constraint firstItem="ese-Ws-Kms" firstAttribute="centerY" secondItem="DID-Zq-3Kc" secondAttribute="centerY" multiplier="0.25" id="n4X-Kc-PGJ"/>
-                            <constraint firstItem="Xtl-Sd-hcs" firstAttribute="width" secondItem="DID-Zq-3Kc" secondAttribute="width" multiplier="0.5" id="t66-Mu-PDI"/>
-                            <constraint firstItem="YLA-Iw-Ec0" firstAttribute="centerX" secondItem="DID-Zq-3Kc" secondAttribute="centerX" id="wXL-wK-Azr"/>
-                            <constraint firstItem="ese-Ws-Kms" firstAttribute="width" secondItem="DID-Zq-3Kc" secondAttribute="width" multiplier="0.5" id="xVJ-Qe-K8E"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="createAccountButtonTapped" destination="YLA-Iw-Ec0" id="Kbk-KP-uyc"/>
-                        <outlet property="createAccountLabel" destination="ese-Ws-Kms" id="mw5-fG-hW4"/>
-                        <outlet property="emailLabel" destination="u4U-Xc-fij" id="hqH-ZF-qNU"/>
-                        <outlet property="nameLabel" destination="Lby-nJ-02V" id="JR6-Pm-hHJ"/>
-                        <outlet property="passWordLabel" destination="ay4-iI-2Be" id="QeL-Jj-Uj4"/>
-                        <outlet property="userNameLabel" destination="E5I-Hz-XXx" id="EsI-JT-cmN"/>
-                        <outlet property="verifyPasswordLabel" destination="Iky-wi-ZCP" id="dEv-5D-kdy"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TZ0-5F-l3P" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-249" y="639"/>
         </scene>
         <!--Container View Controller-->
         <scene sceneID="tne-QT-ifu">
