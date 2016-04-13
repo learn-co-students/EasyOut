@@ -26,7 +26,6 @@
         _city = city;
         _postalCode = postalCode;
         _imageURL = imageURL;
-        _imageData = [NSData dataWithContentsOfURL:imageURL];
         
     }
     

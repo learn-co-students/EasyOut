@@ -81,9 +81,9 @@
     FirebaseAPIClient *firebaseAPI = [[FirebaseAPIClient alloc] init];
     
     // Create and save test image to Firebase
-    UIImage *image = [UIImage imageNamed:@"EasyOutLaunchScreenImage"];
-    NSString *imageID = [firebaseAPI createNewImageWithImage:image];
-    NSLog(@"Image saved to Firebase with ID: %@", imageID);
+//    UIImage *image = [UIImage imageNamed:@"EasyOutLaunchScreenImage"];
+//    NSString *imageID = [firebaseAPI createNewImageWithImage:image];
+//    NSLog(@"Image saved to Firebase with ID: %@", imageID);
     
     // Create and save test user to Firebase
     

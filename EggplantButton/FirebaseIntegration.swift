@@ -22,7 +22,7 @@ import Firebase
     
     
     // Return list of all users
-    func getAllUsersWithCompletion(completion:(success: Bool) -> (AnyObject)) {
+    func getAllUsersWithCompletion(completion:(success: Bool) -> Void) {
         
         // Create a reference to root Firebase location
         let ref = Firebase(url:firebaseRootRef)
@@ -31,8 +31,27 @@ import Firebase
         let usersRef = ref.childByAppendingPath("users")
         
         // Attach a closure to read the data at our posts reference
-        ref.observeEventType(.Value, withBlock: { snapshot in
+        usersRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
+            
             print(snapshot.value)
+            
+            var allUsernames = [String]()
+            for child in snapshot.children{
+                if let username = child.value["username"] as? String {
+                    print(username)
+                    allUsernames.append(username.lowercaseString)
+                }
+            }
+            print("all usernames: \(allUsernames)")
+            let filteredNames = allUsernames.filter { $0 == "JoN123".lowercaseString }
+            if filteredNames.isEmpty {
+                print("Success! that is a unique username")
+                // continue and save their data
+            } else {
+                print("failure! name is taken :(")
+                // present alert and reset
+            }
+            
             }, withCancelBlock: { error in
                 print(error.description)
         })
@@ -44,7 +63,7 @@ import Firebase
         //when you have snapshot stuff, loop through it or whatever to create your custom objects.
         //then call on completion
         
-        completion(success: true)
+         completion(success: true)
         
     }
     
@@ -79,7 +98,6 @@ import Firebase
             }
         }
     }
-    
     // Create a new user in firebase given a User object and password
     func createNewUserWithUser(user : User, password : String) {
         
@@ -108,7 +126,7 @@ import Firebase
                                     "ratings" : user.ratings,
                                     "tips" : user.tips,
                                     "reputation" : user.reputation,
-                                    "profilePhoto" : user.profilePhoto
+                                    "profilePhoto" : ""
                                 ])
                             
                             // We should actually call firebase to pull values for new user and make sure everything was set correctly

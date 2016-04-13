@@ -23,12 +23,17 @@ NSString *const TM_BASE_URL = @"https://app.ticketmaster.com/discovery/v2/events
     [dateFormat setDateFormat:@"YYYY-MM-dd'T'HH:mm:ss'Z'"];
     NSString *dateString = [dateFormat stringFromDate:now];
     
+    
+    
+#warning need to add start date and time!!!
     //NETWORKING
     NSString *ticketMasterURL = [NSString stringWithFormat:@"%@latlong=%@,%@&radius=15&startDateTime=%@&apikey=%@",TM_BASE_URL ,lat,lng,dateString,consumerKey];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
     [manager GET:ticketMasterURL parameters:nil progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *responseObject) {
+        
+        NSLog(@"%@", ticketMasterURL);
         
         NSArray *events = responseObject[@"_embedded"][@"events"];
              
