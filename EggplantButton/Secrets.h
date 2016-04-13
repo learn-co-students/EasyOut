@@ -17,4 +17,10 @@ extern NSString * const consumerKey;
 extern NSString * const consumerSecret;
 extern NSString * const firebaseRootRef;
 
-extern NSString * const firebaseRootRef;
+// Notifications
+extern NSString * const GenericViewControllerNotificationName;
+
+// StoryboardIDs
+extern NSString * const LoginViewControllerStoryBoardID;
+extern NSString * const mainViewControllerStoryBoardID;
+

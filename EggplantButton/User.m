@@ -19,13 +19,13 @@
     return self;
 }
 
--(instancetype) initWithEmail:(NSString *)email {
+-(instancetype) initWithEmail:(NSString *)email username:(NSString *)username{
     
     self = [super init];
     
     if (self) {
         _userID = @"";
-        _username = @"";
+        _username = username;
         _email = email;
         _bio = @"";
         _location = @"";

@@ -10,7 +10,7 @@
 #import <Button/Button.h>
 #import "Secrets.h"
 #import "DeepLinkKit.h"
-
+#import "EggplantButton-Swift.h"
 
 @interface AppDelegate ()
 
@@ -31,8 +31,11 @@
         //[self handleURL :deferredDeeplinkURL];
     }];
     
+//    FirebaseAPIClient *client = [[FirebaseAPIClient alloc] init];
+//    [client getAllUsersWithCompletion:^(BOOL success) {
+//    
+//    }];
     [UINavigationBar appearance].backgroundColor =[UIColor blackColor];
-    
     
     return YES;
 }
