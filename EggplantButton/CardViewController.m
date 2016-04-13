@@ -34,7 +34,11 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *middleRowCollection;
 @property (weak, nonatomic) IBOutlet UICollectionView *bottomRowCollection;
 
+@property (nonatomic) BOOL firstCardLocked;
+@property (nonatomic) BOOL secondCardLocked;
+@property (nonatomic) BOOL thirdCardLocked;
 
+@property (strong, nonatomic) Itinerary *itinerary;
 
 @end
 
@@ -221,7 +225,7 @@
     {
         NSLog(@"Shake started");
         
-        //makes the phone vibrate
+        // makes the phone vibrate
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         
         [self getShuffledTicketMasterData];

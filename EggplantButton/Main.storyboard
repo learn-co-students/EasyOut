@@ -100,16 +100,16 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="hhF-uU-Inp" userLabel="Button Stack">
                                 <rect key="frame" x="0.0" y="540" width="600" height="60"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vrG-5j-TCQ">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vrG-5j-TCQ" userLabel="Randomize">
                                         <rect key="frame" x="0.0" y="0.0" width="298" height="60"/>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" title="Randomize"/>
                                         <connections>
                                             <action selector="saveButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eZV-EL-4Kt"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D12-lf-tgx">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D12-lf-tgx" userLabel="Itinerize">
                                         <rect key="frame" x="303" y="0.0" width="297" height="60"/>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" title="Itinerize"/>
                                         <connections>
                                             <action selector="randomButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MYr-IV-L4A"/>
                                         </connections>
