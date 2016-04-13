@@ -74,7 +74,7 @@
     
 }
 
-#pragma get API data
+#pragma mark - get API data
 
 -(void)getRestaurantData{
     
