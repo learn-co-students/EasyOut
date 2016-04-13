@@ -12,7 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UIView *imageView;
 @property (weak, nonatomic) IBOutlet UIView *distanceView;
-@property (weak, nonatomic) IBOutlet UILabel *seperatorLabel;
 @property (weak, nonatomic) IBOutlet UILabel *actDetailLabel;
 @property (weak, nonatomic) IBOutlet UIButton *phoneNumberButton;
 @property (weak, nonatomic) IBOutlet UIButton *moreDetailLabel;
@@ -29,8 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.addressLabel.text = self.activity.address;
-
+    self.addressLabel.text = [NSString stringWithFormat:@"%@ %@,NY %@", self.activity.address, self.activity.city, self.activity.postalCode];
     
     
     
@@ -39,6 +37,10 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)backButtonPressed:(UIBarButtonItem *)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
