@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Itinerary.h"
 
 @interface ItineraryTableViewController : UITableViewController
+
+@property (strong, nonatomic) Itinerary *itinerary;
 
 @end
