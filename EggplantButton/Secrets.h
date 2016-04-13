@@ -24,3 +24,4 @@ extern NSString * const GenericViewControllerNotificationName;
 extern NSString * const LoginViewControllerStoryBoardID;
 extern NSString * const mainViewControllerStoryBoardID;
 
+extern NSString * const googleAPI; 

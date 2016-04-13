@@ -27,6 +27,13 @@
     
     Firebase *ref = [[Firebase alloc] initWithUrl:firebaseRootRef];
     
+    if (ref.authData){
+        // someone is logged in
+        NSLog(@"logged in! uid: %@", ref.authData.uid);
+    } else {
+        // no one is logged in
+    }
+    
     [ref observeAuthEventWithBlock:^(FAuthData *authData) {
         if (authData) {
             // user authenticated
@@ -35,7 +42,7 @@
             self.currentViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
             [self constrainSubView:self.currentViewController.view toParentView:self.containerView];
 
-            NSLog(@"User is logged in %@!!!!!!", authData);
+            NSLog(@"<=============== User is logged in %@!!!!!! ============>", authData);
         } else {
             // No user is signed in
             // Set up and present initial view controller

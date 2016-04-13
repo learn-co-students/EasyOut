@@ -24,13 +24,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-
+    
+    UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc]
+                                           initWithTarget:self
+                                           action:@selector(hideKeyBoard)];
+    
+    [self.view addGestureRecognizer:tapGesture];
 }
 
--(void)testIfAlive {
-    NSLog(@"Are you still breathing?");
-}
+
 
 - (IBAction)login:(id)sender {
     
@@ -61,31 +63,22 @@
                              }];
          [alert addAction:ok];
         [self presentViewController:alert animated:YES completion:nil];
-        NSLog(@"You are not a user%@", error);
+        NSLog(@"======== %@ ===========", error);
     } else {
         [[NSNotificationCenter defaultCenter] postNotificationName:mainViewControllerStoryBoardID object:nil];
     }
 }];
     
-    
-    // Send post notification to app view controller to load generic VC
-     [[NSNotificationCenter defaultCenter] postNotificationName:mainViewControllerStoryBoardID object:nil];
-    
 }
-
+-(void)hideKeyBoard {
+    
+    [self.emailLabel resignFirstResponder];
+    [self.passwordLabel resignFirstResponder];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

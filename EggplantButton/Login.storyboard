@@ -90,6 +90,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gbh-8Q-3iR">
                                         <rect key="frame" x="54" y="0.0" width="61" height="30"/>
                                         <state key="normal" title="Register "/>
+                                        <connections>
+                                            <segue destination="cdF-tl-xg4" kind="presentation" id="nsh-nM-PzB"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -117,7 +120,98 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="COc-JL-Ikk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-249" y="-10"/>
+            <point key="canvasLocation" x="-269" y="12"/>
+        </scene>
+        <!--Create Account View Controller-->
+        <scene sceneID="20f-yo-D2k">
+            <objects>
+                <viewController id="cdF-tl-xg4" customClass="CreateAccountViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MdI-LT-dOx"/>
+                        <viewControllerLayoutGuide type="bottom" id="O0l-ru-VLd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KBv-7P-v3I">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create an account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4y-aj-Obs">
+                                <rect key="frame" x="150" y="65" width="300" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hMK-Xm-0cA" userLabel="Text Field Stack View">
+                                <rect key="frame" x="150" y="225" width="300" height="150"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ayb-ul-cbb">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rQ5-1d-e91">
+                                        <rect key="frame" x="0.0" y="30" width="300" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AkE-cs-das">
+                                        <rect key="frame" x="0.0" y="60" width="300" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="emailDidEnd:" destination="cdF-tl-xg4" eventType="editingDidEnd" id="mPg-83-i3e"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pQF-7q-Nfb">
+                                        <rect key="frame" x="0.0" y="90" width="300" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <connections>
+                                            <action selector="passwordDidEnd:" destination="cdF-tl-xg4" eventType="editingDidEnd" id="WwP-GG-z4q"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Verify password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QIq-yV-JAH">
+                                        <rect key="frame" x="0.0" y="120" width="300" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <connections>
+                                            <action selector="confirmPasswordDidEnd:" destination="cdF-tl-xg4" eventType="editingDidEnd" id="AHx-OK-7np"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ma-SV-gzI">
+                                <rect key="frame" x="247" y="435" width="107" height="30"/>
+                                <state key="normal" title="Create Account"/>
+                                <connections>
+                                    <action selector="createAccountButton:" destination="cdF-tl-xg4" eventType="touchUpInside" id="PzY-T5-Hcc"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9ma-SV-gzI" firstAttribute="centerY" secondItem="KBv-7P-v3I" secondAttribute="centerY" multiplier="1.5" id="6G0-0W-DNt"/>
+                            <constraint firstItem="hMK-Xm-0cA" firstAttribute="centerX" secondItem="KBv-7P-v3I" secondAttribute="centerX" id="JS5-XY-SJR"/>
+                            <constraint firstItem="hMK-Xm-0cA" firstAttribute="width" secondItem="KBv-7P-v3I" secondAttribute="width" multiplier="0.5" id="OWO-v1-Xtk"/>
+                            <constraint firstItem="Y4y-aj-Obs" firstAttribute="centerX" secondItem="KBv-7P-v3I" secondAttribute="centerX" id="bOO-ha-zQu"/>
+                            <constraint firstItem="9ma-SV-gzI" firstAttribute="centerX" secondItem="KBv-7P-v3I" secondAttribute="centerX" id="czZ-F5-d66"/>
+                            <constraint firstItem="Y4y-aj-Obs" firstAttribute="width" secondItem="KBv-7P-v3I" secondAttribute="width" multiplier="0.5" id="lKY-yx-h07"/>
+                            <constraint firstItem="Y4y-aj-Obs" firstAttribute="centerY" secondItem="KBv-7P-v3I" secondAttribute="centerY" multiplier="0.25" id="mKz-OB-cao"/>
+                            <constraint firstItem="hMK-Xm-0cA" firstAttribute="centerY" secondItem="KBv-7P-v3I" secondAttribute="centerY" id="qns-vc-Zcb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="createAccountButtonTapped" destination="9ma-SV-gzI" id="cyd-xk-fhS"/>
+                        <outlet property="createAccountLabel" destination="Y4y-aj-Obs" id="Peu-rF-8km"/>
+                        <outlet property="emailLabel" destination="AkE-cs-das" id="QrM-yu-SPZ"/>
+                        <outlet property="nameLabel" destination="ayb-ul-cbb" id="wfi-rv-Ey9"/>
+                        <outlet property="passWordLabel" destination="pQF-7q-Nfb" id="EWo-ur-zNv"/>
+                        <outlet property="userNameLabel" destination="rQ5-1d-e91" id="vKT-4v-Bjf"/>
+                        <outlet property="verifyPasswordLabel" destination="QIq-yV-JAH" id="hzf-wJ-cnx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GAg-eT-axs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="413" y="-10"/>
         </scene>
     </scenes>
 </document>
