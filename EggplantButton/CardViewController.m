@@ -176,7 +176,7 @@
     
     DetailViewController *destinationVC = [segue destinationViewController];
     
-    destinationVC.activity = ((ActivityCardCollectionViewCell *)sender).cardView.activity;
+//    destinationVC.activity = ((ActivityCardCollectionViewCell *)sender).cardView.activity;
 }
 
 #pragma mark - Core Location
