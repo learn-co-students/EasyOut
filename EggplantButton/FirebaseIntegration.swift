@@ -136,7 +136,7 @@ import Firebase
             "ratings" : itinerary.ratings,
             "tips" : itinerary.tips,
             "photos" : itinerary.photos,
-            "userID" : ref.authData.uid,
+//            "userID" : ref.authData.uid,
             "title" : itinerary.title
         ])
         
