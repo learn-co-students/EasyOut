@@ -154,9 +154,11 @@ import Firebase
             "ratings" : itinerary.ratings,
             "tips" : itinerary.tips,
             "photos" : itinerary.photos,
-//            "userID" : ref.authData.uid,
+            "userID" : ref.authData.uid,
             "title" : itinerary.title
         ])
+        
+        print("Added new itinerary with title: \(itinerary.title) and ID: \(newItineraryID)")
         
         // Return the new
         return newItineraryID
