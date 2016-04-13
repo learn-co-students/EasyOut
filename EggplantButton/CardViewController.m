@@ -1,4 +1,4 @@
-//
+ //
 //  ContainerViewController.m
 //  EggplantButton
 //
@@ -9,6 +9,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "UIView+Shake.h"
 #import "CardViewController.h"
+#import "DetailViewController.h"
 #import "EggplantButton-Swift.h"
 #import "ActivitiesDataStore.h"
 #import "ActivityCardCollectionViewCell.h"
@@ -165,15 +166,16 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSLog(@"PICKED CELL %lu", indexPath.row);
-    
     [self performSegueWithIdentifier:@"detailSegue" sender:self];
     
 }
 
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UICollectionViewCell *)sender {
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
+    DetailViewController *destinationVC = [segue destinationViewController];
+    
+    destinationVC.activity = ((ActivityCardCollectionViewCell *)sender).cardView.activity;
 }
 
 #pragma mark - Core Location
