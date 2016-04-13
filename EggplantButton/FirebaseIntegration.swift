@@ -11,6 +11,13 @@ import Firebase
 
 @objc class FirebaseAPIClient: NSObject {
     
+    // Test Function that calls all other functions to test
+    func testFirebaseFunctions () {
+        let itinerary : Itinerary = Itinerary.init(activities: ["whatever", "ativities", "haha fun"], userID: "159b8eee-8476-40d8-9f33-f35412df6cd1", creationDate: NSDate())
+        createNewItineraryWithItinerary(itinerary)
+    }
+    
+    
     // TODO: Global save function which calls appropriate API save function based on type of data passed in
     
     
@@ -42,7 +49,7 @@ import Firebase
     }
     
     // Return list of all itineraries
-    class func getAllItinerariesWithCompletion(completion:(success: Bool) -> ()) {
+    func getAllItinerariesWithCompletion(completion:(success: Bool) -> ()) {
         
         
         
@@ -124,12 +131,13 @@ import Firebase
         // Set values of the new itinerary reference with properties on the itinerary
         newItineraryRef.setValue([
             "itineraryID" : newItineraryID,
-            "creationDate" : itinerary.creationDate,
+            "creationDate" : convertDateToStringWithDate(itinerary.creationDate),
             "activities" : itinerary.activities,
             "ratings" : itinerary.ratings,
             "tips" : itinerary.tips,
             "photos" : itinerary.photos,
-            "userID" : ref.authData.uid
+            "userID" : ref.authData.uid,
+            "title" : itinerary.title
         ])
         
         // Return the new
@@ -163,5 +171,13 @@ import Firebase
         
         // Return the new image's ID
         return newImageID
+    }
+    
+    // Convert date objects to strings
+    func convertDateToStringWithDate(date : NSDate) -> String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let dateString = dateFormatter.stringFromDate(date)
+        return dateString
     }
 }

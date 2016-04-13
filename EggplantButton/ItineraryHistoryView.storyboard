@@ -8,8 +8,8 @@
         <!--Storyboard Reference-->
         <scene sceneID="KwP-u6-QJb">
             <objects>
-                <viewControllerPlaceholder id="Xoc-6M-z0I" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cXM-b9-W7X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder id="Xoc-6M-z0I" sceneMemberID="viewController"/>
             </objects>
             <point key="canvasLocation" x="431.5" y="85"/>
         </scene>
@@ -22,13 +22,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="7h9-qS-WGX">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItineraryCell" id="7h9-qS-WGX">
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7h9-qS-WGX" id="IB8-Uk-jfJ">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="PQg-d4-gV6" kind="presentation" identifier="ItineraryViewSegue" id="6Sp-cI-aAy"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -41,10 +44,10 @@
             </objects>
             <point key="canvasLocation" x="992" y="85"/>
         </scene>
-        <!--Storyboard Reference-->
+        <!--ItineraryView-->
         <scene sceneID="D7i-0Z-4zp">
             <objects>
-                <viewControllerPlaceholder id="PQg-d4-gV6" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="ItineraryView" id="PQg-d4-gV6" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mpj-HV-Gp3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1621.5" y="85"/>

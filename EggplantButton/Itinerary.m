@@ -29,6 +29,11 @@
     self = [super init];
     
     if(self) {
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss Z";
+        NSString *dateString = [dateFormatter stringFromDate:creationDate];
+        
         _itineraryID = @"";
         _activities = activities;
         _userID = userID;
@@ -36,6 +41,7 @@
         _photos = [[NSMutableArray alloc] init];
         _ratings = [[NSMutableDictionary alloc] init];
         _tips = [[NSMutableArray alloc] init];
+        _title = [NSString stringWithFormat:@"Itinerary for %@", dateString];
     }
     
     return self;
@@ -44,6 +50,7 @@
 // initwith avtivity, userID, creationDate with default
 
 -(instancetype)initWithItineraryID:(NSString *)itineraryID {
+    
     
     
     return self;
