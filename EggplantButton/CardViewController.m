@@ -167,7 +167,7 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    [self performSegueWithIdentifier:@"detailSegue" sender:self];
+    [self performSegueWithIdentifier:@"detailSegue" sender: (ActivityCardCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath]];
     
 }
 
@@ -176,7 +176,8 @@
     
     DetailViewController *destinationVC = [segue destinationViewController];
     
-//    destinationVC.activity = ((ActivityCardCollectionViewCell *)sender).cardView.activity;
+    
+    destinationVC.activity = ((ActivityCardCollectionViewCell *)sender).cardView.activity;
 }
 
 #pragma mark - Core Location
