@@ -1,4 +1,4 @@
-//
+ //
 //  ContainerViewController.m
 //  EggplantButton
 //
@@ -7,8 +7,10 @@
 //
 
 #import <CoreLocation/CoreLocation.h>
+#import <AudioToolbox/AudioToolbox.h>
 #import "UIView+Shake.h"
 #import "CardViewController.h"
+#import "DetailViewController.h"
 #import "EggplantButton-Swift.h"
 #import "ActivitiesDataStore.h"
 #import "ActivityCardCollectionViewCell.h"
@@ -165,15 +167,17 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSLog(@"PICKED CELL %lu", indexPath.row);
-    
-    [self performSegueWithIdentifier:@"detailSegue" sender:self];
+    [self performSegueWithIdentifier:@"detailSegue" sender: (ActivityCardCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath]];
     
 }
 
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UICollectionViewCell *)sender {
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
+    DetailViewController *destinationVC = [segue destinationViewController];
+    
+    
+    destinationVC.activity = ((ActivityCardCollectionViewCell *)sender).cardView.activity;
 }
 
 #pragma mark - Core Location
@@ -216,6 +220,9 @@
     if ( event.subtype == UIEventSubtypeMotionShake )
     {
         NSLog(@"Shake started");
+        
+        //makes the phone vibrate
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         
         [self getShuffledTicketMasterData];
         

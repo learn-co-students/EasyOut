@@ -10,28 +10,39 @@
 
 @interface DetailViewController ()
 
+@property (weak, nonatomic) IBOutlet UIView *imageView;
+@property (weak, nonatomic) IBOutlet UIView *distanceView;
+@property (weak, nonatomic) IBOutlet UILabel *actDetailLabel;
+@property (weak, nonatomic) IBOutlet UIButton *phoneNumberButton;
+@property (weak, nonatomic) IBOutlet UIButton *moreDetailLabel;
+
+@property (weak, nonatomic) IBOutlet UIView *iconImage;
+@property (weak, nonatomic) IBOutlet UIView *mapView;
+
+@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
+
 @end
 
 @implementation DetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
+    self.addressLabel.text = [NSString stringWithFormat:@"%@ %@,NY %@", self.activity.address, self.activity.city, self.activity.postalCode];
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)backButtonPressed:(UIBarButtonItem *)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
-*/
+
+
 
 @end

@@ -20,6 +20,7 @@
 @property (strong, nonatomic) NSString *segment;
 @property (strong, nonatomic) NSString *genre;
 @property (strong, nonatomic) NSString *subGenre;
+@property (strong, nonatomic) NSString *venueName;
 
 -(instancetype)initWithDictionary:(NSDictionary *)eventDictionary;
 

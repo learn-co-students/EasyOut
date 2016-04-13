@@ -27,7 +27,7 @@
         _segment = eventDictionary[@"classifications"][0][@"segment"][@"name"];
         _genre = eventDictionary[@"classifications"][0][@"genre"][@"name"];;
         _subGenre = eventDictionary[@"classifications"][0][@"subGenre"][@"name"];
-
+        _venueName = eventDictionary[@"_embedded"][@"venues"][0][@"name"];
     }
     
     return self;

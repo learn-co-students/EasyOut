@@ -77,7 +77,6 @@
 // Add data to activity card view
 -(void)updateUI {
     
-//    self.imageView.image = [UIImage imageWithData: [NSData dataWithContentsOfURL:self.activity.imageURL]];
     self.nameLabel.text = self.activity.name;
     self.addressLabel.text = self.activity.address;
     
@@ -96,7 +95,6 @@
             self.imageView.image = responseObject;
         }
     } failure:nil];
-    
     
     switch (self.activity.activityType) {
         case RestaurantType:
