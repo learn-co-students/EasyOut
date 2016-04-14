@@ -13,8 +13,9 @@ import Firebase
     
     // Test Function that calls all other functions to test
     func testFirebaseFunctions () {
-        createUserObjectFromFirebaseWithUserID("159b8eee-8476-40d8-9f33-f35412df6cd1")
-//        print
+        createUserObjectFromFirebaseWithUserID("f156befa-f3a9-42f1-b695-db8784273b7a") { (user) in
+            print("User object created for \(user.username)")
+        }
     }
     
     
@@ -200,40 +201,29 @@ import Firebase
     }
     
     // Create a User object from Firebase data using a user ID
-    func createUserObjectFromFirebaseWithUserID(userID : String) -> User {
+    func createUserObjectFromFirebaseWithUserID(userID : String, completion : User -> ()) {
         
         // Set references to call for user info
         let ref = Firebase(url:firebaseRootRef)
         let usersRef = ref.childByAppendingPath("users")
         let userRef = usersRef.childByAppendingPath(userID)
         
-        // Create new User object
-        let newUser : User = User.init(userID: <#T##String!#>)
-        
         // Read data at user reference
         userRef.observeEventType(.Value, withBlock: { snapshot in
             print("User ref:\n\(snapshot.value)")
             
-            // Write user values to newUser
-            newUser.userID = snapshot.value.userID
-            newUser.username = snapshot.value.username
-            newUser.email = snapshot.value.email
-            newUser.bio = snapshot.value.bio
-            newUser.location = snapshot.value.location
-            newUser.savedItineraries = snapshot.value.savedItineraries
-            newUser.preferences = snapshot.value.preferences
-            newUser.ratings = snapshot.value.ratings
-            newUser.tips = snapshot.value.tips
-            newUser.profilePhoto = snapshot.value.profilePhoto
-            newUser.reputation = snapshot.value.reputation
+            let sv = snapshot.value
+            
+            // Create new User object
+            let newUser : User = User.init(userID: sv["userID"]! as! String, username: sv["username"]! as! String, email: sv["email"]! as! String, bio: sv["bio"]! as! String, location: sv["location"]! as! String, savedItineraries: sv["savedItineraries"]! as! NSMutableArray, preferences: sv["preferences"]! as! NSMutableDictionary, ratings: sv["ratings"]! as! NSMutableDictionary, tips: sv["tips"]! as! NSMutableDictionary, profilePhoto: sv["profilePhoto"]! as! NSData, reputation: sv["reputation"]! as! UInt)
             
             print("Created User object for: \(newUser.username)")
+            
+            completion(newUser)
             
             }, withCancelBlock: { error in
                 print(error.description)
         })
-        
-        return newUser
     }
     
     // Convert date objects to strings
