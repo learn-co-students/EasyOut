@@ -13,7 +13,13 @@
 
 @property (strong, nonatomic) User * user;
 
+
+@property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *userImage;
+@property (weak, nonatomic) IBOutlet UILabel *bioLabel;
+@property (weak, nonatomic) IBOutlet UILabel *numRatedLabel;
+@property (weak, nonatomic) IBOutlet UIStackView *numTipsGivenLabel;
+@property (weak, nonatomic) IBOutlet UILabel *numOfItineraries;
 
 @end
 
