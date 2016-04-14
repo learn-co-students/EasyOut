@@ -70,26 +70,36 @@
     picker.allowsEditing = YES;
     
     UIAlertController * editPicture =   [UIAlertController
-                                  alertControllerWithTitle:@"Failed to login"
-                                  message:@"Email or password incorrect"
+                                  alertControllerWithTitle:NULL
+                                  message:NULL
                                   preferredStyle:UIAlertControllerStyleActionSheet];
     
     UIAlertAction* takePhoto = [UIAlertAction
-                         actionWithTitle:@"Take photo"
+                         actionWithTitle:@"Take a New Profile Picture"
                          style:UIAlertActionStyleDefault
                          handler:^(UIAlertAction * action)
                          {
                              [self takeAPictureWithPicker:picker];
                          }];
     UIAlertAction* selectPhoto = [UIAlertAction
-                                actionWithTitle:@"Select photo"
-                                style:UIAlertActionStyleDefault
+                                actionWithTitle:@"Select Profile Picture"
+                                  style: UIAlertActionStyleDefault
                                 handler:^(UIAlertAction * action)
                                 {
                                     [self selectAPictureWithPicker:picker];
                                 }];
+    
+    UIAlertAction* cancel = [UIAlertAction
+                                  actionWithTitle:@"Cancel"
+                                  style:UIAlertActionStyleCancel
+                                  handler:^(UIAlertAction * action)
+                                  {
+                                    [editPicture dismissViewControllerAnimated:YES completion:nil];
+
+                                  }];
     [editPicture addAction:takePhoto];
     [editPicture addAction:selectPhoto];
+    [editPicture addAction: cancel];
 
     [self presentViewController:editPicture animated:YES completion:nil];
     
@@ -112,7 +122,7 @@
 
 - (IBAction)backButton:(UIBarButtonItem *)sender {
     
-    [[self navigationController] popViewControllerAnimated: YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
