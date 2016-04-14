@@ -137,7 +137,7 @@
                     <navigationItem key="navigationItem" id="fEg-oX-WV2">
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="31r-AO-Stk">
                             <connections>
-                                <action selector="menuButtonPressed:" destination="BYZ-38-t0r" id="hOl-7B-Lx8"/>
+                                <action selector="menuButtonTapped:" destination="BYZ-38-t0r" id="XwY-wi-FGY"/>
                                 <segue destination="1ik-vQ-dug" kind="show" identifier="userSegue" id="454-4P-g02"/>
                             </connections>
                         </barButtonItem>

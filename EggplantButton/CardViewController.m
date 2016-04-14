@@ -76,7 +76,14 @@
     
 }
 
-#pragma get API data
+#pragma mark - Side Menu Button Tapped
+
+- (IBAction)menuButtonTapped:(id)sender {
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"menuButtonTapped" object:nil];
+}
+
+#pragma mark - Get API data
 
 -(void)getRestaurantData{
     

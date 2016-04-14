@@ -18,6 +18,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3JL-jv-zJE">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <connections>
+                                    <segue destination="UYw-eZ-b8I" kind="embed" id="LLT-Z5-mmb"/>
+                                </connections>
+                            </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6De-Ls-gnI">
                                 <rect key="frame" x="0.0" y="0.0" width="140" height="568"/>
                                 <constraints>
@@ -25,12 +31,6 @@
                                 </constraints>
                                 <connections>
                                     <segue destination="gu3-p8-m1o" kind="embed" id="CLl-fp-pgs"/>
-                                </connections>
-                            </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3JL-jv-zJE">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <connections>
-                                    <segue destination="UYw-eZ-b8I" kind="embed" id="LLT-Z5-mmb"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -56,11 +56,17 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="mainContainer" destination="3JL-jv-zJE" id="27f-bl-fo4"/>
+                        <outlet property="mainViewTapGestureRecognizer" destination="O9p-FW-158" id="a9m-Ps-0qs"/>
                         <outlet property="sideMenuContainer" destination="6De-Ls-gnI" id="jw9-mb-4WF"/>
+                        <outlet property="viewContainer" destination="OEe-Wd-Ze1" id="Em2-Rj-AS4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iTS-Xi-MjU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="O9p-FW-158"/>
+                <tapGestureRecognizer id="O9p-FW-158">
+                    <connections>
+                        <action selector="mainViewTapped:" destination="ac4-mZ-LO7" id="UxI-pL-TRR"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="641" y="734"/>
         </scene>
@@ -80,18 +86,18 @@
             </objects>
             <point key="canvasLocation" x="109.5" y="645"/>
         </scene>
-        <!--Storyboard Reference-->
+        <!--ItineraryHistoryView-->
         <scene sceneID="yIU-Bk-Qq6">
             <objects>
-                <viewControllerPlaceholder id="23Y-Jg-bFX" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="ItineraryHistoryView" id="23Y-Jg-bFX" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cbA-dB-8lR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="109.5" y="692"/>
         </scene>
-        <!--Storyboard Reference-->
+        <!--FilterView-->
         <scene sceneID="M94-CD-U1m">
             <objects>
-                <viewControllerPlaceholder id="Sp6-SK-hz3" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="FilterView" id="Sp6-SK-hz3" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MAG-oI-naF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="109.5" y="744"/>
@@ -112,7 +118,7 @@
                         <viewControllerLayoutGuide type="top" id="Xar-S1-zIn"/>
                         <viewControllerLayoutGuide type="bottom" id="Z3X-Db-Oih"/>
                     </layoutGuides>
-                    <view key="view" alpha="0.90000000000000002" contentMode="scaleToFill" id="lvA-HB-2in">
+                    <view key="view" alpha="0.10000000000000001" contentMode="scaleToFill" id="lvA-HB-2in">
                         <rect key="frame" x="0.0" y="0.0" width="140" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -121,12 +127,18 @@
                                 <state key="normal" title="Preferences">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="Sp6-SK-hz3" kind="show" id="ylm-qN-R7K"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="miq-zv-gjD">
                                 <rect key="frame" x="19" y="235" width="102" height="30"/>
                                 <state key="normal" title="Past Itineraries">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="23Y-Jg-bFX" kind="show" id="n8s-iw-7aY"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eib-w1-VfN">
                                 <rect key="frame" x="9" y="190" width="122" height="30"/>
