@@ -13,9 +13,20 @@ import Firebase
     
     // Test Function that calls all other functions to test
     func testFirebaseFunctions () {
-        createUserObjectFromFirebaseWithUserID("f156befa-f3a9-42f1-b695-db8784273b7a") { (user) in
-            print("User object created for \(user.username)")
-        }
+        
+        let newUser : User = User.init(email: "test@test.com", username: "testy")
+        
+        registerNewUserWithUser(newUser, password: "whatever")
+        
+        let ref = Firebase(url:firebaseRootRef)
+        
+//        createUserObjectFromFirebaseWithUserID(ref.authData.uid) { (user) in
+//            print("User object created for \(user.username)")
+//        }
+        
+//        createUserObjectFromFirebaseWithUserID("a797760b-0aa9-4257-a64a-d4fd715dd411") { (user) in
+//            print("User object created for \(user.username)")
+//        }
     }
     
     
@@ -101,8 +112,10 @@ import Firebase
             }
         }
     }
-    // Create a new user in firebase given a User object and password
-    func createNewUserWithUser(user : User, password : String) {
+    // Register a new user in firebase given a User object and password
+    func registerNewUserWithUser(user : User, password : String) {
+        
+        print("Registering user: \(user.username)")
         
         // Set reference for firebase account
         let ref = Firebase(url:firebaseRootRef)
@@ -137,11 +150,11 @@ import Firebase
                                 ])
                             
                             // We should actually call firebase to pull values for new user and make sure everything was set correctly
-                            print("Created new user: \(userRef)")            }
+                            print("Registered new user: \(userRef)")            }
         })
     }
     
-    func createNewItineraryWithItinerary(itinerary : Itinerary) -> String {
+    func saveNewItineraryWithItinerary(itinerary : Itinerary) -> String {
         
         // Set references for new itinerary
         let ref = Firebase(url:firebaseRootRef)
@@ -172,7 +185,7 @@ import Firebase
     }
     
     // Create a new image reference in Firebase and return its unique ID
-    func createNewImageWithImage(image : UIImage) -> String {
+    func saveNewImageWithImage(image : UIImage) -> String {
         
         // Set references for new itinerary
         let ref = Firebase(url:firebaseRootRef)
