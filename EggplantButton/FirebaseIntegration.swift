@@ -84,8 +84,6 @@ import Firebase
     // Return list of all itineraries
     func getAllItinerariesWithCompletion(completion:(success: Bool) -> ()) {
         
-        
-        
         completion(success: true)
     }
     
