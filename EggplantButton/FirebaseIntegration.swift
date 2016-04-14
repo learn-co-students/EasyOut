@@ -13,8 +13,7 @@ import Firebase
     
     // Test Function that calls all other functions to test
     func testFirebaseFunctions () {
-        let itinerary : Itinerary = Itinerary.init(activities: ["whatever", "ativities", "haha fun"], userID: "159b8eee-8476-40d8-9f33-f35412df6cd1", creationDate: NSDate())
-        createNewItineraryWithItinerary(itinerary)
+        createUserObjectFromFirebaseWithUserID("159b8eee-8476-40d8-9f33-f35412df6cd1")
     }
     
     
@@ -193,6 +192,22 @@ import Firebase
         return newImageID
     }
     
+    // Create a User object from Firebase data using a user ID
+    func createUserObjectFromFirebaseWithUserID(userID : String) -> () {
+        
+        // Set references to call for user info
+        let ref = Firebase(url:firebaseRootRef)
+        let usersRef = ref.childByAppendingPath("users")
+        let userRef = usersRef.childByAppendingPath(userID)
+        
+        // Read data at user reference
+        userRef.observeEventType(.Value, withBlock: { snapshot in
+            print(snapshot.value)
+            }, withCancelBlock: { error in
+                print(error.description)
+        })
+    }
+    
     // Convert date objects to strings
     func convertDateToStringWithDate(date : NSDate) -> String {
         let dateFormatter = NSDateFormatter()
@@ -200,4 +215,5 @@ import Firebase
         let dateString = dateFormatter.stringFromDate(date)
         return dateString
     }
+    
 }

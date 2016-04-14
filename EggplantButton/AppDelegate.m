@@ -36,10 +36,6 @@
         //[self handleURL :deferredDeeplinkURL];
     }];
     
-//    FirebaseAPIClient *client = [[FirebaseAPIClient alloc] init];
-//    [client getAllUsersWithCompletion:^(BOOL success) {
-//    
-//    }];
     [UINavigationBar appearance].backgroundColor =[UIColor blackColor];
     
     return YES;
