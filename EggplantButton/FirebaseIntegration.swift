@@ -186,7 +186,7 @@ import Firebase
             "imageBase64String" : newImageBase64String // TODO: Values for this key should be the keys for every photo attached to the itinerary, and the photo keys should be created in another function
             ])
         
-//        print(newImageData)
+        print("Image with ImageID: \(newImageID) added to Firebase")
         
         // Return the new image's ID
         return newImageID
