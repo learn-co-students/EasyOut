@@ -3,14 +3,13 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Side Menu View Controller-->
         <scene sceneID="p2n-ey-NTe">
             <objects>
-                <viewController id="ac4-mZ-LO7" sceneMemberID="viewController">
+                <viewController id="ac4-mZ-LO7" customClass="sideMenuViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Cb5-L4-6a5"/>
                         <viewControllerLayoutGuide type="bottom" id="etv-kw-x0u"/>
@@ -28,7 +27,6 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6De-Ls-gnI">
                                 <rect key="frame" x="0.0" y="0.0" width="140" height="568"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="6De-Ls-gnI" secondAttribute="height" multiplier="35:142" id="0zj-1r-SUd"/>
                                     <constraint firstAttribute="width" constant="140" id="RTz-1T-qY8"/>
                                 </constraints>
                                 <connections>
@@ -37,6 +35,7 @@
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="6De-Ls-gnI" firstAttribute="leading" secondItem="OEe-Wd-Ze1" secondAttribute="leading" id="1ys-BX-Y1c"/>
                             <constraint firstItem="3JL-jv-zJE" firstAttribute="top" secondItem="OEe-Wd-Ze1" secondAttribute="top" id="4Fo-3J-n1w"/>
@@ -44,15 +43,24 @@
                             <constraint firstItem="etv-kw-x0u" firstAttribute="top" secondItem="6De-Ls-gnI" secondAttribute="bottom" id="BXB-TF-hhP"/>
                             <constraint firstItem="6De-Ls-gnI" firstAttribute="top" secondItem="OEe-Wd-Ze1" secondAttribute="top" id="BfG-ll-VJ9"/>
                             <constraint firstAttribute="trailing" secondItem="6De-Ls-gnI" secondAttribute="trailing" constant="180" id="YzS-o9-QOb"/>
+                            <constraint firstItem="6De-Ls-gnI" firstAttribute="top" secondItem="Cb5-L4-6a5" secondAttribute="bottom" constant="-20" id="bhV-Un-1Vb"/>
                             <constraint firstItem="etv-kw-x0u" firstAttribute="top" secondItem="3JL-jv-zJE" secondAttribute="bottom" id="drL-Mo-gXK"/>
                             <constraint firstAttribute="trailing" secondItem="3JL-jv-zJE" secondAttribute="trailing" id="qVJ-dc-ieu"/>
                             <constraint firstItem="3JL-jv-zJE" firstAttribute="leading" secondItem="OEe-Wd-Ze1" secondAttribute="leading" id="qlm-MM-im9"/>
                             <constraint firstItem="3JL-jv-zJE" firstAttribute="width" secondItem="OEe-Wd-Ze1" secondAttribute="width" id="xLf-cl-mv2"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="O9p-FW-158" appends="YES" id="sjZ-CN-xqh"/>
+                        </connections>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="mainContainer" destination="3JL-jv-zJE" id="27f-bl-fo4"/>
+                        <outlet property="sideMenuContainer" destination="6De-Ls-gnI" id="jw9-mb-4WF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iTS-Xi-MjU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="O9p-FW-158"/>
             </objects>
             <point key="canvasLocation" x="641" y="734"/>
         </scene>
@@ -100,21 +108,27 @@
         <scene sceneID="UR8-xx-9Ts">
             <objects>
                 <viewController id="gu3-p8-m1o" customClass="sideMenuViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="lvA-HB-2in">
+                    <view key="view" alpha="0.90000000000000002" contentMode="scaleToFill" id="lvA-HB-2in">
                         <rect key="frame" x="0.0" y="0.0" width="140" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jRR-kU-pUe">
                                 <rect key="frame" x="29" y="273" width="83" height="30"/>
-                                <state key="normal" title="Preferences"/>
+                                <state key="normal" title="Preferences">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="miq-zv-gjD">
                                 <rect key="frame" x="19" y="235" width="102" height="30"/>
-                                <state key="normal" title="Past Itineraries"/>
+                                <state key="normal" title="Past Itineraries">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eib-w1-VfN">
                                 <rect key="frame" x="9" y="190" width="122" height="30"/>
-                                <state key="normal" title="Test login button"/>
+                                <state key="normal" title="Test login button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <segue destination="kAa-Zv-maH" kind="presentation" id="eOU-FM-pU6"/>
                                 </connections>
@@ -130,16 +144,18 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="55" id="qNA-2z-CZr"/>
                                 </constraints>
-                                <state key="normal" title="Log Out"/>
+                                <state key="normal" title="Log Out">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u9C-8z-Viu">
                                 <rect key="frame" x="0.0" y="135" width="140" height="47"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="2pM-NT-5YP" firstAttribute="top" secondItem="lvA-HB-2in" secondAttribute="top" constant="20" symbolic="YES" id="CSA-to-gCT"/>
                             <constraint firstItem="eib-w1-VfN" firstAttribute="centerX" secondItem="lvA-HB-2in" secondAttribute="centerX" id="EgC-tS-EF5"/>

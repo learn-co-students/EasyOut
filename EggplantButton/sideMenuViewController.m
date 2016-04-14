@@ -10,6 +10,10 @@
 
 @interface sideMenuViewController ()
 
+@property (weak, nonatomic) IBOutlet UIView *sideMenuContainer;
+@property (weak, nonatomic) IBOutlet UIView *viewContainer;
+
+
 @end
 
 @implementation sideMenuViewController
@@ -19,10 +23,7 @@
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 /*
 #pragma mark - Navigation
