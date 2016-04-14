@@ -43,6 +43,8 @@
 		78A7F6C91CBD44B500DD4937 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78A7F6C81CBD44B500DD4937 /* GameKit.framework */; };
 		78A7F6CB1CBD44C500DD4937 /* GameplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78A7F6CA1CBD44C500DD4937 /* GameplayKit.framework */; };
 		78A7F6CD1CBDA1FC00DD4937 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78A7F6CC1CBDA1FC00DD4937 /* AudioToolbox.framework */; };
+		78A7F6D11CBEC2F800DD4937 /* sideMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78A7F6D01CBEC2F800DD4937 /* sideMenu.storyboard */; };
+		78A7F6D41CBFFDAF00DD4937 /* sideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78A7F6D31CBFFDAF00DD4937 /* sideMenuViewController.m */; };
 		9A2478E61CAC2EFA00865C6A /* OpenTableAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2478E51CAC2EFA00865C6A /* OpenTableAPIClient.m */; };
 		9A33839B1CBC5416004B8EFE /* ActivityCardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3383981CBC5416004B8EFE /* ActivityCardCollectionViewCell.m */; };
 		9A33839C1CBC5416004B8EFE /* RestaurantDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A33839A1CBC5416004B8EFE /* RestaurantDataStore.m */; };
@@ -57,8 +59,6 @@
 /* Begin PBXFileReference section */
 		0A05A4E51CB438AD00EF83CD /* TicketMasterAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TicketMasterAPIClient.h; sourceTree = "<group>"; };
 		0A05A4E61CB438AD00EF83CD /* TicketMasterAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TicketMasterAPIClient.m; sourceTree = "<group>"; };
-		0A05A4E91CB438AD00EF83CD /* TicketMasterEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TicketMasterEvent.h; path = EggplantButton/TicketMasterEvent.h; sourceTree = "<group>"; };
-		0A05A4EA1CB438AD00EF83CD /* TicketMasterEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TicketMasterEvent.m; path = EggplantButton/TicketMasterEvent.m; sourceTree = "<group>"; };
 		0A1DFA8B1CBBF21B0071EEDB /* CreateAccountStoryBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateAccountStoryBoard.storyboard; sourceTree = "<group>"; };
 		0AD3650C1CBD43C000DD3617 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		478A5D5E5340BA05712F05CE /* Pods-EggplantButton.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EggplantButton.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EggplantButton/Pods-EggplantButton.debug.xcconfig"; sourceTree = "<group>"; };
@@ -114,6 +114,9 @@
 		78A7F6C81CBD44B500DD4937 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		78A7F6CA1CBD44C500DD4937 /* GameplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameplayKit.framework; path = System/Library/Frameworks/GameplayKit.framework; sourceTree = SDKROOT; };
 		78A7F6CC1CBDA1FC00DD4937 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		78A7F6D01CBEC2F800DD4937 /* sideMenu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = sideMenu.storyboard; sourceTree = "<group>"; };
+		78A7F6D21CBFFDAF00DD4937 /* sideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sideMenuViewController.h; sourceTree = "<group>"; };
+		78A7F6D31CBFFDAF00DD4937 /* sideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sideMenuViewController.m; sourceTree = "<group>"; };
 		9A2478E41CAC2EFA00865C6A /* OpenTableAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenTableAPIClient.h; sourceTree = "<group>"; };
 		9A2478E51CAC2EFA00865C6A /* OpenTableAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenTableAPIClient.m; sourceTree = "<group>"; };
 		9A3383971CBC5416004B8EFE /* ActivityCardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActivityCardCollectionViewCell.h; path = EggplantButton/ActivityCardCollectionViewCell.h; sourceTree = "<group>"; };
@@ -168,6 +171,8 @@
 				4C64EC3C1CBAA78200FB3A45 /* CreateAccountViewController.m */,
 				4C358D361CAD62CE00257756 /* CardViewController.h */,
 				4C358D371CAD62CE00257756 /* CardViewController.m */,
+				78A7F6D21CBFFDAF00DD4937 /* sideMenuViewController.h */,
+				78A7F6D31CBFFDAF00DD4937 /* sideMenuViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -291,6 +296,7 @@
 				4C64EC411CBAA78200FB3A45 /* itineraryShare.storyboard */,
 				4C9A038C1CAB064200CA9A02 /* LaunchScreen.storyboard */,
 				0A1DFA8B1CBBF21B0071EEDB /* CreateAccountStoryBoard.storyboard */,
+				78A7F6D01CBEC2F800DD4937 /* sideMenu.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -417,6 +423,7 @@
 				9ACC8C151CBD374600909704 /* nyc_restaurants.plist in Resources */,
 				9ACC8C171CBD398E00909704 /* DetailView.storyboard in Resources */,
 				9AA058791CAEAA57000A6AA8 /* ActivityCard.xib in Resources */,
+				78A7F6D11CBEC2F800DD4937 /* sideMenu.storyboard in Resources */,
 				4C1DE1621CB8410900AFBCF5 /* LobsterTwo-Regular.otf in Resources */,
 				4C1DE1601CB8410900AFBCF5 /* LobsterTwo-BoldItalic.otf in Resources */,
 				4C1DE1611CB8410900AFBCF5 /* LobsterTwo-Italic.otf in Resources */,
@@ -502,6 +509,7 @@
 				4CBBC6051CBA96DF006683D8 /* LogInViewController.m in Sources */,
 				4C64EC461CBAA78200FB3A45 /* Event.m in Sources */,
 				4C9A03801CAB064200CA9A02 /* AppDelegate.m in Sources */,
+				78A7F6D41CBFFDAF00DD4937 /* sideMenuViewController.m in Sources */,
 				4C270CA81CAB08A2003E0195 /* Secrets.m in Sources */,
 				4C02D1E71CB6EDD40031F978 /* Photo.m in Sources */,
 				9A5616B51CAC68AE008D9264 /* Restaurant.m in Sources */,

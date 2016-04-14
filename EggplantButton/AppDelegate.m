@@ -9,10 +9,12 @@
 #import "AppDelegate.h"
 #import <Button/Button.h>
 #import "Secrets.h"
-#import "DeepLinkKit.h"
 #import "EggplantButton-Swift.h"
+#import "CardViewController.h"
+
 
 @interface AppDelegate ()
+
 
 @end
 
@@ -30,6 +32,14 @@
         // Handle the deferredDeeplinkURL and open the relevant content.
         //[self handleURL :deferredDeeplinkURL];
     }];
+    
+    
+    // Side Menu
+    
+    
+    
+    
+    
     
 //    FirebaseAPIClient *client = [[FirebaseAPIClient alloc] init];
 //    [client getAllUsersWithCompletion:^(BOOL success) {
@@ -90,6 +100,7 @@ continueUserActivity:(NSUserActivity *)userActivity
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
 }
+
 
 #pragma mark - Core Data stack
 
