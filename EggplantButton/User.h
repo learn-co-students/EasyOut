@@ -25,8 +25,6 @@
 
 -(instancetype)initWithEmail:(NSString *)email username:(NSString *)username;
 
--(instancetype) initWithEmail:(NSString *)email;
-
 -(instancetype) initWithUserID:(NSString *)userID;
 
 @end

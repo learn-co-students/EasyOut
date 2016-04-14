@@ -40,7 +40,7 @@
 //    [client getAllUsersWithCompletion:^(BOOL success) {
 //    
 //    }];
-    [UINavigationBar appearance].backgroundColor =[UIColor blackColor];
+    [UINavigationBar appearance].tintColor =[UIColor blackColor];
     
     return YES;
 }

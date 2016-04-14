@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="QB9-cg-QB8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="QB9-cg-QB8">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -18,15 +18,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Current Location" translatesAutoresizingMaskIntoConstraints="NO" id="Ip0-ss-x0E">
-                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="VU8-K5-T2e" userLabel="Card Stack View">
-                                <rect key="frame" x="20" y="123" width="560" height="402"/>
+                                <rect key="frame" x="20" y="79" width="560" height="446"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gkc-zr-fUL">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="121"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="135"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="yNZ-cS-u4s">
                                             <size key="itemSize" width="55" height="58"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -35,7 +31,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cardCell" id="q3k-bS-TW6" customClass="ActivityCardCollectionViewCell">
-                                                <rect key="frame" x="0.0" y="0.0" width="55" height="58"/>
+                                                <rect key="frame" x="0.0" y="71" width="55" height="58"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="0.0" y="0.0" width="55" height="58"/>
@@ -49,7 +45,7 @@
                                         </cells>
                                     </collectionView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Buu-E5-ZxL">
-                                        <rect key="frame" x="0.0" y="141" width="560" height="120"/>
+                                        <rect key="frame" x="0.0" y="155" width="560" height="136"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="9lb-FM-leQ">
                                             <size key="itemSize" width="50" height="50"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -72,7 +68,7 @@
                                         </cells>
                                     </collectionView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7QA-HD-63z">
-                                        <rect key="frame" x="0.0" y="281" width="560" height="121"/>
+                                        <rect key="frame" x="0.0" y="311" width="560" height="135"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="JKB-yy-PM1">
                                             <size key="itemSize" width="50" height="50"/>
@@ -123,20 +119,25 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="VU8-K5-T2e" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="5dS-E8-lEo"/>
-                            <constraint firstItem="Ip0-ss-x0E" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="H3J-UA-ad3"/>
-                            <constraint firstItem="VU8-K5-T2e" firstAttribute="top" secondItem="Ip0-ss-x0E" secondAttribute="bottom" constant="15" id="I0s-Pc-FzW"/>
                             <constraint firstItem="VU8-K5-T2e" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="RA7-c0-rcj"/>
                             <constraint firstItem="hhF-uU-Inp" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="Zdx-os-ceA"/>
                             <constraint firstItem="hhF-uU-Inp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cmV-up-7YW"/>
                             <constraint firstItem="VU8-K5-T2e" firstAttribute="bottom" secondItem="hhF-uU-Inp" secondAttribute="top" constant="-15" id="fpw-Nz-Rpz"/>
-                            <constraint firstItem="Ip0-ss-x0E" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="sko-rh-AmJ"/>
+                            <constraint firstItem="VU8-K5-T2e" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="15" id="nBc-lt-vsh"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hhF-uU-Inp" secondAttribute="bottom" id="tLe-Um-Ccv"/>
-                            <constraint firstItem="Ip0-ss-x0E" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="zKy-nD-CGN"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="fEg-oX-WV2">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="31r-AO-Stk"/>
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="QNU-sy-gKX"/>
+                    <navigationItem key="navigationItem" id="fEg-oX-WV2">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" id="31r-AO-Stk">
+                            <connections>
+                                <action selector="menuButtonPressed:" destination="BYZ-38-t0r" id="hOl-7B-Lx8"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Filter" id="QNU-sy-gKX">
+                            <connections>
+                                <action selector="filterButtonPressed:" destination="BYZ-38-t0r" id="YlN-qI-q21"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="bottomRowCollection" destination="7QA-HD-63z" id="jc0-TU-ogc"/>
@@ -146,7 +147,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1048" y="387"/>
+            <point key="canvasLocation" x="1084" y="446"/>
         </scene>
         <!--DetailView-->
         <scene sceneID="D1W-qe-Psg">
@@ -154,7 +155,7 @@
                 <viewControllerPlaceholder storyboardName="DetailView" referencedIdentifier="DetailView" id="cZd-me-Cbf" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wjg-ra-0Ql" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1520.5" y="387"/>
+            <point key="canvasLocation" x="1530.5" y="446"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nOA-Pe-4kW">

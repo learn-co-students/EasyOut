@@ -111,7 +111,7 @@
 
 - (IBAction)cardSelected:(UIButton *)sender {
     
-    if(self.backgroundColor == [UIColor blackColor]) {
+    if([self.backgroundColor isEqual: [[UIColor blackColor] colorWithAlphaComponent:0.4]]) {
         
         self.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.4];
         self.nameLabel.textColor = [UIColor blackColor];

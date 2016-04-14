@@ -29,7 +29,6 @@
     
     if (ref.authData){
         // someone is logged in
-        NSLog(@"logged in! uid: %@", ref.authData.uid);
     } else {
         // no one is logged in
     }
@@ -42,7 +41,6 @@
             self.currentViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
             [self constrainSubView:self.currentViewController.view toParentView:self.containerView];
 
-            NSLog(@"<=============== User is logged in %@!!!!!! ============>", authData);
         } else {
             // No user is signed in
             // Set up and present initial view controller
@@ -84,9 +82,7 @@
 }
 
 -(void)handleGenericViewControllerSelected {
-    
-    NSLog(@"generic notification received");
-    
+        
     // 1. Instantiate new view controller
     UIViewController *newVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:mainViewControllerStoryBoardID];
     
@@ -112,8 +108,6 @@
 
     // 7. Call layoutIfNeeded on container view
     [self.containerView layoutIfNeeded];
-    NSLog(@"I switched over to the right place !");
-
     
     // 8. Add final constaints for new VC
     [self constrainSubView:newVC.view toParentView:self.containerView];
@@ -134,8 +128,6 @@
         self.currentViewController = nil;
         self.currentViewController = newVC;
         
-        NSLog(@"I switched over to the right place !");
-
     }];
     
 }
