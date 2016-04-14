@@ -10,29 +10,50 @@
 
 @implementation Itinerary
 
--(instancetype)initWithItineraryID:(NSString *)itineraryID
-                        activities:(NSMutableArray *) activities
-                         creatorID:(NSString *)creatorID
-                      creationDate:(NSDate *)creationDate
-                            photos:(NSMutableArray *) photos
-                           ratings:(NSDictionary *) ratings
-                              tips:(NSMutableArray *) tips
+//-(instancetype)init {
+//    
+//    self = [super init];
+//    
+//    if (self) {
+//        
+//    }
+//    
+//    return self;
+//}
+
+// Initialize a new Itinerary object when saving an itinerary from the main view controller
+-(instancetype)initWithActivities:(NSMutableArray *) activities
+                           userID:(NSString *)userID
+                     creationDate:(NSDate *)creationDate
 {
-    
     self = [super init];
+    
     if(self) {
-        _itineraryID = itineraryID;
-        _activities = activities;
-        _creatorID = creatorID;
-        _creationDate = creationDate;
-        _photos = photos;
-        _ratings = ratings;
-        _tips = tips;
         
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss Z";
+        NSString *dateString = [dateFormatter stringFromDate:creationDate];
+        
+        _itineraryID = @"";
+        _activities = activities;
+        _userID = userID;
+        _creationDate = creationDate;
+        _photos = [[NSMutableArray alloc] init];
+        _ratings = [[NSMutableDictionary alloc] init];
+        _tips = [[NSMutableArray alloc] init];
+        _title = [NSString stringWithFormat:@"Itinerary for %@", dateString];
     }
     
     return self;
+    
 }
+// initwith avtivity, userID, creationDate with default
 
+-(instancetype)initWithItineraryID:(NSString *)itineraryID {
+    
+    
+    
+    return self;
+}
 
 @end

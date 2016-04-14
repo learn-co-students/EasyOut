@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Activity.h"
 
 @interface DetailViewController : UIViewController
+
+@property (strong, nonatomic) Activity *activity;
 
 @end

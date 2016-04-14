@@ -58,11 +58,11 @@
     self.contentView.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self.contentView.heightAnchor constraintEqualToAnchor: self.heightAnchor].active = YES;
-    [self.contentView.widthAnchor constraintEqualToAnchor: self.widthAnchor].active = YES;
-    [self.contentView.centerXAnchor constraintEqualToAnchor: self.centerXAnchor].active = YES;
     [self.contentView.centerYAnchor constraintEqualToAnchor: self.centerYAnchor].active = YES;
+    [self.contentView.leadingAnchor constraintEqualToAnchor:self.leadingAnchor constant:20].active = YES;
+    [self.contentView.trailingAnchor constraintEqualToAnchor:self.trailingAnchor constant:-20].active = YES;
     
-    self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
+    self.contentView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
     self.checkButton.layer.borderColor = [[UIColor blackColor] colorWithAlphaComponent:0.6].CGColor;
     self.checkButton.layer.borderWidth = 3;
 }
@@ -77,7 +77,6 @@
 // Add data to activity card view
 -(void)updateUI {
     
-//    self.imageView.image = [UIImage imageWithData: [NSData dataWithContentsOfURL:self.activity.imageURL]];
     self.nameLabel.text = self.activity.name;
     self.addressLabel.text = self.activity.address;
     
@@ -97,7 +96,6 @@
         }
     } failure:nil];
     
-    
     switch (self.activity.activityType) {
         case RestaurantType:
             self.detailLabel.text = ((Restaurant *)self.activity).price;
@@ -113,16 +111,16 @@
 
 - (IBAction)cardSelected:(UIButton *)sender {
     
-    if(self.backgroundColor == [UIColor blackColor]) {
+    if([self.contentView.backgroundColor isEqual: [[UIColor blackColor] colorWithAlphaComponent:0.4]]) {
         
-        self.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.4];
+        self.contentView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.4];
         self.nameLabel.textColor = [UIColor blackColor];
         self.addressLabel.textColor = [UIColor blackColor];
         self.detailLabel.textColor = [UIColor blackColor];
     }
     else {
         
-        self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
+        self.contentView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
         self.nameLabel.textColor = [UIColor whiteColor];
         self.addressLabel.textColor = [UIColor whiteColor];
         self.detailLabel.textColor = [UIColor whiteColor];

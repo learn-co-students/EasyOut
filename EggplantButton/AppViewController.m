@@ -7,8 +7,17 @@
 //
 
 #import "AppViewController.h"
+#import "Secrets.h"
+#import "Firebase.h"
+#import <Masonry/Masonry.h>
 
 @interface AppViewController ()
+
+// Container view outlet property
+@property (weak, nonatomic) IBOutlet UIView *containerView;
+
+// Current VC property for swapping VCs in the container view
+@property (strong, nonatomic) UIViewController *currentViewController;
 
 @end
 
@@ -16,22 +25,69 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    Firebase *ref = [[Firebase alloc] initWithUrl:firebaseRootRef];
+    
+    if (ref.authData){
+        UIViewController *mainVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:mainViewControllerStoryBoardID];
+    
+        [self setEmbeddedViewController:mainVC];
+    }
+    else {
+        UIViewController *loginVC = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:LoginViewControllerStoryBoardID];
+        [self setEmbeddedViewController:loginVC];
+    }
+    
+    [self addNotificationObservers];
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)addNotificationObservers {
+    
+    // Generic notification observer (for example only)
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(test)
+                                                 name:mainViewControllerStoryBoardID
+                                               object:nil];
+    
+    
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)test {
+    UIViewController *mainVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:mainViewControllerStoryBoardID];
+    
+    [self setEmbeddedViewController:mainVC];
 }
-*/
+
+
+
+-(void)setEmbeddedViewController:(UIViewController *)controller
+{
+    if([self.childViewControllers containsObject:controller]) {
+        return;
+    }
+    
+    for(UIViewController *vc in self.childViewControllers) {
+        [vc willMoveToParentViewController:nil];
+        
+        if(vc.isViewLoaded) {
+            [vc.view removeFromSuperview];
+        }
+        
+        [vc removeFromParentViewController];
+    }
+    
+    if(!controller) {
+        return;
+    }
+    
+    [self addChildViewController:controller];
+    [self.containerView addSubview:controller.view];
+    [controller.view mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(@0);
+    }];
+    [controller didMoveToParentViewController:self];
+}
+
 
 @end

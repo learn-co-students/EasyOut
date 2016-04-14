@@ -10,6 +10,7 @@
 #import <Button/Button.h>
 #import "Secrets.h"
 #import "DeepLinkKit.h"
+#import "EggplantButton-Swift.h"
 
 
 @interface AppDelegate ()
@@ -21,6 +22,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    // Firebase test call
+    FirebaseAPIClient *firebaseAPI = [[FirebaseAPIClient alloc] init];
+    [firebaseAPI testFirebaseFunctions];
+     
     /// Allows Button to request Location Permissions
     [Button allowButtonToRequestLocationPermission:YES];
     
@@ -31,7 +36,13 @@
         //[self handleURL :deferredDeeplinkURL];
     }];
     
-    [UINavigationBar appearance].backgroundColor =[UIColor blackColor];
+//    FirebaseAPIClient *client = [[FirebaseAPIClient alloc] init];
+//    [client getAllUsersWithCompletion:^(BOOL success) {
+//    
+//    }];
+    [UINavigationBar appearance].tintColor =[UIColor blackColor];
+    
+
     
     
     return YES;

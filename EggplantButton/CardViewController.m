@@ -1,4 +1,4 @@
-//
+ //
 //  ContainerViewController.m
 //  EggplantButton
 //
@@ -10,6 +10,7 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import "UIView+Shake.h"
 #import "CardViewController.h"
+#import "DetailViewController.h"
 #import "EggplantButton-Swift.h"
 #import "ActivitiesDataStore.h"
 #import "ActivityCardCollectionViewCell.h"
@@ -24,16 +25,27 @@
 
 @property (strong, nonatomic) ActivitiesDataStore *dataStore;
 
+@property (strong, nonatomic) Itinerary *itinerary;
+
+
+//LOCATION
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) CLLocation *mostRecentLocation;
 @property (strong, nonatomic) NSString *latitude;
 @property (strong, nonatomic) NSString *longitude;
 
+//COLLECTIONS
 @property (weak, nonatomic) IBOutlet UICollectionView *topRowCollection;
 @property (weak, nonatomic) IBOutlet UICollectionView *middleRowCollection;
 @property (weak, nonatomic) IBOutlet UICollectionView *bottomRowCollection;
 
+//CARD PROPERTIES
+@property (nonatomic) BOOL firstCardLocked;
+@property (nonatomic) BOOL secondCardLocked;
+@property (nonatomic) BOOL thirdCardLocked;
 
+
+//BUTTONS
 
 @end
 
@@ -43,7 +55,7 @@
     
     [super viewDidLoad];
     
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"nyc"]]];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"city"]]];
     
     [self setUpCoreLocation];
 
@@ -56,16 +68,6 @@
     self.topRowCollection.backgroundColor = [UIColor clearColor];
     self.middleRowCollection.backgroundColor = [UIColor clearColor];
     self.bottomRowCollection.backgroundColor = [UIColor clearColor];
-    
-#warning FIREBASE THINGS FOR TESTING. REMOVE LATER
-    //    // Instantiate new instance of the Firebase API Client
-    //    FirebaseAPIClient *firebaseAPI = [[FirebaseAPIClient alloc] init];
-    
-    //    // Create and save test image to Firebase
-    //    UIImage *image = [UIImage imageNamed:@"EasyOutLaunchScreenImage"];
-    //    NSString *imageID = [firebaseAPI createNewImageWithImage:image];
-    //    NSLog(@"Image saved to Firebase with ID: %@", imageID);
-    
     
 }
 
@@ -166,15 +168,22 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSLog(@"PICKED CELL %lu", indexPath.row);
-    
-    [self performSegueWithIdentifier:@"detailSegue" sender:self];
+    [self performSegueWithIdentifier:@"detailSegue" sender: (ActivityCardCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath]];
     
 }
 
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UICollectionViewCell *)sender {
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
+    if([segue.identifier isEqualToString:@"detailSegue"]) {
+    
+    DetailViewController *destinationVC = [segue destinationViewController];
+    
+    destinationVC.activity = ((ActivityCardCollectionViewCell *)sender).cardView.activity;
+    }
+//    else if (segue.identifier isEqualToString:@"filterSegue") {
+//        
+//    }
 }
 
 #pragma mark - Core Location
@@ -218,7 +227,7 @@
     {
         NSLog(@"Shake started");
         
-        //makes the phone vibrate
+        // makes the phone vibrate
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         
         [self getShuffledTicketMasterData];
@@ -357,7 +366,7 @@
 
 
 
-#pragma button things
+#pragma mark - Button Things
 
 - (IBAction)saveButtonPressed:(UIButton *)sender {
     
@@ -370,5 +379,13 @@
 - (IBAction)randomButtonPressed:(UIButton *)sender {
 }
 
+
+
+- (IBAction)menuButtonPressed:(UIBarButtonItem *)sender {
+}
+- (IBAction)filterButtonPressed:(UIBarButtonItem *)sender {
+
+
+}
 
 @end
