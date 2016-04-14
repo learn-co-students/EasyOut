@@ -23,10 +23,23 @@
 @property (nonatomic) NSUInteger reputation;
 
 
--(instancetype)initWithEmail:(NSString *)email username:(NSString *)username;
+-(instancetype)initWithEmail:(NSString *)email
+                    username:(NSString *)username;
 
 -(instancetype) initWithEmail:(NSString *)email;
 
 -(instancetype) initWithUserID:(NSString *)userID;
+
+-(instancetype) initWithUserID:(NSString *)userID
+                      username:(NSString *)username
+                         email:(NSString *)email
+                           bio:(NSString *)bio
+                      location:(NSString *)location
+              savedItineraries:(NSMutableArray *)savedItineraries
+                   preferences:(NSMutableDictionary *)preferences
+                       ratings:(NSMutableDictionary *)ratings
+                          tips:(NSMutableDictionary *)tips
+                  profilePhoto:(NSData *)profilePhoto
+                    reputation:(NSUInteger)reputation;
 
 @end

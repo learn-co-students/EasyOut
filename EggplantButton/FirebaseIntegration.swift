@@ -14,6 +14,7 @@ import Firebase
     // Test Function that calls all other functions to test
     func testFirebaseFunctions () {
         createUserObjectFromFirebaseWithUserID("159b8eee-8476-40d8-9f33-f35412df6cd1")
+//        print
     }
     
     
@@ -41,7 +42,9 @@ import Firebase
                     allUsernames.append(username.lowercaseString)
                 }
             }
+            
             print("all usernames: \(allUsernames)")
+            
             let filteredNames = allUsernames.filter { $0 == "JoN123".lowercaseString }
             if filteredNames.isEmpty {
                 print("Success! that is a unique username")
@@ -100,20 +103,24 @@ import Firebase
     // Create a new user in firebase given a User object and password
     func createNewUserWithUser(user : User, password : String) {
         
+        // Set reference for firebase account
         let ref = Firebase(url:firebaseRootRef)
         
+        // Create user with email from user object and password string
         ref.createUser(user.email, password: password, withValueCompletionBlock: { error, result in
                         if error != nil {
                             print("There was an error creating the user: \(error.description)")
-                            // TODO: Add warning to the user if we encounter an error
                         } else {
+
                             let uid = result["uid"] as? String
                             
                             print("Successfully created user account with uid: \(uid)")
                             
+                            // Set references for new user
                             let usersRef = ref.childByAppendingPath("users")
                             let userRef = usersRef.childByAppendingPath(uid)
                             
+                            // Set properties for new user account
                             userRef.setValue([
                                     "userID" : uid!,
                                     "username" : user.username,
@@ -193,26 +200,55 @@ import Firebase
     }
     
     // Create a User object from Firebase data using a user ID
-    func createUserObjectFromFirebaseWithUserID(userID : String) -> () {
+    func createUserObjectFromFirebaseWithUserID(userID : String) -> User {
         
         // Set references to call for user info
         let ref = Firebase(url:firebaseRootRef)
         let usersRef = ref.childByAppendingPath("users")
         let userRef = usersRef.childByAppendingPath(userID)
         
+        // Create new User object
+        let newUser : User = User.init(userID: <#T##String!#>)
+        
         // Read data at user reference
         userRef.observeEventType(.Value, withBlock: { snapshot in
-            print(snapshot.value)
+            print("User ref:\n\(snapshot.value)")
+            
+            // Write user values to newUser
+            newUser.userID = snapshot.value.userID
+            newUser.username = snapshot.value.username
+            newUser.email = snapshot.value.email
+            newUser.bio = snapshot.value.bio
+            newUser.location = snapshot.value.location
+            newUser.savedItineraries = snapshot.value.savedItineraries
+            newUser.preferences = snapshot.value.preferences
+            newUser.ratings = snapshot.value.ratings
+            newUser.tips = snapshot.value.tips
+            newUser.profilePhoto = snapshot.value.profilePhoto
+            newUser.reputation = snapshot.value.reputation
+            
+            print("Created User object for: \(newUser.username)")
+            
             }, withCancelBlock: { error in
                 print(error.description)
         })
+        
+        return newUser
     }
     
     // Convert date objects to strings
     func convertDateToStringWithDate(date : NSDate) -> String {
+        
+        // Create date formatter and set format style
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        // Format date into string
         let dateString = dateFormatter.stringFromDate(date)
+        
+        print("Converted date into: \(dateString)")
+
+        // Send back the converted date
         return dateString
     }
     
@@ -220,5 +256,7 @@ import Firebase
         // Set references
         let ref = Firebase(url:firebaseRootRef)
         ref.unauth()
+        
+        print("User logged out")
     }
 }

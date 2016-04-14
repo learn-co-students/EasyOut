@@ -46,6 +46,8 @@
     
     self = [super init];
     
+    
+    
     if (self) {
         _userID =userID;
         _username = @"testUsername";
@@ -64,6 +66,37 @@
     
     return self;
 
+}
+
+-(instancetype) initWithUserID:(NSString *)userID
+                      username:(NSString *)username
+                         email:(NSString *)email
+                           bio:(NSString *)bio
+                      location:(NSString *)location
+              savedItineraries:(NSMutableArray *)savedItineraries
+                   preferences:(NSMutableDictionary *)preferences
+                       ratings:(NSMutableDictionary *)ratings
+                          tips:(NSMutableDictionary *)tips
+                  profilePhoto:(NSData *)profilePhoto
+                    reputation:(NSUInteger)reputation {
+    
+    self = [super init];
+
+    if (self) {
+        _userID = userID;
+        _username = username;
+        _email = email;
+        _bio = bio;
+        _location = location;
+        _savedItineraries = savedItineraries;
+        _preferences = preferences;
+        _ratings = ratings;
+        _tips = tips;
+        _profilePhoto = profilePhoto;
+        _reputation = reputation;
+    }
+
+    return self;
 }
 
 @end
