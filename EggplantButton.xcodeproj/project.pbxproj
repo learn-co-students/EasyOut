@@ -48,6 +48,10 @@
 		9A33839B1CBC5416004B8EFE /* ActivityCardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3383981CBC5416004B8EFE /* ActivityCardCollectionViewCell.m */; };
 		9A33839C1CBC5416004B8EFE /* RestaurantDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A33839A1CBC5416004B8EFE /* RestaurantDataStore.m */; };
 		9A5616B51CAC68AE008D9264 /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5616B41CAC68AE008D9264 /* Restaurant.m */; };
+		9A5AEC321CBF476B009F2BEA /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5AEC311CBF476B009F2BEA /* UserProfileViewController.m */; };
+		9A5AEC341CBF4795009F2BEA /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A5AEC331CBF4795009F2BEA /* UserProfile.storyboard */; };
+		9A74DC521CBF391900B63B0B /* FilterView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A74DC511CBF391900B63B0B /* FilterView.storyboard */; };
+		9A74DC551CBF39E600B63B0B /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74DC541CBF39E600B63B0B /* FilterViewController.m */; };
 		9AA058791CAEAA57000A6AA8 /* ActivityCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AA058781CAEAA57000A6AA8 /* ActivityCard.xib */; };
 		9AB65BBC1CBD95E4008A99CF /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AB65BBB1CBD95E4008A99CF /* Login.storyboard */; };
 		9ACC8C151CBD374600909704 /* nyc_restaurants.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9ACC8C141CBD374600909704 /* nyc_restaurants.plist */; };
@@ -124,6 +128,12 @@
 		9A33839A1CBC5416004B8EFE /* RestaurantDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantDataStore.m; sourceTree = "<group>"; };
 		9A5616B31CAC68AE008D9264 /* Restaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Restaurant.h; path = EggplantButton/Restaurant.h; sourceTree = "<group>"; };
 		9A5616B41CAC68AE008D9264 /* Restaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Restaurant.m; path = EggplantButton/Restaurant.m; sourceTree = "<group>"; };
+		9A5AEC301CBF476B009F2BEA /* UserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
+		9A5AEC311CBF476B009F2BEA /* UserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
+		9A5AEC331CBF4795009F2BEA /* UserProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
+		9A74DC511CBF391900B63B0B /* FilterView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FilterView.storyboard; sourceTree = "<group>"; };
+		9A74DC531CBF39E600B63B0B /* FilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterViewController.h; sourceTree = "<group>"; };
+		9A74DC541CBF39E600B63B0B /* FilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterViewController.m; sourceTree = "<group>"; };
 		9AA058781CAEAA57000A6AA8 /* ActivityCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ActivityCard.xib; path = EggplantButton/ActivityCard.xib; sourceTree = "<group>"; };
 		9AB65BBB1CBD95E4008A99CF /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		9ACC8C141CBD374600909704 /* nyc_restaurants.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = nyc_restaurants.plist; sourceTree = "<group>"; };
@@ -160,6 +170,8 @@
 		4C02D1DB1CB6E2E10031F978 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9A5AEC301CBF476B009F2BEA /* UserProfileViewController.h */,
+				9A5AEC311CBF476B009F2BEA /* UserProfileViewController.m */,
 				9ACC8C181CBD399800909704 /* DetailViewController.h */,
 				9ACC8C191CBD399800909704 /* DetailViewController.m */,
 				4CBBC5FC1CBA96DF006683D8 /* AppViewController.h */,
@@ -174,6 +186,8 @@
 				4C0EE1581CBDA2E70092C39A /* ItineraryHistoryTableViewController.m */,
 				4C358D361CAD62CE00257756 /* CardViewController.h */,
 				4C358D371CAD62CE00257756 /* CardViewController.m */,
+				9A74DC531CBF39E600B63B0B /* FilterViewController.h */,
+				9A74DC541CBF39E600B63B0B /* FilterViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -296,6 +310,8 @@
 				9ACC8C161CBD398E00909704 /* DetailView.storyboard */,
 				4CBBC6081CBA97B0006683D8 /* Main.storyboard */,
 				4CBBC5FA1CBA9618006683D8 /* Button.storyboard */,
+				9A74DC511CBF391900B63B0B /* FilterView.storyboard */,
+				9A5AEC331CBF4795009F2BEA /* UserProfile.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -386,7 +402,7 @@
 				TargetAttributes = {
 					4C9A03771CAB064200CA9A02 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 4EYBM4HGMV;
+						DevelopmentTeam = KXY9EDFTF5;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -420,6 +436,7 @@
 			files = (
 				9ACC8C151CBD374600909704 /* nyc_restaurants.plist in Resources */,
 				9ACC8C171CBD398E00909704 /* DetailView.storyboard in Resources */,
+				9A74DC521CBF391900B63B0B /* FilterView.storyboard in Resources */,
 				9AA058791CAEAA57000A6AA8 /* ActivityCard.xib in Resources */,
 				4C1DE1621CB8410900AFBCF5 /* LobsterTwo-Regular.otf in Resources */,
 				4C1DE1601CB8410900AFBCF5 /* LobsterTwo-BoldItalic.otf in Resources */,
@@ -430,6 +447,7 @@
 				4CBBC6091CBA97B0006683D8 /* Main.storyboard in Resources */,
 				4C9A038E1CAB064200CA9A02 /* LaunchScreen.storyboard in Resources */,
 				4C9A038B1CAB064200CA9A02 /* Assets.xcassets in Resources */,
+				9A5AEC341CBF4795009F2BEA /* UserProfile.storyboard in Resources */,
 				4C0EE1531CBDA0930092C39A /* ItineraryHistoryView.storyboard in Resources */,
 				9AB65BBC1CBD95E4008A99CF /* Login.storyboard in Resources */,
 			);
@@ -494,6 +512,7 @@
 				9A2478E61CAC2EFA00865C6A /* OpenTableAPIClient.m in Sources */,
 				4C0EE1591CBDA2E70092C39A /* ItineraryHistoryTableViewController.m in Sources */,
 				4CBBC6061CBA96DF006683D8 /* setupButton.m in Sources */,
+				9A5AEC321CBF476B009F2BEA /* UserProfileViewController.m in Sources */,
 				4C358D381CAD62CE00257756 /* CardViewController.m in Sources */,
 				4CAD0CC51CB568C4008162CE /* FirebaseIntegration.swift in Sources */,
 				0A05A4EB1CB438AD00EF83CD /* TicketMasterAPIClient.m in Sources */,
@@ -508,6 +527,7 @@
 				4CBBC6051CBA96DF006683D8 /* LogInViewController.m in Sources */,
 				4C64EC461CBAA78200FB3A45 /* Event.m in Sources */,
 				4C9A03801CAB064200CA9A02 /* AppDelegate.m in Sources */,
+				9A74DC551CBF39E600B63B0B /* FilterViewController.m in Sources */,
 				4C270CA81CAB08A2003E0195 /* Secrets.m in Sources */,
 				4C02D1E71CB6EDD40031F978 /* Photo.m in Sources */,
 				9A5616B51CAC68AE008D9264 /* Restaurant.m in Sources */,

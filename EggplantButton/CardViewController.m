@@ -55,7 +55,7 @@
     
     [super viewDidLoad];
     
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"people"]]];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"city"]]];
     
     [self setUpCoreLocation];
 
@@ -175,10 +175,15 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
+    if([segue.identifier isEqualToString:@"detailSegue"]) {
+    
     DetailViewController *destinationVC = [segue destinationViewController];
     
-    
     destinationVC.activity = ((ActivityCardCollectionViewCell *)sender).cardView.activity;
+    }
+//    else if (segue.identifier isEqualToString:@"filterSegue") {
+//        
+//    }
 }
 
 #pragma mark - Core Location
@@ -379,6 +384,8 @@
 - (IBAction)menuButtonPressed:(UIBarButtonItem *)sender {
 }
 - (IBAction)filterButtonPressed:(UIBarButtonItem *)sender {
+
+
 }
 
 @end

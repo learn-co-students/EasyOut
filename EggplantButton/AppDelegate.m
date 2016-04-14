@@ -42,6 +42,9 @@
 //    }];
     [UINavigationBar appearance].tintColor =[UIColor blackColor];
     
+
+    
+    
     return YES;
 }
 
