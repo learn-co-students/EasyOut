@@ -8,6 +8,7 @@
 
 #import "ItineraryHistoryTableViewController.h"
 #import "Itinerary.h"
+#import "User.h"
 
 @interface ItineraryHistoryTableViewController ()
 
@@ -18,21 +19,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    User *currentUser = [[User alloc]initWithUserID:self.user.userID];
+    NSLog(@" this current user has %lu activites",(unsigned long)currentUser.savedItineraries.count);
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.user.savedItineraries.count;
+    
+
 }
 
 
