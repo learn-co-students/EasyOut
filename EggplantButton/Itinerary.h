@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSMutableArray *photos;
 @property (strong, nonatomic) NSDictionary *ratings;
 @property (strong, nonatomic) NSMutableArray *tips;
+@property (strong, nonatomic) NSString *title;
 
 -(instancetype)initWithActivities:(NSMutableArray *) activities
                            userID:(NSString *)userID

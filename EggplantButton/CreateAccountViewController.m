@@ -8,7 +8,12 @@
 
 #import "CreateAccountViewController.h"
 #import "User.h"
+#import "Secrets.h"
 #import "EggplantButton-Swift.h"
+#import "Firebase.h"
+#import "LogInViewController.h"
+
+
 
 @interface CreateAccountViewController ()
 
@@ -31,8 +36,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc]
+                                           initWithTarget:self
+                                           action:@selector(hideKeyBoard)];
     
+    [self.view addGestureRecognizer:tapGesture];
     self.createAccountButtonTapped.enabled = NO;
 
 }
@@ -41,6 +49,16 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(void)hideKeyBoard {
+    
+    [self.emailLabel resignFirstResponder];
+    [self.passWordLabel resignFirstResponder];
+    [self.verifyPasswordLabel resignFirstResponder];
+    [self.nameLabel resignFirstResponder];
+    [self.userNameLabel resignFirstResponder]; 
+}
+
 
 
 -(BOOL)emailIsValid{
@@ -70,7 +88,7 @@
 
 
 // this method creates the user in firebase
--(void)createNewUser {
+-(void)createNewUserWithCompletion:(void (^)(BOOL finished))completion{
     
     self.email = self.emailLabel.text;
     self.username = self.userNameLabel.text;
@@ -79,6 +97,22 @@
     
     FirebaseAPIClient *firebaseAPI = [[FirebaseAPIClient alloc] init];
     [firebaseAPI createNewUserWithUser:newUser password:self.passWordLabel.text];
+    
+    if (completion) {
+        Firebase *ref = [[Firebase alloc] initWithUrl:firebaseRootRef];
+        
+        [ref observeAuthEventWithBlock:^(FAuthData *authData) {
+            if (authData) {
+                // user authenticated
+                NSLog(@"%@", authData);
+            } else {
+                [self dismissViewControllerAnimated:YES completion:nil];
+                [[NSNotificationCenter defaultCenter] postNotificationName:mainViewControllerStoryBoardID object:nil];
+            }
+        }];
+    }
+    
+    
 }
 - (IBAction)emailDidEnd:(id)sender {
     if (![self emailIsValid]) {
@@ -125,12 +159,17 @@
 
 
 
+
 - (IBAction)createAccountButton:(id)sender
 {
     
-    [self createNewUser];
+    
+    
+    [self createNewUserWithCompletion:^(BOOL finished) {
+       //
+    }];
 }
 
-             
+
              
 @end

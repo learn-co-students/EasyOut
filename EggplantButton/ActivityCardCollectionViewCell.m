@@ -41,6 +41,7 @@
     [self.cardView.widthAnchor constraintEqualToAnchor: self.widthAnchor].active = YES;
     [self.cardView.centerXAnchor constraintEqualToAnchor: self.centerXAnchor].active = YES;
     [self.cardView.centerYAnchor constraintEqualToAnchor: self.centerYAnchor].active = YES;
+    
 }
 
 
