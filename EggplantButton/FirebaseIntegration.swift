@@ -216,4 +216,9 @@ import Firebase
         return dateString
     }
     
+    func logOutUser() {
+        // Set references
+        let ref = Firebase(url:firebaseRootRef)
+        ref.unauth()
+    }
 }
