@@ -56,10 +56,10 @@
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
     self.userImage.image = chosenImage;
     
-    [picker dismissViewControllerAnimated:YES completion:NULL];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    [picker dismissViewControllerAnimated:YES completion:NULL];
+    [self dismissViewControllerAnimated:YES completion:nil];
 
 }
 
@@ -92,11 +92,7 @@
     UIAlertAction* cancel = [UIAlertAction
                                   actionWithTitle:@"Cancel"
                                   style:UIAlertActionStyleCancel
-                                  handler:^(UIAlertAction * action)
-                                  {
-                                    [editPicture dismissViewControllerAnimated:YES completion:nil];
-
-                                  }];
+                             handler:nil];
     [editPicture addAction:takePhoto];
     [editPicture addAction:selectPhoto];
     [editPicture addAction: cancel];
