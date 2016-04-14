@@ -18,12 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3JL-jv-zJE">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <connections>
-                                    <segue destination="UYw-eZ-b8I" kind="embed" id="LLT-Z5-mmb"/>
-                                </connections>
-                            </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6De-Ls-gnI">
                                 <rect key="frame" x="0.0" y="0.0" width="140" height="568"/>
                                 <constraints>
@@ -31,6 +25,12 @@
                                 </constraints>
                                 <connections>
                                     <segue destination="gu3-p8-m1o" kind="embed" id="CLl-fp-pgs"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3JL-jv-zJE">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <connections>
+                                    <segue destination="UYw-eZ-b8I" kind="embed" id="LLT-Z5-mmb"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -78,7 +78,7 @@
                 <viewControllerPlaceholder storyboardName="Login" id="kAa-Zv-maH" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UOt-Nc-WJ7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="135.5" y="573"/>
+            <point key="canvasLocation" x="109.5" y="645"/>
         </scene>
         <!--Storyboard Reference-->
         <scene sceneID="yIU-Bk-Qq6">
@@ -86,7 +86,7 @@
                 <viewControllerPlaceholder id="23Y-Jg-bFX" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cbA-dB-8lR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="135.5" y="620"/>
+            <point key="canvasLocation" x="109.5" y="692"/>
         </scene>
         <!--Storyboard Reference-->
         <scene sceneID="M94-CD-U1m">
@@ -94,7 +94,7 @@
                 <viewControllerPlaceholder id="Sp6-SK-hz3" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MAG-oI-naF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="135.5" y="672"/>
+            <point key="canvasLocation" x="109.5" y="744"/>
         </scene>
         <!--Storyboard Reference-->
         <scene sceneID="pj1-A5-eag">
@@ -102,12 +102,16 @@
                 <viewControllerPlaceholder id="HXs-8d-woC" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="90D-4I-W25" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="135.5" y="727"/>
+            <point key="canvasLocation" x="109.5" y="988"/>
         </scene>
         <!--Side Menu View Controller-->
         <scene sceneID="UR8-xx-9Ts">
             <objects>
                 <viewController id="gu3-p8-m1o" customClass="sideMenuViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Xar-S1-zIn"/>
+                        <viewControllerLayoutGuide type="bottom" id="Z3X-Db-Oih"/>
+                    </layoutGuides>
                     <view key="view" alpha="0.90000000000000002" contentMode="scaleToFill" id="lvA-HB-2in">
                         <rect key="frame" x="0.0" y="0.0" width="140" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -178,7 +182,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QsQ-cP-nCz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="345" y="734"/>
+            <point key="canvasLocation" x="291" y="734"/>
         </scene>
     </scenes>
 </document>
