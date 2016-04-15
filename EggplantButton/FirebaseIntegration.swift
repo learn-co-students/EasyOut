@@ -14,9 +14,9 @@ import Firebase
     // Test Function that calls all other functions to test
     func testFirebaseFunctions () {
         
-        let newUser : User = User.init(email: "test@test.com", username: "testy")
+        let newUser : User = User.init(email: "shutup@test.com", username: "testy")
         
-        registerNewUserWithUser(newUser, password: "whatever")
+//        registerNewUserWithUser(newUser, password: "whatever")
         
         let ref = Firebase(url:firebaseRootRef)
         
@@ -139,10 +139,10 @@ import Firebase
                                     "email" : user.email,
                                     "bio" : user.bio,
                                     "location" : user.location,
-                                    "saved itineraries" : user.savedItineraries,
+                                    "saved itineraries" : user.savedItineraries.copy(),
                                     "preferences" : user.preferences,
                                     "ratings" : user.ratings,
-                                    "tips" : user.tips,
+                                    "tips" : user.tips.copy(),
                                     "reputation" : user.reputation,
                                     "profilePhoto" : ""
                                 ])
@@ -226,7 +226,7 @@ import Firebase
             let sv = snapshot.value
             
             // Create new User object
-            let newUser : User = User.init(userID: sv["userID"]! as! String, username: sv["username"]! as! String, email: sv["email"]! as! String, bio: sv["bio"]! as! String, location: sv["location"]! as! String, savedItineraries: sv["savedItineraries"]! as! NSMutableArray, preferences: sv["preferences"]! as! NSMutableDictionary, ratings: sv["ratings"]! as! NSMutableDictionary, tips: sv["tips"]! as! NSMutableDictionary, profilePhoto: sv["profilePhoto"]! as! NSData, reputation: sv["reputation"]! as! UInt)
+            let newUser : User = User.init(userID: sv["userID"]! as! String, username: sv["username"]! as! String, email: sv["email"]! as! String, bio: sv["bio"]! as! String, location: sv["location"]! as! String, savedItineraries: sv["savedItineraries"]! as! NSMutableDictionary, preferences: sv["preferences"]! as! NSMutableDictionary, ratings: sv["ratings"]! as! NSMutableDictionary, tips: sv["tips"]! as! NSMutableDictionary, profilePhoto: sv["profilePhoto"]! as! NSData, reputation: sv["reputation"]! as! UInt)
             
             print("Created User object for: \(newUser.username)")
             

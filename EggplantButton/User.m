@@ -11,34 +11,30 @@
 
 @implementation User
 
--(instancetype)initWithUserID:(NSString *)userID {
-    
-    self = [super init];
-    
-    if (self) {
-        _userID =userID;
-        _username = @"testUsername";
-        _email = @"test@test.test";
-        _bio = @"";
-        _location = @"";
-        _savedItineraries = [@[] mutableCopy];
-        _preferences = [@{@"default location" : @"New York, NY", @"default price" : @2, @"default start time" : @0} mutableCopy];
-        _ratings = [@{} mutableCopy];
-        _tips = [@{} mutableCopy];
-        _profilePhoto = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"https://avatars3.githubusercontent.com/u/16245367?v=3&s=460"]];
-        _reputation = 1;
-    }
-    
-    NSLog(@"User initialized");
-    
-    return self;
-}
+//-(instancetype)initWithUserID:(NSString *)userID {
+//    
+//    self = [self initWithUserID:<#(NSString *)#> username:<#(NSString *)#> email:<#(NSString *)#> bio:<#(NSString *)#> location:<#(NSString *)#> savedItineraries:<#(NSMutableArray *)#> preferences:<#(NSMutableDictionary *)#> ratings:<#(NSMutableDictionary *)#> tips:<#(NSMutableDictionary *)#> profilePhoto:<#(NSData *)#> reputation:<#(NSUInteger)#>];
+//    
+//    NSLog(@"User initialized with userID: %@", userID);
+//    
+//    return self;
+//}
 
 -(instancetype) initWithEmail:(NSString *)email username:(NSString *)username{
     
-    self = [self initWithUserID:@"" username:username email:email bio:@"" location:@"" savedItineraries:[@[] mutableCopy] preferences:[@{@"default location" : @"New York, NY", @"default price" : @2, @"default start time" : @0} mutableCopy] ratings:[@{} mutableCopy] tips:[@{} mutableCopy] profilePhoto:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"https://avatars3.githubusercontent.com/u/16245367?v=3&s=460"]] reputation:1];
+    self = [self initWithUserID:@""
+                       username:username
+                          email:email
+                            bio:@""
+                       location:@""
+               savedItineraries:[@{} mutableCopy]
+                    preferences:[@{@"default location" : @"New York, NY", @"default price" : @2, @"default start time" : @0} mutableCopy]
+                        ratings:[@{} mutableCopy]
+                           tips:[@{} mutableCopy]
+                   profilePhoto:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"https://avatars3.githubusercontent.com/u/16245367?v=3&s=460"]]
+                     reputation:1];
     
-    NSLog(@"User initialized with username: %@", username);
+    NSLog(@"User initialized with email: %@ and username: %@", email, username);
     
     return self;
 }
@@ -48,7 +44,7 @@
                          email:(NSString *)email
                            bio:(NSString *)bio
                       location:(NSString *)location
-              savedItineraries:(NSMutableArray *)savedItineraries
+              savedItineraries:(NSMutableDictionary *)savedItineraries
                    preferences:(NSMutableDictionary *)preferences
                        ratings:(NSMutableDictionary *)ratings
                           tips:(NSMutableDictionary *)tips
@@ -66,7 +62,7 @@
         _savedItineraries = savedItineraries;
         _preferences = preferences;
         _ratings = ratings;
-        _tips = tips;
+        _tips = [NSMutableDictionary new];
         _profilePhoto = profilePhoto;
         _reputation = reputation;
     }

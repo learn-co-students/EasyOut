@@ -15,7 +15,7 @@
 @property (strong, nonatomic) NSString *email;
 @property (strong, nonatomic) NSString *bio;
 @property (strong, nonatomic) NSString *location;
-@property (strong, nonatomic) NSMutableArray *savedItineraries;
+@property (strong, nonatomic) NSMutableDictionary *savedItineraries;
 @property (strong, nonatomic) NSMutableDictionary *preferences;
 @property (strong, nonatomic) NSMutableDictionary *ratings;
 @property (strong, nonatomic) NSMutableDictionary *tips;
@@ -33,7 +33,7 @@
                          email:(NSString *)email
                            bio:(NSString *)bio
                       location:(NSString *)location
-              savedItineraries:(NSMutableArray *)savedItineraries
+              savedItineraries:(NSMutableDictionary *)savedItineraries
                    preferences:(NSMutableDictionary *)preferences
                        ratings:(NSMutableDictionary *)ratings
                           tips:(NSMutableDictionary *)tips
