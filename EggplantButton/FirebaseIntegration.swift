@@ -14,19 +14,17 @@ import Firebase
     // Test Function that calls all other functions to test
     func testFirebaseFunctions () {
         
-        let newUser : User = User.init(email: "shutup@test.com", username: "testy")
+        let newUser : User = User.init(email: "theTestUser@test.com", username: "testy")
         
-//        registerNewUserWithUser(newUser, password: "whatever")
+        registerNewUserWithUser(newUser, password: "whatever")
         
         let ref = Firebase(url:firebaseRootRef)
         
-//        createUserObjectFromFirebaseWithUserID(ref.authData.uid) { (user) in
-//            print("User object created for \(user.username)")
-//        }
+        createUserObjectFromFirebaseWithUserID(ref.authData.uid) { (user) in
+            print("User object created for \(user.username)")
+        }
         
-//        createUserObjectFromFirebaseWithUserID("a797760b-0aa9-4257-a64a-d4fd715dd411") { (user) in
-//            print("User object created for \(user.username)")
-//        }
+        
     }
     
     
@@ -106,7 +104,6 @@ import Firebase
                 } else {
                     print("authData has no data :(")
                 }
-                
             }
         }
     }
@@ -139,13 +136,13 @@ import Firebase
                                     "email" : user.email,
                                     "bio" : user.bio,
                                     "location" : user.location,
-                                    "saved itineraries" : user.savedItineraries.copy(),
+                                    "saved itineraries" : user.savedItineraries,
                                     "preferences" : user.preferences,
                                     "ratings" : user.ratings,
-                                    "tips" : user.tips.copy(),
+                                    "tips" : user.tips,
                                     "reputation" : user.reputation,
-                                    "profilePhoto" : ""
-                                ])
+                                    "profilePhoto" : user.profilePhoto
+                            ])
                             
                             // We should actually call firebase to pull values for new user and make sure everything was set correctly
                             print("Registered new user: \(userRef)")            }
@@ -221,12 +218,29 @@ import Firebase
         
         // Read data at user reference
         userRef.observeEventType(.Value, withBlock: { snapshot in
-            print("User ref:\n\(snapshot.value)")
-            
             let sv = snapshot.value
+            print("User ref:\n\(sv)")
+            
+            // Set User properties based on what data is available from the user reference
+            
+            var savedItineraries : NSMutableDictionary = [:]
+            var tips : NSMutableDictionary = [:]
+            var ratings : NSMutableDictionary = [:]
+            
+            if (sv["savedItineraries"] != nil) {
+                savedItineraries = sv["savedItineraries"]! as! NSMutableDictionary
+            }
+            
+            if (sv["tips"] != nil) {
+                tips = sv["tips"]! as! NSMutableDictionary
+            }
+            
+            if (sv["ratings"] != nil) {
+                ratings = sv["ratings"]! as! NSMutableDictionary
+            }
             
             // Create new User object
-            let newUser : User = User.init(userID: sv["userID"]! as! String, username: sv["username"]! as! String, email: sv["email"]! as! String, bio: sv["bio"]! as! String, location: sv["location"]! as! String, savedItineraries: sv["savedItineraries"]! as! NSMutableDictionary, preferences: sv["preferences"]! as! NSMutableDictionary, ratings: sv["ratings"]! as! NSMutableDictionary, tips: sv["tips"]! as! NSMutableDictionary, profilePhoto: sv["profilePhoto"]! as! NSData, reputation: sv["reputation"]! as! UInt)
+            let newUser : User = User.init(userID: sv["userID"]! as! String, username: sv["username"]! as! String, email: sv["email"]! as! String, bio: sv["bio"]! as! String, location: sv["location"]! as! String, savedItineraries: savedItineraries, preferences: sv["preferences"]! as! NSMutableDictionary, ratings: ratings, tips: tips, profilePhoto: sv["profilePhoto"]! as! NSData, reputation: sv["reputation"]! as! UInt)
             
             print("Created User object for: \(newUser.username)")
             
@@ -256,6 +270,9 @@ import Firebase
     func logOutUser() {
         // Set references
         let ref = Firebase(url:firebaseRootRef)
+        
+        print("Logging out uid: \(ref.authData.uid)")
+        
         ref.unauth()
         
         print("User logged out")

@@ -64,7 +64,6 @@
 /* Begin PBXFileReference section */
 		0A05A4E51CB438AD00EF83CD /* TicketMasterAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TicketMasterAPIClient.h; sourceTree = "<group>"; };
 		0A05A4E61CB438AD00EF83CD /* TicketMasterAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TicketMasterAPIClient.m; sourceTree = "<group>"; };
-		0A1DFA8B1CBBF21B0071EEDB /* CreateAccountStoryBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateAccountStoryBoard.storyboard; sourceTree = "<group>"; };
 		478A5D5E5340BA05712F05CE /* Pods-EggplantButton.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EggplantButton.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EggplantButton/Pods-EggplantButton.debug.xcconfig"; sourceTree = "<group>"; };
 		4C02D1DF1CB6E72C0031F978 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = EggplantButton/User.h; sourceTree = "<group>"; };
 		4C02D1E01CB6E72C0031F978 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = EggplantButton/User.m; sourceTree = "<group>"; };
@@ -318,7 +317,6 @@
 				4CBBC5FA1CBA9618006683D8 /* Button.storyboard */,
 				4C64EC411CBAA78200FB3A45 /* ItineraryView.storyboard */,
 				4C9A038C1CAB064200CA9A02 /* LaunchScreen.storyboard */,
-				0A1DFA8B1CBBF21B0071EEDB /* CreateAccountStoryBoard.storyboard */,
 				78A7F6D01CBEC2F800DD4937 /* sideMenu.storyboard */,
 				9A74DC511CBF391900B63B0B /* FilterView.storyboard */,
 				9A5AEC331CBF4795009F2BEA /* UserProfile.storyboard */,
