@@ -7,63 +7,69 @@
 //
 
 #import "User.h"
+#import "EggplantButton-Swift.h"
 
 @implementation User
 
--(instancetype)init {
-    self = [self initWithUserID:@"8455b42e-e7d0-49cb-bcce-2e03331b402f"];
-    if (self) {
-        
-    }
-    
-    return self;
-}
+//-(instancetype)initWithUserID:(NSString *)userID {
+//    
+//    self = [self initWithUserID:<#(NSString *)#> username:<#(NSString *)#> email:<#(NSString *)#> bio:<#(NSString *)#> location:<#(NSString *)#> savedItineraries:<#(NSMutableArray *)#> preferences:<#(NSMutableDictionary *)#> ratings:<#(NSMutableDictionary *)#> tips:<#(NSMutableDictionary *)#> profilePhoto:<#(NSData *)#> reputation:<#(NSUInteger)#>];
+//    
+//    NSLog(@"User initialized with userID: %@", userID);
+//    
+//    return self;
+//}
 
 -(instancetype) initWithEmail:(NSString *)email username:(NSString *)username{
     
-    self = [super init];
+    self = [self initWithUserID:@""
+                       username:username
+                          email:email
+                            bio:@""
+                       location:@""
+               savedItineraries:[@{} mutableCopy]
+                    preferences:[@{@"default location" : @"New York, NY", @"default price" : @2, @"default start time" : @0} mutableCopy]
+                        ratings:[@{} mutableCopy]
+                           tips:[@{} mutableCopy]
+                   profilePhoto:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"https://avatars3.githubusercontent.com/u/16245367?v=3&s=460"]]
+                     reputation:1];
     
-    if (self) {
-        _userID = @"";
-        _username = username;
-        _email = email;
-        _bio = @"";
-        _location = @"";
-        _savedItineraries = [@[] mutableCopy];
-        _preferences = [@{@"default location" : @"New York, NY", @"default price" : @2, @"default start time" : @0} mutableCopy];
-        _ratings = [@{} mutableCopy];
-        _tips = [@{} mutableCopy];
-        _profilePhoto = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"https://avatars3.githubusercontent.com/u/16245367?v=3&s=460"]];
-        _reputation = 1;
-    }
-    
-    NSLog(@"User initialized");
+    NSLog(@"User initialized with email: %@ and username: %@", email, username);
     
     return self;
 }
 
--(instancetype)initWithUserID:(NSString *)userID {
+-(instancetype) initWithUserID:(NSString *)userID
+                      username:(NSString *)username
+                         email:(NSString *)email
+                           bio:(NSString *)bio
+                      location:(NSString *)location
+              savedItineraries:(NSMutableDictionary *)savedItineraries
+                   preferences:(NSMutableDictionary *)preferences
+                       ratings:(NSMutableDictionary *)ratings
+                          tips:(NSMutableDictionary *)tips
+                  profilePhoto:(NSData *)profilePhoto
+                    reputation:(NSUInteger)reputation {
     
     self = [super init];
-    
+
     if (self) {
-        _userID =userID;
-        _username = @"testUsername";
-        _email = @"test@test.test";
-        _bio = @"";
-        _location = @"";
-        _savedItineraries = [@[] mutableCopy];
-        _preferences = [@{@"default location" : @"New York, NY", @"default price" : @2, @"default start time" : @0} mutableCopy];
-        _ratings = [@{} mutableCopy];
-        _tips = [@{} mutableCopy];
-        _profilePhoto = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"https://avatars3.githubusercontent.com/u/16245367?v=3&s=460"]];
-        _reputation = 1;
+        _userID = userID;
+        _username = username;
+        _email = email;
+        _bio = bio;
+        _location = location;
+        _savedItineraries = savedItineraries;
+        _preferences = preferences;
+        _ratings = ratings;
+        _tips = [NSMutableDictionary new];
+        _profilePhoto = profilePhoto;
+        _reputation = reputation;
     }
-    
-    NSLog(@"User initialized");
+
+    NSLog(@"User initialized in designated initializer with username: %@", username);
     
     return self;
-
 }
 
 @end

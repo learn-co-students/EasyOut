@@ -15,7 +15,7 @@
 @property (strong, nonatomic) NSString *email;
 @property (strong, nonatomic) NSString *bio;
 @property (strong, nonatomic) NSString *location;
-@property (strong, nonatomic) NSMutableArray *savedItineraries;
+@property (strong, nonatomic) NSMutableDictionary *savedItineraries;
 @property (strong, nonatomic) NSMutableDictionary *preferences;
 @property (strong, nonatomic) NSMutableDictionary *ratings;
 @property (strong, nonatomic) NSMutableDictionary *tips;
@@ -23,8 +23,21 @@
 @property (nonatomic) NSUInteger reputation;
 
 
--(instancetype)initWithEmail:(NSString *)email username:(NSString *)username;
+-(instancetype)initWithEmail:(NSString *)email
+                    username:(NSString *)username;
 
 -(instancetype) initWithUserID:(NSString *)userID;
+
+-(instancetype) initWithUserID:(NSString *)userID
+                      username:(NSString *)username
+                         email:(NSString *)email
+                           bio:(NSString *)bio
+                      location:(NSString *)location
+              savedItineraries:(NSMutableDictionary *)savedItineraries
+                   preferences:(NSMutableDictionary *)preferences
+                       ratings:(NSMutableDictionary *)ratings
+                          tips:(NSMutableDictionary *)tips
+                  profilePhoto:(NSData *)profilePhoto
+                    reputation:(NSUInteger)reputation;
 
 @end

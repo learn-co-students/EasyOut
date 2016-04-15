@@ -9,12 +9,13 @@
 #import "AppDelegate.h"
 #import <Button/Button.h>
 #import "Secrets.h"
-#import "DeepLinkKit.h"
 #import "EggplantButton-Swift.h"
 #import <GoogleMaps/GoogleMaps.h>
+#import "CardViewController.h"
 
 
 @interface AppDelegate ()
+
 
 @end
 
@@ -37,6 +38,10 @@
         //[self handleURL :deferredDeeplinkURL];
     }];
     
+    
+    // Side Menu
+    
+    
 //    FirebaseAPIClient *client = [[FirebaseAPIClient alloc] init];
 //    [client getAllUsersWithCompletion:^(BOOL success) {
 //    
@@ -44,9 +49,6 @@
     [UINavigationBar appearance].tintColor =[UIColor blackColor];
     
     [GMSServices provideAPIKey:googlePlacesAPI];
-    
-
-    
     
     return YES;
 }
@@ -101,6 +103,7 @@ continueUserActivity:(NSUserActivity *)userActivity
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
 }
+
 
 #pragma mark - Core Data stack
 
