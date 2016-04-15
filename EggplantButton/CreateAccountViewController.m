@@ -96,7 +96,13 @@
     User *newUser = [[User alloc]initWithEmail:self.email username:self.username];
     
     FirebaseAPIClient *firebaseAPI = [[FirebaseAPIClient alloc] init];
-    [firebaseAPI registerNewUserWithUser:newUser password:self.passWordLabel.text];
+    
+//    [firebaseAPI registerNewUserWithUser:newUser
+//                                password:self.passWordLabel.text
+//                              completion:void (^)(BOOL success) {
+//                                  
+//                              }];
+//    [firebaseAPI registerNewUserWithUser:newUser password:self.passWordLabel.text];
     
     if (completion) {
         Firebase *ref = [[Firebase alloc] initWithUrl:firebaseRootRef];

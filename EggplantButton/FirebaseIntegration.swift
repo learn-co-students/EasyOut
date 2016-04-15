@@ -14,17 +14,30 @@ import Firebase
     // Test Function that calls all other functions to test
     func testFirebaseFunctions () {
         
-        let newUser : User = User.init(email: "theTestUser@test.com", username: "testy")
+        // Make sure no user is logged in
+        logOutUser()
         
-        registerNewUserWithUser(newUser, password: "whatever")
+        // Create new test user
+        let newUser : User = User.init(email: "test@test.com", username: "testy")
         
-        let ref = Firebase(url:firebaseRootRef)
-        
-        createUserObjectFromFirebaseWithUserID(ref.authData.uid) { (user) in
-            print("User object created for \(user.username)")
+        // Register new test user
+        registerNewUserWithUser(newUser, password: "whatever") { success in
+            let wereGood = success ? "We good." : "We bad."
+            print(wereGood)
+            
+            let ref = Firebase(url:firebaseRootRef)
+            
+            self.loginUserWithEmail("test@test.com", password: "whatever")
+            
+            if ref.authData != nil {
+                self.createUserObjectFromFirebaseWithUserID(ref.authData.uid) { (user) in
+                    print("User object created for \(user.username)")
+                }
+                
+            } else {
+                print("ERROR HERE!")
+            }
         }
-        
-        
     }
     
     
@@ -75,7 +88,7 @@ import Firebase
         //when you have snapshot stuff, loop through it or whatever to create your custom objects.
         //then call on completion
         
-         completion(success: true)
+        completion(success: true)
         
     }
     
@@ -88,73 +101,100 @@ import Firebase
     // Login and authenticate user given email and password
     func loginUserWithEmail(email : String, password : String) {
         
+        print("Attempting to log in user with email: \(email)")
+        
         // Set base
         let ref = Firebase(url:firebaseRootRef)
+        
+        
+        
+        
         
         // Attempt user login
         ref.authUser(email, password: password) {
             error, authData in
+            
+            print("inAUTHUSER Closure--- error: \(error), authData: \(authData)")
+            
+            
             if error != nil {
                 print("An error occurred while attempting login: \(error.description)")
             } else {
                 print("User is logged in, checking authData for data")
-                
-                if authData.auth != nil {
-                    print("authData has data!")
-                } else {
-                    print("authData has no data :(")
-                }
+            }
+            if authData.auth != nil {
+                print("authData has data!")
+            } else {
+                print("authData has no data :(")
             }
         }
     }
+    
     // Register a new user in firebase given a User object and password
-    func registerNewUserWithUser(user : User, password : String) {
+    func registerNewUserWithUser(user : User, password : String, completion: (Bool) -> ()) {
         
-        print("Registering user: \(user.username)")
+        print("Attempting to register user: \(user.username)")
         
         // Set reference for firebase account
         let ref = Firebase(url:firebaseRootRef)
         
+        print("user email = \(user.email)")
+        print("password = \(password)")
+        print("ref = \(ref)")
+        
+        
         // Create user with email from user object and password string
         ref.createUser(user.email, password: password, withValueCompletionBlock: { error, result in
-                        if error != nil {
-                            print("There was an error creating the user: \(error.description)")
-                        } else {
-
-                            let uid = result["uid"] as? String
-                            
-                            print("Successfully created user account with uid: \(uid)")
-                            
-                            // Set references for new user
-                            let usersRef = ref.childByAppendingPath("users")
-                            let userRef = usersRef.childByAppendingPath(uid)
-                            
-                            // Set properties for new user account
-                            userRef.setValue([
-                                    "userID" : uid!,
-                                    "username" : user.username,
-                                    "email" : user.email,
-                                    "bio" : user.bio,
-                                    "location" : user.location,
-                                    "saved itineraries" : user.savedItineraries,
-                                    "preferences" : user.preferences,
-                                    "ratings" : user.ratings,
-                                    "tips" : user.tips,
-                                    "reputation" : user.reputation,
-                                    "profilePhoto" : user.profilePhoto
-                            ])
-                            
-                            // We should actually call firebase to pull values for new user and make sure everything was set correctly
-                            print("Registered new user: \(userRef)")            }
+            
+            
+            guard let uid = result["uid"] as? String else { completion(false); fatalError("Back from firebase, uid is NIL not good.") }
+            
+            
+            print("In the creatuserCLOSURE ---- error: \(error), result: \(result)")
+            
+            if error != nil {
+                print("There was an error creating the user: \(error.description)")
+            } else {
+                
+                
+                print("Successfully created user account with uid: \(uid)")
+                
+                // Set references for new user
+                let usersRef = ref.childByAppendingPath("users")
+                let userRef = usersRef.childByAppendingPath(uid)
+                
+                // Set properties for new user account
+                userRef.setValue([
+                    "userID" : uid,
+                    "username" : user.username,
+                    "email" : user.email,
+                    "bio" : user.bio,
+                    "location" : user.location,
+                    "saved itineraries" : user.savedItineraries,
+                    "preferences" : user.preferences,
+                    "ratings" : user.ratings,
+                    "tips" : user.tips,
+                    "reputation" : user.reputation,
+                    "profilePhoto" : user.profilePhoto
+                    ])
+                
+                // We should actually call firebase to pull values for new user and make sure everything was set correctly
+                print("Registered new user: \(userRef)")
+            }
+            
+            
+            completion(true)
+            
         })
     }
+    
     
     func saveNewItineraryWithItinerary(itinerary : Itinerary) -> String {
         
         // Set references for new itinerary
         let ref = Firebase(url:firebaseRootRef)
         let itinerariesRef = ref.childByAppendingPath("itineraries")
-    
+        
         // Create firebase reference for given itinerary
         let newItineraryRef = itinerariesRef.childByAutoId()
         
@@ -171,7 +211,7 @@ import Firebase
             "photos" : itinerary.photos,
             "userID" : ref.authData.uid,
             "title" : itinerary.title
-        ])
+            ])
         
         print("Added new itinerary with title: \(itinerary.title) and ID: \(newItineraryID)")
         
@@ -180,7 +220,7 @@ import Firebase
     }
     
     // Create a new image reference in Firebase and return its unique ID
-    func saveNewImageWithImage(image : UIImage) -> String {
+    func saveNewImageWithImage(image : UIImage, completion: String -> ()) -> Void {
         
         // Set references for new itinerary
         let ref = Firebase(url:firebaseRootRef)
@@ -205,11 +245,13 @@ import Firebase
         print("Image with ImageID: \(newImageID) added to Firebase")
         
         // Return the new image's ID
-        return newImageID
+        completion(newImageID)
     }
     
     // Create a User object from Firebase data using a user ID
     func createUserObjectFromFirebaseWithUserID(userID : String, completion : User -> ()) {
+        
+        print("Creating user object from user reference: \(userID)")
         
         // Set references to call for user info
         let ref = Firebase(url:firebaseRootRef)
@@ -229,14 +271,17 @@ import Firebase
             
             if (sv["savedItineraries"] != nil) {
                 savedItineraries = sv["savedItineraries"]! as! NSMutableDictionary
+                print("User has itineraries: \(sv["savedItineraries"])")
             }
             
             if (sv["tips"] != nil) {
                 tips = sv["tips"]! as! NSMutableDictionary
+                print("User has tips: \(sv["tips"])")
             }
             
             if (sv["ratings"] != nil) {
                 ratings = sv["ratings"]! as! NSMutableDictionary
+                print("User has ratings: \(sv["ratings"])")
             }
             
             // Create new User object
@@ -262,7 +307,7 @@ import Firebase
         let dateString = dateFormatter.stringFromDate(date)
         
         print("Converted date into: \(dateString)")
-
+        
         // Send back the converted date
         return dateString
     }
@@ -271,7 +316,7 @@ import Firebase
         // Set references
         let ref = Firebase(url:firebaseRootRef)
         
-        print("Logging out uid: \(ref.authData.uid)")
+//        print("Logging out uid: \(ref.authData.uid)")
         
         ref.unauth()
         
