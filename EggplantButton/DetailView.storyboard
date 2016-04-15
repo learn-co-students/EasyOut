@@ -81,7 +81,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="T7E-FC-b6E" firstAttribute="bottom" secondItem="SWl-eB-RaB" secondAttribute="bottom" id="nB2-EW-EKz"/>
                                             <constraint firstItem="T7E-FC-b6E" firstAttribute="leading" secondItem="SWl-eB-RaB" secondAttribute="leading" constant="20" symbolic="YES" id="vmS-bh-C81"/>
@@ -111,7 +111,7 @@
                         <outlet property="distanceView" destination="Rko-w0-IJw" id="Trj-qW-ych"/>
                         <outlet property="iconImage" destination="PK3-Hb-hu3" id="2oQ-Ru-bK8"/>
                         <outlet property="imageView" destination="RBE-wV-SEh" id="lPf-0h-r7y"/>
-                        <outlet property="mapView" destination="SWl-eB-RaB" id="4s7-p3-ZTl"/>
+                        <outlet property="mapUIView" destination="SWl-eB-RaB" id="yqG-9O-sdB"/>
                         <outlet property="moreDetailLabel" destination="o31-v6-CSf" id="NBt-1J-ltN"/>
                         <outlet property="phoneNumberButton" destination="3IY-DV-bGd" id="QZf-ta-so1"/>
                     </connections>

@@ -33,27 +33,44 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:((Restaurant *)self.activity).lat
-                                                            longitude:((Restaurant *)self.activity).lng
-                                                                 zoom:6];
-    
+        
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:1.285
+                                                            longitude:103.848
+                                                                 zoom:12];
     self.mapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
-    self.mapView.myLocationEnabled = YES;
-    self.mapUIView = self.mapView;
     
-    // Creates a marker in the center of the map.
-    GMSMarker *marker = [[GMSMarker alloc] init];
-    marker.position = CLLocationCoordinate2DMake(((Restaurant *)self.activity).lat, ((Restaurant *)self.activity).lng);
-    marker.title = @"Sydney";
-    marker.snippet = @"Australia";
-    marker.map = self.mapView;
+    [self.mapUIView addSubview:self.mapView];
+    
+    self.mapView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self.mapView.topAnchor constraintEqualToAnchor:self.mapUIView.topAnchor].active = YES;
+    [self.mapView.bottomAnchor constraintEqualToAnchor:self.mapUIView.bottomAnchor].active = YES;
+    [self.mapView.leadingAnchor constraintEqualToAnchor:self.mapUIView.leadingAnchor].active = YES;
+    [self.mapView.trailingAnchor constraintEqualToAnchor:self.mapUIView.trailingAnchor].active = YES;
 
 
-    self.addressLabel.text = [NSString stringWithFormat:@"%@ %@,NY %@", self.activity.address, self.activity.city, self.activity.postalCode];
+    
+//    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:((Restaurant *)self.activity).lat
+//                                                            longitude:((Restaurant *)self.activity).lng
+//                                                                 zoom:6];
+//    
+//    self.mapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
+//    self.mapView.myLocationEnabled = YES;
+//    self.mapUIView = self.mapView;
+    
+//    // Creates a marker in the center of the map.
+//    GMSMarker *marker = [[GMSMarker alloc] init];
+//    marker.position = CLLocationCoordinate2DMake(((Restaurant *)self.activity).lat, ((Restaurant *)self.activity).lng);
+//    marker.title = @"Sydney";
+//    marker.snippet = @"Australia";
+//    marker.map = self.mapView;
+
     
     
     
+
+    self.addressLabel.text = [NSString stringWithFormat:@"%@ %@,NY %@", self.activity.address,
+                              self.activity.city, self.activity.postalCode];
 }
 
 - (void)didReceiveMemoryWarning {

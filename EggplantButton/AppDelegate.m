@@ -43,7 +43,7 @@
 //    }];
     [UINavigationBar appearance].tintColor =[UIColor blackColor];
     
-    [GMSServices provideAPIKey:@"AIzaSyDggpPW4S0kLND3eGV7dwY9SoHGLweRcQg"];
+    [GMSServices provideAPIKey:googlePlacesAPI];
     
 
     
