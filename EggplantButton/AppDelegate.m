@@ -9,11 +9,13 @@
 #import "AppDelegate.h"
 #import <Button/Button.h>
 #import "Secrets.h"
-#import "DeepLinkKit.h"
 #import "EggplantButton-Swift.h"
+#import "CardViewController.h"
+
 
 
 @interface AppDelegate ()
+
 
 @end
 
@@ -36,7 +38,15 @@
         //[self handleURL :deferredDeeplinkURL];
     }];
     
-    [UINavigationBar appearance].backgroundColor =[UIColor blackColor];
+    
+    // Side Menu
+    
+    
+//    FirebaseAPIClient *client = [[FirebaseAPIClient alloc] init];
+//    [client getAllUsersWithCompletion:^(BOOL success) {
+//    
+//    }];
+    [UINavigationBar appearance].tintColor =[UIColor blackColor];
     
     return YES;
 }
@@ -91,6 +101,7 @@ continueUserActivity:(NSUserActivity *)userActivity
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
 }
+
 
 #pragma mark - Core Data stack
 

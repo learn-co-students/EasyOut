@@ -9,6 +9,7 @@
 #import "AppViewController.h"
 #import "Secrets.h"
 #import "Firebase.h"
+#import <Masonry/Masonry.h>
 
 @interface AppViewController ()
 
@@ -28,36 +29,15 @@
     Firebase *ref = [[Firebase alloc] initWithUrl:firebaseRootRef];
     
     if (ref.authData){
-        // someone is logged in
-        NSLog(@"logged in! uid: %@", ref.authData.uid);
-    } else {
-        // no one is logged in
+        UIViewController *mainVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:mainViewControllerStoryBoardID];
+    
+        [self setEmbeddedViewController:mainVC];
+    }
+    else {
+        UIViewController *loginVC = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:LoginViewControllerStoryBoardID];
+        [self setEmbeddedViewController:loginVC];
     }
     
-    [ref observeAuthEventWithBlock:^(FAuthData *authData) {
-        if (authData) {
-            // user authenticated
-            self.currentViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:mainViewControllerStoryBoardID];
-            [self.containerView addSubview:self.currentViewController.view];
-            self.currentViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
-            [self constrainSubView:self.currentViewController.view toParentView:self.containerView];
-
-            NSLog(@"<=============== User is logged in %@!!!!!! ============>", authData);
-        } else {
-            // No user is signed in
-            // Set up and present initial view controller
-            self.currentViewController = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:LoginViewControllerStoryBoardID];
-            [self.containerView addSubview:self.currentViewController.view];
-            self.currentViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
-            [self constrainSubView:self.currentViewController.view toParentView:self.containerView];
-
-            
-        }
-    }];
-    
-    
-    
-    // Add notification oberservers to signal that VCs should be swapped
     [self addNotificationObservers];
     
 }
@@ -66,85 +46,48 @@
     
     // Generic notification observer (for example only)
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(handleGenericViewControllerSelected)
+                                             selector:@selector(test)
                                                  name:mainViewControllerStoryBoardID
                                                object:nil];
     
     
 }
-     
--(void)constrainSubView:(UIView *)subView toParentView:(UIView *)parentView {
+
+-(void)test {
+    UIViewController *mainVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:mainViewControllerStoryBoardID];
     
-    // constrain VC view to container view
-    [subView.topAnchor constraintEqualToAnchor:parentView.topAnchor].active = YES;
-    [subView.bottomAnchor constraintEqualToAnchor:parentView.bottomAnchor].active = YES;
-    [subView.leadingAnchor constraintEqualToAnchor:parentView.leadingAnchor].active = YES;
-    [subView.trailingAnchor constraintEqualToAnchor:parentView.trailingAnchor].active = YES;
-    
+    [self setEmbeddedViewController:mainVC];
 }
 
--(void)handleGenericViewControllerSelected {
-    
-    NSLog(@"generic notification received");
-    
-    // 1. Instantiate new view controller
-    UIViewController *newVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:mainViewControllerStoryBoardID];
-    
-    /// BREAK OUT INTO SEPARATE METHOD ///
-    
-    // 2. Set auto resizing mask into constraints to no
-    newVC.view.translatesAutoresizingMaskIntoConstraints = NO;
-    
-    // 3. Call willMove... with nil before removeFromParent... per docs
-    [self.currentViewController willMoveToParentViewController:nil];
-    
-    // 4. Add new VC as child VC
-    [self addChildViewController:newVC];
-    
-    // 5. Add new VC view to container view
-    [self.containerView addSubview:newVC.view];
-    
-    // 6. Set constraints of new VC for starting position
-    [newVC.view.topAnchor constraintEqualToAnchor:self.containerView.topAnchor].active = YES;
-    [newVC.view.bottomAnchor constraintEqualToAnchor:self.containerView.bottomAnchor].active = YES;
-    [newVC.view.leadingAnchor constraintEqualToAnchor:self.containerView.trailingAnchor].active = YES;
-    [newVC.view.trailingAnchor constraintEqualToAnchor:self.containerView.trailingAnchor].active = YES;
 
-    // 7. Call layoutIfNeeded on container view
-    [self.containerView layoutIfNeeded];
-    NSLog(@"I switched over to the right place !");
 
+-(void)setEmbeddedViewController:(UIViewController *)controller
+{
+    if([self.childViewControllers containsObject:controller]) {
+        return;
+    }
     
-    // 8. Add final constaints for new VC
-    [self constrainSubView:newVC.view toParentView:self.containerView];
+    for(UIViewController *vc in self.childViewControllers) {
+        [vc willMoveToParentViewController:nil];
+        
+        if(vc.isViewLoaded) {
+            [vc.view removeFromSuperview];
+        }
+        
+        [vc removeFromParentViewController];
+    }
     
-    // 9. Set alpha of new VC to zero (if you want)
-//    newVC.view.alpha = 0;
+    if(!controller) {
+        return;
+    }
     
-    [UIView animateWithDuration:0.5 animations:^{
-        
-//        newVC.view.alpha = 1;
-        [newVC.view layoutIfNeeded];
-        
-        
-    } completion:^(BOOL finished) {
-        [self.currentViewController.view removeFromSuperview];
-        [self.currentViewController removeFromParentViewController];
-        [newVC didMoveToParentViewController:self];
-        self.currentViewController = nil;
-        self.currentViewController = newVC;
-        
-        NSLog(@"I switched over to the right place !");
-
+    [self addChildViewController:controller];
+    [self.containerView addSubview:controller.view];
+    [controller.view mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(@0);
     }];
-    
+    [controller didMoveToParentViewController:self];
 }
 
-
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
 
 @end
