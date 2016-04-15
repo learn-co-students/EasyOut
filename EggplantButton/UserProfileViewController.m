@@ -7,7 +7,7 @@
 //
 
 #import "UserProfileViewController.h"
-#import "User.h"
+
 
 @interface UserProfileViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 

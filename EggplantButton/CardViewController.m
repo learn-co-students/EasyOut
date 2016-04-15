@@ -6,14 +6,10 @@
 //  Copyright © 2016 Team Eggplant Button. All rights reserved.
 //
 
-#import <CoreLocation/CoreLocation.h>
-#import <AudioToolbox/AudioToolbox.h>
-#import "UIView+Shake.h"
+
 #import "CardViewController.h"
-#import "DetailViewController.h"
 #import "EggplantButton-Swift.h"
-#import "ActivitiesDataStore.h"
-#import "ActivityCardCollectionViewCell.h"
+#import "UIView+Shake.h"
 
 
 @class Restaurant;

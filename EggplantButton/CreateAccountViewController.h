@@ -7,6 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EggplantButton-Swift.h"
+#import "LogInViewController.h"
+#import "Firebase.h"
+#import "Secrets.h"
+#import "User.h"
 
 @interface CreateAccountViewController : UIViewController
 
