@@ -14,12 +14,12 @@
 #import "EggplantButton-Swift.h"
 #import "ActivitiesDataStore.h"
 #import "ActivityCardCollectionViewCell.h"
+#import "sideMenuViewController.h"
 
 
 @class Restaurant;
 
 //MFMessageControlViewController
-
 
 @interface CardViewController () <UIScrollViewDelegate, CLLocationManagerDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -46,6 +46,7 @@
 
 
 //BUTTONS
+
 
 @end
 
@@ -78,10 +79,13 @@
 
 #pragma mark - Side Menu Button Tapped
 
-- (IBAction)menuButtonTapped:(id)sender {
+- (IBAction)menuButtonTapped:(UIBarButtonItem *)sender {
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"menuButtonTapped" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"menuButtonTapped"
+                                                        object:nil];
+    NSLog(@"menu button tapped!");
 }
+
 
 #pragma mark - Get API data
 
@@ -188,10 +192,11 @@
     
     destinationVC.activity = ((ActivityCardCollectionViewCell *)sender).cardView.activity;
     }
-//    else if (segue.identifier isEqualToString:@"filterSegue") {
-//        
-//    }
+    else if ([segue.identifier isEqualToString:@"filterSegue"]) {
+        
+    }
 }
+
 
 #pragma mark - Core Location
 
@@ -218,7 +223,6 @@
         
         self.mostRecentLocation = [locations lastObject];
         
-
     }
     
     [self.locationManager stopUpdatingLocation];
@@ -388,8 +392,6 @@
 
 
 
-- (IBAction)menuButtonPressed:(UIBarButtonItem *)sender {
-}
 - (IBAction)filterButtonPressed:(UIBarButtonItem *)sender {
 
 

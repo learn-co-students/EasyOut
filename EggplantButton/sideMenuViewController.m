@@ -7,13 +7,14 @@
 //
 
 #import "sideMenuViewController.h"
+#import "CardViewController.h"
 
 @interface sideMenuViewController ()
 
-@property (weak, nonatomic) IBOutlet UIView *sideMenuContainer;
-@property (weak, nonatomic) IBOutlet UIView *viewContainer;
+@property (weak, nonatomic) IBOutlet UIView * sideMenuContainer;
+@property (weak, nonatomic) IBOutlet UIView * viewContainer;
 
-@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *mainViewTapGestureRecognizer;
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer * mainViewTapGestureRecognizer;
 
 @end
 
@@ -22,7 +23,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(menuButtonTapped:) name:@"menuButtonTapped" object:nil];
+    self.mainViewTapGestureRecognizer.enabled = NO;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(menuButtonTapped:)
+                                                 name:@"menuButtonTapped"
+                                               object:nil];
 }
 
 - (void) menuButtonTapped: (NSNotification *) notification {
@@ -30,9 +36,11 @@
     self.mainViewTapGestureRecognizer.enabled = YES;
     self.viewContainer.subviews[0].userInteractionEnabled = NO;
     
-    [UIView animateWithDuration:0.2 animations:^{
-        self.sideMenuContainer.alpha = 1;
-        self.viewContainer.alpha = 0.75;
+    self.viewContainer.alpha = 0.75;
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        self.sideMenuContainer.alpha = 0.9;
+        
     }];
 }
 
