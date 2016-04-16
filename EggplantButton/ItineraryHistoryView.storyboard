@@ -16,7 +16,7 @@
         <!--ItineraryHistoryTableViewController-->
         <scene sceneID="HvF-fg-FhP">
             <objects>
-                <tableViewController title="ItineraryHistoryTableViewController" id="AsN-9G-VwD" customClass="ItineraryHistoryTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="pastItineraries" title="ItineraryHistoryTableViewController" id="AsN-9G-VwD" customClass="ItineraryHistoryTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="UOv-nO-4QJ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

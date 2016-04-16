@@ -45,23 +45,26 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CUH-f1-A53">
                                 <rect key="frame" x="20" y="108" width="240" height="190"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Prd-2I-inJ">
+                                <rect key="frame" x="38" y="28" width="40" height="30"/>
+                                <state key="normal" title="BACK"/>
+                                <connections>
+                                    <action selector="BACKButtonTapped:" destination="vvM-bz-Ud9" eventType="touchUpInside" id="1k8-10-GvG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="TY5-2N-dKi">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="M3l-Ec-dXd">
-                            <connections>
-                                <action selector="backButton:" destination="vvM-bz-Ud9" id="H76-Yz-K0g"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Title" id="TY5-2N-dKi"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="userImage" destination="CUH-f1-A53" id="0OV-TO-biy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TRQ-n7-BSP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1233" y="360"/>
+            <point key="canvasLocation" x="2783" y="373"/>
         </scene>
     </scenes>
 </document>

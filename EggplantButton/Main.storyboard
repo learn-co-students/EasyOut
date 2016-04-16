@@ -166,10 +166,10 @@
             </objects>
             <point key="canvasLocation" x="1481.5" y="640"/>
         </scene>
-        <!--Side Menu View Controller-->
+        <!--Main Container View Controller-->
         <scene sceneID="nbp-pc-vIU">
             <objects>
-                <viewController storyboardIdentifier="MainStoryBoardViewController" id="6SG-CM-ZHf" customClass="sideMenuViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainStoryBoardViewController" id="6SG-CM-ZHf" customClass="mainContainerViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ABE-38-Nnf"/>
                         <viewControllerLayoutGuide type="bottom" id="63I-4i-s4b"/>
@@ -180,6 +180,7 @@
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8oa-sp-fTI">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="QB9-cg-QB8" kind="embed" id="kJJ-vF-2Aq"/>
                                 </connections>
@@ -217,7 +218,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SnN-fK-PDV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="JYf-Fn-UgW">
+                <tapGestureRecognizer enabled="NO" id="JYf-Fn-UgW">
                     <connections>
                         <action selector="mainViewTapped:" destination="6SG-CM-ZHf" id="Pg3-xi-n49"/>
                     </connections>
@@ -228,6 +229,7 @@
         <!--Navigation Controller-->
         <scene sceneID="nOA-Pe-4kW">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fIL-uy-aBb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QB9-cg-QB8" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bd2-7L-nQw">
@@ -239,46 +241,13 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="MdW-SK-0DP"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fIL-uy-aBb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="676" y="446"/>
         </scene>
-        <!--Login-->
-        <scene sceneID="3Vl-xJ-khq">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Login" id="Kuo-Zv-PJ6" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cDG-88-KY8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-261.5" y="696"/>
-        </scene>
-        <!--ItineraryHistoryView-->
-        <scene sceneID="bZj-wb-Svc">
-            <objects>
-                <viewControllerPlaceholder storyboardName="ItineraryHistoryView" id="cnT-Lh-ijO" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Z2Q-94-6hx" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-262" y="402"/>
-        </scene>
-        <!--FilterView-->
-        <scene sceneID="sLM-Vy-V6Z">
-            <objects>
-                <viewControllerPlaceholder storyboardName="FilterView" id="DOC-UC-hmp" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oUT-NF-FHc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-261.5" y="471"/>
-        </scene>
-        <!--UserProfile-->
-        <scene sceneID="HCe-g8-eC6">
-            <objects>
-                <viewControllerPlaceholder storyboardName="UserProfile" id="gEQ-vM-17r" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IGz-1q-hIX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-261.5" y="340"/>
-        </scene>
-        <!--View Controller-->
+        <!--Side Menu View Controller-->
         <scene sceneID="x9h-0l-jTD">
             <objects>
-                <viewController id="3L1-dU-ywu" sceneMemberID="viewController">
+                <viewController id="3L1-dU-ywu" customClass="sideMenuViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2pR-HJ-pll"/>
                         <viewControllerLayoutGuide type="bottom" id="26r-Hw-fgn"/>
@@ -292,9 +261,6 @@
                                 <state key="normal" title="Filters">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="DOC-UC-hmp" kind="show" id="acf-if-5sO"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hOL-Ei-CQk">
                                 <rect key="frame" x="45" y="235" width="110" height="30"/>
@@ -302,7 +268,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="cnT-Lh-ijO" kind="show" id="2fb-dK-pwg"/>
+                                    <action selector="itineraryHistoryButtonTapped:" destination="3L1-dU-ywu" eventType="touchUpInside" id="iHJ-ft-Igw"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j6a-DZ-UOp">
@@ -311,7 +277,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="gEQ-vM-17r" kind="show" id="7Vg-Tr-J9h"/>
+                                    <action selector="profileButtonTapped:" destination="3L1-dU-ywu" eventType="touchUpInside" id="uct-gk-LsY"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kFr-i4-jK0">
@@ -335,7 +301,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Kuo-Zv-PJ6" kind="show" id="COy-3E-PVd"/>
+                                    <action selector="logoutButtonTapped:" destination="3L1-dU-ywu" eventType="touchUpInside" id="Wzv-HU-1eR"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -362,10 +328,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RDE-4o-T2E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-67.5" y="446"/>
+            <point key="canvasLocation" x="-139.5" y="446"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="lgO-gw-fZU"/>
+        <segue reference="sVv-zh-GNS"/>
     </inferredMetricsTieBreakers>
 </document>

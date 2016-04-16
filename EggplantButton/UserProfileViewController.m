@@ -115,11 +115,14 @@
     [self presentViewController:picker animated:YES completion:NULL];
     
 }
+//- (IBAction)BACKButtonTapped:(id)sender {
+//    
+//    UIViewController * mainVC = [UIViewController ]
+//    [self.navigationController popToViewController:<#(nonnull UIViewController *)#> animated:<#(BOOL)#>
+//     
+//     popViewControllerAnimated:YES];
+//}
 
-- (IBAction)backButton:(UIBarButtonItem *)sender {
-    
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 
 @end

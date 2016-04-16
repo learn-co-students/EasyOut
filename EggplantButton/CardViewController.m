@@ -14,6 +14,7 @@
 #import "EggplantButton-Swift.h"
 #import "ActivitiesDataStore.h"
 #import "ActivityCardCollectionViewCell.h"
+#import "mainContainerViewController.h"
 #import "sideMenuViewController.h"
 
 
@@ -70,20 +71,63 @@
     self.middleRowCollection.backgroundColor = [UIColor clearColor];
     self.bottomRowCollection.backgroundColor = [UIColor clearColor];
     
+    // listening for segue notifications from sideMenu
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(profileButtonTapped:)
+                                                 name:@"profileButtonTapped"
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(pastItinerariesButtonTapped:)
+                                                 name:@"pastItinerariesButtonTapped"
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(logoutButtonTapped:)
+                                                 name:@"logoutButtonTapped"
+                                               object:nil];
+    
 }
+
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
 }
 
-#pragma mark - Side Menu Button Tapped
+#pragma mark - Side Menu
 
 - (IBAction)menuButtonTapped:(UIBarButtonItem *)sender {
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"menuButtonTapped"
                                                         object:nil];
     NSLog(@"menu button tapped!");
+}
+
+- (void) profileButtonTapped: (NSNotification *) notification {
+    NSLog(@"cardVC knows that the profile button was tapped!");
+    
+    
+    UIViewController *userProfileVC = [[UIStoryboard storyboardWithName:@"UserProfile" bundle:nil] instantiateViewControllerWithIdentifier:@"userSegue"];
+    
+    [self.navigationController showViewController:userProfileVC sender:nil];
+}
+
+- (void) pastItinerariesButtonTapped: (NSNotification *) notification {
+    NSLog(@"cardVC knows that the past itineraries button was tapped!");
+    
+    
+    UIViewController *pastItinerariesVC = [[UIStoryboard storyboardWithName:@"ItineraryHistoryView" bundle:nil] instantiateViewControllerWithIdentifier:@"pastItineraries"];
+    
+    [self.navigationController showViewController:pastItinerariesVC sender:nil];
+}
+
+- (void) logoutButtonTapped: (NSNotification *) notification {
+    NSLog(@"cardVC knows that the logout button was tapped!");
+    
+    UIViewController *loginVC = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    
+    [self.navigationController showViewController:loginVC sender:nil];
 }
 
 
