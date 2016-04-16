@@ -168,8 +168,6 @@
 - (IBAction)createAccountButton:(id)sender
 {
     
-    
-    
     [self createNewUserWithCompletion:^(BOOL finished) {
        //
     }];
