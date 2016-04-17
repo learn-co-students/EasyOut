@@ -31,7 +31,7 @@
                     preferences:[@{@"default location" : @"New York, NY", @"default price" : @2, @"default start time" : @0} mutableCopy]
                         ratings:[@{} mutableCopy]
                            tips:[@{} mutableCopy]
-                   profilePhoto:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"https://avatars3.githubusercontent.com/u/16245367?v=3&s=460"]]
+                   profilePhoto:@""
                      reputation:1];
     
     NSLog(@"User initialized with email: %@ and username: %@", email, username);
@@ -69,7 +69,7 @@
                    preferences:(NSMutableDictionary *)preferences
                        ratings:(NSMutableDictionary *)ratings
                           tips:(NSMutableDictionary *)tips
-                  profilePhoto:(NSData *)profilePhoto
+                  profilePhoto:(NSString *)profilePhoto
                     reputation:(NSUInteger)reputation {
     
     self = [super init];

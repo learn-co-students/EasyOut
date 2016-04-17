@@ -332,27 +332,16 @@ import Firebase
             
             // Set User properties based on what data is available from the user reference
             
-            var savedItineraries : NSMutableDictionary = [:]
-            var tips : NSMutableDictionary = [:]
-            var ratings : NSMutableDictionary = [:]
+//            var savedItineraries : NSMutableDictionary = [:]
+//            var tips : NSMutableDictionary = [:]
+//            var ratings : NSMutableDictionary = [:]
             
-            if (sv["savedItineraries"] != nil) {
-                savedItineraries = sv["savedItineraries"]! as! NSMutableDictionary
-                print("User has itineraries: \(sv["savedItineraries"])")
-            }
-            
-            if (sv["tips"] != nil) {
-                tips = sv["tips"]! as! NSMutableDictionary
-                print("User has tips: \(sv["tips"])")
-            }
-            
-            if (sv["ratings"] != nil) {
-                ratings = sv["ratings"]! as! NSMutableDictionary
-                print("User has ratings: \(sv["ratings"])")
-            }
             
             // Create new User object
-            let newUser : User = User.init(userID: sv["userID"]! as! String, username: sv["username"]! as! String, email: sv["email"]! as! String, bio: sv["bio"]! as! String, location: sv["location"]! as! String, savedItineraries: savedItineraries, preferences: sv["preferences"]! as! NSMutableDictionary, ratings: ratings, tips: tips, profilePhoto: sv["profilePhoto"]! as! NSData, reputation: sv["reputation"]! as! UInt)
+            
+            let newUser : User = User.init(firebaseUserDictionary: sv as! Dictionary)
+            
+//            let newUser : User = User.init(userID: sv["userID"]! as! String, username: sv["username"]! as! String, email: sv["email"]! as! String, bio: sv["bio"]! as! String, location: sv["location"]! as! String, savedItineraries: savedItineraries, preferences: sv["preferences"]! as! NSMutableDictionary, ratings: ratings, tips: tips, profilePhoto: sv["profilePhoto"]! as! NSData, reputation: sv["reputation"]! as! UInt)
             
             print("Created User object for: \(newUser.username)")
             
@@ -379,7 +368,9 @@ import Firebase
         return dateString
     }
     
+    // Log user out
     func logOutUser() {
+        
         // Set references
         let ref = Firebase(url:firebaseRootRef)
         
@@ -388,9 +379,10 @@ import Firebase
         print("User logged out.")
     }
     
+    // Remove user account from Firebase
     func removeUserFromFirebaseWithEmail(email:String, password:String, competion:(Bool) -> ()) {
         
-        print("Attempting to remove user with email \(email).")
+        print("Attempting to remove user with email \(email)")
         
         // Create a reference to root Firebase location
         let ref = Firebase(url:firebaseRootRef)

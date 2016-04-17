@@ -19,14 +19,14 @@
 @property (strong, nonatomic) NSMutableDictionary *preferences;
 @property (strong, nonatomic) NSMutableDictionary *ratings;
 @property (strong, nonatomic) NSMutableDictionary *tips;
-@property (strong, nonatomic) NSData *profilePhoto;
+@property (strong, nonatomic) NSString *profilePhoto;
 @property (nonatomic) NSUInteger reputation;
 
 
 -(instancetype)initWithEmail:(NSString *)email
                     username:(NSString *)username;
 
-//-(instancetype) initWithUserID:(NSString *)userID;
+-(instancetype) initWithFirebaseUserDictionary:(NSDictionary *)dictionary;
 
 -(instancetype) initWithUserID:(NSString *)userID
                       username:(NSString *)username
@@ -37,7 +37,7 @@
                    preferences:(NSMutableDictionary *)preferences
                        ratings:(NSMutableDictionary *)ratings
                           tips:(NSMutableDictionary *)tips
-                  profilePhoto:(NSData *)profilePhoto
+                  profilePhoto:(NSString *)profilePhoto
                     reputation:(NSUInteger)reputation;
 
 @end
