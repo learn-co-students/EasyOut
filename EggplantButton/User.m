@@ -39,6 +39,27 @@
     return self;
 }
 
+-(instancetype) initWithFirebaseUserDictionary:(NSDictionary *)dictionary {
+    
+    NSMutableDictionary *newDictionary = [dictionary mutableCopy];
+    
+    NSArray *keys = [dictionary allKeys];
+    
+    if (![keys containsObject:@"savedItineraries"]) {
+        [newDictionary setObject:[[NSMutableDictionary alloc] init] forKey:@"savedItineraries"];
+    }
+    if (![keys containsObject:@"tips"]) {
+        [newDictionary setObject:[[NSMutableDictionary alloc] init] forKey:@"tips"];
+    }
+    if (![keys containsObject:@"ratings"]) {
+        [newDictionary setObject:[[NSMutableDictionary alloc] init] forKey:@"ratings"];
+    }
+    
+    self = [self initWithUserID:newDictionary[@"userID]"] username:newDictionary[@"username"] email:newDictionary[@"email"] bio:newDictionary[@"bio"] location:newDictionary[@"location"] savedItineraries:newDictionary[@"savedItineraries"] preferences:newDictionary[@"preferences"] ratings:newDictionary[@"ratings"] tips:newDictionary[@"tips"] profilePhoto:newDictionary[@"profilePhoto"] reputation:[newDictionary[@"reputation"] integerValue]];
+    
+    return self;
+}
+
 -(instancetype) initWithUserID:(NSString *)userID
                       username:(NSString *)username
                          email:(NSString *)email

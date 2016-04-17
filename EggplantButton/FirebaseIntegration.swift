@@ -70,63 +70,8 @@ import Firebase
     
     // TODO: Global save function which calls appropriate API save function based on type of data passed in
     
-    
-    // Return list of all users
-    func getAllUsersWithCompletion(completion:(success: Bool) -> Void) {
-        
-        // Create a reference to root Firebase location
-        let ref = Firebase(url:firebaseRootRef)
-        
-        // Create child references within the root reference
-        let usersRef = ref.childByAppendingPath("users")
-        
-        // Attach a closure to read the data at our posts reference
-        usersRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
-            
-            print(snapshot.value)
-            
-            var allUsernames = [String]()
-            for child in snapshot.children{
-                if let username = child.value["username"] as? String {
-                    print(username)
-                    allUsernames.append(username.lowercaseString)
-                }
-            }
-            
-            print("all usernames: \(allUsernames)")
-            
-            let filteredNames = allUsernames.filter { $0 == "JoN123".lowercaseString }
-            if filteredNames.isEmpty {
-                print("Success! that is a unique username")
-                // continue and save their data
-            } else {
-                print("failure! name is taken :(")
-                // present alert and reset
-            }
-            
-            }, withCancelBlock: { error in
-                print(error.description)
-        })
-        
-        
-        
-        //hit firebase reference (using firebaseURL)
-        //Use the method firebase provides to do this (get that snapshot stuff)
-        //when you have snapshot stuff, loop through it or whatever to create your custom objects.
-        //then call on completion
-        
-        completion(success: true)
-        
-    }
-    
-    // Return list of all itineraries
-    func getAllItinerariesWithCompletion(completion:(success: Bool) -> ()) {
-        
-        completion(success: true)
-    }
-    
     // Login and authenticate user given email and password
-    func loginUserWithEmail(email : String, password : String) {
+    func loginUserWithEmail(email:String, password:String) {
         
         print("Attempting to log in user with email: \(email)")
         
@@ -211,6 +156,61 @@ import Firebase
         })
     }
     
+    // Return list of all users
+    func getAllUsersWithCompletion(completion:(success:Bool) -> Void) {
+        
+        // Create a reference to root Firebase location
+        let ref = Firebase(url:firebaseRootRef)
+        
+        // Create child references within the root reference
+        let usersRef = ref.childByAppendingPath("users")
+        
+        // Attach a closure to read the data at our posts reference
+        usersRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
+            
+            print(snapshot.value)
+            
+            var allUsernames = [String]()
+            for child in snapshot.children{
+                if let username = child.value["username"] as? String {
+                    print(username)
+                    allUsernames.append(username.lowercaseString)
+                }
+            }
+            
+            print("all usernames: \(allUsernames)")
+            
+            let filteredNames = allUsernames.filter { $0 == "JoN123".lowercaseString }
+            if filteredNames.isEmpty {
+                print("Success! that is a unique username")
+                // continue and save their data
+            } else {
+                print("failure! name is taken :(")
+                // present alert and reset
+            }
+            
+            }, withCancelBlock: { error in
+                print(error.description)
+        })
+        
+        func checkAllUsersForExistenceOfUserWithUsername(username:String) {
+            
+        }
+        
+        //hit firebase reference (using firebaseURL)
+        //Use the method firebase provides to do this (get that snapshot stuff)
+        //when you have snapshot stuff, loop through it or whatever to create your custom objects.
+        //then call on completion
+        
+        completion(success: true)
+        
+    }
+    
+    // Return list of all itineraries
+    func getAllItinerariesWithCompletion(completion:(success:Bool) -> ()) {
+        
+        completion(success: true)
+    }
     
     func saveNewItineraryWithItinerary(itinerary : Itinerary) -> String {
         
