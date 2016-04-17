@@ -14,8 +14,30 @@ import Firebase
     // Test Function that calls all other functions to test
     func testFirebaseFunctions () {
         
+        print("Running Firebase test functions.")
+        
         getAllUsersWithCompletion { (allUsernames) in
-            print("This is the test function calling for all usernames:\n\(allUsernames)")
+            if allUsernames.isEmpty {
+                print("No usernames were returned.")
+            } else {
+                print("This is the test function calling for all usernames:\n\(allUsernames)")
+            }
+        }
+        
+        checkIfUsernameIsUniqueWithUsername("testy") { (isUnique) in
+            if isUnique {
+                print("testy is a unique username.")
+            } else {
+                print("testy is not a unique username.")
+            }
+        }
+        
+        checkIfUsernameIsUniqueWithUsername("testy1") { (isUnique) in
+            if isUnique {
+                print("testy1 is a unique username.")
+            } else {
+                print("testy1 is not a unique username.")
+            }
         }
         
 //        // Set reference to root Firebase location
@@ -177,7 +199,7 @@ import Firebase
         // Attach a closure to read the data at our posts reference
         usersRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
             
-            print("This is the snapshot.value:\n\(snapshot.value)")
+//            print("This is the snapshot.value:\n\(snapshot.value)")
             
             // Add each username value for each user reference to the allUsernames array
             for child in snapshot.children{
@@ -192,17 +214,20 @@ import Firebase
             completion(allUsernames)
             
             }, withCancelBlock: { error in
-                print(error.description)
+                print("Error retrieving all usernames:\n\(error.description)")
+                completion([])
         })
-        
-        completion(allUsernames)
     }
     
     // Compare given username to all usernames in Firebase and return unique-status
     func checkIfUsernameIsUniqueWithUsername(username: String, completion: Bool -> Void) {
         
+        print("Checking if username: \(username) is unique.")
+        
         // Call function to retrieve all usernames in Firebase
-        getAllUsersWithCompletion { (allUsernames: Array<String>) in
+        getAllUsersWithCompletion { (allUsernames) in
+            
+            print("Filtering returned usernames by \(username).")
             
             // Filter usernames returned from Firebase by the username passed into the check function
             let filteredNames = allUsernames.filter { $0 == username.lowercaseString }
