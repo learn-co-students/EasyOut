@@ -287,9 +287,9 @@ import Firebase
     }
     
     // Create a new image reference in Firebase and return its unique ID
-    func saveNewImageWithImage(image : UIImage, completion: String -> ()) -> Void {
+    func saveNewImageWithImage(image : UIImage, completion: String -> Void) {
         
-        // Set references for new itinerary
+        // Set references for new image
         let ref = Firebase(url:firebaseRootRef)
         let imagesRef = ref.childByAppendingPath("images")
         
@@ -313,6 +313,29 @@ import Firebase
         
         // Return the new image's ID
         completion(newImageID)
+    }
+    
+    // Retrieve an image from a reference in Firebase
+    func getImageForImageID(imageID: String, completion: UIImage -> Void) {
+        
+        print("Getting image for imageID: \(imageID)")
+        
+        // Set Firebase references
+        let ref = Firebase(url:firebaseRootRef)
+        let imagesRef = ref.childByAppendingPath("images")
+        let imageRef = imagesRef.childByAppendingPath(imageID)
+        
+        // Retrieve value stored for image data
+        imageRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
+            
+            let imageBase64String = snapshot.value["imageBase64String"] as! String
+            
+            let imageData : NSData = NSData(base64EncodedString: imageBase64String, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters)!
+            
+            let image = UIImage(data: imageData)
+            
+            completion(image!)
+        })
     }
     
     // Create a User object from Firebase data using a user ID

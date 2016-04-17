@@ -45,6 +45,7 @@
     
     NSArray *keys = [dictionary allKeys];
     
+    // Check for empty dictionaries that Firebase may not have saved
     if (![keys containsObject:@"savedItineraries"]) {
         [newDictionary setObject:[[NSMutableDictionary alloc] init] forKey:@"savedItineraries"];
     }
