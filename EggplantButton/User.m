@@ -11,15 +11,7 @@
 
 @implementation User
 
-//-(instancetype)initWithUserID:(NSString *)userID {
-//    
-//    self = [self initWithUserID:<#(NSString *)#> username:<#(NSString *)#> email:<#(NSString *)#> bio:<#(NSString *)#> location:<#(NSString *)#> savedItineraries:<#(NSMutableArray *)#> preferences:<#(NSMutableDictionary *)#> ratings:<#(NSMutableDictionary *)#> tips:<#(NSMutableDictionary *)#> profilePhoto:<#(NSData *)#> reputation:<#(NSUInteger)#>];
-//    
-//    NSLog(@"User initialized with userID: %@", userID);
-//    
-//    return self;
-//}
-
+// Use this initializer when registering a new user
 -(instancetype) initWithEmail:(NSString *)email username:(NSString *)username{
     
     self = [self initWithUserID:@""
@@ -32,13 +24,15 @@
                         ratings:[@{} mutableCopy]
                            tips:[@{} mutableCopy]
                    profilePhoto:@""
-                     reputation:1];
+                     reputation:1
+            ];
     
     NSLog(@"User initialized with email: %@ and username: %@", email, username);
     
     return self;
 }
 
+// Use this initializer when creating a User object from a reference in Firebase
 -(instancetype) initWithFirebaseUserDictionary:(NSDictionary *)dictionary {
     
     NSMutableDictionary *newDictionary = [dictionary mutableCopy];
@@ -56,11 +50,25 @@
         [newDictionary setObject:[[NSMutableDictionary alloc] init] forKey:@"ratings"];
     }
     
-    self = [self initWithUserID:newDictionary[@"userID]"] username:newDictionary[@"username"] email:newDictionary[@"email"] bio:newDictionary[@"bio"] location:newDictionary[@"location"] savedItineraries:newDictionary[@"savedItineraries"] preferences:newDictionary[@"preferences"] ratings:newDictionary[@"ratings"] tips:newDictionary[@"tips"] profilePhoto:newDictionary[@"profilePhoto"] reputation:[newDictionary[@"reputation"] integerValue]];
+    self = [self initWithUserID:newDictionary[@"userID]"]
+                       username:newDictionary[@"username"]
+                          email:newDictionary[@"email"]
+                            bio:newDictionary[@"bio"]
+                       location:newDictionary[@"location"]
+               savedItineraries:newDictionary[@"savedItineraries"]
+                    preferences:newDictionary[@"preferences"]
+                        ratings:newDictionary[@"ratings"]
+                           tips:newDictionary[@"tips"]
+                   profilePhoto:newDictionary[@"profilePhoto"]
+                     reputation:[newDictionary[@"reputation"] integerValue]
+            ];
+    
+    NSLog(@"User initialized from Firebase dictionary");
     
     return self;
 }
 
+// The designated initializer
 -(instancetype) initWithUserID:(NSString *)userID
                       username:(NSString *)username
                          email:(NSString *)email
@@ -84,7 +92,7 @@
         _savedItineraries = savedItineraries;
         _preferences = preferences;
         _ratings = ratings;
-        _tips = [NSMutableDictionary new];
+        _tips = tips;
         _profilePhoto = profilePhoto;
         _reputation = reputation;
     }

@@ -16,46 +16,38 @@ import Firebase
         
         print("Running Firebase test functions.")
         
-        // Set reference to root Firebase location
-        let ref = Firebase(url:firebaseRootRef)
-        
         // Make sure no user is logged in
+        print("Calling log out user function")
         logOutUser()
         
-//        // Check function to get all usernames in Firebase
-//        getAllUsersWithCompletion { (allUsernames) in
-//            if allUsernames.isEmpty {
-//                print("No usernames were returned.")
-//            } else {
-//                print("This is the test function calling for all usernames:\n\(allUsernames)")
-//            }
-//        }
-//        
-//        // Check function to check if username is unique (should not be unique)
-//        checkIfUsernameIsUniqueWithUsername("testy") { (isUnique) in
-//            if isUnique {
-//                print("testy is a unique username.")
-//            } else {
-//                print("testy is not a unique username.")
-//            }
-//        }
-//        
-//        // Check function to check if username is unique (should be unique)
-//        checkIfUsernameIsUniqueWithUsername("testy1") { (isUnique) in
-//            if isUnique {
-//                print("testy1 is a unique username.")
-//            } else {
-//                print("testy1 is not a unique username.")
-//            }
-//        }
+        // Check function to get all usernames in Firebase
+        print("Calling get all users function")
+        getAllUsersWithCompletion { (allUsernames) in
+            if allUsernames.isEmpty {
+                print("No usernames were returned.")
+            } else {
+                print("This is the test function calling for all usernames:\n\(allUsernames)")
+            }
+        }
+        
+        // Check function to check if username is unique (should not be unique)
+        print("Calling check if username exists function")
+        checkIfUsernameExistsWithUsername("testy") { (doesExist) in
+            if doesExist {
+                print("Account with username testy exists")
+            } else {
+                print("Account with username testy does not exist")
+            }
+        }
         
         // Create new test user
         let newUser : User = User.init(email: "testUser@test.com", username: "testUser")
 
         // Register new test user
+        print("Calling register new user function")
         registerNewUserWithUser(newUser, password: "whatever") { result in
 
-            let registrationResult = result ? "Registration was successful." : "Registration was not successful."
+            let registrationResult = result ? "Registration was successful" : "Registration was not successful"
 
             print(registrationResult)
             
@@ -64,7 +56,7 @@ import Firebase
                 // Remove test user from Firebase
                 self.removeUserFromFirebaseWithEmail("testUser@test.com", password: "whatever") { (success) in
                     
-                    let removalResult = success ? "Test user successfully removed from Firebase." : "Test user was not removed from Firebase."
+                    let removalResult = success ? "Test user successfully removed from Firebase" : "Test user was not removed from Firebase"
                     
                     print(removalResult)
                     
@@ -72,15 +64,31 @@ import Firebase
             }
         }
         
+        // Check function to check if test user account still exists
+        print("Calling check if username exists function for testUser")
+        checkIfUsernameExistsWithUsername("testUser") { (doesExist) in
+            if doesExist {
+                print("testUser is the username of an active account")
+            } else {
+                print("testUser is not in use")
+            }
+        }
+        
         // Log new user in
+        print("Calling login function")
         self.loginUserWithEmail("test@test.com", password: "whatever") { (success) in
             
-            let loginResult = success ? "Login was successful." : "Login was not successful."
+            let loginResult = success ? "Login was successful" : "Login was not successful"
             
             print(loginResult)
+            
+            // Make sure no user is logged in
+            print("Calling log out function")
+            self.logOutUser()
         }
         
         // Make sure no user is logged in
+        print("Calling log out function")
         logOutUser()
         
     }
@@ -192,7 +200,7 @@ import Firebase
     // Return list of all users
     func getAllUsersWithCompletion(completion: Array<String> -> Void) {
     
-        print("Getting a list of all users at the users reference in Firebase.")
+        print("Getting a list of all users at the users reference in Firebase")
         
         // Create array for all usernames
         var allUsernames = [String]()
@@ -211,7 +219,7 @@ import Firebase
             // Add each username value for each user reference to the allUsernames array
             for child in snapshot.children{
                 if let username = child.value["username"] as? String {
-                    print("Adding \(username) to the allUsernames array.")
+                    print("Adding \(username) to the allUsernames array")
                     allUsernames.append(username.lowercaseString)
                 }
             }
@@ -227,25 +235,25 @@ import Firebase
     }
     
     // Compare given username to all usernames in Firebase and return unique-status
-    func checkIfUsernameIsUniqueWithUsername(username: String, completion: Bool -> Void) {
+    func checkIfUsernameExistsWithUsername(username: String, completion: (doesExist: Bool) -> Void) {
         
-        print("Checking if username: \(username) is unique.")
+        print("Checking if username: \(username) exists")
         
         // Call function to retrieve all usernames in Firebase
         getAllUsersWithCompletion { (allUsernames) in
             
-            print("Filtering returned usernames by \(username).")
+            print("Filtering returned usernames by \(username)")
             
             // Filter usernames returned from Firebase by the username passed into the check function
             let filteredNames = allUsernames.filter { $0 == username.lowercaseString }
             
             // Pass the appropriate response to the completion block depending on presence of the given username
             if filteredNames.isEmpty {
-                print("Username is not already in use.")
-                completion(true)
+                print("Username is not in use")
+                completion(doesExist: false)
             } else {
-                print("Username is already in use.")
-                completion(false)
+                print("Username is in use")
+                completion(doesExist: true)
             }
         }
     }

@@ -99,7 +99,7 @@
     
     [firebaseAPI registerNewUserWithUser:newUser password:self.passWordLabel.text completion:^(BOOL success) {
         if (success) {
-            NSLog(@"User was successfully registered.");
+            NSLog(@"User with email %@ was successfully registered", self.email);
         }
     }];
     
