@@ -14,6 +14,23 @@ import Firebase
     // Test Function that calls all other functions to test
     func testFirebaseFunctions () {
         
+        // Create a reference to root Firebase location
+        let ref = Firebase(url:firebaseRootRef)
+        
+        let userRef = ref.childByAppendingPath("users").childByAppendingPath(ref.authData.uid) as! Dictionary
+        
+        // Check if test user is logged in
+        if userRef.valueForKey("email") != nil && (userRef.valueForKey("email")?.isEqualToString("test@test.com"))!  {
+            
+            // Remove test user from Firebase
+            removeUserFromFirebaseWithEmail("test@test.com", password: "whatever", competion: { (result: Bool) in
+                
+                let reomvalResult = result ? "User removed successfully." : "User was not removed."
+                
+                print(reomvalResult)
+            })
+        }
+        
         // Make sure no user is logged in
         logOutUser()
         
@@ -21,21 +38,22 @@ import Firebase
         let newUser : User = User.init(email: "test@test.com", username: "testy")
         
         // Register new test user
-        registerNewUserWithUser(newUser, password: "whatever") { success in
-            let wereGood = success ? "We good." : "We bad."
-            print(wereGood)
+        registerNewUserWithUser(newUser, password: "whatever") { result in
             
-            let ref = Firebase(url:firebaseRootRef)
+            let wereGood = result ? "We good." : "We bad."
+            
+            print(wereGood)
             
             self.loginUserWithEmail("test@test.com", password: "whatever")
             
             if ref.authData != nil {
+                
                 self.createUserObjectFromFirebaseWithUserID(ref.authData.uid) { (user) in
-                    print("User object created for \(user.username)")
+                    print("User object created for \(user.username).")
                 }
                 
             } else {
-                print("ERROR HERE!")
+                print("No authData retrived in user registration.")
             }
         }
     }
@@ -105,10 +123,6 @@ import Firebase
         
         // Set base
         let ref = Firebase(url:firebaseRootRef)
-        
-        
-        
-        
         
         // Attempt user login
         ref.authUser(email, password: password) {
@@ -297,7 +311,7 @@ import Firebase
     }
     
     // Convert date objects to strings
-    func convertDateToStringWithDate(date : NSDate) -> String {
+    func convertDateToStringWithDate(date:NSDate) -> String {
         
         // Create date formatter and set format style
         let dateFormatter = NSDateFormatter()
@@ -321,5 +335,23 @@ import Firebase
         ref.unauth()
         
         print("User logged out")
+    }
+    
+    func removeUserFromFirebaseWithEmail(email:String, password:String, competion:(Bool) -> ()) {
+        
+        print("Attempting to remove user with email \(email)")
+        
+        // Create a reference to root Firebase location
+        let ref = Firebase(url:firebaseRootRef)
+        
+        print(ref)
+        
+        ref.removeUser(email, password: password) { (error:NSError!) in
+            if error != nil {
+                print("Error while removing user: \(error.description)")
+            }
+        }
+        
+        competion(true)
     }
 }
