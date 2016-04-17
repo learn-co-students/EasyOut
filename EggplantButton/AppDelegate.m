@@ -24,7 +24,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    // Firebase test call
+    // Run function to test Firebase API functions
     FirebaseAPIClient *firebaseAPI = [[FirebaseAPIClient alloc] init];
     [firebaseAPI testFirebaseFunctions];
      
@@ -38,15 +38,8 @@
         //[self handleURL :deferredDeeplinkURL];
     }];
     
-    
-    // Side Menu
-    
-    
-//    FirebaseAPIClient *client = [[FirebaseAPIClient alloc] init];
-//    [client getAllUsersWithCompletion:^(BOOL success) {
-//    
-//    }];
-    [UINavigationBar appearance].tintColor =[UIColor blackColor];
+    // Set appearance of the navigation bar
+    [UINavigationBar appearance].tintColor = [UIColor blackColor];
     
     return YES;
 }

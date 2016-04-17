@@ -87,7 +87,7 @@
 }
 
 
-// this method creates the user in firebase
+// Create a new user in Firebase
 -(void)createNewUserWithCompletion:(void (^)(BOOL finished))completion{
     
     self.email = self.emailLabel.text;
@@ -96,6 +96,12 @@
     User *newUser = [[User alloc]initWithEmail:self.email username:self.username];
     
     FirebaseAPIClient *firebaseAPI = [[FirebaseAPIClient alloc] init];
+    
+    [firebaseAPI registerNewUserWithUser:newUser password:self.passWordLabel.text completion:^(BOOL success) {
+        if (success) {
+            NSLog(@"User was successfully registered.");
+        }
+    }];
     
 //    [firebaseAPI registerNewUserWithUser:newUser
 //                                password:self.passWordLabel.text

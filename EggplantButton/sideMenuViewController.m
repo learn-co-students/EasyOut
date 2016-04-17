@@ -27,6 +27,8 @@
 
 - (void) menuButtonTapped: (NSNotification *) notification {
     
+    NSLog(@"Menu button tapped.");
+    
     self.mainViewTapGestureRecognizer.enabled = YES;
     self.viewContainer.subviews[0].userInteractionEnabled = NO;
     
@@ -37,6 +39,8 @@
 }
 
 - (IBAction)mainViewTapped:(id)sender {
+    
+    NSLog(@"Main view tapped.");
     
     self.mainViewTapGestureRecognizer.enabled = NO;
     self.viewContainer.subviews[0].userInteractionEnabled = YES;
