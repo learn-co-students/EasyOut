@@ -14,6 +14,10 @@ import Firebase
     // Test Function that calls all other functions to test
     func testFirebaseFunctions () {
         
+        getAllUsersWithCompletion { (allUsernames) in
+            print("This is the test function calling for all usernames:\n\(allUsernames)")
+        }
+        
 //        // Set reference to root Firebase location
 //        let ref = Firebase(url:firebaseRootRef)
 //        
@@ -157,57 +161,65 @@ import Firebase
     }
     
     // Return list of all users
-    func getAllUsersWithCompletion(completion:(success:Bool) -> Void) {
+    func getAllUsersWithCompletion(completion: Array<String> -> Void) {
+    
+        print("Getting a list of all users at the users reference in Firebase.")
         
-        // Create a reference to root Firebase location
+        // Create array for all usernames
+        var allUsernames = [String]()
+        
+        // Set refgerence to root Firebase location
         let ref = Firebase(url:firebaseRootRef)
         
-        // Create child references within the root reference
+        // Set child references within the root reference
         let usersRef = ref.childByAppendingPath("users")
         
         // Attach a closure to read the data at our posts reference
         usersRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
             
-            print(snapshot.value)
+            print("This is the snapshot.value:\n\(snapshot.value)")
             
-            var allUsernames = [String]()
+            // Add each username value for each user reference to the allUsernames array
             for child in snapshot.children{
                 if let username = child.value["username"] as? String {
-                    print(username)
+                    print("Adding \(username) to the allUsernames array.")
                     allUsernames.append(username.lowercaseString)
                 }
             }
             
-            print("all usernames: \(allUsernames)")
+            print("All usernames inside the observe block:\n\(allUsernames)")
             
-            let filteredNames = allUsernames.filter { $0 == "JoN123".lowercaseString }
-            if filteredNames.isEmpty {
-                print("Success! that is a unique username")
-                // continue and save their data
-            } else {
-                print("failure! name is taken :(")
-                // present alert and reset
-            }
+            completion(allUsernames)
             
             }, withCancelBlock: { error in
                 print(error.description)
         })
         
-        func checkAllUsersForExistenceOfUserWithUsername(username:String) {
+        completion(allUsernames)
+    }
+    
+    // Compare given username to all usernames in Firebase and return unique-status
+    func checkIfUsernameIsUniqueWithUsername(username: String, completion: Bool -> Void) {
+        
+        // Call function to retrieve all usernames in Firebase
+        getAllUsersWithCompletion { (allUsernames: Array<String>) in
             
+            // Filter usernames returned from Firebase by the username passed into the check function
+            let filteredNames = allUsernames.filter { $0 == username.lowercaseString }
+            
+            // Pass the appropriate response to the completion block depending on presence of the given username
+            if filteredNames.isEmpty {
+                print("Username is not already in use.")
+                completion(true)
+            } else {
+                print("Username is already in use.")
+                completion(false)
+            }
         }
-        
-        //hit firebase reference (using firebaseURL)
-        //Use the method firebase provides to do this (get that snapshot stuff)
-        //when you have snapshot stuff, loop through it or whatever to create your custom objects.
-        //then call on completion
-        
-        completion(success: true)
-        
     }
     
     // Return list of all itineraries
-    func getAllItinerariesWithCompletion(completion:(success:Bool) -> ()) {
+    func getAllItinerariesWithCompletion(completion:(success: Bool) -> ()) {
         
         completion(success: true)
     }
