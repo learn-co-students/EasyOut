@@ -297,6 +297,9 @@ import Firebase
     // Create a new image reference in Firebase and return its unique ID
     func saveNewImageWithImage(image : UIImage, completion: String -> Void) {
         
+        // Resize image to fit inside a Firebase value (10MB file size)
+        let scaledImage = resizeImage(image)
+        
         // Set references for new image
         let ref = Firebase(url:firebaseRootRef)
         let imagesRef = ref.childByAppendingPath("images")
@@ -305,7 +308,7 @@ import Firebase
         let newImageRef = imagesRef.childByAutoId()
         
         // Create data from image
-        let newImageData : NSData = UIImagePNGRepresentation(image)!
+        let newImageData : NSData = UIImagePNGRepresentation(scaledImage)!
         
         // Convert image data into base 64 string
         let newImageBase64String : NSString! = newImageData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.Encoding64CharacterLineLength)
@@ -427,5 +430,42 @@ import Firebase
         }
         
         competion(true)
+    }
+    
+    // Resize an image to fit in a Firebase value
+    func resizeImage(image: UIImage) -> UIImage {
+        
+        // Create new image placeholder
+        var newImage: UIImage = UIImage()
+        
+        // Define initial image file size
+        var imageData: NSData = NSData(data: UIImageJPEGRepresentation((image), 1)!)
+        var imageSizeInKB: Int = imageData.length / 1024
+        
+        // While the image size is greater than 10MB, run size reduction
+        while imageSizeInKB > 10000 {
+            
+            // Define the new size of the image at 90% of its original size
+            let newSize = CGSizeApplyAffineTransform(image.size, CGAffineTransformMakeScale(0.9, 0.9))
+            
+            // Calculate the rectangle used for scaling
+            let rect = CGRectMake(0, 0, newSize.width, newSize.height)
+            
+            // Define image context for resizing
+            UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+            
+            // Use image context to draw scaled image
+            image.drawInRect(rect)
+            
+            // Create new image from the scaled image and close the image context
+            newImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            
+            imageData = NSData(data: UIImageJPEGRepresentation((newImage), 1)!)
+            imageSizeInKB = imageData.length / 1024
+        }
+
+        // Return the scaled image
+        return newImage
     }
 }
