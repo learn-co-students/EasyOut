@@ -12,7 +12,7 @@ import Firebase
 @objc class FirebaseAPIClient: NSObject {
     
     // Login and authenticate user given email and password
-    func loginUserWithEmail(email:String, password:String, completion: Bool -> Void) {
+    func logInUserWithEmail(email:String, password:String, completion: Bool -> Void) {
         
         print("Attempting to log in user with email: \(email)")
         
@@ -189,14 +189,7 @@ import Firebase
     }
     
     
-    // Return list of all itineraries
-    func getAllItinerariesWithCompletion(completion:(success: Bool) -> ()) {
-        
-        completion(success: true)
-    }
-    
-    
-    func saveNewItineraryWithItinerary(itinerary : Itinerary) -> String {
+    func saveNewItineraryWithItinerary(itinerary: Itinerary) -> String {
         
         // Set references for new itinerary
         let ref = Firebase(url:firebaseRootRef)
@@ -227,8 +220,63 @@ import Firebase
     }
     
     
+    // Return list of all itineraries
+    func getAllItinerariesWithCompletion(completion:(itineraries: [String:AnyObject]?) -> Void) {
+        
+        print("Attempting to retrieve all itineraries")
+        
+        // Set references for new itinerary
+        let ref = Firebase(url:firebaseRootRef)
+        let itinerariesRef = ref.childByAppendingPath("itineraries")
+        
+        // Create an observe event for the itineraries reference
+        itinerariesRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
+            print("Successfully received snapshot at itineraries reference:\n\(snapshot.value)")
+            completion(itineraries: (snapshot.value as! Dictionary))
+            }, withCancelBlock: { error in
+                print("Encountered error while trying to retrieve itineraries:\n\(error.description)")
+                completion(itineraries: nil)
+        })
+    }
+
+    
+    func getItineraryWithItineraryID(itineraryID: String, completion: Itinerary? -> Void) {
+        
+        // Get all itineraries
+        print("Attempting to get itinerary with itineraryID:\(itineraryID)")
+        getAllItinerariesWithCompletion { (itineraries) in
+            
+            // Check if itineraries were returned
+            print("Checking if itineraries were returned from the getAllItineraries function")
+            if let itineraries = itineraries {
+                
+                // Check if the itineraries dictionary contains a key matching the itineraryID
+                print("Checking if the returned itineraries contain one that matches the itineraryID")
+                if let itinerary = itineraries[itineraryID] {
+                    
+                    // Send the matching itinerary to the completion block
+                    print("Found a matching itinerary")
+                    completion(itinerary as? Itinerary)
+                } else {
+                    
+                    // Send nil to the completion block
+                    print("Did not find a matching itinerary")
+                    completion(nil)
+                }
+            } else {
+                
+                // Send nil to the completion block
+                print("Itineraries were not returned")
+                completion(nil)
+            }
+        }
+    }
+    
+    
     // Create a new image reference in Firebase and return its unique ID
     func saveNewImageWithImage(image : UIImage, completion: String -> Void) {
+        
+        print("Attempting to save a new image to Firebase")
         
         // Resize image to fit inside a Firebase value (10MB file size)
         let scaledImage = resizeImage(image)
@@ -424,6 +472,7 @@ import Firebase
         print("Calling register new user function")
         registerNewUserWithUser(newUser, password: "whatever") { result in
             
+            // Check registration success
             let registrationResult = result ? "Registration was successful" : "Registration was not successful"
             
             print(registrationResult)
@@ -431,9 +480,9 @@ import Firebase
             if result {
                 
                 // Remove test user from Firebase
-                self.removeUserFromFirebaseWithEmail("testUser@test.com", password: "whatever") { (success) in
+                self.removeUserFromFirebaseWithEmail("testUser@test.com", password: "whatever") { (result) in
                     
-                    let removalResult = success ? "Test user successfully removed from Firebase" : "Test user was not removed from Firebase"
+                    let removalResult = result ? "Test user successfully removed from Firebase" : "Test user was not removed from Firebase"
                     
                     print(removalResult)
                     
@@ -452,10 +501,11 @@ import Firebase
         }
         
         // Log new user in
-        print("Calling login function")
-        self.loginUserWithEmail("test@test.com", password: "whatever") { (success) in
+        print("Calling loginUser")
+        self.logInUserWithEmail("test@test.com", password: "whatever") { (result) in
             
-            let loginResult = success ? "Login was successful" : "Login was not successful"
+            // Check login success
+            let loginResult = result ? "Login was successful" : "Login was not successful"
             
             print(loginResult)
             
@@ -465,8 +515,19 @@ import Firebase
         }
         
         // Make sure no user is logged in
-        print("Calling log out function")
+        print("Calling logOutUser")
         logOutUser()
+        
+        // Check function to get all itineraries
+        print("Calling getAllItineraries")
+        getAllItinerariesWithCompletion { (itineraries) in
+            if let itineraries = itineraries {
+                print("Received itineraries:\n\(itineraries)")
+            }
+        }
+        
+        // Check function to get an itinerary with an itineraryID
+        print("Calling getItineraryWithItineraryID")
         
         // Check function to resize an image
         

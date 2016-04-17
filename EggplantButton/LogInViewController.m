@@ -38,8 +38,9 @@
     
     Firebase *ref = [[Firebase alloc] initWithUrl:firebaseRootRef];
 
-        [ref authUser:self.emailLabel.text password:self.passwordLabel.text
-    withCompletionBlock:^(NSError *error, FAuthData *authData) {
+            [ref authUser:self.emailLabel.text
+                 password:self.passwordLabel.text
+      withCompletionBlock:^(NSError *error, FAuthData *authData) {
     
     if (error) {
         UIAlertController * alert=   [UIAlertController
