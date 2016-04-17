@@ -11,91 +11,6 @@ import Firebase
 
 @objc class FirebaseAPIClient: NSObject {
     
-    // Test Function that calls all other functions to test
-    func testFirebaseFunctions () {
-        
-        print("Running Firebase test functions.")
-        
-        // Make sure no user is logged in
-        print("Calling log out user function")
-        logOutUser()
-        
-        // Check function to get all usernames in Firebase
-        print("Calling get all users function")
-        getAllUsersWithCompletion { (allUsernames) in
-            if allUsernames.isEmpty {
-                print("No usernames were returned.")
-            } else {
-                print("This is the test function calling for all usernames:\n\(allUsernames)")
-            }
-        }
-        
-        // Check function to check if username is unique (should not be unique)
-        print("Calling check if username exists function")
-        checkIfUsernameExistsWithUsername("testy") { (doesExist) in
-            if doesExist {
-                print("Account with username testy exists")
-            } else {
-                print("Account with username testy does not exist")
-            }
-        }
-        
-        // Create new test user
-        let newUser : User = User.init(email: "testUser@test.com", username: "testUser")
-
-        // Register new test user
-        print("Calling register new user function")
-        registerNewUserWithUser(newUser, password: "whatever") { result in
-
-            let registrationResult = result ? "Registration was successful" : "Registration was not successful"
-
-            print(registrationResult)
-            
-            if result {
-                
-                // Remove test user from Firebase
-                self.removeUserFromFirebaseWithEmail("testUser@test.com", password: "whatever") { (success) in
-                    
-                    let removalResult = success ? "Test user successfully removed from Firebase" : "Test user was not removed from Firebase"
-                    
-                    print(removalResult)
-                    
-                }
-            }
-        }
-        
-        // Check function to check if test user account still exists
-        print("Calling check if username exists function for testUser")
-        checkIfUsernameExistsWithUsername("testUser") { (doesExist) in
-            if doesExist {
-                print("testUser is the username of an active account")
-            } else {
-                print("testUser is not in use")
-            }
-        }
-        
-        // Log new user in
-        print("Calling login function")
-        self.loginUserWithEmail("test@test.com", password: "whatever") { (success) in
-            
-            let loginResult = success ? "Login was successful" : "Login was not successful"
-            
-            print(loginResult)
-            
-            // Make sure no user is logged in
-            print("Calling log out function")
-            self.logOutUser()
-        }
-        
-        // Make sure no user is logged in
-        print("Calling log out function")
-        logOutUser()
-        
-    }
-    
-    
-    // TODO: Global save function which calls appropriate API save function based on type of data passed in
-    
     // Login and authenticate user given email and password
     func loginUserWithEmail(email:String, password:String, completion: Bool -> Void) {
         
@@ -142,6 +57,19 @@ import Firebase
             }
         }
     }
+    
+    
+    // Log user out
+    func logOutUser() {
+        
+        // Set references
+        let ref = Firebase(url:firebaseRootRef)
+        
+        ref.unauth()
+        
+        print("User logged out.")
+    }
+    
     
     // Register a new user in firebase given a User object and password
     func registerNewUserWithUser(user : User, password : String, completion: (Bool) -> ()) {
@@ -197,6 +125,7 @@ import Firebase
         })
     }
     
+    
     // Return list of all users
     func getAllUsersWithCompletion(completion: Array<String> -> Void) {
     
@@ -234,6 +163,7 @@ import Firebase
         })
     }
     
+    
     // Compare given username to all usernames in Firebase and return unique-status
     func checkIfUsernameExistsWithUsername(username: String, completion: (doesExist: Bool) -> Void) {
         
@@ -258,11 +188,13 @@ import Firebase
         }
     }
     
+    
     // Return list of all itineraries
     func getAllItinerariesWithCompletion(completion:(success: Bool) -> ()) {
         
         completion(success: true)
     }
+    
     
     func saveNewItineraryWithItinerary(itinerary : Itinerary) -> String {
         
@@ -293,6 +225,7 @@ import Firebase
         // Return the new
         return newItineraryID
     }
+    
     
     // Create a new image reference in Firebase and return its unique ID
     func saveNewImageWithImage(image : UIImage, completion: String -> Void) {
@@ -326,6 +259,7 @@ import Firebase
         completion(newImageID)
     }
     
+    
     // Retrieve an image from a reference in Firebase
     func getImageForImageID(imageID: String, completion: UIImage -> Void) {
         
@@ -349,8 +283,9 @@ import Firebase
         })
     }
     
-    // Create a User object from Firebase data using a user ID
-    func createUserObjectFromFirebaseWithUserID(userID : String, completion : User -> ()) {
+    
+    // Create a User object from Firebase data using a userID and return User object and success state
+    func getUserFromFirebaseWithUserID(userID: String, completion: (User, success: Bool) -> Void) {
         
         print("Creating user object from user reference: \(userID)")
         
@@ -364,27 +299,19 @@ import Firebase
             let sv = snapshot.value
             print("User ref:\n\(sv)")
             
-            // Set User properties based on what data is available from the user reference
-            
-//            var savedItineraries : NSMutableDictionary = [:]
-//            var tips : NSMutableDictionary = [:]
-//            var ratings : NSMutableDictionary = [:]
-            
-            
             // Create new User object
-            
             let newUser : User = User.init(firebaseUserDictionary: sv as! Dictionary)
-            
-//            let newUser : User = User.init(userID: sv["userID"]! as! String, username: sv["username"]! as! String, email: sv["email"]! as! String, bio: sv["bio"]! as! String, location: sv["location"]! as! String, savedItineraries: savedItineraries, preferences: sv["preferences"]! as! NSMutableDictionary, ratings: ratings, tips: tips, profilePhoto: sv["profilePhoto"]! as! NSData, reputation: sv["reputation"]! as! UInt)
             
             print("Created User object for: \(newUser.username)")
             
-            completion(newUser)
+            completion(newUser, success: true)
             
             }, withCancelBlock: { error in
-                print(error.description)
+                print("Error retrieving user in user creation:\n\(error.description)")
+                completion(User.init(), success: false)
         })
     }
+    
     
     // Convert date objects to strings
     func convertDateToStringWithDate(date:NSDate) -> String {
@@ -402,16 +329,6 @@ import Firebase
         return dateString
     }
     
-    // Log user out
-    func logOutUser() {
-        
-        // Set references
-        let ref = Firebase(url:firebaseRootRef)
-        
-        ref.unauth()
-        
-        print("User logged out.")
-    }
     
     // Remove user account from Firebase
     func removeUserFromFirebaseWithEmail(email:String, password:String, competion:(Bool) -> ()) {
@@ -431,6 +348,7 @@ import Firebase
         
         competion(true)
     }
+    
     
     // Resize an image to fit in a Firebase value
     func resizeImage(image: UIImage) -> UIImage {
@@ -467,5 +385,91 @@ import Firebase
 
         // Return the scaled image
         return newImage
+    }
+    
+    
+    // Test Function that calls all other functions to test
+    func testFirebaseFunctions () {
+        
+        print("Running Firebase test functions.")
+        
+        // Make sure no user is logged in
+        print("Calling log out user function")
+        logOutUser()
+        
+        // Check function to get all usernames in Firebase
+        print("Calling get all users function")
+        getAllUsersWithCompletion { (allUsernames) in
+            if allUsernames.isEmpty {
+                print("No usernames were returned.")
+            } else {
+                print("This is the test function calling for all usernames:\n\(allUsernames)")
+            }
+        }
+        
+        // Check function to check if username is unique (should not be unique)
+        print("Calling check if username exists function")
+        checkIfUsernameExistsWithUsername("testy") { (doesExist) in
+            if doesExist {
+                print("Account with username testy exists")
+            } else {
+                print("Account with username testy does not exist")
+            }
+        }
+        
+        // Create new test user
+        let newUser : User = User.init(email: "testUser@test.com", username: "testUser")
+        
+        // Register new test user
+        print("Calling register new user function")
+        registerNewUserWithUser(newUser, password: "whatever") { result in
+            
+            let registrationResult = result ? "Registration was successful" : "Registration was not successful"
+            
+            print(registrationResult)
+            
+            if result {
+                
+                // Remove test user from Firebase
+                self.removeUserFromFirebaseWithEmail("testUser@test.com", password: "whatever") { (success) in
+                    
+                    let removalResult = success ? "Test user successfully removed from Firebase" : "Test user was not removed from Firebase"
+                    
+                    print(removalResult)
+                    
+                }
+            }
+        }
+        
+        // Check function to check if test user account still exists
+        print("Calling check if username exists function for testUser")
+        checkIfUsernameExistsWithUsername("testUser") { (doesExist) in
+            if doesExist {
+                print("testUser is the username of an active account")
+            } else {
+                print("testUser is not in use")
+            }
+        }
+        
+        // Log new user in
+        print("Calling login function")
+        self.loginUserWithEmail("test@test.com", password: "whatever") { (success) in
+            
+            let loginResult = success ? "Login was successful" : "Login was not successful"
+            
+            print(loginResult)
+            
+            // Make sure no user is logged in
+            print("Calling log out function")
+            self.logOutUser()
+        }
+        
+        // Make sure no user is logged in
+        print("Calling log out function")
+        logOutUser()
+        
+        // Check function to resize an image
+        
+        // Check function to save an image to Firebase
     }
 }
