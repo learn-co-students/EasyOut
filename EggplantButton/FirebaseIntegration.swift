@@ -16,88 +16,80 @@ import Firebase
         
         print("Running Firebase test functions.")
         
-        getAllUsersWithCompletion { (allUsernames) in
-            if allUsernames.isEmpty {
-                print("No usernames were returned.")
-            } else {
-                print("This is the test function calling for all usernames:\n\(allUsernames)")
-            }
-        }
+        // Set reference to root Firebase location
+        let ref = Firebase(url:firebaseRootRef)
         
-        checkIfUsernameIsUniqueWithUsername("testy") { (isUnique) in
-            if isUnique {
-                print("testy is a unique username.")
-            } else {
-                print("testy is not a unique username.")
-            }
-        }
+        // Make sure no user is logged in
+        logOutUser()
         
-        checkIfUsernameIsUniqueWithUsername("testy1") { (isUnique) in
-            if isUnique {
-                print("testy1 is a unique username.")
-            } else {
-                print("testy1 is not a unique username.")
-            }
-        }
-        
-//        // Set reference to root Firebase location
-//        let ref = Firebase(url:firebaseRootRef)
-//        
-//        var userRef : Firebase
-//        
-//        // Check if a user is currently logged in
-//        if ref.childByAppendingPath("users").childByAppendingPath(ref.authData.uid) != nil {
-//            
-//            // If a user is currently logged in, set reference to current user
-//            userRef = ref.childByAppendingPath("users").childByAppendingPath(ref.authData.uid)
-//            
-//            // Check if test user is logged in
-//            if userRef.valueForKey("email") != nil && (userRef.valueForKey("email")?.isEqualToString("test@test.com"))!  {
-//                
-//                // Remove test user from Firebase
-//                removeUserFromFirebaseWithEmail("test@test.com", password: "whatever", competion: { (result: Bool) in
-//                    
-//                    let reomvalResult = result ? "User removed successfully." : "User was not removed."
-//                    
-//                    print(reomvalResult)
-//                })
-//            }
-//
-//        }
-//        
-//        
-//        // Make sure no user is logged in
-//        logOutUser()
-//        
-//        // Create new test user
-//        let newUser : User = User.init(email: "test@test.com", username: "testy")
-//        
-//        // Register new test user
-//        registerNewUserWithUser(newUser, password: "whatever") { result in
-//            
-//            let wereGood = result ? "We good." : "We bad."
-//            
-//            print(wereGood)
-//            
-//            self.loginUserWithEmail("test@test.com", password: "whatever")
-//            
-//            if ref.authData != nil {
-//                
-//                self.createUserObjectFromFirebaseWithUserID(ref.authData.uid) { (user) in
-//                    print("User object created for \(user.username).")
-//                }
-//                
+//        // Check function to get all usernames in Firebase
+//        getAllUsersWithCompletion { (allUsernames) in
+//            if allUsernames.isEmpty {
+//                print("No usernames were returned.")
 //            } else {
-//                print("No authData retrived in user registration.")
+//                print("This is the test function calling for all usernames:\n\(allUsernames)")
 //            }
 //        }
+//        
+//        // Check function to check if username is unique (should not be unique)
+//        checkIfUsernameIsUniqueWithUsername("testy") { (isUnique) in
+//            if isUnique {
+//                print("testy is a unique username.")
+//            } else {
+//                print("testy is not a unique username.")
+//            }
+//        }
+//        
+//        // Check function to check if username is unique (should be unique)
+//        checkIfUsernameIsUniqueWithUsername("testy1") { (isUnique) in
+//            if isUnique {
+//                print("testy1 is a unique username.")
+//            } else {
+//                print("testy1 is not a unique username.")
+//            }
+//        }
+        
+        // Create new test user
+        let newUser : User = User.init(email: "testUser@test.com", username: "testUser")
+
+        // Register new test user
+        registerNewUserWithUser(newUser, password: "whatever") { result in
+
+            let registrationResult = result ? "Registration was successful." : "Registration was not successful."
+
+            print(registrationResult)
+            
+            if result {
+                
+                // Remove test user from Firebase
+                self.removeUserFromFirebaseWithEmail("testUser@test.com", password: "whatever") { (success) in
+                    
+                    let removalResult = success ? "Test user successfully removed from Firebase." : "Test user was not removed from Firebase."
+                    
+                    print(removalResult)
+                    
+                }
+            }
+        }
+        
+        // Log new user in
+        self.loginUserWithEmail("test@test.com", password: "whatever") { (success) in
+            
+            let loginResult = success ? "Login was successful." : "Login was not successful."
+            
+            print(loginResult)
+        }
+        
+        // Make sure no user is logged in
+        logOutUser()
+        
     }
     
     
     // TODO: Global save function which calls appropriate API save function based on type of data passed in
     
     // Login and authenticate user given email and password
-    func loginUserWithEmail(email:String, password:String) {
+    func loginUserWithEmail(email:String, password:String, completion: Bool -> Void) {
         
         print("Attempting to log in user with email: \(email)")
         
@@ -110,16 +102,35 @@ import Firebase
             
             print("inAUTHUSER Closure--- error: \(error), authData: \(authData)")
             
-            
-            if error != nil {
+            if (error != nil) {
+                // an error occurred while attempting login
+                if let errorCode = FAuthenticationError(rawValue: error.code) {
+                    switch (errorCode) {
+                    case .UserDoesNotExist:
+                        print("Invalid user")
+                    case .InvalidEmail:
+                        print("Invalid email")
+                    case .InvalidPassword:
+                        print("Invalid password")
+                    default:
+                        print("Default error")
+                    }
+                }
+                
                 print("An error occurred while attempting login: \(error.description)")
+                
+                completion(false)
+                
             } else {
-                print("User is logged in, checking authData for data")
+                print("User is logged in.\nChecking authData for data.")
             }
+            
             if authData.auth != nil {
                 print("authData has data!")
+                completion(true)
             } else {
                 print("authData has no data :(")
+                completion(false)
             }
         }
     }
@@ -140,16 +151,14 @@ import Firebase
         // Create user with email from user object and password string
         ref.createUser(user.email, password: password, withValueCompletionBlock: { error, result in
             
+            // Check if the userID was created in registration attempt and set it if it was
+            guard let uid = result["uid"] as? String else { completion(false); print("No userID found for user reference when registering user with email: \(user.email)."); return }
             
-            guard let uid = result["uid"] as? String else { completion(false); fatalError("Back from firebase, uid is NIL not good.") }
-            
-            
-            print("In the creatuserCLOSURE ---- error: \(error), result: \(result)")
+            print("Result of user registration attempt:\n\(result)")
             
             if error != nil {
                 print("There was an error creating the user: \(error.description)")
             } else {
-                
                 
                 print("Successfully created user account with uid: \(uid)")
                 
@@ -176,9 +185,7 @@ import Firebase
                 print("Registered new user: \(userRef)")
             }
             
-            
             completion(true)
-            
         })
     }
     
@@ -376,16 +383,14 @@ import Firebase
         // Set references
         let ref = Firebase(url:firebaseRootRef)
         
-//        print("Logging out uid: \(ref.authData.uid)")
-        
         ref.unauth()
         
-        print("User logged out")
+        print("User logged out.")
     }
     
     func removeUserFromFirebaseWithEmail(email:String, password:String, competion:(Bool) -> ()) {
         
-        print("Attempting to remove user with email \(email)")
+        print("Attempting to remove user with email \(email).")
         
         // Create a reference to root Firebase location
         let ref = Firebase(url:firebaseRootRef)
