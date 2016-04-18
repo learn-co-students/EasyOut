@@ -70,7 +70,7 @@
 }
 
 -(BOOL)passwordValid {
-    if (self.passWordLabel.text.length < 7) {
+    if (self.passWordLabel.text.length > 7) {
         return YES;
     }
     
