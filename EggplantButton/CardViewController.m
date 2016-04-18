@@ -278,6 +278,33 @@
 }
 
 
+#pragma mark - Randomize Button
+
+- (IBAction)randomizeTapped:(id)sender {
+    
+    // makes the phone vibrate
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+    
+    [self getShuffledTicketMasterData];
+    
+    [self getShuffledRestaurantData];
+    
+    // Shake top card with the default speed
+    [self.topRowCollection shake:15     // 15 times
+                       withDelta:20     // 20 points wide
+     ];
+    // Shake middle card with the default speed
+    [self.middleRowCollection shake:15   // 15 times
+                          withDelta:20   // 20 points wide
+     ];
+    // Shake bottom card with the default speed
+    [self.bottomRowCollection shake:15   // 15 times
+                          withDelta:20   // 20 points wide
+     ];
+    
+
+}
+
 
 #pragma mark - Shake Gesture
 

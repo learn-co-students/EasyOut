@@ -107,6 +107,7 @@
                                         <rect key="frame" x="163" y="0.0" width="157" height="60"/>
                                         <state key="normal" title="Randomize"/>
                                         <connections>
+                                            <action selector="randomizeTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3MV-F8-o2B"/>
                                             <action selector="saveButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eZV-EL-4Kt"/>
                                         </connections>
                                     </button>
