@@ -372,7 +372,8 @@ import Firebase
                                     print("Itinerary was successfully removed from user's savedItineraries")
                                     completion(success: true)
                                 } else {
-                                    print("Itinerary was not successfully removed")
+                                    print("Itinerary was not successfully removed from savedItineraries")
+                                    completion(success: false)
                                 }
                             })
                         }
@@ -654,7 +655,9 @@ import Firebase
             }
         }
         
-
+        // Check function to add an itinerary to a user's savedItineraries
+        
+        // Check function to remove an itinerary from a user's savedItineraries
         
         // Check function to resize an image
         
