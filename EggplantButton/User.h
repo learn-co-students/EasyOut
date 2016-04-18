@@ -15,15 +15,29 @@
 @property (strong, nonatomic) NSString *email;
 @property (strong, nonatomic) NSString *bio;
 @property (strong, nonatomic) NSString *location;
-@property (strong, nonatomic) NSMutableArray *savedItineraries;
+@property (strong, nonatomic) NSMutableDictionary *savedItineraries;
 @property (strong, nonatomic) NSMutableDictionary *preferences;
 @property (strong, nonatomic) NSMutableDictionary *ratings;
 @property (strong, nonatomic) NSMutableDictionary *tips;
-@property (strong, nonatomic) NSData *profilePhoto;
+@property (strong, nonatomic) NSString *profilePhoto;
 @property (nonatomic) NSUInteger reputation;
 
--(instancetype) initWithEmail:(NSString *)email;
 
--(instancetype) initWithUserID:(NSString *)userID;
+-(instancetype)initWithEmail:(NSString *)email
+                    username:(NSString *)username;
+
+-(instancetype) initWithFirebaseUserDictionary:(NSDictionary *)dictionary;
+
+-(instancetype) initWithUserID:(NSString *)userID
+                      username:(NSString *)username
+                         email:(NSString *)email
+                           bio:(NSString *)bio
+                      location:(NSString *)location
+              savedItineraries:(NSMutableDictionary *)savedItineraries
+                   preferences:(NSMutableDictionary *)preferences
+                       ratings:(NSMutableDictionary *)ratings
+                          tips:(NSMutableDictionary *)tips
+                  profilePhoto:(NSString *)profilePhoto
+                    reputation:(NSUInteger)reputation;
 
 @end

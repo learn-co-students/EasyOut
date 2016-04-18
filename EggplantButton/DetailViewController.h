@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Activity.h"
+#import "Restaurant.h"
+#import "Event.h"
 
 @interface DetailViewController : UIViewController
+
+@property (strong, nonatomic) Activity *activity;
 
 @end

@@ -7,63 +7,99 @@
 //
 
 #import "User.h"
+#import "EggplantButton-Swift.h"
 
 @implementation User
 
--(instancetype)init {
-    self = [self initWithUserID:@"8455b42e-e7d0-49cb-bcce-2e03331b402f"];
-    if (self) {
-        
-    }
+// Use this initializer when registering a new user
+-(instancetype) initWithEmail:(NSString *)email username:(NSString *)username{
+    
+    self = [self initWithUserID:@""
+                       username:username
+                          email:email
+                            bio:@""
+                       location:@""
+               savedItineraries:[@{} mutableCopy]
+                    preferences:[@{@"default location" : @"New York, NY", @"default price" : @2, @"default start time" : @0} mutableCopy]
+                        ratings:[@{} mutableCopy]
+                           tips:[@{} mutableCopy]
+                   profilePhoto:@""
+                     reputation:1
+            ];
+    
+    NSLog(@"User initialized with email: %@ and username: %@", email, username);
     
     return self;
 }
 
--(instancetype) initWithEmail:(NSString *)email {
+// Use this initializer when creating a User object from a reference in Firebase
+-(instancetype) initWithFirebaseUserDictionary:(NSDictionary *)dictionary {
+    
+    NSMutableDictionary *newDictionary = [dictionary mutableCopy];
+    
+    NSArray *keys = [dictionary allKeys];
+    
+    // Check for empty dictionaries that Firebase may not have saved
+    if (![keys containsObject:@"savedItineraries"]) {
+        [newDictionary setObject:[[NSMutableDictionary alloc] init] forKey:@"savedItineraries"];
+    }
+    if (![keys containsObject:@"tips"]) {
+        [newDictionary setObject:[[NSMutableDictionary alloc] init] forKey:@"tips"];
+    }
+    if (![keys containsObject:@"ratings"]) {
+        [newDictionary setObject:[[NSMutableDictionary alloc] init] forKey:@"ratings"];
+    }
+    
+    self = [self initWithUserID:newDictionary[@"userID]"]
+                       username:newDictionary[@"username"]
+                          email:newDictionary[@"email"]
+                            bio:newDictionary[@"bio"]
+                       location:newDictionary[@"location"]
+               savedItineraries:newDictionary[@"savedItineraries"]
+                    preferences:newDictionary[@"preferences"]
+                        ratings:newDictionary[@"ratings"]
+                           tips:newDictionary[@"tips"]
+                   profilePhoto:newDictionary[@"profilePhoto"]
+                     reputation:[newDictionary[@"reputation"] integerValue]
+            ];
+    
+    NSLog(@"User initialized from Firebase dictionary");
+    
+    return self;
+}
+
+// The designated initializer
+-(instancetype) initWithUserID:(NSString *)userID
+                      username:(NSString *)username
+                         email:(NSString *)email
+                           bio:(NSString *)bio
+                      location:(NSString *)location
+              savedItineraries:(NSMutableDictionary *)savedItineraries
+                   preferences:(NSMutableDictionary *)preferences
+                       ratings:(NSMutableDictionary *)ratings
+                          tips:(NSMutableDictionary *)tips
+                  profilePhoto:(NSString *)profilePhoto
+                    reputation:(NSUInteger)reputation {
     
     self = [super init];
-    
+
     if (self) {
-        _userID = @"";
-        _username = @"";
+        _userID = userID;
+        _username = username;
         _email = email;
-        _bio = @"";
-        _location = @"";
-        _savedItineraries = [@[] mutableCopy];
-        _preferences = [@{@"default location" : @"New York, NY", @"default price" : @2, @"default start time" : @0} mutableCopy];
-        _ratings = [@{} mutableCopy];
-        _tips = [@{} mutableCopy];
-        _profilePhoto = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"https://avatars3.githubusercontent.com/u/16245367?v=3&s=460"]];
-        _reputation = 1;
+        _bio = bio;
+        _location = location;
+        _savedItineraries = savedItineraries;
+        _preferences = preferences;
+        _ratings = ratings;
+        _tips = tips;
+        _profilePhoto = profilePhoto;
+        _reputation = reputation;
     }
-    
-    NSLog(@"User initialized");
+
+    NSLog(@"User initialized in designated initializer with username: %@", username);
     
     return self;
-}
-
--(instancetype)initWithUserID:(NSString *)userID {
-    
-    self = [super init];
-    
-    if (self) {
-        _userID =userID;
-        _username = @"testUsername";
-        _email = @"test@test.test";
-        _bio = @"";
-        _location = @"";
-        _savedItineraries = [@[] mutableCopy];
-        _preferences = [@{@"default location" : @"New York, NY", @"default price" : @2, @"default start time" : @0} mutableCopy];
-        _ratings = [@{} mutableCopy];
-        _tips = [@{} mutableCopy];
-        _profilePhoto = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"https://avatars3.githubusercontent.com/u/16245367?v=3&s=460"]];
-        _reputation = 1;
-    }
-    
-    NSLog(@"User initialized");
-    
-    return self;
-
 }
 
 @end

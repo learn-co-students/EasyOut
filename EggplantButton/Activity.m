@@ -11,17 +11,6 @@
 
 @implementation Activity
 
--(instancetype)init{
-    self = [super init];
-    if(self){
-        
-        NSLog(@"IN ACTIVITY INIT");
-        
-    }
-    return self;
-}
-
-
 -(instancetype)initWithName:(NSString *)name
                     address:(NSString *)address
                        city:(NSString *)city

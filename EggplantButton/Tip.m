@@ -10,6 +10,7 @@
 
 @implementation Tip
 
+// THIS IS NOT AN APPROPRIATE INIT METHOD FOR CREATING A NEW TIP
 -(instancetype) initWithUserID:(NSString *)userID tipID:(NSString *)tipID tipText:(NSString *)tipText tipVotes:(NSInteger)tipVotes {
     self = [super init];
     
@@ -19,6 +20,7 @@
         _tipID = self.tipID;
         _tipText = self.tipText;
         _tipVotes = self.tipVotes;
+        _creationDate = [NSDate date];
     }
     
     return self;

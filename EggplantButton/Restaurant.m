@@ -20,7 +20,9 @@
                   activityType:RestaurantType];
     
     if(self) {
-        _price = [restaurantDictionary[@"price"] stringValue];
+        
+        NSString *price = [self getPriceStringFromNum:restaurantDictionary[@"price"]];
+        _price = price;
         _reserveURL = restaurantDictionary[@"reserve_url"];
         _phonenumber =  restaurantDictionary[@"phone"];
         _lat = [restaurantDictionary[@"latitude"] integerValue];
@@ -30,6 +32,24 @@
     return self;
 }
 
+
+-(NSString *)getPriceStringFromNum:(NSNumber *)priceNum {
+    
+    switch ([priceNum integerValue]) {
+        case 1:
+            return @"$";
+        case 2:
+            return @"$$";
+        case 3:
+            return @"$$$";
+        case 4:
+            return @"$$$$";
+        case 5:
+            return @"$$$$$";
+        default:
+            return @"N/A";
+    }
+}
 
 +(Restaurant *)restaurantFromDictionary:(NSDictionary *)restaurantDictionary {
     

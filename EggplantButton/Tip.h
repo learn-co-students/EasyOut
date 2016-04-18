@@ -14,6 +14,7 @@
 @property (strong, nonatomic) NSString *tipID;
 @property (strong, nonatomic) NSString *tipText;
 @property (nonatomic) NSInteger tipVotes;
+@property (strong, nonatomic) NSDate *creationDate;
 
 -(instancetype) initWithUserID:(NSString *)userID tipID:(NSString *)tipID tipText:(NSString *)tipText tipVotes:(NSInteger)tipVotes;
 

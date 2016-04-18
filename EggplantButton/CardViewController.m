@@ -1,4 +1,4 @@
-//
+ //
 //  ContainerViewController.m
 //  EggplantButton
 //
@@ -6,33 +6,49 @@
 //  Copyright © 2016 Team Eggplant Button. All rights reserved.
 //
 
-#import <CoreLocation/CoreLocation.h>
-#import <AudioToolbox/AudioToolbox.h>
-#import "UIView+Shake.h"
+
 #import "CardViewController.h"
 #import "EggplantButton-Swift.h"
 #import "ActivitiesDataStore.h"
 #import "ActivityCardCollectionViewCell.h"
+#import "mainContainerViewController.h"
+#import "sideMenuViewController.h"
+#import "Secrets.h"
+#import "Firebase.h"
+
+#import "UIView+Shake.h"
+
 
 
 @class Restaurant;
 
 //MFMessageControlViewController
 
-
 @interface CardViewController () <UIScrollViewDelegate, CLLocationManagerDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (strong, nonatomic) ActivitiesDataStore *dataStore;
 
+@property (strong, nonatomic) Itinerary *itinerary;
+
+
+//LOCATION
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) CLLocation *mostRecentLocation;
 @property (strong, nonatomic) NSString *latitude;
 @property (strong, nonatomic) NSString *longitude;
 
+//COLLECTIONS
 @property (weak, nonatomic) IBOutlet UICollectionView *topRowCollection;
 @property (weak, nonatomic) IBOutlet UICollectionView *middleRowCollection;
 @property (weak, nonatomic) IBOutlet UICollectionView *bottomRowCollection;
 
+//CARD PROPERTIES
+@property (nonatomic) BOOL firstCardLocked;
+@property (nonatomic) BOOL secondCardLocked;
+@property (nonatomic) BOOL thirdCardLocked;
+
+
+//BUTTONS
 
 
 @end
@@ -43,7 +59,7 @@
     
     [super viewDidLoad];
     
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"nyc"]]];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"city"]]];
     
     [self setUpCoreLocation];
 
@@ -57,24 +73,71 @@
     self.middleRowCollection.backgroundColor = [UIColor clearColor];
     self.bottomRowCollection.backgroundColor = [UIColor clearColor];
     
-#warning FIREBASE THINGS FOR TESTING. REMOVE LATER
-    //    // Instantiate new instance of the Firebase API Client
-    //    FirebaseAPIClient *firebaseAPI = [[FirebaseAPIClient alloc] init];
+    // listening for segue notifications from sideMenu
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(profileButtonTapped:)
+                                                 name:@"profileButtonTapped"
+                                               object:nil];
     
-    //    // Create and save test image to Firebase
-    //    UIImage *image = [UIImage imageNamed:@"EasyOutLaunchScreenImage"];
-    //    NSString *imageID = [firebaseAPI createNewImageWithImage:image];
-    //    NSLog(@"Image saved to Firebase with ID: %@", imageID);
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(pastItinerariesButtonTapped:)
+                                                 name:@"pastItinerariesButtonTapped"
+                                               object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(logoutButtonTapped:)
+                                                 name:@"logoutButtonTapped"
+                                               object:nil];
     
 }
+
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
 }
 
-#pragma mark - get API data
+
+#pragma mark - Side Menu
+
+- (IBAction)menuButtonTapped:(UIBarButtonItem *)sender {
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"menuButtonTapped"
+                                                        object:nil];
+    NSLog(@"menu button tapped!");
+}
+
+- (void) profileButtonTapped: (NSNotification *) notification {
+    NSLog(@"cardVC knows that the profile button was tapped!");
+    
+    
+    UIViewController *userProfileVC = [[UIStoryboard storyboardWithName:@"UserProfile" bundle:nil] instantiateViewControllerWithIdentifier:@"userSegue"];
+    
+    [self.navigationController showViewController:userProfileVC sender:nil];
+}
+
+- (void) pastItinerariesButtonTapped: (NSNotification *) notification {
+    NSLog(@"cardVC knows that the past itineraries button was tapped!");
+    
+    
+    UIViewController *pastItinerariesVC = [[UIStoryboard storyboardWithName:@"ItineraryHistoryView" bundle:nil] instantiateViewControllerWithIdentifier:@"pastItineraries"];
+    
+    [self.navigationController showViewController:pastItinerariesVC sender:nil];
+}
+
+- (void) logoutButtonTapped: (NSNotification *) notification {
+    NSLog(@"cardVC knows that the logout button was tapped!");
+    
+    Firebase *ref = [[Firebase alloc] initWithUrl:firebaseRootRef];
+    
+    [ref unauth];
+    
+    NSLog(@"user is logged out");
+    
+}
+
+
+#pragma mark - Get API data
 
 -(void)getRestaurantData{
     
@@ -166,16 +229,24 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSLog(@"PICKED CELL %lu", indexPath.row);
-    
-    [self performSegueWithIdentifier:@"detailSegue" sender:self];
+    [self performSegueWithIdentifier:@"detailSegue" sender: (ActivityCardCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath]];
     
 }
 
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UICollectionViewCell *)sender {
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
+    if([segue.identifier isEqualToString:@"detailSegue"]) {
+    
+    DetailViewController *destinationVC = [segue destinationViewController];
+    
+    destinationVC.activity = ((ActivityCardCollectionViewCell *)sender).cardView.activity;
+    }
+    else if ([segue.identifier isEqualToString:@"filterSegue"]) {
+        
+    }
 }
+
 
 #pragma mark - Core Location
 
@@ -202,23 +273,51 @@
         
         self.mostRecentLocation = [locations lastObject];
         
-
     }
     
     [self.locationManager stopUpdatingLocation];
 }
 
 
+#pragma mark - Randomize Button
+
+- (IBAction)randomizeTapped:(id)sender {
+    
+    // makes the phone vibrate
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+    
+    [self getShuffledTicketMasterData];
+    
+    [self getShuffledRestaurantData];
+    
+    // Shake top card with the default speed
+    [self.topRowCollection shake:15     // 15 times
+                       withDelta:20     // 20 points wide
+     ];
+    // Shake middle card with the default speed
+    [self.middleRowCollection shake:15   // 15 times
+                          withDelta:20   // 20 points wide
+     ];
+    // Shake bottom card with the default speed
+    [self.bottomRowCollection shake:15   // 15 times
+                          withDelta:20   // 20 points wide
+     ];
+    
+
+}
+
 
 #pragma mark - Shake Gesture
 
 - (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event
 {
+    NSLog(@"Shake started");
+    
     if ( event.subtype == UIEventSubtypeMotionShake )
     {
         NSLog(@"Shake started");
         
-        //makes the phone vibrate
+        // makes the phone vibrate
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         
         [self getShuffledTicketMasterData];
@@ -357,7 +456,7 @@
 
 
 
-#pragma button things
+#pragma mark - Button Things
 
 - (IBAction)saveButtonPressed:(UIButton *)sender {
     
@@ -370,5 +469,11 @@
 - (IBAction)randomButtonPressed:(UIButton *)sender {
 }
 
+
+
+- (IBAction)filterButtonPressed:(UIBarButtonItem *)sender {
+
+
+}
 
 @end

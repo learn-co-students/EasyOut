@@ -1,6 +1,6 @@
 //
-//  TicketMasterEvents.h
-//  ticketMasterApi
+//  Event.h
+//  EggplantButton
 //
 //  Created by Adrian Brown  on 4/4/16.
 //  Copyright © 2016 Adrian Brown . All rights reserved.
@@ -20,6 +20,7 @@
 @property (strong, nonatomic) NSString *segment;
 @property (strong, nonatomic) NSString *genre;
 @property (strong, nonatomic) NSString *subGenre;
+@property (strong, nonatomic) NSString *venueName;
 
 -(instancetype)initWithDictionary:(NSDictionary *)eventDictionary;
 

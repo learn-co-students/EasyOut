@@ -14,18 +14,26 @@
 
 @property (strong, nonatomic) NSString *itineraryID;
 @property (strong, nonatomic) NSMutableArray *activities;
-@property (strong, nonatomic) NSString *creatorID;
+@property (strong, nonatomic) NSString *userID;
 @property (strong, nonatomic) NSDate *creationDate;
 @property (strong, nonatomic) NSMutableArray *photos;
-@property (strong, nonatomic) NSDictionary *ratings;
+@property (strong, nonatomic) NSMutableDictionary *ratings;
 @property (strong, nonatomic) NSMutableArray *tips;
+@property (strong, nonatomic) NSString *title;
 
--(instancetype)initWithItineraryID:(NSString *)itineraryID
-                        activities:(NSMutableArray *) activities
-                         creatorID:(NSString *)creatorID
-                      creationDate:(NSDate *)creationDate
-                            photos:(NSMutableArray *) photos
-                           ratings:(NSDictionary *) ratings
-                              tips:(NSMutableArray *) tips;
+-(instancetype)initWithActivities:(NSMutableArray *) activities
+                           userID:(NSString *)userID
+                     creationDate:(NSDate *)creationDate;
+
+-(instancetype)initWithItineraryDictionary:(NSDictionary *)dictionary;
+
+-(instancetype)initWithUserID:(NSString *)userID
+                  itineraryID:(NSString *)itineraryID
+                        title:(NSString *)title
+                 creationDate:(NSDate *)creationDate
+                   activities:(NSMutableArray *)activities
+                       photos:(NSMutableArray *)photos
+                      ratings:(NSMutableDictionary *)ratings
+                         tips:(NSMutableDictionary *)tips;
 
 @end
