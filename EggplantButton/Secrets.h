@@ -15,6 +15,7 @@ extern NSString * const consumerKey;
 extern NSString * const consumerSecret;
 extern NSString * const firebaseRootRef;
 extern NSString * const googleAPI;
+extern NSString * const googlePlacesAPI;
 
 // Notifications
 extern NSString * const GenericViewControllerNotificationName;

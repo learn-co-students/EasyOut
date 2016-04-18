@@ -7,9 +7,7 @@
 //
 
 #import "AppViewController.h"
-#import "Secrets.h"
-#import "Firebase.h"
-#import <Masonry/Masonry.h>
+
 
 @interface AppViewController ()
 
@@ -44,16 +42,15 @@
 
 -(void)addNotificationObservers {
     
-    // Generic notification observer (for example only)
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(test)
+                                             selector:@selector(backToMain)
                                                  name:mainViewControllerStoryBoardID
                                                object:nil];
     
     
 }
 
--(void)test {
+-(void)backToMain {
     UIViewController *mainVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:mainViewControllerStoryBoardID];
     
     [self setEmbeddedViewController:mainVC];

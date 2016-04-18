@@ -7,13 +7,6 @@
 //
 
 #import "CreateAccountViewController.h"
-#import "User.h"
-#import "Secrets.h"
-#import "EggplantButton-Swift.h"
-#import "Firebase.h"
-#import "LogInViewController.h"
-
-
 
 @interface CreateAccountViewController ()
 
@@ -69,7 +62,7 @@
     return NO;
 }
 
--(BOOL)passwordValid {
+-(BOOL)passwordInvalid {
     if (self.passWordLabel.text.length < 7) {
         return YES;
     }
@@ -87,7 +80,7 @@
 }
 
 
-// this method creates the user in firebase
+// Create a new user in Firebase
 -(void)createNewUserWithCompletion:(void (^)(BOOL finished))completion{
     
     self.email = self.emailLabel.text;
@@ -96,7 +89,12 @@
     User *newUser = [[User alloc]initWithEmail:self.email username:self.username];
     
     FirebaseAPIClient *firebaseAPI = [[FirebaseAPIClient alloc] init];
-    [firebaseAPI createNewUserWithUser:newUser password:self.passWordLabel.text];
+    
+    [firebaseAPI registerNewUserWithUser:newUser password:self.passWordLabel.text completion:^(BOOL success) {
+        if (success) {
+            NSLog(@"User with email %@ was successfully registered", self.email);
+        }
+    }];
     
     if (completion) {
         Firebase *ref = [[Firebase alloc] initWithUrl:firebaseRootRef];
@@ -110,10 +108,9 @@
                 [[NSNotificationCenter defaultCenter] postNotificationName:mainViewControllerStoryBoardID object:nil];
             }
         }];
-    }
-    
-    
+    }    
 }
+
 - (IBAction)emailDidEnd:(id)sender {
     if (![self emailIsValid]) {
         [UIView animateWithDuration:0.50 animations:^{
@@ -130,7 +127,7 @@
 
 - (IBAction)passwordDidEnd:(id)sender {
     
-    if ([self passwordValid]) {
+    if ([self passwordInvalid]) {
         [UIView animateWithDuration:0.50 animations:^{
             self.passWordLabel.backgroundColor = [UIColor colorWithRed:247.0f/255.0f green:121.0f/255.0f blue:121.0f/255.0f alpha:1.0];
         }];
@@ -162,8 +159,6 @@
 
 - (IBAction)createAccountButton:(id)sender
 {
-    
-    
     
     [self createNewUserWithCompletion:^(BOOL finished) {
        //

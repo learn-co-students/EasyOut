@@ -320,6 +320,7 @@
 				4CBBC5FA1CBA9618006683D8 /* Button.storyboard */,
 				4C64EC411CBAA78200FB3A45 /* ItineraryView.storyboard */,
 				4C9A038C1CAB064200CA9A02 /* LaunchScreen.storyboard */,
+				78A7F6D01CBEC2F800DD4937 /* sideMenu.storyboard */,
 				9A74DC511CBF391900B63B0B /* FilterView.storyboard */,
 				9A5AEC331CBF4795009F2BEA /* UserProfile.storyboard */,
 			);

@@ -36,16 +36,15 @@
                                                         object:nil];
     NSLog(@"past itineraries button tapped!");
     
-    
 }
 
 - (IBAction)logoutButtonTapped:(id)sender {
     
+
     [[NSNotificationCenter defaultCenter] postNotificationName:@"logoutButtonTapped"
                                                         object:nil];
     NSLog(@"logout button tapped!");
    
-    
 }
 
 /*
