@@ -109,7 +109,7 @@ import Firebase
                     "email" : user.email,
                     "bio" : user.bio,
                     "location" : user.location,
-                    "saved itineraries" : user.savedItineraries,
+                    "savedItineraries" : user.savedItineraries,
                     "preferences" : user.preferences,
                     "ratings" : user.ratings,
                     "tips" : user.tips,
@@ -244,8 +244,41 @@ import Firebase
         
         print("Added new itinerary with title: \(itinerary.title) and ID: \(newItineraryID)")
         
-        // Return the new
+        // Add the itinerary to the current user
+        print("Calling addItineraryToUser function")
+        addItineraryToUserWithUserID(ref.authData.uid, itineraryID: newItineraryID) { (success) in
+            if success {
+                print("addItineraryToUser function succeeded")
+            } else {
+                print("addItineraryToUser function did no succeed")
+            }
+        }
+        
+        // Return the new itineraryID
         completion(itineraryID: newItineraryID)
+    }
+    
+    // Add itineraryID to current user's savedItineraries
+    func addItineraryToUserWithUserID(userID: String, itineraryID: String, completion: Bool -> Void) {
+        
+        print("Attempting to add new itineraryID to savedItineraries of current user")
+        
+        // Set Firebase references
+        let ref = Firebase(url:firebaseRootRef)
+        let usersRef = ref.childByAppendingPath("users")
+        let userRef = usersRef.childByAppendingPath(ref.authData.uid)
+        let savedItinerariesRef = userRef.childByAppendingPath("savedItineraries")
+        
+        // Save the new itineraryID as a key with Bool value of true
+        savedItinerariesRef.childByAppendingPath(itineraryID).setValue(true) { (error, result) in
+            if (error != nil) {
+                print("There was an error adding the itineraryID to savedItineraries: \(error.description)")
+                completion(false)
+            } else {
+                print("New itineraryID saved successfully:\n\(result)")
+                completion(true)
+            }
+        }
     }
     
     
