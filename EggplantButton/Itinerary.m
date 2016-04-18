@@ -10,17 +10,6 @@
 
 @implementation Itinerary
 
-//-(instancetype)init {
-//    
-//    self = [super init];
-//    
-//    if (self) {
-//        
-//    }
-//    
-//    return self;
-//}
-
 // Initialize a new Itinerary object when saving an itinerary from the main view controller
 -(instancetype)initWithActivities:(NSMutableArray *) activities
                            userID:(NSString *)userID

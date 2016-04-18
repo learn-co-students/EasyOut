@@ -26,8 +26,8 @@
     
     // Run function to test Firebase API functions
     FirebaseAPIClient *firebaseAPI = [[FirebaseAPIClient alloc] init];
-    [firebaseAPI testFirebaseFunctions];
-     
+//    [firebaseAPI testFirebaseFunctions];
+    
     /// Allows Button to request Location Permissions
     [Button allowButtonToRequestLocationPermission:YES];
     
