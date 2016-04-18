@@ -31,6 +31,8 @@
         _ratings = [[NSMutableDictionary alloc] init];
         _tips = [[NSMutableArray alloc] init];
         _title = [NSString stringWithFormat:@"Itinerary for %@", dateString];
+        _durationInMins = 480;
+        _priceRange = 0;
     }
     
     return self;
@@ -38,7 +40,7 @@
 }
 
 // Initializer for Firebase dictionaries
--(instancetype)initWithItineraryDictionary:(NSDictionary *)dictionary {
+-(instancetype)initWithFirebaseItineraryDictionary:(NSDictionary *)dictionary {
     
     NSMutableDictionary *newDictionary = [dictionary mutableCopy];
     
@@ -66,6 +68,8 @@
                          photos:newDictionary[@"photos"]
                         ratings:newDictionary[@"ratings"]
                            tips:newDictionary[@"tips"]
+                 durationInMins:[newDictionary[@"durationInMins"] integerValue]
+                     priceRange:[newDictionary[@"priceRange"] integerValue]
             ];
     
     NSLog(@"User initialized from Firebase dictionary");
@@ -81,7 +85,10 @@
                    activities:(NSMutableArray *)activities
                        photos:(NSMutableArray *)photos
                       ratings:(NSMutableDictionary *)ratings
-                         tips:(NSMutableDictionary *)tips {
+                         tips:(NSMutableDictionary *)tips
+               durationInMins:(NSUInteger)durationInMins
+                   priceRange:(NSUInteger)priceRange
+{
     
     return self;
 }
