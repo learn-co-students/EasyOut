@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0A05A4EB1CB438AD00EF83CD /* TicketMasterAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A05A4E61CB438AD00EF83CD /* TicketMasterAPIClient.m */; };
+		0A80F5AD1CC5278F0060632B /* ItineraryHistoryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A80F5AC1CC5278F0060632B /* ItineraryHistoryDetailViewController.m */; };
 		4C02D1E11CB6E72C0031F978 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C02D1E01CB6E72C0031F978 /* User.m */; };
 		4C02D1E41CB6E8A00031F978 /* Itinerary.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C02D1E31CB6E8A00031F978 /* Itinerary.m */; };
 		4C02D1E71CB6EDD40031F978 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C02D1E61CB6EDD40031F978 /* Photo.m */; };
@@ -64,6 +65,8 @@
 /* Begin PBXFileReference section */
 		0A05A4E51CB438AD00EF83CD /* TicketMasterAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TicketMasterAPIClient.h; sourceTree = "<group>"; };
 		0A05A4E61CB438AD00EF83CD /* TicketMasterAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TicketMasterAPIClient.m; sourceTree = "<group>"; };
+		0A80F5AB1CC5278F0060632B /* ItineraryHistoryDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItineraryHistoryDetailViewController.h; sourceTree = "<group>"; };
+		0A80F5AC1CC5278F0060632B /* ItineraryHistoryDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItineraryHistoryDetailViewController.m; sourceTree = "<group>"; };
 		478A5D5E5340BA05712F05CE /* Pods-EggplantButton.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EggplantButton.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EggplantButton/Pods-EggplantButton.debug.xcconfig"; sourceTree = "<group>"; };
 		4C02D1DF1CB6E72C0031F978 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = EggplantButton/User.h; sourceTree = "<group>"; };
 		4C02D1E01CB6E72C0031F978 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = EggplantButton/User.m; sourceTree = "<group>"; };
@@ -71,7 +74,7 @@
 		4C02D1E31CB6E8A00031F978 /* Itinerary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Itinerary.m; path = EggplantButton/Itinerary.m; sourceTree = "<group>"; };
 		4C02D1E51CB6EDD40031F978 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Photo.h; path = EggplantButton/Photo.h; sourceTree = "<group>"; };
 		4C02D1E61CB6EDD40031F978 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Photo.m; path = EggplantButton/Photo.m; sourceTree = "<group>"; };
-		4C0EE1521CBDA0930092C39A /* ItineraryHistoryView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ItineraryHistoryView.storyboard; sourceTree = "<group>"; };
+		4C0EE1521CBDA0930092C39A /* ItineraryHistoryView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ItineraryHistoryView.storyboard; path = EggplantButton/ItineraryHistoryView.storyboard; sourceTree = SOURCE_ROOT; };
 		4C0EE1541CBDA2D60092C39A /* ItineraryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItineraryTableViewController.h; sourceTree = "<group>"; };
 		4C0EE1551CBDA2D60092C39A /* ItineraryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItineraryTableViewController.m; sourceTree = "<group>"; };
 		4C0EE1571CBDA2E70092C39A /* ItineraryHistoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItineraryHistoryTableViewController.h; sourceTree = "<group>"; };
@@ -190,6 +193,8 @@
 				4C0EE1551CBDA2D60092C39A /* ItineraryTableViewController.m */,
 				4C0EE1571CBDA2E70092C39A /* ItineraryHistoryTableViewController.h */,
 				4C0EE1581CBDA2E70092C39A /* ItineraryHistoryTableViewController.m */,
+				0A80F5AB1CC5278F0060632B /* ItineraryHistoryDetailViewController.h */,
+				0A80F5AC1CC5278F0060632B /* ItineraryHistoryDetailViewController.m */,
 				4C358D361CAD62CE00257756 /* CardViewController.h */,
 				4C358D371CAD62CE00257756 /* CardViewController.m */,
 				78A7F6D21CBFFDAF00DD4937 /* mainContainerViewController.h */,
@@ -524,6 +529,7 @@
 				4C0EE1591CBDA2E70092C39A /* ItineraryHistoryTableViewController.m in Sources */,
 				4CBBC6061CBA96DF006683D8 /* setupButton.m in Sources */,
 				78A7F6D81CC1672700DD4937 /* sideMenuViewController.m in Sources */,
+				0A80F5AD1CC5278F0060632B /* ItineraryHistoryDetailViewController.m in Sources */,
 				9A5AEC321CBF476B009F2BEA /* UserProfileViewController.m in Sources */,
 				4C358D381CAD62CE00257756 /* CardViewController.m in Sources */,
 				4CAD0CC51CB568C4008162CE /* FirebaseIntegration.swift in Sources */,
