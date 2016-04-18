@@ -10,6 +10,7 @@
 #import "Itinerary.h"
 #import "User.h"
 #import "Firebase.h"
+#import "ItineraryDisplayTableViewCell.h"
 
 @interface ItineraryHistoryTableViewController ()
 
@@ -45,55 +46,91 @@
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return self.titlesOfItineraries.count;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
   
-    return self.itineraryEvents.count;
+    return self.titlesOfItineraries.count;
 }
 
--(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    
-    return self.titlesOfItineraries[section];
-}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-   
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ItineraryCell" forIndexPath:indexPath];
-    NSString *singleItineraryName = self.itineraryEvents[indexPath.row];
-    cell.textLabel.text = singleItineraryName;
+    
+    ItineraryDisplayTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ItineraryCell" forIndexPath:indexPath];
+    
+    Itinerary *currentItinerary = self.titlesOfItineraries[indexPath.row];
+    NSLog(@"what is currentOne: %@", currentItinerary);
+    cell.titleOfItineraryLabel.text = self.titlesOfItineraries[indexPath.row];
 
+    NSArray *activities = self.itineraryEvents[indexPath.row];
+    
+    
+    if (activities.count > 0) {
+        cell.activityOneLabel.text = activities[0];
+    }
+    if (activities.count > 1) {
+        cell.activityTwoLabel.text = activities[1];
+    }
+    if (activities.count > 2) {
+        cell.ActivityThreeLabel.text = activities[2];
+    }
+    
+    
+    
+    
     return cell;
 }
 
 
 
 
--(void)getEventsWithCompletion: (void (^) (BOOL)) completion{
+-(void)getEventsWithCompletion: (void (^) (BOOL)) completion {
     Firebase *ref = [[Firebase alloc] initWithUrl: @"https://easyout.firebaseio.com/itineraries"];
-    
-    [ref observeSingleEventOfType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {        
-        Itinerary *itinerary = [[Itinerary alloc]init];
-        itinerary = snapshot.value[@"activities"];
-        for (NSString *singleItinerary in itinerary) {
-            [self.itineraryEvents addObject:singleItinerary];
+    [ref observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        
+        for (NSString *key in snapshot.value) {
+            NSDictionary *dictionary = snapshot.value[key];
+            NSArray *activities = dictionary[@"activities"];
+            [self.itineraryEvents addObject:activities];
+            completion(YES);
         }
-        completion(YES);
+    } withCancelBlock:^(NSError *error) {
+        NSLog(@"%@", error.description);
     }];
+
 }
 
 -(void)getTitlesWithCompletion:(void(^)(BOOL))completion {
-    
-    Firebase *ref = [[Firebase alloc]initWithUrl:@"https://easyout.firebaseio.com/itineraries"];
-    
-    [ref observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-        for (FDataSnapshot *childSnapshot in snapshot.children){
-            NSString *title = childSnapshot.value[@"title"];
-            [self.titlesOfItineraries addObject:title];
+
+    Firebase *ref = [[Firebase alloc] initWithUrl: @"https://easyout.firebaseio.com/itineraries"];
+    [ref observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        NSLog(@" Dictionary of Itineraries: %@", snapshot.value);
+        
+        for (NSString *key in snapshot.value) {
+            NSLog(@" KEY : %@",key);
+            
+            NSDictionary *dictionary = snapshot.value[key];
+            NSLog(@" Stuff: %@",dictionary);
+            
+            
+            
+            NSString *itineraryNames = dictionary[@"title"];
+            NSLog(@" title: %@",itineraryNames);
+            
+            [self.titlesOfItineraries addObject:itineraryNames];
+            
+
+            completion(YES);
         }
-        completion(YES);
+        
+        
+    } withCancelBlock:^(NSError *error) {
+        NSLog(@"%@", error.description);
     }];
+
+    
+    NSLog(@" TITLESSS! : %@", self.titlesOfItineraries); 
 }
 
 
