@@ -11,8 +11,10 @@
 #import "sideMenuViewController.h"
 
 
+
 @interface mainContainerViewController ()
 
+@property (weak, nonatomic) IBOutlet UIView * sideMenuContainer;
 @property (weak, nonatomic) IBOutlet UIView * viewContainer;
 
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer * mainViewTapGestureRecognizer;
@@ -29,9 +31,15 @@
                                              selector:@selector(menuButtonTapped:)
                                                  name:@"menuButtonTapped"
                                                object:nil];
+    
+    // listening for segue notification from sideMenu
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(sideMenuFadeAway:)
+                                                 name:@"sideMenuFadeAway"
+                                               object:nil];
+    
+
 }
-
-
 
 
 - (void) menuButtonTapped: (NSNotification *) notification {
@@ -57,6 +65,18 @@
         self.sideMenuContainer.alpha = 0;
         self.viewContainer.alpha = 1;
     }];
+}
+
+- (void) sideMenuFadeAway: (NSNotification *) notification {
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        self.sideMenuContainer.alpha = 0;
+        self.viewContainer.alpha = 1;
+    }];
+    
+    self.mainViewTapGestureRecognizer.enabled = NO;
+    self.viewContainer.subviews[0].userInteractionEnabled = YES;
+    
 }
 
 /*

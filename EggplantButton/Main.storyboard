@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="QB9-cg-QB8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="QB9-cg-QB8">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -15,12 +15,11 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="44" width="320" height="524"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="VU8-K5-T2e" userLabel="Card Stack View">
-                                <rect key="frame" x="0.0" y="64" width="600" height="453"/>
-
+                                <rect key="frame" x="0.0" y="64" width="320" height="441"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gkc-zr-fUL">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="137"/>
@@ -32,9 +31,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cardCell" id="q3k-bS-TW6" customClass="ActivityCardCollectionViewCell">
-
-                                                <rect key="frame" x="0.0" y="77.5" width="50" height="50"/>
-
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -96,10 +93,8 @@
                                     </collectionView>
                                 </subviews>
                             </stackView>
-
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="hhF-uU-Inp" userLabel="Button Stack">
-                                <rect key="frame" x="0.0" y="532" width="600" height="60"/>
-
+                                <rect key="frame" x="0.0" y="532" width="320" height="60"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D12-lf-tgx" userLabel="Itinerize">
                                         <rect key="frame" x="0.0" y="0.0" width="158" height="60"/>
@@ -235,7 +230,6 @@
         <!--Navigation Controller-->
         <scene sceneID="nOA-Pe-4kW">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fIL-uy-aBb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QB9-cg-QB8" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bd2-7L-nQw">
@@ -247,8 +241,17 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="MdW-SK-0DP"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fIL-uy-aBb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="676" y="446"/>
+        </scene>
+        <!--Login-->
+        <scene sceneID="xdS-fR-glv">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="LoginViewController" storyboardName="Login" id="ThO-gH-bWu" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mX2-b2-DD6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-435.5" y="667"/>
         </scene>
         <!--Side Menu View Controller-->
         <scene sceneID="x9h-0l-jTD">
@@ -308,6 +311,7 @@
                                 </state>
                                 <connections>
                                     <action selector="logoutButtonTapped:" destination="3L1-dU-ywu" eventType="touchUpInside" id="Wzv-HU-1eR"/>
+                                    <segue destination="ThO-gH-bWu" kind="show" id="7rl-af-VmM"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -331,6 +335,9 @@
                             <constraint firstItem="qNz-87-OcV" firstAttribute="top" secondItem="hOL-Ei-CQk" secondAttribute="bottom" constant="8" symbolic="YES" id="zVh-ED-nCr"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="usernameLabel" destination="vh4-OL-ZXU" id="VpV-2C-Rd3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RDE-4o-T2E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

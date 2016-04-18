@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "User.h"
 
 @interface sideMenuViewController : UIViewController
 
+@property (strong, nonatomic) User * user;
 
 @end

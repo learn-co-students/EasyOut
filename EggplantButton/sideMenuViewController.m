@@ -8,8 +8,10 @@
 
 #import "sideMenuViewController.h"
 
+
 @interface sideMenuViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 
 
 @end
@@ -19,11 +21,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.usernameLabel.text = self.user.username;
+    
 }
 
 - (IBAction)profileButtonTapped:(id)sender {
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"profileButtonTapped"
+                                                        object:nil];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"sideMenuFadeAway"
                                                         object:nil];
     NSLog(@"profile button tapped!");
 
@@ -34,6 +41,9 @@
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"pastItinerariesButtonTapped"
                                                         object:nil];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"sideMenuFadeAway"
+                                                        object:nil];
     NSLog(@"past itineraries button tapped!");
     
 }
@@ -42,6 +52,9 @@
     
 
     [[NSNotificationCenter defaultCenter] postNotificationName:@"logoutButtonTapped"
+                                                        object:nil];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"sideMenuFadeAway"
                                                         object:nil];
     NSLog(@"logout button tapped!");
    

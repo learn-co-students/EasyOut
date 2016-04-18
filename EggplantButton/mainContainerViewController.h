@@ -10,6 +10,6 @@
 
 @interface mainContainerViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIView * sideMenuContainer;
+
 
 @end

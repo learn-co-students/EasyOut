@@ -9,11 +9,12 @@
 
 #import "CardViewController.h"
 #import "EggplantButton-Swift.h"
-
 #import "ActivitiesDataStore.h"
 #import "ActivityCardCollectionViewCell.h"
 #import "mainContainerViewController.h"
 #import "sideMenuViewController.h"
+#import "Secrets.h"
+#import "Firebase.h"
 
 #import "UIView+Shake.h"
 
@@ -126,9 +127,17 @@
 - (void) logoutButtonTapped: (NSNotification *) notification {
     NSLog(@"cardVC knows that the logout button was tapped!");
     
-    UIViewController *loginVC = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    Firebase *ref = [[Firebase alloc] initWithUrl:firebaseRootRef];
     
-    [self.navigationController showViewController:loginVC sender:nil];
+    [ref unauth];
+    
+    NSLog(@"user is logged out");
+    
+    
+    
+//    UIViewController *loginVC = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"LoginViewController"];
+//    
+//    [self.navigationController showViewController:loginVC sender:nil];
 }
 
 
@@ -279,6 +288,8 @@
 
 - (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event
 {
+    NSLog(@"Shake started");
+    
     if ( event.subtype == UIEventSubtypeMotionShake )
     {
         NSLog(@"Shake started");
