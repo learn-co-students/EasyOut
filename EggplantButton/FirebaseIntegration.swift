@@ -258,6 +258,7 @@ import Firebase
         completion(itineraryID: newItineraryID)
     }
     
+    
     // Add itineraryID to current user's savedItineraries
     func addItineraryToUserWithUserID(userID: String, itineraryID: String, completion: Bool -> Void) {
         
@@ -271,6 +272,7 @@ import Firebase
         
         // Save the new itineraryID as a key with Bool value of true
         savedItinerariesRef.childByAppendingPath(itineraryID).setValue(true) { (error, result) in
+            
             if (error != nil) {
                 print("There was an error adding the itineraryID to savedItineraries: \(error.description)")
                 completion(false)
@@ -346,27 +348,64 @@ import Firebase
         getItineraryWithItineraryID(itineraryID) { (itinerary) in
             if let itinerary = itinerary {
                 
-                // Set base reference
+                // Set Firebase references
                 let ref = Firebase(url:firebaseRootRef)
+                let itinerariesRef = ref.childByAppendingPath("itineraries")
                 
                 // Check that the userID associated with the itinerary matches the userID of the current user
                 if itinerary.userID == ref.authData.uid {
                     
+                    // If the userIDs are a match, remove the itinerary from the itineraries reference
+                    let itineraryRef = itinerariesRef.childByAppendingPath(itineraryID)
+                    itineraryRef.removeValueWithCompletionBlock({ (error, result) in
+                        
+                        if (error != nil) {
+                            print("There was an error removing the itinerary: \(error.description)")
+                            completion(success: false)
+                        } else {
+                            print("Itinerary removed successfully from itineraries dictionary in Firebase")
+                            
+                            // Call method to remove itinerary from user's savedItineraries
+                            print("Calling method to remove itinerary from user's savedItineraries")
+                            self.removeItineraryFromUserWithUserID(ref.authData.uid, itineraryID: itineraryID, completion: { (success) in
+                                if success {
+                                    print("Itinerary was successfully removed from user's savedItineraries")
+                                    completion(success: true)
+                                } else {
+                                    print("Itinerary was not successfully removed")
+                                }
+                            })
+                        }
+                    })
                 }
                 
-                
             } else {
-                print("ItineraryID \(itineraryID) could not be locaated in itineraries dictionary")
+                print("ItineraryID \(itineraryID) could not be located in itineraries dictionary")
                 completion(success: false)
             }
         }
+    }
+    
+    
+    // Remove itinerary item from user's savedItineraries
+    func removeItineraryFromUserWithUserID(userID: String, itineraryID: String, completion: Bool -> Void) {
         
-        // If the userIDs are a match, remove the itinerary from the itineraries reference
-        // Remove the itinerary from the user's savedItineraries
+        // Set Firebase references
+        let ref = Firebase(url:firebaseRootRef)
+        let usersRef = ref.childByAppendingPath("users")
+        let userRef = usersRef.childByAppendingPath(ref.authData.uid)
+        let savedItinerariesRef = userRef.childByAppendingPath("savedItineraries")
         
-        
-        completion(success: true)
-        
+        // Call method to remove value at the reference for the given itineraryID
+        savedItinerariesRef.childByAppendingPath(itineraryID).removeValueWithCompletionBlock { (error, result) in
+            if (error != nil) {
+                print("There was an error removing the itinerary from savedItineraries: \(error.description)")
+                completion(false)
+            } else {
+                print("Itinerary removed successfully:\n\(result)")
+                completion(true)
+            }
+        }
     }
     
     
