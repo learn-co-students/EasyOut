@@ -6,3 +6,5 @@
 #import "Secrets.h"
 #import "User.h"
 #import "Itinerary.h"
+#import <AFNetworking/AFImageDownloader.h>
+#import <AFNetworking/AFNetworking.h>

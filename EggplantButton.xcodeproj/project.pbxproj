@@ -32,6 +32,7 @@
 		4C9A03801CAB064200CA9A02 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9A037F1CAB064200CA9A02 /* AppDelegate.m */; };
 		4C9A038B1CAB064200CA9A02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C9A038A1CAB064200CA9A02 /* Assets.xcassets */; };
 		4C9A038E1CAB064200CA9A02 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C9A038C1CAB064200CA9A02 /* LaunchScreen.storyboard */; };
+		4C9C96271CC58C0600C7094A /* FirebaseIntegrationTestFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9C96261CC58C0600C7094A /* FirebaseIntegrationTestFunctions.swift */; };
 		4CAD0CC51CB568C4008162CE /* FirebaseIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAD0CC41CB568C4008162CE /* FirebaseIntegration.swift */; };
 		4CBBC5FB1CBA9618006683D8 /* Button.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CBBC5FA1CBA9618006683D8 /* Button.storyboard */; };
 		4CBBC6041CBA96DF006683D8 /* AppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBBC5FD1CBA96DF006683D8 /* AppViewController.m */; };
@@ -104,6 +105,7 @@
 		4C9A038A1CAB064200CA9A02 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C9A038D1CAB064200CA9A02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4C9A038F1CAB064200CA9A02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C9C96261CC58C0600C7094A /* FirebaseIntegrationTestFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseIntegrationTestFunctions.swift; path = EggplantButton/FirebaseIntegrationTestFunctions.swift; sourceTree = "<group>"; };
 		4CAD0CBF1CB56574008162CE /* EggplantButton-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EggplantButton-Bridging-Header.h"; sourceTree = "<group>"; };
 		4CAD0CC41CB568C4008162CE /* FirebaseIntegration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseIntegration.swift; path = EggplantButton/FirebaseIntegration.swift; sourceTree = "<group>"; };
 		4CBBC5FA1CBA9618006683D8 /* Button.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Button.storyboard; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				4CAD0CC41CB568C4008162CE /* FirebaseIntegration.swift */,
+				4C9C96261CC58C0600C7094A /* FirebaseIntegrationTestFunctions.swift */,
 			);
 			name = Firebase;
 			path = ..;
@@ -542,6 +545,7 @@
 				4C02D1E71CB6EDD40031F978 /* Photo.m in Sources */,
 				9A5616B51CAC68AE008D9264 /* Restaurant.m in Sources */,
 				9A33839C1CBC5416004B8EFE /* RestaurantDataStore.m in Sources */,
+				4C9C96271CC58C0600C7094A /* FirebaseIntegrationTestFunctions.swift in Sources */,
 				4CBBC6041CBA96DF006683D8 /* AppViewController.m in Sources */,
 				4C64EC341CBAA6BB00FB3A45 /* ActivitiesDataStore.m in Sources */,
 				4CBBF0871CBBEE09005BB352 /* Tip.m in Sources */,

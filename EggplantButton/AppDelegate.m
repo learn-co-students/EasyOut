@@ -24,9 +24,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    // Run function to test Firebase API functions
-    FirebaseAPIClient *firebaseAPI = [[FirebaseAPIClient alloc] init];
-//    [firebaseAPI testFirebaseFunctions];
+    // Initialize and run Firebase test functions
+    FirebaseTestFunctions *firebaseTest = [[FirebaseTestFunctions alloc] init];
+    [firebaseTest testFirebaseFunctions];
     
     /// Allows Button to request Location Permissions
     [Button allowButtonToRequestLocationPermission:YES];
