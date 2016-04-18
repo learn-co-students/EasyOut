@@ -10,8 +10,8 @@
 #import <Button/Button.h>
 #import "Secrets.h"
 #import "EggplantButton-Swift.h"
+#import <GoogleMaps/GoogleMaps.h>
 #import "CardViewController.h"
-
 
 
 @interface AppDelegate ()
@@ -40,6 +40,8 @@
     
     // Set appearance of the navigation bar
     [UINavigationBar appearance].tintColor = [UIColor blackColor];
+    
+    [GMSServices provideAPIKey:googlePlacesAPI];
     
     return YES;
 }

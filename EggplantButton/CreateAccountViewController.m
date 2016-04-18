@@ -7,13 +7,6 @@
 //
 
 #import "CreateAccountViewController.h"
-#import "User.h"
-#import "Secrets.h"
-#import "EggplantButton-Swift.h"
-#import "Firebase.h"
-#import "LogInViewController.h"
-
-
 
 @interface CreateAccountViewController ()
 
