@@ -96,17 +96,7 @@
         }
     } failure:nil];
     
-    switch (self.activity.activityType) {
-        case RestaurantType:
-            self.detailLabel.text = ((Restaurant *)self.activity).price;
-            break;
-        case EventType:
-            self.detailLabel.text = ((Event *)self.activity).time;
-            break;
-        default:
-            break;
-    }
-
+    
 }
 
 - (IBAction)cardSelected:(UIButton *)sender {

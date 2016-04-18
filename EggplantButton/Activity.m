@@ -11,26 +11,22 @@
 
 @implementation Activity
 
--(instancetype)initWithName:(NSString *)name
-                    address:(NSString *)address
-                       city:(NSString *)city
-                 postalCode:(NSString *)postalCode
-                   imageURL:(NSURL *)imageURL
-               activityType:(ActivityType) activityType{
+-(instancetype)initWithDictionary:(NSDictionary *)activityDictionary{
     
     self = [super init];
+    
     if(self) {
-        _activityType = activityType;
-        _name = name;
-        _address = address;
-        _city = city;
-        _postalCode = postalCode;
-        _imageURL = imageURL;
         
     }
     
     return self;
 }
 
++(Activity *)activityFromDictionary:(NSDictionary *)activityDictionary {
+    
+    Activity *activity = [[Activity alloc]initWithDictionary:activityDictionary];
+    
+    return activity;
+}
 
 @end
