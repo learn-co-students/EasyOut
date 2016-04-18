@@ -24,8 +24,6 @@ NSString *const TM_BASE_URL = @"https://app.ticketmaster.com/discovery/v2/events
     NSString *dateString = [dateFormat stringFromDate:now];
     
     
-    
-#warning need to add start date and time!!!
     //NETWORKING
     NSString *ticketMasterURL = [NSString stringWithFormat:@"%@latlong=%@,%@&radius=15&startDateTime=%@&apikey=%@",TM_BASE_URL ,lat,lng,dateString,consumerKey];
     

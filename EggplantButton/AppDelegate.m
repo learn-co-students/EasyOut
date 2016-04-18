@@ -9,11 +9,13 @@
 #import "AppDelegate.h"
 #import <Button/Button.h>
 #import "Secrets.h"
-#import "DeepLinkKit.h"
 #import "EggplantButton-Swift.h"
+#import <GoogleMaps/GoogleMaps.h>
+#import "CardViewController.h"
 
 
 @interface AppDelegate ()
+
 
 @end
 
@@ -22,10 +24,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    // Firebase test call
+    // Run function to test Firebase API functions
     FirebaseAPIClient *firebaseAPI = [[FirebaseAPIClient alloc] init];
-    [firebaseAPI testFirebaseFunctions];
-     
+//    [firebaseAPI testFirebaseFunctions];
+    
     /// Allows Button to request Location Permissions
     [Button allowButtonToRequestLocationPermission:YES];
     
@@ -36,11 +38,10 @@
         //[self handleURL :deferredDeeplinkURL];
     }];
     
-//    FirebaseAPIClient *client = [[FirebaseAPIClient alloc] init];
-//    [client getAllUsersWithCompletion:^(BOOL success) {
-//    
-//    }];
-    [UINavigationBar appearance].backgroundColor =[UIColor blackColor];
+    // Set appearance of the navigation bar
+    [UINavigationBar appearance].tintColor = [UIColor blackColor];
+    
+    [GMSServices provideAPIKey:googlePlacesAPI];
     
     return YES;
 }
@@ -95,6 +96,7 @@ continueUserActivity:(NSUserActivity *)userActivity
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
 }
+
 
 #pragma mark - Core Data stack
 
