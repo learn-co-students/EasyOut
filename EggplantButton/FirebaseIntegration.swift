@@ -16,7 +16,7 @@ import Firebase
         
         print("Attempting to log in user with email: \(email)")
         
-        // Set base
+        // Set base reference
         let ref = Firebase(url:firebaseRootRef)
         
         // Attempt user login
@@ -164,6 +164,35 @@ import Firebase
     }
     
     
+    // Create a User object from Firebase data using a userID and return User object and success state
+    func getUserFromFirebaseWithUserID(userID: String, completion: (user: User, success: Bool) -> Void) {
+        
+        print("Creating user object from user reference: \(userID)")
+        
+        // Set references to call for user info
+        let ref = Firebase(url:firebaseRootRef)
+        let usersRef = ref.childByAppendingPath("users")
+        let userRef = usersRef.childByAppendingPath(userID)
+        
+        // Read data at user reference
+        userRef.observeEventType(.Value, withBlock: { snapshot in
+            let sv = snapshot.value
+            print("User ref:\n\(sv)")
+            
+            // Create new User object
+            let newUser : User = User.init(firebaseUserDictionary: sv as! Dictionary)
+            
+            print("Created User object for: \(newUser.username)")
+            
+            completion(user: newUser, success: true)
+            
+            }, withCancelBlock: { error in
+                print("Error retrieving user in user creation:\n\(error.description)")
+                completion(user: User.init(), success: false)
+        })
+    }
+    
+    
     // Compare given username to all usernames in Firebase and return unique-status
     func checkIfUsernameExistsWithUsername(username: String, completion: (doesExist: Bool) -> Void) {
         
@@ -189,7 +218,7 @@ import Firebase
     }
     
     
-    func saveNewItineraryWithItinerary(itinerary: Itinerary) -> String {
+    func saveItineraryWithItinerary(itinerary: Itinerary, completion: (itineraryID: String) -> Void) {
         
         // Set references for new itinerary
         let ref = Firebase(url:firebaseRootRef)
@@ -216,7 +245,7 @@ import Firebase
         print("Added new itinerary with title: \(itinerary.title) and ID: \(newItineraryID)")
         
         // Return the new
-        return newItineraryID
+        completion(itineraryID: newItineraryID)
     }
     
     
@@ -252,11 +281,14 @@ import Firebase
                 
                 // Check if the itineraries dictionary contains a key matching the itineraryID
                 print("Checking if the returned itineraries contain one that matches the itineraryID")
-                if let itinerary = itineraries[itineraryID] {
+                if let itineraryDictionary = itineraries[itineraryID] {
+                    
+                    // Create Itinerary object from itineraryDictionary
+                    let itinerary: Itinerary = Itinerary.init(itineraryDictionary: itineraryDictionary as! [NSObject : AnyObject])
                     
                     // Send the matching itinerary to the completion block
                     print("Found a matching itinerary")
-                    completion(itinerary as? Itinerary)
+                    completion(itinerary)
                 } else {
                     
                     // Send nil to the completion block
@@ -270,6 +302,38 @@ import Firebase
                 completion(nil)
             }
         }
+    }
+    
+    // Remove itinerary from Firebase within both the itineraries dictionary as well as from the saved itineraries of the associated user
+    func removeItineraryWithItineraryID(itineraryID: String, completion: (success: Bool) -> Void) {
+        
+        print("Attempting to remove itinerary with ID: \(itineraryID)")
+        
+        // Retrieve the itinerary
+        getItineraryWithItineraryID(itineraryID) { (itinerary) in
+            if let itinerary = itinerary {
+                
+                // Set base reference
+                let ref = Firebase(url:firebaseRootRef)
+                
+                // Check that the userID associated with the itinerary matches the userID of the current user
+                if itinerary.userID == ref.authData.uid {
+                    
+                }
+                
+                
+            } else {
+                print("ItineraryID \(itineraryID) could not be locaated in itineraries dictionary")
+                completion(success: false)
+            }
+        }
+        
+        // If the userIDs are a match, remove the itinerary from the itineraries reference
+        // Remove the itinerary from the user's savedItineraries
+        
+        
+        completion(success: true)
+        
     }
     
     
@@ -328,35 +392,6 @@ import Firebase
             let image = UIImage(data: imageData)
             
             completion(image!)
-        })
-    }
-    
-    
-    // Create a User object from Firebase data using a userID and return User object and success state
-    func getUserFromFirebaseWithUserID(userID: String, completion: (User, success: Bool) -> Void) {
-        
-        print("Creating user object from user reference: \(userID)")
-        
-        // Set references to call for user info
-        let ref = Firebase(url:firebaseRootRef)
-        let usersRef = ref.childByAppendingPath("users")
-        let userRef = usersRef.childByAppendingPath(userID)
-        
-        // Read data at user reference
-        userRef.observeEventType(.Value, withBlock: { snapshot in
-            let sv = snapshot.value
-            print("User ref:\n\(sv)")
-            
-            // Create new User object
-            let newUser : User = User.init(firebaseUserDictionary: sv as! Dictionary)
-            
-            print("Created User object for: \(newUser.username)")
-            
-            completion(newUser, success: true)
-            
-            }, withCancelBlock: { error in
-                print("Error retrieving user in user creation:\n\(error.description)")
-                completion(User.init(), success: false)
         })
     }
     
@@ -526,8 +561,28 @@ import Firebase
             }
         }
         
-        // Check function to get an itinerary with an itineraryID
-        print("Calling getItineraryWithItineraryID")
+        // Check function to save new itinerary to Firebase
+        print("Calling saveNewItinerary")
+        saveItineraryWithItinerary(Itinerary.init()) { (itineraryID) in
+            print("Saved itinerary with itineraryID: \(itineraryID)")
+
+            // Check function to get an itinerary with an itineraryID
+            print("Calling getItineraryWithItineraryID")
+            self.getItineraryWithItineraryID(itineraryID) { (itinerary) in
+                print("Itinerary returned:\(itinerary)")
+                
+                // Check function to remove an itinerary
+                self.removeItineraryWithItineraryID(itineraryID, completion: { (success) in
+                    if success {
+                        print("Successfully removed itinerary with ID: \(itineraryID)")
+                    } else {
+                        print("Failed to remove itinerary with ID: \(itineraryID)")
+                    }
+                })
+            }
+        }
+        
+
         
         // Check function to resize an image
         
