@@ -79,6 +79,11 @@
     
 }
 
+- (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event
+{
+    NSLog(@"Shake started mainContainer");
+}
+
 /*
 #pragma mark - Navigation
 

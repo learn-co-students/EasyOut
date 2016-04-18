@@ -133,11 +133,6 @@
     
     NSLog(@"user is logged out");
     
-    
-    
-//    UIViewController *loginVC = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"LoginViewController"];
-//    
-//    [self.navigationController showViewController:loginVC sender:nil];
 }
 
 
