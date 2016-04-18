@@ -62,8 +62,9 @@
     return NO;
 }
 
--(BOOL)passwordInvalid {
-    if (self.passWordLabel.text.length < 7) {
+-(BOOL)passwordValid {
+    if (self.passWordLabel.text.length > 7) {
+
         return YES;
     }
     
@@ -127,7 +128,7 @@
 
 - (IBAction)passwordDidEnd:(id)sender {
     
-    if ([self passwordInvalid]) {
+    if (![self passwordValid]) {
         [UIView animateWithDuration:0.50 animations:^{
             self.passWordLabel.backgroundColor = [UIColor colorWithRed:247.0f/255.0f green:121.0f/255.0f blue:121.0f/255.0f alpha:1.0];
         }];
