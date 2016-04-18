@@ -290,7 +290,7 @@ import Firebase
     
     
     // Add itineraryID to current user's savedItineraries
-    func addItineraryToUserWithUserID(userID: String, itineraryID: String, completion: Bool -> Void) {
+    private func addItineraryToUserWithUserID(userID: String, itineraryID: String, completion: Bool -> Void) {
         
         print("Attempting to add new itineraryID to savedItineraries of current user")
         
