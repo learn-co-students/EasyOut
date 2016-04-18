@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Storyboard Reference-->
@@ -16,21 +17,21 @@
         <!--ItineraryHistoryTableViewController-->
         <scene sceneID="HvF-fg-FhP">
             <objects>
-                <tableViewController title="ItineraryHistoryTableViewController" id="AsN-9G-VwD" customClass="ItineraryHistoryTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="pastItineraries" title="ItineraryHistoryTableViewController" id="AsN-9G-VwD" customClass="ItineraryHistoryTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="UOv-nO-4QJ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItineraryCell" id="7h9-qS-WGX">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7h9-qS-WGX" id="IB8-Uk-jfJ">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="PQg-d4-gV6" kind="presentation" identifier="ItineraryViewSegue" id="6Sp-cI-aAy"/>
+                                    <segue destination="pTe-5r-HlZ" kind="show" id="Eju-1i-uZL"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -39,10 +40,60 @@
                             <outlet property="delegate" destination="AsN-9G-VwD" id="isW-2B-ord"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="wBD-QP-yTm"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dMN-2N-pXo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="992" y="85"/>
+            <point key="canvasLocation" x="1648" y="96"/>
+        </scene>
+        <!--Itinerary History Detail View Controller-->
+        <scene sceneID="713-uc-kgM">
+            <objects>
+                <viewController id="pTe-5r-HlZ" customClass="ItineraryHistoryDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1sX-aR-22t"/>
+                        <viewControllerLayoutGuide type="bottom" id="DaF-GC-Ptz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="w3i-wg-QCk">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="Qch-eI-in5">
+                                <rect key="frame" x="150" y="279" width="300" height="42"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4oG-nq-I1f" userLabel="Name">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZjM-if-V2l" userLabel="Location">
+                                        <rect key="frame" x="0.0" y="21" width="300" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6I1-3j-6XE">
+                                <rect key="frame" x="150" y="75" width="300" height="150"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6I1-3j-6XE" firstAttribute="centerY" secondItem="w3i-wg-QCk" secondAttribute="centerY" multiplier="0.5" id="H4n-wR-dNi"/>
+                            <constraint firstItem="Qch-eI-in5" firstAttribute="width" secondItem="w3i-wg-QCk" secondAttribute="width" multiplier="0.5" id="KBn-vS-Inb"/>
+                            <constraint firstItem="6I1-3j-6XE" firstAttribute="height" secondItem="w3i-wg-QCk" secondAttribute="height" multiplier="0.25" id="OWS-Xb-81g"/>
+                            <constraint firstItem="6I1-3j-6XE" firstAttribute="width" secondItem="w3i-wg-QCk" secondAttribute="width" multiplier="0.5" id="ZIj-yV-End"/>
+                            <constraint firstItem="6I1-3j-6XE" firstAttribute="centerX" secondItem="w3i-wg-QCk" secondAttribute="centerX" id="ehA-lA-Ghq"/>
+                            <constraint firstItem="Qch-eI-in5" firstAttribute="centerX" secondItem="w3i-wg-QCk" secondAttribute="centerX" id="jhw-qm-35Q"/>
+                            <constraint firstItem="Qch-eI-in5" firstAttribute="centerY" secondItem="w3i-wg-QCk" secondAttribute="centerY" id="pW2-rY-J7s"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w1e-pj-iST" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2306" y="96"/>
         </scene>
         <!--ItineraryView-->
         <scene sceneID="D7i-0Z-4zp">
@@ -50,7 +101,25 @@
                 <viewControllerPlaceholder storyboardName="ItineraryView" id="PQg-d4-gV6" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mpj-HV-Gp3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1621.5" y="85"/>
+            <point key="canvasLocation" x="2433.5" y="85"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="7jn-ib-A6U">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Nng-P8-zNh" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3D5-bt-bfh">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="AsN-9G-VwD" kind="relationship" relationship="rootViewController" id="IZf-hd-wHt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m8g-dT-5RB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="960" y="59"/>
         </scene>
     </scenes>
 </document>

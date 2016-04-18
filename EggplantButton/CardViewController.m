@@ -9,13 +9,20 @@
 
 #import "CardViewController.h"
 #import "EggplantButton-Swift.h"
+#import "ActivitiesDataStore.h"
+#import "ActivityCardCollectionViewCell.h"
+#import "mainContainerViewController.h"
+#import "sideMenuViewController.h"
+#import "Secrets.h"
+#import "Firebase.h"
+
 #import "UIView+Shake.h"
+
 
 
 @class Restaurant;
 
 //MFMessageControlViewController
-
 
 @interface CardViewController () <UIScrollViewDelegate, CLLocationManagerDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -43,6 +50,7 @@
 
 //BUTTONS
 
+
 @end
 
 @implementation CardViewController
@@ -65,19 +73,75 @@
     self.middleRowCollection.backgroundColor = [UIColor clearColor];
     self.bottomRowCollection.backgroundColor = [UIColor clearColor];
     
+    // listening for segue notifications from sideMenu
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(profileButtonTapped:)
+                                                 name:@"profileButtonTapped"
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(pastItinerariesButtonTapped:)
+                                                 name:@"pastItinerariesButtonTapped"
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(logoutButtonTapped:)
+                                                 name:@"logoutButtonTapped"
+                                               object:nil];
+    
+    //listening for shake gesture notification
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(shakeStarted:)
+                                                 name:@"shakeStarted"
+                                               object:nil];
+    
 }
+
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
 }
 
-#pragma mark - Side Menu Button Tapped
 
-- (IBAction)menuButtonTapped:(id)sender {
+#pragma mark - Side Menu
+
+- (IBAction)menuButtonTapped:(UIBarButtonItem *)sender {
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"menuButtonTapped" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"menuButtonTapped"
+                                                        object:nil];
+    NSLog(@"menu button tapped!");
 }
+
+- (void) profileButtonTapped: (NSNotification *) notification {
+    NSLog(@"cardVC knows that the profile button was tapped!");
+    
+    
+    UIViewController *userProfileVC = [[UIStoryboard storyboardWithName:@"UserProfile" bundle:nil] instantiateViewControllerWithIdentifier:@"userSegue"];
+    
+    [self.navigationController showViewController:userProfileVC sender:nil];
+}
+
+- (void) pastItinerariesButtonTapped: (NSNotification *) notification {
+    NSLog(@"cardVC knows that the past itineraries button was tapped!");
+    
+    
+    UIViewController *pastItinerariesVC = [[UIStoryboard storyboardWithName:@"ItineraryHistoryView" bundle:nil] instantiateViewControllerWithIdentifier:@"pastItineraries"];
+    
+    [self.navigationController showViewController:pastItinerariesVC sender:nil];
+}
+
+- (void) logoutButtonTapped: (NSNotification *) notification {
+    NSLog(@"cardVC knows that the logout button was tapped!");
+    
+    Firebase *ref = [[Firebase alloc] initWithUrl:firebaseRootRef];
+    
+    [ref unauth];
+    
+    NSLog(@"user is logged out");
+    
+}
+
 
 #pragma mark - Get API data
 
@@ -184,10 +248,11 @@
     
     destinationVC.activity = ((ActivityCardCollectionViewCell *)sender).cardView.activity;
     }
-//    else if (segue.identifier isEqualToString:@"filterSegue") {
-//        
-//    }
+    else if ([segue.identifier isEqualToString:@"filterSegue"]) {
+        
+    }
 }
+
 
 #pragma mark - Core Location
 
@@ -214,22 +279,44 @@
         
         self.mostRecentLocation = [locations lastObject];
         
-
     }
     
     [self.locationManager stopUpdatingLocation];
 }
 
 
+#pragma mark - Randomize Button
+
+- (IBAction)randomizeTapped:(id)sender {
+    
+    // makes the phone vibrate
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+    
+    [self getShuffledTicketMasterData];
+    
+    [self getShuffledRestaurantData];
+    
+    // Shake top card with the default speed
+    [self.topRowCollection shake:15     // 15 times
+                       withDelta:20     // 20 points wide
+     ];
+    // Shake middle card with the default speed
+    [self.middleRowCollection shake:15   // 15 times
+                          withDelta:20   // 20 points wide
+     ];
+    // Shake bottom card with the default speed
+    [self.bottomRowCollection shake:15   // 15 times
+                          withDelta:20   // 20 points wide
+     ];
+    
+
+}
+
 
 #pragma mark - Shake Gesture
 
-- (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event
+- (void) shakeStarted: (NSNotification *) notification {
 {
-    if ( event.subtype == UIEventSubtypeMotionShake )
-    {
-        NSLog(@"Shake started");
-        
         // makes the phone vibrate
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         
@@ -253,18 +340,7 @@
     }
 }
 
-- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event
-{
-    if ( event.subtype == UIEventSubtypeMotionShake )
-    {
-        NSLog(@"Shake ended");
-        
-    }
 
-    
-    if ( [super respondsToSelector:@selector(motionEnded:withEvent:)] )
-        [super motionEnded:motion withEvent:event];
-}
 
 -(void)getShuffledRestaurantData{
     
@@ -384,8 +460,6 @@
 
 
 
-- (IBAction)menuButtonPressed:(UIBarButtonItem *)sender {
-}
 - (IBAction)filterButtonPressed:(UIBarButtonItem *)sender {
 
 

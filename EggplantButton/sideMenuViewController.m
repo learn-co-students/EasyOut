@@ -2,18 +2,17 @@
 //  sideMenuViewController.m
 //  EggplantButton
 //
-//  Created by Lisa Lee on 4/14/16.
+//  Created by Lisa Lee on 4/15/16.
 //  Copyright © 2016 Team Eggplant Button. All rights reserved.
 //
 
 #import "sideMenuViewController.h"
 
+
 @interface sideMenuViewController ()
 
-@property (weak, nonatomic) IBOutlet UIView *sideMenuContainer;
-@property (weak, nonatomic) IBOutlet UIView *viewContainer;
+@property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 
-@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *mainViewTapGestureRecognizer;
 
 @end
 
@@ -22,33 +21,49 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(menuButtonTapped:) name:@"menuButtonTapped" object:nil];
+    self.usernameLabel.text = self.user.username;
+    
 }
 
-- (void) menuButtonTapped: (NSNotification *) notification {
+- (IBAction)profileButtonTapped:(id)sender {
     
-    NSLog(@"Menu button tapped.");
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"profileButtonTapped"
+                                                        object:nil];
     
-    self.mainViewTapGestureRecognizer.enabled = YES;
-    self.viewContainer.subviews[0].userInteractionEnabled = NO;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"sideMenuFadeAway"
+                                                        object:nil];
+    NSLog(@"profile button tapped!");
+
     
-    [UIView animateWithDuration:0.2 animations:^{
-        self.sideMenuContainer.alpha = 1;
-        self.viewContainer.alpha = 0.75;
-    }];
 }
 
-- (IBAction)mainViewTapped:(id)sender {
+- (IBAction)itineraryHistoryButtonTapped:(id)sender {
     
-    NSLog(@"Main view tapped.");
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"pastItinerariesButtonTapped"
+                                                        object:nil];
     
-    self.mainViewTapGestureRecognizer.enabled = NO;
-    self.viewContainer.subviews[0].userInteractionEnabled = YES;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"sideMenuFadeAway"
+                                                        object:nil];
+    NSLog(@"past itineraries button tapped!");
     
-    [UIView animateWithDuration:0.2 animations:^{
-        self.sideMenuContainer.alpha = 0;
-        self.viewContainer.alpha = 1;
-    }];
+}
+
+- (IBAction)logoutButtonTapped:(id)sender {
+    
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"logoutButtonTapped"
+                                                        object:nil];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"sideMenuFadeAway"
+                                                        object:nil];
+    NSLog(@"logout button tapped!");
+   
+}
+
+- (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event
+{
+    NSLog(@"Shake started sideMenu");
+          
 }
 
 /*
