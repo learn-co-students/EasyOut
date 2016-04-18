@@ -89,6 +89,12 @@
                                                  name:@"logoutButtonTapped"
                                                object:nil];
     
+    //listening for shake gesture notification
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(shakeStarted:)
+                                                 name:@"shakeStarted"
+                                               object:nil];
+    
 }
 
 
@@ -309,14 +315,8 @@
 
 #pragma mark - Shake Gesture
 
-- (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event
+- (void) shakeStarted: (NSNotification *) notification {
 {
-    NSLog(@"Shake started");
-    
-    if ( event.subtype == UIEventSubtypeMotionShake )
-    {
-        NSLog(@"Shake started");
-        
         // makes the phone vibrate
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         
@@ -340,18 +340,7 @@
     }
 }
 
-- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event
-{
-    if ( event.subtype == UIEventSubtypeMotionShake )
-    {
-        NSLog(@"Shake ended");
-        
-    }
 
-    
-    if ( [super respondsToSelector:@selector(motionEnded:withEvent:)] )
-        [super motionEnded:motion withEvent:event];
-}
 
 -(void)getShuffledRestaurantData{
     

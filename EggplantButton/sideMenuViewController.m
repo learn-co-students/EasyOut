@@ -60,6 +60,12 @@
    
 }
 
+- (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event
+{
+    NSLog(@"Shake started sideMenu");
+          
+}
+
 /*
 #pragma mark - Navigation
 

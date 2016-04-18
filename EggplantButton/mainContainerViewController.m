@@ -80,8 +80,24 @@
 }
 
 - (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event
+
 {
     NSLog(@"Shake started mainContainer");
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"shakeStarted"
+                                                        object:nil];
+}
+
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event
+{
+    if ( event.subtype == UIEventSubtypeMotionShake )
+    {
+        NSLog(@"Shake ended mainContainer");
+        
+    }
+    
+    if ( [super respondsToSelector:@selector(motionEnded:withEvent:)] )
+        [super motionEnded:motion withEvent:event];
 }
 
 /*
