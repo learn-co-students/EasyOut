@@ -91,8 +91,6 @@
     }
     
     NSArray *topRowOptions = @[@"arts", @"outdoors", @"sights"];
-    NSArray *middleRowOptions = @[@"food", @"trending"];
-    NSArray *bottomRowOptions =  @[@"drinks", @"nextVenues"];
     
     [self.dataStore getActivityforSection:topRowOptions[arc4random()%topRowOptions.count] Location:[NSString stringWithFormat:@"%@,%@",self.latitude, self.longitude] WithCompletion:^(BOOL success) {
         
@@ -101,13 +99,10 @@
                 [self.topRowCollection reloadData];
             }];
         }
-        else {
-            NSLog(@"this is happening");
-        }
 
     }];
     
-    [self.dataStore getActivityforSection:middleRowOptions[arc4random()%middleRowOptions.count] Location:[NSString stringWithFormat:@"%@,%@",self.latitude,self.longitude] WithCompletion:^(BOOL success) {
+    [self.dataStore getActivityforSection:@"food"Location:[NSString stringWithFormat:@"%@,%@",self.latitude,self.longitude] WithCompletion:^(BOOL success) {
         
         if (success) {
 
@@ -115,21 +110,16 @@
                 [self.middleRowCollection reloadData];
             }];
         }
-        else {
-            NSLog(@"this is happening");
-        }
+
     }];
     
-    [self.dataStore getActivityforSection:bottomRowOptions[arc4random()%bottomRowOptions.count] Location:[NSString stringWithFormat:@"%@,%@",self.latitude,self.longitude] WithCompletion:^(BOOL success) {
+    [self.dataStore getActivityforSection:@"drinks" Location:[NSString stringWithFormat:@"%@,%@",self.latitude,self.longitude] WithCompletion:^(BOOL success) {
         
         
         if (success) {
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 [self.bottomRowCollection reloadData];
             }];
-        }
-        else {
-            NSLog(@"this is happening");
         }
     }];
     

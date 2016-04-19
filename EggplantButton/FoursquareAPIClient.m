@@ -47,7 +47,7 @@ NSString * const FSQ_BASE_URL= @"https://api.foursquare.com/";
         
     
         
-        completion(activityDictionary[@"response"][@"groups"]);
+        completion(activityDictionary[@"response"][@"groups"][0][@"items"]);
         
     }];
     

@@ -12,12 +12,11 @@
 
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *address;
-@property (strong, nonatomic) NSString *city;
-@property (strong, nonatomic) NSString *postalCode;
+@property (strong, nonatomic) NSString *type;
 @property (strong, nonatomic) NSURL *imageURL;
 @property (strong, nonatomic) NSString *price;
-@property (strong, nonatomic) NSString *phonenumber;
-@property (strong, nonatomic) NSURL *reserveURL;
+@property (strong, nonatomic) NSURL *moreDetailsURL;
+
 
 -(instancetype)initWithDictionary:(NSDictionary *)activityDictionary;
 
