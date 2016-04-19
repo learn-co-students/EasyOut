@@ -133,7 +133,8 @@ import Firebase
                             "ratings" : user.ratings,
                             "tips" : user.tips,
                             "reputation" : user.reputation,
-                            "profilePhoto" : user.profilePhoto
+                            "profilePhoto" : user.profilePhoto,
+                            "associatedImages" : user.associatedImages
                             ])
                         
                         // We should actually call firebase to pull values for new user and make sure everything was set correctly
@@ -443,6 +444,8 @@ import Firebase
                 // Check that the userID associated with the itinerary matches the userID of the current user
                 if realItinerary.userID == ref.authData.uid {
                     
+                    // TODO: MOVE CONTENTS TO A NEW FUNCTION
+                    
                     // If the userIDs are a match, remove the itinerary from the itineraries reference
                     let itineraryRef = itinerariesRef.childByAppendingPath(itineraryID)
                     itineraryRef.removeValueWithCompletionBlock({ (error, result) in
@@ -478,7 +481,7 @@ import Firebase
     
     // Remove itinerary item from user's savedItineraries
     // Called only from within this integration, everytime an itinerary is removed from Firebase
-    private func removeItineraryFromUserWithUserID(userID: String, itineraryID: String, completion: Bool -> Void) {
+    private func removeItineraryFromUserWithUserID(userID: String, itineraryID: String, completion: (success: Bool) -> Void) {
         
         // Set Firebase references
         let ref = Firebase(url:firebaseRootRef)
@@ -490,17 +493,17 @@ import Firebase
         savedItinerariesRef.childByAppendingPath(itineraryID).removeValueWithCompletionBlock { (error, result) in
             if (error != nil) {
                 print("****Error removing the itinerary from savedItineraries: \(error.description)")
-                completion(false)
+                completion(success: false)
             } else {
                 print("Itinerary removed successfully:\n\(result)")
-                completion(true)
+                completion(success: true)
             }
         }
     }
     
     
     // Create a new image reference in Firebase and return its unique ID
-    func saveNewImageWithImage(image : UIImage, imageID: String -> Void) {
+    func saveNewImageWithImage(image: UIImage, completion: (imageID: String, success: Bool) -> Void) {
         
         print("Attempting to save a new image to Firebase")
         
@@ -529,10 +532,45 @@ import Firebase
             
             print("Image with ImageID: \(newImageID) added to Firebase")
             
-            // Return the new image's ID
-            imageID(newImageID)
+            // Add the imageID to the current user
+            print("Calling addImageIDToCurrentUser function")
+            self.addImageIDToCurrentUser(newImageID, completion: { (success) in
+                if success {
+                    
+                    // Return the new imageID
+                    completion(imageID: newImageID, success: true)
+                } else {
+                     // Return a blank imageID
+                    completion(imageID: "", success: false)
+                }
+            })
         }
+    }
+    
+    
+    // Add imageID to current user
+    private func addImageIDToCurrentUser(imageID: String, completion: (success: Bool) -> Void) {
         
+        print("Attempting to add imageID \(imageID) to current user")
+        
+        // Set Firebase references
+        let ref = Firebase(url:firebaseRootRef)
+        let usersRef = ref.childByAppendingPath("users")
+        let userRef = usersRef.childByAppendingPath(ref.authData.uid)
+        let associatedImagesRef = userRef.childByAppendingPath("associatedImages")
+        
+        // Save the new imageID as a key with Bool value of true
+        associatedImagesRef.childByAppendingPath(imageID).setValue(true) { (error, result) in
+            
+            if (error != nil) {
+                print("There was an error adding the imageID to associatedImages: \(error.description)")
+                completion(success: false)
+            } else {
+                print("New imageID saved successfully:\n\(result)")
+                completion(success: true)
+            }
+        }
+
     }
     
     
