@@ -27,9 +27,7 @@
 @interface CardViewController () <UIScrollViewDelegate, CLLocationManagerDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (strong, nonatomic) ActivitiesDataStore *dataStore;
-
 @property (strong, nonatomic) Itinerary *itinerary;
-
 
 //LOCATION
 @property (nonatomic, strong) CLLocationManager *locationManager;
@@ -47,11 +45,12 @@
 @property (nonatomic) BOOL secondCardLocked;
 @property (nonatomic) BOOL thirdCardLocked;
 
-
 //BUTTONS
-
+@property (weak, nonatomic) IBOutlet UIButton *createItineraryButton;
+@property (weak, nonatomic) IBOutlet UIButton *randomizeCardsButton;
 
 @end
+
 
 @implementation CardViewController
 
@@ -73,7 +72,10 @@
     self.middleRowCollection.backgroundColor = [UIColor clearColor];
     self.bottomRowCollection.backgroundColor = [UIColor clearColor];
     
-    
+
+    self.createItineraryButton.backgroundColor = [UIColor colorWithRed:0.36 green:0.80 blue:0.83 alpha:1.00];
+    self.randomizeCardsButton.backgroundColor = [UIColor colorWithRed:0.36 green:0.80 blue:0.83 alpha:1.00];
+
     
     // listening for segue notifications from sideMenu
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -102,9 +104,6 @@
                                              selector:@selector(disableCheckedCard:)
                                                  name:@"checkBoxChecked"
                                                object:nil];
-    
-   
-   
     
 }
 
@@ -516,6 +515,7 @@
 
 #pragma mark - Button Things
 
+// Segue to itinerary view
 - (IBAction)saveButtonPressed:(UIButton *)sender {
     
     

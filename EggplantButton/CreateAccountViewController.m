@@ -16,7 +16,6 @@
 
 
 @property (weak, nonatomic) IBOutlet UILabel *createAccountLabel;
-@property (weak, nonatomic) IBOutlet UITextField *nameLabel;
 @property (weak, nonatomic) IBOutlet UITextField *userNameLabel;
 @property (weak, nonatomic) IBOutlet UITextField *emailLabel;
 @property (weak, nonatomic) IBOutlet UITextField *passWordLabel;
@@ -48,17 +47,29 @@
     [self.emailLabel resignFirstResponder];
     [self.passWordLabel resignFirstResponder];
     [self.verifyPasswordLabel resignFirstResponder];
-    [self.nameLabel resignFirstResponder];
-    [self.userNameLabel resignFirstResponder]; 
+    [self.userNameLabel resignFirstResponder];
 }
 
-
+-(void)checkUsernameValidityWithCompletion:(void (^)(BOOL isValid)) completion {
+    
+    // Create instance of Firebase API client
+    FirebaseAPIClient *firebaseAPI = [[FirebaseAPIClient alloc] init];
+    
+    [firebaseAPI checkIfUserExistsWithUsername:self.userNameLabel.text completion:^(BOOL doesExist) {
+        if (doesExist) {
+            completion(NO);
+        } else {
+            completion(YES);
+        }
+    }];
+}
 
 -(BOOL)emailIsValid{
     if ([self.emailLabel.text containsString:@"@"] && [self.emailLabel.text containsString:@"."]){
         return YES;
     }
-     self.createAccountButtonTapped.enabled = NO;
+    
+    self.createAccountButtonTapped.enabled = NO;
     return NO;
 }
 
@@ -76,13 +87,14 @@
     if ([self.verifyPasswordLabel.text isEqualToString:self.passWordLabel.text]) {
         return YES;
     }
+    
     self.createAccountButtonTapped.enabled = NO;
     return NO;
 }
 
 
 // Create a new user in Firebase
--(void)createNewUserWithCompletion:(void (^)(BOOL finished))completion{
+-(void)createNewUserWithCompletion:(void (^)(BOOL finished)) completion {
     
     self.email = self.emailLabel.text;
     self.username = self.userNameLabel.text;
@@ -112,17 +124,19 @@
     }    
 }
 
+- (IBAction)usernameDidEnd:(id)sender {
+    if (self.userNameLabel.text.length >2) {
+        
+    }
+}
+
 - (IBAction)emailDidEnd:(id)sender {
     if (![self emailIsValid]) {
         [UIView animateWithDuration:0.50 animations:^{
             self.emailLabel.backgroundColor = [UIColor colorWithRed:247.0f/255.0f green:121.0f/255.0f blue:121.0f/255.0f alpha:1.0];
              }];
-        }
-         else {
-            [UIView animateWithDuration:0.50 animations:^{
-                self.emailLabel.backgroundColor = [UIColor clearColor];
-            }];
-
+        } else {
+            self.emailLabel.backgroundColor = [UIColor whiteColor];
         }
 }
 
@@ -133,8 +147,8 @@
             self.passWordLabel.backgroundColor = [UIColor colorWithRed:247.0f/255.0f green:121.0f/255.0f blue:121.0f/255.0f alpha:1.0];
         }];
         
-    }else { [UIView animateWithDuration:0.50 animations:^{
-        self.passWordLabel.backgroundColor = [UIColor clearColor];
+    } else { [UIView animateWithDuration:0.50 animations:^{
+        self.passWordLabel.backgroundColor = [UIColor whiteColor];
     }];
         
     }
@@ -147,22 +161,17 @@
 
         }];
     }else { [UIView animateWithDuration:0.50 animations:^{
-        self.verifyPasswordLabel.backgroundColor = [UIColor clearColor];
         
+        self.verifyPasswordLabel.backgroundColor = [UIColor whiteColor];
         self.createAccountButtonTapped.enabled = YES;
     }];
         
     }
 }
 
-
-
-
-- (IBAction)createAccountButton:(id)sender
-{
+- (IBAction)createAccountButton:(id)sender {
     
     [self createNewUserWithCompletion:^(BOOL finished) {
-       //
     }];
 }
 

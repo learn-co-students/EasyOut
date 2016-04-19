@@ -31,6 +31,7 @@
 		4C9A038B1CAB064200CA9A02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C9A038A1CAB064200CA9A02 /* Assets.xcassets */; };
 		4C9A038E1CAB064200CA9A02 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C9A038C1CAB064200CA9A02 /* LaunchScreen.storyboard */; };
 		4C9C96271CC58C0600C7094A /* FirebaseIntegrationTestFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9C96261CC58C0600C7094A /* FirebaseIntegrationTestFunctions.swift */; };
+		4C9C962A1CC6ABAF00C7094A /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9C96291CC6ABAF00C7094A /* Constants.m */; };
 		4CAD0CC51CB568C4008162CE /* FirebaseIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAD0CC41CB568C4008162CE /* FirebaseIntegration.swift */; };
 		4CBBC5FB1CBA9618006683D8 /* Button.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CBBC5FA1CBA9618006683D8 /* Button.storyboard */; };
 		4CBBC6041CBA96DF006683D8 /* AppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBBC5FD1CBA96DF006683D8 /* AppViewController.m */; };
@@ -100,6 +101,8 @@
 		4C9A038D1CAB064200CA9A02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4C9A038F1CAB064200CA9A02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C9C96261CC58C0600C7094A /* FirebaseIntegrationTestFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseIntegrationTestFunctions.swift; path = EggplantButton/FirebaseIntegrationTestFunctions.swift; sourceTree = "<group>"; };
+		4C9C96281CC6ABAF00C7094A /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		4C9C96291CC6ABAF00C7094A /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		4CAD0CBF1CB56574008162CE /* EggplantButton-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EggplantButton-Bridging-Header.h"; sourceTree = "<group>"; };
 		4CAD0CC41CB568C4008162CE /* FirebaseIntegration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseIntegration.swift; path = EggplantButton/FirebaseIntegration.swift; sourceTree = "<group>"; };
 		4CBBC5FA1CBA9618006683D8 /* Button.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Button.storyboard; sourceTree = "<group>"; };
@@ -293,6 +296,8 @@
 				4C9A037C1CAB064200CA9A02 /* main.m */,
 				4CAD0CBF1CB56574008162CE /* EggplantButton-Bridging-Header.h */,
 				4C9A038F1CAB064200CA9A02 /* Info.plist */,
+				4C9C96281CC6ABAF00C7094A /* Constants.h */,
+				4C9C96291CC6ABAF00C7094A /* Constants.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -508,6 +513,7 @@
 				4CBBC6061CBA96DF006683D8 /* setupButton.m in Sources */,
 				78A7F6D81CC1672700DD4937 /* sideMenuViewController.m in Sources */,
 				0A80F5AD1CC5278F0060632B /* ItineraryHistoryDetailViewController.m in Sources */,
+				4C9C962A1CC6ABAF00C7094A /* Constants.m in Sources */,
 				9A5AEC321CBF476B009F2BEA /* UserProfileViewController.m in Sources */,
 				4C358D381CAD62CE00257756 /* CardViewController.m in Sources */,
 				9A8C888A1CC44D710053EC00 /* FoursquareAPIClient.m in Sources */,
