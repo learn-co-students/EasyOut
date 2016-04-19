@@ -18,8 +18,8 @@
                         <rect key="frame" x="0.0" y="44" width="320" height="524"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="VU8-K5-T2e" userLabel="Card Stack View">
-                                <rect key="frame" x="0.0" y="64" width="320" height="426"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="VU8-K5-T2e" userLabel="Card Stack View">
+                                <rect key="frame" x="0.0" y="15" width="320" height="426"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gkc-zr-fUL">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="132"/>
@@ -93,20 +93,20 @@
                                     </collectionView>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="hhF-uU-Inp" userLabel="Button Stack">
-                                <rect key="frame" x="0.0" y="532" width="320" height="60"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hhF-uU-Inp" userLabel="Button Stack">
+                                <rect key="frame" x="16" y="456" width="288" height="60"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D12-lf-tgx" userLabel="Itinerize">
-                                        <rect key="frame" x="0.0" y="0.0" width="158" height="60"/>
-                                        <state key="normal" title="Itinerize">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D12-lf-tgx" userLabel="Save Itinerary Button">
+                                        <rect key="frame" x="0.0" y="0.0" width="139" height="60"/>
+                                        <state key="normal" title="Save Itinerary">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="randomButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MYr-IV-L4A"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vrG-5j-TCQ" userLabel="Randomize">
-                                        <rect key="frame" x="163" y="0.0" width="157" height="60"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vrG-5j-TCQ" userLabel="Randomize Cards Button">
+                                        <rect key="frame" x="149" y="0.0" width="139" height="60"/>
                                         <state key="normal" title="Randomize">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -125,9 +125,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="VU8-K5-T2e" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="5dS-E8-lEo"/>
+                            <constraint firstItem="hhF-uU-Inp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="LQf-yx-Pud"/>
+                            <constraint firstItem="hhF-uU-Inp" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Piz-kd-xmS"/>
                             <constraint firstItem="VU8-K5-T2e" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="RA7-c0-rcj"/>
-                            <constraint firstItem="hhF-uU-Inp" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="Zdx-os-ceA"/>
-                            <constraint firstItem="hhF-uU-Inp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cmV-up-7YW"/>
                             <constraint firstItem="VU8-K5-T2e" firstAttribute="bottom" secondItem="hhF-uU-Inp" secondAttribute="top" constant="-15" id="fpw-Nz-Rpz"/>
                             <constraint firstItem="VU8-K5-T2e" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="15" id="nBc-lt-vsh"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hhF-uU-Inp" secondAttribute="bottom" constant="8" symbolic="YES" id="tLe-Um-Ccv"/>
