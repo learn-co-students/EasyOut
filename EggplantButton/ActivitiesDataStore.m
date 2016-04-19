@@ -7,11 +7,9 @@
 //
 
 #import <CoreLocation/CoreLocation.h>
+#import "Activity.h"
 #import "ActivitiesDataStore.h"
-#import "OpenTableAPIClient.h"
-#import "Restaurant.h"
-#import "TicketMasterAPIClient.h"
-#import "Event.h"
+#import "FoursquareAPIClient.h"
 
 
 @implementation ActivitiesDataStore
@@ -30,53 +28,53 @@
 {
     self = [super init];
     if (self) {
+        _randoms = [[NSMutableArray alloc]init];
         _restaurants = [[NSMutableArray alloc]init];
-        _events = [[NSMutableArray alloc]init];
+        _drinks = [[NSMutableArray alloc]init];
     }
     return self;
 }
 
--(void)getRestaurantsWithCompletion:(void (^)(BOOL success))completionBlock
+-(void)getActivityforSection:(NSString *)section Location: (NSString *)location WithCompletion:(void (^)(BOOL success))completionBlock
 {
-    [OpenTableAPIClient getRestaurantWithCompletion:^(NSArray *restaurants) {
+    [FoursquareAPIClient getActivityforSection:section Location:location WithCompletion:^(NSArray *activities) {
         
-        for(NSDictionary *restaurant in restaurants) {
+        for(NSDictionary *activity in activities) {
             
-            if (!restaurants) {
+            NSArray *randomsOptions = @[@"arts", @"outdoors", @"sights"];
+            NSArray *restaurantsOptions = @[@"food", @"trending"];
+            NSArray *drinksOptions =  @[@"drinks", @"nextVenues"];
+            
+            if (!activity) {
                 
                 completionBlock(NO);
                 return;
             }
             
-            [self.restaurants addObject:[Restaurant restaurantFromDictionary:restaurant]];
-            
+            Activity *newActivity = [Activity activityFromDictionary:activity];
+
+            if([randomsOptions containsObject:section]) {
+                
+                [self.randoms addObject:newActivity];
+                
+            }
+
+            else if([restaurantsOptions containsObject:section]) {
+                
+                [self.restaurants addObject:newActivity];
+                
+            }
+            else if([drinksOptions containsObject:section]) {
+                
+                [self.drinks addObject:newActivity];
+            }
         }
-        
         completionBlock(YES);
     }];
     
-}
 
--(void)getEventsForLat:(NSString *)lat lng:(NSString *)lng withCompletion: (void (^)(BOOL success))successBlock {
-    
-    [TicketMasterAPIClient getEventsForLat:lat lng:lng withCompletion:^(NSArray *events) {
-
-        if (!events) {
-            
-            successBlock(NO);
-            return;
-        
-        }
-
-        for (NSDictionary *eventDictionary in events) {
-
-            Event *newEvent = [Event eventFromDictionary:eventDictionary];
-            [self.events addObject: newEvent];
-
-             successBlock(YES);
-        }
-    }];
     
 }
+
 
 @end

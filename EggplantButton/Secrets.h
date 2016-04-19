@@ -18,6 +18,8 @@ extern NSString * const consumerSecret;
 extern NSString * const firebaseRootRef;
 extern NSString * const googleAPI;
 extern NSString * const googlePlacesAPI;
+extern NSString * const FOURSQUARE_CLIENT_ID;
+extern NSString * const FOURSQUARE_CLIENT_SECRET;
 
 // Notifications
 extern NSString * const GenericViewControllerNotificationName;

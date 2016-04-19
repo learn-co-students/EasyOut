@@ -8,26 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSInteger, ActivityType) {
-    RestaurantType,
-    EventType
-};
-
 @interface Activity : NSObject
 
-@property (nonatomic, assign, readwrite) ActivityType activityType;
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *address;
-@property (strong, nonatomic) NSString *city;
-@property (strong, nonatomic) NSString *postalCode;
+@property (strong, nonatomic) NSString *type;
 @property (strong, nonatomic) NSURL *imageURL;
+@property (strong, nonatomic) NSString *price;
+@property (strong, nonatomic) NSURL *moreDetailsURL;
 
--(instancetype)initWithName:(NSString *)name
-                    address:(NSString *)address
-                       city:(NSString *)city
-                 postalCode:(NSString *)postalCode
-                   imageURL:(NSURL *)imageURL
-               activityType:(ActivityType)activityType;
+
+-(instancetype)initWithDictionary:(NSDictionary *)activityDictionary;
+
++(Activity *)activityFromDictionary:(NSDictionary *)activityDictionary;
 
 
 @end

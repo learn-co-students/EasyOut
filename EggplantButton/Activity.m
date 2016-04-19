@@ -11,26 +11,35 @@
 
 @implementation Activity
 
--(instancetype)initWithName:(NSString *)name
-                    address:(NSString *)address
-                       city:(NSString *)city
-                 postalCode:(NSString *)postalCode
-                   imageURL:(NSURL *)imageURL
-               activityType:(ActivityType) activityType{
+-(instancetype)initWithDictionary:(NSDictionary *)activityDictionary{
     
     self = [super init];
+    
     if(self) {
-        _activityType = activityType;
-        _name = name;
-        _address = address;
-        _city = city;
-        _postalCode = postalCode;
-        _imageURL = imageURL;
+        
+        _name = activityDictionary[@"venue"][@"name"];
+        _address = [NSString stringWithFormat:@"%@ %@", activityDictionary[@"venue"][@"location"][@"formattedAddress"][0], activityDictionary[@"venue"][@"location"][@"formattedAddress"][1]];
+        _type = activityDictionary[@"venue"][@"shortName"];
+    
+        if ([activityDictionary[@"venue"][@"photos"][@"groups"] count] > 0 ) {
+            _imageURL = [NSURL URLWithString: [NSString stringWithFormat: @"%@%@%@", activityDictionary[@"venue"][@"photos"][@"groups"][0][@"items"][0][@"prefix"], @"115x115", activityDictionary[@"venue"][@"photos"][@"groups"][0][@"items"][0][@"suffix"]]];
+        }
+        else {
+            _imageURL = [NSURL URLWithString:@"https://cdn1.iconfinder.com/data/icons/social-17/48/photos2-512.png"];
+        }
+        _price = activityDictionary[@"price"][@"currency"];
+        _moreDetailsURL = activityDictionary[@"venue"][@"tips"];
         
     }
     
     return self;
 }
 
++(Activity *)activityFromDictionary:(NSDictionary *)activityDictionary {
+    
+    Activity *activity = [[Activity alloc]initWithDictionary:activityDictionary];
+    
+    return activity;
+}
 
 @end

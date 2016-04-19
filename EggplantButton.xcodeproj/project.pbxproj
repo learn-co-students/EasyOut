@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A05A4EB1CB438AD00EF83CD /* TicketMasterAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A05A4E61CB438AD00EF83CD /* TicketMasterAPIClient.m */; };
 		0ABC5BF11CC5317800434002 /* ItineraryDisplayTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ABC5BF01CC5317800434002 /* ItineraryDisplayTableViewCell.m */; };
 		4C02D1E11CB6E72C0031F978 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C02D1E01CB6E72C0031F978 /* User.m */; };
 		4C02D1E41CB6E8A00031F978 /* Itinerary.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C02D1E31CB6E8A00031F978 /* Itinerary.m */; };
@@ -26,7 +25,6 @@
 		4C64EC341CBAA6BB00FB3A45 /* ActivitiesDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C64EC331CBAA6BB00FB3A45 /* ActivitiesDataStore.m */; };
 		4C64EC441CBAA78200FB3A45 /* CreateAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C64EC3C1CBAA78200FB3A45 /* CreateAccountViewController.m */; };
 		4C64EC451CBAA78200FB3A45 /* EggplantButton.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C64EC3D1CBAA78200FB3A45 /* EggplantButton.xcdatamodeld */; };
-		4C64EC461CBAA78200FB3A45 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C64EC401CBAA78200FB3A45 /* Event.m */; };
 		4C64EC471CBAA78200FB3A45 /* ItineraryView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C64EC411CBAA78200FB3A45 /* ItineraryView.storyboard */; };
 		4C64EC481CBAA78200FB3A45 /* UserHistory.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C64EC421CBAA78200FB3A45 /* UserHistory.xcdatamodeld */; };
 		4C9A037D1CAB064200CA9A02 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9A037C1CAB064200CA9A02 /* main.m */; };
@@ -49,23 +47,18 @@
 		78A7F6D41CBFFDAF00DD4937 /* mainContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78A7F6D31CBFFDAF00DD4937 /* mainContainerViewController.m */; };
 		78A7F6D51CC0217D00DD4937 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AB65BBB1CBD95E4008A99CF /* Login.storyboard */; };
 		78A7F6D81CC1672700DD4937 /* sideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78A7F6D71CC1672700DD4937 /* sideMenuViewController.m */; };
-		9A2478E61CAC2EFA00865C6A /* OpenTableAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2478E51CAC2EFA00865C6A /* OpenTableAPIClient.m */; };
 		9A33839B1CBC5416004B8EFE /* ActivityCardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3383981CBC5416004B8EFE /* ActivityCardCollectionViewCell.m */; };
-		9A33839C1CBC5416004B8EFE /* RestaurantDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A33839A1CBC5416004B8EFE /* RestaurantDataStore.m */; };
-		9A5616B51CAC68AE008D9264 /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5616B41CAC68AE008D9264 /* Restaurant.m */; };
 		9A5AEC321CBF476B009F2BEA /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5AEC311CBF476B009F2BEA /* UserProfileViewController.m */; };
 		9A5AEC341CBF4795009F2BEA /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A5AEC331CBF4795009F2BEA /* UserProfile.storyboard */; };
 		9A74DC521CBF391900B63B0B /* FilterView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A74DC511CBF391900B63B0B /* FilterView.storyboard */; };
 		9A74DC551CBF39E600B63B0B /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74DC541CBF39E600B63B0B /* FilterViewController.m */; };
+		9A8C888A1CC44D710053EC00 /* FoursquareAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8C88891CC44D710053EC00 /* FoursquareAPIClient.m */; };
 		9AA058791CAEAA57000A6AA8 /* ActivityCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AA058781CAEAA57000A6AA8 /* ActivityCard.xib */; };
-		9ACC8C151CBD374600909704 /* nyc_restaurants.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9ACC8C141CBD374600909704 /* nyc_restaurants.plist */; };
 		9ACC8C171CBD398E00909704 /* DetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ACC8C161CBD398E00909704 /* DetailView.storyboard */; };
 		9ACC8C1A1CBD399800909704 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACC8C191CBD399800909704 /* DetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0A05A4E51CB438AD00EF83CD /* TicketMasterAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TicketMasterAPIClient.h; sourceTree = "<group>"; };
-		0A05A4E61CB438AD00EF83CD /* TicketMasterAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TicketMasterAPIClient.m; sourceTree = "<group>"; };
 		0ABC5BEF1CC5317800434002 /* ItineraryDisplayTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItineraryDisplayTableViewCell.h; sourceTree = "<group>"; };
 		0ABC5BF01CC5317800434002 /* ItineraryDisplayTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItineraryDisplayTableViewCell.m; sourceTree = "<group>"; };
 		478A5D5E5340BA05712F05CE /* Pods-EggplantButton.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EggplantButton.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EggplantButton/Pods-EggplantButton.debug.xcconfig"; sourceTree = "<group>"; };
@@ -97,8 +90,6 @@
 		4C64EC3B1CBAA78200FB3A45 /* CreateAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateAccountViewController.h; sourceTree = "<group>"; };
 		4C64EC3C1CBAA78200FB3A45 /* CreateAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateAccountViewController.m; sourceTree = "<group>"; };
 		4C64EC3E1CBAA78200FB3A45 /* EggplantButton.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EggplantButton.xcdatamodel; sourceTree = "<group>"; };
-		4C64EC3F1CBAA78200FB3A45 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Event.h; path = EggplantButton/Event.h; sourceTree = "<group>"; };
-		4C64EC401CBAA78200FB3A45 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Event.m; path = EggplantButton/Event.m; sourceTree = "<group>"; };
 		4C64EC411CBAA78200FB3A45 /* ItineraryView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ItineraryView.storyboard; sourceTree = "<group>"; };
 		4C64EC431CBAA78200FB3A45 /* UserHistory.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserHistory.xcdatamodel; sourceTree = "<group>"; };
 		4C9A03781CAB064200CA9A02 /* EggplantButton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EggplantButton.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,23 +122,18 @@
 		78A7F6D31CBFFDAF00DD4937 /* mainContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mainContainerViewController.m; sourceTree = "<group>"; };
 		78A7F6D61CC1672700DD4937 /* sideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sideMenuViewController.h; sourceTree = "<group>"; };
 		78A7F6D71CC1672700DD4937 /* sideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sideMenuViewController.m; sourceTree = "<group>"; };
-		9A2478E41CAC2EFA00865C6A /* OpenTableAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenTableAPIClient.h; sourceTree = "<group>"; };
-		9A2478E51CAC2EFA00865C6A /* OpenTableAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenTableAPIClient.m; sourceTree = "<group>"; };
 		9A3383971CBC5416004B8EFE /* ActivityCardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActivityCardCollectionViewCell.h; path = EggplantButton/ActivityCardCollectionViewCell.h; sourceTree = "<group>"; };
 		9A3383981CBC5416004B8EFE /* ActivityCardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActivityCardCollectionViewCell.m; path = EggplantButton/ActivityCardCollectionViewCell.m; sourceTree = "<group>"; };
-		9A3383991CBC5416004B8EFE /* RestaurantDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantDataStore.h; sourceTree = "<group>"; };
-		9A33839A1CBC5416004B8EFE /* RestaurantDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantDataStore.m; sourceTree = "<group>"; };
-		9A5616B31CAC68AE008D9264 /* Restaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Restaurant.h; path = EggplantButton/Restaurant.h; sourceTree = "<group>"; };
-		9A5616B41CAC68AE008D9264 /* Restaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Restaurant.m; path = EggplantButton/Restaurant.m; sourceTree = "<group>"; };
 		9A5AEC301CBF476B009F2BEA /* UserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
 		9A5AEC311CBF476B009F2BEA /* UserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
 		9A5AEC331CBF4795009F2BEA /* UserProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
 		9A74DC511CBF391900B63B0B /* FilterView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FilterView.storyboard; sourceTree = "<group>"; };
 		9A74DC531CBF39E600B63B0B /* FilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterViewController.h; sourceTree = "<group>"; };
 		9A74DC541CBF39E600B63B0B /* FilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterViewController.m; sourceTree = "<group>"; };
+		9A8C88881CC44D710053EC00 /* FoursquareAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoursquareAPIClient.h; sourceTree = "<group>"; };
+		9A8C88891CC44D710053EC00 /* FoursquareAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoursquareAPIClient.m; sourceTree = "<group>"; };
 		9AA058781CAEAA57000A6AA8 /* ActivityCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ActivityCard.xib; path = EggplantButton/ActivityCard.xib; sourceTree = "<group>"; };
 		9AB65BBB1CBD95E4008A99CF /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
-		9ACC8C141CBD374600909704 /* nyc_restaurants.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = nyc_restaurants.plist; sourceTree = "<group>"; };
 		9ACC8C161CBD398E00909704 /* DetailView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DetailView.storyboard; sourceTree = "<group>"; };
 		9ACC8C181CBD399800909704 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		9ACC8C191CBD399800909704 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
@@ -213,8 +199,6 @@
 		4C02D1DC1CB6E2F40031F978 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				4C64EC3F1CBAA78200FB3A45 /* Event.h */,
-				4C64EC401CBAA78200FB3A45 /* Event.m */,
 				4C433C011CB9539C00059C92 /* Activity.h */,
 				4C433C021CB9539C00059C92 /* Activity.m */,
 				4C02D1DF1CB6E72C0031F978 /* User.h */,
@@ -223,8 +207,6 @@
 				4C02D1E31CB6E8A00031F978 /* Itinerary.m */,
 				4C02D1E51CB6EDD40031F978 /* Photo.h */,
 				4C02D1E61CB6EDD40031F978 /* Photo.m */,
-				9A5616B31CAC68AE008D9264 /* Restaurant.h */,
-				9A5616B41CAC68AE008D9264 /* Restaurant.m */,
 				4CBBF0851CBBEE09005BB352 /* Tip.h */,
 				4CBBF0861CBBEE09005BB352 /* Tip.m */,
 			);
@@ -260,10 +242,8 @@
 		4C9514C81CB44FC6009CF02A /* APIs */ = {
 			isa = PBXGroup;
 			children = (
-				0A05A4E51CB438AD00EF83CD /* TicketMasterAPIClient.h */,
-				0A05A4E61CB438AD00EF83CD /* TicketMasterAPIClient.m */,
-				9A2478E41CAC2EFA00865C6A /* OpenTableAPIClient.h */,
-				9A2478E51CAC2EFA00865C6A /* OpenTableAPIClient.m */,
+				9A8C88881CC44D710053EC00 /* FoursquareAPIClient.h */,
+				9A8C88891CC44D710053EC00 /* FoursquareAPIClient.m */,
 			);
 			name = APIs;
 			sourceTree = "<group>";
@@ -308,7 +288,6 @@
 		4C9A037B1CAB064200CA9A02 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9ACC8C141CBD374600909704 /* nyc_restaurants.plist */,
 				4C270CA61CAB08A2003E0195 /* Secrets.h */,
 				4C270CA71CAB08A2003E0195 /* Secrets.m */,
 				4C9A037C1CAB064200CA9A02 /* main.m */,
@@ -337,8 +316,6 @@
 		4CBBC60A1CBA9836006683D8 /* DataStores */ = {
 			isa = PBXGroup;
 			children = (
-				9A3383991CBC5416004B8EFE /* RestaurantDataStore.h */,
-				9A33839A1CBC5416004B8EFE /* RestaurantDataStore.m */,
 				4C64EC3D1CBAA78200FB3A45 /* EggplantButton.xcdatamodeld */,
 				4C64EC421CBAA78200FB3A45 /* UserHistory.xcdatamodeld */,
 				4C64EC321CBAA6BB00FB3A45 /* ActivitiesDataStore.h */,
@@ -453,7 +430,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				78A7F6D51CC0217D00DD4937 /* Login.storyboard in Resources */,
-				9ACC8C151CBD374600909704 /* nyc_restaurants.plist in Resources */,
 				9ACC8C171CBD398E00909704 /* DetailView.storyboard in Resources */,
 				9A74DC521CBF391900B63B0B /* FilterView.storyboard in Resources */,
 				9AA058791CAEAA57000A6AA8 /* ActivityCard.xib in Resources */,
@@ -527,15 +503,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C64EC451CBAA78200FB3A45 /* EggplantButton.xcdatamodeld in Sources */,
-				9A2478E61CAC2EFA00865C6A /* OpenTableAPIClient.m in Sources */,
 				4C0EE1591CBDA2E70092C39A /* ItineraryHistoryTableViewController.m in Sources */,
 				4CBBC6061CBA96DF006683D8 /* setupButton.m in Sources */,
 				78A7F6D81CC1672700DD4937 /* sideMenuViewController.m in Sources */,
-				0A80F5AD1CC5278F0060632B /* ItineraryHistoryDetailViewController.m in Sources */,
 				9A5AEC321CBF476B009F2BEA /* UserProfileViewController.m in Sources */,
 				4C358D381CAD62CE00257756 /* CardViewController.m in Sources */,
+				9A8C888A1CC44D710053EC00 /* FoursquareAPIClient.m in Sources */,
 				4CAD0CC51CB568C4008162CE /* FirebaseIntegration.swift in Sources */,
-				0A05A4EB1CB438AD00EF83CD /* TicketMasterAPIClient.m in Sources */,
 				4C358D731CADCDF700257756 /* ActivityCardView.m in Sources */,
 				0ABC5BF11CC5317800434002 /* ItineraryDisplayTableViewCell.m in Sources */,
 				4C64EC441CBAA78200FB3A45 /* CreateAccountViewController.m in Sources */,
@@ -546,14 +520,11 @@
 				4C02D1E41CB6E8A00031F978 /* Itinerary.m in Sources */,
 				4C0EE1561CBDA2D60092C39A /* ItineraryTableViewController.m in Sources */,
 				4CBBC6051CBA96DF006683D8 /* LogInViewController.m in Sources */,
-				4C64EC461CBAA78200FB3A45 /* Event.m in Sources */,
 				4C9A03801CAB064200CA9A02 /* AppDelegate.m in Sources */,
 				78A7F6D41CBFFDAF00DD4937 /* mainContainerViewController.m in Sources */,
 				9A74DC551CBF39E600B63B0B /* FilterViewController.m in Sources */,
 				4C270CA81CAB08A2003E0195 /* Secrets.m in Sources */,
 				4C02D1E71CB6EDD40031F978 /* Photo.m in Sources */,
-				9A5616B51CAC68AE008D9264 /* Restaurant.m in Sources */,
-				9A33839C1CBC5416004B8EFE /* RestaurantDataStore.m in Sources */,
 				4C9C96271CC58C0600C7094A /* FirebaseIntegrationTestFunctions.swift in Sources */,
 				4CBBC6041CBA96DF006683D8 /* AppViewController.m in Sources */,
 				4C64EC341CBAA6BB00FB3A45 /* ActivitiesDataStore.m in Sources */,
