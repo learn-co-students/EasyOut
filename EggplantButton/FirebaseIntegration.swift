@@ -319,7 +319,7 @@ import Firebase
         newItineraryRef.setValue([
             "itineraryID" : newItineraryID,
             "creationDate" : convertDateToStringWithDate(itinerary.creationDate),
-//            "activities" : itinerary.activities,
+            "activities" : itinerary.activities,
             "ratings" : itinerary.ratings,
             "tips" : itinerary.tips,
             "photos" : itinerary.photos,
@@ -500,37 +500,39 @@ import Firebase
     
     
     // Create a new image reference in Firebase and return its unique ID
-    func saveNewImageWithImage(image : UIImage, completion: String -> Void) {
+    func saveNewImageWithImage(image : UIImage, imageID: String -> Void) {
         
         print("Attempting to save a new image to Firebase")
         
         // Resize image to fit inside a Firebase value (10MB file size)
-        let scaledImage = resizeImage(image)
+        self.resizeImage(image) { (scaledImage) in
+            
+            // Set references for new image
+            let ref = Firebase(url:firebaseRootRef)
+            let imagesRef = ref.childByAppendingPath("images")
+            
+            // Create firebase reference for given itinerary
+            let newImageRef = imagesRef.childByAutoId()
+            
+            // Create data from image
+            let newImageData : NSData = UIImagePNGRepresentation(scaledImage)!
+            
+            // Convert image data into base 64 string
+            let newImageBase64String : NSString! = newImageData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.Encoding64CharacterLineLength)
+            
+            // Set values of the new itinerary reference with properties on the itinerary
+            let newImageID = newImageRef.key
+            newImageRef.setValue([
+                "imageID" : newImageID,
+                "imageBase64String" : newImageBase64String // TODO: Values for this key should be the keys for every photo attached to the itinerary, and the photo keys should be created in another function
+                ])
+            
+            print("Image with ImageID: \(newImageID) added to Firebase")
+            
+            // Return the new image's ID
+            imageID(newImageID)
+        }
         
-        // Set references for new image
-        let ref = Firebase(url:firebaseRootRef)
-        let imagesRef = ref.childByAppendingPath("images")
-        
-        // Create firebase reference for given itinerary
-        let newImageRef = imagesRef.childByAutoId()
-        
-        // Create data from image
-        let newImageData : NSData = UIImagePNGRepresentation(scaledImage)!
-        
-        // Convert image data into base 64 string
-        let newImageBase64String : NSString! = newImageData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.Encoding64CharacterLineLength)
-        
-        // Set values of the new itinerary reference with properties on the itinerary
-        let newImageID = newImageRef.key
-        newImageRef.setValue([
-            "imageID" : newImageID,
-            "imageBase64String" : newImageBase64String // TODO: Values for this key should be the keys for every photo attached to the itinerary, and the photo keys should be created in another function
-            ])
-        
-        print("Image with ImageID: \(newImageID) added to Firebase")
-        
-        // Return the new image's ID
-        completion(newImageID)
     }
     
     
@@ -596,20 +598,20 @@ import Firebase
     
     
     // Resize an image to fit in a Firebase value
-    func resizeImage(image: UIImage) -> UIImage {
+    private func resizeImage(oldImage: UIImage, completion: (scaledImage: UIImage) -> Void) {
         
         // Create new image placeholder
         var newImage: UIImage = UIImage()
         
         // Define initial image file size
-        var imageData: NSData = NSData(data: UIImageJPEGRepresentation((image), 1)!)
+        var imageData: NSData = NSData(data: UIImageJPEGRepresentation((oldImage), 1)!)
         var imageSizeInKB: Int = imageData.length / 1024
         
         // While the image size is greater than 10MB, run size reduction
         while imageSizeInKB > 10000 {
             
             // Define the new size of the image at 90% of its original size
-            let newSize = CGSizeApplyAffineTransform(image.size, CGAffineTransformMakeScale(0.9, 0.9))
+            let newSize = CGSizeApplyAffineTransform(oldImage.size, CGAffineTransformMakeScale(0.9, 0.9))
             
             // Calculate the rectangle used for scaling
             let rect = CGRectMake(0, 0, newSize.width, newSize.height)
@@ -618,7 +620,7 @@ import Firebase
             UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
             
             // Use image context to draw scaled image
-            image.drawInRect(rect)
+            oldImage.drawInRect(rect)
             
             // Create new image from the scaled image and close the image context
             newImage = UIGraphicsGetImageFromCurrentImageContext()
@@ -629,7 +631,7 @@ import Firebase
         }
 
         // Return the scaled image
-        return newImage
+        completion(scaledImage: newImage)
     }
     
 }

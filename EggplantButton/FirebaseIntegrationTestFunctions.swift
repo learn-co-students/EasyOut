@@ -105,11 +105,8 @@ import Firebase
         
         // Check function to save new itinerary to Firebase
         print("Creating test activities")
-        let testActivityType: ActivityType = ActivityType.init(rawValue: 0)!
-        let testActivity1 = Activity.init(name: "test1", address: "test1", city: "test1", postalCode: "10001", imageURL: NSURL.fileURLWithPath("testURL"), activityType: testActivityType)
-        let testActivity2 = Activity.init(name: "test2", address: "test2", city: "test2", postalCode: "10001", imageURL: NSURL.fileURLWithPath("testURL"), activityType: testActivityType)
-        let testActivity3 = Activity.init(name: "test3", address: "test3", city: "test3", postalCode: "10001", imageURL: NSURL.fileURLWithPath("testURL"), activityType: testActivityType)
-        let testActivitiesArray: NSMutableArray = [ testActivity1, testActivity2, testActivity3]
+        let testActivity = Activity.init(fromDictionary: ["testActivity" : true])
+        let testActivitiesArray: NSMutableArray = [ testActivity ]
         print(testActivitiesArray)
         print("Creating test itinerary")
         let testItinerary = Itinerary.init(activities: testActivitiesArray, userID: "testUserID", creationDate: NSDate())
