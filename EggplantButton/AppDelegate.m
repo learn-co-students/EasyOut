@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Constants.h"
 #import <Button/Button.h>
 #import "Secrets.h"
 #import "EggplantButton-Swift.h"
@@ -39,7 +40,7 @@
 //    }];
     
     // Set appearance of the navigation bar
-    [UINavigationBar appearance].barTintColor = [UIColor colorWithRed:0.36 green:0.80 blue:0.83 alpha:1.00];
+    [UINavigationBar appearance].barTintColor = [Constants vikingBlueColor];
     [UIBarButtonItem appearance].tintColor = [UIColor whiteColor];
     [[UINavigationBar appearance] setTranslucent:NO];
     
