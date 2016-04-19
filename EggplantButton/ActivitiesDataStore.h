@@ -10,16 +10,15 @@
 
 @interface ActivitiesDataStore : NSObject
 
+@property (strong, nonatomic) NSMutableArray *randoms;
 @property (strong, nonatomic) NSMutableArray *restaurants;
-@property (nonatomic,strong) NSMutableArray *events;
+@property (nonatomic,strong) NSMutableArray *drinks;
 
 
 + (instancetype)sharedDataStore;
 
 
--(void)getRestaurantsWithCompletion:(void (^)(BOOL success))completionBlock;
-
--(void)getEventsForLat:(NSString *)lat lng:(NSString *)lng withCompletion:(void (^)(BOOL success))completionBlock;
+-(void)getActivityforSection:(NSString *)section Location: (NSString *)location WithCompletion:(void (^)(BOOL success))completionBlock;
 
 
 @end

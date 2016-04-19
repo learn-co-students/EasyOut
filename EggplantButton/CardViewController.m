@@ -65,9 +65,7 @@
 
     self.dataStore = [ActivitiesDataStore sharedDataStore];
     
-    [self getTicketMasterData];
-    
-    [self getRestaurantData];
+    [self getCardData];
     
     self.topRowCollection.backgroundColor = [UIColor clearColor];
     self.middleRowCollection.backgroundColor = [UIColor clearColor];
@@ -145,40 +143,52 @@
 
 #pragma mark - Get API data
 
--(void)getRestaurantData{
+-(void)getCardData{
     
-    [self.topRowCollection registerClass:[ActivityCardCollectionViewCell class] forCellWithReuseIdentifier:@"cardCell"];
-    
-    self.topRowCollection.delegate = self;
-    self.topRowCollection.dataSource = self;
-    
-    
-    [self.dataStore getRestaurantsWithCompletion:^(BOOL success) {
-        if(success) {
-            
-            [self.topRowCollection reloadData];
-        }
+    for(UICollectionView *collectionView in @[self.topRowCollection, self.middleRowCollection, self.bottomRowCollection ]) {
         
+        collectionView.delegate = self;
+        collectionView.dataSource = self;
+        
+        [collectionView registerClass:[ActivityCardCollectionViewCell class] forCellWithReuseIdentifier:@"cardCell"];
+
+    }
+    
+    NSArray *topRowOptions = @[@"arts", @"outdoors", @"sights"];
+    
+    [self.dataStore getActivityforSection:topRowOptions[arc4random()%topRowOptions.count] Location:[NSString stringWithFormat:@"%@,%@",self.latitude, self.longitude] WithCompletion:^(BOOL success) {
+        
+        if (success) {
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                [self.topRowCollection reloadData];
+            }];
+        }
+
+    }];
+    
+    [self.dataStore getActivityforSection:@"food"Location:[NSString stringWithFormat:@"%@,%@",self.latitude,self.longitude] WithCompletion:^(BOOL success) {
+        
+        if (success) {
+
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                [self.middleRowCollection reloadData];
+            }];
+        }
+
+    }];
+    
+    [self.dataStore getActivityforSection:@"drinks" Location:[NSString stringWithFormat:@"%@,%@",self.latitude,self.longitude] WithCompletion:^(BOOL success) {
+        
+        
+        if (success) {
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                [self.bottomRowCollection reloadData];
+            }];
+        }
     }];
     
 }
 
--(void)getTicketMasterData{
-    
-    
-    [self.middleRowCollection registerClass:[ActivityCardCollectionViewCell class] forCellWithReuseIdentifier:@"cardCell"];
-    
-    self.middleRowCollection.delegate = self;
-    self.middleRowCollection.dataSource = self;
-    
-    
-    [self.dataStore getEventsForLat:self.latitude lng:self.longitude withCompletion:^(BOOL success) {
-        if (success) {
-            
-            [self.middleRowCollection reloadData];
-        }
-    }];
-}
 
 #pragma mark - Collection View
 
@@ -198,17 +208,13 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
 
     if(collectionView == self.topRowCollection) {
-        
-        return self.dataStore.restaurants.count;
-
+        return self.dataStore.randoms.count;
     }
     else if (collectionView == self.middleRowCollection) {
-                
-        return self.dataStore.events.count;
-
+        return self.dataStore.restaurants.count;
     }
     else {
-        return 0;
+        return self.dataStore.drinks.count;
     }
     
 }
@@ -219,15 +225,19 @@
     
     if(collectionView == self.topRowCollection) {
         
-        Activity *restaurantActivity = self.dataStore.restaurants[indexPath.row];
-        cell.cardView.activity = restaurantActivity;
+        Activity *randomActivity = self.dataStore.randoms[indexPath.row];
+        cell.cardView.activity = randomActivity;
         
     }
     else if (collectionView == self.middleRowCollection) {
         
-        Activity *eventActivity = self.dataStore.events[indexPath.row];
-        cell.cardView.activity = eventActivity;
+        Activity *restaurantActivity = self.dataStore.restaurants[indexPath.row];
+        cell.cardView.activity = restaurantActivity;
                 
+    }
+    else {
+        Activity *drinksActivity = self.dataStore.drinks[indexPath.row];
+        cell.cardView.activity = drinksActivity;
     }
 
     return cell;
@@ -248,9 +258,7 @@
     
     destinationVC.activity = ((ActivityCardCollectionViewCell *)sender).cardView.activity;
     }
-    else if ([segue.identifier isEqualToString:@"filterSegue"]) {
-        
-    }
+
 }
 
 
@@ -275,10 +283,10 @@
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+    
     if (self.mostRecentLocation == nil) {
         
         self.mostRecentLocation = [locations lastObject];
-        
     }
     
     [self.locationManager stopUpdatingLocation];
@@ -292,9 +300,7 @@
     // makes the phone vibrate
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
     
-    [self getShuffledTicketMasterData];
-    
-    [self getShuffledRestaurantData];
+    [self shuffleCards];
     
     // Shake top card with the default speed
     [self.topRowCollection shake:15     // 15 times
@@ -320,65 +326,59 @@
         // makes the phone vibrate
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         
-        [self getShuffledTicketMasterData];
+        [self shuffleCards];
         
-        [self getShuffledRestaurantData];
-        
-        // Shake top card with the default speed
-        [self.topRowCollection shake:15     // 15 times
-                           withDelta:20     // 20 points wide
-         ];
-        // Shake middle card with the default speed
-        [self.middleRowCollection shake:15   // 15 times
-                              withDelta:20   // 20 points wide
-         ];
-        // Shake bottom card with the default speed
-        [self.bottomRowCollection shake:15   // 15 times
-                              withDelta:20   // 20 points wide
-         ];
+        if(!self.firstCardLocked) {
+            [self.topRowCollection shake:15     // 15 times
+                               withDelta:20     // 20 points wide
+             ];
+        }
+        if(!self.secondCardLocked) {
+            [self.middleRowCollection shake:15   // 15 times
+                                  withDelta:20   // 20 points wide
+             ];
+        }
+        if(!self.bottomRowCollection) {
+            [self.bottomRowCollection shake:15   // 15 times
+                                  withDelta:20   // 20 points wide
+             ];
+        }
         
     }
 }
 
 
 
--(void)getShuffledRestaurantData{
+-(void)shuffleCards{
+    GKARC4RandomSource *randomSource = [GKARC4RandomSource new];
     
-    [self.dataStore getRestaurantsWithCompletion:^(BOOL success) {
-        if(success) {
-            
-            //shuffle restaurants
-            GKARC4RandomSource *randomSource = [GKARC4RandomSource new];
-            self.dataStore.restaurants = [[randomSource arrayByShufflingObjectsInArray:self.dataStore.restaurants] mutableCopy];
-            
-            //reloading top collection
-            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                [self.topRowCollection reloadData];
-            }];
-            NSLog(@"topRow reloaded");
-            
-        }
+    if(!self.firstCardLocked) {
+        self.dataStore.randoms = [[randomSource arrayByShufflingObjectsInArray:self.dataStore.randoms] mutableCopy];
         
-    }];
-    
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [self.topRowCollection reloadData];
+        }];
+    }
+    if(!self.secondCardLocked) {
+        self.dataStore.restaurants = [[randomSource arrayByShufflingObjectsInArray:self.dataStore.restaurants] mutableCopy];
+        
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [self.middleRowCollection reloadData];
+        }];
+    }
+    if(!self.thirdCardLocked) {
+        self.dataStore.drinks = [[randomSource arrayByShufflingObjectsInArray:self.dataStore.drinks] mutableCopy];
+        
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [self.bottomRowCollection reloadData];
+        }];
+    }
 }
 
--(void)getShuffledTicketMasterData{
     
-    [self.dataStore getEventsForLat:self.latitude lng:self.longitude withCompletion:^(BOOL success) {
-        if (success) {
-            //shuffle events
-            GKARC4RandomSource *randomSource = [GKARC4RandomSource new];
-            self.dataStore.events = [[randomSource arrayByShufflingObjectsInArray:self.dataStore.events]mutableCopy];
+    
 
-            //reloading middle collection
-            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                [self.middleRowCollection reloadData];
-            }];
-            NSLog(@"middleRow reloaded");
-        }
-    }];
-}
+
 
 
 

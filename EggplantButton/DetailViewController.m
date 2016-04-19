@@ -67,10 +67,7 @@
 
     
     
-    
 
-    self.addressLabel.text = [NSString stringWithFormat:@"%@ %@,NY %@", self.activity.address,
-                              self.activity.city, self.activity.postalCode];
 }
 
 - (void)didReceiveMemoryWarning {
