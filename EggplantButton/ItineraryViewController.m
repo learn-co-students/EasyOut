@@ -1,18 +1,20 @@
 //
-//  ItineraryTableViewController.m
+//  ItineraryViewController.m
 //  EggplantButton
 //
-//  Created by Ian Alexander Rahman on 4/12/16.
+//  Created by Adrian Brown  on 4/19/16.
 //  Copyright © 2016 Team Eggplant Button. All rights reserved.
 //
 
-#import "ItineraryTableViewController.h"
+#import "ItineraryViewController.h"
 
-@interface ItineraryTableViewController ()
+@interface ItineraryViewController () <UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *itineraryTableView;
+@property (weak, nonatomic) IBOutlet UIView *mapView;
 
 @end
 
-@implementation ItineraryTableViewController
+@implementation ItineraryViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -23,18 +25,20 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
     return self.itinerary.activities.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ActivityCell" forIndexPath:indexPath];
     
-    NSLog(@"Creating cell for ");
+
     
     return cell;
 }
+
 
 @end

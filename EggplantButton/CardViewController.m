@@ -15,6 +15,8 @@
 #import "sideMenuViewController.h"
 #import "Secrets.h"
 #import "Firebase.h"
+#import "Itinerary.h"
+#import "ItineraryViewController.h"
 
 #import "UIView+Shake.h"
 
@@ -66,6 +68,9 @@
     self.dataStore = [ActivitiesDataStore sharedDataStore];
     
     [self getCardData];
+    
+    // allocate itinerary
+  
     
     self.topRowCollection.backgroundColor = [UIColor clearColor];
     self.middleRowCollection.backgroundColor = [UIColor clearColor];
@@ -139,6 +144,9 @@
     NSLog(@"user is logged out");
     
 }
+
+#pragma mark - Save Itinerary Button
+
 
 
 #pragma mark - Get API data
@@ -219,6 +227,7 @@
     
 }
 
+/// I Need this INFO ------ AB 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     ActivityCardCollectionViewCell *cell = (ActivityCardCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"cardCell" forIndexPath:indexPath];
@@ -243,6 +252,40 @@
     return cell;
 }
 
+
+- (IBAction)SaveItineraryButtonTapped:(id)sender {
+  
+    NSMutableArray *activitiesArray = [NSMutableArray new];
+    
+    
+    
+    self.itinerary = [[Itinerary alloc]initWithActivities:activitiesArray userID:@"" creationDate:[NSDate date]];
+    
+    
+    NSArray *topArray = [self.topRowCollection visibleCells];
+    UICollectionViewCell *topCell = [topArray firstObject];
+    NSIndexPath *indexPathOfTopCell = [self.topRowCollection indexPathForCell:topCell];
+    Activity *topCellActivity = self.dataStore.randoms[indexPathOfTopCell.row];
+    
+    NSArray *middleArray = [self.middleRowCollection visibleCells];
+    UICollectionViewCell *middleCell = [middleArray firstObject];
+    NSIndexPath *indexPathOfMiddleCell = [self.middleRowCollection indexPathForCell:middleCell];
+    Activity *middleCellActivity = self.dataStore.randoms[indexPathOfMiddleCell.row];
+    
+    NSArray *bottomArray = [self.bottomRowCollection visibleCells];
+    UICollectionViewCell *bottomCell = [bottomArray firstObject];
+    NSIndexPath *indexPathOfBottomCell = [self.bottomRowCollection indexPathForCell:bottomCell];
+    Activity *bottomCellActivity = self.dataStore.randoms[indexPathOfBottomCell.row];
+    
+    
+    [self.itinerary.activities addObject:topCellActivity];
+    [self.itinerary.activities addObject:middleCellActivity];
+    [self.itinerary.activities addObject:bottomCellActivity];
+    
+    [self performSegueWithIdentifier:@"ItinerarySegue" sender:nil]; 
+    
+}
+
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
     [self performSegueWithIdentifier:@"detailSegue" sender: (ActivityCardCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath]];
@@ -250,20 +293,25 @@
 }
 
 
+
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     if([segue.identifier isEqualToString:@"detailSegue"]) {
-    
-    DetailViewController *destinationVC = [segue destinationViewController];
-    
-    destinationVC.activity = ((ActivityCardCollectionViewCell *)sender).cardView.activity;
+        
+        DetailViewController *destinationVC = [segue destinationViewController];
+        
+        destinationVC.activity = ((ActivityCardCollectionViewCell *)sender).cardView.activity;
     }
-
+    if ([segue.identifier isEqualToString:@"ItinerarySegue"]) {
+         ItineraryViewController *destinationVC = [segue destinationViewController];
+//        NSLog(@"self.itinerary of card vc: %@", self.itinerary.activities);
+        destinationVC.itinerary = self.itinerary;
+    }
 }
 
 
 #pragma mark - Core Location
-
 
 -(void)setUpCoreLocation {
     
@@ -397,8 +445,8 @@
 //
 //    [self.locationManager stopUpdatingLocation];
 //}
-
-
+//
+//
 // This method will be used to handle the card scroll views' reactions and delay page-turning
 //-(void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
 //{
@@ -408,39 +456,39 @@
 //    CGPoint newOffset = CGPointZero;
 //    *targetContentOffset = newOffset;
 //}
-
-
-/* ADRIAN"S TicketMaster Event Setup ** vvvv
- 
- 
- - (void)setupLocationManager {
- self.locationManager = [[CLLocationManager alloc] init];
- self.locationManager.delegate = self;
- self.locationManager.distanceFilter = kCLDistanceFilterNone;
- self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
- [self.locationManager requestWhenInUseAuthorization];
- [self getTheUsersCurrentLocation];
- }
- 
- - (void)getTheUsersCurrentLocation {
- //after this method fires off, the locationManager didUpdateLocations method below gets called (behind the scenes by the startUpdatingLocation)
- [self.locationManager startUpdatingLocation];
- }
- 
- 
- 
- -(void)getEvents {
- [self.ticketMasterDataStore getEventsForLocation:self.mostRecentLocation withCompletion:^(BOOL success) {
- if (success) {
- [[NSOperationQueue mainQueue]addOperationWithBlock:^{
- // [self.tableView reloadData];
- }];
- }
- }];
- }
- 
- 
- */
+//
+//
+///* ADRIAN"S TicketMaster Event Setup ** vvvv
+// 
+// 
+// - (void)setupLocationManager {
+// self.locationManager = [[CLLocationManager alloc] init];
+// self.locationManager.delegate = self;
+// self.locationManager.distanceFilter = kCLDistanceFilterNone;
+// self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+// [self.locationManager requestWhenInUseAuthorization];
+// [self getTheUsersCurrentLocation];
+// }
+// 
+// - (void)getTheUsersCurrentLocation {
+// after this method fires off, the locationManager didUpdateLocations method below gets called (behind the scenes by the startUpdatingLocation)
+// [self.locationManager startUpdatingLocation];
+// }
+// 
+// 
+// 
+// -(void)getEvents {
+// [self.ticketMasterDataStore getEventsForLocation:self.mostRecentLocation withCompletion:^(BOOL success) {
+// if (success) {
+// [[NSOperationQueue mainQueue]addOperationWithBlock:^{
+//  [self.tableView reloadData];
+// }];
+// }
+// }];
+// }
+// 
+//// 
+// */
 
 
 

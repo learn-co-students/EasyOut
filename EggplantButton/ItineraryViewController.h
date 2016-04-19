@@ -1,15 +1,15 @@
 //
-//  ItineraryTableViewController.h
+//  ItineraryViewController.h
 //  EggplantButton
 //
-//  Created by Ian Alexander Rahman on 4/12/16.
+//  Created by Adrian Brown  on 4/19/16.
 //  Copyright © 2016 Team Eggplant Button. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "Itinerary.h"
-
-@interface ItineraryTableViewController : UITableViewController
+#import "CardViewController.h"
+@interface ItineraryViewController : UIViewController
 
 @property (strong, nonatomic) Itinerary *itinerary;
 

@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A12C1171CC6C8450043475F /* ItineraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A12C1161CC6C8450043475F /* ItineraryViewController.m */; };
 		0ABC5BF11CC5317800434002 /* ItineraryDisplayTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ABC5BF01CC5317800434002 /* ItineraryDisplayTableViewCell.m */; };
 		4C02D1E11CB6E72C0031F978 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C02D1E01CB6E72C0031F978 /* User.m */; };
 		4C02D1E41CB6E8A00031F978 /* Itinerary.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C02D1E31CB6E8A00031F978 /* Itinerary.m */; };
 		4C02D1E71CB6EDD40031F978 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C02D1E61CB6EDD40031F978 /* Photo.m */; };
 		4C0EE1531CBDA0930092C39A /* ItineraryHistoryView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C0EE1521CBDA0930092C39A /* ItineraryHistoryView.storyboard */; };
-		4C0EE1561CBDA2D60092C39A /* ItineraryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0EE1551CBDA2D60092C39A /* ItineraryTableViewController.m */; };
 		4C0EE1591CBDA2E70092C39A /* ItineraryHistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0EE1581CBDA2E70092C39A /* ItineraryHistoryTableViewController.m */; };
 		4C1DE15F1CB8410900AFBCF5 /* LobsterTwo-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4C1DE15A1CB83E5000AFBCF5 /* LobsterTwo-Bold.otf */; };
 		4C1DE1601CB8410900AFBCF5 /* LobsterTwo-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4C1DE15B1CB83E5000AFBCF5 /* LobsterTwo-BoldItalic.otf */; };
@@ -59,6 +59,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A12C1151CC6C8450043475F /* ItineraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItineraryViewController.h; sourceTree = "<group>"; };
+		0A12C1161CC6C8450043475F /* ItineraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItineraryViewController.m; sourceTree = "<group>"; };
 		0ABC5BEF1CC5317800434002 /* ItineraryDisplayTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItineraryDisplayTableViewCell.h; sourceTree = "<group>"; };
 		0ABC5BF01CC5317800434002 /* ItineraryDisplayTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItineraryDisplayTableViewCell.m; sourceTree = "<group>"; };
 		478A5D5E5340BA05712F05CE /* Pods-EggplantButton.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EggplantButton.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EggplantButton/Pods-EggplantButton.debug.xcconfig"; sourceTree = "<group>"; };
@@ -69,8 +71,6 @@
 		4C02D1E51CB6EDD40031F978 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Photo.h; path = EggplantButton/Photo.h; sourceTree = "<group>"; };
 		4C02D1E61CB6EDD40031F978 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Photo.m; path = EggplantButton/Photo.m; sourceTree = "<group>"; };
 		4C0EE1521CBDA0930092C39A /* ItineraryHistoryView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ItineraryHistoryView.storyboard; path = EggplantButton/ItineraryHistoryView.storyboard; sourceTree = SOURCE_ROOT; };
-		4C0EE1541CBDA2D60092C39A /* ItineraryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItineraryTableViewController.h; sourceTree = "<group>"; };
-		4C0EE1551CBDA2D60092C39A /* ItineraryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItineraryTableViewController.m; sourceTree = "<group>"; };
 		4C0EE1571CBDA2E70092C39A /* ItineraryHistoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItineraryHistoryTableViewController.h; sourceTree = "<group>"; };
 		4C0EE1581CBDA2E70092C39A /* ItineraryHistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItineraryHistoryTableViewController.m; sourceTree = "<group>"; };
 		4C1DE15A1CB83E5000AFBCF5 /* LobsterTwo-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "LobsterTwo-Bold.otf"; path = "EggplantButton/LobsterTwo-Bold.otf"; sourceTree = "<group>"; };
@@ -178,8 +178,8 @@
 				4CBBC5FF1CBA96DF006683D8 /* LogInViewController.m */,
 				4C64EC3B1CBAA78200FB3A45 /* CreateAccountViewController.h */,
 				4C64EC3C1CBAA78200FB3A45 /* CreateAccountViewController.m */,
-				4C0EE1541CBDA2D60092C39A /* ItineraryTableViewController.h */,
-				4C0EE1551CBDA2D60092C39A /* ItineraryTableViewController.m */,
+				0A12C1151CC6C8450043475F /* ItineraryViewController.h */,
+				0A12C1161CC6C8450043475F /* ItineraryViewController.m */,
 				4C0EE1571CBDA2E70092C39A /* ItineraryHistoryTableViewController.h */,
 				4C0EE1581CBDA2E70092C39A /* ItineraryHistoryTableViewController.m */,
 				0ABC5BEF1CC5317800434002 /* ItineraryDisplayTableViewCell.h */,
@@ -518,7 +518,6 @@
 				4C433C031CB9539C00059C92 /* Activity.m in Sources */,
 				9A33839B1CBC5416004B8EFE /* ActivityCardCollectionViewCell.m in Sources */,
 				4C02D1E41CB6E8A00031F978 /* Itinerary.m in Sources */,
-				4C0EE1561CBDA2D60092C39A /* ItineraryTableViewController.m in Sources */,
 				4CBBC6051CBA96DF006683D8 /* LogInViewController.m in Sources */,
 				4C9A03801CAB064200CA9A02 /* AppDelegate.m in Sources */,
 				78A7F6D41CBFFDAF00DD4937 /* mainContainerViewController.m in Sources */,
@@ -530,6 +529,7 @@
 				4C64EC341CBAA6BB00FB3A45 /* ActivitiesDataStore.m in Sources */,
 				4CBBF0871CBBEE09005BB352 /* Tip.m in Sources */,
 				4C9A037D1CAB064200CA9A02 /* main.m in Sources */,
+				0A12C1171CC6C8450043475F /* ItineraryViewController.m in Sources */,
 				4C64EC481CBAA78200FB3A45 /* UserHistory.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
