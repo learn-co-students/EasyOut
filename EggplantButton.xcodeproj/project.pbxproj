@@ -20,7 +20,6 @@
 		4C1DE1621CB8410900AFBCF5 /* LobsterTwo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4C1DE15D1CB83E5000AFBCF5 /* LobsterTwo-Regular.otf */; };
 		4C270CA81CAB08A2003E0195 /* Secrets.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C270CA71CAB08A2003E0195 /* Secrets.m */; };
 		4C358D381CAD62CE00257756 /* CardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C358D371CAD62CE00257756 /* CardViewController.m */; };
-		4C358D731CADCDF700257756 /* ActivityCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C358D721CADCDF700257756 /* ActivityCardView.m */; };
 		4C433C031CB9539C00059C92 /* Activity.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C433C021CB9539C00059C92 /* Activity.m */; };
 		4C64EC341CBAA6BB00FB3A45 /* ActivitiesDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C64EC331CBAA6BB00FB3A45 /* ActivitiesDataStore.m */; };
 		4C64EC441CBAA78200FB3A45 /* CreateAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C64EC3C1CBAA78200FB3A45 /* CreateAccountViewController.m */; };
@@ -40,6 +39,7 @@
 		4CBBC6091CBA97B0006683D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CBBC6081CBA97B0006683D8 /* Main.storyboard */; };
 		4CBBF0871CBBEE09005BB352 /* Tip.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBBF0861CBBEE09005BB352 /* Tip.m */; };
 		752C207F8039FC0AF3F24A9C /* Pods_EggplantButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 620C2EAF950D8ACD2F96FDC8 /* Pods_EggplantButton.framework */; };
+		787EEDFB1CC6B51A00555A16 /* ActivityCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C358D721CADCDF700257756 /* ActivityCardView.m */; };
 		78A7F6C71CBD44AC00DD4937 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78A7F6C61CBD44AC00DD4937 /* CoreMotion.framework */; };
 		78A7F6C91CBD44B500DD4937 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78A7F6C81CBD44B500DD4937 /* GameKit.framework */; };
 		78A7F6CB1CBD44C500DD4937 /* GameplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78A7F6CA1CBD44C500DD4937 /* GameplayKit.framework */; };
@@ -502,6 +502,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				787EEDFB1CC6B51A00555A16 /* ActivityCardView.m in Sources */,
 				4C64EC451CBAA78200FB3A45 /* EggplantButton.xcdatamodeld in Sources */,
 				4C0EE1591CBDA2E70092C39A /* ItineraryHistoryTableViewController.m in Sources */,
 				4CBBC6061CBA96DF006683D8 /* setupButton.m in Sources */,
@@ -511,7 +512,6 @@
 				4C358D381CAD62CE00257756 /* CardViewController.m in Sources */,
 				9A8C888A1CC44D710053EC00 /* FoursquareAPIClient.m in Sources */,
 				4CAD0CC51CB568C4008162CE /* FirebaseIntegration.swift in Sources */,
-				4C358D731CADCDF700257756 /* ActivityCardView.m in Sources */,
 				4C64EC441CBAA78200FB3A45 /* CreateAccountViewController.m in Sources */,
 				4C02D1E11CB6E72C0031F978 /* User.m in Sources */,
 				9ACC8C1A1CBD399800909704 /* DetailViewController.m in Sources */,

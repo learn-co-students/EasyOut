@@ -15,7 +15,6 @@
 #import "sideMenuViewController.h"
 #import "Secrets.h"
 #import "Firebase.h"
-#import "ActivityCardView.h"
 
 #import "UIView+Shake.h"
 
@@ -120,15 +119,16 @@
 - (void) disableCheckedCard: (NSNotification *) notification {
     
     NSLog(@"cardVC knows check button tapped");
+    UIButton *tappedButton = notification.object;
+    ActivityCardView * cardCell = (ActivityCardView *)tappedButton.superview.superview;
+    UICollectionViewCell *cardCellSuperview = (UICollectionViewCell *)cardCell.superview.superview;
     
-    ActivityCardView * cardCell = [[ActivityCardView alloc] init];
-    
-    if (![[self.topRowCollection indexPathForCell:cardCell.superview] isEqual:nil]) {
+    if ([self.topRowCollection indexPathForCell:cardCellSuperview]) {
         self.firstCardLocked = self.firstCardLocked ? NO : YES;
         self.firstCardLocked ? [self disableScroll] : [self enableScroll];
         NSLog(@"this card lives in the topRowCollection");
     }
-    else if (![[self.middleRowCollection indexPathForCell:cardCell.superview] isEqual:nil]) {
+    else if ([self.middleRowCollection indexPathForCell:cardCellSuperview]) {
         self.secondCardLocked = self.secondCardLocked ? NO : YES;
         self.secondCardLocked ? [self disableScroll] : [self enableScroll];
         NSLog(@"this card lives in the middleRowCollection");

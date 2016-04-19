@@ -8,9 +8,11 @@
 //
 
 #import "ActivityCardView.h"
+#import "ActivityCardCollectionViewCell.h"
 #import "Event.h"
 #import <AFNetworking/AFImageDownloader.h>
 #import <AFNetworking/AFNetworking.h>
+
 
 
 @interface ActivityCardView ()
@@ -119,10 +121,10 @@
 
 - (IBAction)cardSelected:(UIButton *)sender {
     
-    self.contentSuperview = [self.checkButton superview];
+    self.contentSuperview = [self.contentView superview];
     NSLog(@"ContentView Superview: %@", self.contentSuperview);
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"checkBoxChecked" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"checkBoxChecked" object:sender];
     
     if([self.contentView.backgroundColor isEqual: [[UIColor blackColor] colorWithAlphaComponent:0.4]]) {
         

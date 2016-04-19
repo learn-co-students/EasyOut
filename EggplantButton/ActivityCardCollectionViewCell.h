@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "ActivityCardView.h"
 
+
 @interface ActivityCardCollectionViewCell : UICollectionViewCell
 
-@property (strong, nonatomic) ActivityCardView *cardView;
+@property (strong, nonatomic) ActivityCardView * cardView;
 
 @end
