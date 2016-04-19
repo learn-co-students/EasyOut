@@ -40,7 +40,6 @@
     
     // Set appearance of the navigation bar
     
-    [self.window setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"city"]]];
     
     
     

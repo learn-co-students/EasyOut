@@ -30,6 +30,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"city"]]];
+
+    
     FirebaseAPIClient *client = [[FirebaseAPIClient alloc]init];
     
     Firebase *ref = [[Firebase alloc] initWithUrl:firebaseRootRef];

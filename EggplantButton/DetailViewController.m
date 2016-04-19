@@ -33,7 +33,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-        
+    
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"city"]]];
+
+    
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:1.285
                                                             longitude:103.848
                                                                  zoom:12];
@@ -49,6 +52,7 @@
     [self.mapView.trailingAnchor constraintEqualToAnchor:self.mapUIView.trailingAnchor].active = YES;
 
 
+    
     
 //    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:((Restaurant *)self.activity).lat
 //                                                            longitude:((Restaurant *)self.activity).lng
