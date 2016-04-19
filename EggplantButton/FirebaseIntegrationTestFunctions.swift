@@ -42,9 +42,9 @@ import Firebase
         let newUser : User = User.init(email: "testuser@test.com", username: "testUser")
         
         
-        // Check function to check if user exists
-        print("Calling check if username exists function")
-        firebaseAPI.checkIfUserExistsWithUsername("testUser", email: "testuser@test.com", completion: { (doesExist) in
+        // Check function to check if user information exists
+        print("Calling check if user information exists function")
+        firebaseAPI.checkIfUserExistsWithInformation("testUser", email: "testuser@test.com", completion: { (doesExist) in
             if doesExist {
                 print("Test account exists")
             } else {
@@ -75,9 +75,9 @@ import Firebase
         }
         
         
-        // Check function to check if username is unique
-        print("Calling check if username exists function")
-        firebaseAPI.checkIfUserExistsWithUsername("testUser", email: "testuser@test.com", completion: { (doesExist) in
+        // Check function to check if user information is unique
+        print("Calling check if user information exists function")
+        firebaseAPI.checkIfUserExistsWithInformation("testUser", email: "testuser@test.com", completion: { (doesExist) in
             if doesExist {
                 print("Test account exists")
             } else {
