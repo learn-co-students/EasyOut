@@ -39,7 +39,13 @@
     }];
     
     // Set appearance of the navigation bar
+    
+    [self.window setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"city"]]];
+    
+    
+    
     [UINavigationBar appearance].tintColor = [UIColor blackColor];
+    
     
     [GMSServices provideAPIKey:googlePlacesAPI];
     

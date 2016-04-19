@@ -7,7 +7,9 @@
 //
 
 #import "UserProfileViewController.h"
-
+#import "EggplantButton-Swift.h"
+#import "Firebase.h"
+#import "Secrets.h"
 
 @interface UserProfileViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
@@ -28,12 +30,39 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    FirebaseAPIClient *client = [[FirebaseAPIClient alloc]init];
+    
+    Firebase *ref = [[Firebase alloc] initWithUrl:firebaseRootRef];
+    
+    [client getUserFromFirebaseWithUserID:ref.authData.uid completion:^(User * user, BOOL success) {
+        
+        self.user = user;
+    }];
+    
+    self.usernameLabel.text = self.user.username;
+    self.bioLabel.text = self.user.bio;
+    
+    
+    [self setUpCamera];
+    
+    self.userImage.layer.cornerRadius = (self.userImage.frame.size.width)/2;
+    self.userImage.clipsToBounds = YES;
+    self.userImage.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
+    
+    for (UILabel *label in @[self.numRatedLabel, self.numTipsGivenLabel, self.numOfItineraries]) {
+        label.layer.cornerRadius = (label.frame.size.width)/2;
+        label.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
+    }
+    
+}
+
+-(void)setUpCamera {
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         
         UIAlertController * noCameraAlert =   [UIAlertController
-                                             alertControllerWithTitle:@"Error"
-                                             message:@"Device has no camera"
-                                             preferredStyle:UIAlertControllerStyleAlert];
+                                               alertControllerWithTitle:@"Error"
+                                               message:@"Device has no camera"
+                                               preferredStyle:UIAlertControllerStyleAlert];
         
         
         UIAlertAction* ok = [UIAlertAction
@@ -46,10 +75,8 @@
                              }];
         [noCameraAlert addAction:ok];
         [self presentViewController:noCameraAlert animated:YES completion:nil];
-
-         }
-
-    
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -60,7 +87,17 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    
     self.userImage.image = chosenImage;
+    
+//    FirebaseAPIClient *client = [[FirebaseAPIClient alloc]init];
+//    
+//    Firebase *ref = [[Firebase alloc] initWithUrl:firebaseRootRef];
+//    
+//    [client saveNewImageWithImage:chosenImage completion:^(NSString * imageID) {
+//
+//    }];
+    
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }

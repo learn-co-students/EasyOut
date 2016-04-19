@@ -18,7 +18,9 @@
     if(self) {
         
         _name = activityDictionary[@"venue"][@"name"];
-        _address = [NSString stringWithFormat:@"%@ %@", activityDictionary[@"venue"][@"location"][@"formattedAddress"][0], activityDictionary[@"venue"][@"location"][@"formattedAddress"][1]];
+        
+        NSMutableArray *mAddress = [[NSMutableArray alloc]initWithArray: activityDictionary[@"venue"][@"location"][@"formattedAddress"]];
+        _address = mAddress;
         _type = activityDictionary[@"venue"][@"shortName"];
     
         if ([activityDictionary[@"venue"][@"photos"][@"groups"] count] > 0 ) {

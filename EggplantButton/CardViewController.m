@@ -59,7 +59,6 @@
     
     [super viewDidLoad];
     
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"city"]]];
     
     [self setUpCoreLocation];
 

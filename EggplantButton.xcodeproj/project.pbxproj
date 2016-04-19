@@ -53,6 +53,8 @@
 		9A74DC521CBF391900B63B0B /* FilterView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A74DC511CBF391900B63B0B /* FilterView.storyboard */; };
 		9A74DC551CBF39E600B63B0B /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74DC541CBF39E600B63B0B /* FilterViewController.m */; };
 		9A8C888A1CC44D710053EC00 /* FoursquareAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8C88891CC44D710053EC00 /* FoursquareAPIClient.m */; };
+		9A8C88951CC6671F0053EC00 /* CircleLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8C88941CC6671F0053EC00 /* CircleLabelView.m */; };
+		9A8C88971CC667C70053EC00 /* CircleLabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A8C88961CC667C70053EC00 /* CircleLabel.xib */; };
 		9AA058791CAEAA57000A6AA8 /* ActivityCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AA058781CAEAA57000A6AA8 /* ActivityCard.xib */; };
 		9ACC8C171CBD398E00909704 /* DetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ACC8C161CBD398E00909704 /* DetailView.storyboard */; };
 		9ACC8C1A1CBD399800909704 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACC8C191CBD399800909704 /* DetailViewController.m */; };
@@ -132,6 +134,9 @@
 		9A74DC541CBF39E600B63B0B /* FilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterViewController.m; sourceTree = "<group>"; };
 		9A8C88881CC44D710053EC00 /* FoursquareAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoursquareAPIClient.h; sourceTree = "<group>"; };
 		9A8C88891CC44D710053EC00 /* FoursquareAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoursquareAPIClient.m; sourceTree = "<group>"; };
+		9A8C88931CC6671F0053EC00 /* CircleLabelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleLabelView.h; sourceTree = "<group>"; };
+		9A8C88941CC6671F0053EC00 /* CircleLabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleLabelView.m; sourceTree = "<group>"; };
+		9A8C88961CC667C70053EC00 /* CircleLabel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CircleLabel.xib; sourceTree = "<group>"; };
 		9AA058781CAEAA57000A6AA8 /* ActivityCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ActivityCard.xib; path = EggplantButton/ActivityCard.xib; sourceTree = "<group>"; };
 		9AB65BBB1CBD95E4008A99CF /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		9ACC8C161CBD398E00909704 /* DetailView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DetailView.storyboard; sourceTree = "<group>"; };
@@ -229,6 +234,9 @@
 		4C8E5A521CB74E4C005E1625 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9A8C88961CC667C70053EC00 /* CircleLabel.xib */,
+				9A8C88931CC6671F0053EC00 /* CircleLabelView.h */,
+				9A8C88941CC6671F0053EC00 /* CircleLabelView.m */,
 				9A3383971CBC5416004B8EFE /* ActivityCardCollectionViewCell.h */,
 				9A3383981CBC5416004B8EFE /* ActivityCardCollectionViewCell.m */,
 				9AA058781CAEAA57000A6AA8 /* ActivityCard.xib */,
@@ -431,6 +439,7 @@
 			files = (
 				78A7F6D51CC0217D00DD4937 /* Login.storyboard in Resources */,
 				9ACC8C171CBD398E00909704 /* DetailView.storyboard in Resources */,
+				9A8C88971CC667C70053EC00 /* CircleLabel.xib in Resources */,
 				9A74DC521CBF391900B63B0B /* FilterView.storyboard in Resources */,
 				9AA058791CAEAA57000A6AA8 /* ActivityCard.xib in Resources */,
 				4C1DE1621CB8410900AFBCF5 /* LobsterTwo-Regular.otf in Resources */,
@@ -515,6 +524,7 @@
 				4C64EC441CBAA78200FB3A45 /* CreateAccountViewController.m in Sources */,
 				4C02D1E11CB6E72C0031F978 /* User.m in Sources */,
 				9ACC8C1A1CBD399800909704 /* DetailViewController.m in Sources */,
+				9A8C88951CC6671F0053EC00 /* CircleLabelView.m in Sources */,
 				4C433C031CB9539C00059C92 /* Activity.m in Sources */,
 				9A33839B1CBC5416004B8EFE /* ActivityCardCollectionViewCell.m in Sources */,
 				4C02D1E41CB6E8A00031F978 /* Itinerary.m in Sources */,
