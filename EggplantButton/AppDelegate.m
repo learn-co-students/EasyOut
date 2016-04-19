@@ -24,8 +24,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    // Initialize and run Firebase test functions
-    FirebaseTestFunctions *firebaseTest = [[FirebaseTestFunctions alloc] init];
+//    // Initialize and run Firebase test functions
+//    FirebaseTestFunctions *firebaseTest = [[FirebaseTestFunctions alloc] init];
 //    [firebaseTest testFirebaseFunctions];
     
 //    /// Allows Button to request Location Permissions
@@ -39,7 +39,11 @@
 //    }];
     
     // Set appearance of the navigation bar
-    [UINavigationBar appearance].tintColor = [UIColor blackColor];
+    [UINavigationBar appearance].barTintColor = [UIColor colorWithRed:0.36 green:0.80 blue:0.83 alpha:1.00];
+    [UIBarButtonItem appearance].tintColor = [UIColor whiteColor];
+    [[UINavigationBar appearance] setTranslucent:NO];
+    
+    
     
     [GMSServices provideAPIKey:googlePlacesAPI];
     
