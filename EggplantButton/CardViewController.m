@@ -15,6 +15,7 @@
 #import "sideMenuViewController.h"
 #import "Secrets.h"
 #import "Firebase.h"
+#import "ActivityCardView.h"
 
 #import "UIView+Shake.h"
 
@@ -57,6 +58,8 @@
 
 - (void)viewDidLoad {
     
+    
+    
     [super viewDidLoad];
     
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"city"]]];
@@ -70,6 +73,8 @@
     self.topRowCollection.backgroundColor = [UIColor clearColor];
     self.middleRowCollection.backgroundColor = [UIColor clearColor];
     self.bottomRowCollection.backgroundColor = [UIColor clearColor];
+    
+    
     
     // listening for segue notifications from sideMenu
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -93,11 +98,73 @@
                                                  name:@"shakeStarted"
                                                object:nil];
     
+    //listening for check button notification
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(disableCheckedCard:)
+                                                 name:@"checkBoxChecked"
+                                               object:nil];
+    
+   
+   
+    
 }
 
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    
+}
+
+
+#pragma mark - Locking/Unlocking Cards
+- (void) disableCheckedCard: (NSNotification *) notification {
+    
+    NSLog(@"cardVC knows check button tapped");
+    
+    ActivityCardView * cardCell = [[ActivityCardView alloc] init];
+    
+    if (![[self.topRowCollection indexPathForCell:cardCell.superview] isEqual:nil]) {
+        self.firstCardLocked = self.firstCardLocked ? NO : YES;
+        self.firstCardLocked ? [self disableScroll] : [self enableScroll];
+        NSLog(@"this card lives in the topRowCollection");
+    }
+    else if (![[self.middleRowCollection indexPathForCell:cardCell.superview] isEqual:nil]) {
+        self.secondCardLocked = self.secondCardLocked ? NO : YES;
+        self.secondCardLocked ? [self disableScroll] : [self enableScroll];
+        NSLog(@"this card lives in the middleRowCollection");
+    }
+    else {
+        self.thirdCardLocked = self.thirdCardLocked ? NO : YES;
+        self.thirdCardLocked ? [self disableScroll] : [self enableScroll];
+        NSLog(@"this card lives in the bottomRowCollection");
+    }
+}
+
+// disables scroll when card is locked
+- (void) disableScroll {
+    if(self.firstCardLocked) {
+        self.topRowCollection.scrollEnabled = NO;
+    }
+    if(self.secondCardLocked) {
+        self.middleRowCollection.scrollEnabled = NO;
+    }
+    if(self.thirdCardLocked) {
+        self.bottomRowCollection.scrollEnabled = NO;
+    }
+    
+}
+
+// enables scroll when card is unlocked
+- (void) enableScroll {
+    if(!self.firstCardLocked) {
+        self.topRowCollection.scrollEnabled = YES;
+    }
+    if(!self.secondCardLocked) {
+        self.middleRowCollection.scrollEnabled = YES;
+    }
+    if(!self.thirdCardLocked) {
+        self.bottomRowCollection.scrollEnabled = YES;
+    }
     
 }
 
@@ -302,19 +369,21 @@
     
     [self shuffleCards];
     
-    // Shake top card with the default speed
-    [self.topRowCollection shake:15     // 15 times
-                       withDelta:20     // 20 points wide
-     ];
-    // Shake middle card with the default speed
-    [self.middleRowCollection shake:15   // 15 times
-                          withDelta:20   // 20 points wide
-     ];
-    // Shake bottom card with the default speed
-    [self.bottomRowCollection shake:15   // 15 times
-                          withDelta:20   // 20 points wide
-     ];
-    
+    if(!self.firstCardLocked) {
+        [self.topRowCollection shake:15     // 15 times
+                           withDelta:20     // 20 points wide
+         ];
+    }
+    if(!self.secondCardLocked) {
+        [self.middleRowCollection shake:15   // 15 times
+                              withDelta:20   // 20 points wide
+         ];
+    }
+    if(!self.thirdCardLocked) {
+        [self.bottomRowCollection shake:15   // 15 times
+                              withDelta:20   // 20 points wide
+         ];
+    }
 
 }
 
@@ -338,7 +407,7 @@
                                   withDelta:20   // 20 points wide
              ];
         }
-        if(!self.bottomRowCollection) {
+        if(!self.thirdCardLocked) {
             [self.bottomRowCollection shake:15   // 15 times
                                   withDelta:20   // 20 points wide
              ];

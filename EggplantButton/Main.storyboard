@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="QB9-cg-QB8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="QB9-cg-QB8">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -266,12 +266,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="199" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qNz-87-OcV">
-                                <rect key="frame" x="80" y="273" width="42" height="30"/>
-                                <state key="normal" title="Filters">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hOL-Ei-CQk">
                                 <rect key="frame" x="45" y="235" width="110" height="30"/>
                                 <state key="normal" title="Itinerary History">
@@ -324,7 +318,6 @@
                             <constraint firstItem="hOL-Ei-CQk" firstAttribute="top" secondItem="j6a-DZ-UOp" secondAttribute="bottom" constant="15" id="HIO-sO-z1F"/>
                             <constraint firstItem="kFr-i4-jK0" firstAttribute="top" secondItem="COR-WQ-UzG" secondAttribute="top" constant="20" symbolic="YES" id="M6i-VK-hIT"/>
                             <constraint firstItem="kFr-i4-jK0" firstAttribute="leading" secondItem="hOL-Ei-CQk" secondAttribute="leading" id="Pft-qo-vHW"/>
-                            <constraint firstItem="kFr-i4-jK0" firstAttribute="centerX" secondItem="qNz-87-OcV" secondAttribute="centerX" constant="-1" id="Ru9-eY-21r"/>
                             <constraint firstItem="kFr-i4-jK0" firstAttribute="trailing" secondItem="hOL-Ei-CQk" secondAttribute="trailing" id="TwM-nT-mX0"/>
                             <constraint firstItem="j6a-DZ-UOp" firstAttribute="top" secondItem="kFr-i4-jK0" secondAttribute="bottom" constant="63" id="b01-8a-iXV"/>
                             <constraint firstItem="vh4-OL-ZXU" firstAttribute="leading" secondItem="COR-WQ-UzG" secondAttribute="leading" id="blv-Rb-4kl"/>
@@ -333,7 +326,6 @@
                             <constraint firstItem="j6a-DZ-UOp" firstAttribute="top" secondItem="vh4-OL-ZXU" secondAttribute="bottom" constant="8" symbolic="YES" id="klD-Ab-tRW"/>
                             <constraint firstAttribute="bottomMargin" secondItem="utd-AB-OgT" secondAttribute="bottom" constant="20" id="ncN-7E-fNF"/>
                             <constraint firstItem="vh4-OL-ZXU" firstAttribute="centerX" secondItem="hOL-Ei-CQk" secondAttribute="centerX" id="qRD-le-EeY"/>
-                            <constraint firstItem="qNz-87-OcV" firstAttribute="top" secondItem="hOL-Ei-CQk" secondAttribute="bottom" constant="8" symbolic="YES" id="zVh-ED-nCr"/>
                         </constraints>
                     </view>
                     <connections>
