@@ -25,18 +25,18 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     // Initialize and run Firebase test functions
-//    FirebaseTestFunctions *firebaseTest = [[FirebaseTestFunctions alloc] init];
+    FirebaseTestFunctions *firebaseTest = [[FirebaseTestFunctions alloc] init];
 //    [firebaseTest testFirebaseFunctions];
     
-    /// Allows Button to request Location Permissions
-    [Button allowButtonToRequestLocationPermission:YES];
-    
-    [[Button sharedButton] configureWithApplicationId: APP_ID completion:NULL];
-    
-    [[Button sharedButton] setDeferredDeeplinkHandler:^(NSURL *deferredDeeplinkURL) {
-        // Handle the deferredDeeplinkURL and open the relevant content.
-        //[self handleURL :deferredDeeplinkURL];
-    }];
+//    /// Allows Button to request Location Permissions
+//    [Button allowButtonToRequestLocationPermission:YES];
+//    
+//    [[Button sharedButton] configureWithApplicationId: APP_ID completion:NULL];
+//    
+//    [[Button sharedButton] setDeferredDeeplinkHandler:^(NSURL *deferredDeeplinkURL) {
+//        // Handle the deferredDeeplinkURL and open the relevant content.
+//        //[self handleURL :deferredDeeplinkURL];
+//    }];
     
     // Set appearance of the navigation bar
     
@@ -56,7 +56,7 @@
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation {
     
-    [[Button sharedButton] handleURL:url];
+//    [[Button sharedButton] handleURL:url];
     
     // Handle the url and open the relevant content.
     //[self handleURL:url];
@@ -69,7 +69,7 @@
 continueUserActivity:(NSUserActivity *)userActivity
  restorationHandler:(void (^)(NSArray *))restorationHandler {
     
-    [[Button sharedButton] continueUserActivity:userActivity];
+//    [[Button sharedButton] continueUserActivity:userActivity];
     
     // Handle the activity and open the relevant content.
     //[self handleURL:userActivity.webPageURL];

@@ -25,6 +25,7 @@
                            tips:[@{} mutableCopy]
                    profilePhoto:@""
                      reputation:1
+               associatedImages:[@{} mutableCopy]
             ];
     
     NSLog(@"User initialized with email: %@ and username: %@", email, username);
@@ -49,6 +50,9 @@
     if (![keys containsObject:@"ratings"]) {
         [newDictionary setObject:[[NSMutableDictionary alloc] init] forKey:@"ratings"];
     }
+    if (![keys containsObject:@"associatedImages"]) {
+        [newDictionary setObject:[[NSMutableDictionary alloc] init] forKey:@"associatedImages"];
+    }
     
     self = [self initWithUserID:newDictionary[@"userID]"]
                        username:newDictionary[@"username"]
@@ -61,6 +65,7 @@
                            tips:newDictionary[@"tips"]
                    profilePhoto:newDictionary[@"profilePhoto"]
                      reputation:[newDictionary[@"reputation"] integerValue]
+               associatedImages:newDictionary[@"associatedImages"]
             ];
     
     NSLog(@"User initialized from Firebase dictionary");
@@ -79,7 +84,8 @@
                        ratings:(NSMutableDictionary *)ratings
                           tips:(NSMutableDictionary *)tips
                   profilePhoto:(NSString *)profilePhoto
-                    reputation:(NSUInteger)reputation {
+                    reputation:(NSUInteger)reputation
+              associatedImages:(NSMutableDictionary *)associatedImages {
     
     self = [super init];
 
@@ -95,6 +101,7 @@
         _tips = tips;
         _profilePhoto = profilePhoto;
         _reputation = reputation;
+        _associatedImages = associatedImages;
     }
 
     NSLog(@"User initialized in designated initializer with username: %@", username);

@@ -21,6 +21,7 @@
 @property (strong, nonatomic) NSMutableDictionary *tips;
 @property (strong, nonatomic) NSString *profilePhoto;
 @property (nonatomic) NSUInteger reputation;
+@property (strong, nonatomic) NSMutableDictionary *associatedImages;
 
 
 -(instancetype)initWithEmail:(NSString *)email
@@ -38,6 +39,7 @@
                        ratings:(NSMutableDictionary *)ratings
                           tips:(NSMutableDictionary *)tips
                   profilePhoto:(NSString *)profilePhoto
-                    reputation:(NSUInteger)reputation;
+                    reputation:(NSUInteger)reputation
+              associatedImages:(NSMutableDictionary *)associatedImages;
 
 @end
