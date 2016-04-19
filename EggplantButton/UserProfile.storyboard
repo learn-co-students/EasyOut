@@ -20,31 +20,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="2gT-zw-ciG">
-                                <rect key="frame" x="20" y="20" width="560" height="565"/>
+                                <rect key="frame" x="20" y="20" width="560" height="521"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="WNT-fB-zLF">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="275"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="253"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NY3-4j-T4K">
-                                                <rect key="frame" x="241" y="0.0" width="79" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NY3-4j-T4K">
+                                                <rect key="frame" x="241" y="0.0" width="79" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CUH-f1-A53">
-                                                <rect key="frame" x="182" y="26" width="197" height="197"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CUH-f1-A53">
+                                                <rect key="frame" x="182" y="5" width="197" height="197"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="CUH-f1-A53" secondAttribute="height" multiplier="1:1" id="6E3-Rh-GYN"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bio" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Piy-5M-cZ5">
-                                                <rect key="frame" x="268" y="228" width="25" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Bio" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Piy-5M-cZ5">
+                                                <rect key="frame" x="268" y="207" width="25" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="WFZ-NY-ETG">
-                                                <rect key="frame" x="76" y="254" width="408" height="21"/>
+                                                <rect key="frame" x="76" y="232" width="408" height="21"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# of Things Rated" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xIG-Dv-DT4">
                                                         <rect key="frame" x="0.0" y="0.0" width="136" height="21"/>
@@ -69,7 +69,7 @@
                                         </subviews>
                                     </stackView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="utp-SR-wfg">
-                                        <rect key="frame" x="0.0" y="290" width="560" height="275"/>
+                                        <rect key="frame" x="0.0" y="268" width="560" height="253"/>
                                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="NKB-Fu-1W7">
@@ -84,11 +84,24 @@
                                     </tableView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wqM-ut-nAZ">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wqM-ut-nAZ">
                                 <rect key="frame" x="320" y="213" width="79" height="30"/>
                                 <state key="normal" title="Edit picture"/>
                                 <connections>
                                     <action selector="editPictureButtonPressed:" destination="vvM-bz-Ud9" eventType="touchUpInside" id="XMq-H9-FyO"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ReS-8y-1bh">
+                                <rect key="frame" x="282" y="277" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Prd-2I-inJ">
+                                <rect key="frame" x="38" y="28" width="40" height="30"/>
+                                <state key="normal" title="BACK"/>
+                                <connections>
+                                    <action selector="BACKButtonTapped:" destination="vvM-bz-Ud9" eventType="touchUpInside" id="1k8-10-GvG"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -102,13 +115,9 @@
                             <constraint firstItem="wqM-ut-nAZ" firstAttribute="bottom" secondItem="CUH-f1-A53" secondAttribute="bottom" id="htg-Jh-vKO"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="TY5-2N-dKi">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="M3l-Ec-dXd">
-                            <connections>
-                                <action selector="backButton:" destination="vvM-bz-Ud9" id="H76-Yz-K0g"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Title" id="TY5-2N-dKi"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="bioLabel" destination="Piy-5M-cZ5" id="bqi-Us-C8h"/>
                         <outlet property="numOfItineraries" destination="dla-yL-YBj" id="IIo-mY-kV7"/>
@@ -120,7 +129,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TRQ-n7-BSP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1233" y="360"/>
+            <point key="canvasLocation" x="2783" y="373"/>
         </scene>
     </scenes>
 </document>

@@ -11,160 +11,256 @@ import Firebase
 
 @objc class FirebaseAPIClient: NSObject {
     
-    // Test Function that calls all other functions to test
-    func testFirebaseFunctions () {
+    // Login and authenticate user given email and password
+    func logInUserWithEmail(email:String, password:String, completion: Bool -> Void) {
         
-        let newUser : User = User.init(email: "shutup@test.com", username: "testy")
+        print("Attempting to log in user with email: \(email)")
         
-//        registerNewUserWithUser(newUser, password: "whatever")
-        
+        // Set base reference
         let ref = Firebase(url:firebaseRootRef)
         
-//        createUserObjectFromFirebaseWithUserID(ref.authData.uid) { (user) in
-//            print("User object created for \(user.username)")
-//        }
-        
-//        createUserObjectFromFirebaseWithUserID("a797760b-0aa9-4257-a64a-d4fd715dd411") { (user) in
-//            print("User object created for \(user.username)")
-//        }
+        // Attempt user authentication
+        ref.authUser(email, password: password) {
+            error, authData in
+            
+            print("Result of attempt to authenticate user: \(error), authData: \(authData)")
+            
+            if (error != nil) {
+                // an error occurred while attempting login
+                if let errorCode = FAuthenticationError(rawValue: error.code) {
+                    switch (errorCode) {
+                    case .UserDoesNotExist:
+                        print("****Error type: Invalid user")
+                    case .InvalidEmail:
+                        print("****Error type: Invalid email")
+                    case .InvalidPassword:
+                        print("****Error type: Invalid password")
+                    default:
+                        print("****Error type: Default error")
+                    }
+                }
+                
+                print("An error occurred while attempting login: \(error.description)")
+                
+                completion(false)
+                
+            } else {
+                print("User is logged in.\nChecking authData for data.")
+            }
+            
+            if authData.auth != nil {
+                print("authData has data!")
+                completion(true)
+            } else {
+                print("authData has no data :(")
+                completion(false)
+            }
+        }
     }
     
     
-    // TODO: Global save function which calls appropriate API save function based on type of data passed in
+    // Log user out
+    func logOutUser() {
+        
+        print("Attempting to log user out")
+        
+        // Set references
+        let ref = Firebase(url:firebaseRootRef)
+        
+        // Check if a user is currently logged in
+        if ref.authData != nil {
+            
+            // Unauthorize (log out) user
+            print("Logging out user with useriD \(ref.authData.uid)")
+            ref.unauth()
+            print("User logged out")
+            
+        } else {
+            print("No user currently logged in")
+        }
+        
+    }
+    
+    
+    // Register a new user in firebase given a User object and password
+    func registerNewUserWithUser(user: User, password: String, completion: (Bool) -> ()) {
+        
+        print("Attempting to register user with\nUsername: \(user.username)\nEmail: \(user.email)\nPassword: \(password)")
+        
+        checkIfUsernameExistsWithUsername(user.username) { (doesExist) in
+            if doesExist {
+                
+                print("Couldn't register user because username is already in use")
+                completion(false)
+                
+            } else {
+                
+                print("Username is not in use, continuing with registration")
+                
+                // Set reference for firebase account
+                let ref = Firebase(url:firebaseRootRef)
+                
+                // Create user with email from user object and password string
+                ref.createUser(user.email, password: password, withValueCompletionBlock: { error, result in
+                    
+                    // Check if the userID was created in registration attempt and set it if it was
+                    guard let uid = result["uid"] as? String else { completion(false); print("No userID found for user reference when registering user with email \(user.email)."); return }
+                    
+                    print("Result of user registration attempt:\n\(result)")
+                    
+                    if error != nil {
+                        print("There was an error creating the user \(error.description)")
+                    } else {
+                        
+                        print("Successfully created user account with uid \(uid)")
+                        
+                        // Set references for new user
+                        let usersRef = ref.childByAppendingPath("users")
+                        let userRef = usersRef.childByAppendingPath(uid)
+                        
+                        // Set properties for new user account
+                        print("Setting values for new user")
+                        userRef.setValue([
+                            "userID" : uid,
+                            "username" : user.username,
+                            "email" : user.email,
+                            "bio" : user.bio,
+                            "location" : user.location,
+                            "savedItineraries" : user.savedItineraries,
+                            "preferences" : user.preferences,
+                            "ratings" : user.ratings,
+                            "tips" : user.tips,
+                            "reputation" : user.reputation,
+                            "profilePhoto" : user.profilePhoto
+                            ])
+                        
+                        // We should actually call firebase to pull values for new user and make sure everything was set correctly
+                        print("Registered new user: \(userRef)")
+                    }
+                    
+                    // Log in the user
+                    print("Calling logInUser from within createUser completion block")
+                    self.logInUserWithEmail(user.email, password: password, completion: { (success) in
+                        if success {
+                            print("Logged in user with userID \(ref.authData.uid) after registration")
+                            completion(true)
+                        } else {
+                            print("Failed to log in user after registration")
+                        }
+                    })
+                })
+            }
+        }
+    }
     
     
     // Return list of all users
-    func getAllUsersWithCompletion(completion:(success: Bool) -> Void) {
+    func getAllUsersWithCompletion(completion: Array<String> -> Void) {
+    
+        print("Getting a list of all users at the users reference in Firebase")
         
-        // Create a reference to root Firebase location
+        // Create array for all usernames
+        var allUsernames = [String]()
+        
+        // Set reference to root Firebase location
         let ref = Firebase(url:firebaseRootRef)
         
-        // Create child references within the root reference
+        // Set child references within the root reference
         let usersRef = ref.childByAppendingPath("users")
         
         // Attach a closure to read the data at our posts reference
         usersRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
             
-            print(snapshot.value)
-            
-            var allUsernames = [String]()
-            for child in snapshot.children{
-                if let username = child.value["username"] as? String {
-                    print(username)
-                    allUsernames.append(username.lowercaseString)
+                // Add each username value for each user reference to the allUsernames array
+                for child in snapshot.children{
+                    if let username = child.value["username"] as? String {
+                        print("Adding \(username) to the allUsernames array")
+                        allUsernames.append(username.lowercaseString)
+                    }
                 }
-            }
+                
+                print("All usernames inside the observe block:\n\(allUsernames)")
+                
+                completion(allUsernames)
+                
+            }, withCancelBlock: { error in
+                print("****Error retrieving all usernames:\n\(error.description)")
+                completion([])
+            })
+    }
+    
+    
+    // Create a User object from Firebase data using a userID and return User object and success state
+    func getUserFromFirebaseWithUserID(userID: String, completion: (user: User, success: Bool) -> Void) {
+        
+        print("Creating user object from user reference \(userID)")
+        
+        // Set references to call for user info
+        let ref = Firebase(url:firebaseRootRef)
+        let usersRef = ref.childByAppendingPath("users")
+        let userRef = usersRef.childByAppendingPath(userID)
+        
+        // Read data at user reference
+        userRef.observeEventType(.Value, withBlock: { snapshot in
+            let sv = snapshot.value
+            print("User ref:\n\(sv)")
             
-            print("all usernames: \(allUsernames)")
+            // Create new User object
+            let newUser : User = User.init(firebaseUserDictionary: sv as! Dictionary)
             
-            let filteredNames = allUsernames.filter { $0 == "JoN123".lowercaseString }
-            if filteredNames.isEmpty {
-                print("Success! that is a unique username")
-                // continue and save their data
-            } else {
-                print("failure! name is taken :(")
-                // present alert and reset
-            }
+            print("Created User object for \(newUser.username)")
+            
+            completion(user: newUser, success: true)
             
             }, withCancelBlock: { error in
-                print(error.description)
+                print("****Error retrieving user in user creation:\n\(error.description)")
+                completion(user: User.init(), success: false)
         })
-        
-        
-        
-        //hit firebase reference (using firebaseURL)
-        //Use the method firebase provides to do this (get that snapshot stuff)
-        //when you have snapshot stuff, loop through it or whatever to create your custom objects.
-        //then call on completion
-        
-         completion(success: true)
-        
     }
     
-    // Return list of all itineraries
-    func getAllItinerariesWithCompletion(completion:(success: Bool) -> ()) {
-        
-        completion(success: true)
-    }
     
-    // Login and authenticate user given email and password
-    func loginUserWithEmail(email : String, password : String) {
+    // Compare given username to all usernames in Firebase and return unique-status
+    func checkIfUsernameExistsWithUsername(username: String, completion: (doesExist: Bool) -> Void) {
         
-        // Set base
-        let ref = Firebase(url:firebaseRootRef)
+        print("Checking if \(username) exists")
         
-        // Attempt user login
-        ref.authUser(email, password: password) {
-            error, authData in
-            if error != nil {
-                print("An error occurred while attempting login: \(error.description)")
+        // Call function to retrieve all usernames in Firebase
+        getAllUsersWithCompletion { (allUsernames) in
+            
+            print("Filtering returned usernames by \(username)")
+            
+            // Filter usernames returned from Firebase by the username passed into the check function
+            let filteredNames = allUsernames.filter { $0 == username.lowercaseString }
+            
+            // Pass the appropriate response to the completion block depending on presence of the given username
+            if filteredNames.isEmpty {
+                print("Username is not in use")
+                completion(doesExist: false)
             } else {
-                print("User is logged in, checking authData for data")
-                
-                if authData.auth != nil {
-                    print("authData has data!")
-                } else {
-                    print("authData has no data :(")
-                }
-                
+                print("Username is in use")
+                completion(doesExist: true)
             }
         }
     }
-    // Register a new user in firebase given a User object and password
-    func registerNewUserWithUser(user : User, password : String) {
-        
-        print("Registering user: \(user.username)")
-        
-        // Set reference for firebase account
-        let ref = Firebase(url:firebaseRootRef)
-        
-        // Create user with email from user object and password string
-        ref.createUser(user.email, password: password, withValueCompletionBlock: { error, result in
-                        if error != nil {
-                            print("There was an error creating the user: \(error.description)")
-                        } else {
-
-                            let uid = result["uid"] as? String
-                            
-                            print("Successfully created user account with uid: \(uid)")
-                            
-                            // Set references for new user
-                            let usersRef = ref.childByAppendingPath("users")
-                            let userRef = usersRef.childByAppendingPath(uid)
-                            
-                            // Set properties for new user account
-                            userRef.setValue([
-                                    "userID" : uid!,
-                                    "username" : user.username,
-                                    "email" : user.email,
-                                    "bio" : user.bio,
-                                    "location" : user.location,
-                                    "saved itineraries" : user.savedItineraries.copy(),
-                                    "preferences" : user.preferences,
-                                    "ratings" : user.ratings,
-                                    "tips" : user.tips.copy(),
-                                    "reputation" : user.reputation,
-                                    "profilePhoto" : ""
-                                ])
-                            
-                            // We should actually call firebase to pull values for new user and make sure everything was set correctly
-                            print("Registered new user: \(userRef)")            }
-        })
-    }
     
-    func saveNewItineraryWithItinerary(itinerary : Itinerary) -> String {
+    
+    func saveItineraryWithItinerary(itinerary: Itinerary, completion: (itineraryID: String) -> Void) {
+        
+        print("Attempting to save new itinerary: \(itinerary.title)")
         
         // Set references for new itinerary
         let ref = Firebase(url:firebaseRootRef)
         let itinerariesRef = ref.childByAppendingPath("itineraries")
-    
+        
         // Create firebase reference for given itinerary
+        print("Creating reference for new itinerary in Firebase")
         let newItineraryRef = itinerariesRef.childByAutoId()
         
         // Access unique key created for new itinerary reference
         let newItineraryID = newItineraryRef.key
         
         // Set values of the new itinerary reference with properties on the itinerary
+        print("Setting values for new itinerary with itineraryID: \(newItineraryID)")
         newItineraryRef.setValue([
             "itineraryID" : newItineraryID,
             "creationDate" : convertDateToStringWithDate(itinerary.creationDate),
@@ -174,18 +270,186 @@ import Firebase
             "photos" : itinerary.photos,
             "userID" : ref.authData.uid,
             "title" : itinerary.title
-        ])
+            ])
         
         print("Added new itinerary with title: \(itinerary.title) and ID: \(newItineraryID)")
         
-        // Return the new
-        return newItineraryID
+        // Add the itinerary to the current user
+        print("Calling addItineraryToUser function")
+        addItineraryToUserWithUserID(ref.authData.uid, itineraryID: newItineraryID) { (success) in
+            if success {
+                print("addItineraryToUser function succeeded")
+            } else {
+                print("addItineraryToUser function did not succeed")
+            }
+        }
+        
+        // Return the new itineraryID
+        completion(itineraryID: newItineraryID)
     }
     
-    // Create a new image reference in Firebase and return its unique ID
-    func saveNewImageWithImage(image : UIImage) -> String {
+    
+    // Add itineraryID to current user's savedItineraries
+    private func addItineraryToUserWithUserID(userID: String, itineraryID: String, completion: Bool -> Void) {
+        
+        print("Attempting to add new itineraryID to savedItineraries of current user")
+        
+        // Set Firebase references
+        let ref = Firebase(url:firebaseRootRef)
+        let usersRef = ref.childByAppendingPath("users")
+        let userRef = usersRef.childByAppendingPath(ref.authData.uid)
+        let savedItinerariesRef = userRef.childByAppendingPath("savedItineraries")
+        
+        // Save the new itineraryID as a key with Bool value of true
+        savedItinerariesRef.childByAppendingPath(itineraryID).setValue(true) { (error, result) in
+            
+            if (error != nil) {
+                print("There was an error adding the itineraryID to savedItineraries: \(error.description)")
+                completion(false)
+            } else {
+                print("New itineraryID saved successfully:\n\(result)")
+                completion(true)
+            }
+        }
+    }
+    
+    
+    // Return list of all itineraries
+    func getAllItinerariesWithCompletion(completion:(itineraries: [String:AnyObject]?) -> Void) {
+        
+        print("Attempting to retrieve all itineraries")
         
         // Set references for new itinerary
+        let ref = Firebase(url:firebaseRootRef)
+        let itinerariesRef = ref.childByAppendingPath("itineraries")
+        
+        // Create an observe event for the itineraries reference
+        itinerariesRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
+            print("Successfully received snapshot at itineraries reference:\n\(snapshot.value)")
+            completion(itineraries: (snapshot.value as! Dictionary))
+            }, withCancelBlock: { error in
+                print("****Error while trying to retrieve itineraries:\n\(error.description)")
+                completion(itineraries: nil)
+        })
+    }
+
+    
+    func getItineraryWithItineraryID(itineraryID: String, completion: Itinerary? -> Void) {
+        
+        // Get all itineraries
+        print("Attempting to get itinerary with itineraryID:\(itineraryID)")
+        getAllItinerariesWithCompletion { (itineraries) in
+            
+            // Check if itineraries were returned
+            print("Checking if itineraries were returned from the getAllItineraries function")
+            if let itineraries = itineraries {
+                
+                // Check if the itineraries dictionary contains a key matching the itineraryID
+                print("Checking if the returned itineraries contain one that matches the itineraryID")
+                if let itineraryDictionary = itineraries[itineraryID] {
+                    
+                    // Create Itinerary object from itineraryDictionary
+                    let itinerary: Itinerary = Itinerary.init(firebaseItineraryDictionary: itineraryDictionary as! [NSObject : AnyObject])
+                    
+                    // Send the matching itinerary to the completion block
+                    print("Found a matching itinerary")
+                    completion(itinerary)
+                } else {
+                    
+                    // Send nil to the completion block
+                    print("Did not find a matching itinerary")
+                    completion(nil)
+                }
+            } else {
+                
+                // Send nil to the completion block
+                print("Itineraries were not returned")
+                completion(nil)
+            }
+        }
+    }
+    
+    // Remove itinerary from Firebase within both the itineraries dictionary as well as from the saved itineraries of the associated user
+    func removeItineraryWithItineraryID(itineraryID: String, completion: (success: Bool) -> Void) {
+        
+        print("Attempting to remove itinerary with ID: \(itineraryID)")
+        
+        // Retrieve the itinerary
+        getItineraryWithItineraryID(itineraryID) { (itinerary) in
+            if let itinerary = itinerary {
+                
+                // Set Firebase references
+                let ref = Firebase(url:firebaseRootRef)
+                let itinerariesRef = ref.childByAppendingPath("itineraries")
+                
+                // Check that the userID associated with the itinerary matches the userID of the current user
+                if itinerary.userID == ref.authData.uid {
+                    
+                    // If the userIDs are a match, remove the itinerary from the itineraries reference
+                    let itineraryRef = itinerariesRef.childByAppendingPath(itineraryID)
+                    itineraryRef.removeValueWithCompletionBlock({ (error, result) in
+                        
+                        if (error != nil) {
+                            print("****Error removing the itinerary: \(error.description)")
+                            completion(success: false)
+                        } else {
+                            print("Itinerary removed successfully from itineraries dictionary in Firebase")
+                            
+                            // Call method to remove itinerary from user's savedItineraries
+                            print("Calling method to remove itinerary from user's savedItineraries")
+                            self.removeItineraryFromUserWithUserID(ref.authData.uid, itineraryID: itineraryID, completion: { (success) in
+                                if success {
+                                    print("Itinerary was successfully removed from user's savedItineraries")
+                                    completion(success: true)
+                                } else {
+                                    print("Itinerary was not successfully removed from savedItineraries")
+                                    completion(success: false)
+                                }
+                            })
+                        }
+                    })
+                }
+                
+            } else {
+                print("ItineraryID \(itineraryID) could not be located in itineraries dictionary")
+                completion(success: false)
+            }
+        }
+    }
+    
+    
+    // Remove itinerary item from user's savedItineraries
+    // Called only from within this integration, everytime an itinerary is removed from Firebase
+    private func removeItineraryFromUserWithUserID(userID: String, itineraryID: String, completion: Bool -> Void) {
+        
+        // Set Firebase references
+        let ref = Firebase(url:firebaseRootRef)
+        let usersRef = ref.childByAppendingPath("users")
+        let userRef = usersRef.childByAppendingPath(ref.authData.uid)
+        let savedItinerariesRef = userRef.childByAppendingPath("savedItineraries")
+        
+        // Call method to remove value at the reference for the given itineraryID
+        savedItinerariesRef.childByAppendingPath(itineraryID).removeValueWithCompletionBlock { (error, result) in
+            if (error != nil) {
+                print("****Error removing the itinerary from savedItineraries: \(error.description)")
+                completion(false)
+            } else {
+                print("Itinerary removed successfully:\n\(result)")
+                completion(true)
+            }
+        }
+    }
+    
+    
+    // Create a new image reference in Firebase and return its unique ID
+    func saveNewImageWithImage(image : UIImage, completion: String -> Void) {
+        
+        print("Attempting to save a new image to Firebase")
+        
+        // Resize image to fit inside a Firebase value (10MB file size)
+        let scaledImage = resizeImage(image)
+        
+        // Set references for new image
         let ref = Firebase(url:firebaseRootRef)
         let imagesRef = ref.childByAppendingPath("images")
         
@@ -193,7 +457,7 @@ import Firebase
         let newImageRef = imagesRef.childByAutoId()
         
         // Create data from image
-        let newImageData : NSData = UIImagePNGRepresentation(image)!
+        let newImageData : NSData = UIImagePNGRepresentation(scaledImage)!
         
         // Convert image data into base 64 string
         let newImageBase64String : NSString! = newImageData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.Encoding64CharacterLineLength)
@@ -208,37 +472,36 @@ import Firebase
         print("Image with ImageID: \(newImageID) added to Firebase")
         
         // Return the new image's ID
-        return newImageID
+        completion(newImageID)
     }
     
-    // Create a User object from Firebase data using a user ID
-    func createUserObjectFromFirebaseWithUserID(userID : String, completion : User -> ()) {
+    
+    // Retrieve an image from a reference in Firebase
+    func getImageForImageID(imageID: String, completion: UIImage -> Void) {
         
-        // Set references to call for user info
+        print("Getting image for imageID: \(imageID)")
+        
+        // Set Firebase references
         let ref = Firebase(url:firebaseRootRef)
-        let usersRef = ref.childByAppendingPath("users")
-        let userRef = usersRef.childByAppendingPath(userID)
+        let imagesRef = ref.childByAppendingPath("images")
+        let imageRef = imagesRef.childByAppendingPath(imageID)
         
-        // Read data at user reference
-        userRef.observeEventType(.Value, withBlock: { snapshot in
-            print("User ref:\n\(snapshot.value)")
+        // Retrieve value stored for image data
+        imageRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
             
-            let sv = snapshot.value
+            let imageBase64String = snapshot.value["imageBase64String"] as! String
             
-            // Create new User object
-            let newUser : User = User.init(userID: sv["userID"]! as! String, username: sv["username"]! as! String, email: sv["email"]! as! String, bio: sv["bio"]! as! String, location: sv["location"]! as! String, savedItineraries: sv["savedItineraries"]! as! NSMutableDictionary, preferences: sv["preferences"]! as! NSMutableDictionary, ratings: sv["ratings"]! as! NSMutableDictionary, tips: sv["tips"]! as! NSMutableDictionary, profilePhoto: sv["profilePhoto"]! as! NSData, reputation: sv["reputation"]! as! UInt)
+            let imageData : NSData = NSData(base64EncodedString: imageBase64String, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters)!
             
-            print("Created User object for: \(newUser.username)")
+            let image = UIImage(data: imageData)
             
-            completion(newUser)
-            
-            }, withCancelBlock: { error in
-                print(error.description)
+            completion(image!)
         })
     }
     
+    
     // Convert date objects to strings
-    func convertDateToStringWithDate(date : NSDate) -> String {
+    private func convertDateToStringWithDate(date:NSDate) -> String {
         
         // Create date formatter and set format style
         let dateFormatter = NSDateFormatter()
@@ -248,16 +511,67 @@ import Firebase
         let dateString = dateFormatter.stringFromDate(date)
         
         print("Converted date into: \(dateString)")
-
+        
         // Send back the converted date
         return dateString
     }
     
-    func logOutUser() {
-        // Set references
-        let ref = Firebase(url:firebaseRootRef)
-        ref.unauth()
+    
+    // Remove user account from Firebase
+    func removeUserFromFirebaseWithEmail(email:String, password:String, competion:(Bool) -> ()) {
         
-        print("User logged out")
+        print("Attempting to remove user with email \(email)")
+        
+        // Create a reference to root Firebase location
+        let ref = Firebase(url:firebaseRootRef)
+        
+        print(ref)
+        
+        ref.removeUser(email, password: password) { (error:NSError!) in
+            if error != nil {
+                print("Error while removing user: \(error.description)")
+            }
+        }
+        
+        competion(true)
     }
+    
+    
+    // Resize an image to fit in a Firebase value
+    func resizeImage(image: UIImage) -> UIImage {
+        
+        // Create new image placeholder
+        var newImage: UIImage = UIImage()
+        
+        // Define initial image file size
+        var imageData: NSData = NSData(data: UIImageJPEGRepresentation((image), 1)!)
+        var imageSizeInKB: Int = imageData.length / 1024
+        
+        // While the image size is greater than 10MB, run size reduction
+        while imageSizeInKB > 10000 {
+            
+            // Define the new size of the image at 90% of its original size
+            let newSize = CGSizeApplyAffineTransform(image.size, CGAffineTransformMakeScale(0.9, 0.9))
+            
+            // Calculate the rectangle used for scaling
+            let rect = CGRectMake(0, 0, newSize.width, newSize.height)
+            
+            // Define image context for resizing
+            UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+            
+            // Use image context to draw scaled image
+            image.drawInRect(rect)
+            
+            // Create new image from the scaled image and close the image context
+            newImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            
+            imageData = NSData(data: UIImageJPEGRepresentation((newImage), 1)!)
+            imageSizeInKB = imageData.length / 1024
+        }
+
+        // Return the scaled image
+        return newImage
+    }
+    
 }

@@ -17,12 +17,27 @@
 @property (strong, nonatomic) NSString *userID;
 @property (strong, nonatomic) NSDate *creationDate;
 @property (strong, nonatomic) NSMutableArray *photos;
-@property (strong, nonatomic) NSDictionary *ratings;
+@property (strong, nonatomic) NSMutableDictionary *ratings;
 @property (strong, nonatomic) NSMutableArray *tips;
 @property (strong, nonatomic) NSString *title;
+@property (nonatomic) NSUInteger durationInMins;
+@property (nonatomic) NSUInteger priceRange;
 
 -(instancetype)initWithActivities:(NSMutableArray *) activities
                            userID:(NSString *)userID
                      creationDate:(NSDate *)creationDate;
+
+-(instancetype)initWithFirebaseItineraryDictionary:(NSDictionary *)dictionary;
+
+-(instancetype)initWithUserID:(NSString *)userID
+                  itineraryID:(NSString *)itineraryID
+                        title:(NSString *)title
+                 creationDate:(NSDate *)creationDate
+                   activities:(NSMutableArray *)activities
+                       photos:(NSMutableArray *)photos
+                      ratings:(NSMutableDictionary *)ratings
+                         tips:(NSMutableDictionary *)tips
+               durationInMins:(NSUInteger)durationInMins
+                   priceRange:(NSUInteger)priceRange;
 
 @end

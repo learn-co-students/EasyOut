@@ -24,10 +24,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    // Firebase test call
-    FirebaseAPIClient *firebaseAPI = [[FirebaseAPIClient alloc] init];
-    [firebaseAPI testFirebaseFunctions];
-     
+    // Initialize and run Firebase test functions
+//    FirebaseTestFunctions *firebaseTest = [[FirebaseTestFunctions alloc] init];
+//    [firebaseTest testFirebaseFunctions];
+    
     /// Allows Button to request Location Permissions
     [Button allowButtonToRequestLocationPermission:YES];
     
@@ -38,15 +38,8 @@
         //[self handleURL :deferredDeeplinkURL];
     }];
     
-    
-    // Side Menu
-    
-    
-//    FirebaseAPIClient *client = [[FirebaseAPIClient alloc] init];
-//    [client getAllUsersWithCompletion:^(BOOL success) {
-//    
-//    }];
-    [UINavigationBar appearance].tintColor =[UIColor blackColor];
+    // Set appearance of the navigation bar
+    [UINavigationBar appearance].tintColor = [UIColor blackColor];
     
     [GMSServices provideAPIKey:googlePlacesAPI];
     
