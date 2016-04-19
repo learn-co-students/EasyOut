@@ -100,9 +100,7 @@ import Firebase
         // Check function to get all itineraries
         print("Calling getAllItineraries")
         firebaseAPI.getAllItinerariesWithCompletion { (itineraries) in
-            if let itineraries = itineraries {
-                print("Received itineraries from getAllItineraries test:\n\(itineraries)")
-            }
+            print("Received itineraries from getAllItineraries test")
         }
         
         // Check function to save new itinerary to Firebase
@@ -124,14 +122,14 @@ import Firebase
             firebaseAPI.getItineraryWithItineraryID(itineraryID) { (itinerary) in
                 print("Itinerary returned:\(itinerary)")
 
-//                // Check function to remove an itinerary
-//                self.removeItineraryWithItineraryID(itineraryID, completion: { (success) in
-//                    if success {
-//                        print("Successfully removed itinerary with ID: \(itineraryID)")
-//                    } else {
-//                        print("Failed to remove itinerary with ID: \(itineraryID)")
-//                    }
-//                })
+                // Check function to remove an itinerary
+                firebaseAPI.removeItineraryWithItineraryID(itineraryID, completion: { (success) in
+                    if success {
+                        print("Successfully removed itinerary with ID: \(itineraryID)")
+                    } else {
+                        print("Failed to remove itinerary with ID: \(itineraryID)")
+                    }
+                })
             }
         }
         

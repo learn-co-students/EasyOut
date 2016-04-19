@@ -36,7 +36,7 @@ import Firebase
                     case .InvalidPassword:
                         print("****Error type: Invalid password")
                     default:
-                        print("****Error type: Default error")
+                        print("****Error type: Other error")
                     }
                 }
                 
@@ -46,16 +46,14 @@ import Firebase
                 
             } else {
                 print("User is logged in.\nChecking authData for data.")
-            }
-            
-            
-            
-            if authData.auth != nil {
-                print("authData has data!")
-                completion(true)
-            } else {
-                print("authData has no data :(")
-                completion(false)
+                
+                if authData.auth != nil {
+                    print("authData has data!")
+                    completion(true)
+                } else {
+                    print("authData has no data :(")
+                    completion(false)
+                }
             }
         }
     }
@@ -219,7 +217,7 @@ import Firebase
                 }
             }
             
-            print("All email addresses inside the observe block:\n\(allEmailAddresses)")
+            print("Successfully received all users")
             
             completion(allEmailAddresses)
             
@@ -382,7 +380,7 @@ import Firebase
         
         // Create an observe event for the itineraries reference
         itinerariesRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
-            print("Successfully received snapshot at itineraries reference:\n\(snapshot.value)")
+            print("Successfully received snapshot at itineraries reference")
             completion(itineraries: (snapshot.value as! Dictionary))
             }, withCancelBlock: { error in
                 print("****Error while trying to retrieve itineraries:\n\(error.description)")
@@ -392,9 +390,11 @@ import Firebase
 
     
     func getItineraryWithItineraryID(itineraryID: String, completion: Itinerary? -> Void) {
+
+        print("Attempting to get itinerary with itineraryID:\(itineraryID)")
         
         // Get all itineraries
-        print("Attempting to get itinerary with itineraryID:\(itineraryID)")
+        print("Calling getAllItineraries function")
         getAllItinerariesWithCompletion { (itineraries) in
             
             // Check if itineraries were returned
@@ -432,15 +432,16 @@ import Firebase
         print("Attempting to remove itinerary with ID: \(itineraryID)")
         
         // Retrieve the itinerary
+        print("Calling getItineraryWithItineraryID")
         getItineraryWithItineraryID(itineraryID) { (itinerary) in
-            if let itinerary = itinerary {
+            if let realItinerary = itinerary {
                 
                 // Set Firebase references
                 let ref = Firebase(url:firebaseRootRef)
                 let itinerariesRef = ref.childByAppendingPath("itineraries")
                 
                 // Check that the userID associated with the itinerary matches the userID of the current user
-                if itinerary.userID == ref.authData.uid {
+                if realItinerary.userID == ref.authData.uid {
                     
                     // If the userIDs are a match, remove the itinerary from the itineraries reference
                     let itineraryRef = itinerariesRef.childByAppendingPath(itineraryID)
