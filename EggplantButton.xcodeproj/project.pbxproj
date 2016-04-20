@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A80F5AD1CC5278F0060632B /* ItineraryHistoryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A80F5AC1CC5278F0060632B /* ItineraryHistoryDetailViewController.m */; };
+		0A12C1171CC6C8450043475F /* ItineraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A12C1161CC6C8450043475F /* ItineraryViewController.m */; };
+		0ABC5BF11CC5317800434002 /* ItineraryDisplayTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ABC5BF01CC5317800434002 /* ItineraryDisplayTableViewCell.m */; };
 		4C02D1E11CB6E72C0031F978 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C02D1E01CB6E72C0031F978 /* User.m */; };
 		4C02D1E41CB6E8A00031F978 /* Itinerary.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C02D1E31CB6E8A00031F978 /* Itinerary.m */; };
 		4C02D1E71CB6EDD40031F978 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C02D1E61CB6EDD40031F978 /* Photo.m */; };
 		4C0EE1531CBDA0930092C39A /* ItineraryHistoryView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C0EE1521CBDA0930092C39A /* ItineraryHistoryView.storyboard */; };
-		4C0EE1561CBDA2D60092C39A /* ItineraryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0EE1551CBDA2D60092C39A /* ItineraryTableViewController.m */; };
 		4C0EE1591CBDA2E70092C39A /* ItineraryHistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0EE1581CBDA2E70092C39A /* ItineraryHistoryTableViewController.m */; };
 		4C1DE15F1CB8410900AFBCF5 /* LobsterTwo-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4C1DE15A1CB83E5000AFBCF5 /* LobsterTwo-Bold.otf */; };
 		4C1DE1601CB8410900AFBCF5 /* LobsterTwo-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4C1DE15B1CB83E5000AFBCF5 /* LobsterTwo-BoldItalic.otf */; };
@@ -20,7 +20,6 @@
 		4C1DE1621CB8410900AFBCF5 /* LobsterTwo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4C1DE15D1CB83E5000AFBCF5 /* LobsterTwo-Regular.otf */; };
 		4C270CA81CAB08A2003E0195 /* Secrets.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C270CA71CAB08A2003E0195 /* Secrets.m */; };
 		4C358D381CAD62CE00257756 /* CardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C358D371CAD62CE00257756 /* CardViewController.m */; };
-		4C358D731CADCDF700257756 /* ActivityCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C358D721CADCDF700257756 /* ActivityCardView.m */; };
 		4C433C031CB9539C00059C92 /* Activity.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C433C021CB9539C00059C92 /* Activity.m */; };
 		4C64EC341CBAA6BB00FB3A45 /* ActivitiesDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C64EC331CBAA6BB00FB3A45 /* ActivitiesDataStore.m */; };
 		4C64EC441CBAA78200FB3A45 /* CreateAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C64EC3C1CBAA78200FB3A45 /* CreateAccountViewController.m */; };
@@ -32,6 +31,7 @@
 		4C9A038B1CAB064200CA9A02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C9A038A1CAB064200CA9A02 /* Assets.xcassets */; };
 		4C9A038E1CAB064200CA9A02 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C9A038C1CAB064200CA9A02 /* LaunchScreen.storyboard */; };
 		4C9C96271CC58C0600C7094A /* FirebaseIntegrationTestFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9C96261CC58C0600C7094A /* FirebaseIntegrationTestFunctions.swift */; };
+		4C9C962A1CC6ABAF00C7094A /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9C96291CC6ABAF00C7094A /* Constants.m */; };
 		4CAD0CC51CB568C4008162CE /* FirebaseIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAD0CC41CB568C4008162CE /* FirebaseIntegration.swift */; };
 		4CBBC5FB1CBA9618006683D8 /* Button.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CBBC5FA1CBA9618006683D8 /* Button.storyboard */; };
 		4CBBC6041CBA96DF006683D8 /* AppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBBC5FD1CBA96DF006683D8 /* AppViewController.m */; };
@@ -40,6 +40,7 @@
 		4CBBC6091CBA97B0006683D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CBBC6081CBA97B0006683D8 /* Main.storyboard */; };
 		4CBBF0871CBBEE09005BB352 /* Tip.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBBF0861CBBEE09005BB352 /* Tip.m */; };
 		752C207F8039FC0AF3F24A9C /* Pods_EggplantButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 620C2EAF950D8ACD2F96FDC8 /* Pods_EggplantButton.framework */; };
+		787EEDFB1CC6B51A00555A16 /* ActivityCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C358D721CADCDF700257756 /* ActivityCardView.m */; };
 		78A7F6C71CBD44AC00DD4937 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78A7F6C61CBD44AC00DD4937 /* CoreMotion.framework */; };
 		78A7F6C91CBD44B500DD4937 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78A7F6C81CBD44B500DD4937 /* GameKit.framework */; };
 		78A7F6CB1CBD44C500DD4937 /* GameplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78A7F6CA1CBD44C500DD4937 /* GameplayKit.framework */; };
@@ -74,8 +75,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0A80F5AB1CC5278F0060632B /* ItineraryHistoryDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItineraryHistoryDetailViewController.h; sourceTree = "<group>"; };
-		0A80F5AC1CC5278F0060632B /* ItineraryHistoryDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItineraryHistoryDetailViewController.m; sourceTree = "<group>"; };
+		0A12C1151CC6C8450043475F /* ItineraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItineraryViewController.h; sourceTree = "<group>"; };
+		0A12C1161CC6C8450043475F /* ItineraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItineraryViewController.m; sourceTree = "<group>"; };
+		0ABC5BEF1CC5317800434002 /* ItineraryDisplayTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItineraryDisplayTableViewCell.h; sourceTree = "<group>"; };
+		0ABC5BF01CC5317800434002 /* ItineraryDisplayTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItineraryDisplayTableViewCell.m; sourceTree = "<group>"; };
 		478A5D5E5340BA05712F05CE /* Pods-EggplantButton.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EggplantButton.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EggplantButton/Pods-EggplantButton.debug.xcconfig"; sourceTree = "<group>"; };
 		4C02D1DF1CB6E72C0031F978 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = EggplantButton/User.h; sourceTree = "<group>"; };
 		4C02D1E01CB6E72C0031F978 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = EggplantButton/User.m; sourceTree = "<group>"; };
@@ -84,8 +87,6 @@
 		4C02D1E51CB6EDD40031F978 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Photo.h; path = EggplantButton/Photo.h; sourceTree = "<group>"; };
 		4C02D1E61CB6EDD40031F978 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Photo.m; path = EggplantButton/Photo.m; sourceTree = "<group>"; };
 		4C0EE1521CBDA0930092C39A /* ItineraryHistoryView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ItineraryHistoryView.storyboard; path = EggplantButton/ItineraryHistoryView.storyboard; sourceTree = SOURCE_ROOT; };
-		4C0EE1541CBDA2D60092C39A /* ItineraryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItineraryTableViewController.h; sourceTree = "<group>"; };
-		4C0EE1551CBDA2D60092C39A /* ItineraryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItineraryTableViewController.m; sourceTree = "<group>"; };
 		4C0EE1571CBDA2E70092C39A /* ItineraryHistoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItineraryHistoryTableViewController.h; sourceTree = "<group>"; };
 		4C0EE1581CBDA2E70092C39A /* ItineraryHistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItineraryHistoryTableViewController.m; sourceTree = "<group>"; };
 		4C1DE15A1CB83E5000AFBCF5 /* LobsterTwo-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "LobsterTwo-Bold.otf"; path = "EggplantButton/LobsterTwo-Bold.otf"; sourceTree = "<group>"; };
@@ -115,6 +116,8 @@
 		4C9A038D1CAB064200CA9A02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4C9A038F1CAB064200CA9A02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C9C96261CC58C0600C7094A /* FirebaseIntegrationTestFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseIntegrationTestFunctions.swift; path = EggplantButton/FirebaseIntegrationTestFunctions.swift; sourceTree = "<group>"; };
+		4C9C96281CC6ABAF00C7094A /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		4C9C96291CC6ABAF00C7094A /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		4CAD0CBF1CB56574008162CE /* EggplantButton-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EggplantButton-Bridging-Header.h"; sourceTree = "<group>"; };
 		4CAD0CC41CB568C4008162CE /* FirebaseIntegration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseIntegration.swift; path = EggplantButton/FirebaseIntegration.swift; sourceTree = "<group>"; };
 		4CBBC5FA1CBA9618006683D8 /* Button.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Button.storyboard; sourceTree = "<group>"; };
@@ -209,12 +212,12 @@
 				4CBBC5FF1CBA96DF006683D8 /* LogInViewController.m */,
 				4C64EC3B1CBAA78200FB3A45 /* CreateAccountViewController.h */,
 				4C64EC3C1CBAA78200FB3A45 /* CreateAccountViewController.m */,
-				4C0EE1541CBDA2D60092C39A /* ItineraryTableViewController.h */,
-				4C0EE1551CBDA2D60092C39A /* ItineraryTableViewController.m */,
+				0A12C1151CC6C8450043475F /* ItineraryViewController.h */,
+				0A12C1161CC6C8450043475F /* ItineraryViewController.m */,
 				4C0EE1571CBDA2E70092C39A /* ItineraryHistoryTableViewController.h */,
 				4C0EE1581CBDA2E70092C39A /* ItineraryHistoryTableViewController.m */,
-				0A80F5AB1CC5278F0060632B /* ItineraryHistoryDetailViewController.h */,
-				0A80F5AC1CC5278F0060632B /* ItineraryHistoryDetailViewController.m */,
+				0ABC5BEF1CC5317800434002 /* ItineraryDisplayTableViewCell.h */,
+				0ABC5BF01CC5317800434002 /* ItineraryDisplayTableViewCell.m */,
 				4C358D361CAD62CE00257756 /* CardViewController.h */,
 				4C358D371CAD62CE00257756 /* CardViewController.m */,
 				78A7F6D21CBFFDAF00DD4937 /* mainContainerViewController.h */,
@@ -340,6 +343,8 @@
 				4C9A037C1CAB064200CA9A02 /* main.m */,
 				4CAD0CBF1CB56574008162CE /* EggplantButton-Bridging-Header.h */,
 				4C9A038F1CAB064200CA9A02 /* Info.plist */,
+				4C9C96281CC6ABAF00C7094A /* Constants.h */,
+				4C9C96291CC6ABAF00C7094A /* Constants.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -563,16 +568,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				787EEDFB1CC6B51A00555A16 /* ActivityCardView.m in Sources */,
 				4C64EC451CBAA78200FB3A45 /* EggplantButton.xcdatamodeld in Sources */,
 				4C0EE1591CBDA2E70092C39A /* ItineraryHistoryTableViewController.m in Sources */,
 				4CBBC6061CBA96DF006683D8 /* setupButton.m in Sources */,
 				78A7F6D81CC1672700DD4937 /* sideMenuViewController.m in Sources */,
 				0A80F5AD1CC5278F0060632B /* ItineraryHistoryDetailViewController.m in Sources */,
+				4C9C962A1CC6ABAF00C7094A /* Constants.m in Sources */,
 				9A5AEC321CBF476B009F2BEA /* UserProfileViewController.m in Sources */,
 				4C358D381CAD62CE00257756 /* CardViewController.m in Sources */,
 				9A8C888A1CC44D710053EC00 /* FoursquareAPIClient.m in Sources */,
 				4CAD0CC51CB568C4008162CE /* FirebaseIntegration.swift in Sources */,
 				4C358D731CADCDF700257756 /* ActivityCardView.m in Sources */,
+				0ABC5BF11CC5317800434002 /* ItineraryDisplayTableViewCell.m in Sources */,
 				4C64EC441CBAA78200FB3A45 /* CreateAccountViewController.m in Sources */,
 				4C02D1E11CB6E72C0031F978 /* User.m in Sources */,
 				9ACC8C1A1CBD399800909704 /* DetailViewController.m in Sources */,
@@ -580,7 +588,6 @@
 				4C433C031CB9539C00059C92 /* Activity.m in Sources */,
 				9A33839B1CBC5416004B8EFE /* ActivityCardCollectionViewCell.m in Sources */,
 				4C02D1E41CB6E8A00031F978 /* Itinerary.m in Sources */,
-				4C0EE1561CBDA2D60092C39A /* ItineraryTableViewController.m in Sources */,
 				4CBBC6051CBA96DF006683D8 /* LogInViewController.m in Sources */,
 				4C9A03801CAB064200CA9A02 /* AppDelegate.m in Sources */,
 				78A7F6D41CBFFDAF00DD4937 /* mainContainerViewController.m in Sources */,
@@ -592,6 +599,7 @@
 				4C64EC341CBAA6BB00FB3A45 /* ActivitiesDataStore.m in Sources */,
 				4CBBF0871CBBEE09005BB352 /* Tip.m in Sources */,
 				4C9A037D1CAB064200CA9A02 /* main.m in Sources */,
+				0A12C1171CC6C8450043475F /* ItineraryViewController.m in Sources */,
 				4C64EC481CBAA78200FB3A45 /* UserHistory.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

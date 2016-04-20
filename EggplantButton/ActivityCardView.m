@@ -8,9 +8,11 @@
 //
 
 #import "ActivityCardView.h"
+#import "ActivityCardCollectionViewCell.h"
 #import "Event.h"
 #import <AFNetworking/AFImageDownloader.h>
 #import <AFNetworking/AFNetworking.h>
+
 
 
 @interface ActivityCardView ()
@@ -100,9 +102,22 @@
     
     self.detailLabel.text = self.activity.price;
     
+    
 }
 
+
+// find out the cell that was tapped: content superview, check if nil or not; if not nil, lives on that collectionview
+// find the superview that it lives on
+// if it is -blank- collection view based on superview, switch locked BOOL for card
+
+
+
 - (IBAction)cardSelected:(UIButton *)sender {
+    
+    self.contentSuperview = [self.contentView superview];
+    NSLog(@"ContentView Superview: %@", self.contentSuperview);
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"checkBoxChecked" object:sender];
     
     if([self.contentView.backgroundColor isEqual: [[UIColor blackColor] colorWithAlphaComponent:0.4]]) {
         

@@ -87,73 +87,61 @@ import Firebase
         
         print("Attempting to register user with\nUsername: \(user.username)\nEmail: \(user.email)\nPassword: \(password)")
         
-        // Make sure username and email aren't already in use
-        checkIfUserExistsWithUsername(user.username, email: user.email) { (doesExist) in
-            if doesExist {
-                
-                print("Couldn't register user because username is already in use")
+        // Set reference for firebase account
+        let ref = Firebase(url:firebaseRootRef)
+        
+        // Create user with email from user object and password string
+        ref.createUser(user.email, password: password, withValueCompletionBlock: { error, result in
+            
+            // Check for any errors and continue if there are none
+            if error != nil {
+                print("There was an error creating the user \(error.description)")
                 completion(false)
-                
             } else {
                 
-                print("Username is not in use, continuing with registration")
+                // Check if the userID was created in registration attempt and set it if it was
+                guard let uid = result["uid"] as? String else { completion(false); print("No userID found for user reference when registering user with email \(user.email)."); return }
                 
-                // Set reference for firebase account
-                let ref = Firebase(url:firebaseRootRef)
+                print("Result of user registration attempt:\n\(result)")
                 
-                // Create user with email from user object and password string
-                ref.createUser(user.email, password: password, withValueCompletionBlock: { error, result in
-                    
-                    // Check for any errors and continue if there are none
-                    if error != nil {
-                        print("There was an error creating the user \(error.description)")
-                    } else {
-                        
-                        // Check if the userID was created in registration attempt and set it if it was
-                        guard let uid = result["uid"] as? String else { completion(false); print("No userID found for user reference when registering user with email \(user.email)."); return }
-                        
-                        print("Result of user registration attempt:\n\(result)")
-                        
-                        print("Successfully created user account with uid \(uid)")
-                        
-                        // Set references for new user
-                        let usersRef = ref.childByAppendingPath("users")
-                        let userRef = usersRef.childByAppendingPath(uid)
-                        
-                        // Set properties for new user account
-                        print("Setting values for new user")
-                        userRef.setValue([
-                            "userID" : uid,
-                            "username" : user.username,
-                            "email" : user.email,
-                            "bio" : user.bio,
-                            "location" : user.location,
-                            "savedItineraries" : user.savedItineraries,
-                            "preferences" : user.preferences,
-                            "ratings" : user.ratings,
-                            "tips" : user.tips,
-                            "reputation" : user.reputation,
-                            "profilePhoto" : user.profilePhoto,
-                            "associatedImages" : user.associatedImages
-                            ])
-                        
-                        // We should actually call firebase to pull values for new user and make sure everything was set correctly
-                        print("Registered new user: \(userRef)")
-                    }
-                    
-                    // Log in the user
-                    print("Calling logInUser from within createUser completion block")
-                    self.logInUserWithEmail(user.email, password: password, completion: { (success) in
-                        if success {
-                            print("Logged in user with userID \(ref.authData.uid) after registration")
-                            completion(true)
-                        } else {
-                            print("Failed to log in user after registration")
-                        }
-                    })
-                })
+                print("Successfully created user account with uid \(uid)")
+                
+                // Set references for new user
+                let usersRef = ref.childByAppendingPath("users")
+                let userRef = usersRef.childByAppendingPath(uid)
+                
+                // Set properties for new user account
+                print("Setting values for new user")
+                userRef.setValue([
+                    "userID" : uid,
+                    "username" : user.username,
+                    "email" : user.email,
+                    "bio" : user.bio,
+                    "location" : user.location,
+                    "savedItineraries" : user.savedItineraries,
+                    "preferences" : user.preferences,
+                    "ratings" : user.ratings,
+                    "tips" : user.tips,
+                    "reputation" : user.reputation,
+                    "profilePhoto" : user.profilePhoto,
+                    "associatedImages" : user.associatedImages
+                ])
+                
+                // We should actually call firebase to pull values for new user and make sure everything was set correctly
+                print("Registered new user: \(userRef)")
             }
-        }
+            
+            // Log in the user
+            print("Calling logInUser from within createUser completion block")
+            self.logInUserWithEmail(user.email, password: password, completion: { (success) in
+                if success {
+                    print("Logged in user with userID \(ref.authData.uid) after registration")
+                    completion(true)
+                } else {
+                    print("Failed to log in user after registration")
+                }
+            })
+        })
     }
     
     
@@ -259,9 +247,32 @@ import Firebase
     
     
     // Compare given username to all usernames in Firebase and return unique-status
-    func checkIfUserExistsWithUsername(username: String, email: String, completion: (doesExist: Bool) -> Void) {
+    func checkIfUserExistsWithInformation(username: String, email: String, completion: (doesExist: Bool) -> Void) {
         
         print("Checking if \(username) or \(email) exists in Firebase")
+        
+        checkIfUserExistsWithUsername(username) { (doesExist) in
+            
+            if doesExist {
+                print("Username is in use")
+            } else {
+                print("Username is not in use")
+            }
+        }
+       
+        checkIfUserExistsWithEmail(email) { (doesExist) in
+            if doesExist {
+                print("Email is in use")
+            } else {
+                print("Email is not in use")
+            }
+        }
+    }
+    
+    // Compare given username to all usernames in Firebase and return unique-status
+    func checkIfUserExistsWithUsername(username: String, completion: (doesExist: Bool) -> Void) {
+        
+        print("Checking if \(username) exists in Firebase")
         
         // Call function to retrieve all usernames in Firebase
         getAllUsersWithCompletion { (allUsernames) in
@@ -280,7 +291,14 @@ import Firebase
                 completion(doesExist: true)
             }
         }
+    }
+    
+    // Compare given email to all emails in Firebase and return unique-status
+    func checkIfUserExistsWithEmail(email: String, completion: (doesExist: Bool) -> Void) {
         
+        print("Checking if \(email) exists in Firebase")
+        
+        // Call function to get all emails in Firebase
         getAllEmailsWithCompletion { (allEmailAddresses) in
             print("Filtering returned usernames by \(email)")
             
@@ -295,7 +313,6 @@ import Firebase
                 print("Email address is in use")
                 completion(doesExist: true)
             }
-
         }
     }
     

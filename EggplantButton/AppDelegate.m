@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Constants.h"
 #import <Button/Button.h>
 #import "Secrets.h"
 #import "EggplantButton-Swift.h"
@@ -27,11 +28,17 @@
     [GMSServices provideAPIKey:googlePlacesAPI];
     
     
+    // Set appearance of the navigation bar
+    [UINavigationBar appearance].barTintColor = [[UIColor blackColor] colorWithAlphaComponent:0.2];
+    [UIBarButtonItem appearance].tintColor = [UIColor whiteColor];
+    [UINavigationBar appearance].alpha = 0.4;
+    
     [[UINavigationBar appearance] setTitleTextAttributes: @{
-                                                            NSForegroundColorAttributeName: [UIColor blackColor],
                                                             NSFontAttributeName: [UIFont fontWithName:@"Lobster Two" size:20.0f],
+                                                            
                                                             }];
     // Initialize and run Firebase test functions
+//    // Initialize and run Firebase test functions
 //    FirebaseTestFunctions *firebaseTest = [[FirebaseTestFunctions alloc] init];
 //    [firebaseTest testFirebaseFunctions];
     
@@ -44,6 +51,11 @@
 //        // Handle the deferredDeeplinkURL and open the relevant content.
 //        //[self handleURL :deferredDeeplinkURL];
 //    }];
+    
+
+    
+    
+    
     
     return YES;
 }

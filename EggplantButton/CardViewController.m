@@ -15,6 +15,8 @@
 #import "sideMenuViewController.h"
 #import "Secrets.h"
 #import "Firebase.h"
+#import "Itinerary.h"
+#import "ItineraryViewController.h"
 
 #import "UIView+Shake.h"
 
@@ -27,9 +29,7 @@
 @interface CardViewController () <UIScrollViewDelegate, CLLocationManagerDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (strong, nonatomic) ActivitiesDataStore *dataStore;
-
 @property (strong, nonatomic) Itinerary *itinerary;
-
 
 //LOCATION
 @property (nonatomic, strong) CLLocationManager *locationManager;
@@ -47,15 +47,18 @@
 @property (nonatomic) BOOL secondCardLocked;
 @property (nonatomic) BOOL thirdCardLocked;
 
-
 //BUTTONS
-
+@property (weak, nonatomic) IBOutlet UIButton *createItineraryButton;
+@property (weak, nonatomic) IBOutlet UIButton *randomizeCardsButton;
 
 @end
+
 
 @implementation CardViewController
 
 - (void)viewDidLoad {
+    
+    
     
     [super viewDidLoad];
     
@@ -70,9 +73,17 @@
     
     [self getCardData];
     
+    // allocate itinerary
+  
+    
     self.topRowCollection.backgroundColor = [UIColor clearColor];
     self.middleRowCollection.backgroundColor = [UIColor clearColor];
     self.bottomRowCollection.backgroundColor = [UIColor clearColor];
+    
+
+    self.createItineraryButton.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.4];
+    self.randomizeCardsButton.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.4];
+
     
     // listening for segue notifications from sideMenu
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -96,11 +107,71 @@
                                                  name:@"shakeStarted"
                                                object:nil];
     
+    //listening for check button notification
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(disableCheckedCard:)
+                                                 name:@"checkBoxChecked"
+                                               object:nil];
+    
 }
 
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    
+}
+
+
+#pragma mark - Locking/Unlocking Cards
+- (void) disableCheckedCard: (NSNotification *) notification {
+    
+    NSLog(@"cardVC knows check button tapped");
+    UIButton *tappedButton = notification.object;
+    ActivityCardView * cardCell = (ActivityCardView *)tappedButton.superview.superview;
+    UICollectionViewCell *cardCellSuperview = (UICollectionViewCell *)cardCell.superview.superview;
+    
+    if ([self.topRowCollection indexPathForCell:cardCellSuperview]) {
+        self.firstCardLocked = self.firstCardLocked ? NO : YES;
+        self.firstCardLocked ? [self disableScroll] : [self enableScroll];
+        NSLog(@"this card lives in the topRowCollection");
+    }
+    else if ([self.middleRowCollection indexPathForCell:cardCellSuperview]) {
+        self.secondCardLocked = self.secondCardLocked ? NO : YES;
+        self.secondCardLocked ? [self disableScroll] : [self enableScroll];
+        NSLog(@"this card lives in the middleRowCollection");
+    }
+    else {
+        self.thirdCardLocked = self.thirdCardLocked ? NO : YES;
+        self.thirdCardLocked ? [self disableScroll] : [self enableScroll];
+        NSLog(@"this card lives in the bottomRowCollection");
+    }
+}
+
+// disables scroll when card is locked
+- (void) disableScroll {
+    if(self.firstCardLocked) {
+        self.topRowCollection.scrollEnabled = NO;
+    }
+    if(self.secondCardLocked) {
+        self.middleRowCollection.scrollEnabled = NO;
+    }
+    if(self.thirdCardLocked) {
+        self.bottomRowCollection.scrollEnabled = NO;
+    }
+    
+}
+
+// enables scroll when card is unlocked
+- (void) enableScroll {
+    if(!self.firstCardLocked) {
+        self.topRowCollection.scrollEnabled = YES;
+    }
+    if(!self.secondCardLocked) {
+        self.middleRowCollection.scrollEnabled = YES;
+    }
+    if(!self.thirdCardLocked) {
+        self.bottomRowCollection.scrollEnabled = YES;
+    }
     
 }
 
@@ -142,6 +213,9 @@
     NSLog(@"user is logged out");
     
 }
+
+#pragma mark - Save Itinerary Button
+
 
 
 #pragma mark - Get API data
@@ -246,6 +320,32 @@
     return cell;
 }
 
+
+- (IBAction)SaveItineraryButtonTapped:(id)sender {
+  
+    NSMutableArray *activitiesArray = [NSMutableArray new];
+    
+    self.itinerary = [[Itinerary alloc]initWithActivities:activitiesArray userID:@"" creationDate:[NSDate date]];
+    
+    ActivityCardCollectionViewCell *topCell = [[self.topRowCollection visibleCells] firstObject];
+    Activity *topCellActivity = topCell.cardView.activity;
+    
+    ActivityCardCollectionViewCell *middleCell = [[self.middleRowCollection visibleCells] firstObject];
+    Activity *middleCellActivity = middleCell.cardView.activity;
+    
+    ActivityCardCollectionViewCell *bottomCell = [[self.bottomRowCollection visibleCells]firstObject];
+    Activity *bottomCellActivity = bottomCell.cardView.activity;
+    
+    
+    [self.itinerary.activities addObject:topCellActivity];
+    [self.itinerary.activities addObject:middleCellActivity];
+    [self.itinerary.activities addObject:bottomCellActivity];
+    NSLog(@"Activities !! : %@",self.itinerary.activities); 
+    
+    [self performSegueWithIdentifier:@"ItinerarySegue" sender:nil]; 
+    
+}
+
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
     [self performSegueWithIdentifier:@"detailSegue" sender: (ActivityCardCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath]];
@@ -253,20 +353,24 @@
 }
 
 
+
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     if([segue.identifier isEqualToString:@"detailSegue"]) {
-    
-    DetailViewController *destinationVC = [segue destinationViewController];
-    
-    destinationVC.activity = ((ActivityCardCollectionViewCell *)sender).cardView.activity;
+        
+        DetailViewController *destinationVC = [segue destinationViewController];
+        
+        destinationVC.activity = ((ActivityCardCollectionViewCell *)sender).cardView.activity;
     }
-
+    if ([segue.identifier isEqualToString:@"ItinerarySegue"]) {
+         ItineraryViewController *destinationVC = [segue destinationViewController];
+        destinationVC.itinerary = self.itinerary;
+    }
 }
 
 
 #pragma mark - Core Location
-
 
 -(void)setUpCoreLocation {
     
@@ -305,19 +409,21 @@
     
     [self shuffleCards];
     
-    // Shake top card with the default speed
-    [self.topRowCollection shake:15     // 15 times
-                       withDelta:20     // 20 points wide
-     ];
-    // Shake middle card with the default speed
-    [self.middleRowCollection shake:15   // 15 times
-                          withDelta:20   // 20 points wide
-     ];
-    // Shake bottom card with the default speed
-    [self.bottomRowCollection shake:15   // 15 times
-                          withDelta:20   // 20 points wide
-     ];
-    
+    if(!self.firstCardLocked) {
+        [self.topRowCollection shake:10     // 10 times
+                           withDelta:10     // 10 points wide
+         ];
+    }
+    if(!self.secondCardLocked) {
+        [self.middleRowCollection shake:10   // 10 times
+                              withDelta:10   // 10 points wide
+         ];
+    }
+    if(!self.thirdCardLocked) {
+        [self.bottomRowCollection shake:10   // 10 times
+                              withDelta:10   // 10 points wide
+         ];
+    }
 
 }
 
@@ -326,8 +432,6 @@
 
 - (void) shakeStarted: (NSNotification *) notification {
 {
-        // makes the phone vibrate
-        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         
         [self shuffleCards];
         
@@ -341,7 +445,7 @@
                                   withDelta:20   // 20 points wide
              ];
         }
-        if(!self.bottomRowCollection) {
+        if(!self.thirdCardLocked) {
             [self.bottomRowCollection shake:15   // 15 times
                                   withDelta:20   // 20 points wide
              ];
@@ -400,8 +504,8 @@
 //
 //    [self.locationManager stopUpdatingLocation];
 //}
-
-
+//
+//
 // This method will be used to handle the card scroll views' reactions and delay page-turning
 //-(void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
 //{
@@ -411,39 +515,39 @@
 //    CGPoint newOffset = CGPointZero;
 //    *targetContentOffset = newOffset;
 //}
-
-
-/* ADRIAN"S TicketMaster Event Setup ** vvvv
- 
- 
- - (void)setupLocationManager {
- self.locationManager = [[CLLocationManager alloc] init];
- self.locationManager.delegate = self;
- self.locationManager.distanceFilter = kCLDistanceFilterNone;
- self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
- [self.locationManager requestWhenInUseAuthorization];
- [self getTheUsersCurrentLocation];
- }
- 
- - (void)getTheUsersCurrentLocation {
- //after this method fires off, the locationManager didUpdateLocations method below gets called (behind the scenes by the startUpdatingLocation)
- [self.locationManager startUpdatingLocation];
- }
- 
- 
- 
- -(void)getEvents {
- [self.ticketMasterDataStore getEventsForLocation:self.mostRecentLocation withCompletion:^(BOOL success) {
- if (success) {
- [[NSOperationQueue mainQueue]addOperationWithBlock:^{
- // [self.tableView reloadData];
- }];
- }
- }];
- }
- 
- 
- */
+//
+//
+///* ADRIAN"S TicketMaster Event Setup ** vvvv
+// 
+// 
+// - (void)setupLocationManager {
+// self.locationManager = [[CLLocationManager alloc] init];
+// self.locationManager.delegate = self;
+// self.locationManager.distanceFilter = kCLDistanceFilterNone;
+// self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+// [self.locationManager requestWhenInUseAuthorization];
+// [self getTheUsersCurrentLocation];
+// }
+// 
+// - (void)getTheUsersCurrentLocation {
+// after this method fires off, the locationManager didUpdateLocations method below gets called (behind the scenes by the startUpdatingLocation)
+// [self.locationManager startUpdatingLocation];
+// }
+// 
+// 
+// 
+// -(void)getEvents {
+// [self.ticketMasterDataStore getEventsForLocation:self.mostRecentLocation withCompletion:^(BOOL success) {
+// if (success) {
+// [[NSOperationQueue mainQueue]addOperationWithBlock:^{
+//  [self.tableView reloadData];
+// }];
+// }
+// }];
+// }
+// 
+//// 
+// */
 
 
 
