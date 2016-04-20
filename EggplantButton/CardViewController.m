@@ -59,13 +59,7 @@
 
 - (void)viewDidLoad {
     
-    
-    
     [super viewDidLoad];
-    
-    UIImageView *background = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"city"]];
-    [self.view addSubview:background];
-    self.view.contentMode = UIViewContentModeScaleAspectFit;
 
     
     [self setUpCoreLocation];
@@ -113,6 +107,10 @@
                                              selector:@selector(disableCheckedCard:)
                                                  name:@"checkBoxChecked"
                                                object:nil];
+    
+    self.view.contentMode = UIViewContentModeCenter;
+    self.view.contentMode = UIViewContentModeScaleAspectFit;
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"city"]]];
     
 }
 
@@ -232,7 +230,7 @@
 
     }
     
-    NSArray *topRowOptions = @[@"arts", @"outdoors", @"sights"];
+    NSArray *topRowOptions = @[@"arts", @"sights"];
     
     [self.dataStore getActivityforSection:topRowOptions[arc4random()%topRowOptions.count] Location:[NSString stringWithFormat:@"%f,%f",self.latitude,self.longitude] WithCompletion:^(BOOL success) {
         

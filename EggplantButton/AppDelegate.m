@@ -27,9 +27,7 @@
     
     [GMSServices provideAPIKey:googlePlacesAPI];
     
-    
-    // Set appearance of the navigation bar
-    [UINavigationBar appearance].barTintColor = [[UIColor blackColor] colorWithAlphaComponent:0.2];
+    [UINavigationBar appearance].barTintColor = [UIColor clearColor];
     [UIBarButtonItem appearance].tintColor = [UIColor whiteColor];
     [UINavigationBar appearance].alpha = 0.4;
     
@@ -37,23 +35,7 @@
                                                             NSFontAttributeName: [UIFont fontWithName:@"Lobster Two" size:20.0f],
                                                             
                                                             }];
-    // Initialize and run Firebase test functions
-//    // Initialize and run Firebase test functions
-//    FirebaseTestFunctions *firebaseTest = [[FirebaseTestFunctions alloc] init];
-//    [firebaseTest testFirebaseFunctions];
-    
-//    /// Allows Button to request Location Permissions
-//    [Button allowButtonToRequestLocationPermission:YES];
-//    
-//    [[Button sharedButton] configureWithApplicationId: APP_ID completion:NULL];
-//    
-//    [[Button sharedButton] setDeferredDeeplinkHandler:^(NSURL *deferredDeeplinkURL) {
-//        // Handle the deferredDeeplinkURL and open the relevant content.
-//        //[self handleURL :deferredDeeplinkURL];
-//    }];
-    
 
-    
     
     
     

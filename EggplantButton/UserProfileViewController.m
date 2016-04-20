@@ -58,10 +58,6 @@
     self.view.contentMode = UIViewContentModeScaleAspectFit;
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"city"]]];
 
-    
-
-    
-    
 }
 
 -(void)pullUserFromFirebaseWithCompletion:(void(^)(BOOL success))completion {

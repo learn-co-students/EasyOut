@@ -77,10 +77,10 @@
                                     </textField>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" tag="11" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="3bT-T3-grL" userLabel="Button Stack View">
+                            <stackView opaque="NO" tag="11" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="3bT-T3-grL" userLabel="Button Stack View">
                                 <rect key="frame" x="219" y="397" width="162" height="34"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rVC-kR-U8N">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rVC-kR-U8N">
                                         <rect key="frame" x="0.0" y="0.0" width="71" height="34"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                         <state key="normal" title="Login">
@@ -90,7 +90,7 @@
                                             <action selector="login:" destination="Mtz-5O-VW0" eventType="touchUpInside" id="cf3-Ep-CfD"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gbh-8Q-3iR">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gbh-8Q-3iR">
                                         <rect key="frame" x="91" y="0.0" width="71" height="34"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                         <state key="normal" title="Register ">
