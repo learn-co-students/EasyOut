@@ -531,7 +531,7 @@ import Firebase
                 } else {
                     print("Image with imageID \(newImageRef.key) added to Firebase: \(result)")
                     
-                    // Add the imageID to the current user
+                    // Add the imageID to the current user's associatedImages reference
                     print("Calling addImageIDToCurrentUser function")
                     self.addImageIDToCurrentUser(newImageRef.key, completion: { (success) in
                         if success {
@@ -613,10 +613,22 @@ import Firebase
                         
                         print("Current profilePhoto value is not empty")
                         
-                        // Remove old profile photo from Firebase
-                        print(<#T##items: Any...##Any#>)
+                        // Overwrite old profile photo on Firebase
+                        print("Overwriting old profilePhoto value")
+                        profilePhotoRef.setValue(imageID, withCompletionBlock: { (error, result) in
+                            if error != nil {
+                                print("****Error overwriting value at profilePhotoRef: \(error)")
+                                completion(success: false)
+                            } else {
+                                print("Overwrote existing value at profilePhotoRef with imageID \(imageID)")
+                                completion(success: true)
+                            }
+                        })
+                        
+                        // TODO:
                         // Remove imageID from profilePhoto reference
                         // Remove imageID from associatedImages reference
+                        // Test that old imageID is still in associatedImages
                         
                     }
                     
