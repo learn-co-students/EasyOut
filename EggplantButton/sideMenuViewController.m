@@ -32,7 +32,6 @@
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"sideMenuFadeAway"
                                                         object:nil];
-    NSLog(@"profile button tapped!");
 
     
 }
@@ -44,7 +43,6 @@
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"sideMenuFadeAway"
                                                         object:nil];
-    NSLog(@"past itineraries button tapped!");
     
 }
 
@@ -56,13 +54,13 @@
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"sideMenuFadeAway"
                                                         object:nil];
-    NSLog(@"logout button tapped!");
+   
    
 }
 
 - (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event
 {
-    NSLog(@"Shake started sideMenu");
+   
           
 }
 

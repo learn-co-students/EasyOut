@@ -48,6 +48,7 @@
 @property (nonatomic) BOOL thirdCardLocked;
 
 //BUTTONS
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *filterNavButton;
 @property (weak, nonatomic) IBOutlet UIButton *createItineraryButton;
 @property (weak, nonatomic) IBOutlet UIButton *randomizeCardsButton;
 
@@ -59,6 +60,7 @@
 - (void)viewDidLoad {
     
     
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     
     [super viewDidLoad];
     
@@ -69,6 +71,8 @@
     self.dataStore = [ActivitiesDataStore sharedDataStore];
     
     [self getCardData];
+    
+    
     
     // allocate itinerary
   
@@ -122,7 +126,6 @@
 #pragma mark - Locking/Unlocking Cards
 - (void) disableCheckedCard: (NSNotification *) notification {
     
-    NSLog(@"cardVC knows check button tapped");
     UIButton *tappedButton = notification.object;
     ActivityCardView * cardCell = (ActivityCardView *)tappedButton.superview.superview;
     UICollectionViewCell *cardCellSuperview = (UICollectionViewCell *)cardCell.superview.superview;
@@ -130,17 +133,17 @@
     if ([self.topRowCollection indexPathForCell:cardCellSuperview]) {
         self.firstCardLocked = self.firstCardLocked ? NO : YES;
         self.firstCardLocked ? [self disableScroll] : [self enableScroll];
-        NSLog(@"this card lives in the topRowCollection");
+        
     }
     else if ([self.middleRowCollection indexPathForCell:cardCellSuperview]) {
         self.secondCardLocked = self.secondCardLocked ? NO : YES;
         self.secondCardLocked ? [self disableScroll] : [self enableScroll];
-        NSLog(@"this card lives in the middleRowCollection");
+        
     }
     else {
         self.thirdCardLocked = self.thirdCardLocked ? NO : YES;
         self.thirdCardLocked ? [self disableScroll] : [self enableScroll];
-        NSLog(@"this card lives in the bottomRowCollection");
+       
     }
 }
 
@@ -179,21 +182,17 @@
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"menuButtonTapped"
                                                         object:nil];
-    NSLog(@"menu button tapped!");
+   
 }
 
 - (void) profileButtonTapped: (NSNotification *) notification {
-    NSLog(@"cardVC knows that the profile button was tapped!");
-    
-    
+   
     UIViewController *userProfileVC = [[UIStoryboard storyboardWithName:@"UserProfile" bundle:nil] instantiateViewControllerWithIdentifier:@"userSegue"];
     
     [self.navigationController showViewController:userProfileVC sender:nil];
 }
 
 - (void) pastItinerariesButtonTapped: (NSNotification *) notification {
-    NSLog(@"cardVC knows that the past itineraries button was tapped!");
-    
     
     UIViewController *pastItinerariesVC = [[UIStoryboard storyboardWithName:@"ItineraryHistoryView" bundle:nil] instantiateViewControllerWithIdentifier:@"pastItineraries"];
     
@@ -201,13 +200,10 @@
 }
 
 - (void) logoutButtonTapped: (NSNotification *) notification {
-    NSLog(@"cardVC knows that the logout button was tapped!");
     
     Firebase *ref = [[Firebase alloc] initWithUrl:firebaseRootRef];
     
     [ref unauth];
-    
-    NSLog(@"user is logged out");
     
 }
 
@@ -432,22 +428,22 @@
         
         [self shuffleCards];
         
-        if(!self.firstCardLocked) {
-            [self.topRowCollection shake:15     // 15 times
-                               withDelta:20     // 20 points wide
-             ];
-        }
-        if(!self.secondCardLocked) {
-            [self.middleRowCollection shake:15   // 15 times
-                                  withDelta:20   // 20 points wide
-             ];
-        }
-        if(!self.thirdCardLocked) {
-            [self.bottomRowCollection shake:15   // 15 times
-                                  withDelta:20   // 20 points wide
-             ];
-        }
-        
+    if(!self.firstCardLocked) {
+        [self.topRowCollection shake:10     // 10 times
+                           withDelta:10     // 10 points wide
+         ];
+    }
+    if(!self.secondCardLocked) {
+        [self.middleRowCollection shake:10   // 10 times
+                              withDelta:10   // 10 points wide
+         ];
+    }
+    if(!self.thirdCardLocked) {
+        [self.bottomRowCollection shake:10   // 10 times
+                              withDelta:10   // 10 points wide
+         ];
+    }
+    
     }
 }
 

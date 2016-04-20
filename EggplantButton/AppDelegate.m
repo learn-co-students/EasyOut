@@ -24,6 +24,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
     
 //    // Initialize and run Firebase test functions
 //    FirebaseTestFunctions *firebaseTest = [[FirebaseTestFunctions alloc] init];
@@ -44,7 +45,8 @@
     [UIBarButtonItem appearance].tintColor = [UIColor whiteColor];
     [[UINavigationBar appearance] setTranslucent:NO];
     
-    
+
+
     
     [GMSServices provideAPIKey:googlePlacesAPI];
     

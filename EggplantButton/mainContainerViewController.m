@@ -82,7 +82,6 @@
 - (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event
 
 {
-    NSLog(@"Shake started mainContainer");
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"shakeStarted"
                                                         object:nil];
@@ -92,7 +91,6 @@
 {
     if ( event.subtype == UIEventSubtypeMotionShake )
     {
-        NSLog(@"Shake ended mainContainer");
         
     }
     

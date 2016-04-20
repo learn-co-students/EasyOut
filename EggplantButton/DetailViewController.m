@@ -33,6 +33,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
         
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:1.285
                                                             longitude:103.848
