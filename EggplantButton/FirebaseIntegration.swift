@@ -150,7 +150,7 @@ import Firebase
         // Set child references within the root reference
         let usersRef = ref.childByAppendingPath("users")
         
-        // Attach a closure to read the data at our posts reference
+        // Attach a closure to read the data at our users reference
         usersRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
             
                 // Add each username value for each user reference to the allUsernames array
@@ -168,7 +168,7 @@ import Firebase
             }, withCancelBlock: { error in
                 print("****Error retrieving all usernames:\n\(error.description)")
                 completion([])
-            })
+        })
     }
     
     
@@ -183,7 +183,7 @@ import Firebase
         // Set child references within the root reference
         let usersRef = ref.childByAppendingPath("users")
         
-        // Attach a closure to read the data at our posts reference
+        // Attach a closure to read the data at our users reference
         usersRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
             
             // Add each email address value for each user reference to the allUsernames array
@@ -514,7 +514,7 @@ import Firebase
             let newImageRef = imagesRef.childByAutoId()
             
             // Create data from image
-            let newImageData : NSData = UIImagePNGRepresentation(scaledImage)!
+            let newImageData : NSData = UIImageJPEGRepresentation(scaledImage, 1)!
             
             // Convert image data into base 64 string
             let newImageBase64String : NSString! = newImageData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.Encoding64CharacterLineLength)
@@ -550,18 +550,17 @@ import Firebase
         // Set Firebase references
         let usersRef = ref.childByAppendingPath("users")
         let userRef = usersRef.childByAppendingPath(ref.authData.uid)
+        let profilePhotoRef = userRef.childByAppendingPath("profilePhoto")
         
-        
-    }
-    
-    // Overwrite an image in Firebase at a given image reference
-    private func overwriteImageWithImageID(imageID: String, completion: (success: Bool) -> Void) {
-        
-        // Set Firebase references
-        let usersRef = ref.childByAppendingPath("users")
-        let userRef = usersRef.childByAppendingPath(ref.authData.uid)
-        
-        
+        // Read the data at profilePhoto reference
+        profilePhotoRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
+            
+            print(snapshot)
+            
+            }, withCancelBlock: { error in
+                print("****Error retrieving current user reference:\n\(error.description)")
+                completion(success: false)
+        })
     }
     
     
@@ -648,18 +647,22 @@ import Firebase
     // Resize an image to fit in a Firebase value
     private func resizeImage(oldImage: UIImage, completion: (scaledImage: UIImage) -> Void) {
         
-        // Create new image placeholder
-        var newImage: UIImage = UIImage()
+        print("Attempting to resize image")
+        
+        var newImage: UIImage = oldImage
         
         // Define initial image file size
         var imageData: NSData = NSData(data: UIImageJPEGRepresentation((oldImage), 1)!)
         var imageSizeInKB: Int = imageData.length / 1024
+        
+        print("oldSize: \(imageSizeInKB)")
         
         // While the image size is greater than 10MB, run size reduction
         while imageSizeInKB > 10000 {
             
             // Define the new size of the image at 90% of its original size
             let newSize = CGSizeApplyAffineTransform(oldImage.size, CGAffineTransformMakeScale(0.9, 0.9))
+            print("newSize: \(newSize)")
             
             // Calculate the rectangle used for scaling
             let rect = CGRectMake(0, 0, newSize.width, newSize.height)
@@ -677,6 +680,8 @@ import Firebase
             imageData = NSData(data: UIImageJPEGRepresentation((newImage), 1)!)
             imageSizeInKB = imageData.length / 1024
         }
+        
+        print("No further resizing needed")
 
         // Return the scaled image
         completion(scaledImage: newImage)
