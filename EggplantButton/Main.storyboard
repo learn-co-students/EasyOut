@@ -39,7 +39,7 @@
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <connections>
-                                                    <segue destination="cZd-me-Cbf" kind="show" identifier="detailSegue" id="lgO-gw-fZU"/>
+                                                    <segue destination="cZd-me-Cbf" kind="show" id="j3j-8g-z87"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
@@ -102,7 +102,7 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="randomButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MYr-IV-L4A"/>
+                                            <action selector="SaveItineraryButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Oa0-sf-8eJ"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vrG-5j-TCQ" userLabel="Randomize Cards Button">
@@ -112,7 +112,6 @@
                                         </state>
                                         <connections>
                                             <action selector="randomizeTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3MV-F8-o2B"/>
-                                            <action selector="saveButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eZV-EL-4Kt"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -153,6 +152,7 @@
                         <outlet property="middleRowCollection" destination="Buu-E5-ZxL" id="1v6-Oz-s1s"/>
                         <outlet property="randomizeCardsButton" destination="vrG-5j-TCQ" id="2Bo-r7-7HN"/>
                         <outlet property="topRowCollection" destination="gkc-zr-fUL" id="HDZ-Jn-Xqg"/>
+                        <segue destination="img-La-tN3" kind="show" identifier="ItinerarySegue" id="Jb9-C8-F5a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -167,13 +167,21 @@
             </objects>
             <point key="canvasLocation" x="1478.5" y="277"/>
         </scene>
+        <!--ItineraryView-->
+        <scene sceneID="evW-UL-NHe">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ItineraryView" id="img-La-tN3" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LDr-hy-3IC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1507.5" y="505"/>
+        </scene>
         <!--DetailView-->
         <scene sceneID="D1W-qe-Psg">
             <objects>
                 <viewControllerPlaceholder storyboardName="DetailView" referencedIdentifier="DetailView" id="cZd-me-Cbf" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wjg-ra-0Ql" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1481.5" y="640"/>
+            <point key="canvasLocation" x="1455.5" y="652"/>
         </scene>
         <!--Main Container View Controller-->
         <scene sceneID="nbp-pc-vIU">
@@ -345,6 +353,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="sVv-zh-GNS"/>
+        <segue reference="kc8-fC-vZm"/>
     </inferredMetricsTieBreakers>
 </document>

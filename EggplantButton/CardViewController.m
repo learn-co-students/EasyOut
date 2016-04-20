@@ -34,8 +34,9 @@
 //LOCATION
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) CLLocation *mostRecentLocation;
-@property (strong, nonatomic) NSString *latitude;
-@property (strong, nonatomic) NSString *longitude;
+@property (nonatomic) CLLocationDegrees latitude;
+@property (nonatomic) CLLocationDegrees longitude;
+
 
 //COLLECTIONS
 @property (weak, nonatomic) IBOutlet UICollectionView *topRowCollection;
@@ -230,7 +231,7 @@
     
     NSArray *topRowOptions = @[@"arts", @"outdoors", @"sights"];
     
-    [self.dataStore getActivityforSection:topRowOptions[arc4random()%topRowOptions.count] Location:[NSString stringWithFormat:@"%@,%@",self.latitude, self.longitude] WithCompletion:^(BOOL success) {
+    [self.dataStore getActivityforSection:topRowOptions[arc4random()%topRowOptions.count] Location:[NSString stringWithFormat:@"%f,%f",self.latitude,self.longitude] WithCompletion:^(BOOL success) {
         
         if (success) {
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
@@ -240,7 +241,7 @@
 
     }];
     
-    [self.dataStore getActivityforSection:@"food"Location:[NSString stringWithFormat:@"%@,%@",self.latitude,self.longitude] WithCompletion:^(BOOL success) {
+    [self.dataStore getActivityforSection:@"food"Location:[NSString stringWithFormat:@"%f,%f",self.latitude,self.longitude] WithCompletion:^(BOOL success) {
         
         if (success) {
 
@@ -251,7 +252,7 @@
 
     }];
     
-    [self.dataStore getActivityforSection:@"drinks" Location:[NSString stringWithFormat:@"%@,%@",self.latitude,self.longitude] WithCompletion:^(BOOL success) {
+    [self.dataStore getActivityforSection:@"drinks" Location:[NSString stringWithFormat:@"%f,%f",self.latitude,self.longitude] WithCompletion:^(BOOL success) {
         
         
         if (success) {
@@ -320,6 +321,8 @@
 
 - (IBAction)SaveItineraryButtonTapped:(id)sender {
   
+    NSLog(@" Save Button Was Tapped ! ! !");
+    
     NSMutableArray *activitiesArray = [NSMutableArray new];
     
     self.itinerary = [[Itinerary alloc]initWithActivities:activitiesArray userID:@"" creationDate:[NSDate date]];
@@ -337,9 +340,10 @@
     [self.itinerary.activities addObject:topCellActivity];
     [self.itinerary.activities addObject:middleCellActivity];
     [self.itinerary.activities addObject:bottomCellActivity];
-    NSLog(@"Activities !! : %@",self.itinerary.activities); 
+//    NSLog(@"Activities !! : %@",self.itinerary.activities);
     
-    [self performSegueWithIdentifier:@"ItinerarySegue" sender:nil]; 
+    NSLog(@"About to perform the itinerary segue");
+    [self performSegueWithIdentifier:@"ItinerarySegue" sender:nil];
     
 }
 
@@ -361,8 +365,10 @@
         destinationVC.activity = ((ActivityCardCollectionViewCell *)sender).cardView.activity;
     }
     if ([segue.identifier isEqualToString:@"ItinerarySegue"]) {
-         ItineraryViewController *destinationVC = [segue destinationViewController];
+        ItineraryViewController *destinationVC = [segue destinationViewController];
         destinationVC.itinerary = self.itinerary;
+        destinationVC.latitude = self.latitude;
+        destinationVC.longitude = self.longitude;
     }
 }
 
@@ -382,8 +388,8 @@
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [self.locationManager startUpdatingLocation];
     
-    self.latitude = [NSString stringWithFormat: @"%f", self.locationManager.location.coordinate.latitude];
-    self.longitude = [NSString stringWithFormat: @"%f", self.locationManager.location.coordinate.longitude];
+    self.latitude = self.locationManager.location.coordinate.latitude;
+    self.longitude = self.locationManager.location.coordinate.longitude;
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
@@ -560,8 +566,6 @@
 }
 
 
-- (IBAction)randomButtonPressed:(UIButton *)sender {
-}
 
 
 
