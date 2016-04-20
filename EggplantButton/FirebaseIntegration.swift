@@ -507,10 +507,8 @@ import Firebase
         // Resize image to fit inside a Firebase value (10MB file size)
         self.resizeImage(image) { (scaledImage) in
             
-            // Set references for new image
+            // Set references
             let imagesRef = self.ref.childByAppendingPath("images")
-            
-            // Create firebase reference for given itinerary
             let newImageRef = imagesRef.childByAutoId()
             
             // Create data from image
@@ -519,25 +517,38 @@ import Firebase
             // Convert image data into base 64 string
             let newImageBase64String : NSString! = newImageData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.Encoding64CharacterLineLength)
             
-            // Set values of the new itinerary reference with properties on the itinerary
-            let newImageID = newImageRef.key
-            newImageRef.setValue([
-                "imageID" : newImageID,
-                "imageBase64String" : newImageBase64String // TODO: Values for this key should be the keys for every photo attached to the itinerary, and the photo keys should be created in another function
-                ])
+            // Set values of the new image reference
+            let newImageDictionary = [
+                "imageID" : newImageRef.key,
+                "imageBase64String" : newImageBase64String
+                ]
             
-            print("Image with ImageID: \(newImageID) added to Firebase")
-            
-            // Add the imageID to the current user
-            print("Calling addImageIDToCurrentUser function")
-            self.addImageIDToCurrentUser(newImageID, completion: { (success) in
-                if success {
-                    
-                    // Return the new imageID
-                    completion(imageID: newImageID, success: true)
-                } else {
-                     // Return a blank imageID
+            print("Attempting to setValue of the newImageRef \(newImageRef.key) with newImageDictionary \(newImageDictionary)")
+            newImageRef.setValue(newImageDictionary, withCompletionBlock: { (error, result) in
+                if error != nil {
+                    print("There was an error setting the values: \(error.description)")
                     completion(imageID: "", success: false)
+                } else {
+                    print("Image with imageID \(newImageRef.key) added to Firebase: \(result)")
+                    
+                    // Add the imageID to the current user
+                    print("Calling addImageIDToCurrentUser function")
+                    self.addImageIDToCurrentUser(newImageRef.key, completion: { (success) in
+                        if success {
+                            
+                            print("Successfully completed addition of image with key \(newImageRef.key)")
+                            
+                            // Return the new imageID
+                            completion(imageID: newImageRef.key, success: true)
+                        } else {
+                            
+                            print("Failed to add image. Returning blank string as imageID.")
+                            
+                            // Return a blank imageID
+                            completion(imageID: "", success: false)
+                        }
+                    })
+                    completion(imageID: newImageRef.key, success: true)
                 }
             })
         }
@@ -565,7 +576,6 @@ import Firebase
                 completion(success: true)
             }
         }
-        
     }
     
     
@@ -604,6 +614,7 @@ import Firebase
                         print("Current profilePhoto value is not empty")
                         
                         // Remove old profile photo from Firebase
+                        print(<#T##items: Any...##Any#>)
                         // Remove imageID from profilePhoto reference
                         // Remove imageID from associatedImages reference
                         
