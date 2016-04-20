@@ -18,11 +18,11 @@
                         <rect key="frame" x="0.0" y="44" width="320" height="524"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="VU8-K5-T2e" userLabel="Card Stack View">
-                                <rect key="frame" x="0.0" y="64" width="320" height="441"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="VU8-K5-T2e" userLabel="Card Stack View">
+                                <rect key="frame" x="0.0" y="15" width="320" height="426"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gkc-zr-fUL">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="137"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="132"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="yNZ-cS-u4s">
                                             <size key="itemSize" width="50" height="50"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -45,7 +45,7 @@
                                         </cells>
                                     </collectionView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Buu-E5-ZxL">
-                                        <rect key="frame" x="0.0" y="152" width="320" height="137"/>
+                                        <rect key="frame" x="0.0" y="147" width="320" height="132"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="9lb-FM-leQ">
                                             <size key="itemSize" width="50" height="50"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -68,7 +68,7 @@
                                         </cells>
                                     </collectionView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7QA-HD-63z">
-                                        <rect key="frame" x="0.0" y="304" width="320" height="137"/>
+                                        <rect key="frame" x="0.0" y="294" width="320" height="132"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="JKB-yy-PM1">
                                             <size key="itemSize" width="50" height="50"/>
@@ -93,26 +93,30 @@
                                     </collectionView>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="hhF-uU-Inp" userLabel="Button Stack">
-                                <rect key="frame" x="0.0" y="532" width="320" height="60"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hhF-uU-Inp" userLabel="Button Stack">
+                                <rect key="frame" x="16" y="456" width="288" height="60"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D12-lf-tgx" userLabel="Itinerize">
-                                        <rect key="frame" x="0.0" y="0.0" width="158" height="60"/>
-                                        <state key="normal" title="Itinerize"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D12-lf-tgx" userLabel="Save Itinerary Button">
+                                        <rect key="frame" x="0.0" y="0.0" width="139" height="60"/>
+                                        <state key="normal" title="Save Itinerary">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
-                                            <action selector="SaveItineraryButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6Cf-Cs-EOW"/>
                                             <action selector="randomButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MYr-IV-L4A"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vrG-5j-TCQ" userLabel="Randomize">
-                                        <rect key="frame" x="163" y="0.0" width="157" height="60"/>
-                                        <state key="normal" title="Randomize"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vrG-5j-TCQ" userLabel="Randomize Cards Button">
+                                        <rect key="frame" x="149" y="0.0" width="139" height="60"/>
+                                        <state key="normal" title="Randomize">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="randomizeTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3MV-F8-o2B"/>
                                             <action selector="saveButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eZV-EL-4Kt"/>
                                         </connections>
                                     </button>
                                 </subviews>
+                                <color key="backgroundColor" red="0.36960259470000001" green="0.80310696039999996" blue="0.83317307689999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="xrc-AU-Ej6"/>
                                 </constraints>
@@ -121,11 +125,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="VU8-K5-T2e" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="5dS-E8-lEo"/>
+                            <constraint firstItem="hhF-uU-Inp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="LQf-yx-Pud"/>
+                            <constraint firstItem="hhF-uU-Inp" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Piz-kd-xmS"/>
                             <constraint firstItem="VU8-K5-T2e" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="RA7-c0-rcj"/>
-                            <constraint firstItem="hhF-uU-Inp" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="Zdx-os-ceA"/>
-                            <constraint firstItem="hhF-uU-Inp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cmV-up-7YW"/>
                             <constraint firstItem="VU8-K5-T2e" firstAttribute="bottom" secondItem="hhF-uU-Inp" secondAttribute="top" constant="-15" id="fpw-Nz-Rpz"/>
-                            <constraint firstItem="VU8-K5-T2e" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="nBc-lt-vsh"/>
+                            <constraint firstItem="VU8-K5-T2e" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="15" id="nBc-lt-vsh"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hhF-uU-Inp" secondAttribute="bottom" constant="8" symbolic="YES" id="tLe-Um-Ccv"/>
                         </constraints>
                     </view>
@@ -145,9 +149,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="bottomRowCollection" destination="7QA-HD-63z" id="jc0-TU-ogc"/>
+                        <outlet property="createItineraryButton" destination="D12-lf-tgx" id="Y7D-WA-Xdf"/>
                         <outlet property="middleRowCollection" destination="Buu-E5-ZxL" id="1v6-Oz-s1s"/>
+                        <outlet property="randomizeCardsButton" destination="vrG-5j-TCQ" id="2Bo-r7-7HN"/>
                         <outlet property="topRowCollection" destination="gkc-zr-fUL" id="HDZ-Jn-Xqg"/>
-                        <segue destination="HaK-Pe-eB5" kind="show" identifier="ItinerarySegue" id="AB8-GV-oUc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -161,14 +166,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TY3-W1-vhs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1478.5" y="277"/>
-        </scene>
-        <!--ItineraryView-->
-        <scene sceneID="qx0-Ys-ZRR">
-            <objects>
-                <viewControllerPlaceholder storyboardName="ItineraryView" id="HaK-Pe-eB5" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ubd-6o-9gW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1479.5" y="492"/>
         </scene>
         <!--DetailView-->
         <scene sceneID="D1W-qe-Psg">
@@ -276,12 +273,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="199" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qNz-87-OcV">
-                                <rect key="frame" x="80" y="273" width="42" height="30"/>
-                                <state key="normal" title="Filters">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hOL-Ei-CQk">
                                 <rect key="frame" x="45" y="235" width="110" height="30"/>
                                 <state key="normal" title="Itinerary History">
@@ -334,7 +325,6 @@
                             <constraint firstItem="hOL-Ei-CQk" firstAttribute="top" secondItem="j6a-DZ-UOp" secondAttribute="bottom" constant="15" id="HIO-sO-z1F"/>
                             <constraint firstItem="kFr-i4-jK0" firstAttribute="top" secondItem="COR-WQ-UzG" secondAttribute="top" constant="20" symbolic="YES" id="M6i-VK-hIT"/>
                             <constraint firstItem="kFr-i4-jK0" firstAttribute="leading" secondItem="hOL-Ei-CQk" secondAttribute="leading" id="Pft-qo-vHW"/>
-                            <constraint firstItem="kFr-i4-jK0" firstAttribute="centerX" secondItem="qNz-87-OcV" secondAttribute="centerX" constant="-1" id="Ru9-eY-21r"/>
                             <constraint firstItem="kFr-i4-jK0" firstAttribute="trailing" secondItem="hOL-Ei-CQk" secondAttribute="trailing" id="TwM-nT-mX0"/>
                             <constraint firstItem="j6a-DZ-UOp" firstAttribute="top" secondItem="kFr-i4-jK0" secondAttribute="bottom" constant="63" id="b01-8a-iXV"/>
                             <constraint firstItem="vh4-OL-ZXU" firstAttribute="leading" secondItem="COR-WQ-UzG" secondAttribute="leading" id="blv-Rb-4kl"/>
@@ -343,7 +333,6 @@
                             <constraint firstItem="j6a-DZ-UOp" firstAttribute="top" secondItem="vh4-OL-ZXU" secondAttribute="bottom" constant="8" symbolic="YES" id="klD-Ab-tRW"/>
                             <constraint firstAttribute="bottomMargin" secondItem="utd-AB-OgT" secondAttribute="bottom" constant="20" id="ncN-7E-fNF"/>
                             <constraint firstItem="vh4-OL-ZXU" firstAttribute="centerX" secondItem="hOL-Ei-CQk" secondAttribute="centerX" id="qRD-le-EeY"/>
-                            <constraint firstItem="qNz-87-OcV" firstAttribute="top" secondItem="hOL-Ei-CQk" secondAttribute="bottom" constant="8" symbolic="YES" id="zVh-ED-nCr"/>
                         </constraints>
                     </view>
                     <connections>

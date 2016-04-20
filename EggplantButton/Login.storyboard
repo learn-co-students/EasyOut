@@ -131,16 +131,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hMK-Xm-0cA" userLabel="Text Field Stack View">
-                                <rect key="frame" x="150" y="240" width="300" height="120"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hMK-Xm-0cA" userLabel="Text Field Stack View">
+                                <rect key="frame" x="150" y="240" width="300" height="150"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rQ5-1d-e91">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="usernameDidEnd:" destination="cdF-tl-xg4" eventType="editingDidEnd" id="fNi-R1-Ff2"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AkE-cs-das">
-                                        <rect key="frame" x="0.0" y="30" width="300" height="30"/>
+                                        <rect key="frame" x="0.0" y="40" width="300" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -148,7 +151,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pQF-7q-Nfb">
-                                        <rect key="frame" x="0.0" y="60" width="300" height="30"/>
+                                        <rect key="frame" x="0.0" y="80" width="300" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         <connections>
@@ -156,7 +159,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Verify password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QIq-yV-JAH">
-                                        <rect key="frame" x="0.0" y="90" width="300" height="30"/>
+                                        <rect key="frame" x="0.0" y="120" width="300" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         <connections>
@@ -165,7 +168,7 @@
                                     </textField>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ma-SV-gzI">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ma-SV-gzI">
                                 <rect key="frame" x="247" y="410" width="107" height="30"/>
                                 <state key="normal" title="Create Account">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -174,8 +177,8 @@
                                     <action selector="createAccountButton:" destination="cdF-tl-xg4" eventType="touchUpInside" id="PzY-T5-Hcc"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Submit the information below to create your EasyOut account" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4y-aj-Obs">
-                                <rect key="frame" x="150" y="149" width="300" height="41"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Submit the information below to create your EasyOut account" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4y-aj-Obs">
+                                <rect key="frame" x="75" y="149" width="450" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -189,7 +192,7 @@
                             <constraint firstItem="9ma-SV-gzI" firstAttribute="top" secondItem="hMK-Xm-0cA" secondAttribute="bottom" constant="50" id="R52-3a-MA9"/>
                             <constraint firstItem="Y4y-aj-Obs" firstAttribute="centerX" secondItem="KBv-7P-v3I" secondAttribute="centerX" id="bOO-ha-zQu"/>
                             <constraint firstItem="9ma-SV-gzI" firstAttribute="centerX" secondItem="KBv-7P-v3I" secondAttribute="centerX" id="czZ-F5-d66"/>
-                            <constraint firstItem="Y4y-aj-Obs" firstAttribute="width" secondItem="KBv-7P-v3I" secondAttribute="width" multiplier="0.5" id="lKY-yx-h07"/>
+                            <constraint firstItem="Y4y-aj-Obs" firstAttribute="width" secondItem="KBv-7P-v3I" secondAttribute="width" multiplier="0.75" id="lKY-yx-h07"/>
                             <constraint firstItem="hMK-Xm-0cA" firstAttribute="centerY" secondItem="KBv-7P-v3I" secondAttribute="centerY" id="qns-vc-Zcb"/>
                         </constraints>
                     </view>

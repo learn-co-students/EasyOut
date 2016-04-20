@@ -29,9 +29,7 @@
 @interface CardViewController () <UIScrollViewDelegate, CLLocationManagerDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (strong, nonatomic) ActivitiesDataStore *dataStore;
-
 @property (strong, nonatomic) Itinerary *itinerary;
-
 
 //LOCATION
 @property (nonatomic, strong) CLLocationManager *locationManager;
@@ -49,15 +47,18 @@
 @property (nonatomic) BOOL secondCardLocked;
 @property (nonatomic) BOOL thirdCardLocked;
 
-
 //BUTTONS
-
+@property (weak, nonatomic) IBOutlet UIButton *createItineraryButton;
+@property (weak, nonatomic) IBOutlet UIButton *randomizeCardsButton;
 
 @end
+
 
 @implementation CardViewController
 
 - (void)viewDidLoad {
+    
+    
     
     [super viewDidLoad];
     
@@ -75,6 +76,11 @@
     self.topRowCollection.backgroundColor = [UIColor clearColor];
     self.middleRowCollection.backgroundColor = [UIColor clearColor];
     self.bottomRowCollection.backgroundColor = [UIColor clearColor];
+    
+
+    self.createItineraryButton.backgroundColor = [UIColor colorWithRed:0.36 green:0.80 blue:0.83 alpha:1.00];
+    self.randomizeCardsButton.backgroundColor = [UIColor colorWithRed:0.36 green:0.80 blue:0.83 alpha:1.00];
+
     
     // listening for segue notifications from sideMenu
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -98,11 +104,71 @@
                                                  name:@"shakeStarted"
                                                object:nil];
     
+    //listening for check button notification
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(disableCheckedCard:)
+                                                 name:@"checkBoxChecked"
+                                               object:nil];
+    
 }
 
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    
+}
+
+
+#pragma mark - Locking/Unlocking Cards
+- (void) disableCheckedCard: (NSNotification *) notification {
+    
+    NSLog(@"cardVC knows check button tapped");
+    UIButton *tappedButton = notification.object;
+    ActivityCardView * cardCell = (ActivityCardView *)tappedButton.superview.superview;
+    UICollectionViewCell *cardCellSuperview = (UICollectionViewCell *)cardCell.superview.superview;
+    
+    if ([self.topRowCollection indexPathForCell:cardCellSuperview]) {
+        self.firstCardLocked = self.firstCardLocked ? NO : YES;
+        self.firstCardLocked ? [self disableScroll] : [self enableScroll];
+        NSLog(@"this card lives in the topRowCollection");
+    }
+    else if ([self.middleRowCollection indexPathForCell:cardCellSuperview]) {
+        self.secondCardLocked = self.secondCardLocked ? NO : YES;
+        self.secondCardLocked ? [self disableScroll] : [self enableScroll];
+        NSLog(@"this card lives in the middleRowCollection");
+    }
+    else {
+        self.thirdCardLocked = self.thirdCardLocked ? NO : YES;
+        self.thirdCardLocked ? [self disableScroll] : [self enableScroll];
+        NSLog(@"this card lives in the bottomRowCollection");
+    }
+}
+
+// disables scroll when card is locked
+- (void) disableScroll {
+    if(self.firstCardLocked) {
+        self.topRowCollection.scrollEnabled = NO;
+    }
+    if(self.secondCardLocked) {
+        self.middleRowCollection.scrollEnabled = NO;
+    }
+    if(self.thirdCardLocked) {
+        self.bottomRowCollection.scrollEnabled = NO;
+    }
+    
+}
+
+// enables scroll when card is unlocked
+- (void) enableScroll {
+    if(!self.firstCardLocked) {
+        self.topRowCollection.scrollEnabled = YES;
+    }
+    if(!self.secondCardLocked) {
+        self.middleRowCollection.scrollEnabled = YES;
+    }
+    if(!self.thirdCardLocked) {
+        self.bottomRowCollection.scrollEnabled = YES;
+    }
     
 }
 
@@ -340,19 +406,21 @@
     
     [self shuffleCards];
     
-    // Shake top card with the default speed
-    [self.topRowCollection shake:15     // 15 times
-                       withDelta:20     // 20 points wide
-     ];
-    // Shake middle card with the default speed
-    [self.middleRowCollection shake:15   // 15 times
-                          withDelta:20   // 20 points wide
-     ];
-    // Shake bottom card with the default speed
-    [self.bottomRowCollection shake:15   // 15 times
-                          withDelta:20   // 20 points wide
-     ];
-    
+    if(!self.firstCardLocked) {
+        [self.topRowCollection shake:15     // 15 times
+                           withDelta:20     // 20 points wide
+         ];
+    }
+    if(!self.secondCardLocked) {
+        [self.middleRowCollection shake:15   // 15 times
+                              withDelta:20   // 20 points wide
+         ];
+    }
+    if(!self.thirdCardLocked) {
+        [self.bottomRowCollection shake:15   // 15 times
+                              withDelta:20   // 20 points wide
+         ];
+    }
 
 }
 
@@ -376,7 +444,7 @@
                                   withDelta:20   // 20 points wide
              ];
         }
-        if(!self.bottomRowCollection) {
+        if(!self.thirdCardLocked) {
             [self.bottomRowCollection shake:15   // 15 times
                                   withDelta:20   // 20 points wide
              ];
@@ -485,6 +553,7 @@
 
 #pragma mark - Button Things
 
+// Segue to itinerary view
 - (IBAction)saveButtonPressed:(UIButton *)sender {
     
     

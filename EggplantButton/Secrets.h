@@ -13,13 +13,10 @@
 extern NSString * const APP_ID;
 extern NSString * const REZY_BUTTON_ID;
 extern NSString * const UBER_BUTTON_ID;
+
 extern NSString * const consumerKey;
 extern NSString * const consumerSecret;
-extern NSString * const firebaseRootRef;
-extern NSString * const googleAPI;
-extern NSString * const googlePlacesAPI;
-extern NSString * const FOURSQUARE_CLIENT_ID;
-extern NSString * const FOURSQUARE_CLIENT_SECRET;
+
 
 // Notifications
 extern NSString * const GenericViewControllerNotificationName;
@@ -27,17 +24,16 @@ extern NSString * const GenericViewControllerNotificationName;
 // Firebase
 extern NSString * const firebaseRootRef;
 
-// Notifications
-extern NSString * const GenericViewControllerNotificationName;
-
-// StoryboardIDs
-extern NSString * const LoginViewControllerStoryBoardID;
-extern NSString * const mainViewControllerStoryBoardID;
 
 // Google Maps
 extern NSString * const googleAPI;
+extern NSString * const googlePlacesAPI;
 
 // StoryboardIDs
 extern NSString * const LoginViewControllerStoryBoardID;
 extern NSString * const mainViewControllerStoryBoardID;
 
+
+//Foursquare
+extern NSString * const FOURSQUARE_CLIENT_ID;
+extern NSString * const FOURSQUARE_CLIENT_SECRET;
