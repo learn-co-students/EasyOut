@@ -544,26 +544,6 @@ import Firebase
     }
     
     
-    // Set profile photo for current user
-    func saveProfilePhotoForCurrentUser(image: UIImage, completion: (success: Bool) -> Void) {
-        
-        // Set Firebase references
-        let usersRef = ref.childByAppendingPath("users")
-        let userRef = usersRef.childByAppendingPath(ref.authData.uid)
-        let profilePhotoRef = userRef.childByAppendingPath("profilePhoto")
-        
-        // Read the data at profilePhoto reference
-        profilePhotoRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
-            
-            print(snapshot)
-            
-            }, withCancelBlock: { error in
-                print("****Error retrieving current user reference:\n\(error.description)")
-                completion(success: false)
-        })
-    }
-    
-    
     // Add imageID to current user
     private func addImageIDToCurrentUser(imageID: String, completion: (success: Bool) -> Void) {
         
@@ -585,7 +565,83 @@ import Firebase
                 completion(success: true)
             }
         }
-
+        
+    }
+    
+    
+    // Set profile photo for current user
+    func saveProfilePhotoForCurrentUser(image: UIImage, completion: (success: Bool) -> Void) {
+        
+        print("Attempting to save profile photo for current user")
+        
+        // Set Firebase references
+        let usersRef = ref.childByAppendingPath("users")
+        let userRef = usersRef.childByAppendingPath(ref.authData.uid)
+        let profilePhotoRef = userRef.childByAppendingPath("profilePhoto")
+        
+        // Save the new image to Firebase
+        print("Calling function to add new image to Firebase")
+        self.saveNewImageWithImage(image) { (imageID, success) in
+            if success {
+                
+                // Read the data in the current user reference
+                print("Getting snapshot of current user reference")
+                userRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
+                    
+                    // Get the value for the profilePhoto key
+                    let oldProfilePhotoRef = snapshot.value["profilePhoto"] as! String
+                    
+                    // Check if the current profilePhoto value is empty
+                    if oldProfilePhotoRef.isEmpty {
+                        
+                        // Add the imageID for the new image to the profilePhoto reference
+                        print("Current profilePhoto value is empty")
+                        profilePhotoRef.setValue(imageID)
+                        completion(success: true)
+                        
+                    } else {
+                        
+                        print("Current profilePhoto value is not empty")
+                        
+                        // Remove old profile photo from Firebase
+                        // Remove imageID from profilePhoto reference
+                        // Remove imageID from associatedImages reference
+                        
+                    }
+                    
+                }, withCancelBlock: { error in
+                    print("****Error retrieving current user reference:\n\(error.description)")
+                    completion(success: false)
+                })
+                
+            } else {
+                completion(success: false)
+            }
+        }
+    }
+    
+    
+    // Remove image from Firebase given the imageID
+    func removeImageWithImageID(imageID: String, completion: (success: Bool) -> Void) {
+        
+        print("Attempting to remove image with imageID \(imageID)")
+        
+        // Set Firebase references
+        let imagesRef = ref.childByAppendingPath("images")
+        let imageToRemoveRef = imagesRef.childByAppendingPath(imageID)
+        
+        // Remove imageID value from Firebase
+        print("Calling removeValueWithCompletionBlock for images reference at imageID")
+        imageToRemoveRef.removeValueWithCompletionBlock { (error, result) in
+            
+            if error != nil {
+                print("****Error returned while attempting to remove image from Firebase: \(error.description)")
+                completion(success: false)
+            } else {
+                print("Reference at imageID removed from Firebase with result \(result)")
+                completion(success: true)
+            }
+        }
     }
     
     

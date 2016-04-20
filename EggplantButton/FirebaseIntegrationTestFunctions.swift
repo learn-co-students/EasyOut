@@ -23,10 +23,10 @@ import Firebase
         print("authID.uid: \(ref.authData.uid)")
         
         
-        // Check save image function
-        firebaseAPI.saveNewImageWithImage(image) { (imageID, success) in
-            print("Successfully saved an image")
-        }
+//        // Check save image function
+//        firebaseAPI.saveNewImageWithImage(image) { (imageID, success) in
+//            print("Successfully saved an image")
+//        }
         
         // Check save profile photo function
         firebaseAPI.saveProfilePhotoForCurrentUser(image) { (success) in
