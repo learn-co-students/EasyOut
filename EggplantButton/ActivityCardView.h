@@ -15,6 +15,7 @@
 @interface ActivityCardView : UIView
 
 
+@property (strong, nonatomic) UIView * contentSuperview;
 
 @property (strong, nonatomic) Activity *activity;
 

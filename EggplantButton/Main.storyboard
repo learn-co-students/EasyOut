@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="QB9-cg-QB8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="QB9-cg-QB8">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -39,7 +39,7 @@
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <connections>
-                                                    <segue destination="cZd-me-Cbf" kind="show" identifier="detailSegue" id="lgO-gw-fZU"/>
+                                                    <segue destination="cZd-me-Cbf" kind="show" id="j3j-8g-z87"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
@@ -102,7 +102,7 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="randomButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MYr-IV-L4A"/>
+                                            <action selector="SaveItineraryButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Oa0-sf-8eJ"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vrG-5j-TCQ" userLabel="Randomize Cards Button">
@@ -112,7 +112,6 @@
                                         </state>
                                         <connections>
                                             <action selector="randomizeTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3MV-F8-o2B"/>
-                                            <action selector="saveButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eZV-EL-4Kt"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -153,6 +152,7 @@
                         <outlet property="middleRowCollection" destination="Buu-E5-ZxL" id="1v6-Oz-s1s"/>
                         <outlet property="randomizeCardsButton" destination="vrG-5j-TCQ" id="2Bo-r7-7HN"/>
                         <outlet property="topRowCollection" destination="gkc-zr-fUL" id="HDZ-Jn-Xqg"/>
+                        <segue destination="img-La-tN3" kind="show" identifier="ItinerarySegue" id="Jb9-C8-F5a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -167,13 +167,21 @@
             </objects>
             <point key="canvasLocation" x="1478.5" y="277"/>
         </scene>
+        <!--ItineraryView-->
+        <scene sceneID="evW-UL-NHe">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ItineraryView" id="img-La-tN3" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LDr-hy-3IC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1507.5" y="505"/>
+        </scene>
         <!--DetailView-->
         <scene sceneID="D1W-qe-Psg">
             <objects>
                 <viewControllerPlaceholder storyboardName="DetailView" referencedIdentifier="DetailView" id="cZd-me-Cbf" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wjg-ra-0Ql" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1481.5" y="640"/>
+            <point key="canvasLocation" x="1455.5" y="652"/>
         </scene>
         <!--Main Container View Controller-->
         <scene sceneID="nbp-pc-vIU">
@@ -273,12 +281,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="199" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qNz-87-OcV">
-                                <rect key="frame" x="80" y="273" width="42" height="30"/>
-                                <state key="normal" title="Filters">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hOL-Ei-CQk">
                                 <rect key="frame" x="45" y="235" width="110" height="30"/>
                                 <state key="normal" title="Itinerary History">
@@ -331,7 +333,6 @@
                             <constraint firstItem="hOL-Ei-CQk" firstAttribute="top" secondItem="j6a-DZ-UOp" secondAttribute="bottom" constant="15" id="HIO-sO-z1F"/>
                             <constraint firstItem="kFr-i4-jK0" firstAttribute="top" secondItem="COR-WQ-UzG" secondAttribute="top" constant="20" symbolic="YES" id="M6i-VK-hIT"/>
                             <constraint firstItem="kFr-i4-jK0" firstAttribute="leading" secondItem="hOL-Ei-CQk" secondAttribute="leading" id="Pft-qo-vHW"/>
-                            <constraint firstItem="kFr-i4-jK0" firstAttribute="centerX" secondItem="qNz-87-OcV" secondAttribute="centerX" constant="-1" id="Ru9-eY-21r"/>
                             <constraint firstItem="kFr-i4-jK0" firstAttribute="trailing" secondItem="hOL-Ei-CQk" secondAttribute="trailing" id="TwM-nT-mX0"/>
                             <constraint firstItem="j6a-DZ-UOp" firstAttribute="top" secondItem="kFr-i4-jK0" secondAttribute="bottom" constant="63" id="b01-8a-iXV"/>
                             <constraint firstItem="vh4-OL-ZXU" firstAttribute="leading" secondItem="COR-WQ-UzG" secondAttribute="leading" id="blv-Rb-4kl"/>
@@ -340,7 +341,6 @@
                             <constraint firstItem="j6a-DZ-UOp" firstAttribute="top" secondItem="vh4-OL-ZXU" secondAttribute="bottom" constant="8" symbolic="YES" id="klD-Ab-tRW"/>
                             <constraint firstAttribute="bottomMargin" secondItem="utd-AB-OgT" secondAttribute="bottom" constant="20" id="ncN-7E-fNF"/>
                             <constraint firstItem="vh4-OL-ZXU" firstAttribute="centerX" secondItem="hOL-Ei-CQk" secondAttribute="centerX" id="qRD-le-EeY"/>
-                            <constraint firstItem="qNz-87-OcV" firstAttribute="top" secondItem="hOL-Ei-CQk" secondAttribute="bottom" constant="8" symbolic="YES" id="zVh-ED-nCr"/>
                         </constraints>
                     </view>
                     <connections>
@@ -353,6 +353,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="sVv-zh-GNS"/>
+        <segue reference="kc8-fC-vZm"/>
     </inferredMetricsTieBreakers>
 </document>
