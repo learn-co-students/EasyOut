@@ -28,9 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-    
-    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         
         UIAlertController * noCameraAlert =   [UIAlertController
                                              alertControllerWithTitle:@"Error"

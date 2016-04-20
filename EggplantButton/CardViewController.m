@@ -60,8 +60,6 @@
 - (void)viewDidLoad {
     
     
-    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-    
     [super viewDidLoad];
     
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"city"]]];
