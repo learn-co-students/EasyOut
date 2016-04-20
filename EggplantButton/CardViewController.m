@@ -227,7 +227,6 @@
     
 }
 
-/// I Need this INFO ------ AB 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     ActivityCardCollectionViewCell *cell = (ActivityCardCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"cardCell" forIndexPath:indexPath];
@@ -257,30 +256,22 @@
   
     NSMutableArray *activitiesArray = [NSMutableArray new];
     
-    
-    
     self.itinerary = [[Itinerary alloc]initWithActivities:activitiesArray userID:@"" creationDate:[NSDate date]];
     
+    ActivityCardCollectionViewCell *topCell = [[self.topRowCollection visibleCells] firstObject];
+    Activity *topCellActivity = topCell.cardView.activity;
     
-    NSArray *topArray = [self.topRowCollection visibleCells];
-    UICollectionViewCell *topCell = [topArray firstObject];
-    NSIndexPath *indexPathOfTopCell = [self.topRowCollection indexPathForCell:topCell];
-    Activity *topCellActivity = self.dataStore.randoms[indexPathOfTopCell.row];
+    ActivityCardCollectionViewCell *middleCell = [[self.middleRowCollection visibleCells] firstObject];
+    Activity *middleCellActivity = middleCell.cardView.activity;
     
-    NSArray *middleArray = [self.middleRowCollection visibleCells];
-    UICollectionViewCell *middleCell = [middleArray firstObject];
-    NSIndexPath *indexPathOfMiddleCell = [self.middleRowCollection indexPathForCell:middleCell];
-    Activity *middleCellActivity = self.dataStore.randoms[indexPathOfMiddleCell.row];
-    
-    NSArray *bottomArray = [self.bottomRowCollection visibleCells];
-    UICollectionViewCell *bottomCell = [bottomArray firstObject];
-    NSIndexPath *indexPathOfBottomCell = [self.bottomRowCollection indexPathForCell:bottomCell];
-    Activity *bottomCellActivity = self.dataStore.randoms[indexPathOfBottomCell.row];
+    ActivityCardCollectionViewCell *bottomCell = [[self.bottomRowCollection visibleCells]firstObject];
+    Activity *bottomCellActivity = bottomCell.cardView.activity;
     
     
     [self.itinerary.activities addObject:topCellActivity];
     [self.itinerary.activities addObject:middleCellActivity];
     [self.itinerary.activities addObject:bottomCellActivity];
+    NSLog(@"Activities !! : %@",self.itinerary.activities); 
     
     [self performSegueWithIdentifier:@"ItinerarySegue" sender:nil]; 
     
@@ -305,7 +296,6 @@
     }
     if ([segue.identifier isEqualToString:@"ItinerarySegue"]) {
          ItineraryViewController *destinationVC = [segue destinationViewController];
-//        NSLog(@"self.itinerary of card vc: %@", self.itinerary.activities);
         destinationVC.itinerary = self.itinerary;
     }
 }
