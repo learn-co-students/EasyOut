@@ -34,8 +34,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.contentMode = UIViewContentModeCenter;
+    self.view.contentMode = UIViewContentModeScaleAspectFit;
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"city"]]];
-
+    
     
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:1.285
                                                             longitude:103.848

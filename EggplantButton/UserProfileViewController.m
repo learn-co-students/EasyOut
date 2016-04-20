@@ -10,6 +10,7 @@
 #import "EggplantButton-Swift.h"
 #import "Firebase.h"
 #import "Secrets.h"
+#import "CircleLabelView.h"
 
 @interface UserProfileViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
@@ -19,9 +20,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *userImage;
 @property (weak, nonatomic) IBOutlet UILabel *bioLabel;
-@property (weak, nonatomic) IBOutlet UILabel *numRatedLabel;
-@property (weak, nonatomic) IBOutlet UIStackView *numTipsGivenLabel;
-@property (weak, nonatomic) IBOutlet UILabel *numOfItineraries;
+@property (weak, nonatomic) IBOutlet CircleLabelView *tipsLabel;
+@property (weak, nonatomic) IBOutlet CircleLabelView *ratedLabel;
+@property (weak, nonatomic) IBOutlet CircleLabelView *itineraryLabel;
 
 @end
 
@@ -29,9 +30,41 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self pullUserFromFirebaseWithCompletion:^(BOOL success) {
+        if(success) {
+            
+            self.usernameLabel.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.4];
+            self.usernameLabel.text = self.user.username;
+            
+            self.bioLabel.text = self.user.bio;
+            
+            self.userImage.layer.cornerRadius = (self.userImage.frame.size.width)/2;
+            self.userImage.clipsToBounds = YES;
+            self.userImage.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
+            
+            self.tipsLabel.type = Tips;
+            self.ratedLabel.type = Ratings;
+            self.itineraryLabel.type = Itineraries;
+            
+            [self.tipsLabel createCircleLabel];
+            [self.ratedLabel createCircleLabel];
+            [self.itineraryLabel createCircleLabel];
+        }
+    }];
+    [self setUpCamera];
+
     
+    self.view.contentMode = UIViewContentModeCenter;
+    self.view.contentMode = UIViewContentModeScaleAspectFit;
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"city"]]];
 
+    
+
+    
+    
+}
+
+-(void)pullUserFromFirebaseWithCompletion:(void(^)(BOOL success))completion {
     
     FirebaseAPIClient *client = [[FirebaseAPIClient alloc]init];
     
@@ -40,23 +73,9 @@
     [client getUserFromFirebaseWithUserID:ref.authData.uid completion:^(User * user, BOOL success) {
         
         self.user = user;
+        
+        completion(YES);
     }];
-    
-    self.usernameLabel.text = self.user.username;
-    self.bioLabel.text = self.user.bio;
-    
-    
-    [self setUpCamera];
-    
-    self.userImage.layer.cornerRadius = (self.userImage.frame.size.width)/2;
-    self.userImage.clipsToBounds = YES;
-    self.userImage.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
-    
-    for (UILabel *label in @[self.numRatedLabel, self.numTipsGivenLabel, self.numOfItineraries]) {
-        label.layer.cornerRadius = (label.frame.size.width)/2;
-        label.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
-    }
-    
 }
 
 -(void)setUpCamera {

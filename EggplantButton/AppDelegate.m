@@ -24,8 +24,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    [GMSServices provideAPIKey:googlePlacesAPI];
+    
+    
+    [[UINavigationBar appearance] setTitleTextAttributes: @{
+                                                            NSForegroundColorAttributeName: [UIColor blackColor],
+                                                            NSFontAttributeName: [UIFont fontWithName:@"Lobster Two" size:20.0f],
+                                                            }];
     // Initialize and run Firebase test functions
-    FirebaseTestFunctions *firebaseTest = [[FirebaseTestFunctions alloc] init];
+//    FirebaseTestFunctions *firebaseTest = [[FirebaseTestFunctions alloc] init];
 //    [firebaseTest testFirebaseFunctions];
     
 //    /// Allows Button to request Location Permissions
@@ -37,16 +44,6 @@
 //        // Handle the deferredDeeplinkURL and open the relevant content.
 //        //[self handleURL :deferredDeeplinkURL];
 //    }];
-    
-    // Set appearance of the navigation bar
-    
-    
-    
-    
-    [UINavigationBar appearance].tintColor = [UIColor blackColor];
-    
-    
-    [GMSServices provideAPIKey:googlePlacesAPI];
     
     return YES;
 }

@@ -4,9 +4,15 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Roboto-Black.ttf">
+            <string>Roboto-Black</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
-        <!--Title-->
+        <!--User Profile-->
         <scene sceneID="LxD-JP-f3a">
             <objects>
                 <viewController storyboardIdentifier="userSegue" id="vvM-bz-Ud9" customClass="UserProfileViewController" sceneMemberID="viewController">
@@ -24,42 +30,36 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="WNT-fB-zLF">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="253"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NY3-4j-T4K">
-                                                <rect key="frame" x="0.0" y="0.0" width="600" height="21"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NY3-4j-T4K">
+                                                <rect key="frame" x="0.0" y="0.0" width="600" height="20"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Black" family="Roboto" pointSize="22"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CUH-f1-A53">
-                                                <rect key="frame" x="238" y="26" width="125" height="125"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CUH-f1-A53">
+                                                <rect key="frame" x="225" y="25" width="150" height="150"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="CUH-f1-A53" secondAttribute="height" multiplier="1:1" id="6E3-Rh-GYN"/>
-                                                    <constraint firstAttribute="height" constant="125" id="GIN-g2-AR3"/>
+                                                    <constraint firstAttribute="height" constant="150" id="GIN-g2-AR3"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bio" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Piy-5M-cZ5">
-                                                <rect key="frame" x="0.0" y="156" width="600" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="WFZ-NY-ETG">
-                                                <rect key="frame" x="182" y="182" width="237" height="71"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="WFZ-NY-ETG">
+                                                <rect key="frame" x="15" y="180" width="570" height="73"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iSR-cI-Fc0" customClass="CircleLabelView">
-                                                        <rect key="frame" x="0.0" y="0.0" width="71" height="71"/>
+                                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iSR-cI-Fc0" customClass="CircleLabelView">
+                                                        <rect key="frame" x="0.0" y="0.0" width="73" height="73"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="iSR-cI-Fc0" secondAttribute="height" multiplier="1:1" id="tFb-3r-Hyv"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T6a-Tw-HIS" customClass="CircleLabelView">
-                                                        <rect key="frame" x="83" y="0.0" width="71" height="71"/>
+                                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T6a-Tw-HIS" customClass="CircleLabelView">
+                                                        <rect key="frame" x="249" y="0.0" width="73" height="73"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="T6a-Tw-HIS" secondAttribute="height" multiplier="1:1" id="KVp-5n-0MT"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yud-G3-Ubx" customClass="CircleLabelView">
-                                                        <rect key="frame" x="166" y="0.0" width="71" height="71"/>
+                                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yud-G3-Ubx" customClass="CircleLabelView">
+                                                        <rect key="frame" x="497" y="0.0" width="73" height="73"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="Yud-G3-Ubx" secondAttribute="height" multiplier="1:1" id="Zbt-N9-bWt"/>
                                                         </constraints>
@@ -69,7 +69,8 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="NY3-4j-T4K" firstAttribute="width" secondItem="WNT-fB-zLF" secondAttribute="width" id="0hG-Tz-ye6"/>
-                                            <constraint firstItem="Piy-5M-cZ5" firstAttribute="width" secondItem="WNT-fB-zLF" secondAttribute="width" id="bJt-k0-Q8G"/>
+                                            <constraint firstItem="WFZ-NY-ETG" firstAttribute="leading" secondItem="WNT-fB-zLF" secondAttribute="leadingMargin" constant="15" id="19L-2W-I8w"/>
+                                            <constraint firstItem="WFZ-NY-ETG" firstAttribute="trailing" secondItem="WNT-fB-zLF" secondAttribute="trailingMargin" constant="-15" id="n9C-dJ-hgh"/>
                                         </constraints>
                                     </stackView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="utp-SR-wfg">
@@ -88,8 +89,8 @@
                                     </tableView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wqM-ut-nAZ">
-                                <rect key="frame" x="333" y="141" width="30" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wqM-ut-nAZ">
+                                <rect key="frame" x="345" y="166" width="30" height="30"/>
                                 <state key="normal" title="Edit"/>
                                 <connections>
                                     <action selector="editPictureButtonPressed:" destination="vvM-bz-Ud9" eventType="touchUpInside" id="XMq-H9-FyO"/>
@@ -114,11 +115,12 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Title" id="TY5-2N-dKi"/>
+                    <navigationItem key="navigationItem" title="User Profile" id="TY5-2N-dKi"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="bioLabel" destination="Piy-5M-cZ5" id="bqi-Us-C8h"/>
-                        <outlet property="numTipsGivenLabel" destination="WNT-fB-zLF" id="7Me-Z8-nPo"/>
+                        <outlet property="itineraryLabel" destination="Yud-G3-Ubx" id="tfb-w1-Fpv"/>
+                        <outlet property="ratedLabel" destination="T6a-Tw-HIS" id="CVk-ht-FOa"/>
+                        <outlet property="tipsLabel" destination="iSR-cI-Fc0" id="MSG-HC-8zb"/>
                         <outlet property="userImage" destination="CUH-f1-A53" id="0OV-TO-biy"/>
                         <outlet property="usernameLabel" destination="NY3-4j-T4K" id="PWL-Ka-aHx"/>
                     </connections>

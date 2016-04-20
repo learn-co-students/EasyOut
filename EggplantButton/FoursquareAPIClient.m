@@ -23,6 +23,8 @@ NSString * const FSQ_BASE_URL= @"https://api.foursquare.com/";
     
     //time
     //price
+    NSLog(@"%@", urlString);
+    
     
     NSURL *url = [NSURL URLWithString:urlString];
     

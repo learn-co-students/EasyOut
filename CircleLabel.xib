@@ -4,24 +4,35 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Roboto-Black.ttf">
+            <string>Roboto-Black</string>
+        </mutableArray>
+    </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UIView"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CircleLabelView">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="56x-eK-ddY"/>
+                <outlet property="countLabel" destination="l5h-zS-pXG" id="Dfx-sv-u0S"/>
+                <outlet property="typeLabel" destination="X1q-pf-zyn" id="mGm-On-lNS"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CircleLabelView">
-            <rect key="frame" x="0.0" y="0.0" width="215" height="183"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="315" height="323"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Kuc-2C-3Ab">
-                    <rect key="frame" x="86" y="68" width="42" height="47"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="eUP-BO-k2D">
+                    <rect key="frame" x="0.0" y="0.0" width="315" height="323"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uCF-hV-U5Y">
-                            <rect key="frame" x="0.0" y="0.0" width="42" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l5h-zS-pXG">
+                            <rect key="frame" x="0.0" y="0.0" width="315" height="162"/>
+                            <fontDescription key="fontDescription" name="Roboto-Black" family="Roboto" pointSize="20"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xAm-ua-LN5">
-                            <rect key="frame" x="0.0" y="26" width="42" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X1q-pf-zyn">
+                            <rect key="frame" x="0.0" y="162" width="315" height="161"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -29,16 +40,14 @@
                     </subviews>
                 </stackView>
             </subviews>
-            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="Kuc-2C-3Ab" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="hu5-z4-m8c"/>
-                <constraint firstItem="Kuc-2C-3Ab" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ran-uk-SAg"/>
+                <constraint firstItem="eUP-BO-k2D" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="1Nd-HB-ZH1"/>
+                <constraint firstItem="eUP-BO-k2D" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="DnR-0q-Ece"/>
+                <constraint firstItem="eUP-BO-k2D" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="VkY-r7-qep"/>
+                <constraint firstItem="eUP-BO-k2D" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="gan-0H-2oB"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <connections>
-                <outlet property="inputLabel" destination="uCF-hV-U5Y" id="WSg-vw-2B9"/>
-            </connections>
-            <point key="canvasLocation" x="120.5" y="67.5"/>
+            <point key="canvasLocation" x="123.5" y="214.5"/>
         </view>
     </objects>
 </document>

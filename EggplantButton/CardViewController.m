@@ -59,6 +59,10 @@
     
     [super viewDidLoad];
     
+    UIImageView *background = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"city"]];
+    [self.view addSubview:background];
+    self.view.contentMode = UIViewContentModeScaleAspectFit;
+
     
     [self setUpCoreLocation];
 

@@ -8,10 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger, LabelType) {
+    Tips,
+    Ratings,
+    Itineraries
+};
+
 
 
 @interface CircleLabelView : UIView
 
-@property (weak, nonatomic) IBOutlet UILabel *inputLabel;
+
+@property (strong, nonatomic) IBOutlet UIView *contentView;
+
+@property (nonatomic) LabelType type;
+@property (weak, nonatomic) IBOutlet UILabel *countLabel;
+
+-(void)createCircleLabel;
 
 @end
