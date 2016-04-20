@@ -407,18 +407,18 @@
     [self shuffleCards];
     
     if(!self.firstCardLocked) {
-        [self.topRowCollection shake:15     // 15 times
-                           withDelta:20     // 20 points wide
+        [self.topRowCollection shake:10     // 10 times
+                           withDelta:10     // 10 points wide
          ];
     }
     if(!self.secondCardLocked) {
-        [self.middleRowCollection shake:15   // 15 times
-                              withDelta:20   // 20 points wide
+        [self.middleRowCollection shake:10   // 10 times
+                              withDelta:10   // 10 points wide
          ];
     }
     if(!self.thirdCardLocked) {
-        [self.bottomRowCollection shake:15   // 15 times
-                              withDelta:20   // 20 points wide
+        [self.bottomRowCollection shake:10   // 10 times
+                              withDelta:10   // 10 points wide
          ];
     }
 
@@ -429,8 +429,6 @@
 
 - (void) shakeStarted: (NSNotification *) notification {
 {
-        // makes the phone vibrate
-        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         
         [self shuffleCards];
         
