@@ -55,7 +55,6 @@
     [self.mapView.leadingAnchor constraintEqualToAnchor:self.mapUIView.leadingAnchor].active = YES;
     [self.mapView.trailingAnchor constraintEqualToAnchor:self.mapUIView.trailingAnchor].active = YES;
 
-
     UIImage *markerImage = [GMSMarker markerImageWithColor:[Constants vikingBlueColor]];
     
     //MARKER FOR US
@@ -79,9 +78,6 @@
         marker.snippet = address;
         marker.map = self.mapView;
         marker.icon = markerImage;
-        
-    
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -115,7 +111,5 @@
     return center;
     
 }
-
-
 
 @end

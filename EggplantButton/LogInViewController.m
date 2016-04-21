@@ -10,8 +10,10 @@
 #import "Secrets.h"
 #import "EggplantButton-Swift.h"
 #import "Firebase.h"
+#import "CreateAccountViewController.h"
 
 @interface LogInViewController ()
+
 @property (weak, nonatomic) IBOutlet UILabel *loginLabel;
 @property (weak, nonatomic) IBOutlet UITextField *emailLabel;
 @property (weak, nonatomic) IBOutlet UITextField *passwordLabel;
@@ -27,54 +29,80 @@
     
     UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc]
                                            initWithTarget:self
-                                           action:@selector(hideKeyBoard)];
+                                           action:@selector(hideKeyboard)];
     
     [self.view addGestureRecognizer:tapGesture];
 }
 
-
+- (void)hideKeyboard {
+    [self.view endEditing:YES];
+}
 
 - (IBAction)login:(id)sender {
     
-    Firebase *ref = [[Firebase alloc] initWithUrl:firebaseRootRef];
-
-            [ref authUser:self.emailLabel.text
-                 password:self.passwordLabel.text
-      withCompletionBlock:^(NSError *error, FAuthData *authData) {
-    
-    if (error) {
-        UIAlertController * alert=   [UIAlertController
-                                      alertControllerWithTitle:@"Failed to login"
-                                      message:@"Email or password incorrect"
-                                      preferredStyle:UIAlertControllerStyleAlert];
+    [FirebaseAPIClient logInUserWithEmail:self.emailLabel.text password:self.passwordLabel.text completion:^(FAuthData *authData, NSError *error) {
         
-        UIAlertAction* ok = [UIAlertAction
-                             actionWithTitle:@"OK"
-                             style:UIAlertActionStyleDefault
-                             handler:^(UIAlertAction * action)
-                             {
-                                 [alert dismissViewControllerAnimated:YES completion:nil];
-                                 
-                             }];
-         [alert addAction:ok];
-        [self presentViewController:alert animated:YES completion:nil];
+        if (error != nil) {
+            UIAlertController * alert= [UIAlertController alertControllerWithTitle:@"Failed to login"
+                                                                           message:error.description
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK"
+                                                         style:UIAlertActionStyleDefault
+                                                       handler:^(UIAlertAction * action) {
+                                                           [alert dismissViewControllerAnimated:YES completion:nil];
+                                                       }];
+            
+            [alert addAction:ok];
+            
+            [self presentViewController:alert animated:YES completion:nil];
+            
+        } else {
+            
 
-    }
-    else {
-        [[NSNotificationCenter defaultCenter] postNotificationName:mainViewControllerStoryBoardID object:nil];
-    }
-}];
-    
-}
--(void)hideKeyBoard {
-    
-    [self.emailLabel resignFirstResponder];
-    [self.passwordLabel resignFirstResponder];
-}
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+            [[NSNotificationCenter defaultCenter] postNotificationName:mainViewControllerStoryBoardID object:nil];
+        }
+    }];
 }
 
+- (IBAction)emailDidEnd:(id)sender {
+    
+//    if ([self checkEmailValidity]) {
+//        
+//    }
+//    
+//    [FirebaseAPIClient checkIfUserExistsWithEmail:self.emailLabel.text completion:^(BOOL doesExist) {
+//        
+//        if (!doesExist) {
+//            UIAlertController *emailTakenAlert= [UIAlertController alertControllerWithTitle:@"Uh oh!"
+//                                                                           message:@"This email address has not been registered!"
+//                                                                    preferredStyle:UIAlertControllerStyleAlert];
+//            
+//            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+//                                                               style:UIAlertActionStyleDefault
+//                                                             handler:^(UIAlertAction * action) {
+//                                                                 [emailTakenAlert dismissViewControllerAnimated:YES completion:nil];
+//            }];
+//            
+//            [emailTakenAlert addAction:okAction];
+//            
+//            [self presentViewController:emailTakenAlert animated:YES completion:nil];
+//            
+//        }
+//    }];
+}
+
+- (BOOL)checkEmailValidity {
+    
+    if (self.emailLabel.text.length < 5) {
+        return NO;
+    }
+    
+    if ([self.emailLabel.text containsString:@"!"] || [self.emailLabel.text containsString:@"@@"]) {
+        
+    }
+    
+    return YES;
+}
 
 @end

@@ -17,9 +17,8 @@ import Firebase
         print("Running Firebase test functions.")
         
         // Create default test criteria
-        let firebaseAPI : FirebaseAPIClient = FirebaseAPIClient()
         let ref = Firebase(url:firebaseRootRef)
-        let image : UIImage = UIImage(named:"city")!
+//        let image : UIImage = UIImage(named:"city")!
         print("authID.uid: \(ref.authData.uid)")
         
         
@@ -28,13 +27,13 @@ import Firebase
 //            print("Successfully saved an image")
 //        }
         
-        // Check save profile photo function
-        firebaseAPI.saveProfilePhotoForCurrentUser(image) { (success) in
-            print("Returned to save profile photo test")
-            if success {
-                print("Successfully saved profile photo for user with userID: \(ref.authData.uid)")
-            }
-        }
+//        // Check save profile photo function
+//        FirebaseAPIClient.saveProfilePhotoForCurrentUser(image) { (success) in
+//            print("Returned to save profile photo test")
+//            if success {
+//                print("Successfully saved profile photo for user with userID: \(ref.authData.uid)")
+//            }
+//        }
 
         
 //        // Check function to get all usernames in Firebase

@@ -26,19 +26,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [GMSServices provideAPIKey:googlePlacesAPI];
-    
-    [UINavigationBar appearance].barTintColor = [UIColor clearColor];
+
+    [UINavigationBar appearance].barTintColor = [Constants vikingBlueColor];
     [UIBarButtonItem appearance].tintColor = [UIColor whiteColor];
-    [UINavigationBar appearance].alpha = 0.4;
-    
+//    [UINavigationBar appearance].alpha = 0.5;
     [[UINavigationBar appearance] setTitleTextAttributes: @{
                                                             NSFontAttributeName: [UIFont fontWithName:@"Lobster Two" size:20.0f],
-                                                            
                                                             }];
 
-    
-    
-    
     return YES;
 }
 
