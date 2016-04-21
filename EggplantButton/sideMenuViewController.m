@@ -7,6 +7,9 @@
 //
 
 #import "sideMenuViewController.h"
+#import "Secrets.h"
+#import "Firebase.h"
+#import "EggplantButton-Swift.h"
 
 
 @interface sideMenuViewController ()
@@ -21,7 +24,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.usernameLabel.text = self.user.username;
+    Firebase *ref = [[Firebase alloc] initWithUrl:firebaseRootRef];
+    
+    NSString *userID = ref.authData.uid;
+    self.usernameLabel.text = userID;
     
 }
 
