@@ -12,7 +12,7 @@ import Firebase
 @objc class FirebaseAPIClient: NSObject {
     
     // Login and authenticate user given email and password
-    class func logInUserWithEmail(email:String, password:String, completion: Bool -> Void) {
+    class func logInUserWithEmail(email:String, password:String, completion: (authData: FAuthData!, error: NSError!) -> Void) {
         
         print("Attempting to log in user with email: \(email)")
         
@@ -42,17 +42,17 @@ import Firebase
                 
                 print("An error occurred while attempting login: \(error.description)")
                 
-                completion(false)
+                completion(authData: authData, error: error)
                 
             } else {
                 print("User is logged in.\nChecking authData for data.")
                 
                 if authData.auth != nil {
                     print("authData has data!")
-                    completion(true)
+                    completion(authData: authData, error: error)
                 } else {
                     print("authData has no data :(")
-                    completion(false)
+                    completion(authData: authData, error: error)
                 }
             }
         }
@@ -133,12 +133,11 @@ import Firebase
             
             // Log in the user
             print("Calling logInUser from within createUser completion block")
-            self.logInUserWithEmail(user.email, password: password, completion: { (success) in
-                if success {
-                    print("Logged in user with userID \(ref.authData.uid) after registration")
-                    completion(true)
+            self.logInUserWithEmail(user.email, password: password, completion: { (authData, error) in
+                if error != nil {
+                    print("****Error trying to log user in after registration: \(error)")
                 } else {
-                    print("Failed to log in user after registration")
+                    print("Logged in user with userID \(authData.uid) after registration")
                 }
             })
         })

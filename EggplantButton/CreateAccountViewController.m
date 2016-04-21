@@ -28,13 +28,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc]
                                            initWithTarget:self
-                                           action:@selector(hideKeyBoard)];
+                                           action:@selector(hideKeyboard)];
     
     [self.view addGestureRecognizer:tapGesture];
+    
     self.createAccountButtonTapped.enabled = NO;
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,12 +43,8 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)hideKeyBoard {
-    
-    [self.emailLabel resignFirstResponder];
-    [self.passWordLabel resignFirstResponder];
-    [self.verifyPasswordLabel resignFirstResponder];
-    [self.userNameLabel resignFirstResponder];
+-(void)hideKeyboard {
+    [self.view endEditing:YES];
 }
 
 -(void)checkUsernameValidityWithCompletion:(void (^)(BOOL isValid)) completion {
