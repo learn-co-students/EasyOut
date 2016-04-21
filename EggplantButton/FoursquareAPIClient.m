@@ -17,12 +17,12 @@ NSString * const FSQ_BASE_URL= @"https://api.foursquare.com/";
 
 +(void)getActivityforSection:(NSString *)section Location:(NSString *)location WithCompletion:(void (^) (NSArray *activities)) completion {
  
-    
-#warning CHANGE TO LAT LONG!
-    NSString *urlString = [NSString stringWithFormat: @"%@v2/venues/explore?client_id=%@&client_secret=%@&v=20140806&m=foursquare&ll=%@&section=%@&venuePhotos=1", FSQ_BASE_URL, FOURSQUARE_CLIENT_ID, FOURSQUARE_CLIENT_SECRET,location,section];
+    NSString *urlString = [NSString stringWithFormat: @"%@v2/venues/explore?client_id=%@&client_secret=%@&v=20140806&m=foursquare&ll=%@&radius=500&section=%@&venuePhotos=1", FSQ_BASE_URL, FOURSQUARE_CLIENT_ID, FOURSQUARE_CLIENT_SECRET,location,section];
     
     //time
     //price
+    NSLog(@"%@", urlString);
+    
     
     NSURL *url = [NSURL URLWithString:urlString];
     

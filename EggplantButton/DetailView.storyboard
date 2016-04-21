@@ -4,9 +4,20 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Roboto-Bold.ttf">
+            <string>Roboto-Bold</string>
+        </mutableArray>
+        <mutableArray key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
-        <!--Details-->
+        <!--Activity Detail-->
         <scene sceneID="7tk-ac-ACP">
             <objects>
                 <viewController storyboardIdentifier="DetailView" id="ck0-ww-g9b" customClass="DetailViewController" sceneMemberID="viewController">
@@ -18,87 +29,78 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="cg9-NR-E1m">
-                                <rect key="frame" x="20" y="64" width="560" height="580"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="cg9-NR-E1m">
+                                <rect key="frame" x="20" y="25" width="560" height="570"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="6dJ-HA-9CB" userLabel="Navigation Stack">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="145"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RBE-wV-SEh" userLabel="Image View">
-                                                <rect key="frame" x="0.0" y="0.0" width="280" height="145"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </view>
-                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rko-w0-IJw" userLabel="Distance View">
-                                                <rect key="frame" x="280" y="0.0" width="280" height="145"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </view>
-                                        </subviews>
-                                    </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F20-4t-6Zf" userLabel="Seperator">
-                                        <rect key="frame" x="0.0" y="145" width="560" height="145"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RE0-mt-IIW">
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="21"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="20"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="b69-Dg-b8X" userLabel="Icon and Detail Stack">
-                                        <rect key="frame" x="0.0" y="290" width="560" height="145"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6dJ-HA-9CB" userLabel="Navigation Stack">
+                                        <rect key="frame" x="0.0" y="26" width="560" height="221"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="fQZ-KW-UEp" userLabel="Detail Stack">
-                                                <rect key="frame" x="0.0" y="0.0" width="280" height="81"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r2Z-ov-n1X">
-                                                        <rect key="frame" x="0.0" y="0.0" width="42" height="21"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3IY-DV-bGd">
-                                                        <rect key="frame" x="0.0" y="21" width="101" height="30"/>
-                                                        <state key="normal" title="Phone number"/>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o31-v6-CSf">
-                                                        <rect key="frame" x="0.0" y="51" width="86" height="30"/>
-                                                        <state key="normal" title="More Details"/>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PK3-Hb-hu3">
-                                                <rect key="frame" x="280" y="0.0" width="280" height="145"/>
+                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RBE-wV-SEh" userLabel="Image View">
+                                                <rect key="frame" x="0.0" y="0.0" width="356" height="221"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rko-w0-IJw" userLabel="Distance View">
+                                                <rect key="frame" x="356" y="0.0" width="204" height="221"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </view>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="PK3-Hb-hu3" secondAttribute="bottom" id="YPc-3H-ByW"/>
+                                            <constraint firstItem="RBE-wV-SEh" firstAttribute="width" secondItem="Rko-w0-IJw" secondAttribute="width" multiplier="1.75" id="dt0-0U-PXk"/>
                                         </constraints>
                                     </stackView>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SWl-eB-RaB" userLabel="MapView">
-                                        <rect key="frame" x="0.0" y="435" width="560" height="145"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SWl-eB-RaB" userLabel="MapView">
+                                        <rect key="frame" x="0.0" y="252" width="560" height="240"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T7E-FC-b6E" userLabel="Address">
-                                                <rect key="frame" x="20" y="113" width="42" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T7E-FC-b6E" userLabel="Address">
+                                                <rect key="frame" x="0.0" y="222" width="560" height="18"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
+                                            <constraint firstItem="T7E-FC-b6E" firstAttribute="width" secondItem="SWl-eB-RaB" secondAttribute="width" id="ArX-hc-YZ6"/>
                                             <constraint firstItem="T7E-FC-b6E" firstAttribute="bottom" secondItem="SWl-eB-RaB" secondAttribute="bottom" id="nB2-EW-EKz"/>
-                                            <constraint firstItem="T7E-FC-b6E" firstAttribute="leading" secondItem="SWl-eB-RaB" secondAttribute="leading" constant="20" symbolic="YES" id="vmS-bh-C81"/>
+                                            <constraint firstItem="T7E-FC-b6E" firstAttribute="leading" secondItem="SWl-eB-RaB" secondAttribute="leading" id="vmS-bh-C81"/>
                                         </constraints>
                                     </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="fQZ-KW-UEp" userLabel="Detail Stack">
+                                        <rect key="frame" x="0.0" y="497" width="560" height="73"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3IY-DV-bGd">
+                                                <rect key="frame" x="0.0" y="0.0" width="560" height="34"/>
+                                                <edgeInsets key="layoutMargins" top="5" left="5" bottom="8" right="8"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
+                                                <state key="normal" title="Phone number"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o31-v6-CSf">
+                                                <rect key="frame" x="0.0" y="39" width="560" height="34"/>
+                                                <edgeInsets key="layoutMargins" top="5" left="8" bottom="5" right="8"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
+                                                <state key="normal" title="More Details"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="cg9-NR-E1m" firstAttribute="bottom" secondItem="e1S-0b-Cja" secondAttribute="top" id="3JN-RA-YYy"/>
+                            <constraint firstItem="cg9-NR-E1m" firstAttribute="bottom" secondItem="e1S-0b-Cja" secondAttribute="top" constant="-5" id="3JN-RA-YYy"/>
                             <constraint firstItem="cg9-NR-E1m" firstAttribute="trailing" secondItem="8be-iO-s5k" secondAttribute="trailingMargin" id="E5h-LK-kSH"/>
+                            <constraint firstItem="cg9-NR-E1m" firstAttribute="top" secondItem="r76-yn-cUG" secondAttribute="bottom" constant="5" id="N0N-8b-UmN"/>
                             <constraint firstItem="cg9-NR-E1m" firstAttribute="leading" secondItem="8be-iO-s5k" secondAttribute="leadingMargin" id="WVG-S4-NdV"/>
-                            <constraint firstItem="cg9-NR-E1m" firstAttribute="top" secondItem="r76-yn-cUG" secondAttribute="bottom" id="uRt-Oq-4mh"/>
+                            <constraint firstItem="SWl-eB-RaB" firstAttribute="height" secondItem="8be-iO-s5k" secondAttribute="height" multiplier="0.4" id="pUH-oJ-vxS"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Details" id="FJJ-9F-MP4">
+                    <navigationItem key="navigationItem" title="Activity Detail" id="FJJ-9F-MP4">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="PvR-5S-AYm">
                             <connections>
                                 <action selector="backButtonPressed:" destination="ck0-ww-g9b" id="TcI-UD-Mug"/>
@@ -106,10 +108,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="actDetailLabel" destination="r2Z-ov-n1X" id="Zeg-iU-nTH"/>
-                        <outlet property="addressLabel" destination="T7E-FC-b6E" id="wWI-Vz-x0b"/>
+                        <outlet property="addressLabel" destination="T7E-FC-b6E" id="pkh-xP-eb2"/>
                         <outlet property="distanceView" destination="Rko-w0-IJw" id="Trj-qW-ych"/>
-                        <outlet property="iconImage" destination="PK3-Hb-hu3" id="2oQ-Ru-bK8"/>
                         <outlet property="imageView" destination="RBE-wV-SEh" id="lPf-0h-r7y"/>
                         <outlet property="mapUIView" destination="SWl-eB-RaB" id="yqG-9O-sdB"/>
                         <outlet property="moreDetailLabel" destination="o31-v6-CSf" id="NBt-1J-ltN"/>
@@ -118,7 +118,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qei-ef-srQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2148" y="306"/>
+            <point key="canvasLocation" x="2086" y="308"/>
         </scene>
     </scenes>
 </document>

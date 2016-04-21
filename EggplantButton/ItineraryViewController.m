@@ -59,18 +59,21 @@
     
     //MARKER FOR ACTIVITIES
     for(Activity *activity in self.itinerary.activities) {
+        
+        NSString *address = [NSString stringWithFormat:@"%@%@", activity.address[0], activity.address[1]];
     
-        CLLocationCoordinate2D location = [self getLocationFromAddressString: activity.address];
-
+        CLLocationCoordinate2D location = [self getLocationFromAddressString: address];
+        
         // Creates a marker in the center of the map.
         
         GMSMarker *marker = [[GMSMarker alloc] init];
         marker.position = location;
         marker.title = activity.name;
-        marker.snippet = activity.address;
+        marker.snippet = address;
         marker.map = self.gpsMapView;
         marker.icon = markerImage;
-    }
+        
+        }
     
     
     // save Itinerary to FireBase
@@ -92,7 +95,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ActivityCell" forIndexPath:indexPath];
     
     cell.textLabel.text = ((Activity *)self.itinerary.activities[indexPath.row]).name;
-    cell.detailTextLabel.text = ((Activity *)self.itinerary.activities[indexPath.row]).address;
+    cell.detailTextLabel.text = ((Activity *)self.itinerary.activities[indexPath.row]).address[0];
     
     return cell;
 }

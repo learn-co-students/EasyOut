@@ -59,11 +59,8 @@
 
 - (void)viewDidLoad {
     
-    
-    
     [super viewDidLoad];
-    
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"city"]]];
+
     
     [self setUpCoreLocation];
 
@@ -79,8 +76,8 @@
     self.bottomRowCollection.backgroundColor = [UIColor clearColor];
     
 
-    self.createItineraryButton.backgroundColor = [UIColor colorWithRed:0.36 green:0.80 blue:0.83 alpha:1.00];
-    self.randomizeCardsButton.backgroundColor = [UIColor colorWithRed:0.36 green:0.80 blue:0.83 alpha:1.00];
+    self.createItineraryButton.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.4];
+    self.randomizeCardsButton.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.4];
 
     
     // listening for segue notifications from sideMenu
@@ -110,6 +107,10 @@
                                              selector:@selector(disableCheckedCard:)
                                                  name:@"checkBoxChecked"
                                                object:nil];
+    
+    self.view.contentMode = UIViewContentModeCenter;
+    self.view.contentMode = UIViewContentModeScaleAspectFit;
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"city"]]];
     
 }
 
@@ -230,7 +231,7 @@
 
     }
     
-    NSArray *topRowOptions = @[@"arts", @"outdoors", @"sights"];
+    NSArray *topRowOptions = @[@"arts", @"sights"];
     
     [self.dataStore getActivityforSection:topRowOptions[arc4random()%topRowOptions.count] Location:[NSString stringWithFormat:@"%f,%f",self.latitude,self.longitude] WithCompletion:^(BOOL success) {
         

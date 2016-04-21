@@ -19,7 +19,9 @@
         
         _name = activityDictionary[@"venue"][@"name"];
         
-        NSMutableString *address = [[NSString stringWithFormat:@"%@ %@", activityDictionary[@"venue"][@"location"][@"formattedAddress"][0], activityDictionary[@"venue"][@"location"][@"formattedAddress"][1]] mutableCopy];
+        NSMutableArray *mAddress = [[NSMutableArray alloc]init];
+    
+        NSMutableString *address = [(NSString *)activityDictionary[@"venue"][@"location"][@"formattedAddress"][0] mutableCopy];
         
         NSRegularExpression *regex = [NSRegularExpression
                                       regularExpressionWithPattern:@"\\(.+?\\)"
@@ -30,7 +32,10 @@
                                 range:NSMakeRange(0, [address length])
                          withTemplate:@""];
         
-        _address = address;
+        [mAddress addObject: address];
+        [mAddress addObject:activityDictionary[@"venue"][@"location"][@"formattedAddress"][1]];
+        _address = mAddress ;
+        
         _type = activityDictionary[@"venue"][@"shortName"];
     
         if ([activityDictionary[@"venue"][@"photos"][@"groups"] count] > 0 ) {
