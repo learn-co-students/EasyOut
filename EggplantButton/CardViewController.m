@@ -49,6 +49,7 @@
 @property (nonatomic) BOOL thirdCardLocked;
 
 //BUTTONS
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *filterNavButton;
 @property (weak, nonatomic) IBOutlet UIButton *createItineraryButton;
 @property (weak, nonatomic) IBOutlet UIButton *randomizeCardsButton;
 
@@ -61,16 +62,12 @@
     
     [super viewDidLoad];
 
-    
     [self setUpCoreLocation];
 
     self.dataStore = [ActivitiesDataStore sharedDataStore];
     
     [self getCardData];
-    
-    // allocate itinerary
   
-    
     self.topRowCollection.backgroundColor = [UIColor clearColor];
     self.middleRowCollection.backgroundColor = [UIColor clearColor];
     self.bottomRowCollection.backgroundColor = [UIColor clearColor];
@@ -82,9 +79,9 @@
     self.randomizeCardsButton.titleLabel.font = [UIFont fontWithName:@"Lobster Two" size:20.0f];
     
     // Set appearance of navigation bar
-    [[UINavigationBar appearance] setTitleTextAttributes: @{
-                                                            NSFontAttributeName: [UIFont fontWithName:@"Lobster Two" size:20.0f],
-                                                            }];
+    self.navigationController.navigationBar.topItem.title = @"EasyOut";
+    [self.navigationController.navigationBar setTitleTextAttributes: @{NSForegroundColorAttributeName:[UIColor whiteColor],
+                                                                       NSFontAttributeName:[UIFont fontWithName:@"Lobster Two" size:30]}];
 
     
     // listening for segue notifications from sideMenu
@@ -133,7 +130,6 @@
 #pragma mark - Locking/Unlocking Cards
 - (void) disableCheckedCard: (NSNotification *) notification {
     
-    NSLog(@"cardVC knows check button tapped");
     UIButton *tappedButton = notification.object;
     ActivityCardView * cardCell = (ActivityCardView *)tappedButton.superview.superview;
     UICollectionViewCell *cardCellSuperview = (UICollectionViewCell *)cardCell.superview.superview;
@@ -141,17 +137,17 @@
     if ([self.topRowCollection indexPathForCell:cardCellSuperview]) {
         self.firstCardLocked = self.firstCardLocked ? NO : YES;
         self.firstCardLocked ? [self disableScroll] : [self enableScroll];
-        NSLog(@"this card lives in the topRowCollection");
+        
     }
     else if ([self.middleRowCollection indexPathForCell:cardCellSuperview]) {
         self.secondCardLocked = self.secondCardLocked ? NO : YES;
         self.secondCardLocked ? [self disableScroll] : [self enableScroll];
-        NSLog(@"this card lives in the middleRowCollection");
+        
     }
     else {
         self.thirdCardLocked = self.thirdCardLocked ? NO : YES;
         self.thirdCardLocked ? [self disableScroll] : [self enableScroll];
-        NSLog(@"this card lives in the bottomRowCollection");
+       
     }
 }
 
@@ -184,27 +180,24 @@
 }
 
 
+
 #pragma mark - Side Menu
 
 - (IBAction)menuButtonTapped:(UIBarButtonItem *)sender {
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"menuButtonTapped"
                                                         object:nil];
-    NSLog(@"menu button tapped!");
+   
 }
 
 - (void) profileButtonTapped: (NSNotification *) notification {
-    NSLog(@"cardVC knows that the profile button was tapped!");
-    
-    
+   
     UIViewController *userProfileVC = [[UIStoryboard storyboardWithName:@"UserProfile" bundle:nil] instantiateViewControllerWithIdentifier:@"userSegue"];
     
     [self.navigationController showViewController:userProfileVC sender:nil];
 }
 
 - (void) pastItinerariesButtonTapped: (NSNotification *) notification {
-    NSLog(@"cardVC knows that the past itineraries button was tapped!");
-    
     
     UIViewController *pastItinerariesVC = [[UIStoryboard storyboardWithName:@"ItineraryHistoryView" bundle:nil] instantiateViewControllerWithIdentifier:@"pastItineraries"];
     
@@ -212,14 +205,10 @@
 }
 
 - (void) logoutButtonTapped: (NSNotification *) notification {
-    NSLog(@"cardVC knows that the logout button was tapped!");
     
     [FirebaseAPIClient logOutUser];
-    
+
 }
-
-#pragma mark - Save Itinerary Button
-
 
 
 #pragma mark - Get API data
@@ -325,42 +314,13 @@
 }
 
 
-- (IBAction)SaveItineraryButtonTapped:(id)sender {
-  
-    NSLog(@" Save Button Was Tapped ! ! !");
-    
-    NSMutableArray *activitiesArray = [NSMutableArray new];
-    
-    self.itinerary = [[Itinerary alloc]initWithActivities:activitiesArray userID:@"" creationDate:[NSDate date]];
-    
-    ActivityCardCollectionViewCell *topCell = [[self.topRowCollection visibleCells] firstObject];
-    Activity *topCellActivity = topCell.cardView.activity;
-    
-    ActivityCardCollectionViewCell *middleCell = [[self.middleRowCollection visibleCells] firstObject];
-    Activity *middleCellActivity = middleCell.cardView.activity;
-    
-    ActivityCardCollectionViewCell *bottomCell = [[self.bottomRowCollection visibleCells]firstObject];
-    Activity *bottomCellActivity = bottomCell.cardView.activity;
-    
-    
-    [self.itinerary.activities addObject:topCellActivity];
-    [self.itinerary.activities addObject:middleCellActivity];
-    [self.itinerary.activities addObject:bottomCellActivity];
-//    NSLog(@"Activities !! : %@",self.itinerary.activities);
-    
-    NSLog(@"About to perform the itinerary segue");
-    [self performSegueWithIdentifier:@"ItinerarySegue" sender:nil];
-    
-}
+
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
     [self performSegueWithIdentifier:@"detailSegue" sender: (ActivityCardCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath]];
     
 }
-
-
-
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
@@ -436,30 +396,95 @@
 
 }
 
+#pragma mark - Save Itinerary Button Tapped 
+
+- (IBAction)SaveItineraryButtonTapped:(id)sender {
+    
+    NSLog(@" Save Button Was Tapped ! ! !");
+    
+    NSMutableArray *activitiesArray = [NSMutableArray new];
+    
+    self.itinerary = [[Itinerary alloc]initWithActivities:activitiesArray userID:@"" creationDate:[NSDate date]];
+    
+    if (self.firstCardLocked) {
+        ActivityCardCollectionViewCell *topCell = [[self.topRowCollection visibleCells] firstObject];
+        Activity *topCellActivity = topCell.cardView.activity;
+        [self.itinerary.activities addObject:topCellActivity];
+
+    }else {
+        // do nothing
+        
+    } if (self.secondCardLocked) {
+        
+        ActivityCardCollectionViewCell *middleCell = [[self.middleRowCollection visibleCells] firstObject];
+        Activity *middleCellActivity = middleCell.cardView.activity;
+        [self.itinerary.activities addObject:middleCellActivity];
+
+    }
+    else {
+        // do nothing
+    } if (self.thirdCardLocked) {
+        
+        ActivityCardCollectionViewCell *bottomCell = [[self.bottomRowCollection visibleCells]firstObject];
+        Activity *bottomCellActivity = bottomCell.cardView.activity;
+        [self.itinerary.activities addObject:bottomCellActivity];
+        
+
+    } else {
+        // do nothing
+    }
+    
+    if (!self.firstCardLocked && !self.secondCardLocked && !self.thirdCardLocked ) {
+        
+        UIAlertController *chooseOneItinerary= [UIAlertController alertControllerWithTitle:@"Uh oh!"
+                                                                                message:@"Please choose one or more activities"
+                                                                         preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * action) {
+                                                             [chooseOneItinerary dismissViewControllerAnimated:YES completion:nil];
+                                                         }];
+        
+        [chooseOneItinerary addAction:okAction];
+        
+        [self presentViewController:chooseOneItinerary animated:YES completion:nil];
+
+        
+    };
+    
+    if (self.firstCardLocked || self.secondCardLocked || self.thirdCardLocked) {
+        [self performSegueWithIdentifier:@"ItinerarySegue" sender:nil]; 
+    }
+    
+    
+}
+
 
 #pragma mark - Shake Gesture
 
 - (void) shakeStarted: (NSNotification *) notification {
 {
-        
+    
         [self shuffleCards];
+
         
-        if(!self.firstCardLocked) {
-            [self.topRowCollection shake:15     // 15 times
-                               withDelta:20     // 20 points wide
-             ];
-        }
-        if(!self.secondCardLocked) {
-            [self.middleRowCollection shake:15   // 15 times
-                                  withDelta:20   // 20 points wide
-             ];
-        }
-        if(!self.thirdCardLocked) {
-            [self.bottomRowCollection shake:15   // 15 times
-                                  withDelta:20   // 20 points wide
-             ];
-        }
-        
+    if(!self.firstCardLocked) {
+        [self.topRowCollection shake:10     // 10 times
+                           withDelta:10     // 10 points wide
+         ];
+    }
+    if(!self.secondCardLocked) {
+        [self.middleRowCollection shake:10   // 10 times
+                              withDelta:10   // 10 points wide
+         ];
+    }
+    if(!self.thirdCardLocked) {
+        [self.bottomRowCollection shake:10   // 10 times
+                              withDelta:10   // 10 points wide
+         ];
+    }
+    
     }
 }
 

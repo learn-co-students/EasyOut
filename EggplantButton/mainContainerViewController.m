@@ -26,7 +26,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(menuButtonTapped:)
                                                  name:@"menuButtonTapped"
@@ -46,8 +45,6 @@
     
     self.mainViewTapGestureRecognizer.enabled = YES;
     self.viewContainer.subviews[0].userInteractionEnabled = NO;
-    
-    
     
     [UIView animateWithDuration:0.2 animations:^{
         self.sideMenuContainer.alpha = 0.9;
@@ -82,7 +79,6 @@
 - (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event
 
 {
-    NSLog(@"Shake started mainContainer");
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"shakeStarted"
                                                         object:nil];
@@ -92,7 +88,6 @@
 {
     if ( event.subtype == UIEventSubtypeMotionShake )
     {
-        NSLog(@"Shake ended mainContainer");
         
     }
     
@@ -100,14 +95,5 @@
         [super motionEnded:motion withEvent:event];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -86,6 +86,7 @@
 
 -(void)setUpCamera {
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+
         
         UIAlertController * noCameraAlert =   [UIAlertController
                                                alertControllerWithTitle:@"Error"
@@ -118,11 +119,11 @@
     
     self.userImage.image = chosenImage;
     
+
     [FirebaseAPIClient saveProfilePhotoForCurrentUser:chosenImage completion:^(BOOL success) {
         NSLog(@"success! profile pic saved");
     }];
-    
-    
+
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {

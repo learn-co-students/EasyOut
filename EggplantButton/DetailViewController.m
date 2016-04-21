@@ -35,15 +35,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+
+        
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:1.285
+                                                            longitude:103.848
+                                                                 zoom:12];
     self.view.contentMode = UIViewContentModeCenter;
     self.view.contentMode = UIViewContentModeScaleAspectFit;
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"city"]]];
     
     CLLocationCoordinate2D activityLoc = [self getLocationFromAddressString:self.activity.address[0]];
     
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:activityLoc.latitude
-                                                            longitude:activityLoc.longitude
-                                                                 zoom:15];
+    
     self.mapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     
     [self.mapUIView addSubview:self.mapView];

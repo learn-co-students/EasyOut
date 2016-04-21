@@ -10,6 +10,7 @@
 #import "Activity.h"
 #import "Constants.h"
 #import <GoogleMaps/GoogleMaps.h>
+#import "EggplantButton-Swift.h"
 
 
 @interface ItineraryViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -74,7 +75,14 @@
         
         }
     
-   }
+    
+     //save Itinerary to FireBase
+    
+    [FirebaseAPIClient saveItineraryWithItinerary:self.itinerary completion:^(NSString * savedItinerary) {
+        NSLog(@" Itinerary saved : %@",savedItinerary);
+    }];
+    
+  }
 
 
 
