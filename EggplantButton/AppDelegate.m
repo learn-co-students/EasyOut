@@ -24,9 +24,9 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
     
     [GMSServices provideAPIKey:googlePlacesAPI];
-
     
     // Set status bar appearance
 //    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
@@ -41,6 +41,11 @@
     [[UIBarButtonItem appearance] setTitleTextAttributes:@{
                                                            NSFontAttributeName: [UIFont fontWithName:@"Lobster Two" size:20.0f]
                                                            } forState:(UIControlStateNormal)];
+
+    [UINavigationBar appearance].barTintColor = [Constants vikingBlueColor];
+    [UIBarButtonItem appearance].tintColor = [UIColor whiteColor];
+    [[UINavigationBar appearance] setTranslucent:NO];
+
 
     return YES;
 }
