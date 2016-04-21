@@ -107,15 +107,7 @@
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
     
     self.userImage.image = chosenImage;
-    
-//    FirebaseAPIClient *client = [[FirebaseAPIClient alloc]init];
-//    
-//    Firebase *ref = [[Firebase alloc] initWithUrl:firebaseRootRef];
-//    
-//    [client saveNewImageWithImage:chosenImage completion:^(NSString * imageID) {
-//
-//    }];
-    
+        
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }

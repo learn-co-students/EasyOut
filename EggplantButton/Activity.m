@@ -21,6 +21,8 @@
         
         NSMutableArray *mAddress = [[NSMutableArray alloc]init];
     
+        NSLog(@"full address:%@", activityDictionary[@"venue"][@"location"][@"formattedAddress"][0]);
+        
         NSMutableString *address = [(NSString *)activityDictionary[@"venue"][@"location"][@"formattedAddress"][0] mutableCopy];
         
         NSRegularExpression *regex = [NSRegularExpression
@@ -35,7 +37,8 @@
         [mAddress addObject: address];
         [mAddress addObject:activityDictionary[@"venue"][@"location"][@"formattedAddress"][1]];
         _address = mAddress ;
-        
+        NSLog(@"edited address:%@", mAddress[0]);
+
         _type = activityDictionary[@"venue"][@"shortName"];
     
         if ([activityDictionary[@"venue"][@"photos"][@"groups"] count] > 0 ) {
