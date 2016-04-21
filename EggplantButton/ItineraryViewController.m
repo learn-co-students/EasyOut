@@ -10,6 +10,7 @@
 #import "Activity.h"
 #import "Constants.h"
 #import <GoogleMaps/GoogleMaps.h>
+#import "EggplantButton-Swift.h"
 
 
 @interface ItineraryViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -70,6 +71,10 @@
         marker.map = self.gpsMapView;
         marker.icon = markerImage;
     }
+    
+    
+    // save Itinerary to FireBase
+    
     
    }
 

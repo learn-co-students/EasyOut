@@ -174,6 +174,7 @@
 }
 
 
+
 #pragma mark - Side Menu
 
 - (IBAction)menuButtonTapped:(UIBarButtonItem *)sender {
@@ -319,42 +320,13 @@
 }
 
 
-- (IBAction)SaveItineraryButtonTapped:(id)sender {
-  
-    NSLog(@" Save Button Was Tapped ! ! !");
-    
-    NSMutableArray *activitiesArray = [NSMutableArray new];
-    
-    self.itinerary = [[Itinerary alloc]initWithActivities:activitiesArray userID:@"" creationDate:[NSDate date]];
-    
-    ActivityCardCollectionViewCell *topCell = [[self.topRowCollection visibleCells] firstObject];
-    Activity *topCellActivity = topCell.cardView.activity;
-    
-    ActivityCardCollectionViewCell *middleCell = [[self.middleRowCollection visibleCells] firstObject];
-    Activity *middleCellActivity = middleCell.cardView.activity;
-    
-    ActivityCardCollectionViewCell *bottomCell = [[self.bottomRowCollection visibleCells]firstObject];
-    Activity *bottomCellActivity = bottomCell.cardView.activity;
-    
-    
-    [self.itinerary.activities addObject:topCellActivity];
-    [self.itinerary.activities addObject:middleCellActivity];
-    [self.itinerary.activities addObject:bottomCellActivity];
-//    NSLog(@"Activities !! : %@",self.itinerary.activities);
-    
-    NSLog(@"About to perform the itinerary segue");
-    [self performSegueWithIdentifier:@"ItinerarySegue" sender:nil];
-    
-}
+
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
     [self performSegueWithIdentifier:@"detailSegue" sender: (ActivityCardCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath]];
     
 }
-
-
-
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
@@ -428,6 +400,48 @@
          ];
     }
 
+}
+
+#pragma mark - Save Itinerary Button Tapped 
+
+- (IBAction)SaveItineraryButtonTapped:(id)sender {
+    
+    NSLog(@" Save Button Was Tapped ! ! !");
+    
+    NSMutableArray *activitiesArray = [NSMutableArray new];
+    
+    self.itinerary = [[Itinerary alloc]initWithActivities:activitiesArray userID:@"" creationDate:[NSDate date]];
+    if (self.firstCardLocked) {
+        
+        ActivityCardCollectionViewCell *topCell = [[self.topRowCollection visibleCells] firstObject];
+        Activity *topCellActivity = topCell.cardView.activity;
+        [self.itinerary.activities addObject:topCellActivity];
+        
+    }else {
+        // do nothing
+        
+    } if (self.secondCardLocked) {
+        
+        ActivityCardCollectionViewCell *middleCell = [[self.middleRowCollection visibleCells] firstObject];
+        Activity *middleCellActivity = middleCell.cardView.activity;
+        [self.itinerary.activities addObject:middleCellActivity];
+        
+    }
+    else {
+        // do nothing
+    } if (self.thirdCardLocked) {
+        
+        ActivityCardCollectionViewCell *bottomCell = [[self.bottomRowCollection visibleCells]firstObject];
+        Activity *bottomCellActivity = bottomCell.cardView.activity;
+        
+        
+        [self.itinerary.activities addObject:bottomCellActivity];
+    } else {
+        // do nothing
+    }
+    
+    [self performSegueWithIdentifier:@"ItinerarySegue" sender:nil];
+    
 }
 
 
