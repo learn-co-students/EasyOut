@@ -11,13 +11,13 @@ import Firebase
 
 @objc class FirebaseAPIClient: NSObject {
     
-    // Set root Firebase reference
-    let ref = Firebase(url:firebaseRootRef)
-    
     // Login and authenticate user given email and password
-    func logInUserWithEmail(email:String, password:String, completion: Bool -> Void) {
+    class func logInUserWithEmail(email:String, password:String, completion: Bool -> Void) {
         
         print("Attempting to log in user with email: \(email)")
+        
+        // Set root Firebase reference
+        let ref = Firebase(url:firebaseRootRef)
         
         // Attempt user authentication
         ref.authUser(email, password: password) {
@@ -60,9 +60,12 @@ import Firebase
     
     
     // Log user out
-    func logOutUser() {
+    class func logOutUser() {
         
         print("Attempting to log user out")
+        
+        // Set root Firebase reference
+        let ref = Firebase(url:firebaseRootRef)
         
         // Check if a user is currently logged in
         if ref.authData != nil {
@@ -80,9 +83,12 @@ import Firebase
     
     
     // Register a new user in firebase given a User object and password
-    func registerNewUserWithUser(user: User, password: String, completion: (Bool) -> ()) {
+    class func registerNewUserWithUser(user: User, password: String, completion: (Bool) -> ()) {
         
         print("Attempting to register user with\nUsername: \(user.username)\nEmail: \(user.email)\nPassword: \(password)")
+        
+        // Set root Firebase reference
+        let ref = Firebase(url:firebaseRootRef)
         
         // Create user with email from user object and password string
         ref.createUser(user.email, password: password, withValueCompletionBlock: { error, result in
@@ -101,7 +107,7 @@ import Firebase
                 print("Successfully created user account with uid \(uid)")
                 
                 // Set references for new user
-                let usersRef = self.ref.childByAppendingPath("users")
+                let usersRef = ref.childByAppendingPath("users")
                 let userRef = usersRef.childByAppendingPath(uid)
                 
                 // Set properties for new user account
@@ -129,7 +135,7 @@ import Firebase
             print("Calling logInUser from within createUser completion block")
             self.logInUserWithEmail(user.email, password: password, completion: { (success) in
                 if success {
-                    print("Logged in user with userID \(self.ref.authData.uid) after registration")
+                    print("Logged in user with userID \(ref.authData.uid) after registration")
                     completion(true)
                 } else {
                     print("Failed to log in user after registration")
@@ -140,9 +146,12 @@ import Firebase
     
     
     // Return list of all users
-    func getAllUsersWithCompletion(completion: Array<String> -> Void) {
+    class func getAllUsersWithCompletion(completion: Array<String> -> Void) {
     
         print("Getting a list of all users at the users reference in Firebase")
+        
+        // Set root Firebase reference
+        let ref = Firebase(url:firebaseRootRef)
         
         // Create array for all usernames
         var allUsernames = [String]()
@@ -173,9 +182,12 @@ import Firebase
     
     
     // Return list of all email addresses
-    func getAllEmailsWithCompletion(completion: Array<String> -> Void) {
+    class func getAllEmailsWithCompletion(completion: Array<String> -> Void) {
         
         print("Getting a list of all emails at the users reference in Firebase")
+        
+        // Set root Firebase reference
+        let ref = Firebase(url:firebaseRootRef)
         
         // Create array for all email addresses
         var allEmailAddresses = [String]()
@@ -206,9 +218,12 @@ import Firebase
     
     
     // Create a User object from Firebase data using a userID and return User object and success state
-    func getUserFromFirebaseWithUserID(userID: String, completion: (user: User, success: Bool) -> Void) {
+    class func getUserFromFirebaseWithUserID(userID: String, completion: (user: User, success: Bool) -> Void) {
         
         print("Creating user object from user reference \(userID)")
+        
+        // Set root Firebase reference
+        let ref = Firebase(url:firebaseRootRef)
         
         // Set Firebase references
         let usersRef = ref.childByAppendingPath("users")
@@ -234,7 +249,7 @@ import Firebase
     
     
     // Compare given username to all usernames in Firebase and return unique-status
-    func checkIfUserExistsWithInformation(username: String, email: String, completion: (doesExist: Bool) -> Void) {
+    class func checkIfUserExistsWithInformation(username: String, email: String, completion: (doesExist: Bool) -> Void) {
         
         print("Checking if \(username) or \(email) exists in Firebase")
         
@@ -257,7 +272,7 @@ import Firebase
     }
     
     // Compare given username to all usernames in Firebase and return unique-status
-    func checkIfUserExistsWithUsername(username: String, completion: (doesExist: Bool) -> Void) {
+    class func checkIfUserExistsWithUsername(username: String, completion: (doesExist: Bool) -> Void) {
         
         print("Checking if \(username) exists in Firebase")
         
@@ -281,7 +296,7 @@ import Firebase
     }
     
     // Compare given email to all emails in Firebase and return unique-status
-    func checkIfUserExistsWithEmail(email: String, completion: (doesExist: Bool) -> Void) {
+    class func checkIfUserExistsWithEmail(email: String, completion: (doesExist: Bool) -> Void) {
         
         print("Checking if \(email) exists in Firebase")
         
@@ -304,9 +319,12 @@ import Firebase
     }
     
     
-    func saveItineraryWithItinerary(itinerary: Itinerary, completion: (itineraryID: String) -> Void) {
+    class func saveItineraryWithItinerary(itinerary: Itinerary, completion: (itineraryID: String) -> Void) {
         
         print("Attempting to save new itinerary: \(itinerary.title)")
+        
+        // Set root Firebase reference
+        let ref = Firebase(url:firebaseRootRef)
         
         // Set references for new itinerary
         let itinerariesRef = ref.childByAppendingPath("itineraries")
@@ -347,9 +365,12 @@ import Firebase
     
     
     // Add itineraryID to current user's savedItineraries
-    private func addItineraryToUserWithUserID(userID: String, itineraryID: String, completion: Bool -> Void) {
+    class func addItineraryToUserWithUserID(userID: String, itineraryID: String, completion: Bool -> Void) {
         
         print("Attempting to add new itineraryID to savedItineraries of current user")
+        
+        // Set root Firebase reference
+        let ref = Firebase(url:firebaseRootRef)
         
         // Set Firebase references
         let usersRef = ref.childByAppendingPath("users")
@@ -371,9 +392,12 @@ import Firebase
     
     
     // Return list of all itineraries
-    func getAllItinerariesWithCompletion(completion:(itineraries: [String:AnyObject]?) -> Void) {
+    class func getAllItinerariesWithCompletion(completion:(itineraries: [String:AnyObject]?) -> Void) {
         
         print("Attempting to retrieve all itineraries")
+        
+        // Set root Firebase reference
+        let ref = Firebase(url:firebaseRootRef)
         
         // Set references for new itinerary
         let itinerariesRef = ref.childByAppendingPath("itineraries")
@@ -389,9 +413,12 @@ import Firebase
     }
 
     
-    func getItineraryWithItineraryID(itineraryID: String, completion: Itinerary? -> Void) {
+    class func getItineraryWithItineraryID(itineraryID: String, completion: Itinerary? -> Void) {
 
         print("Attempting to get itinerary with itineraryID:\(itineraryID)")
+        
+        // Set root Firebase reference
+        let ref = Firebase(url:firebaseRootRef)
         
         // Get all itineraries
         print("Calling getAllItineraries function")
@@ -427,9 +454,12 @@ import Firebase
     }
     
     // Remove itinerary from Firebase within both the itineraries dictionary as well as from the saved itineraries of the associated user
-    func removeItineraryWithItineraryID(itineraryID: String, completion: (success: Bool) -> Void) {
+    class func removeItineraryWithItineraryID(itineraryID: String, completion: (success: Bool) -> Void) {
         
         print("Attempting to remove itinerary with ID: \(itineraryID)")
+        
+        // Set root Firebase reference
+        let ref = Firebase(url:firebaseRootRef)
         
         // Retrieve the itinerary
         print("Calling getItineraryWithItineraryID")
@@ -437,10 +467,10 @@ import Firebase
             if let realItinerary = itinerary {
                 
                 // Set Firebase references
-                let itinerariesRef = self.ref.childByAppendingPath("itineraries")
+                let itinerariesRef = ref.childByAppendingPath("itineraries")
                 
                 // Check that the userID associated with the itinerary matches the userID of the current user
-                if realItinerary.userID == self.ref.authData.uid {
+                if realItinerary.userID == ref.authData.uid {
                     
                     // TODO: MOVE CONTENTS TO A NEW FUNCTION
                     
@@ -456,7 +486,7 @@ import Firebase
                             
                             // Call method to remove itinerary from user's savedItineraries
                             print("Calling method to remove itinerary from user's savedItineraries")
-                            self.removeItineraryFromUserWithUserID(self.ref.authData.uid, itineraryID: itineraryID, completion: { (success) in
+                            self.removeItineraryFromUserWithUserID(ref.authData.uid, itineraryID: itineraryID, completion: { (success) in
                                 if success {
                                     print("Itinerary was successfully removed from user's savedItineraries")
                                     completion(success: true)
@@ -479,7 +509,10 @@ import Firebase
     
     // Remove itinerary item from user's savedItineraries
     // Called only from within this integration, everytime an itinerary is removed from Firebase
-    private func removeItineraryFromUserWithUserID(userID: String, itineraryID: String, completion: (success: Bool) -> Void) {
+    class func removeItineraryFromUserWithUserID(userID: String, itineraryID: String, completion: (success: Bool) -> Void) {
+        
+        // Set root Firebase reference
+        let ref = Firebase(url:firebaseRootRef)
         
         // Set Firebase references
         let usersRef = ref.childByAppendingPath("users")
@@ -500,15 +533,18 @@ import Firebase
     
     
     // Create a new image reference in Firebase and return its unique ID
-    func saveNewImageWithImage(image: UIImage, completion: (imageID: String, success: Bool) -> Void) {
+    class func saveNewImageWithImage(image: UIImage, completion: (imageID: String, success: Bool) -> Void) {
         
         print("Attempting to save a new image to Firebase")
+        
+        // Set root Firebase reference
+        let ref = Firebase(url:firebaseRootRef)
         
         // Resize image to fit inside a Firebase value (10MB file size)
         self.resizeImage(image) { (scaledImage) in
             
             // Set references
-            let imagesRef = self.ref.childByAppendingPath("images")
+            let imagesRef = ref.childByAppendingPath("images")
             let newImageRef = imagesRef.childByAutoId()
             
             // Create data from image
@@ -556,9 +592,12 @@ import Firebase
     
     
     // Add imageID to current user
-    private func addImageIDToCurrentUser(imageID: String, completion: (success: Bool) -> Void) {
+    class func addImageIDToCurrentUser(imageID: String, completion: (success: Bool) -> Void) {
         
         print("Attempting to add imageID \(imageID) to current user")
+        
+        // Set root Firebase reference
+        let ref = Firebase(url:firebaseRootRef)
         
         // Set Firebase references
         let usersRef = ref.childByAppendingPath("users")
@@ -580,9 +619,12 @@ import Firebase
     
     
     // Set profile photo for current user
-    func saveProfilePhotoForCurrentUser(image: UIImage, completion: (success: Bool) -> Void) {
+    class func saveProfilePhotoForCurrentUser(image: UIImage, completion: (success: Bool) -> Void) {
         
         print("Attempting to save profile photo for current user")
+        
+        // Set root Firebase reference
+        let ref = Firebase(url:firebaseRootRef)
         
         // Set Firebase references
         let usersRef = ref.childByAppendingPath("users")
@@ -645,9 +687,12 @@ import Firebase
     
     
     // Remove image from Firebase given the imageID
-    func removeImageWithImageID(imageID: String, completion: (success: Bool) -> Void) {
+    class func removeImageWithImageID(imageID: String, completion: (success: Bool) -> Void) {
         
         print("Attempting to remove image with imageID \(imageID)")
+        
+        // Set root Firebase reference
+        let ref = Firebase(url:firebaseRootRef)
         
         // Set Firebase references
         let imagesRef = ref.childByAppendingPath("images")
@@ -669,9 +714,12 @@ import Firebase
     
     
     // Retrieve an image from a reference in Firebase
-    func getImageForImageID(imageID: String, completion: UIImage -> Void) {
+    class func getImageForImageID(imageID: String, completion: UIImage -> Void) {
         
         print("Getting image for imageID: \(imageID)")
+        
+        // Set root Firebase reference
+        let ref = Firebase(url:firebaseRootRef)
         
         // Set Firebase references
         let imagesRef = ref.childByAppendingPath("images")
@@ -692,7 +740,7 @@ import Firebase
     
     
     // Convert date objects to strings
-    private func convertDateToStringWithDate(date:NSDate) -> String {
+    class func convertDateToStringWithDate(date:NSDate) -> String {
         
         // Create date formatter and set format style
         let dateFormatter = NSDateFormatter()
@@ -709,7 +757,12 @@ import Firebase
     
     
     // Remove user account from Firebase
-    func removeUserFromFirebaseWithEmail(email:String, password:String, competion:(Bool) -> ()) {
+    class func removeUserFromFirebaseWithEmail(email:String, password:String, competion:(Bool) -> ()) {
+        
+        FirebaseAPIClient.logOutUser()
+        
+        // Set root Firebase reference
+        let ref = Firebase(url:firebaseRootRef)
         
         print("Attempting to remove user with email \(email)")
         
@@ -724,7 +777,7 @@ import Firebase
     
     
     // Resize an image to fit in a Firebase value
-    private func resizeImage(oldImage: UIImage, completion: (scaledImage: UIImage) -> Void) {
+    class func resizeImage(oldImage: UIImage, completion: (scaledImage: UIImage) -> Void) {
         
         print("Attempting to resize image")
         

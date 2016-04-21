@@ -52,10 +52,8 @@
 
 -(void)checkUsernameValidityWithCompletion:(void (^)(BOOL isValid)) completion {
     
-    // Create instance of Firebase API client
-    FirebaseAPIClient *firebaseAPI = [[FirebaseAPIClient alloc] init];
-    
-    [firebaseAPI checkIfUserExistsWithUsername:self.userNameLabel.text completion:^(BOOL doesExist) {
+    // Check with Firebase if entered username is in use
+    [FirebaseAPIClient checkIfUserExistsWithUsername:self.userNameLabel.text completion:^(BOOL doesExist) {
         if (doesExist) {
             completion(NO);
         } else {
@@ -100,10 +98,8 @@
     self.username = self.userNameLabel.text;
     
     User *newUser = [[User alloc]initWithEmail:self.email username:self.username];
-    
-    FirebaseAPIClient *firebaseAPI = [[FirebaseAPIClient alloc] init];
-    
-    [firebaseAPI registerNewUserWithUser:newUser password:self.passWordLabel.text completion:^(BOOL success) {
+        
+    [FirebaseAPIClient registerNewUserWithUser:newUser password:self.passWordLabel.text completion:^(BOOL success) {
         if (success) {
             NSLog(@"User with email %@ was successfully registered", self.email);
         }

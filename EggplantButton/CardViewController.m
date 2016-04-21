@@ -204,11 +204,7 @@
 - (void) logoutButtonTapped: (NSNotification *) notification {
     NSLog(@"cardVC knows that the logout button was tapped!");
     
-    Firebase *ref = [[Firebase alloc] initWithUrl:firebaseRootRef];
-    
-    [ref unauth];
-    
-    NSLog(@"user is logged out");
+    [FirebaseAPIClient logOutUser];
     
 }
 
@@ -485,75 +481,6 @@
     }
 }
 
-    
-    
-
-
-
-
-
-//- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
-//    NSLog(@"location manager did update locations");
-//    if (self.mostRecentLocation == nil) {
-//
-//        self.mostRecentLocation = [locations lastObject];
-//
-//        if (self.mostRecentLocation != nil) {
-////            [self getEvents];
-//        }
-//    }
-//
-//    NSLog(@"location: %@", self.mostRecentLocation);
-//
-//    [self.locationManager stopUpdatingLocation];
-//}
-//
-//
-// This method will be used to handle the card scroll views' reactions and delay page-turning
-//-(void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
-//{
-////    CGPoint quoVadis = *targetContentOffset;
-////    targetContentOffset->y
-//
-//    CGPoint newOffset = CGPointZero;
-//    *targetContentOffset = newOffset;
-//}
-//
-//
-///* ADRIAN"S TicketMaster Event Setup ** vvvv
-// 
-// 
-// - (void)setupLocationManager {
-// self.locationManager = [[CLLocationManager alloc] init];
-// self.locationManager.delegate = self;
-// self.locationManager.distanceFilter = kCLDistanceFilterNone;
-// self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-// [self.locationManager requestWhenInUseAuthorization];
-// [self getTheUsersCurrentLocation];
-// }
-// 
-// - (void)getTheUsersCurrentLocation {
-// after this method fires off, the locationManager didUpdateLocations method below gets called (behind the scenes by the startUpdatingLocation)
-// [self.locationManager startUpdatingLocation];
-// }
-// 
-// 
-// 
-// -(void)getEvents {
-// [self.ticketMasterDataStore getEventsForLocation:self.mostRecentLocation withCompletion:^(BOOL success) {
-// if (success) {
-// [[NSOperationQueue mainQueue]addOperationWithBlock:^{
-//  [self.tableView reloadData];
-// }];
-// }
-// }];
-// }
-// 
-//// 
-// */
-
-
-
 
 #pragma mark - Button Things
 
@@ -564,9 +491,6 @@
 
 
 }
-
-
-
 
 
 - (IBAction)filterButtonPressed:(UIBarButtonItem *)sender {

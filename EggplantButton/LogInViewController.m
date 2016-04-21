@@ -10,6 +10,7 @@
 #import "Secrets.h"
 #import "EggplantButton-Swift.h"
 #import "Firebase.h"
+#import "CreateAccountViewController.h"
 
 @interface LogInViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *loginLabel;
@@ -42,28 +43,28 @@
                  password:self.passwordLabel.text
       withCompletionBlock:^(NSError *error, FAuthData *authData) {
     
-    if (error) {
-        UIAlertController * alert=   [UIAlertController
-                                      alertControllerWithTitle:@"Failed to login"
-                                      message:@"Email or password incorrect"
-                                      preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction* ok = [UIAlertAction
-                             actionWithTitle:@"OK"
-                             style:UIAlertActionStyleDefault
-                             handler:^(UIAlertAction * action)
-                             {
-                                 [alert dismissViewControllerAnimated:YES completion:nil];
-                                 
-                             }];
-         [alert addAction:ok];
-        [self presentViewController:alert animated:YES completion:nil];
+            if (error) {
+                UIAlertController * alert=   [UIAlertController
+                                              alertControllerWithTitle:@"Failed to login"
+                                              message:@"Email or password incorrect"
+                                              preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction* ok = [UIAlertAction
+                                     actionWithTitle:@"OK"
+                                     style:UIAlertActionStyleDefault
+                                     handler:^(UIAlertAction * action)
+                                     {
+                                         [alert dismissViewControllerAnimated:YES completion:nil];
+                                         
+                                     }];
+                 [alert addAction:ok];
+                [self presentViewController:alert animated:YES completion:nil];
 
-    }
-    else {
-        [[NSNotificationCenter defaultCenter] postNotificationName:mainViewControllerStoryBoardID object:nil];
-    }
-}];
+            }
+            else {
+                [[NSNotificationCenter defaultCenter] postNotificationName:mainViewControllerStoryBoardID object:nil];
+            }
+      }];
     
 }
 -(void)hideKeyBoard {
@@ -71,9 +72,11 @@
     [self.emailLabel resignFirstResponder];
     [self.passwordLabel resignFirstResponder];
 }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    
+    
 }
 
 
