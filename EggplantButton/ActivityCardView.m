@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
+@property (weak, nonatomic) IBOutlet UILabel *addressLabel2;
 @property (weak, nonatomic) IBOutlet UILabel *detailLabel;
 
 @property (weak, nonatomic) IBOutlet UIButton *checkButton;
@@ -79,17 +80,9 @@
 // Add data to activity card view
 -(void)updateUI {
     
-    
-//    @property (strong, nonatomic) NSString *name;
-//    @property (strong, nonatomic) NSString *address;
-//    @property (strong, nonatomic) NSURL *imageURL;
-//    @property (strong, nonatomic) NSString *type;
-
-//    @property (strong, nonatomic) NSString *price;
-//    @property (strong, nonatomic) NSURL *moreDetailsURL;
-    
     self.nameLabel.text = self.activity.name;
-    self.addressLabel.text = self.activity.address;
+    self.addressLabel.text = self.activity.address[0];
+    self.addressLabel2.text = self.activity.address[1];
     
     AFImageDownloader *downloader = [[AFImageDownloader alloc] init];
     downloader.downloadPrioritizaton = AFImageDownloadPrioritizationLIFO;

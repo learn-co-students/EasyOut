@@ -415,10 +415,7 @@ import Firebase
     class func getItineraryWithItineraryID(itineraryID: String, completion: Itinerary? -> Void) {
 
         print("Attempting to get itinerary with itineraryID:\(itineraryID)")
-        
-        // Set root Firebase reference
-        let ref = Firebase(url:firebaseRootRef)
-        
+
         // Get all itineraries
         print("Calling getAllItineraries function")
         getAllItinerariesWithCompletion { (itineraries) in

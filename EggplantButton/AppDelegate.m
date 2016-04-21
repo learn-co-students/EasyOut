@@ -25,29 +25,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    // Initialize and run Firebase test functions
-//    FirebaseTestFunctions *firebaseTest = [[FirebaseTestFunctions alloc] init];
-//    [firebaseTest testFirebaseFunctions];
-    
-//    /// Allows Button to request Location Permissions
-//    [Button allowButtonToRequestLocationPermission:YES];
-//    
-//    [[Button sharedButton] configureWithApplicationId: APP_ID completion:NULL];
-//    
-//    [[Button sharedButton] setDeferredDeeplinkHandler:^(NSURL *deferredDeeplinkURL) {
-//        // Handle the deferredDeeplinkURL and open the relevant content.
-//        //[self handleURL :deferredDeeplinkURL];
-//    }];
-    
-    // Set appearance of the navigation bar
-    [UINavigationBar appearance].barTintColor = [Constants vikingBlueColor];
-    [UIBarButtonItem appearance].tintColor = [UIColor whiteColor];
-    [[UINavigationBar appearance] setTranslucent:NO];
-    
-    
-    
     [GMSServices provideAPIKey:googlePlacesAPI];
     
+    [UINavigationBar appearance].barTintColor = [Constants vikingBlueColor];
+    [UIBarButtonItem appearance].tintColor = [Constants vikingBlueColor];
+    [UINavigationBar appearance].alpha = 0.5;
+    [[UINavigationBar appearance] setTitleTextAttributes: @{
+                                                            NSFontAttributeName: [UIFont fontWithName:@"Lobster Two" size:20.0f],
+                                                            }];
+
     return YES;
 }
 

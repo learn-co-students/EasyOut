@@ -11,7 +11,7 @@
 @interface Activity : NSObject
 
 @property (strong, nonatomic) NSString *name;
-@property (strong, nonatomic) NSString *address;
+@property (strong, nonatomic) NSArray *address;
 @property (strong, nonatomic) NSString *type;
 @property (strong, nonatomic) NSURL *imageURL;
 @property (strong, nonatomic) NSString *price;
