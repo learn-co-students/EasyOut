@@ -54,13 +54,13 @@
     [self.mapView.leadingAnchor constraintEqualToAnchor:self.mapUIView.leadingAnchor].active = YES;
     [self.mapView.trailingAnchor constraintEqualToAnchor:self.mapUIView.trailingAnchor].active = YES;
 
-
     // Creates a marker in the center of the map.
     GMSMarker *marker = [[GMSMarker alloc] init];
     marker.position = CLLocationCoordinate2DMake(((Restaurant *)self.activity).lat, ((Restaurant *)self.activity).lng);
     marker.title = @"Sydney";
     marker.snippet = @"Australia";
     marker.map = self.mapView;
+
 
 }
 
@@ -95,7 +95,5 @@
     return center;
     
 }
-
-
 
 @end

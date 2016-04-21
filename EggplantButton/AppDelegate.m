@@ -27,18 +27,22 @@
     
     [GMSServices provideAPIKey:googlePlacesAPI];
     
-    [UINavigationBar appearance].barTintColor = [UIColor clearColor];
+    // Set navigation bar appearance
+//    NSDictionary* barButtonItemAttributes = @{
+//                                              NSFontAttributeName: [UIFont fontWithName:@"Georgia" size:20.0f]
+//                                              NSFontAttributeName: [UIFont fontWithName:@"Lobster Two" size:20.0f]
+//    };
+
+    [UINavigationBar appearance].barTintColor = [Constants vikingBlueColor];
     [UIBarButtonItem appearance].tintColor = [UIColor whiteColor];
-    [UINavigationBar appearance].alpha = 0.4;
-    
+//    [UINavigationBar appearance].alpha = 0.5;
     [[UINavigationBar appearance] setTitleTextAttributes: @{
                                                             NSFontAttributeName: [UIFont fontWithName:@"Lobster Two" size:20.0f],
-                                                            
                                                             }];
+    [[UIBarButtonItem appearance] setTitleTextAttributes:@{
+                                                           NSFontAttributeName: [UIFont fontWithName:@"Lobster Two" size:20.0f]
+                                                           } forState:(UIControlStateNormal)];
 
-    
-    
-    
     return YES;
 }
 

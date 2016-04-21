@@ -62,11 +62,9 @@
 
 -(void)pullUserFromFirebaseWithCompletion:(void(^)(BOOL success))completion {
     
-    FirebaseAPIClient *client = [[FirebaseAPIClient alloc]init];
-    
     Firebase *ref = [[Firebase alloc] initWithUrl:firebaseRootRef];
     
-    [client getUserFromFirebaseWithUserID:ref.authData.uid completion:^(User * user, BOOL success) {
+    [FirebaseAPIClient getUserFromFirebaseWithUserID:ref.authData.uid completion:^(User * user, BOOL success) {
         
         self.user = user;
         
@@ -120,7 +118,8 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES
+                             completion:nil];
 
 }
 
@@ -135,27 +134,23 @@
                                   message:NULL
                                   preferredStyle:UIAlertControllerStyleActionSheet];
     
-    UIAlertAction* takePhoto = [UIAlertAction
-                         actionWithTitle:@"Take a New Profile Picture"
-                         style:UIAlertActionStyleDefault
-                         handler:^(UIAlertAction * action)
-                         {
-                             [self takeAPictureWithPicker:picker];
-                         }];
-    UIAlertAction* selectPhoto = [UIAlertAction
-                                actionWithTitle:@"Select Profile Picture"
-                                  style: UIAlertActionStyleDefault
-                                handler:^(UIAlertAction * action)
-                                {
-                                    [self selectAPictureWithPicker:picker];
-                                }];
+    UIAlertAction* takePhoto = [UIAlertAction actionWithTitle:@"Take a New Profile Picture"
+                                                        style:UIAlertActionStyleDefault
+                                                      handler:^(UIAlertAction * action) {
+                                                             [self takeAPictureWithPicker:picker];
+                                                         }];
+    UIAlertAction* selectPhoto = [UIAlertAction actionWithTitle:@"Select Profile Picture"
+                                                          style: UIAlertActionStyleDefault
+                                                        handler:^(UIAlertAction * action) {
+                                                                [self selectAPictureWithPicker:picker];
+                                                            }];
     
-    UIAlertAction* cancel = [UIAlertAction
-                                  actionWithTitle:@"Cancel"
-                                  style:UIAlertActionStyleCancel
-                             handler:nil];
-    [editPicture addAction:takePhoto];
-    [editPicture addAction:selectPhoto];
+    UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Cancel"
+                                                     style:UIAlertActionStyleCancel
+                                                   handler:nil];
+    
+    [editPicture addAction: takePhoto];
+    [editPicture addAction: selectPhoto];
     [editPicture addAction: cancel];
 
     [self presentViewController:editPicture animated:YES completion:nil];
@@ -166,14 +161,15 @@
 -(void)takeAPictureWithPicker:(UIImagePickerController *)picker {
     
     picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    [self presentViewController:picker animated:YES completion:NULL];
+    
+    [self presentViewController: picker animated:YES completion:NULL];
 }
 
 -(void)selectAPictureWithPicker:(UIImagePickerController *)picker {
     
     picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     
-    [self presentViewController:picker animated:YES completion:NULL];
+    [self presentViewController: picker animated:YES completion:NULL];
     
 }
 
