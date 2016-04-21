@@ -60,21 +60,14 @@
 
 - (void)viewDidLoad {
     
-
     [super viewDidLoad];
 
-    
     [self setUpCoreLocation];
 
     self.dataStore = [ActivitiesDataStore sharedDataStore];
     
     [self getCardData];
-    
-    
-    
-    // allocate itinerary
   
-    
     self.topRowCollection.backgroundColor = [UIColor clearColor];
     self.middleRowCollection.backgroundColor = [UIColor clearColor];
     self.bottomRowCollection.backgroundColor = [UIColor clearColor];
@@ -86,9 +79,9 @@
     self.randomizeCardsButton.titleLabel.font = [UIFont fontWithName:@"Lobster Two" size:20.0f];
     
     // Set appearance of navigation bar
-    [[UINavigationBar appearance] setTitleTextAttributes: @{
-                                                            NSFontAttributeName: [UIFont fontWithName:@"Lobster Two" size:20.0f],
-                                                            }];
+    self.navigationController.navigationBar.topItem.title = @"EasyOut";
+    [self.navigationController.navigationBar setTitleTextAttributes: @{NSForegroundColorAttributeName:[UIColor whiteColor],
+                                                                       NSFontAttributeName:[UIFont fontWithName:@"Lobster Two" size:30]}];
 
     
     // listening for segue notifications from sideMenu
