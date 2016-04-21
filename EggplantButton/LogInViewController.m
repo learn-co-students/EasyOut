@@ -12,13 +12,15 @@
 #import "Firebase.h"
 #import "CreateAccountViewController.h"
 
-@interface LogInViewController ()
+@interface LogInViewController () <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *loginLabel;
 @property (weak, nonatomic) IBOutlet UITextField *emailLabel;
 @property (weak, nonatomic) IBOutlet UITextField *passwordLabel;
-@property (weak, nonatomic) IBOutlet UIButton *loginButtonTapped;
 @property (weak, nonatomic) IBOutlet UIButton *registerButtonTapped;
+@property (weak, nonatomic) IBOutlet UILabel *invalidEmailWarning;
+@property (weak, nonatomic) IBOutlet UILabel *invalidPasswordWarning;
+
 
 @end
 
@@ -27,11 +29,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.emailLabel.delegate = self;
+    
     UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc]
                                            initWithTarget:self
                                            action:@selector(hideKeyboard)];
     
     [self.view addGestureRecognizer:tapGesture];
+    
+    self.invalidEmailWarning.hidden = YES;
+    self.invalidPasswordWarning.hidden = YES;
 }
 
 - (void)hideKeyboard {
@@ -65,44 +72,83 @@
     }];
 }
 
-- (IBAction)emailDidEnd:(id)sender {
+-(void)textFieldDidBeginEditing:(UITextField *)textField {
+
+    self.emailLabel.textColor = [UIColor blackColor];
+    self.invalidEmailWarning.hidden = YES;
     
-//    if ([self checkEmailValidity]) {
-//        
-//    }
-//    
-//    [FirebaseAPIClient checkIfUserExistsWithEmail:self.emailLabel.text completion:^(BOOL doesExist) {
-//        
-//        if (!doesExist) {
-//            UIAlertController *emailTakenAlert= [UIAlertController alertControllerWithTitle:@"Uh oh!"
-//                                                                           message:@"This email address has not been registered!"
-//                                                                    preferredStyle:UIAlertControllerStyleAlert];
-//            
-//            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
-//                                                               style:UIAlertActionStyleDefault
-//                                                             handler:^(UIAlertAction * action) {
-//                                                                 [emailTakenAlert dismissViewControllerAnimated:YES completion:nil];
-//            }];
-//            
-//            [emailTakenAlert addAction:okAction];
-//            
-//            [self presentViewController:emailTakenAlert animated:YES completion:nil];
-//            
-//        }
-//    }];
 }
 
-- (BOOL)checkEmailValidity {
+-(void)textFieldDidEndEditing:(UITextField *)textField {
     
-    if (self.emailLabel.text.length < 5) {
+    if ([self isEmailValid]) {
+        
+        [FirebaseAPIClient checkIfUserExistsWithEmail:self.emailLabel.text completion:^(BOOL doesExist) {
+            
+            if (!doesExist) {
+                
+                UIAlertController *emailTakenAlert= [UIAlertController alertControllerWithTitle:@"Uh oh!"
+                                                                                        message:@"This email address has not been registered!"
+                                                                                 preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                                   style:UIAlertActionStyleDefault
+                                                                 handler:^(UIAlertAction * action) {
+                                                                     [emailTakenAlert dismissViewControllerAnimated:YES completion:nil];
+                                                                 }];
+                
+                [emailTakenAlert addAction:okAction];
+                
+                [self presentViewController:emailTakenAlert animated:YES completion:nil];
+                
+            }
+            else {
+                self.invalidEmailWarning.hidden = YES;
+            }
+        }];
+    }
+    
+    else {
+        self.emailLabel.textColor = [UIColor redColor];
+        self.invalidEmailWarning.hidden = NO;
+        }
+    
+}
+
+
+
+- (BOOL)isEmailValid {
+    
+    if (self.emailLabel.text.length < 5 || ![self.emailLabel.text containsString:@"@"]) {
+        
         return NO;
     }
     
-    if ([self.emailLabel.text containsString:@"!"] || [self.emailLabel.text containsString:@"@@"]) {
+    else {
+        self.emailLabel.textColor = [UIColor blackColor];
+        self.invalidEmailWarning.hidden = YES;
         
+        return YES;
     }
     
-    return YES;
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    if([segue.identifier isEqualToString:@"registrationSegue"]) {
+        
+        CreateAccountViewController *destinationVC = [segue destinationViewController];
+        
+        if(self.emailLabel.text.length > 0) {
+            destinationVC.inputEmail = self.emailLabel.text;
+        }
+        if(self.passwordLabel.text.length > 0) {
+            destinationVC.inputPassword = self.passwordLabel.text;
+        }
+    
+    }
+    
+    
 }
 
 @end

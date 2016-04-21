@@ -136,8 +136,13 @@ import Firebase
             self.logInUserWithEmail(user.email, password: password, completion: { (authData, error) in
                 if error != nil {
                     print("****Error trying to log user in after registration: \(error)")
+                    
+                    completion(false)
                 } else {
+                    
                     print("Logged in user with userID \(authData.uid) after registration")
+                    
+                    completion(true)
                 }
             })
         })

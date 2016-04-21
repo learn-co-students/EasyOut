@@ -13,12 +13,11 @@
 
 @property (strong, nonatomic)NSString *email;
 @property (strong, nonatomic)NSString *username;
-
-
-@property (weak, nonatomic) IBOutlet UILabel *createAccountLabel;
-@property (weak, nonatomic) IBOutlet UITextField *userNameLabel;
 @property (weak, nonatomic) IBOutlet UITextField *emailLabel;
 @property (weak, nonatomic) IBOutlet UITextField *passWordLabel;
+@property (weak, nonatomic) IBOutlet UILabel *createAccountLabel;
+@property (weak, nonatomic) IBOutlet UITextField *userNameLabel;
+
 @property (weak, nonatomic) IBOutlet UITextField *verifyPasswordLabel;
 @property (weak, nonatomic) IBOutlet UIButton *createAccountButtonTapped;
 
@@ -36,6 +35,14 @@
     [self.view addGestureRecognizer:tapGesture];
     
     self.createAccountButtonTapped.enabled = NO;
+    
+    if(self.inputEmail) {
+        self.emailLabel.text = self.inputEmail;
+    }
+    if(self.inputPassword) {
+        self.passWordLabel.text = self.inputPassword;
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -142,12 +149,17 @@
     User *newUser = [[User alloc]initWithEmail:self.emailLabel.text username:self.userNameLabel.text];
     
     [FirebaseAPIClient registerNewUserWithUser:newUser password:self.passWordLabel.text completion:^(BOOL success) {
+        
+        
+        
         if (success) {
             
             NSLog(@"User with email %@ was successfully registered", self.emailLabel.text);
             
             [self dismissViewControllerAnimated:YES completion:nil];
+            
             [[NSNotificationCenter defaultCenter] postNotificationName:mainViewControllerStoryBoardID object:nil];
+            
         } else {
             
             NSLog(@"Something went wrong registering the user");

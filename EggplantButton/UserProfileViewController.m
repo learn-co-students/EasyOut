@@ -54,7 +54,10 @@
                 [FirebaseAPIClient getImageForImageID:self.user.profilePhoto completion:^(UIImage * image) {
                     self.userImage.image =image;
                 }];
-                
+            }
+            
+            else {
+                self.userImage.image = [UIImage imageNamed:@"defaultProfilePic"];
             }
         }
     }];

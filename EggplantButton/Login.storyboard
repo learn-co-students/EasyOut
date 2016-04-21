@@ -15,6 +15,9 @@
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -62,28 +65,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="33" translatesAutoresizingMaskIntoConstraints="NO" id="06z-BE-xel" userLabel="Text Fields ">
-                                <rect key="frame" x="150" y="254" width="300" height="93"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="06z-BE-xel" userLabel="Text Fields ">
+                                <rect key="frame" x="120" y="250" width="360" height="100"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7sz-tc-n3b">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="360" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <action selector="emailDidEnd:" destination="Mtz-5O-VW0" eventType="editingDidEnd" id="Jlp-89-83W"/>
-                                        </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rkh-0r-4yP">
-                                        <rect key="frame" x="0.0" y="63" width="300" height="30"/>
+                                        <rect key="frame" x="0.0" y="70" width="360" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" tag="11" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="3bT-T3-grL" userLabel="Button Stack View">
-                                <rect key="frame" x="219" y="397" width="162" height="34"/>
+                            <stackView opaque="NO" tag="11" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="3bT-T3-grL" userLabel="Button Stack View">
+                                <rect key="frame" x="219" y="400" width="162" height="34"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rVC-kR-U8N">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rVC-kR-U8N">
                                         <rect key="frame" x="0.0" y="0.0" width="71" height="34"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                         <state key="normal" title="Login">
@@ -93,39 +93,58 @@
                                             <action selector="login:" destination="Mtz-5O-VW0" eventType="touchUpInside" id="cf3-Ep-CfD"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gbh-8Q-3iR">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gbh-8Q-3iR">
                                         <rect key="frame" x="91" y="0.0" width="71" height="34"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                         <state key="normal" title="Register ">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="cdF-tl-xg4" kind="presentation" id="nsh-nM-PzB"/>
+                                            <segue destination="cdF-tl-xg4" kind="presentation" identifier="registrationSegue" id="nsh-nM-PzB"/>
                                         </connections>
                                     </button>
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u41-NS-w5e">
-                                <rect key="frame" x="236" y="160" width="128" height="44"/>
+                                <rect key="frame" x="236" y="156" width="128" height="44"/>
                                 <fontDescription key="fontDescription" name="LobsterTwo" family="Lobster Two" pointSize="35"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invalid Email Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PqA-mn-eDR">
+                                <rect key="frame" x="120" y="280" width="360" height="17"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password must contain at least 8 characters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FVO-mb-Y1J">
+                                <rect key="frame" x="120" y="350" width="360" height="17"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.36960259470000001" green="0.80310696039999996" blue="0.83317307689999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="PqA-mn-eDR" firstAttribute="width" secondItem="7sz-tc-n3b" secondAttribute="width" id="8wX-vK-EyR"/>
+                            <constraint firstItem="PqA-mn-eDR" firstAttribute="centerX" secondItem="kT0-bC-8PH" secondAttribute="centerX" id="LyX-J4-bQy"/>
+                            <constraint firstItem="FVO-mb-Y1J" firstAttribute="width" secondItem="Rkh-0r-4yP" secondAttribute="width" id="OQZ-Wj-HFb"/>
                             <constraint firstItem="u41-NS-w5e" firstAttribute="bottom" secondItem="06z-BE-xel" secondAttribute="top" constant="-50" id="RTg-Ww-eDm"/>
                             <constraint firstItem="3bT-T3-grL" firstAttribute="centerX" secondItem="kT0-bC-8PH" secondAttribute="centerX" id="ULN-8e-4WH"/>
+                            <constraint firstItem="FVO-mb-Y1J" firstAttribute="top" secondItem="Rkh-0r-4yP" secondAttribute="bottom" id="dfX-hv-ru1"/>
+                            <constraint firstItem="PqA-mn-eDR" firstAttribute="top" secondItem="7sz-tc-n3b" secondAttribute="bottom" id="dmW-KS-9dj"/>
                             <constraint firstItem="06z-BE-xel" firstAttribute="centerY" secondItem="kT0-bC-8PH" secondAttribute="centerY" id="hL2-hX-5h5"/>
                             <constraint firstItem="3bT-T3-grL" firstAttribute="top" secondItem="06z-BE-xel" secondAttribute="bottom" constant="50" id="hkh-mf-K2b"/>
                             <constraint firstItem="u41-NS-w5e" firstAttribute="centerX" secondItem="kT0-bC-8PH" secondAttribute="centerX" id="nRJ-Cg-wq6"/>
-                            <constraint firstItem="06z-BE-xel" firstAttribute="width" secondItem="kT0-bC-8PH" secondAttribute="width" multiplier="0.5" id="po8-vh-mqq"/>
+                            <constraint firstItem="FVO-mb-Y1J" firstAttribute="centerX" secondItem="Rkh-0r-4yP" secondAttribute="centerX" id="osa-pg-eDk"/>
+                            <constraint firstItem="06z-BE-xel" firstAttribute="width" secondItem="kT0-bC-8PH" secondAttribute="width" multiplier="0.6" id="po8-vh-mqq"/>
                             <constraint firstItem="06z-BE-xel" firstAttribute="centerX" secondItem="kT0-bC-8PH" secondAttribute="centerX" id="qrK-zn-j2K"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="emailLabel" destination="7sz-tc-n3b" id="O9Q-xA-Acg"/>
-                        <outlet property="loginButtonTapped" destination="rVC-kR-U8N" id="yuA-3c-SSm"/>
+                        <outlet property="invalidEmailWarning" destination="PqA-mn-eDR" id="Khk-k2-aGA"/>
+                        <outlet property="invalidPasswordWarning" destination="FVO-mb-Y1J" id="js1-mH-yO7"/>
                         <outlet property="loginLabel" destination="u41-NS-w5e" id="nMF-U9-Fvs"/>
                         <outlet property="passwordLabel" destination="Rkh-0r-4yP" id="mls-Jp-8jt"/>
                         <outlet property="registerButtonTapped" destination="Gbh-8Q-3iR" id="iA7-Ez-RtX"/>
@@ -133,7 +152,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="COc-JL-Ikk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-222" y="-10"/>
+            <point key="canvasLocation" x="-284" y="-10"/>
         </scene>
         <!--Create Account View Controller-->
         <scene sceneID="20f-yo-D2k">
@@ -148,15 +167,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hMK-Xm-0cA" userLabel="Text Field Stack View">
-                                <rect key="frame" x="150" y="225" width="300" height="150"/>
+                                <rect key="frame" x="120" y="225" width="360" height="150"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rQ5-1d-e91">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="360" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AkE-cs-das">
-                                        <rect key="frame" x="0.0" y="40" width="300" height="30"/>
+                                        <rect key="frame" x="0.0" y="40" width="360" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -164,7 +183,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pQF-7q-Nfb">
-                                        <rect key="frame" x="0.0" y="80" width="300" height="30"/>
+                                        <rect key="frame" x="0.0" y="80" width="360" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         <connections>
@@ -172,7 +191,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Verify password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QIq-yV-JAH">
-                                        <rect key="frame" x="0.0" y="120" width="300" height="30"/>
+                                        <rect key="frame" x="0.0" y="120" width="360" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         <connections>
@@ -181,18 +200,30 @@
                                     </textField>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ma-SV-gzI">
-                                <rect key="frame" x="235" y="425" width="131" height="35"/>
-                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="19"/>
-                                <state key="normal" title="Create Account">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="createAccountButton:" destination="cdF-tl-xg4" eventType="touchUpInside" id="PzY-T5-Hcc"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="3UN-75-XDh">
+                                <rect key="frame" x="196" y="425" width="209" height="35"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ma-SV-gzI">
+                                        <rect key="frame" x="0.0" y="0.0" width="131" height="35"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="19"/>
+                                        <state key="normal" title="Create Account">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="createAccountButton:" destination="cdF-tl-xg4" eventType="touchUpInside" id="PzY-T5-Hcc"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4xr-gv-vd4">
+                                        <rect key="frame" x="151" y="0.0" width="58" height="35"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="19"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter the information below to create your EasyOut account!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4y-aj-Obs">
-                                <rect key="frame" x="150" y="115" width="300" height="60"/>
+                                <rect key="frame" x="60" y="115" width="480" height="60"/>
                                 <fontDescription key="fontDescription" name="LobsterTwo" family="Lobster Two" pointSize="24"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -202,11 +233,11 @@
                         <constraints>
                             <constraint firstItem="Y4y-aj-Obs" firstAttribute="bottom" secondItem="hMK-Xm-0cA" secondAttribute="top" constant="-50" id="An7-M1-RdG"/>
                             <constraint firstItem="hMK-Xm-0cA" firstAttribute="centerX" secondItem="KBv-7P-v3I" secondAttribute="centerX" id="JS5-XY-SJR"/>
-                            <constraint firstItem="hMK-Xm-0cA" firstAttribute="width" secondItem="KBv-7P-v3I" secondAttribute="width" multiplier="0.5" id="OWO-v1-Xtk"/>
-                            <constraint firstItem="9ma-SV-gzI" firstAttribute="top" secondItem="hMK-Xm-0cA" secondAttribute="bottom" constant="50" id="R52-3a-MA9"/>
+                            <constraint firstItem="3UN-75-XDh" firstAttribute="centerX" secondItem="KBv-7P-v3I" secondAttribute="centerX" id="JqU-aV-xvb"/>
+                            <constraint firstItem="3UN-75-XDh" firstAttribute="top" secondItem="hMK-Xm-0cA" secondAttribute="bottom" constant="50" id="NKI-aA-DW9"/>
+                            <constraint firstItem="hMK-Xm-0cA" firstAttribute="width" secondItem="KBv-7P-v3I" secondAttribute="width" multiplier="0.6" id="OWO-v1-Xtk"/>
                             <constraint firstItem="Y4y-aj-Obs" firstAttribute="centerX" secondItem="KBv-7P-v3I" secondAttribute="centerX" id="bOO-ha-zQu"/>
-                            <constraint firstItem="9ma-SV-gzI" firstAttribute="centerX" secondItem="KBv-7P-v3I" secondAttribute="centerX" id="czZ-F5-d66"/>
-                            <constraint firstItem="Y4y-aj-Obs" firstAttribute="width" secondItem="KBv-7P-v3I" secondAttribute="width" multiplier="0.5" id="lKY-yx-h07"/>
+                            <constraint firstItem="Y4y-aj-Obs" firstAttribute="width" secondItem="KBv-7P-v3I" secondAttribute="width" multiplier="0.8" id="lKY-yx-h07"/>
                             <constraint firstItem="hMK-Xm-0cA" firstAttribute="centerY" secondItem="KBv-7P-v3I" secondAttribute="centerY" id="qns-vc-Zcb"/>
                         </constraints>
                     </view>

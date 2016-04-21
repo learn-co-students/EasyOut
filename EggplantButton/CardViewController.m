@@ -115,6 +115,8 @@
                                                  name:@"checkBoxChecked"
                                                object:nil];
     
+    
+    
     self.view.contentMode = UIViewContentModeCenter;
     self.view.contentMode = UIViewContentModeScaleAspectFit;
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"city"]]];
