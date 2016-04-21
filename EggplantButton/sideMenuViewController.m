@@ -7,6 +7,7 @@
 //
 
 #import "sideMenuViewController.h"
+#import "Constants.h"
 
 
 @interface sideMenuViewController ()
@@ -22,6 +23,9 @@
     [super viewDidLoad];
     
     self.usernameLabel.text = self.user.username;
+    
+    // Set appearance of side menu view controller
+    self.view.backgroundColor = [Constants vikingBlueColor];
     
 }
 
