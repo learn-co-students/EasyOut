@@ -20,9 +20,7 @@ NSString * const FSQ_BASE_URL= @"https://api.foursquare.com/";
     NSString *urlString = [NSString stringWithFormat: @"%@v2/venues/explore?client_id=%@&client_secret=%@&v=20140806&m=foursquare&ll=%@&radius=500&section=%@&venuePhotos=1", FSQ_BASE_URL, FOURSQUARE_CLIENT_ID, FOURSQUARE_CLIENT_SECRET,location,section];
     
     //time
-    //price
-    NSLog(@"%@", urlString);
-    
+    //price    
     
     NSURL *url = [NSURL URLWithString:urlString];
     

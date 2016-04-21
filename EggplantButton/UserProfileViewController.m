@@ -49,8 +49,17 @@
             [self.tipsLabel createCircleLabel];
             [self.ratedLabel createCircleLabel];
             [self.itineraryLabel createCircleLabel];
+            
+            if(![self.user.profilePhoto isEqualToString:@""]){
+                [FirebaseAPIClient getImageForImageID:self.user.profilePhoto completion:^(UIImage * image) {
+                    self.userImage.image =image;
+                }];
+                
+            }
         }
     }];
+    
+    
     [self setUpCamera];
 
     
@@ -74,6 +83,7 @@
 
 -(void)setUpCamera {
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+
         
         UIAlertController * noCameraAlert =   [UIAlertController
                                                alertControllerWithTitle:@"Error"
@@ -106,15 +116,11 @@
     
     self.userImage.image = chosenImage;
     
-//    FirebaseAPIClient *client = [[FirebaseAPIClient alloc]init];
-//    
-//    Firebase *ref = [[Firebase alloc] initWithUrl:firebaseRootRef];
-//    
-//    [client saveNewImageWithImage:chosenImage completion:^(NSString * imageID) {
-//
-//    }];
-    
-    
+
+    [FirebaseAPIClient saveProfilePhotoForCurrentUser:chosenImage completion:^(BOOL success) {
+        NSLog(@"success! profile pic saved");
+    }];
+
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
@@ -163,6 +169,8 @@
     picker.sourceType = UIImagePickerControllerSourceTypeCamera;
     
     [self presentViewController: picker animated:YES completion:NULL];
+    
+    
 }
 
 -(void)selectAPictureWithPicker:(UIImagePickerController *)picker {

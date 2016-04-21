@@ -8,6 +8,7 @@
 
 #import "DetailViewController.h"
 #import <GoogleMaps/GoogleMaps.h>
+#import "Constants.h"
 
 
 
@@ -34,15 +35,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+
+        
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:1.285
+                                                            longitude:103.848
+                                                                 zoom:12];
     self.view.contentMode = UIViewContentModeCenter;
     self.view.contentMode = UIViewContentModeScaleAspectFit;
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"city"]]];
     
     CLLocationCoordinate2D activityLoc = [self getLocationFromAddressString:self.activity.address[0]];
     
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:activityLoc.latitude
-                                                            longitude:activityLoc.longitude
-                                                                 zoom:15];
+    
     self.mapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     
     [self.mapUIView addSubview:self.mapView];
@@ -54,14 +58,29 @@
     [self.mapView.leadingAnchor constraintEqualToAnchor:self.mapUIView.leadingAnchor].active = YES;
     [self.mapView.trailingAnchor constraintEqualToAnchor:self.mapUIView.trailingAnchor].active = YES;
 
-    // Creates a marker in the center of the map.
-    GMSMarker *marker = [[GMSMarker alloc] init];
-    marker.position = CLLocationCoordinate2DMake(((Restaurant *)self.activity).lat, ((Restaurant *)self.activity).lng);
-    marker.title = @"Sydney";
-    marker.snippet = @"Australia";
-    marker.map = self.mapView;
-
-
+    UIImage *markerImage = [GMSMarker markerImageWithColor:[Constants vikingBlueColor]];
+    
+    //MARKER FOR US
+    
+    GMSMarker *userLoc = [[GMSMarker alloc]init];
+    userLoc.position = CLLocationCoordinate2DMake(activityLoc.latitude, activityLoc.longitude);
+    userLoc.map = self.mapView;
+    
+    
+    //MARKER FOR ACTIVITIES
+    
+        NSString *address = [NSString stringWithFormat:@"%@%@", self.activity.address[0], self.activity.address[1]];
+        
+        CLLocationCoordinate2D location = [self getLocationFromAddressString: address];
+        
+        // Creates a marker in the center of the map.
+        
+        GMSMarker *marker = [[GMSMarker alloc] init];
+        marker.position = location;
+        marker.title = self.activity.name;
+        marker.snippet = address;
+        marker.map = self.mapView;
+        marker.icon = markerImage;
 }
 
 - (void)didReceiveMemoryWarning {

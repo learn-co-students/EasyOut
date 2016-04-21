@@ -7,6 +7,10 @@
 //
 
 #import "sideMenuViewController.h"
+#import "Secrets.h"
+#import "Firebase.h"
+#import "EggplantButton-Swift.h"
+#import "Constants.h"
 
 
 @interface sideMenuViewController ()
@@ -21,8 +25,39 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.usernameLabel.text = self.user.username;
+    [self pullUserFromFirebaseWithCompletion:^(BOOL success) {
+        if(success) {
+            
+            self.usernameLabel.textColor = [Constants vikingBlueColor];
+            self.usernameLabel.text = self.user.username;
+            
+//            self.userImage.layer.cornerRadius = (self.userImage.frame.size.width)/2;
+//            self.userImage.clipsToBounds = YES;
+//            self.userImage.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
+            
+        }
     
+
+    // Set appearance of side menu view controller
+    self.view.backgroundColor = [Constants vikingBlueColor];
+    
+
+        }];
+    
+}
+
+
+- (void)pullUserFromFirebaseWithCompletion:(void(^)(BOOL success))completion {
+    
+    Firebase *ref = [[Firebase alloc] initWithUrl:firebaseRootRef];
+    
+    [FirebaseAPIClient getUserFromFirebaseWithUserID:ref.authData.uid completion:^(User * user, BOOL success) {
+        
+        self.user = user;
+        
+        completion(YES);
+    }];
+
 }
 
 - (IBAction)profileButtonTapped:(id)sender {
@@ -32,7 +67,6 @@
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"sideMenuFadeAway"
                                                         object:nil];
-    NSLog(@"profile button tapped!");
 
     
 }
@@ -44,7 +78,6 @@
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"sideMenuFadeAway"
                                                         object:nil];
-    NSLog(@"past itineraries button tapped!");
     
 }
 
@@ -56,24 +89,8 @@
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"sideMenuFadeAway"
                                                         object:nil];
-    NSLog(@"logout button tapped!");
+   
    
 }
-
-- (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event
-{
-    NSLog(@"Shake started sideMenu");
-          
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
