@@ -334,7 +334,7 @@ import Firebase
         let newItineraryID = newItineraryRef.key
         
         // Convert activities into dictionaries
-        var activities = [[:]]
+        var activities : [[String:AnyObject]] = []
         for activityObject in itinerary.activities as NSMutableArray {
             
             var activityDictionary = [String : AnyObject]()
@@ -348,9 +348,10 @@ import Firebase
                                    "address0" : address0,
                                    "address1" : address1,
                                    "type" : activityObject.type,
-                                   "imageURL" : activityObject.imageURL,
-                                   "price" : activityObject.price,
-                                   "moreDetailsURL" : activityObject.moreDetailsURL]
+                                   "imageURL" : activityObject.imageURL.description,
+//                                   "price" : activityObject.price,
+//                                   "moreDetailsURL" : activityObject.moreDetailsURL
+            ]
             
             activities.append(activityDictionary)
         }
