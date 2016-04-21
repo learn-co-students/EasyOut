@@ -33,7 +33,7 @@
                          withTemplate:@""];
         
         [mAddress addObject: address];
-        [mAddress addObject:activityDictionary[@"venue"][@"location"][@"formattedAddress"][1]];
+        [mAddress addObject: activityDictionary[@"venue"][@"location"][@"formattedAddress"][1]];
         _address = mAddress ;
         
         _type = activityDictionary[@"venue"][@"shortName"];

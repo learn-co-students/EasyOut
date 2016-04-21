@@ -76,10 +76,13 @@
         }
     
     
-    // save Itinerary to FireBase
+     //save Itinerary to FireBase
     
+    [FirebaseAPIClient saveItineraryWithItinerary:self.itinerary completion:^(NSString * savedItinerary) {
+        NSLog(@" Itinerary saved : %@",savedItinerary);
+    }];
     
-   }
+  }
 
 
 

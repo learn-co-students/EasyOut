@@ -415,12 +415,12 @@
     NSMutableArray *activitiesArray = [NSMutableArray new];
     
     self.itinerary = [[Itinerary alloc]initWithActivities:activitiesArray userID:@"" creationDate:[NSDate date]];
+    
     if (self.firstCardLocked) {
-        
         ActivityCardCollectionViewCell *topCell = [[self.topRowCollection visibleCells] firstObject];
         Activity *topCellActivity = topCell.cardView.activity;
         [self.itinerary.activities addObject:topCellActivity];
-        
+
     }else {
         // do nothing
         
@@ -429,7 +429,7 @@
         ActivityCardCollectionViewCell *middleCell = [[self.middleRowCollection visibleCells] firstObject];
         Activity *middleCellActivity = middleCell.cardView.activity;
         [self.itinerary.activities addObject:middleCellActivity];
-        
+
     }
     else {
         // do nothing
@@ -437,14 +437,36 @@
         
         ActivityCardCollectionViewCell *bottomCell = [[self.bottomRowCollection visibleCells]firstObject];
         Activity *bottomCellActivity = bottomCell.cardView.activity;
-        
-        
         [self.itinerary.activities addObject:bottomCellActivity];
+        
+
     } else {
         // do nothing
     }
     
-    [self performSegueWithIdentifier:@"ItinerarySegue" sender:nil];
+    if (!self.firstCardLocked && !self.secondCardLocked && !self.thirdCardLocked ) {
+        
+        UIAlertController *chooseOneItinerary= [UIAlertController alertControllerWithTitle:@"Uh oh!"
+                                                                                message:@"Please choose one or more activities"
+                                                                         preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * action) {
+                                                             [chooseOneItinerary dismissViewControllerAnimated:YES completion:nil];
+                                                         }];
+        
+        [chooseOneItinerary addAction:okAction];
+        
+        [self presentViewController:chooseOneItinerary animated:YES completion:nil];
+
+        
+    };
+    
+    if (self.firstCardLocked || self.secondCardLocked || self.thirdCardLocked) {
+        [self performSegueWithIdentifier:@"ItinerarySegue" sender:nil]; 
+    }
+    
     
 }
 
@@ -453,9 +475,9 @@
 
 - (void) shakeStarted: (NSNotification *) notification {
 {
-        
+    
         [self shuffleCards];
-        
+    
         if(!self.firstCardLocked) {
             [self.topRowCollection shake:15     // 15 times
                                withDelta:20     // 20 points wide
