@@ -17,7 +17,7 @@
 #import "Firebase.h"
 #import "Itinerary.h"
 #import "ItineraryViewController.h"
-
+#import "Constants.h"
 #import "UIView+Shake.h"
 
 
@@ -34,8 +34,9 @@
 //LOCATION
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) CLLocation *mostRecentLocation;
-@property (strong, nonatomic) NSString *latitude;
-@property (strong, nonatomic) NSString *longitude;
+@property (nonatomic) CLLocationDegrees latitude;
+@property (nonatomic) CLLocationDegrees longitude;
+
 
 //COLLECTIONS
 @property (weak, nonatomic) IBOutlet UICollectionView *topRowCollection;
@@ -59,10 +60,9 @@
 
 - (void)viewDidLoad {
     
-    
+
     [super viewDidLoad];
-    
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"city"]]];
+
     
     [self setUpCoreLocation];
 
@@ -79,9 +79,16 @@
     self.middleRowCollection.backgroundColor = [UIColor clearColor];
     self.bottomRowCollection.backgroundColor = [UIColor clearColor];
     
-
-    self.createItineraryButton.backgroundColor = [UIColor colorWithRed:0.36 green:0.80 blue:0.83 alpha:1.00];
-    self.randomizeCardsButton.backgroundColor = [UIColor colorWithRed:0.36 green:0.80 blue:0.83 alpha:1.00];
+    // Set appearance of bottom buttons
+    self.createItineraryButton.backgroundColor = [Constants vikingBlueColor];
+    self.randomizeCardsButton.backgroundColor = [Constants vikingBlueColor];
+    self.createItineraryButton.titleLabel.font = [UIFont fontWithName:@"Lobster Two" size:20.0f];
+    self.randomizeCardsButton.titleLabel.font = [UIFont fontWithName:@"Lobster Two" size:20.0f];
+    
+    // Set appearance of navigation bar
+    [[UINavigationBar appearance] setTitleTextAttributes: @{
+                                                            NSFontAttributeName: [UIFont fontWithName:@"Lobster Two" size:20.0f],
+                                                            }];
 
     
     // listening for segue notifications from sideMenu
@@ -111,6 +118,10 @@
                                              selector:@selector(disableCheckedCard:)
                                                  name:@"checkBoxChecked"
                                                object:nil];
+    
+    self.view.contentMode = UIViewContentModeCenter;
+    self.view.contentMode = UIViewContentModeScaleAspectFit;
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"city"]]];
     
 }
 
@@ -199,10 +210,8 @@
 
 - (void) logoutButtonTapped: (NSNotification *) notification {
     
-    Firebase *ref = [[Firebase alloc] initWithUrl:firebaseRootRef];
-    
-    [ref unauth];
-    
+    [FirebaseAPIClient logOutUser];
+
 }
 
 
@@ -219,9 +228,9 @@
 
     }
     
-    NSArray *topRowOptions = @[@"arts", @"outdoors", @"sights"];
+    NSArray *topRowOptions = @[@"arts", @"sights"];
     
-    [self.dataStore getActivityforSection:topRowOptions[arc4random()%topRowOptions.count] Location:[NSString stringWithFormat:@"%@,%@",self.latitude, self.longitude] WithCompletion:^(BOOL success) {
+    [self.dataStore getActivityforSection:topRowOptions[arc4random()%topRowOptions.count] Location:[NSString stringWithFormat:@"%f,%f",self.latitude,self.longitude] WithCompletion:^(BOOL success) {
         
         if (success) {
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
@@ -231,7 +240,7 @@
 
     }];
     
-    [self.dataStore getActivityforSection:@"food"Location:[NSString stringWithFormat:@"%@,%@",self.latitude,self.longitude] WithCompletion:^(BOOL success) {
+    [self.dataStore getActivityforSection:@"food"Location:[NSString stringWithFormat:@"%f,%f",self.latitude,self.longitude] WithCompletion:^(BOOL success) {
         
         if (success) {
 
@@ -242,7 +251,7 @@
 
     }];
     
-    [self.dataStore getActivityforSection:@"drinks" Location:[NSString stringWithFormat:@"%@,%@",self.latitude,self.longitude] WithCompletion:^(BOOL success) {
+    [self.dataStore getActivityforSection:@"drinks" Location:[NSString stringWithFormat:@"%f,%f",self.latitude,self.longitude] WithCompletion:^(BOOL success) {
         
         
         if (success) {
@@ -311,6 +320,8 @@
 
 - (IBAction)SaveItineraryButtonTapped:(id)sender {
   
+    NSLog(@" Save Button Was Tapped ! ! !");
+    
     NSMutableArray *activitiesArray = [NSMutableArray new];
     
     self.itinerary = [[Itinerary alloc]initWithActivities:activitiesArray userID:@"" creationDate:[NSDate date]];
@@ -328,9 +339,10 @@
     [self.itinerary.activities addObject:topCellActivity];
     [self.itinerary.activities addObject:middleCellActivity];
     [self.itinerary.activities addObject:bottomCellActivity];
-    NSLog(@"Activities !! : %@",self.itinerary.activities); 
+//    NSLog(@"Activities !! : %@",self.itinerary.activities);
     
-    [self performSegueWithIdentifier:@"ItinerarySegue" sender:nil]; 
+    NSLog(@"About to perform the itinerary segue");
+    [self performSegueWithIdentifier:@"ItinerarySegue" sender:nil];
     
 }
 
@@ -352,8 +364,10 @@
         destinationVC.activity = ((ActivityCardCollectionViewCell *)sender).cardView.activity;
     }
     if ([segue.identifier isEqualToString:@"ItinerarySegue"]) {
-         ItineraryViewController *destinationVC = [segue destinationViewController];
+        ItineraryViewController *destinationVC = [segue destinationViewController];
         destinationVC.itinerary = self.itinerary;
+        destinationVC.latitude = self.latitude;
+        destinationVC.longitude = self.longitude;
     }
 }
 
@@ -373,8 +387,8 @@
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [self.locationManager startUpdatingLocation];
     
-    self.latitude = [NSString stringWithFormat: @"%f", self.locationManager.location.coordinate.latitude];
-    self.longitude = [NSString stringWithFormat: @"%f", self.locationManager.location.coordinate.longitude];
+    self.latitude = self.locationManager.location.coordinate.latitude;
+    self.longitude = self.locationManager.location.coordinate.longitude;
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
@@ -470,75 +484,6 @@
     }
 }
 
-    
-    
-
-
-
-
-
-//- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
-//    NSLog(@"location manager did update locations");
-//    if (self.mostRecentLocation == nil) {
-//
-//        self.mostRecentLocation = [locations lastObject];
-//
-//        if (self.mostRecentLocation != nil) {
-////            [self getEvents];
-//        }
-//    }
-//
-//    NSLog(@"location: %@", self.mostRecentLocation);
-//
-//    [self.locationManager stopUpdatingLocation];
-//}
-//
-//
-// This method will be used to handle the card scroll views' reactions and delay page-turning
-//-(void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
-//{
-////    CGPoint quoVadis = *targetContentOffset;
-////    targetContentOffset->y
-//
-//    CGPoint newOffset = CGPointZero;
-//    *targetContentOffset = newOffset;
-//}
-//
-//
-///* ADRIAN"S TicketMaster Event Setup ** vvvv
-// 
-// 
-// - (void)setupLocationManager {
-// self.locationManager = [[CLLocationManager alloc] init];
-// self.locationManager.delegate = self;
-// self.locationManager.distanceFilter = kCLDistanceFilterNone;
-// self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-// [self.locationManager requestWhenInUseAuthorization];
-// [self getTheUsersCurrentLocation];
-// }
-// 
-// - (void)getTheUsersCurrentLocation {
-// after this method fires off, the locationManager didUpdateLocations method below gets called (behind the scenes by the startUpdatingLocation)
-// [self.locationManager startUpdatingLocation];
-// }
-// 
-// 
-// 
-// -(void)getEvents {
-// [self.ticketMasterDataStore getEventsForLocation:self.mostRecentLocation withCompletion:^(BOOL success) {
-// if (success) {
-// [[NSOperationQueue mainQueue]addOperationWithBlock:^{
-//  [self.tableView reloadData];
-// }];
-// }
-// }];
-// }
-// 
-//// 
-// */
-
-
-
 
 #pragma mark - Button Things
 
@@ -549,11 +494,6 @@
 
 
 }
-
-
-- (IBAction)randomButtonPressed:(UIButton *)sender {
-}
-
 
 
 - (IBAction)filterButtonPressed:(UIBarButtonItem *)sender {

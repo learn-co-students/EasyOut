@@ -26,30 +26,28 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     
-//    // Initialize and run Firebase test functions
-//    FirebaseTestFunctions *firebaseTest = [[FirebaseTestFunctions alloc] init];
-//    [firebaseTest testFirebaseFunctions];
+    [GMSServices provideAPIKey:googlePlacesAPI];
     
-//    /// Allows Button to request Location Permissions
-//    [Button allowButtonToRequestLocationPermission:YES];
-//    
-//    [[Button sharedButton] configureWithApplicationId: APP_ID completion:NULL];
-//    
-//    [[Button sharedButton] setDeferredDeeplinkHandler:^(NSURL *deferredDeeplinkURL) {
-//        // Handle the deferredDeeplinkURL and open the relevant content.
-//        //[self handleURL :deferredDeeplinkURL];
-//    }];
-    
-    // Set appearance of the navigation bar
+    // Set navigation bar appearance
+//    NSDictionary* barButtonItemAttributes = @{
+//                                              NSFontAttributeName: [UIFont fontWithName:@"Georgia" size:20.0f]
+//                                              NSFontAttributeName: [UIFont fontWithName:@"Lobster Two" size:20.0f]
+//    };
+
     [UINavigationBar appearance].barTintColor = [Constants vikingBlueColor];
     [UIBarButtonItem appearance].tintColor = [UIColor whiteColor];
     [[UINavigationBar appearance] setTranslucent:NO];
-    
 
 
-    
-    [GMSServices provideAPIKey:googlePlacesAPI];
-    
+//    [UINavigationBar appearance].alpha = 0.5;
+    [[UINavigationBar appearance] setTitleTextAttributes: @{
+                                                            NSFontAttributeName: [UIFont fontWithName:@"Lobster Two" size:20.0f],
+                                                            }];
+    [[UIBarButtonItem appearance] setTitleTextAttributes:@{
+                                                           NSFontAttributeName: [UIFont fontWithName:@"Lobster Two" size:20.0f]
+                                                           } forState:(UIControlStateNormal)];
+
+
     return YES;
 }
 

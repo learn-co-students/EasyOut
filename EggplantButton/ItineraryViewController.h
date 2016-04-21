@@ -13,4 +13,6 @@
 
 @property (strong, nonatomic) Itinerary *itinerary;
 
+@property (nonatomic) CLLocationDegrees latitude;
+@property (nonatomic) CLLocationDegrees longitude;
 @end

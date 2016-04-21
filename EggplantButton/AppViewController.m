@@ -26,7 +26,7 @@
     
     Firebase *ref = [[Firebase alloc] initWithUrl:firebaseRootRef];
     
-    if (ref.authData){
+    if (ref.authData) {
         UIViewController *mainVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:mainViewControllerStoryBoardID];
     
         [self setEmbeddedViewController:mainVC];
@@ -47,7 +47,6 @@
                                                  name:mainViewControllerStoryBoardID
                                                object:nil];
     
-    
 }
 
 -(void)backToMain {
@@ -60,7 +59,7 @@
 
 -(void)setEmbeddedViewController:(UIViewController *)controller
 {
-    if([self.childViewControllers containsObject:controller]) {
+    if ([self.childViewControllers containsObject:controller]) {
         return;
     }
     
@@ -74,7 +73,7 @@
         [vc removeFromParentViewController];
     }
     
-    if(!controller) {
+    if (!controller) {
         return;
     }
     

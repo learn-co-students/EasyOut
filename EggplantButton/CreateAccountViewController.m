@@ -28,13 +28,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc]
                                            initWithTarget:self
-                                           action:@selector(hideKeyBoard)];
+                                           action:@selector(hideKeyboard)];
     
     [self.view addGestureRecognizer:tapGesture];
+    
     self.createAccountButtonTapped.enabled = NO;
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,20 +43,14 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)hideKeyBoard {
-    
-    [self.emailLabel resignFirstResponder];
-    [self.passWordLabel resignFirstResponder];
-    [self.verifyPasswordLabel resignFirstResponder];
-    [self.userNameLabel resignFirstResponder];
+-(void)hideKeyboard {
+    [self.view endEditing:YES];
 }
 
 -(void)checkUsernameValidityWithCompletion:(void (^)(BOOL isValid)) completion {
     
-    // Create instance of Firebase API client
-    FirebaseAPIClient *firebaseAPI = [[FirebaseAPIClient alloc] init];
-    
-    [firebaseAPI checkIfUserExistsWithUsername:self.userNameLabel.text completion:^(BOOL doesExist) {
+    // Check with Firebase if entered username is in use
+    [FirebaseAPIClient checkIfUserExistsWithUsername:self.userNameLabel.text completion:^(BOOL doesExist) {
         if (doesExist) {
             completion(NO);
         } else {
@@ -96,32 +91,6 @@
 // Create a new user in Firebase
 -(void)createNewUserWithCompletion:(void (^)(BOOL finished)) completion {
     
-    self.email = self.emailLabel.text;
-    self.username = self.userNameLabel.text;
-    
-    User *newUser = [[User alloc]initWithEmail:self.email username:self.username];
-    
-    FirebaseAPIClient *firebaseAPI = [[FirebaseAPIClient alloc] init];
-    
-    [firebaseAPI registerNewUserWithUser:newUser password:self.passWordLabel.text completion:^(BOOL success) {
-        if (success) {
-            NSLog(@"User with email %@ was successfully registered", self.email);
-        }
-    }];
-    
-    if (completion) {
-        Firebase *ref = [[Firebase alloc] initWithUrl:firebaseRootRef];
-        
-        [ref observeAuthEventWithBlock:^(FAuthData *authData) {
-            if (authData) {
-                // user authenticated
-                NSLog(@"%@", authData);
-            } else {
-                [self dismissViewControllerAnimated:YES completion:nil];
-                [[NSNotificationCenter defaultCenter] postNotificationName:mainViewControllerStoryBoardID object:nil];
-            }
-        }];
-    }    
 }
 
 - (IBAction)usernameDidEnd:(id)sender {
@@ -158,20 +127,31 @@
     if (![self confirmPassword]) {
         [UIView animateWithDuration:0.50 animations:^{
             self.verifyPasswordLabel.backgroundColor = [UIColor colorWithRed:247.0f/255.0f green:121.0f/255.0f blue:121.0f/255.0f alpha:1.0];
-
         }];
-    }else { [UIView animateWithDuration:0.50 animations:^{
-        
-        self.verifyPasswordLabel.backgroundColor = [UIColor whiteColor];
-        self.createAccountButtonTapped.enabled = YES;
-    }];
+    } else {
+        [UIView animateWithDuration:0.50 animations:^{
+            self.verifyPasswordLabel.backgroundColor = [UIColor whiteColor];
+            self.createAccountButtonTapped.enabled = YES;
+        }];
         
     }
 }
 
 - (IBAction)createAccountButton:(id)sender {
     
-    [self createNewUserWithCompletion:^(BOOL finished) {
+    User *newUser = [[User alloc]initWithEmail:self.emailLabel.text username:self.userNameLabel.text];
+    
+    [FirebaseAPIClient registerNewUserWithUser:newUser password:self.passWordLabel.text completion:^(BOOL success) {
+        if (success) {
+            
+            NSLog(@"User with email %@ was successfully registered", self.emailLabel.text);
+            
+            [self dismissViewControllerAnimated:YES completion:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:mainViewControllerStoryBoardID object:nil];
+        } else {
+            
+            NSLog(@"Something went wrong registering the user");
+        }
     }];
 }
 

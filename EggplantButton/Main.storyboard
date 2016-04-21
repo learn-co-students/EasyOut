@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="QB9-cg-QB8">
+
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="QB9-cg-QB8">
+
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -26,10 +28,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="VU8-K5-T2e" userLabel="Card Stack View">
-                                <rect key="frame" x="0.0" y="15" width="375" height="525"/>
+
+                                <rect key="frame" x="0.0" y="15" width="320" height="436"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gkc-zr-fUL">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="165"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="135"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="yNZ-cS-u4s">
                                             <size key="itemSize" width="50" height="50"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -46,13 +49,15 @@
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <connections>
-                                                    <segue destination="cZd-me-Cbf" kind="show" identifier="detailSegue" id="lgO-gw-fZU"/>
+                                                    <segue destination="cZd-me-Cbf" kind="show" id="j3j-8g-z87"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Buu-E5-ZxL">
-                                        <rect key="frame" x="0.0" y="180" width="375" height="165"/>
+
+                                        <rect key="frame" x="0.0" y="150" width="320" height="136"/>
+
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="9lb-FM-leQ">
                                             <size key="itemSize" width="50" height="50"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -75,7 +80,9 @@
                                         </cells>
                                     </collectionView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7QA-HD-63z">
-                                        <rect key="frame" x="0.0" y="360" width="375" height="165"/>
+
+                                        <rect key="frame" x="0.0" y="301" width="320" height="135"/>
+
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="JKB-yy-PM1">
                                             <size key="itemSize" width="50" height="50"/>
@@ -109,12 +116,14 @@
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="3" maxY="0.0"/>
                                         <state key="normal" title="Save Itinerary" image="save">
+
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="randomButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MYr-IV-L4A"/>
+                                            <action selector="SaveItineraryButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Oa0-sf-8eJ"/>
                                         </connections>
                                     </button>
+
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vrG-5j-TCQ" userLabel="Randomize Cards Button">
                                         <rect key="frame" x="177" y="0.0" width="166" height="60"/>
                                         <fontDescription key="fontDescription" name="LobsterTwo" family="Lobster Two" pointSize="21"/>
@@ -125,13 +134,12 @@
                                         </state>
                                         <connections>
                                             <action selector="randomizeTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3MV-F8-o2B"/>
-                                            <action selector="saveButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eZV-EL-4Kt"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.36960259470000001" green="0.80310696039999996" blue="0.83317307689999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="xrc-AU-Ej6"/>
+                                    <constraint firstAttribute="height" constant="50" id="xrc-AU-Ej6"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -169,6 +177,7 @@
                         <outlet property="middleRowCollection" destination="Buu-E5-ZxL" id="1v6-Oz-s1s"/>
                         <outlet property="randomizeCardsButton" destination="vrG-5j-TCQ" id="2Bo-r7-7HN"/>
                         <outlet property="topRowCollection" destination="gkc-zr-fUL" id="HDZ-Jn-Xqg"/>
+                        <segue destination="img-La-tN3" kind="show" identifier="ItinerarySegue" id="Jb9-C8-F5a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -183,13 +192,21 @@
             </objects>
             <point key="canvasLocation" x="1478.5" y="277"/>
         </scene>
+        <!--ItineraryView-->
+        <scene sceneID="evW-UL-NHe">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ItineraryView" id="img-La-tN3" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LDr-hy-3IC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1507.5" y="505"/>
+        </scene>
         <!--DetailView-->
         <scene sceneID="D1W-qe-Psg">
             <objects>
                 <viewControllerPlaceholder storyboardName="DetailView" referencedIdentifier="DetailView" id="cZd-me-Cbf" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wjg-ra-0Ql" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1481.5" y="640"/>
+            <point key="canvasLocation" x="1455.5" y="652"/>
         </scene>
         <!--Main Container View Controller-->
         <scene sceneID="nbp-pc-vIU">
@@ -369,6 +386,6 @@
         <image name="save" width="55" height="55"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sVv-zh-GNS"/>
+        <segue reference="kc8-fC-vZm"/>
     </inferredMetricsTieBreakers>
 </document>
