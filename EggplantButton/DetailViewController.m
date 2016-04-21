@@ -46,9 +46,7 @@
     
     CLLocationCoordinate2D activityLoc = [self getLocationFromAddressString:self.activity.address[0]];
     
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:activityLoc.latitude
-                                                            longitude:activityLoc.longitude
-                                                                 zoom:15];
+    
     self.mapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     
     [self.mapUIView addSubview:self.mapView];

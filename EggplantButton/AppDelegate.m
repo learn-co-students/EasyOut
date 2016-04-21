@@ -34,9 +34,9 @@
 
 
 //    [UINavigationBar appearance].alpha = 0.5;
-    [[UINavigationBar appearance] setTitleTextAttributes: @{
-                                                            NSFontAttributeName: [UIFont fontWithName:@"Lobster Two" size:20.0f],
-                                                            }];
+//    [[UINavigationBar appearance] setTitleTextAttributes: @{
+//                                                            NSFontAttributeName: [UIFont fontWithName:@"Lobster Two" size:20.0f],
+//                                                            }];
 
 
     return YES;
