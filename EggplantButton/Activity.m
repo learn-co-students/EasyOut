@@ -27,13 +27,14 @@
                                       regularExpressionWithPattern:@"\\(.+?\\)"
                                       options:NSRegularExpressionCaseInsensitive
                                       error:NULL];
+        
         [regex replaceMatchesInString:address
                               options:0
                                 range:NSMakeRange(0, [address length])
                          withTemplate:@""];
         
         [mAddress addObject: address];
-        [mAddress addObject:activityDictionary[@"venue"][@"location"][@"formattedAddress"][1]];
+        [mAddress addObject: activityDictionary[@"venue"][@"location"][@"formattedAddress"][1]];
         _address = mAddress ;
         _type = activityDictionary[@"venue"][@"shortName"];
     

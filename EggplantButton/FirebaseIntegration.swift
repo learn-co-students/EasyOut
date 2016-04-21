@@ -333,12 +333,35 @@ import Firebase
         // Access unique key created for new itinerary reference
         let newItineraryID = newItineraryRef.key
         
+        // Convert activities into dictionaries
+        var activities : [[String:AnyObject]] = []
+        for activityObject in itinerary.activities as NSMutableArray {
+            
+            var activityDictionary = [String : AnyObject]()
+            
+            let address : Array = activityObject.address
+            
+            let address0 : String = address[0] as! String
+            let address1 : String = address[1] as! String
+            
+            activityDictionary = [ "name" : activityObject.name,
+                                   "address0" : address0,
+                                   "address1" : address1,
+                                   "type" : activityObject.type,
+                                   "imageURL" : activityObject.imageURL.description,
+//                                   "price" : activityObject.price,
+//                                   "moreDetailsURL" : activityObject.moreDetailsURL
+            ]
+            
+            activities.append(activityDictionary)
+        }
+        
         // Set values of the new itinerary reference with properties on the itinerary
         print("Setting values for new itinerary with itineraryID: \(newItineraryID)")
         newItineraryRef.setValue([
             "itineraryID" : newItineraryID,
             "creationDate" : convertDateToStringWithDate(itinerary.creationDate),
-            "activities" : itinerary.activities,
+            "activities" : activities,
             "ratings" : itinerary.ratings,
             "tips" : itinerary.tips,
             "photos" : itinerary.photos,
@@ -755,10 +778,19 @@ import Firebase
     // Remove user account from Firebase
     class func removeUserFromFirebaseWithEmail(email:String, password:String, competion:(Bool) -> ()) {
         
-        FirebaseAPIClient.logOutUser()
-        
-        // Set root Firebase reference
+        // Set Firebase references
         let ref = Firebase(url:firebaseRootRef)
+        let usersRef = ref.childByAppendingPath("users")
+        let imagesRef = ref.childByAppendingPath("images")
+        let itinerariesRef = ref.childByAppendingPath("itineraries")
+        let currentUserRef = usersRef.childByAppendingPath(ref.authData.uid)
+        let associatedImagesRef = currentUserRef.childByAppendingPath("associatedImages")
+        let savedItinerariesRef = currentUserRef.childByAppendingPath("savedItineraries")
+        
+        // Remove all user itineraries and associated images
+        
+        
+        FirebaseAPIClient.logOutUser()
         
         print("Attempting to remove user with email \(email)")
         

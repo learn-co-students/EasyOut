@@ -27,16 +27,24 @@
 
     
     [GMSServices provideAPIKey:googlePlacesAPI];
+    
+    // Set status bar appearance
+//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+//    [UIViewController preferredStatusBarStyle];
+    
+    // Set navigation bar appearance
+    [UINavigationBar appearance].barTintColor = [Constants vikingBlueColor];
+    [UIBarButtonItem appearance].tintColor = [UIColor whiteColor];
+    [[UINavigationBar appearance] setTitleTextAttributes: @{
+                                                            NSFontAttributeName: [UIFont fontWithName:@"Lobster Two" size:20.0f],
+                                                            }];
+    [[UIBarButtonItem appearance] setTitleTextAttributes:@{
+                                                           NSFontAttributeName: [UIFont fontWithName:@"Lobster Two" size:20.0f]
+                                                           } forState:(UIControlStateNormal)];
 
     [UINavigationBar appearance].barTintColor = [Constants vikingBlueColor];
     [UIBarButtonItem appearance].tintColor = [UIColor whiteColor];
     [[UINavigationBar appearance] setTranslucent:NO];
-
-
-//    [UINavigationBar appearance].alpha = 0.5;
-//    [[UINavigationBar appearance] setTitleTextAttributes: @{
-//                                                            NSFontAttributeName: [UIFont fontWithName:@"Lobster Two" size:20.0f],
-//                                                            }];
 
 
     return YES;

@@ -43,6 +43,11 @@
             
             }
         }
+
+    // Set appearance of side menu view controller
+    self.view.backgroundColor = [Constants vikingBlueColor];
+    
+
         }];
     
 }
@@ -58,6 +63,7 @@
         
         completion(YES);
     }];
+
 }
 
 - (IBAction)profileButtonTapped:(id)sender {
