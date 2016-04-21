@@ -33,8 +33,6 @@
     [self.view addGestureRecognizer:tapGesture];
 }
 
-
-
 - (IBAction)login:(id)sender {
     
     Firebase *ref = [[Firebase alloc] initWithUrl:firebaseRootRef];
@@ -55,18 +53,18 @@
                                      handler:^(UIAlertAction * action)
                                      {
                                          [alert dismissViewControllerAnimated:YES completion:nil];
-                                         
                                      }];
-                 [alert addAction:ok];
+                
+                [alert addAction:ok];
+                
                 [self presentViewController:alert animated:YES completion:nil];
-
             }
             else {
                 [[NSNotificationCenter defaultCenter] postNotificationName:mainViewControllerStoryBoardID object:nil];
             }
       }];
-    
 }
+
 -(void)hideKeyBoard {
     
     [self.emailLabel resignFirstResponder];

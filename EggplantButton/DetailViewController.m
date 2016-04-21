@@ -47,8 +47,6 @@
     [self.mapView.bottomAnchor constraintEqualToAnchor:self.mapUIView.bottomAnchor].active = YES;
     [self.mapView.leadingAnchor constraintEqualToAnchor:self.mapUIView.leadingAnchor].active = YES;
     [self.mapView.trailingAnchor constraintEqualToAnchor:self.mapUIView.trailingAnchor].active = YES;
-
-
     
 //    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:((Restaurant *)self.activity).lat
 //                                                            longitude:((Restaurant *)self.activity).lng
@@ -65,9 +63,6 @@
 //    marker.snippet = @"Australia";
 //    marker.map = self.mapView;
 
-    
-    
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -78,7 +73,5 @@
     
     [[self navigationController] popViewControllerAnimated:YES];
 }
-
-
 
 @end
