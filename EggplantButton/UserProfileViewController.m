@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet CircleLabelView *tipsLabel;
 @property (weak, nonatomic) IBOutlet CircleLabelView *ratedLabel;
 @property (weak, nonatomic) IBOutlet CircleLabelView *itineraryLabel;
+@property (weak, nonatomic) IBOutlet UINavigationItem *userProfileNavBar;
 
 @end
 
@@ -66,6 +67,9 @@
     self.view.contentMode = UIViewContentModeCenter;
     self.view.contentMode = UIViewContentModeScaleAspectFit;
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"city"]]];
+    
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    
 
 }
 

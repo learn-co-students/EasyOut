@@ -66,8 +66,8 @@
     [self.contentView.trailingAnchor constraintEqualToAnchor:self.trailingAnchor constant:-20].active = YES;
     
     self.contentView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
-    self.checkButton.layer.borderColor = [[UIColor blackColor] colorWithAlphaComponent:0.6].CGColor;
-    self.checkButton.layer.borderWidth = 3;
+//    self.checkButton.layer.borderColor = [[UIColor blackColor] colorWithAlphaComponent:0.6].CGColor;
+//    self.checkButton.layer.borderWidth = 3;
 }
 
 -(void)setActivity:(Activity *)activity {

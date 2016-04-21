@@ -16,6 +16,7 @@
 @interface sideMenuViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *userImage;
 
 
 @end
@@ -31,12 +32,17 @@
             self.usernameLabel.textColor = [Constants vikingBlueColor];
             self.usernameLabel.text = self.user.username;
             
-//            self.userImage.layer.cornerRadius = (self.userImage.frame.size.width)/2;
-//            self.userImage.clipsToBounds = YES;
-//            self.userImage.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
+            self.userImage.layer.cornerRadius = (self.userImage.frame.size.width)/2;
+            self.userImage.clipsToBounds = YES;
+            self.userImage.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
             
+            if(![self.user.profilePhoto isEqualToString:@""]){
+                [FirebaseAPIClient getImageForImageID:self.user.profilePhoto completion:^(UIImage * image) {
+                    self.userImage.image =image;
+                }];
+            
+            }
         }
-    
         }];
     
 }

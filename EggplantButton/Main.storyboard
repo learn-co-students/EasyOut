@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="QB9-cg-QB8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="QB9-cg-QB8">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -26,10 +26,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="VU8-K5-T2e" userLabel="Card Stack View">
-                                <rect key="frame" x="0.0" y="15" width="320" height="436"/>
+                                <rect key="frame" x="0.0" y="15" width="375" height="535"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gkc-zr-fUL">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="135"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="168"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="yNZ-cS-u4s">
                                             <size key="itemSize" width="50" height="50"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -52,9 +52,7 @@
                                         </cells>
                                     </collectionView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Buu-E5-ZxL">
-
-                                        <rect key="frame" x="0.0" y="150" width="320" height="136"/>
-
+                                        <rect key="frame" x="0.0" y="183" width="375" height="169"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="9lb-FM-leQ">
                                             <size key="itemSize" width="50" height="50"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -77,9 +75,7 @@
                                         </cells>
                                     </collectionView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7QA-HD-63z">
-
-                                        <rect key="frame" x="0.0" y="301" width="320" height="135"/>
-
+                                        <rect key="frame" x="0.0" y="367" width="375" height="168"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="JKB-yy-PM1">
                                             <size key="itemSize" width="50" height="50"/>
@@ -104,11 +100,11 @@
                                     </collectionView>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hhF-uU-Inp" userLabel="Button Stack">
-                                <rect key="frame" x="16" y="555" width="343" height="60"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hhF-uU-Inp" userLabel="Button Stack">
+                                <rect key="frame" x="16" y="555" width="343" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D12-lf-tgx" userLabel="Save Itinerary Button">
-                                        <rect key="frame" x="0.0" y="0.0" width="167" height="60"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="167" height="50"/>
                                         <fontDescription key="fontDescription" name="LobsterTwo" family="Lobster Two" pointSize="21"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="3" maxY="0.0"/>
@@ -120,7 +116,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vrG-5j-TCQ" userLabel="Randomize Cards Button">
-                                        <rect key="frame" x="177" y="0.0" width="166" height="60"/>
+                                        <rect key="frame" x="177" y="0.0" width="166" height="50"/>
                                         <fontDescription key="fontDescription" name="LobsterTwo" family="Lobster Two" pointSize="21"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -156,19 +152,11 @@
                                 <action selector="menuButtonTapped:" destination="BYZ-38-t0r" id="hfr-BY-jz5"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Filter" id="QNU-sy-gKX">
-                            <color key="tintColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="filterButtonPressed:" destination="BYZ-38-t0r" id="YlN-qI-q21"/>
-                                <segue destination="N6m-nR-JnJ" kind="show" id="Ufw-Wn-Qmf"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="bottomRowCollection" destination="7QA-HD-63z" id="jc0-TU-ogc"/>
                         <outlet property="createItineraryButton" destination="D12-lf-tgx" id="Y7D-WA-Xdf"/>
-                        <outlet property="filterNavButton" destination="QNU-sy-gKX" id="V6I-eO-j3e"/>
                         <outlet property="middleRowCollection" destination="Buu-E5-ZxL" id="1v6-Oz-s1s"/>
                         <outlet property="randomizeCardsButton" destination="vrG-5j-TCQ" id="2Bo-r7-7HN"/>
                         <outlet property="topRowCollection" destination="gkc-zr-fUL" id="HDZ-Jn-Xqg"/>
@@ -301,8 +289,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="199" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hOL-Ei-CQk">
-                                <rect key="frame" x="20" y="235" width="159" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hOL-Ei-CQk">
+                                <rect key="frame" x="26" y="246" width="148" height="41"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="21"/>
                                 <state key="normal" title="Itinerary History">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -311,14 +299,14 @@
                                     <action selector="itineraryHistoryButtonTapped:" destination="3L1-dU-ywu" eventType="touchUpInside" id="iHJ-ft-Igw"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kFr-i4-jK0">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kFr-i4-jK0">
                                 <rect key="frame" x="45" y="20" width="110" height="107"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="107" id="s9P-OD-PlF"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vh4-OL-ZXU">
-                                <rect key="frame" x="0.0" y="135" width="199" height="47"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vh4-OL-ZXU">
+                                <rect key="frame" x="0.0" y="142" width="199" height="40"/>
                                 <fontDescription key="fontDescription" name="LobsterTwo" family="Lobster Two" pointSize="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -337,8 +325,20 @@
                                     <segue destination="ThO-gH-bWu" kind="show" id="7rl-af-VmM"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UM0-U2-r4L">
+                                <rect key="frame" x="44" y="20" width="110" height="107"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="107" id="hwJ-uT-SDs"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2tM-t7-nEo">
+                                <rect key="frame" x="44" y="20" width="110" height="107"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="107" id="33K-vX-rwl"/>
+                                </constraints>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j6a-DZ-UOp">
-                                <rect key="frame" x="9" y="197" width="181" height="30"/>
+                                <rect key="frame" x="9" y="197" width="181" height="41"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="21"/>
                                 <state key="normal" title="Profile">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -351,22 +351,36 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="utd-AB-OgT" firstAttribute="centerX" secondItem="COR-WQ-UzG" secondAttribute="centerX" id="4ae-b1-25u"/>
-                            <constraint firstItem="j6a-DZ-UOp" firstAttribute="leading" secondItem="COR-WQ-UzG" secondAttribute="leadingMargin" constant="-7" id="5Wo-go-VAB"/>
+                            <constraint firstItem="j6a-DZ-UOp" firstAttribute="leading" secondItem="COR-WQ-UzG" secondAttribute="leadingMargin" constant="-11" id="5Wo-go-VAB"/>
                             <constraint firstItem="j6a-DZ-UOp" firstAttribute="centerX" secondItem="COR-WQ-UzG" secondAttribute="centerX" id="Aqq-Lm-GUI"/>
-                            <constraint firstItem="hOL-Ei-CQk" firstAttribute="top" secondItem="j6a-DZ-UOp" secondAttribute="bottom" constant="15" id="HIO-sO-z1F"/>
+                            <constraint firstItem="UM0-U2-r4L" firstAttribute="top" secondItem="2tM-t7-nEo" secondAttribute="top" id="FTS-EJ-6uD"/>
+                            <constraint firstItem="hOL-Ei-CQk" firstAttribute="top" secondItem="j6a-DZ-UOp" secondAttribute="bottom" constant="8" id="HIO-sO-z1F"/>
+                            <constraint firstItem="vh4-OL-ZXU" firstAttribute="centerX" secondItem="COR-WQ-UzG" secondAttribute="centerX" id="Hxy-Tw-LvL"/>
                             <constraint firstItem="kFr-i4-jK0" firstAttribute="top" secondItem="COR-WQ-UzG" secondAttribute="top" constant="20" symbolic="YES" id="M6i-VK-hIT"/>
                             <constraint firstItem="kFr-i4-jK0" firstAttribute="leading" secondItem="hOL-Ei-CQk" secondAttribute="leading" id="Pft-qo-vHW"/>
+                            <constraint firstItem="UM0-U2-r4L" firstAttribute="leading" secondItem="2tM-t7-nEo" secondAttribute="leading" id="T7K-uh-mGn"/>
                             <constraint firstItem="kFr-i4-jK0" firstAttribute="trailing" secondItem="hOL-Ei-CQk" secondAttribute="trailing" id="TwM-nT-mX0"/>
-                            <constraint firstItem="j6a-DZ-UOp" firstAttribute="top" secondItem="kFr-i4-jK0" secondAttribute="bottom" constant="63" id="b01-8a-iXV"/>
+                            <constraint firstItem="UM0-U2-r4L" firstAttribute="top" secondItem="kFr-i4-jK0" secondAttribute="top" id="aYs-ye-24E"/>
+                            <constraint firstItem="j6a-DZ-UOp" firstAttribute="top" secondItem="kFr-i4-jK0" secondAttribute="bottom" constant="70" id="b01-8a-iXV"/>
                             <constraint firstItem="vh4-OL-ZXU" firstAttribute="leading" secondItem="COR-WQ-UzG" secondAttribute="leading" id="blv-Rb-4kl"/>
-                            <constraint firstItem="vh4-OL-ZXU" firstAttribute="top" secondItem="kFr-i4-jK0" secondAttribute="bottom" constant="8" symbolic="YES" id="dkf-up-xso"/>
+                            <constraint firstItem="2tM-t7-nEo" firstAttribute="centerX" secondItem="COR-WQ-UzG" secondAttribute="centerX" id="cMz-Wz-Z3N"/>
+                            <constraint firstItem="vh4-OL-ZXU" firstAttribute="top" secondItem="kFr-i4-jK0" secondAttribute="bottom" constant="15" id="dkf-up-xso"/>
+                            <constraint firstItem="UM0-U2-r4L" firstAttribute="trailing" secondItem="2tM-t7-nEo" secondAttribute="trailing" id="gYE-oY-qcw"/>
                             <constraint firstItem="kFr-i4-jK0" firstAttribute="centerX" secondItem="COR-WQ-UzG" secondAttribute="centerX" id="jVZ-Xn-mbH"/>
-                            <constraint firstItem="j6a-DZ-UOp" firstAttribute="top" secondItem="vh4-OL-ZXU" secondAttribute="bottom" constant="8" symbolic="YES" id="klD-Ab-tRW"/>
+                            <constraint firstItem="j6a-DZ-UOp" firstAttribute="top" secondItem="vh4-OL-ZXU" secondAttribute="bottom" constant="15" id="klD-Ab-tRW"/>
                             <constraint firstAttribute="bottomMargin" secondItem="utd-AB-OgT" secondAttribute="bottom" constant="20" id="ncN-7E-fNF"/>
+                            <constraint firstItem="UM0-U2-r4L" firstAttribute="leading" secondItem="COR-WQ-UzG" secondAttribute="leadingMargin" constant="28" id="pyH-JD-Zya"/>
                             <constraint firstItem="vh4-OL-ZXU" firstAttribute="centerX" secondItem="hOL-Ei-CQk" secondAttribute="centerX" id="qRD-le-EeY"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Pft-qo-vHW"/>
+                                <exclude reference="TwM-nT-mX0"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
+                        <outlet property="userImage" destination="2tM-t7-nEo" id="CuX-4F-gye"/>
                         <outlet property="usernameLabel" destination="vh4-OL-ZXU" id="VpV-2C-Rd3"/>
                     </connections>
                 </viewController>
