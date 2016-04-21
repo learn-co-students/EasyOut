@@ -17,7 +17,7 @@
 #import "Firebase.h"
 #import "Itinerary.h"
 #import "ItineraryViewController.h"
-
+#import "Constants.h"
 #import "UIView+Shake.h"
 
 
@@ -75,9 +75,16 @@
     self.middleRowCollection.backgroundColor = [UIColor clearColor];
     self.bottomRowCollection.backgroundColor = [UIColor clearColor];
     
-
-    self.createItineraryButton.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.4];
-    self.randomizeCardsButton.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.4];
+    // Set appearance of bottom buttons
+    self.createItineraryButton.backgroundColor = [Constants vikingBlueColor];
+    self.randomizeCardsButton.backgroundColor = [Constants vikingBlueColor];
+    self.createItineraryButton.titleLabel.font = [UIFont fontWithName:@"Lobster Two" size:20.0f];
+    self.randomizeCardsButton.titleLabel.font = [UIFont fontWithName:@"Lobster Two" size:20.0f];
+    
+    // Set appearance of navigation bar
+    [[UINavigationBar appearance] setTitleTextAttributes: @{
+                                                            NSFontAttributeName: [UIFont fontWithName:@"Lobster Two" size:20.0f],
+                                                            }];
 
     
     // listening for segue notifications from sideMenu
