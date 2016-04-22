@@ -24,7 +24,6 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-
     
     [GMSServices provideAPIKey:googlePlacesAPI];
     
@@ -49,6 +48,7 @@
 
     return YES;
 }
+
 
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url

@@ -17,9 +17,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *loginLabel;
 @property (weak, nonatomic) IBOutlet UITextField *emailLabel;
 @property (weak, nonatomic) IBOutlet UITextField *passwordLabel;
-@property (weak, nonatomic) IBOutlet UIButton *registerButtonTapped;
 @property (weak, nonatomic) IBOutlet UILabel *invalidEmailWarning;
 @property (weak, nonatomic) IBOutlet UILabel *invalidPasswordWarning;
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
 
 
 @end
@@ -30,6 +30,7 @@
     [super viewDidLoad];
     
     self.emailLabel.delegate = self;
+    self.passwordLabel.delegate = self;
     
     UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc]
                                            initWithTarget:self
@@ -73,48 +74,82 @@
 }
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField {
+    
+    textField.backgroundColor = [UIColor whiteColor];
 
-    self.emailLabel.textColor = [UIColor blackColor];
-    self.invalidEmailWarning.hidden = YES;
     
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField {
     
-    if ([self isEmailValid]) {
-        
-        [FirebaseAPIClient checkIfUserExistsWithEmail:self.emailLabel.text completion:^(BOOL doesExist) {
+    if(textField == self.emailLabel) {
+    
+        if ([self isEmailValid]) {
             
-            if (!doesExist) {
+            [FirebaseAPIClient checkIfUserExistsWithEmail:self.emailLabel.text completion:^(BOOL doesExist) {
                 
-                UIAlertController *emailTakenAlert= [UIAlertController alertControllerWithTitle:@"Uh oh!"
-                                                                                        message:@"This email address has not been registered!"
-                                                                                 preferredStyle:UIAlertControllerStyleAlert];
+                if (!doesExist) {
+                    
+                    UIAlertController *emailTakenAlert= [UIAlertController alertControllerWithTitle:@"Uh oh!"
+                                                                                            message:@"This email address has not been registered!"
+                                                                                     preferredStyle:UIAlertControllerStyleAlert];
+                    
+                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                                       style:UIAlertActionStyleDefault
+                                                                     handler:^(UIAlertAction * action) {
+                                                                         [emailTakenAlert dismissViewControllerAnimated:YES completion:nil];
+                                                                     }];
+                    
+                    [emailTakenAlert addAction:okAction];
+                    
+                    [self presentViewController:emailTakenAlert animated:YES completion:nil];
+                    
+                }
+                else {
+                    self.invalidEmailWarning.hidden = YES;
+                }
+            }];
+        }
+        
+        else {
+            if(self.emailLabel.text > 0) {
                 
-                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
-                                                                   style:UIAlertActionStyleDefault
-                                                                 handler:^(UIAlertAction * action) {
-                                                                     [emailTakenAlert dismissViewControllerAnimated:YES completion:nil];
-                                                                 }];
+                NSLog(@"invalid email");
                 
-                [emailTakenAlert addAction:okAction];
+                [self animateTextField:self.emailLabel];
                 
-                [self presentViewController:emailTakenAlert animated:YES completion:nil];
-                
+                self.invalidEmailWarning.hidden = NO;
             }
-            else {
-                self.invalidEmailWarning.hidden = YES;
-            }
-        }];
+        }
     }
     
-    else {
-        self.emailLabel.textColor = [UIColor redColor];
-        self.invalidEmailWarning.hidden = NO;
+    if(textField == self.passwordLabel) {
+        
+        if(self.passwordLabel.text.length > 0 && [self isPasswordValid]) {
+            
+            if([self isEmailValid]) {
+                
+                NSLog(@"Valid pass and email");
+                self.invalidPasswordWarning.hidden = YES;
+                self.invalidEmailWarning.hidden = YES;
+                self.loginLabel.enabled = YES;
+            }
         }
+        else {
+            
+            [self animateTextField:self.passwordLabel];
+            
+            self.invalidPasswordWarning.hidden = NO;
+        }
+    }
     
 }
 
+-(BOOL)isPasswordValid {
+    
+    return (self.passwordLabel.text.length > 7 && ![self.passwordLabel.text containsString:@" "] );
+    
+}
 
 
 - (BOOL)isEmailValid {
@@ -125,7 +160,6 @@
     }
     
     else {
-        self.emailLabel.textColor = [UIColor blackColor];
         self.invalidEmailWarning.hidden = YES;
         
         return YES;
@@ -147,8 +181,20 @@
         }
     
     }
+
     
+}
+
+-(void)animateTextField:(UITextField *)textField {
     
+    [UIView animateWithDuration:0.2 animations:^{
+        
+        [UIView setAnimationRepeatCount:4.0];
+                
+        textField.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.4];
+        
+    }];
+
 }
 
 @end

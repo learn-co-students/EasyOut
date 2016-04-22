@@ -115,7 +115,6 @@
 - (IBAction)cardSelected:(UIButton *)sender {
     
     self.contentSuperview = [self.contentView superview];
-    NSLog(@"ContentView Superview: %@", self.contentSuperview);
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"checkBoxChecked" object:sender];
     
@@ -124,15 +123,20 @@
         self.contentView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.4];
         self.nameLabel.textColor = [UIColor blackColor];
         self.addressLabel.textColor = [UIColor blackColor];
+        self.addressLabel2.textColor = [UIColor blackColor];
         self.detailLabel.textColor = [UIColor blackColor];
+        self.checkButton.imageView.image = [UIImage imageNamed:@"checkButton"];
+    
     }
     else {
         
         self.contentView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
         self.nameLabel.textColor = [UIColor whiteColor];
         self.addressLabel.textColor = [UIColor whiteColor];
+        self.addressLabel2.textColor = [UIColor whiteColor];
         self.detailLabel.textColor = [UIColor whiteColor];
-        
+        self.checkButton.imageView.image = [UIImage imageNamed:@"addButton"];
+
     }
     
 }
