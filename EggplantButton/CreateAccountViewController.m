@@ -58,6 +58,17 @@
         self.passWordLabel.text = self.inputPassword;
         self.verifyPasswordLabel.enabled = YES;
     }
+    //Check validity of populated fields
+    if(![self isEmailValid:self.emailLabel.text] && self.emailLabel.text.length > 0) {
+        [self animateTextField: self.emailLabel];
+        self.emailWarning.hidden = NO;
+        
+    }
+    if(![self isPasswordValid:self.passWordLabel.text] && self.passWordLabel.text.length > 0) {
+        [self animateTextField: self.passWordLabel];
+        self.passwordWarning.hidden = NO;
+    }
+    
     
     //Set the delegates
     self.userNameLabel.delegate = self;
@@ -89,24 +100,22 @@
 }
 
 
--(BOOL)isValid:(NSString *)string {
+-(BOOL)isUsernameValid:(NSString *)username {
     
-    return (string.length > 7 && ![string containsString:@" "]);
+    return (username.length > 5 && ![username containsString:@" "]);
 }
 
 
-- (BOOL)isEmailValid {
+-(BOOL)isPasswordValid:(NSString *)password {
     
-    if (self.emailLabel.text.length < 5 || ![self.emailLabel.text containsString:@"@"]) {
-        
-        return NO;
-    }
+    return (password.length > 7 && ![password containsString:@" "] );
     
-    else {
-        self.emailWarning.hidden = YES;
-        
-        return YES;
-    }
+}
+
+
+- (BOOL)isEmailValid:(NSString *)email {
+    
+    return (email.length > 5 && [email containsString:@"@"] && ![email containsString:@" "]);
     
 }
 
@@ -128,14 +137,11 @@
                     [self animateTextField:textField];
                     self.usernameWarning.text = @"* Username already taken";
                     self.usernameWarning.hidden = NO;
-                    
                 }
-
             }];
-            
         }
         
-        if(self.userNameLabel.text.length > 0 && ![self isValid:self.userNameLabel.text]) {
+        if(self.userNameLabel.text.length > 0 && ![self isUsernameValid:self.userNameLabel.text]) {
             [self animateTextField: self.userNameLabel];
             self.usernameWarning.hidden = NO;
         }
@@ -143,7 +149,7 @@
     }
     else if(textField == self.emailLabel) {
         
-        if(self.emailLabel.text.length > 0 && ![self isEmailValid]) {
+        if(self.emailLabel.text.length > 0 && ![self isEmailValid:self.emailLabel.text]) {
             
             [self animateTextField: self.emailLabel];
             self.emailWarning.hidden = NO;
@@ -152,7 +158,7 @@
     }
     else if(textField == self.passWordLabel) {
         
-        if(self.passWordLabel.text.length > 0 && ![self isValid:self.passWordLabel.text]) {
+        if(self.passWordLabel.text.length > 0 && ![self isPasswordValid:self.passWordLabel.text]) {
            
             [self animateTextField: self.passWordLabel];
             self.passwordWarning.hidden = NO;
@@ -244,7 +250,7 @@
 
 -(BOOL)allFieldsValid {
     
-    return([self isEmailValid] && [self isValid:self.passWordLabel.text] && [self isValid:self.userNameLabel.text] && [self isPasswordSame]);
+    return([self isEmailValid:self.emailLabel.text] && [self isPasswordValid:self.passWordLabel.text] && [self isUsernameValid:self.userNameLabel.text] && [self isPasswordSame]);
 }
 
 @end

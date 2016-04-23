@@ -40,6 +40,7 @@
     
     self.invalidEmailWarning.hidden = YES;
     self.invalidPasswordWarning.hidden = YES;
+    
 }
 
 - (void)hideKeyboard {
@@ -116,9 +117,10 @@
     
     if(textField == self.emailLabel) {
     
-        if (![self isEmailValid] && self.emailLabel.text > 0) {
+        if (![self isEmailValid:self.emailLabel.text] && self.emailLabel.text.length > 0) {
                 
             [self animateTextField:self.emailLabel warning:self.invalidEmailWarning];
+            self.invalidEmailWarning.hidden = NO;
         }
 
         
@@ -128,7 +130,7 @@
         
         if(self.passwordLabel.text.length > 0) {
             
-            if([self isEmailValid] && [self isPasswordValid]) {
+            if([self isEmailValid:self.emailLabel.text] && [self isPasswordValid:self.passwordLabel.text]) {
                 
                 self.invalidPasswordWarning.hidden = YES;
                 self.invalidEmailWarning.hidden = YES;
@@ -145,16 +147,16 @@
     
 }
 
--(BOOL)isPasswordValid {
+-(BOOL)isPasswordValid:(NSString *)password {
     
-    return (self.passwordLabel.text.length > 7 && ![self.passwordLabel.text containsString:@" "] );
+    return (password.length > 7 && ![password containsString:@" "] );
     
 }
 
 
-- (BOOL)isEmailValid {
+- (BOOL)isEmailValid:(NSString *)email {
     
-    return (self.emailLabel.text.length > 5 && [self.emailLabel.text containsString:@"@"] && ![self.passwordLabel.text containsString:@" "]);
+    return (email.length > 5 && [email containsString:@"@"] && ![email containsString:@" "]);
     
 }
 
