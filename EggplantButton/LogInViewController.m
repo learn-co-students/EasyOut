@@ -50,9 +50,33 @@
     
     [FirebaseAPIClient logInUserWithEmail:self.emailLabel.text password:self.passwordLabel.text completion:^(FAuthData *authData, NSError *error) {
         
+        NSMutableString *errorMessage = [@"Failed to login: " mutableCopy];
+        
         if (error != nil) {
-            UIAlertController * alert= [UIAlertController alertControllerWithTitle:@"Failed to login"
-                                                                           message:error.description
+            switch (error.code) {
+                case FAuthenticationErrorInvalidEmail:
+                    [errorMessage appendString: @"The specified email is not a valid email."];
+                    break;
+                    
+                case FAuthenticationErrorInvalidPassword:
+                    [errorMessage appendString: @"The specified user account password is incorrect."];
+                    break;
+                    
+                case FAuthenticationErrorUserDoesNotExist:
+                    [errorMessage appendString: @"The specified user account does not exist. Please sign up to continue."];
+                    
+                    break;
+                case FAuthenticationErrorEmailTaken:
+                    [errorMessage appendString: @"The new user account cannot be created because the specified email address is already in use."];
+                    
+                default:
+                    [errorMessage appendString:error.description];
+                    break;
+            }
+
+            
+            UIAlertController * alert= [UIAlertController alertControllerWithTitle:@"Uh oh!"
+                                                                           message:errorMessage
                                                                     preferredStyle:UIAlertControllerStyleAlert];
             
             UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK"
@@ -76,71 +100,47 @@
 -(void)textFieldDidBeginEditing:(UITextField *)textField {
     
     textField.backgroundColor = [UIColor whiteColor];
-
-    
+    if(textField == self.emailLabel ) {
+        if(!self.invalidEmailWarning.hidden) {
+            self.invalidEmailWarning.hidden = YES;
+        }
+    }
+    if(textField == self.passwordLabel) {
+        if(!self.invalidPasswordWarning.hidden) {
+            self.invalidEmailWarning.hidden = YES;
+        }
+    }
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField {
     
     if(textField == self.emailLabel) {
     
-        if ([self isEmailValid]) {
-            
-            [FirebaseAPIClient checkIfUserExistsWithEmail:self.emailLabel.text completion:^(BOOL doesExist) {
+        if (![self isEmailValid] && self.emailLabel.text > 0) {
                 
-                if (!doesExist) {
-                    
-                    UIAlertController *emailTakenAlert= [UIAlertController alertControllerWithTitle:@"Uh oh!"
-                                                                                            message:@"This email address has not been registered!"
-                                                                                     preferredStyle:UIAlertControllerStyleAlert];
-                    
-                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
-                                                                       style:UIAlertActionStyleDefault
-                                                                     handler:^(UIAlertAction * action) {
-                                                                         [emailTakenAlert dismissViewControllerAnimated:YES completion:nil];
-                                                                     }];
-                    
-                    [emailTakenAlert addAction:okAction];
-                    
-                    [self presentViewController:emailTakenAlert animated:YES completion:nil];
-                    
-                }
-                else {
-                    self.invalidEmailWarning.hidden = YES;
-                }
-            }];
+            [self animateTextField:self.emailLabel warning:self.invalidEmailWarning];
         }
+
         
-        else {
-            if(self.emailLabel.text > 0) {
-                
-                NSLog(@"invalid email");
-                
-                [self animateTextField:self.emailLabel];
-                
-                self.invalidEmailWarning.hidden = NO;
-            }
-        }
     }
     
     if(textField == self.passwordLabel) {
         
-        if(self.passwordLabel.text.length > 0 && [self isPasswordValid]) {
+        if(self.passwordLabel.text.length > 0) {
             
-            if([self isEmailValid]) {
+            if([self isEmailValid] && [self isPasswordValid]) {
                 
-                NSLog(@"Valid pass and email");
                 self.invalidPasswordWarning.hidden = YES;
                 self.invalidEmailWarning.hidden = YES;
                 self.loginLabel.enabled = YES;
             }
-        }
-        else {
             
-            [self animateTextField:self.passwordLabel];
-            
-            self.invalidPasswordWarning.hidden = NO;
+            else {
+                
+                [self animateTextField:self.passwordLabel warning:self.invalidPasswordWarning];
+             }
         }
+        
     }
     
 }
@@ -154,16 +154,7 @@
 
 - (BOOL)isEmailValid {
     
-    if (self.emailLabel.text.length < 5 || ![self.emailLabel.text containsString:@"@"]) {
-        
-        return NO;
-    }
-    
-    else {
-        self.invalidEmailWarning.hidden = YES;
-        
-        return YES;
-    }
+    return (self.emailLabel.text.length > 5 && [self.emailLabel.text containsString:@"@"] && ![self.passwordLabel.text containsString:@" "]);
     
 }
 
@@ -185,13 +176,14 @@
     
 }
 
--(void)animateTextField:(UITextField *)textField {
+-(void)animateTextField:(UITextField *)textField warning:(UILabel *)warning {
     
     [UIView animateWithDuration:0.2 animations:^{
         
         [UIView setAnimationRepeatCount:4.0];
                 
         textField.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.4];
+        warning.hidden = NO;
         
     }];
 

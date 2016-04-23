@@ -16,8 +16,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *emailLabel;
 @property (weak, nonatomic) IBOutlet UITextField *passWordLabel;
 @property (weak, nonatomic) IBOutlet UITextField *userNameLabel;
-
 @property (weak, nonatomic) IBOutlet UITextField *verifyPasswordLabel;
+
 @property (weak, nonatomic) IBOutlet UIButton *createAccountButtonTapped;
 
 @property (weak, nonatomic) IBOutlet UILabel *usernameWarning;
@@ -47,12 +47,8 @@
     self.passwordWarning.hidden = YES;
     self.verifyPassWarning.hidden = YES;
     
-    //Set the delegates
-    self.userNameLabel.delegate = self;
-    self.emailLabel.delegate = self;
-    self.passWordLabel.delegate = self;
-    self.verifyPasswordLabel.delegate = self;
-    
+    self.verifyPasswordLabel.enabled = NO;
+
     
     //Populate any fields that were populated at login
     if(self.inputEmail) {
@@ -60,7 +56,14 @@
     }
     if(self.inputPassword) {
         self.passWordLabel.text = self.inputPassword;
+        self.verifyPasswordLabel.enabled = YES;
     }
+    
+    //Set the delegates
+    self.userNameLabel.delegate = self;
+    self.emailLabel.delegate = self;
+    self.passWordLabel.delegate = self;
+    self.verifyPasswordLabel.delegate = self;
     
 }
 
@@ -86,21 +89,16 @@
 }
 
 
--(BOOL)isPasswordValid {
+-(BOOL)isValid:(NSString *)string {
     
-    if (self.passWordLabel.text.length > 7 && ![self.passWordLabel.text containsString:@" "] ) {
-        self.passwordWarning.hidden = YES;
-        return YES;
-    }
-    return NO;
+    return (string.length > 7 && ![string containsString:@" "]);
 }
 
 
 - (BOOL)isEmailValid {
     
     if (self.emailLabel.text.length < 5 || ![self.emailLabel.text containsString:@"@"]) {
-        self.createAccountButtonTapped.enabled = NO;
-
+        
         return NO;
     }
     
@@ -113,12 +111,8 @@
 }
 
 -(BOOL)isPasswordSame {
-    if ([self.verifyPasswordLabel.text isEqualToString:self.passWordLabel.text]) {
-        return YES;
-    }
+    return ([self.verifyPasswordLabel.text isEqualToString:self.passWordLabel.text]);
     
-    self.createAccountButtonTapped.enabled = NO;
-    return NO;
 }
 
 
@@ -126,50 +120,86 @@
     //check what text field it is and do proper validating
     
     if(textField == self.userNameLabel) {
-        if(self.emailLabel.text.length > 0) {
+        if(self.userNameLabel.text.length > 0) {
             
             [self checkUsernameValidityWithCompletion:^(BOOL isValid) {
                 if(!(isValid)) {
                  
+                    [self animateTextField:textField];
+                    self.usernameWarning.text = @"* Username already taken";
                     self.usernameWarning.hidden = NO;
+                    
                 }
 
             }];
+            
+        }
+        
+        if(self.userNameLabel.text.length > 0 && ![self isValid:self.userNameLabel.text]) {
+            [self animateTextField: self.userNameLabel];
+            self.usernameWarning.hidden = NO;
         }
         
     }
     else if(textField == self.emailLabel) {
         
-        if(self.emailLabel.text.length > 0 && [self isEmailValid]) {
+        if(self.emailLabel.text.length > 0 && ![self isEmailValid]) {
+            
+            [self animateTextField: self.emailLabel];
             self.emailWarning.hidden = NO;
         }
         
     }
     else if(textField == self.passWordLabel) {
         
-        if(self.passWordLabel.text.length > 0 && [self isPasswordValid]) {
-            self.verifyPassWarning.hidden = NO;
+        if(self.passWordLabel.text.length > 0 && ![self isValid:self.passWordLabel.text]) {
+           
+            [self animateTextField: self.passWordLabel];
+            self.passwordWarning.hidden = NO;
+        }
+        else {
+            self.verifyPasswordLabel.enabled = YES;
         }
          
     }
     else if (textField == self.verifyPasswordLabel) {
-        if(self.verifyPasswordLabel.text.length > 0 && [self isPasswordSame]) {
+        if(self.verifyPasswordLabel.text.length > 0 && ![self isPasswordSame]) {
+            
+            [self animateTextField: self.verifyPasswordLabel];
             self.verifyPassWarning.hidden = NO;
         }
     }
     
-    
+    if([self allFieldsValid]) {
+        self.createAccountButtonTapped.enabled = YES;
+    }
 }
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
-    //reset the text fields
+
+    textField.backgroundColor = [UIColor whiteColor];
+    
+    if(textField == self.userNameLabel){
+        self.usernameWarning.hidden = YES;
+        self.usernameWarning.text = @"* Must be at least 7 characters long & cannot contain spaces";
+    }
+    if(textField == self.emailLabel){
+        self.emailWarning.hidden = YES;
+        
+    }
+    if(textField == self.passWordLabel){
+        self.passWordLabel.text = @"";
+        self.passwordWarning.hidden = YES;
+
+    }
+    if(textField == self.verifyPasswordLabel){
+        
+        self.verifyPasswordLabel.text = @"";
+        self.verifyPassWarning.hidden = YES;
+
+    }
     
 }
-
-
-
-
-
 
 - (IBAction)createAccountButton:(id)sender {
     
@@ -210,6 +240,11 @@
     
     [self dismissViewControllerAnimated:YES completion:nil];
     
+}
+
+-(BOOL)allFieldsValid {
+    
+    return([self isEmailValid] && [self isValid:self.passWordLabel.text] && [self isValid:self.userNameLabel.text] && [self isPasswordSame]);
 }
 
 @end

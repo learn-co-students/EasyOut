@@ -5,12 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <mutableArray key="LobsterTwo-Regular.otf">
-            <string>LobsterTwo</string>
-            <string>LobsterTwo</string>
-        </mutableArray>
-    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
@@ -24,32 +18,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="M2b-L2-erz">
-                                <rect key="frame" x="125" y="77" width="350" height="146"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EasyOut" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFi-jf-U8m">
-                                        <rect key="frame" x="51" y="0.0" width="249" height="101"/>
-                                        <fontDescription key="fontDescription" name="LobsterTwo" family="Lobster Two" pointSize="80"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                        <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.40008081899999998" colorSpace="calibratedRGB"/>
-                                        <size key="shadowOffset" width="-1" height="-1"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't stress out, just go out!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4fx-Ey-TU2">
-                                        <rect key="frame" x="0.0" y="101" width="350" height="45"/>
-                                        <fontDescription key="fontDescription" name="LobsterTwo" family="Lobster Two" pointSize="35"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                        <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.40008081899999998" colorSpace="calibratedRGB"/>
-                                        <size key="shadowOffset" width="-1" height="-1"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EasyOutLaunchScreenImage" translatesAutoresizingMaskIntoConstraints="NO" id="6BF-Od-1H9">
+                                <rect key="frame" x="60" y="20" width="480" height="261"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.36960259470000001" green="0.80310696039999996" blue="0.83317307689999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="M2b-L2-erz" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" multiplier="0.5" id="4hi-rS-47Z"/>
-                            <constraint firstItem="M2b-L2-erz" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="uYj-yQ-nxS"/>
+                            <constraint firstItem="6BF-Od-1H9" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" multiplier="0.5" id="EvA-gH-SPR"/>
+                            <constraint firstItem="6BF-Od-1H9" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.8" id="LSa-wB-7gv"/>
+                            <constraint firstItem="6BF-Od-1H9" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="O6n-6I-8Si"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -59,4 +36,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="EasyOutLaunchScreenImage" width="690" height="261"/>
+    </resources>
 </document>

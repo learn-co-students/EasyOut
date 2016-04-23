@@ -75,17 +75,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* Invalid Email Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PqA-mn-eDR">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="* Invalid Email Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PqA-mn-eDR">
                                 <rect key="frame" x="75" y="246" width="451" height="19"/>
-                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.40008081899999998" colorSpace="calibratedRGB"/>
                                 <size key="shadowOffset" width="1" height="1"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* Password must contain at least 8 characters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FVO-mb-Y1J">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="* Password must contain at least 8 characters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FVO-mb-Y1J">
                                 <rect key="frame" x="75" y="311" width="308" height="19"/>
-                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.40008081899999998" colorSpace="calibratedRGB"/>
@@ -201,8 +201,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="hMK-Xm-0cA" userLabel="Text Field Stack View">
-                                <rect key="frame" x="120" y="203" width="360" height="195"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="hMK-Xm-0cA" userLabel="Text Field Stack View">
+                                <rect key="frame" x="120" y="188" width="360" height="225"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rQ5-1d-e91">
                                         <rect key="frame" x="0.0" y="0.0" width="360" height="30"/>
@@ -210,33 +210,24 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AkE-cs-das">
-                                        <rect key="frame" x="0.0" y="55" width="360" height="30"/>
+                                        <rect key="frame" x="0.0" y="65" width="360" height="30"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="19"/>
                                         <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <action selector="emailDidEnd:" destination="cdF-tl-xg4" eventType="editingDidEnd" id="mPg-83-i3e"/>
-                                        </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pQF-7q-Nfb">
-                                        <rect key="frame" x="0.0" y="110" width="360" height="30"/>
+                                        <rect key="frame" x="0.0" y="130" width="360" height="30"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="19"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                        <connections>
-                                            <action selector="passwordDidEnd:" destination="cdF-tl-xg4" eventType="editingDidEnd" id="WwP-GG-z4q"/>
-                                        </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Verify password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QIq-yV-JAH">
-                                        <rect key="frame" x="0.0" y="165" width="360" height="30"/>
+                                        <rect key="frame" x="0.0" y="195" width="360" height="30"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="19"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                        <connections>
-                                            <action selector="confirmPasswordDidEnd:" destination="cdF-tl-xg4" eventType="editingDidEnd" id="AHx-OK-7np"/>
-                                        </connections>
                                     </textField>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="3UN-75-XDh">
-                                <rect key="frame" x="120" y="448" width="360" height="91"/>
+                                <rect key="frame" x="120" y="463" width="360" height="91"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ma-SV-gzI">
                                         <rect key="frame" x="0.0" y="0.0" width="360" height="38"/>
@@ -268,40 +259,40 @@
                                     <constraint firstItem="9ma-SV-gzI" firstAttribute="width" secondItem="3UN-75-XDh" secondAttribute="width" id="G3I-vt-IJZ"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* Invalid username: username cannot contain spaces" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LrY-DN-DXT">
-                                <rect key="frame" x="120" y="233" width="360" height="19"/>
-                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LrY-DN-DXT">
+                                <rect key="frame" x="120" y="218" width="360" height="35"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.40008081899999998" colorSpace="calibratedRGB"/>
                                 <size key="shadowOffset" width="1" height="1"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* Invalid email address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7IF-L1-e9g">
-                                <rect key="frame" x="120" y="288" width="360" height="19"/>
-                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                <rect key="frame" x="120" y="283" width="144" height="18"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.40008081899999998" colorSpace="calibratedRGB"/>
                                 <size key="shadowOffset" width="1" height="1"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* Password must contain at least 8 characters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lR3-U0-2KC">
-                                <rect key="frame" x="120" y="343" width="360" height="19"/>
-                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                <rect key="frame" x="120" y="348" width="292" height="18"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.40008081899999998" colorSpace="calibratedRGB"/>
                                 <size key="shadowOffset" width="1" height="1"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* Password does not match" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H82-i7-AVy">
-                                <rect key="frame" x="120" y="398" width="360" height="19"/>
-                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                <rect key="frame" x="120" y="413" width="175" height="18"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.40008081899999998" colorSpace="calibratedRGB"/>
                                 <size key="shadowOffset" width="1" height="1"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Please enter the information below to create your EasyOut account!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4y-aj-Obs">
-                                <rect key="frame" x="60" y="41" width="480" height="112"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter the information below to create your EasyOut account!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4y-aj-Obs">
+                                <rect key="frame" x="60" y="67" width="480" height="71"/>
                                 <fontDescription key="fontDescription" name="LobsterTwo" family="Lobster Two" pointSize="28"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -311,10 +302,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.36960259470000001" green="0.80310696039999996" blue="0.83317307689999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="lR3-U0-2KC" firstAttribute="centerX" secondItem="pQF-7q-Nfb" secondAttribute="centerX" id="1qy-a5-qGe"/>
                             <constraint firstItem="lR3-U0-2KC" firstAttribute="top" secondItem="pQF-7q-Nfb" secondAttribute="bottom" id="3Dj-fD-DK7"/>
-                            <constraint firstItem="H82-i7-AVy" firstAttribute="centerX" secondItem="QIq-yV-JAH" secondAttribute="centerX" id="6Gc-py-24c"/>
-                            <constraint firstItem="7IF-L1-e9g" firstAttribute="centerX" secondItem="AkE-cs-das" secondAttribute="centerX" id="8ma-9k-1MZ"/>
                             <constraint firstItem="Y4y-aj-Obs" firstAttribute="bottom" secondItem="hMK-Xm-0cA" secondAttribute="top" constant="-50" id="An7-M1-RdG"/>
                             <constraint firstItem="hMK-Xm-0cA" firstAttribute="centerX" secondItem="KBv-7P-v3I" secondAttribute="centerX" id="JS5-XY-SJR"/>
                             <constraint firstItem="3UN-75-XDh" firstAttribute="centerX" secondItem="KBv-7P-v3I" secondAttribute="centerX" id="JqU-aV-xvb"/>
@@ -322,9 +310,9 @@
                             <constraint firstItem="3UN-75-XDh" firstAttribute="top" secondItem="hMK-Xm-0cA" secondAttribute="bottom" constant="50" id="NKI-aA-DW9"/>
                             <constraint firstItem="hMK-Xm-0cA" firstAttribute="width" secondItem="KBv-7P-v3I" secondAttribute="width" multiplier="0.6" id="OWO-v1-Xtk"/>
                             <constraint firstItem="LrY-DN-DXT" firstAttribute="top" secondItem="rQ5-1d-e91" secondAttribute="bottom" id="ThF-g1-frS"/>
-                            <constraint firstItem="LrY-DN-DXT" firstAttribute="centerX" secondItem="rQ5-1d-e91" secondAttribute="centerX" id="Tjs-EL-iHU"/>
                             <constraint firstItem="7IF-L1-e9g" firstAttribute="leading" secondItem="AkE-cs-das" secondAttribute="leading" id="Y15-YW-THa"/>
                             <constraint firstItem="7IF-L1-e9g" firstAttribute="top" secondItem="AkE-cs-das" secondAttribute="bottom" id="aO0-sr-xMm"/>
+                            <constraint firstItem="LrY-DN-DXT" firstAttribute="trailing" secondItem="rQ5-1d-e91" secondAttribute="trailing" id="ami-Fv-08u"/>
                             <constraint firstItem="Y4y-aj-Obs" firstAttribute="centerX" secondItem="KBv-7P-v3I" secondAttribute="centerX" id="bOO-ha-zQu"/>
                             <constraint firstItem="3UN-75-XDh" firstAttribute="width" secondItem="hMK-Xm-0cA" secondAttribute="width" id="ewJ-qn-Ydm"/>
                             <constraint firstItem="lR3-U0-2KC" firstAttribute="leading" secondItem="pQF-7q-Nfb" secondAttribute="leading" id="fOs-gg-04o"/>
