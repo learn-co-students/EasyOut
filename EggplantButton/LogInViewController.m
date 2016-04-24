@@ -32,66 +32,72 @@
     self.emailLabel.delegate = self;
     self.passwordLabel.delegate = self;
     
+    [self addTapGesture];
+    
+
+    
+}
+
+-(void)addTapGesture {
+    
     UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc]
                                            initWithTarget:self
                                            action:@selector(hideKeyboard)];
     
     [self.view addGestureRecognizer:tapGesture];
-    
-    self.invalidEmailWarning.hidden = YES;
-    self.invalidPasswordWarning.hidden = YES;
-    
 }
 
 - (void)hideKeyboard {
     [self.view endEditing:YES];
 }
 
+-(NSString *)generateErrorMessage:(NSError *)error {
+    
+    switch (error.code) {
+        case FAuthenticationErrorInvalidEmail:
+            return @"The specified email is not a valid email.";
+        case FAuthenticationErrorInvalidPassword:
+            return  @"The specified user account password is incorrect.";
+        case FAuthenticationErrorUserDoesNotExist:
+            return @"The specified user account does not exist. Please sign up to continue.";
+        case FAuthenticationErrorEmailTaken:
+            return  @"The new user account cannot be created because the specified email address is already in use.";
+        default:
+            return error.description;
+    }
+}
+
+-(void)generateLoginAlertForError:(NSError *)error {
+    
+    NSString *errorMessage = @"Failed to login: ";
+ 
+    UIAlertController * alert= [UIAlertController alertControllerWithTitle:@"Uh oh!"
+                                                                   message: [NSString stringWithFormat:@"%@%@",errorMessage, [self  generateErrorMessage: error]]
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK"
+                                                 style:UIAlertActionStyleDefault
+                                               handler:^(UIAlertAction * action) {
+                                                   [alert dismissViewControllerAnimated:YES completion:nil];
+                                               }];
+    
+    [alert addAction:ok];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+
+    
+}
+
 - (IBAction)login:(id)sender {
     
     [FirebaseAPIClient logInUserWithEmail:self.emailLabel.text password:self.passwordLabel.text completion:^(FAuthData *authData, NSError *error) {
         
-        NSMutableString *errorMessage = [@"Failed to login: " mutableCopy];
-        
         if (error != nil) {
-            switch (error.code) {
-                case FAuthenticationErrorInvalidEmail:
-                    [errorMessage appendString: @"The specified email is not a valid email."];
-                    break;
-                    
-                case FAuthenticationErrorInvalidPassword:
-                    [errorMessage appendString: @"The specified user account password is incorrect."];
-                    break;
-                    
-                case FAuthenticationErrorUserDoesNotExist:
-                    [errorMessage appendString: @"The specified user account does not exist. Please sign up to continue."];
-                    
-                    break;
-                case FAuthenticationErrorEmailTaken:
-                    [errorMessage appendString: @"The new user account cannot be created because the specified email address is already in use."];
-                    
-                default:
-                    [errorMessage appendString:error.description];
-                    break;
-            }
-
             
-            UIAlertController * alert= [UIAlertController alertControllerWithTitle:@"Uh oh!"
-                                                                           message:errorMessage
-                                                                    preferredStyle:UIAlertControllerStyleAlert];
+            [self generateErrorMessage:error];
             
-            UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK"
-                                                         style:UIAlertActionStyleDefault
-                                                       handler:^(UIAlertAction * action) {
-                                                           [alert dismissViewControllerAnimated:YES completion:nil];
-                                                       }];
-            
-            [alert addAction:ok];
-            
-            [self presentViewController:alert animated:YES completion:nil];
-            
-        } else {
-            
+        }
+        else {
 
             [[NSNotificationCenter defaultCenter] postNotificationName:mainViewControllerStoryBoardID object:nil];
         }
@@ -172,10 +178,7 @@
         if(self.passwordLabel.text.length > 0) {
             destinationVC.inputPassword = self.passwordLabel.text;
         }
-    
     }
-
-    
 }
 
 -(void)animateTextField:(UITextField *)textField warning:(UILabel *)warning {
@@ -188,7 +191,6 @@
         warning.hidden = NO;
         
     }];
-
 }
 
 @end
