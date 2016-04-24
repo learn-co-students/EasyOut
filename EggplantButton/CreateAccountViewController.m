@@ -39,17 +39,16 @@
     
     [self.view addGestureRecognizer:tapGesture];
     
-    self.createAccountButtonTapped.enabled = NO;
+    [self passInPriorUserInput];
     
-    //Hide all the warnings
-    self.usernameWarning.hidden = YES;
-    self.emailWarning.hidden = YES;
-    self.passwordWarning.hidden = YES;
-    self.verifyPassWarning.hidden = YES;
+    self.userNameLabel.delegate = self;
+    self.emailLabel.delegate = self;
+    self.passWordLabel.delegate = self;
+    self.verifyPasswordLabel.delegate = self;
     
-    self.verifyPasswordLabel.enabled = NO;
+}
 
-    
+-(void)passInPriorUserInput {
     //Populate any fields that were populated at login
     if(self.inputEmail) {
         self.emailLabel.text = self.inputEmail;
@@ -68,13 +67,6 @@
         [self animateTextField: self.passWordLabel];
         self.passwordWarning.hidden = NO;
     }
-    
-    
-    //Set the delegates
-    self.userNameLabel.delegate = self;
-    self.emailLabel.delegate = self;
-    self.passWordLabel.delegate = self;
-    self.verifyPasswordLabel.delegate = self;
     
 }
 
