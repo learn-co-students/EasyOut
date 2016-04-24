@@ -29,7 +29,6 @@
 		4C9A037D1CAB064200CA9A02 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9A037C1CAB064200CA9A02 /* main.m */; };
 		4C9A03801CAB064200CA9A02 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9A037F1CAB064200CA9A02 /* AppDelegate.m */; };
 		4C9A038B1CAB064200CA9A02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C9A038A1CAB064200CA9A02 /* Assets.xcassets */; };
-		4C9A038E1CAB064200CA9A02 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C9A038C1CAB064200CA9A02 /* LaunchScreen.storyboard */; };
 		4C9C96271CC58C0600C7094A /* FirebaseIntegrationTestFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9C96261CC58C0600C7094A /* FirebaseIntegrationTestFunctions.swift */; };
 		4C9C962A1CC6ABAF00C7094A /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9C96291CC6ABAF00C7094A /* Constants.m */; };
 		4CAD0CC51CB568C4008162CE /* FirebaseIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAD0CC41CB568C4008162CE /* FirebaseIntegration.swift */; };
@@ -503,7 +502,6 @@
 				9A491A7B1CC7389F002353C6 /* Roboto-Thin.ttf in Resources */,
 				4C1DE15F1CB8410900AFBCF5 /* LobsterTwo-Bold.otf in Resources */,
 				4CBBC6091CBA97B0006683D8 /* Main.storyboard in Resources */,
-				4C9A038E1CAB064200CA9A02 /* LaunchScreen.storyboard in Resources */,
 				9A491A761CC7389F002353C6 /* Roboto-Light.ttf in Resources */,
 				9A491A781CC7389F002353C6 /* Roboto-Medium.ttf in Resources */,
 				9A491A7C1CC7389F002353C6 /* Roboto-ThinItalic.ttf in Resources */,
