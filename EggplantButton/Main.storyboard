@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="LobsterTwo-Regular.otf">
@@ -298,12 +299,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="199" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kFr-i4-jK0">
-                                <rect key="frame" x="45" y="20" width="110" height="107"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="107" id="s9P-OD-PlF"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="utd-AB-OgT">
                                 <rect key="frame" x="59" y="507" width="82" height="41"/>
                                 <constraints>
@@ -318,37 +313,31 @@
                                     <segue destination="ThO-gH-bWu" kind="show" id="7rl-af-VmM"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UM0-U2-r4L">
-                                <rect key="frame" x="44" y="20" width="110" height="107"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="107" id="hwJ-uT-SDs"/>
-                                </constraints>
-                            </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="oa3-68-VNE">
-                                <rect key="frame" x="0.0" y="20" width="199" height="393"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="equalSpacing" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="oa3-68-VNE">
+                                <rect key="frame" x="0.0" y="20" width="199" height="373"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="QAn-KC-cd3">
-                                        <rect key="frame" x="0.0" y="0.0" width="199" height="252"/>
+                                    <stackView opaque="NO" contentMode="scaleAspectFit" misplaced="YES" axis="vertical" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="QAn-KC-cd3" userLabel="User Info Stack">
+                                        <rect key="frame" x="10" y="0.0" width="179" height="232"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2tM-t7-nEo">
-                                                <rect key="frame" x="0.0" y="0.0" width="199" height="199"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2tM-t7-nEo">
+                                                <rect key="frame" x="0.0" y="0.0" width="179" height="179"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" secondItem="2tM-t7-nEo" secondAttribute="height" multiplier="1:1" id="WhQ-FG-cjk"/>
+                                                    <constraint firstAttribute="width" secondItem="2tM-t7-nEo" secondAttribute="height" multiplier="1:1" id="XUA-nB-61h"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vh4-OL-ZXU">
-                                                <rect key="frame" x="0.0" y="214" width="199" height="38"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vh4-OL-ZXU">
+                                                <rect key="frame" x="0.0" y="194" width="179" height="38"/>
                                                 <fontDescription key="fontDescription" name="LobsterTwo" family="Lobster Two" pointSize="30"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Gyi-n7-ZWf">
-                                        <rect key="frame" x="20" y="302" width="159" height="91"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Gyi-n7-ZWf" userLabel="Button Stack">
+                                        <rect key="frame" x="20" y="282" width="159" height="91"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j6a-DZ-UOp">
-                                                <rect key="frame" x="48" y="0.0" width="64" height="38"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="159" height="38"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="22"/>
                                                 <state key="normal" title="Profile">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -371,7 +360,7 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="QAn-KC-cd3" firstAttribute="width" secondItem="oa3-68-VNE" secondAttribute="width" id="eH1-Ct-OXy"/>
+                                    <constraint firstItem="QAn-KC-cd3" firstAttribute="width" secondItem="oa3-68-VNE" secondAttribute="width" multiplier="0.9" id="AgM-wD-JV7"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -379,11 +368,7 @@
                         <constraints>
                             <constraint firstItem="utd-AB-OgT" firstAttribute="centerX" secondItem="COR-WQ-UzG" secondAttribute="centerX" id="4ae-b1-25u"/>
                             <constraint firstItem="oa3-68-VNE" firstAttribute="top" secondItem="2pR-HJ-pll" secondAttribute="bottom" constant="20" id="K4g-hq-KOK"/>
-                            <constraint firstItem="kFr-i4-jK0" firstAttribute="top" secondItem="COR-WQ-UzG" secondAttribute="top" constant="20" symbolic="YES" id="M6i-VK-hIT"/>
-                            <constraint firstItem="UM0-U2-r4L" firstAttribute="top" secondItem="kFr-i4-jK0" secondAttribute="top" id="aYs-ye-24E"/>
-                            <constraint firstItem="kFr-i4-jK0" firstAttribute="centerX" secondItem="COR-WQ-UzG" secondAttribute="centerX" id="jVZ-Xn-mbH"/>
                             <constraint firstAttribute="bottomMargin" secondItem="utd-AB-OgT" secondAttribute="bottom" constant="20" id="ncN-7E-fNF"/>
-                            <constraint firstItem="UM0-U2-r4L" firstAttribute="leading" secondItem="COR-WQ-UzG" secondAttribute="leadingMargin" constant="28" id="pyH-JD-Zya"/>
                             <constraint firstItem="oa3-68-VNE" firstAttribute="width" secondItem="COR-WQ-UzG" secondAttribute="width" id="wRN-tV-2kX"/>
                             <constraint firstItem="oa3-68-VNE" firstAttribute="centerX" secondItem="COR-WQ-UzG" secondAttribute="centerX" id="wow-rI-Frl"/>
                         </constraints>
