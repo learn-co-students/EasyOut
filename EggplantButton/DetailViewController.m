@@ -35,8 +35,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.backgroundColor = [UIColor clearColor];
 
-        
+    
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:1.285
                                                             longitude:103.848
                                                                  zoom:12];

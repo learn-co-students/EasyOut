@@ -29,6 +29,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.backgroundColor = [UIColor clearColor];
+
+    
     self.emailLabel.delegate = self;
     self.passwordLabel.delegate = self;
     

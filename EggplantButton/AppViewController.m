@@ -24,6 +24,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.backgroundColor = [UIColor clearColor];
+
+    
     Firebase *ref = [[Firebase alloc] initWithUrl:firebaseRootRef];
     
     if (ref.authData) {

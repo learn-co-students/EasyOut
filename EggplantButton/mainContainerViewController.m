@@ -26,6 +26,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.backgroundColor = [UIColor clearColor];
+
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(menuButtonTapped:)
                                                  name:@"menuButtonTapped"

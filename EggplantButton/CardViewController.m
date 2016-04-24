@@ -62,6 +62,8 @@
     
     [super viewDidLoad];
 
+    self.view.backgroundColor = [UIColor clearColor];
+    
     [self setUpCoreLocation];
 
     self.dataStore = [ActivitiesDataStore sharedDataStore];

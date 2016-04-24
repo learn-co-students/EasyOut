@@ -29,6 +29,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.backgroundColor = [UIColor clearColor];
+
+    
     self.itineraryTableView.delegate = self;
     self.itineraryTableView.dataSource = self;
     

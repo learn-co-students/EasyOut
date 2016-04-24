@@ -31,6 +31,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor clearColor];
+    
     [self pullUserFromFirebaseWithCompletion:^(BOOL success) {
         if(success) {
             
