@@ -20,12 +20,6 @@
 #import "Constants.h"
 #import "UIView+Shake.h"
 
-
-
-@class Restaurant;
-
-//MFMessageControlViewController
-
 @interface CardViewController () <UIScrollViewDelegate, CLLocationManagerDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (strong, nonatomic) ActivitiesDataStore *dataStore;
@@ -115,11 +109,6 @@
                                                object:nil];
     
     
-    
-    self.view.contentMode = UIViewContentModeCenter;
-    self.view.contentMode = UIViewContentModeScaleAspectFit;
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"city"]]];
-    
 }
 
 
@@ -201,7 +190,7 @@
 
 - (void) pastItinerariesButtonTapped: (NSNotification *) notification {
     
-    UIViewController *pastItinerariesVC = [[UIStoryboard storyboardWithName:@"ItineraryHistoryView" bundle:nil] instantiateViewControllerWithIdentifier:@"pastItineraries"];
+    UIViewController *pastItinerariesVC = [[UIStoryboard storyboardWithName:@"ItineraryHistoryView" bundle:nil] instantiateViewControllerWithIdentifier:@"ItineraryHistoryTableViewController"];
     
     [self.navigationController showViewController:pastItinerariesVC sender:nil];
 }
@@ -403,8 +392,6 @@
 #pragma mark - Save Itinerary Button Tapped 
 
 - (IBAction)SaveItineraryButtonTapped:(id)sender {
-    
-    NSLog(@" Save Button Was Tapped ! ! !");
     
     NSMutableArray *activitiesArray = [NSMutableArray new];
     

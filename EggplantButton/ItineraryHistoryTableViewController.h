@@ -9,10 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "User.h"
 
-@interface ItineraryHistoryTableViewController : UITableViewController
+@interface ItineraryHistoryTableViewController : UIViewController
 
 @property (strong, nonatomic) User *user;
-@property (strong, nonatomic) NSMutableArray *itineraryEvents;
-@property (strong, nonatomic) NSMutableArray *titlesOfItineraries;
 
 @end
