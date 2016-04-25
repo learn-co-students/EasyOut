@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="QB9-cg-QB8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="QB9-cg-QB8">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -14,6 +14,7 @@
             <string>LobsterTwo</string>
         </mutableArray>
         <mutableArray key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
         </mutableArray>
@@ -109,10 +110,11 @@
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hhF-uU-Inp" userLabel="Button Stack">
                                 <rect key="frame" x="16" y="555" width="343" height="50"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D12-lf-tgx" userLabel="Save Itinerary Button">
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D12-lf-tgx" userLabel="Save Itinerary Button">
                                         <rect key="frame" x="0.0" y="0.0" width="167" height="50"/>
                                         <fontDescription key="fontDescription" name="LobsterTwo" family="Lobster Two" pointSize="21"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="3" maxY="0.0"/>
                                         <state key="normal" title="Save Itinerary" image="save">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -121,10 +123,11 @@
                                             <action selector="SaveItineraryButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Oa0-sf-8eJ"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vrG-5j-TCQ" userLabel="Randomize Cards Button">
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vrG-5j-TCQ" userLabel="Randomize Cards Button">
                                         <rect key="frame" x="177" y="0.0" width="166" height="50"/>
                                         <fontDescription key="fontDescription" name="LobsterTwo" family="Lobster Two" pointSize="21"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="Randomize" image="randomize">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -299,12 +302,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="199" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="utd-AB-OgT">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="utd-AB-OgT">
                                 <rect key="frame" x="59" y="507" width="82" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="82" id="Bx7-w3-hNX"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="21"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="21"/>
                                 <size key="titleShadowOffset" width="1" height="1"/>
                                 <state key="normal" title="Log Out">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -316,7 +319,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="oa3-68-VNE">
-                                <rect key="frame" x="0.0" y="20" width="199" height="372"/>
+                                <rect key="frame" x="0.0" y="20" width="199" height="239"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="QAn-KC-cd3" userLabel="User Info Stack">
                                         <rect key="frame" x="10" y="0.0" width="179" height="239"/>
@@ -371,14 +374,48 @@
                                     <constraint firstItem="QAn-KC-cd3" firstAttribute="width" secondItem="oa3-68-VNE" secondAttribute="width" multiplier="0.9" id="AgM-wD-JV7"/>
                                 </constraints>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Gyi-n7-ZWf" userLabel="Button Stack">
+                                <rect key="frame" x="25" y="267" width="148" height="86"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j6a-DZ-UOp">
+                                        <rect key="frame" x="0.0" y="0.0" width="148" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="34" id="bcF-OX-o5Z"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="21"/>
+                                        <size key="titleShadowOffset" width="2.2250738585072014e-308" height="-1"/>
+                                        <state key="normal" title="Profile">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="profileButtonTapped:" destination="3L1-dU-ywu" eventType="touchUpInside" id="uct-gk-LsY"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hOL-Ei-CQk">
+                                        <rect key="frame" x="0.0" y="49" width="148" height="37"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="21"/>
+                                        <size key="titleShadowOffset" width="0.0" height="-1"/>
+                                        <state key="normal" title="Itinerary History">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="itineraryHistoryButtonTapped:" destination="3L1-dU-ywu" eventType="touchUpInside" id="iHJ-ft-Igw"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.36960259470000001" green="0.80310696039999996" blue="0.83317307689999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="Gyi-n7-ZWf" firstAttribute="top" secondItem="oa3-68-VNE" secondAttribute="bottom" constant="8" symbolic="YES" id="0FF-8j-fae"/>
+                            <constraint firstItem="oa3-68-VNE" firstAttribute="top" secondItem="2pR-HJ-pll" secondAttribute="bottom" constant="20" id="3AM-np-AW0"/>
                             <constraint firstItem="utd-AB-OgT" firstAttribute="centerX" secondItem="COR-WQ-UzG" secondAttribute="centerX" id="4ae-b1-25u"/>
-                            <constraint firstItem="oa3-68-VNE" firstAttribute="top" secondItem="2pR-HJ-pll" secondAttribute="bottom" constant="20" id="K4g-hq-KOK"/>
+                            <constraint firstItem="Gyi-n7-ZWf" firstAttribute="centerX" secondItem="oa3-68-VNE" secondAttribute="centerX" id="5lm-Cm-0AI"/>
+                            <constraint firstItem="oa3-68-VNE" firstAttribute="centerX" secondItem="utd-AB-OgT" secondAttribute="centerX" id="Zju-Cs-BSO"/>
+                            <constraint firstItem="oa3-68-VNE" firstAttribute="width" secondItem="COR-WQ-UzG" secondAttribute="width" id="kvg-uu-OLC"/>
                             <constraint firstAttribute="bottomMargin" secondItem="utd-AB-OgT" secondAttribute="bottom" constant="20" id="ncN-7E-fNF"/>
-                            <constraint firstItem="oa3-68-VNE" firstAttribute="width" secondItem="COR-WQ-UzG" secondAttribute="width" id="wRN-tV-2kX"/>
-                            <constraint firstItem="oa3-68-VNE" firstAttribute="centerX" secondItem="COR-WQ-UzG" secondAttribute="centerX" id="wow-rI-Frl"/>
                         </constraints>
                     </view>
                     <connections>

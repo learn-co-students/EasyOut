@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0A12C1171CC6C8450043475F /* ItineraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A12C1161CC6C8450043475F /* ItineraryViewController.m */; };
-		0ABC5BF11CC5317800434002 /* ItineraryDisplayTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ABC5BF01CC5317800434002 /* ItineraryDisplayTableViewCell.m */; };
 		4C02D1E11CB6E72C0031F978 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C02D1E01CB6E72C0031F978 /* User.m */; };
 		4C02D1E41CB6E8A00031F978 /* Itinerary.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C02D1E31CB6E8A00031F978 /* Itinerary.m */; };
 		4C02D1E71CB6EDD40031F978 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C02D1E61CB6EDD40031F978 /* Photo.m */; };
@@ -81,8 +80,6 @@
 /* Begin PBXFileReference section */
 		0A12C1151CC6C8450043475F /* ItineraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItineraryViewController.h; sourceTree = "<group>"; };
 		0A12C1161CC6C8450043475F /* ItineraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItineraryViewController.m; sourceTree = "<group>"; };
-		0ABC5BEF1CC5317800434002 /* ItineraryDisplayTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItineraryDisplayTableViewCell.h; sourceTree = "<group>"; };
-		0ABC5BF01CC5317800434002 /* ItineraryDisplayTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItineraryDisplayTableViewCell.m; sourceTree = "<group>"; };
 		478A5D5E5340BA05712F05CE /* Pods-EggplantButton.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EggplantButton.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EggplantButton/Pods-EggplantButton.debug.xcconfig"; sourceTree = "<group>"; };
 		4C02D1DF1CB6E72C0031F978 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = EggplantButton/User.h; sourceTree = "<group>"; };
 		4C02D1E01CB6E72C0031F978 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = EggplantButton/User.m; sourceTree = "<group>"; };
@@ -226,8 +223,6 @@
 				0A12C1161CC6C8450043475F /* ItineraryViewController.m */,
 				4C0EE1571CBDA2E70092C39A /* ItineraryHistoryTableViewController.h */,
 				4C0EE1581CBDA2E70092C39A /* ItineraryHistoryTableViewController.m */,
-				0ABC5BEF1CC5317800434002 /* ItineraryDisplayTableViewCell.h */,
-				0ABC5BF01CC5317800434002 /* ItineraryDisplayTableViewCell.m */,
 				4C358D361CAD62CE00257756 /* CardViewController.h */,
 				4C358D371CAD62CE00257756 /* CardViewController.m */,
 				78A7F6D21CBFFDAF00DD4937 /* mainContainerViewController.h */,
@@ -597,7 +592,6 @@
 				4C358D381CAD62CE00257756 /* CardViewController.m in Sources */,
 				9A8C888A1CC44D710053EC00 /* FoursquareAPIClient.m in Sources */,
 				4CAD0CC51CB568C4008162CE /* FirebaseIntegration.swift in Sources */,
-				0ABC5BF11CC5317800434002 /* ItineraryDisplayTableViewCell.m in Sources */,
 				4C64EC441CBAA78200FB3A45 /* CreateAccountViewController.m in Sources */,
 				4C02D1E11CB6E72C0031F978 /* User.m in Sources */,
 				9ACC8C1A1CBD399800909704 /* DetailViewController.m in Sources */,

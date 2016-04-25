@@ -29,7 +29,7 @@
     [self.contentView.centerXAnchor constraintEqualToAnchor:self.centerXAnchor].active = YES;
     [self.contentView.centerYAnchor constraintEqualToAnchor:self.centerYAnchor].active = YES;
     
-    self.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.4];
+    self.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.7];
     
     self.layer.cornerRadius = (self.frame.size.width)/2;
     self.clipsToBounds = YES;

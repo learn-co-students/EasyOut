@@ -50,7 +50,7 @@
     self.viewContainer.subviews[0].userInteractionEnabled = NO;
     
     [UIView animateWithDuration:0.2 animations:^{
-        self.sideMenuContainer.alpha = 0.9;
+        self.sideMenuContainer.alpha = 0.95;
         self.viewContainer.alpha = 0.6;
         
     }];
