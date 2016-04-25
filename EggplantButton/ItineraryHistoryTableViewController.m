@@ -17,6 +17,8 @@
 @end
 
 @implementation ItineraryHistoryTableViewController
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -44,13 +46,16 @@
     
 }
 
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
   
@@ -79,13 +84,8 @@
         cell.ActivityThreeLabel.text = activities[2];
     }
     
-    
-    
-    
     return cell;
 }
-
-
 
 
 -(void)getEventsWithCompletion: (void (^) (BOOL)) completion {
@@ -103,6 +103,7 @@
     }];
 
 }
+
 
 -(void)getTitlesWithCompletion:(void(^)(BOOL))completion {
 
