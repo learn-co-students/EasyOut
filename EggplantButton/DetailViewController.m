@@ -55,7 +55,8 @@
         }
     } failure:nil];
     
-
+    self.addressLabel.text = [NSString stringWithFormat:@"%@ %@", self.activity.address[0], self.activity.address[1]];
+    
     
     }
 
@@ -116,7 +117,7 @@
     //MARKER FOR ACTIVITIES
     UIImage *markerImage = [GMSMarker markerImageWithColor:[Constants vikingBlueColor]];
     
-    NSString *address = [NSString stringWithFormat:@"%@%@", self.activity.address[0], self.activity.address[1]];
+    NSString *address = [NSString stringWithFormat:@"%@ %@", self.activity.address[0], self.activity.address[1]];
     
     CLLocationCoordinate2D location = [self getLocationFromAddressString: address];
     
