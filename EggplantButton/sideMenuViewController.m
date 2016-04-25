@@ -29,7 +29,7 @@
     [self pullUserFromFirebaseWithCompletion:^(BOOL success) {
         if(success) {
             
-            self.usernameLabel.textColor = [Constants vikingBlueColor];
+            self.usernameLabel.textColor = [UIColor whiteColor];
             self.usernameLabel.text = self.user.username;
             
             self.userImage.layer.cornerRadius = (self.userImage.frame.size.width)/2;

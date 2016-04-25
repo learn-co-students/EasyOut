@@ -11,6 +11,11 @@
             <string>LobsterTwo</string>
             <string>LobsterTwo</string>
         </mutableArray>
+        <mutableArray key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+        </mutableArray>
     </customFonts>
     <scenes>
         <!--Card View Controller-->
@@ -289,64 +294,64 @@
                         <rect key="frame" x="0.0" y="0.0" width="199" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hOL-Ei-CQk">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hOL-Ei-CQk">
                                 <rect key="frame" x="26" y="246" width="148" height="41"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="21"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="21"/>
                                 <state key="normal" title="Itinerary History">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="itineraryHistoryButtonTapped:" destination="3L1-dU-ywu" eventType="touchUpInside" id="iHJ-ft-Igw"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kFr-i4-jK0">
-                                <rect key="frame" x="45" y="20" width="110" height="107"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="107" id="s9P-OD-PlF"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vh4-OL-ZXU">
                                 <rect key="frame" x="0.0" y="142" width="199" height="40"/>
-                                <fontDescription key="fontDescription" name="LobsterTwo" family="Lobster Two" pointSize="30"/>
+                                <fontDescription key="fontDescription" name="LobsterTwo" family="Lobster Two" pointSize="35"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="utd-AB-OgT">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="utd-AB-OgT">
                                 <rect key="frame" x="59" y="507" width="82" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="82" id="Bx7-w3-hNX"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="21"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="21"/>
                                 <state key="normal" title="Log Out">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="logoutButtonTapped:" destination="3L1-dU-ywu" eventType="touchUpInside" id="Wzv-HU-1eR"/>
                                     <segue destination="ThO-gH-bWu" kind="show" id="7rl-af-VmM"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UM0-U2-r4L">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UM0-U2-r4L">
                                 <rect key="frame" x="44" y="20" width="110" height="107"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="107" id="hwJ-uT-SDs"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2tM-t7-nEo">
-                                <rect key="frame" x="44" y="20" width="110" height="107"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="107" id="33K-vX-rwl"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j6a-DZ-UOp">
                                 <rect key="frame" x="9" y="197" width="181" height="41"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="21"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="21"/>
                                 <state key="normal" title="Profile">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="profileButtonTapped:" destination="3L1-dU-ywu" eventType="touchUpInside" id="uct-gk-LsY"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kFr-i4-jK0">
+                                <rect key="frame" x="46" y="20" width="110" height="107"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="107" id="s9P-OD-PlF"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2tM-t7-nEo">
+                                <rect key="frame" x="45" y="20" width="110" height="107"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="107" id="33K-vX-rwl"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.36960259470000001" green="0.80310696039999996" blue="0.83317307689999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
