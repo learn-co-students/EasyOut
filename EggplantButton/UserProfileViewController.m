@@ -23,7 +23,6 @@
 @property (weak, nonatomic) IBOutlet CircleLabelView *tipsLabel;
 @property (weak, nonatomic) IBOutlet CircleLabelView *ratedLabel;
 @property (weak, nonatomic) IBOutlet CircleLabelView *itineraryLabel;
-@property (weak, nonatomic) IBOutlet UINavigationItem *userProfileNavBar;
 
 @end
 
