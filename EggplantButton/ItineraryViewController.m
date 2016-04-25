@@ -11,6 +11,7 @@
 #import "Constants.h"
 #import <GoogleMaps/GoogleMaps.h>
 #import "EggplantButton-Swift.h"
+#import "ItineraryReviewTableViewCell.h"
 
 
 @interface ItineraryViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -30,10 +31,13 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor clearColor];
-
     
     self.itineraryTableView.delegate = self;
     self.itineraryTableView.dataSource = self;
+    
+    [self.itineraryTableView registerClass:[ItineraryReviewTableViewCell class] forCellReuseIdentifier:@"activityCell"];
+    
+    self.itineraryTableView.translatesAutoresizingMaskIntoConstraints = NO;
     
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:self.latitude
                                                             longitude:self.longitude
@@ -89,9 +93,8 @@
   }
 
 
-
+//TABLE THINGS
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
     
     return self.itinerary.activities.count;
 }
@@ -99,15 +102,17 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ActivityCell" forIndexPath:indexPath];
+    ItineraryReviewTableViewCell *cell = (ItineraryReviewTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"ActivityCell" forIndexPath:indexPath];
     
-    cell.textLabel.text = ((Activity *)self.itinerary.activities[indexPath.row]).name;
-    cell.detailTextLabel.text = ((Activity *)self.itinerary.activities[indexPath.row]).address[0];
-    
+    cell.nameLabel.text = ((Activity *)self.itinerary.activities[indexPath.row]).name;
+    cell.addressLabel.text = [NSString stringWithFormat:@"%@ %@", ((Activity *)self.itinerary.activities[indexPath.row]).address[0], ((Activity *)self.itinerary.activities[indexPath.row]).address[1]];
+
     return cell;
 }
 
 
+
+//MAP THINGS
 -(CLLocationCoordinate2D) getLocationFromAddressString: (NSString*) addressStr {
     double latitude = 0, longitude = 0;
     NSString *esc_addr =  [addressStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
