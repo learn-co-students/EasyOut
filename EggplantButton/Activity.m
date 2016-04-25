@@ -52,6 +52,17 @@
     return self;
 }
 
+-(instancetype)initWithFirebaseDictionary:(NSDictionary *)dictionary{
+    
+    self = [super init];
+    
+    if (self) {
+        
+    }
+    
+    return self;
+}
+
 +(Activity *)activityFromDictionary:(NSDictionary *)activityDictionary {
     
     Activity *activity = [[Activity alloc]initWithDictionary:activityDictionary];

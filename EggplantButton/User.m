@@ -54,7 +54,7 @@
         
         for (NSString *key in itineraryKeys) {
             [FirebaseAPIClient getItineraryWithItineraryID:key completion:^(Itinerary * itinerary) {
-                newDictionary[@"savedItineraries"][key] = itinerary;
+                [newDictionary[@"savedItineraries"] setObject:itinerary forKey:key];
             }];
         }
     }
@@ -77,9 +77,9 @@
         
         associatedImageKeys = (NSMutableArray *)[dictionary[@"associatedImages"] allKeys];
         
-        for (NSString *key in itineraryKeys) {
+        for (NSString *key in associatedImageKeys) {
             [FirebaseAPIClient getImageForImageID:key completion:^(UIImage * image) {
-                newDictionary[@"associatedImages"][key] = image;
+                [newDictionary[@"associatedImages"] setObject:image forKey:key];
             }];
         }
     }

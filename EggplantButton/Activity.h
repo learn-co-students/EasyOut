@@ -19,8 +19,8 @@
 
 
 -(instancetype)initWithDictionary:(NSDictionary *)activityDictionary;
+-(instancetype)initWithFirebaseDictionary:(NSDictionary *)dictionary;
 
 +(Activity *)activityFromDictionary:(NSDictionary *)activityDictionary;
-
 
 @end

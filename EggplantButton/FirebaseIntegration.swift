@@ -745,16 +745,17 @@ import Firebase
         let imageRef = imagesRef.childByAppendingPath(imageID)
         
         // Retrieve value stored for image data
-        imageRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
+        imageRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             
             let imageBase64String = snapshot.value["imageBase64String"] as! String
-            
             let imageData : NSData = NSData(base64EncodedString: imageBase64String, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters)!
-            
             let image = UIImage(data: imageData)
             
             completion(image!)
-        })
+            
+            }) { (error) in
+                print("****Error while attempting to retrieve image: \(error.description)")
+        }
     }
     
     
