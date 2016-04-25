@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "DSC_6420-Edit.jpg",
+      "filename" : "DSC_6420-Edit@1x.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "DSC_6420-Edit@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "DSC_6420-Edit@3x.png",
       "scale" : "3x"
     }
   ],
