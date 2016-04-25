@@ -40,19 +40,50 @@
     
     NSArray *keys = [dictionary allKeys];
     
+    NSMutableArray *itineraryKeys = [[NSMutableArray alloc] init];
+    NSMutableArray *tipKeys = [[NSMutableArray alloc] init];
+    NSMutableArray *ratingKeys = [[NSMutableArray alloc] init];
+    NSMutableArray *associatedImageKeys = [[NSMutableArray alloc] init];
+    
     // Check for empty dictionaries that Firebase may not have saved
     if (![keys containsObject:@"savedItineraries"]) {
         [newDictionary setObject:[[NSMutableDictionary alloc] init] forKey:@"savedItineraries"];
+    } else {
+        
+        itineraryKeys = (NSMutableArray *)[dictionary[@"savedItineraries"] allKeys];
+        
+        for (NSString *key in itineraryKeys) {
+            [FirebaseAPIClient getItineraryWithItineraryID:key completion:^(Itinerary * itinerary) {
+                newDictionary[@"savedItineraries"][key] = itinerary;
+            }];
+        }
     }
+    
     if (![keys containsObject:@"tips"]) {
         [newDictionary setObject:[[NSMutableDictionary alloc] init] forKey:@"tips"];
+    } else {
+        NSLog(@"Tips exist for current user, but we aren't getting them from Firebase");
     }
+    
     if (![keys containsObject:@"ratings"]) {
         [newDictionary setObject:[[NSMutableDictionary alloc] init] forKey:@"ratings"];
+    } else {
+        NSLog(@"Ratings exist for current user, but we aren't getting them from Firebase");
     }
+    
     if (![keys containsObject:@"associatedImages"]) {
         [newDictionary setObject:[[NSMutableDictionary alloc] init] forKey:@"associatedImages"];
+    } else {
+        
+        associatedImageKeys = (NSMutableArray *)[dictionary[@"associatedImages"] allKeys];
+        
+        for (NSString *key in itineraryKeys) {
+            [FirebaseAPIClient getImageForImageID:key completion:^(UIImage * image) {
+                newDictionary[@"associatedImages"][key] = image;
+            }];
+        }
     }
+    
     
     self = [self initWithUserID:newDictionary[@"userID]"]
                        username:newDictionary[@"username"]
