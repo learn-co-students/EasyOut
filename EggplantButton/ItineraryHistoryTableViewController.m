@@ -108,32 +108,24 @@
 
     Firebase *ref = [[Firebase alloc] initWithUrl: @"https://easyout.firebaseio.com/itineraries"];
     [ref observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-        NSLog(@" Dictionary of Itineraries: %@", snapshot.value);
         
         for (NSString *key in snapshot.value) {
-            NSLog(@" KEY : %@",key);
+            NSLog(@"Key: %@",key);
             
             NSDictionary *dictionary = snapshot.value[key];
-            NSLog(@" Stuff: %@",dictionary);
-            
-            
+            NSLog(@"Contents: %@",dictionary);
             
             NSString *itineraryNames = dictionary[@"title"];
-            NSLog(@" title: %@",itineraryNames);
+            NSLog(@"Title: %@",itineraryNames);
             
             [self.titlesOfItineraries addObject:itineraryNames];
             
-
             completion(YES);
         }
         
-        
     } withCancelBlock:^(NSError *error) {
-        NSLog(@"%@", error.description);
+        NSLog(@"****Error: %@", error.description);
     }];
-
-    
-    NSLog(@" TITLESSS! : %@", self.titlesOfItineraries); 
 }
 
 
