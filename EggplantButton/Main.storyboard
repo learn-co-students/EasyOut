@@ -153,7 +153,7 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="fEg-oX-WV2">
-                        <barButtonItem key="leftBarButtonItem" image="hamburgerMenu" id="31r-AO-Stk">
+                        <barButtonItem key="leftBarButtonItem" image="hamburgerMenu" style="plain" id="31r-AO-Stk">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="menuButtonTapped:" destination="BYZ-38-t0r" id="hfr-BY-jz5"/>

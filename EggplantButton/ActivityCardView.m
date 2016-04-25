@@ -121,7 +121,7 @@
     
     if([self.contentView.backgroundColor isEqual: [[UIColor blackColor] colorWithAlphaComponent:0.5]]) {
         
-        self.contentView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.4];
+        self.contentView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5];
         self.nameLabel.textColor = [UIColor blackColor];
         self.addressLabel.textColor = [UIColor blackColor];
         self.addressLabel2.textColor = [UIColor blackColor];
@@ -145,14 +145,11 @@
 
 -(void)addShadowToImage {
     self.imageView.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.imageView.layer.shadowOffset = CGSizeMake(0, 2);
+    self.imageView.layer.shadowOffset = CGSizeMake(0, 1);
     self.imageView.layer.shadowOpacity = 1;
     self.imageView.layer.shadowRadius = 1.0;
     self.imageView.clipsToBounds = NO;
 }
-
-
-
 
 
 @end

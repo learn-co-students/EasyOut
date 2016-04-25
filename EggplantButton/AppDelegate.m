@@ -46,8 +46,7 @@
 
     [UINavigationBar appearance].barTintColor = [Constants vikingBlueColor];
     [UIBarButtonItem appearance].tintColor = [UIColor whiteColor];
-    [[UINavigationBar appearance] setTranslucent:NO];
-
+    [[UINavigationBar appearance] setTranslucent:YES];
 
     return YES;
 }
