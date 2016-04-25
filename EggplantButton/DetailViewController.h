@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 #import "Activity.h"
 #import "Restaurant.h"
 #import "Event.h"
@@ -14,5 +15,8 @@
 @interface DetailViewController : UIViewController
 
 @property (strong, nonatomic) Activity *activity;
+
+@property (nonatomic) CLLocationDegrees latitude;
+@property (nonatomic) CLLocationDegrees longitude;
 
 @end

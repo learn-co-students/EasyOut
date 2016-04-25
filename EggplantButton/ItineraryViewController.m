@@ -51,7 +51,6 @@
     [self.gpsMapView.trailingAnchor constraintEqualToAnchor:self.mapView.trailingAnchor].active = YES;
 
     
-    UIImage *markerImage = [GMSMarker markerImageWithColor:[Constants vikingBlueColor]];
     
     //MARKER FOR US
     
@@ -61,6 +60,8 @@
     
     
     //MARKER FOR ACTIVITIES
+    UIImage *markerImage = [GMSMarker markerImageWithColor:[Constants vikingBlueColor]];
+    
     for(Activity *activity in self.itinerary.activities) {
         
         NSString *address = [NSString stringWithFormat:@"%@%@", activity.address[0], activity.address[1]];

@@ -331,6 +331,8 @@
         DetailViewController *destinationVC = [segue destinationViewController];
         
         destinationVC.activity = ((ActivityCardCollectionViewCell *)sender).cardView.activity;
+        destinationVC.latitude = self.latitude;
+        destinationVC.longitude = self.longitude;
     }
     if ([segue.identifier isEqualToString:@"ItinerarySegue"]) {
         ItineraryViewController *destinationVC = [segue destinationViewController];

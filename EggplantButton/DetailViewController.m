@@ -8,19 +8,19 @@
 
 #import "DetailViewController.h"
 #import <GoogleMaps/GoogleMaps.h>
+#import <AFNetworking/AFImageDownloader.h>
 #import "Constants.h"
 
 
 
 @interface DetailViewController ()
 
-@property (weak, nonatomic) IBOutlet UIView *imageView;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIView *distanceView;
-@property (weak, nonatomic) IBOutlet UILabel *adressDetailLabel;
 @property (weak, nonatomic) IBOutlet UIButton *phoneNumberButton;
 @property (weak, nonatomic) IBOutlet UIButton *moreDetailLabel;
 
-@property (weak, nonatomic) IBOutlet UIView *iconImage;
 @property (weak, nonatomic) IBOutlet UIView *mapUIView;
 
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
@@ -37,52 +37,27 @@
     
     self.view.backgroundColor = [UIColor clearColor];
 
+    [self generateGoogleMap];
     
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:1.285
-                                                            longitude:103.848
-                                                                 zoom:12];
-    self.view.contentMode = UIViewContentModeCenter;
-    self.view.contentMode = UIViewContentModeScaleAspectFit;
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"city"]]];
+    self.nameLabel.text = self.activity.name;
+    self.imageView.image = nil;
     
-    CLLocationCoordinate2D activityLoc = [self getLocationFromAddressString:self.activity.address[0]];
+    AFImageDownloader *downloader = [[AFImageDownloader alloc] init];
+    downloader.downloadPrioritizaton = AFImageDownloadPrioritizationLIFO;
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:self.activity.imageURL];
     
+    self.imageView.image = nil;
+    Activity *activityWhoseImageWeAreDownloading = self.activity;
     
-    self.mapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
+    [downloader downloadImageForURLRequest:urlRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *responseObject) {
+        if(self.activity == activityWhoseImageWeAreDownloading) {
+            self.imageView.image = responseObject;
+        }
+    } failure:nil];
     
-    [self.mapUIView addSubview:self.mapView];
-    
-    self.mapView.translatesAutoresizingMaskIntoConstraints = NO;
-    
-    [self.mapView.topAnchor constraintEqualToAnchor:self.mapUIView.topAnchor].active = YES;
-    [self.mapView.bottomAnchor constraintEqualToAnchor:self.mapUIView.bottomAnchor].active = YES;
-    [self.mapView.leadingAnchor constraintEqualToAnchor:self.mapUIView.leadingAnchor].active = YES;
-    [self.mapView.trailingAnchor constraintEqualToAnchor:self.mapUIView.trailingAnchor].active = YES;
 
-    UIImage *markerImage = [GMSMarker markerImageWithColor:[Constants vikingBlueColor]];
     
-    //MARKER FOR US
-    
-    GMSMarker *userLoc = [[GMSMarker alloc]init];
-    userLoc.position = CLLocationCoordinate2DMake(activityLoc.latitude, activityLoc.longitude);
-    userLoc.map = self.mapView;
-    
-    
-    //MARKER FOR ACTIVITIES
-    
-        NSString *address = [NSString stringWithFormat:@"%@%@", self.activity.address[0], self.activity.address[1]];
-        
-        CLLocationCoordinate2D location = [self getLocationFromAddressString: address];
-        
-        // Creates a marker in the center of the map.
-        
-        GMSMarker *marker = [[GMSMarker alloc] init];
-        marker.position = location;
-        marker.title = self.activity.name;
-        marker.snippet = address;
-        marker.map = self.mapView;
-        marker.icon = markerImage;
-}
+    }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -114,6 +89,45 @@
     
     return center;
     
+}
+
+-(void)generateGoogleMap {
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:self.latitude
+                                                            longitude:self.longitude
+                                                                 zoom:16];
+    
+    self.mapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
+    
+    [self.mapUIView addSubview:self.mapView];
+    
+    self.mapView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self.mapView.topAnchor constraintEqualToAnchor:self.mapUIView.topAnchor].active = YES;
+    [self.mapView.bottomAnchor constraintEqualToAnchor:self.mapUIView.bottomAnchor].active = YES;
+    [self.mapView.leadingAnchor constraintEqualToAnchor:self.mapUIView.leadingAnchor].active = YES;
+    [self.mapView.trailingAnchor constraintEqualToAnchor:self.mapUIView.trailingAnchor].active = YES;
+    
+    //MARKER FOR US
+    
+    GMSMarker *userLoc = [[GMSMarker alloc]init];
+    userLoc.position = CLLocationCoordinate2DMake(self.latitude, self.longitude);
+    userLoc.map = self.mapView;
+    
+    //MARKER FOR ACTIVITIES
+    UIImage *markerImage = [GMSMarker markerImageWithColor:[Constants vikingBlueColor]];
+    
+    NSString *address = [NSString stringWithFormat:@"%@%@", self.activity.address[0], self.activity.address[1]];
+    
+    CLLocationCoordinate2D location = [self getLocationFromAddressString: address];
+    
+    // Creates a marker in the center of the map.
+    
+    GMSMarker *marker = [[GMSMarker alloc] init];
+    marker.position = location;
+    marker.title = self.activity.name;
+    marker.snippet = address;
+    marker.map = self.mapView;
+    marker.icon = markerImage;
 }
 
 @end
