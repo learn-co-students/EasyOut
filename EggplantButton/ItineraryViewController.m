@@ -14,14 +14,30 @@
 #import "ItineraryReviewTableViewCell.h"
 
 
+
+
 @interface ItineraryViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *itineraryTableView;
 @property (weak, nonatomic) IBOutlet UIView *mapView;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 
 @property (strong, nonatomic) GMSMapView *gpsMapView;
 
-
+typedef NS_ENUM(NSInteger, Month) {
+    January = 1,
+    February,
+    March,
+    April,
+    May,
+    June,
+    July,
+    August,
+    September,
+    October,
+    November,
+    December
+};
 
 @end
 
@@ -29,6 +45,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.dateLabel.text = [self getDate];
     
     self.view.backgroundColor = [UIColor clearColor];
     
@@ -39,50 +57,8 @@
     
     self.itineraryTableView.translatesAutoresizingMaskIntoConstraints = NO;
     
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:self.latitude
-                                                            longitude:self.longitude
-                                                                 zoom:16];
     
-    self.gpsMapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
-    
-    [self.mapView addSubview:self.gpsMapView];
-    
-    self.gpsMapView.translatesAutoresizingMaskIntoConstraints = NO;
-    
-    [self.gpsMapView.topAnchor constraintEqualToAnchor:self.mapView.topAnchor].active = YES;
-    [self.gpsMapView.bottomAnchor constraintEqualToAnchor:self.mapView.bottomAnchor].active = YES;
-    [self.gpsMapView.leadingAnchor constraintEqualToAnchor:self.mapView.leadingAnchor].active = YES;
-    [self.gpsMapView.trailingAnchor constraintEqualToAnchor:self.mapView.trailingAnchor].active = YES;
-
-    
-    
-    //MARKER FOR US
-    
-    GMSMarker *userLoc = [[GMSMarker alloc]init];
-    userLoc.position = CLLocationCoordinate2DMake(self.latitude, self.longitude);
-    userLoc.map = self.gpsMapView;
-    
-    
-    //MARKER FOR ACTIVITIES
-    UIImage *markerImage = [GMSMarker markerImageWithColor:[Constants vikingBlueColor]];
-    
-    for(Activity *activity in self.itinerary.activities) {
-        
-        NSString *address = [NSString stringWithFormat:@"%@%@", activity.address[0], activity.address[1]];
-    
-        CLLocationCoordinate2D location = [self getLocationFromAddressString: address];
-        
-        // Creates a marker in the center of the map.
-        
-        GMSMarker *marker = [[GMSMarker alloc] init];
-        marker.position = location;
-        marker.title = activity.name;
-        marker.snippet = address;
-        marker.map = self.gpsMapView;
-        marker.icon = markerImage;
-        
-        }
-    
+    [self generateGoogleMap];
     
      //save Itinerary to FireBase
     
@@ -91,7 +67,63 @@
     }];
     
   }
-
+-(NSString *)getDate {
+    NSDate *now = [NSDate date];
+    NSCalendar *calendar = [[NSCalendar alloc]
+                            initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSCalendarUnit units = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay;
+    NSDateComponents *components = [calendar components:units fromDate:now];
+    
+    NSString *month;
+    
+    switch ([components month]) {
+        case January:
+            month = @"January";
+            break;
+        case February:
+            month = @"February";
+            break;
+        case March:
+            month = @"March";
+            break;
+        case April:
+            month = @"April";
+            break;
+        case May:
+            month = @"May";
+            break;
+        case June:
+            month = @"June";
+            break;
+        case July:
+            month = @"July";
+            break;
+        case August:
+            month = @"August";
+            break;
+        case September:
+            month = @"September";
+            break;
+        case October:
+            month = @"October";
+            break;
+        case November:
+            month = @"November";
+            break;
+        case December:
+            month = @"December";
+            break;
+            
+        default:
+            break;
+    }
+    
+    return [NSString stringWithFormat:@"Your Itinerary for\n%@ %lu, %lu", month, [components day], [components year]];
+    
+//    NSLog(@"Day: %ld", [components day]);
+//    NSLog(@"Month: %ld", [components month]);
+//    NSLog(@"Year: %ld", [components year]);
+}
 
 //TABLE THINGS
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -134,6 +166,52 @@
     
     return center;
     
+}
+
+-(void)generateGoogleMap{
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:self.latitude
+                                                            longitude:self.longitude
+                                                                 zoom:16];
+    
+    self.gpsMapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
+    
+    [self.mapView addSubview:self.gpsMapView];
+    
+    self.gpsMapView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self.gpsMapView.topAnchor constraintEqualToAnchor:self.mapView.topAnchor].active = YES;
+    [self.gpsMapView.bottomAnchor constraintEqualToAnchor:self.mapView.bottomAnchor].active = YES;
+    [self.gpsMapView.leadingAnchor constraintEqualToAnchor:self.mapView.leadingAnchor].active = YES;
+    [self.gpsMapView.trailingAnchor constraintEqualToAnchor:self.mapView.trailingAnchor].active = YES;
+    
+    
+    
+    //MARKER FOR US
+    
+    GMSMarker *userLoc = [[GMSMarker alloc]init];
+    userLoc.position = CLLocationCoordinate2DMake(self.latitude, self.longitude);
+    userLoc.map = self.gpsMapView;
+    
+    
+    //MARKER FOR ACTIVITIES
+    UIImage *markerImage = [GMSMarker markerImageWithColor:[Constants vikingBlueColor]];
+    
+    for(Activity *activity in self.itinerary.activities) {
+        
+        NSString *address = [NSString stringWithFormat:@"%@%@", activity.address[0], activity.address[1]];
+        
+        CLLocationCoordinate2D location = [self getLocationFromAddressString: address];
+        
+        // Creates a marker in the center of the map.
+        
+        GMSMarker *marker = [[GMSMarker alloc] init];
+        marker.position = location;
+        marker.title = activity.name;
+        marker.snippet = address;
+        marker.map = self.gpsMapView;
+        marker.icon = markerImage;
+        
+    }
 }
 
 @end
