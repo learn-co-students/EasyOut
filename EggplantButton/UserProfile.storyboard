@@ -89,8 +89,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wqM-ut-nAZ">
-                                <rect key="frame" x="231" y="177" width="30" height="30"/>
-                                <state key="normal" title="Edit"/>
+                                <rect key="frame" x="111" y="57" width="150" height="150"/>
                                 <connections>
                                     <action selector="editPictureButtonPressed:" destination="vvM-bz-Ud9" eventType="touchUpInside" id="XMq-H9-FyO"/>
                                 </connections>
@@ -104,6 +103,7 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="wqM-ut-nAZ" firstAttribute="top" secondItem="CUH-f1-A53" secondAttribute="top" id="93s-zQ-mWZ"/>
                             <constraint firstItem="2gT-zw-ciG" firstAttribute="leading" secondItem="ef1-Kv-N7b" secondAttribute="leading" id="9bc-Ee-1jr"/>
                             <constraint firstItem="cF6-Yu-ngZ" firstAttribute="width" secondItem="ef1-Kv-N7b" secondAttribute="width" id="AwX-yp-wV9"/>
                             <constraint firstItem="NY3-4j-T4K" firstAttribute="width" secondItem="ef1-Kv-N7b" secondAttribute="width" id="DHp-LE-uEb"/>
@@ -111,6 +111,7 @@
                             <constraint firstItem="2gT-zw-ciG" firstAttribute="top" secondItem="cF6-Yu-ngZ" secondAttribute="bottom" constant="15" id="J63-an-W4A"/>
                             <constraint firstItem="WNT-fB-zLF" firstAttribute="top" secondItem="NY3-4j-T4K" secondAttribute="bottom" id="N1m-1S-8Ft"/>
                             <constraint firstItem="cF6-Yu-ngZ" firstAttribute="top" secondItem="tLR-p9-NTb" secondAttribute="bottom" id="NEM-IH-v45"/>
+                            <constraint firstItem="wqM-ut-nAZ" firstAttribute="leading" secondItem="CUH-f1-A53" secondAttribute="leading" id="QU9-h6-G6a"/>
                             <constraint firstItem="WNT-fB-zLF" firstAttribute="leading" secondItem="ef1-Kv-N7b" secondAttribute="leadingMargin" constant="-20" id="RIZ-q0-s1h"/>
                             <constraint firstItem="2gT-zw-ciG" firstAttribute="bottom" secondItem="j2c-rs-nw6" secondAttribute="top" constant="-15" id="XVF-YV-bIT"/>
                             <constraint firstItem="NY3-4j-T4K" firstAttribute="centerX" secondItem="ef1-Kv-N7b" secondAttribute="centerX" id="Xf0-pR-Ktx"/>

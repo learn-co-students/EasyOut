@@ -578,7 +578,7 @@ import Firebase
                 "imageBase64String" : newImageBase64String
             ]
             
-            print("Attempting to setValue of the newImageRef \(newImageRef.key) with newImageDictionary \(newImageDictionary)")
+            print("Attempting to setValue of the newImageRef \(newImageRef.key)")
             newImageRef.setValue(newImageDictionary, withCompletionBlock: { (error, result) in
                 if error != nil {
                     print("There was an error setting the values: \(error.description)")
