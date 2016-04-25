@@ -62,6 +62,8 @@
     
     [super viewDidLoad];
 
+    self.view.backgroundColor = [UIColor clearColor];
+    
     [self setUpCoreLocation];
 
     self.dataStore = [ActivitiesDataStore sharedDataStore];
@@ -111,6 +113,8 @@
                                              selector:@selector(disableCheckedCard:)
                                                  name:@"checkBoxChecked"
                                                object:nil];
+    
+    
     
     self.view.contentMode = UIViewContentModeCenter;
     self.view.contentMode = UIViewContentModeScaleAspectFit;
@@ -327,6 +331,8 @@
         DetailViewController *destinationVC = [segue destinationViewController];
         
         destinationVC.activity = ((ActivityCardCollectionViewCell *)sender).cardView.activity;
+        destinationVC.latitude = self.latitude;
+        destinationVC.longitude = self.longitude;
     }
     if ([segue.identifier isEqualToString:@"ItinerarySegue"]) {
         ItineraryViewController *destinationVC = [segue destinationViewController];

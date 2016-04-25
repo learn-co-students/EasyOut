@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Sxq-3e-1Jn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Sxq-3e-1Jn">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="LobsterTwo-Regular.otf">
+            <string>LobsterTwo</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Itinerary View Controller-->
         <scene sceneID="i0i-Ip-Uy9">
@@ -18,55 +23,53 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="amg-HW-q90">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ActivityCell" textLabel="LyZ-DG-HKQ" detailTextLabel="Laa-GF-fD5" rowHeight="70" style="IBUITableViewCellStyleValue1" id="tba-Bf-JjV">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="70"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tba-Bf-JjV" id="uck-10-k43">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="69"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LyZ-DG-HKQ">
-                                                    <rect key="frame" x="15" y="25" width="32" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Laa-GF-fD5">
-                                                    <rect key="frame" x="543" y="25" width="42" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nVZ-sy-KNk">
-                                <rect key="frame" x="0.0" y="300" width="600" height="300"/>
-                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i2t-RE-MhZ">
+                                <rect key="frame" x="0.0" y="20" width="600" height="26"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="LobsterTwo" family="Lobster Two" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="fQo-FS-wSZ">
+                                <rect key="frame" x="20" y="66" width="560" height="514"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="amg-HW-q90">
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="247"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="sectionIndexColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ActivityCell" rowHeight="70" id="tba-Bf-JjV" customClass="ItineraryReviewTableViewCell">
+                                                <rect key="frame" x="0.0" y="28" width="560" height="70"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tba-Bf-JjV" id="uck-10-k43">
+                                                    <rect key="frame" x="0.0" y="0.0" width="560" height="69"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nVZ-sy-KNk">
+                                        <rect key="frame" x="0.0" y="267" width="560" height="247"/>
+                                    </view>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="amg-HW-q90" firstAttribute="top" secondItem="NBD-Jf-WSI" secondAttribute="bottom" id="AY1-vi-ivu"/>
-                            <constraint firstItem="amg-HW-q90" firstAttribute="height" secondItem="TM5-Ju-Che" secondAttribute="height" multiplier="0.5" id="BZO-EO-t6T"/>
-                            <constraint firstItem="amg-HW-q90" firstAttribute="centerX" secondItem="TM5-Ju-Che" secondAttribute="centerX" id="PUN-wv-j2a"/>
-                            <constraint firstItem="amg-HW-q90" firstAttribute="top" secondItem="NBD-Jf-WSI" secondAttribute="bottom" id="Roa-kh-vAM"/>
-                            <constraint firstItem="amg-HW-q90" firstAttribute="width" secondItem="TM5-Ju-Che" secondAttribute="width" id="Vhj-bh-OLQ"/>
-                            <constraint firstItem="nVZ-sy-KNk" firstAttribute="bottom" secondItem="T0v-aO-3Ot" secondAttribute="top" id="a3p-hN-JJu"/>
-                            <constraint firstItem="nVZ-sy-KNk" firstAttribute="centerX" secondItem="TM5-Ju-Che" secondAttribute="centerX" id="d6B-Pu-w63"/>
-                            <constraint firstItem="nVZ-sy-KNk" firstAttribute="top" secondItem="amg-HW-q90" secondAttribute="bottom" id="gql-O5-iNm"/>
-                            <constraint firstItem="nVZ-sy-KNk" firstAttribute="width" secondItem="TM5-Ju-Che" secondAttribute="width" id="tVQ-nV-UIL"/>
+                            <constraint firstItem="T0v-aO-3Ot" firstAttribute="top" secondItem="fQo-FS-wSZ" secondAttribute="bottom" constant="20" id="NWp-Y0-3cQ"/>
+                            <constraint firstItem="fQo-FS-wSZ" firstAttribute="leading" secondItem="TM5-Ju-Che" secondAttribute="leadingMargin" id="VsO-pD-QjR"/>
+                            <constraint firstItem="fQo-FS-wSZ" firstAttribute="trailing" secondItem="TM5-Ju-Che" secondAttribute="trailingMargin" id="bBu-gx-702"/>
+                            <constraint firstItem="i2t-RE-MhZ" firstAttribute="width" secondItem="TM5-Ju-Che" secondAttribute="width" id="etc-fq-dVd"/>
+                            <constraint firstItem="i2t-RE-MhZ" firstAttribute="top" secondItem="NBD-Jf-WSI" secondAttribute="bottom" constant="20" id="fA5-zL-2ge"/>
+                            <constraint firstItem="fQo-FS-wSZ" firstAttribute="top" secondItem="i2t-RE-MhZ" secondAttribute="bottom" constant="20" id="oMM-9N-Fpo"/>
+                            <constraint firstItem="i2t-RE-MhZ" firstAttribute="centerX" secondItem="TM5-Ju-Che" secondAttribute="centerX" id="x1S-lm-pJd"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="dateLabel" destination="i2t-RE-MhZ" id="TLf-sy-FgK"/>
                         <outlet property="itineraryTableView" destination="amg-HW-q90" id="R4z-8d-vpt"/>
                         <outlet property="mapView" destination="nVZ-sy-KNk" id="UhQ-Co-LjR"/>
                     </connections>

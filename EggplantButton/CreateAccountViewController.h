@@ -15,4 +15,7 @@
 
 @interface CreateAccountViewController : UIViewController
 
+@property (strong, nonatomic) NSString *inputEmail;
+@property (strong, nonatomic) NSString *inputPassword;
+
 @end

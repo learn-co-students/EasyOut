@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"city"]]];
+    self.view.backgroundColor = [UIColor clearColor];
 
     // Do any additional setup after loading the view.
 }

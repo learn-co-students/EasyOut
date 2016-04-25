@@ -31,6 +31,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor clearColor];
+    
     [self pullUserFromFirebaseWithCompletion:^(BOOL success) {
         if(success) {
             
@@ -55,7 +58,10 @@
                 [FirebaseAPIClient getImageForImageID:self.user.profilePhoto completion:^(UIImage * image) {
                     self.userImage.image =image;
                 }];
-                
+            }
+            
+            else {
+                self.userImage.image = [UIImage imageNamed:@"defaultProfilePic"];
             }
         }
     }];

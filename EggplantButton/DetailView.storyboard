@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ck0-ww-g9b">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ck0-ww-g9b">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="Roboto-Bold.ttf">
-            <string>Roboto-Bold</string>
+        <mutableArray key="LobsterTwo-Regular.otf">
+            <string>LobsterTwo</string>
         </mutableArray>
         <mutableArray key="Roboto-Regular.ttf">
             <string>Roboto-Regular</string>
@@ -17,7 +16,7 @@
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--Activity Detail-->
+        <!--Detail View Controller-->
         <scene sceneID="7tk-ac-ACP">
             <objects>
                 <viewController storyboardIdentifier="DetailView" id="ck0-ww-g9b" customClass="DetailViewController" sceneMemberID="viewController">
@@ -26,67 +25,75 @@
                         <viewControllerLayoutGuide type="bottom" id="e1S-0b-Cja"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8be-iO-s5k">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="cg9-NR-E1m">
-                                <rect key="frame" x="20" y="25" width="343" height="637"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="cg9-NR-E1m">
+                                <rect key="frame" x="0.0" y="25" width="600" height="570"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RE0-mt-IIW">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="24"/>
-                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="20"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RE0-mt-IIW">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="36"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="LobsterTwo" family="Lobster Two" pointSize="30"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6dJ-HA-9CB" userLabel="Navigation Stack">
-                                        <rect key="frame" x="0.0" y="29" width="343" height="221"/>
+                                    <stackView opaque="NO" contentMode="scaleAspectFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6dJ-HA-9CB" userLabel="Navigation Stack">
+                                        <rect key="frame" x="0.0" y="41" width="600" height="150"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RBE-wV-SEh" userLabel="Image View">
-                                                <rect key="frame" x="0.0" y="0.0" width="218" height="221"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </view>
-                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rko-w0-IJw" userLabel="Distance View">
-                                                <rect key="frame" x="218" y="0.0" width="125" height="221"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Zt-zx-9ns">
+                                                <rect key="frame" x="0.0" y="0.0" width="350" height="150"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="150" id="URg-FO-Rec"/>
+                                                </constraints>
+                                            </imageView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rko-w0-IJw" userLabel="Distance View">
+                                                <rect key="frame" x="350" y="0.0" width="250" height="150"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="RBE-wV-SEh" firstAttribute="width" secondItem="Rko-w0-IJw" secondAttribute="width" multiplier="1.75" id="dt0-0U-PXk"/>
+                                            <constraint firstItem="0Zt-zx-9ns" firstAttribute="width" secondItem="Rko-w0-IJw" secondAttribute="height" multiplier="7:3" id="jxy-17-y7S"/>
                                         </constraints>
                                     </stackView>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SWl-eB-RaB" userLabel="MapView">
-                                        <rect key="frame" x="0.0" y="255" width="343" height="267"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cwm-DN-IFX">
+                                        <rect key="frame" x="0.0" y="196" width="600" height="280"/>
                                         <subviews>
+                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SWl-eB-RaB" userLabel="MapView">
+                                                <rect key="frame" x="8" y="8" width="584" height="246"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T7E-FC-b6E" userLabel="Address">
-                                                <rect key="frame" x="0.0" y="222" width="560" height="18"/>
+                                                <rect key="frame" x="8" y="254" width="584" height="18"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstItem="T7E-FC-b6E" firstAttribute="width" secondItem="SWl-eB-RaB" secondAttribute="width" id="ArX-hc-YZ6"/>
-                                            <constraint firstItem="T7E-FC-b6E" firstAttribute="bottom" secondItem="SWl-eB-RaB" secondAttribute="bottom" id="nB2-EW-EKz"/>
-                                            <constraint firstItem="T7E-FC-b6E" firstAttribute="leading" secondItem="SWl-eB-RaB" secondAttribute="leading" id="vmS-bh-C81"/>
-                                        </constraints>
-                                    </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="fQZ-KW-UEp" userLabel="Detail Stack">
-                                        <rect key="frame" x="0.0" y="527" width="343" height="110"/>
+                                        <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="fQZ-KW-UEp" userLabel="Detail Stack">
+                                        <rect key="frame" x="0.0" y="481" width="600" height="89"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3IY-DV-bGd">
-                                                <rect key="frame" x="0.0" y="0.0" width="343" height="71"/>
-                                                <edgeInsets key="layoutMargins" top="5" left="5" bottom="8" right="8"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3IY-DV-bGd">
+                                                <rect key="frame" x="8" y="8" width="584" height="34"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
-                                                <state key="normal" title="Phone number"/>
+                                                <state key="normal" title="Phone number">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o31-v6-CSf">
-                                                <rect key="frame" x="0.0" y="76" width="343" height="34"/>
-                                                <edgeInsets key="layoutMargins" top="5" left="8" bottom="5" right="8"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o31-v6-CSf">
+                                                <rect key="frame" x="8" y="47" width="584" height="34"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
-                                                <state key="normal" title="More Details"/>
+                                                <state key="normal" title="More Details">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
                                             </button>
                                         </subviews>
+                                        <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                     </stackView>
                                 </subviews>
                             </stackView>
@@ -94,26 +101,25 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="cg9-NR-E1m" firstAttribute="bottom" secondItem="e1S-0b-Cja" secondAttribute="top" constant="-5" id="3JN-RA-YYy"/>
-                            <constraint firstItem="cg9-NR-E1m" firstAttribute="trailing" secondItem="8be-iO-s5k" secondAttribute="trailingMargin" id="E5h-LK-kSH"/>
+                            <constraint firstItem="cg9-NR-E1m" firstAttribute="trailing" secondItem="8be-iO-s5k" secondAttribute="trailing" id="E5h-LK-kSH"/>
                             <constraint firstItem="cg9-NR-E1m" firstAttribute="top" secondItem="r76-yn-cUG" secondAttribute="bottom" constant="5" id="N0N-8b-UmN"/>
-                            <constraint firstItem="cg9-NR-E1m" firstAttribute="leading" secondItem="8be-iO-s5k" secondAttribute="leadingMargin" id="WVG-S4-NdV"/>
-                            <constraint firstItem="SWl-eB-RaB" firstAttribute="height" secondItem="8be-iO-s5k" secondAttribute="height" multiplier="0.4" id="pUH-oJ-vxS"/>
+                            <constraint firstItem="cg9-NR-E1m" firstAttribute="leading" secondItem="8be-iO-s5k" secondAttribute="leading" id="WVG-S4-NdV"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Activity Detail" id="FJJ-9F-MP4">
+                    <navigationItem key="navigationItem" id="FJJ-9F-MP4">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="PvR-5S-AYm">
                             <connections>
                                 <action selector="backButtonPressed:" destination="ck0-ww-g9b" id="TcI-UD-Mug"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="addressLabel" destination="T7E-FC-b6E" id="pkh-xP-eb2"/>
                         <outlet property="distanceView" destination="Rko-w0-IJw" id="Trj-qW-ych"/>
-                        <outlet property="imageView" destination="RBE-wV-SEh" id="lPf-0h-r7y"/>
+                        <outlet property="imageView" destination="0Zt-zx-9ns" id="yjK-ri-Tse"/>
                         <outlet property="mapUIView" destination="SWl-eB-RaB" id="yqG-9O-sdB"/>
                         <outlet property="moreDetailLabel" destination="o31-v6-CSf" id="NBt-1J-ltN"/>
+                        <outlet property="nameLabel" destination="RE0-mt-IIW" id="Slc-hp-byq"/>
                         <outlet property="phoneNumberButton" destination="3IY-DV-bGd" id="QZf-ta-so1"/>
                     </connections>
                 </viewController>

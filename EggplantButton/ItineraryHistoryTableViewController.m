@@ -20,6 +20,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    self.view.backgroundColor = [UIColor clearColor];
+
     self.itineraryEvents = [NSMutableArray new];
     
     self.titlesOfItineraries = [NSMutableArray new];

@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ZfT-h2-25V">
-
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ZfT-h2-25V">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -14,6 +12,19 @@
             <string>LobsterTwo</string>
         </mutableArray>
         <mutableArray key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
@@ -64,78 +75,119 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="33" translatesAutoresizingMaskIntoConstraints="NO" id="06z-BE-xel" userLabel="Text Fields ">
-                                <rect key="frame" x="150" y="254" width="300" height="93"/>
-                                <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7sz-tc-n3b">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <action selector="emailDidEnd:" destination="Mtz-5O-VW0" eventType="editingDidEnd" id="Jlp-89-83W"/>
-                                        </connections>
-                                    </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rkh-0r-4yP">
-                                        <rect key="frame" x="0.0" y="63" width="300" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                    </textField>
-                                </subviews>
-                            </stackView>
-                            <stackView opaque="NO" tag="11" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="3bT-T3-grL" userLabel="Button Stack View">
-                                <rect key="frame" x="219" y="397" width="162" height="34"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rVC-kR-U8N">
-                                        <rect key="frame" x="0.0" y="0.0" width="71" height="34"/>
-                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
-                                        <state key="normal" title="Login">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="login:" destination="Mtz-5O-VW0" eventType="touchUpInside" id="cf3-Ep-CfD"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gbh-8Q-3iR">
-                                        <rect key="frame" x="91" y="0.0" width="71" height="34"/>
-                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
-                                        <state key="normal" title="Register ">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="cdF-tl-xg4" kind="presentation" id="nsh-nM-PzB"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u41-NS-w5e">
-                                <rect key="frame" x="236" y="160" width="128" height="44"/>
-                                <fontDescription key="fontDescription" name="LobsterTwo" family="Lobster Two" pointSize="35"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="* Invalid Email Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PqA-mn-eDR">
+                                <rect key="frame" x="75" y="246" width="451" height="19"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.40008081899999998" colorSpace="calibratedRGB"/>
+                                <size key="shadowOffset" width="1" height="1"/>
                             </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="* Password must contain at least 8 characters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FVO-mb-Y1J">
+                                <rect key="frame" x="75" y="311" width="308" height="19"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.40008081899999998" colorSpace="calibratedRGB"/>
+                                <size key="shadowOffset" width="1" height="1"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="0uL-s5-e84">
+                                <rect key="frame" x="75" y="111" width="450" height="379"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Welcome!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u41-NS-w5e">
+                                        <rect key="frame" x="0.0" y="0.0" width="450" height="70"/>
+                                        <fontDescription key="fontDescription" name="LobsterTwo" family="Lobster Two" pointSize="55"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.40008081899999998" colorSpace="calibratedRGB"/>
+                                        <size key="shadowOffset" width="-1" height="-1"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="equalSpacing" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="06z-BE-xel" userLabel="Text Fields ">
+                                        <rect key="frame" x="0.0" y="105" width="450" height="95"/>
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7sz-tc-n3b">
+                                                <rect key="frame" x="0.0" y="0.0" width="450" height="30"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rkh-0r-4yP">
+                                                <rect key="frame" x="0.0" y="65" width="450" height="30"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" tag="11" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillEqually" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="3bT-T3-grL" userLabel="Button Stack View">
+                                        <rect key="frame" x="0.0" y="235" width="450" height="144"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rVC-kR-U8N">
+                                                <rect key="frame" x="0.0" y="0.0" width="450" height="38"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.40008081896551723" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="22"/>
+                                                <size key="titleShadowOffset" width="1" height="1"/>
+                                                <state key="normal" title="Login">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.40008081899999998" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="login:" destination="Mtz-5O-VW0" eventType="touchUpInside" id="cf3-Ep-CfD"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gbh-8Q-3iR">
+                                                <rect key="frame" x="0.0" y="53" width="450" height="38"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.40008081899999998" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="22"/>
+                                                <size key="titleShadowOffset" width="1" height="1"/>
+                                                <state key="normal" title="Sign Up">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.40008081899999998" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="cdF-tl-xg4" kind="presentation" identifier="registrationSegue" id="nsh-nM-PzB"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sgN-al-nLa">
+                                                <rect key="frame" x="164" y="106" width="123" height="38"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <size key="titleShadowOffset" width="1" height="1"/>
+                                                <state key="normal" title="Forgot Password?">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.40008081899999998" colorSpace="calibratedRGB"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="rVC-kR-U8N" firstAttribute="width" secondItem="3bT-T3-grL" secondAttribute="width" id="AfH-gu-JSS"/>
+                                            <constraint firstItem="Gbh-8Q-3iR" firstAttribute="width" secondItem="3bT-T3-grL" secondAttribute="width" id="K8V-Ds-j92"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.36960259470000001" green="0.80310696039999996" blue="0.83317307689999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="u41-NS-w5e" firstAttribute="bottom" secondItem="06z-BE-xel" secondAttribute="top" constant="-50" id="RTg-Ww-eDm"/>
-                            <constraint firstItem="3bT-T3-grL" firstAttribute="centerX" secondItem="kT0-bC-8PH" secondAttribute="centerX" id="ULN-8e-4WH"/>
-                            <constraint firstItem="06z-BE-xel" firstAttribute="centerY" secondItem="kT0-bC-8PH" secondAttribute="centerY" id="hL2-hX-5h5"/>
-                            <constraint firstItem="3bT-T3-grL" firstAttribute="top" secondItem="06z-BE-xel" secondAttribute="bottom" constant="50" id="hkh-mf-K2b"/>
-                            <constraint firstItem="u41-NS-w5e" firstAttribute="centerX" secondItem="kT0-bC-8PH" secondAttribute="centerX" id="nRJ-Cg-wq6"/>
-                            <constraint firstItem="06z-BE-xel" firstAttribute="width" secondItem="kT0-bC-8PH" secondAttribute="width" multiplier="0.5" id="po8-vh-mqq"/>
-                            <constraint firstItem="06z-BE-xel" firstAttribute="centerX" secondItem="kT0-bC-8PH" secondAttribute="centerX" id="qrK-zn-j2K"/>
+                            <constraint firstItem="FVO-mb-Y1J" firstAttribute="leading" secondItem="Rkh-0r-4yP" secondAttribute="leading" id="6aC-Te-nKU"/>
+                            <constraint firstItem="0uL-s5-e84" firstAttribute="width" secondItem="kT0-bC-8PH" secondAttribute="width" multiplier="0.75" id="ES4-1k-QBh"/>
+                            <constraint firstItem="PqA-mn-eDR" firstAttribute="leading" secondItem="7sz-tc-n3b" secondAttribute="leading" id="EW8-Ib-kQx"/>
+                            <constraint firstItem="0uL-s5-e84" firstAttribute="centerY" secondItem="kT0-bC-8PH" secondAttribute="centerY" id="G9W-uj-Wec"/>
+                            <constraint firstItem="PqA-mn-eDR" firstAttribute="centerX" secondItem="kT0-bC-8PH" secondAttribute="centerX" id="LyX-J4-bQy"/>
+                            <constraint firstItem="FVO-mb-Y1J" firstAttribute="top" secondItem="Rkh-0r-4yP" secondAttribute="bottom" id="RRT-55-t39"/>
+                            <constraint firstItem="PqA-mn-eDR" firstAttribute="top" secondItem="7sz-tc-n3b" secondAttribute="bottom" id="tfk-n1-QK9"/>
+                            <constraint firstItem="0uL-s5-e84" firstAttribute="centerX" secondItem="kT0-bC-8PH" secondAttribute="centerX" id="tij-PW-ctN"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="emailLabel" destination="7sz-tc-n3b" id="O9Q-xA-Acg"/>
-                        <outlet property="loginButtonTapped" destination="rVC-kR-U8N" id="yuA-3c-SSm"/>
+                        <outlet property="invalidEmailWarning" destination="PqA-mn-eDR" id="Khk-k2-aGA"/>
+                        <outlet property="invalidPasswordWarning" destination="FVO-mb-Y1J" id="js1-mH-yO7"/>
+                        <outlet property="loginButton" destination="rVC-kR-U8N" id="pfs-Jp-dYe"/>
                         <outlet property="loginLabel" destination="u41-NS-w5e" id="nMF-U9-Fvs"/>
                         <outlet property="passwordLabel" destination="Rkh-0r-4yP" id="mls-Jp-8jt"/>
-                        <outlet property="registerButtonTapped" destination="Gbh-8Q-3iR" id="iA7-Ez-RtX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="COc-JL-Ikk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-222" y="-10"/>
+            <point key="canvasLocation" x="-284" y="-10"/>
         </scene>
         <!--Create Account View Controller-->
         <scene sceneID="20f-yo-D2k">
@@ -149,75 +201,136 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hMK-Xm-0cA" userLabel="Text Field Stack View">
-                                <rect key="frame" x="150" y="225" width="300" height="150"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="hMK-Xm-0cA" userLabel="Text Field Stack View">
+                                <rect key="frame" x="120" y="188" width="360" height="225"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rQ5-1d-e91">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="360" height="30"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="19"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AkE-cs-das">
-                                        <rect key="frame" x="0.0" y="40" width="300" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <rect key="frame" x="0.0" y="65" width="360" height="30"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="19"/>
                                         <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <action selector="emailDidEnd:" destination="cdF-tl-xg4" eventType="editingDidEnd" id="mPg-83-i3e"/>
-                                        </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password (at least 7 characters)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pQF-7q-Nfb">
-                                        <rect key="frame" x="0.0" y="80" width="300" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pQF-7q-Nfb">
+                                        <rect key="frame" x="0.0" y="130" width="360" height="30"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="19"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                        <connections>
-                                            <action selector="passwordDidEnd:" destination="cdF-tl-xg4" eventType="editingDidEnd" id="WwP-GG-z4q"/>
-                                        </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Verify password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QIq-yV-JAH">
-                                        <rect key="frame" x="0.0" y="120" width="300" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Verify password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QIq-yV-JAH">
+                                        <rect key="frame" x="0.0" y="195" width="360" height="30"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="19"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                        <connections>
-                                            <action selector="confirmPasswordDidEnd:" destination="cdF-tl-xg4" eventType="editingDidEnd" id="AHx-OK-7np"/>
-                                        </connections>
                                     </textField>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ma-SV-gzI">
-                                <rect key="frame" x="235" y="425" width="131" height="35"/>
-                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="19"/>
-                                <state key="normal" title="Create Account">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="createAccountButton:" destination="cdF-tl-xg4" eventType="touchUpInside" id="PzY-T5-Hcc"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter the information below to create your EasyOut account!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4y-aj-Obs">
-                                <rect key="frame" x="150" y="115" width="300" height="60"/>
-                                <fontDescription key="fontDescription" name="LobsterTwo" family="Lobster Two" pointSize="24"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="3UN-75-XDh">
+                                <rect key="frame" x="120" y="463" width="360" height="91"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ma-SV-gzI">
+                                        <rect key="frame" x="0.0" y="0.0" width="360" height="38"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.40008081899999998" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="22"/>
+                                        <size key="titleShadowOffset" width="1" height="1"/>
+                                        <state key="normal" title="Create Account">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.40008081899999998" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="createAccountButton:" destination="cdF-tl-xg4" eventType="touchUpInside" id="PzY-T5-Hcc"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4xr-gv-vd4">
+                                        <rect key="frame" x="159" y="53" width="43" height="38"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                        <size key="titleShadowOffset" width="1" height="1"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.40008081899999998" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancelButtonPressed:" destination="cdF-tl-xg4" eventType="touchUpInside" id="2yp-Kd-QSB"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="9ma-SV-gzI" firstAttribute="width" secondItem="3UN-75-XDh" secondAttribute="width" id="G3I-vt-IJZ"/>
+                                </constraints>
+                            </stackView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LrY-DN-DXT">
+                                <rect key="frame" x="120" y="218" width="360" height="35"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.40008081899999998" colorSpace="calibratedRGB"/>
+                                <size key="shadowOffset" width="1" height="1"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="* Invalid email address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7IF-L1-e9g">
+                                <rect key="frame" x="120" y="283" width="144" height="18"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.40008081899999998" colorSpace="calibratedRGB"/>
+                                <size key="shadowOffset" width="1" height="1"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="* Password must contain at least 8 characters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lR3-U0-2KC">
+                                <rect key="frame" x="120" y="348" width="292" height="18"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.40008081899999998" colorSpace="calibratedRGB"/>
+                                <size key="shadowOffset" width="1" height="1"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="* Password does not match" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H82-i7-AVy">
+                                <rect key="frame" x="120" y="413" width="175" height="18"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.40008081899999998" colorSpace="calibratedRGB"/>
+                                <size key="shadowOffset" width="1" height="1"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter the information below to create your EasyOut account!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4y-aj-Obs">
+                                <rect key="frame" x="60" y="67" width="480" height="71"/>
+                                <fontDescription key="fontDescription" name="LobsterTwo" family="Lobster Two" pointSize="28"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.40008081899999998" colorSpace="calibratedRGB"/>
+                                <size key="shadowOffset" width="-1" height="-1"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.36960259470000001" green="0.80310696039999996" blue="0.83317307689999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="lR3-U0-2KC" firstAttribute="top" secondItem="pQF-7q-Nfb" secondAttribute="bottom" id="3Dj-fD-DK7"/>
                             <constraint firstItem="Y4y-aj-Obs" firstAttribute="bottom" secondItem="hMK-Xm-0cA" secondAttribute="top" constant="-50" id="An7-M1-RdG"/>
                             <constraint firstItem="hMK-Xm-0cA" firstAttribute="centerX" secondItem="KBv-7P-v3I" secondAttribute="centerX" id="JS5-XY-SJR"/>
-                            <constraint firstItem="hMK-Xm-0cA" firstAttribute="width" secondItem="KBv-7P-v3I" secondAttribute="width" multiplier="0.5" id="OWO-v1-Xtk"/>
-                            <constraint firstItem="9ma-SV-gzI" firstAttribute="top" secondItem="hMK-Xm-0cA" secondAttribute="bottom" constant="50" id="R52-3a-MA9"/>
+                            <constraint firstItem="3UN-75-XDh" firstAttribute="centerX" secondItem="KBv-7P-v3I" secondAttribute="centerX" id="JqU-aV-xvb"/>
+                            <constraint firstItem="LrY-DN-DXT" firstAttribute="leading" secondItem="rQ5-1d-e91" secondAttribute="leading" id="LPA-Mk-x1q"/>
+                            <constraint firstItem="3UN-75-XDh" firstAttribute="top" secondItem="hMK-Xm-0cA" secondAttribute="bottom" constant="50" id="NKI-aA-DW9"/>
+                            <constraint firstItem="hMK-Xm-0cA" firstAttribute="width" secondItem="KBv-7P-v3I" secondAttribute="width" multiplier="0.6" id="OWO-v1-Xtk"/>
+                            <constraint firstItem="LrY-DN-DXT" firstAttribute="top" secondItem="rQ5-1d-e91" secondAttribute="bottom" id="ThF-g1-frS"/>
+                            <constraint firstItem="7IF-L1-e9g" firstAttribute="leading" secondItem="AkE-cs-das" secondAttribute="leading" id="Y15-YW-THa"/>
+                            <constraint firstItem="7IF-L1-e9g" firstAttribute="top" secondItem="AkE-cs-das" secondAttribute="bottom" id="aO0-sr-xMm"/>
+                            <constraint firstItem="LrY-DN-DXT" firstAttribute="trailing" secondItem="rQ5-1d-e91" secondAttribute="trailing" id="ami-Fv-08u"/>
                             <constraint firstItem="Y4y-aj-Obs" firstAttribute="centerX" secondItem="KBv-7P-v3I" secondAttribute="centerX" id="bOO-ha-zQu"/>
-                            <constraint firstItem="9ma-SV-gzI" firstAttribute="centerX" secondItem="KBv-7P-v3I" secondAttribute="centerX" id="czZ-F5-d66"/>
-                            <constraint firstItem="Y4y-aj-Obs" firstAttribute="width" secondItem="KBv-7P-v3I" secondAttribute="width" multiplier="0.5" id="lKY-yx-h07"/>
+                            <constraint firstItem="3UN-75-XDh" firstAttribute="width" secondItem="hMK-Xm-0cA" secondAttribute="width" id="ewJ-qn-Ydm"/>
+                            <constraint firstItem="lR3-U0-2KC" firstAttribute="leading" secondItem="pQF-7q-Nfb" secondAttribute="leading" id="fOs-gg-04o"/>
+                            <constraint firstItem="Y4y-aj-Obs" firstAttribute="width" secondItem="KBv-7P-v3I" secondAttribute="width" multiplier="0.8" id="lKY-yx-h07"/>
+                            <constraint firstItem="H82-i7-AVy" firstAttribute="leading" secondItem="QIq-yV-JAH" secondAttribute="leading" id="mPq-bl-c9h"/>
                             <constraint firstItem="hMK-Xm-0cA" firstAttribute="centerY" secondItem="KBv-7P-v3I" secondAttribute="centerY" id="qns-vc-Zcb"/>
+                            <constraint firstItem="H82-i7-AVy" firstAttribute="top" secondItem="QIq-yV-JAH" secondAttribute="bottom" id="taL-X6-JYW"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="createAccountButtonTapped" destination="9ma-SV-gzI" id="cyd-xk-fhS"/>
-                        <outlet property="createAccountLabel" destination="Y4y-aj-Obs" id="Peu-rF-8km"/>
                         <outlet property="emailLabel" destination="AkE-cs-das" id="QrM-yu-SPZ"/>
+                        <outlet property="emailWarning" destination="7IF-L1-e9g" id="2QS-mj-Jhq"/>
                         <outlet property="passWordLabel" destination="pQF-7q-Nfb" id="EWo-ur-zNv"/>
+                        <outlet property="passwordWarning" destination="lR3-U0-2KC" id="4a0-gX-aU1"/>
                         <outlet property="userNameLabel" destination="rQ5-1d-e91" id="vKT-4v-Bjf"/>
+                        <outlet property="usernameWarning" destination="LrY-DN-DXT" id="U5W-0O-IHq"/>
+                        <outlet property="verifyPassWarning" destination="H82-i7-AVy" id="sod-tb-Gdn"/>
                         <outlet property="verifyPasswordLabel" destination="QIq-yV-JAH" id="hzf-wJ-cnx"/>
                     </connections>
                 </viewController>

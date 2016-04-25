@@ -12,7 +12,7 @@
 #import "Event.h"
 #import <AFNetworking/AFImageDownloader.h>
 #import <AFNetworking/AFNetworking.h>
-
+#import "QuartzCore/CALayer.h"
 
 
 @interface ActivityCardView ()
@@ -65,7 +65,7 @@
     [self.contentView.leadingAnchor constraintEqualToAnchor:self.leadingAnchor constant:20].active = YES;
     [self.contentView.trailingAnchor constraintEqualToAnchor:self.trailingAnchor constant:-20].active = YES;
     
-    self.contentView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
+    self.contentView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
 //    self.checkButton.layer.borderColor = [[UIColor blackColor] colorWithAlphaComponent:0.6].CGColor;
 //    self.checkButton.layer.borderWidth = 3;
 }
@@ -102,7 +102,8 @@
     
     self.detailLabel.text = self.activity.price;
     
-    
+    [self addShadowToImage];
+
 }
 
 
@@ -115,28 +116,40 @@
 - (IBAction)cardSelected:(UIButton *)sender {
     
     self.contentSuperview = [self.contentView superview];
-    NSLog(@"ContentView Superview: %@", self.contentSuperview);
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"checkBoxChecked" object:sender];
     
-    if([self.contentView.backgroundColor isEqual: [[UIColor blackColor] colorWithAlphaComponent:0.4]]) {
+    if([self.contentView.backgroundColor isEqual: [[UIColor blackColor] colorWithAlphaComponent:0.5]]) {
         
-        self.contentView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.4];
+        self.contentView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5];
         self.nameLabel.textColor = [UIColor blackColor];
         self.addressLabel.textColor = [UIColor blackColor];
+        self.addressLabel2.textColor = [UIColor blackColor];
         self.detailLabel.textColor = [UIColor blackColor];
+        
+        [self.checkButton setImage:[UIImage imageNamed:@"checkButton"] forState:UIControlStateNormal];
+    
     }
     else {
         
-        self.contentView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
+        self.contentView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
         self.nameLabel.textColor = [UIColor whiteColor];
         self.addressLabel.textColor = [UIColor whiteColor];
+        self.addressLabel2.textColor = [UIColor whiteColor];
         self.detailLabel.textColor = [UIColor whiteColor];
-        
+        [self.checkButton setImage: [UIImage imageNamed:@"addButton"] forState:UIControlStateNormal];
+
     }
     
 }
 
+-(void)addShadowToImage {
+    self.imageView.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.imageView.layer.shadowOffset = CGSizeMake(0, 1);
+    self.imageView.layer.shadowOpacity = 1;
+    self.imageView.layer.shadowRadius = 1.0;
+    self.imageView.clipsToBounds = NO;
+}
 
 
 @end

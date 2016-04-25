@@ -8,19 +8,23 @@
 
 #import "CreateAccountViewController.h"
 
-@interface CreateAccountViewController ()
+@interface CreateAccountViewController () <UITextFieldDelegate>
 
 
 @property (strong, nonatomic)NSString *email;
 @property (strong, nonatomic)NSString *username;
-
-
-@property (weak, nonatomic) IBOutlet UILabel *createAccountLabel;
-@property (weak, nonatomic) IBOutlet UITextField *userNameLabel;
 @property (weak, nonatomic) IBOutlet UITextField *emailLabel;
 @property (weak, nonatomic) IBOutlet UITextField *passWordLabel;
+@property (weak, nonatomic) IBOutlet UITextField *userNameLabel;
 @property (weak, nonatomic) IBOutlet UITextField *verifyPasswordLabel;
+
 @property (weak, nonatomic) IBOutlet UIButton *createAccountButtonTapped;
+
+@property (weak, nonatomic) IBOutlet UILabel *usernameWarning;
+@property (weak, nonatomic) IBOutlet UILabel *emailWarning;
+@property (weak, nonatomic) IBOutlet UILabel *passwordWarning;
+@property (weak, nonatomic) IBOutlet UILabel *verifyPassWarning;
+
 
 @end
 
@@ -35,7 +39,35 @@
     
     [self.view addGestureRecognizer:tapGesture];
     
-    self.createAccountButtonTapped.enabled = NO;
+    [self passInPriorUserInput];
+    
+    self.userNameLabel.delegate = self;
+    self.emailLabel.delegate = self;
+    self.passWordLabel.delegate = self;
+    self.verifyPasswordLabel.delegate = self;
+    
+}
+
+-(void)passInPriorUserInput {
+    //Populate any fields that were populated at login
+    if(self.inputEmail) {
+        self.emailLabel.text = self.inputEmail;
+    }
+    if(self.inputPassword) {
+        self.passWordLabel.text = self.inputPassword;
+        self.verifyPasswordLabel.enabled = YES;
+    }
+    //Check validity of populated fields
+    if(![self isEmailValid:self.emailLabel.text] && self.emailLabel.text.length > 0) {
+        [self animateTextField: self.emailLabel];
+        self.emailWarning.hidden = NO;
+        
+    }
+    if(![self isPasswordValid:self.passWordLabel.text] && self.passWordLabel.text.length > 0) {
+        [self animateTextField: self.passWordLabel];
+        self.passwordWarning.hidden = NO;
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -59,82 +91,112 @@
     }];
 }
 
--(BOOL)emailIsValid{
-    if ([self.emailLabel.text containsString:@"@"] && [self.emailLabel.text containsString:@"."]){
-        return YES;
-    }
-    
-    self.createAccountButtonTapped.enabled = NO;
-    return NO;
-}
 
--(BOOL)passwordValid {
-    if (self.passWordLabel.text.length > 7) {
-
-        return YES;
-    }
+-(BOOL)isUsernameValid:(NSString *)username {
     
-    self.createAccountButtonTapped.enabled = NO;
-    return NO;
-}
-
--(BOOL)confirmPassword {
-    if ([self.verifyPasswordLabel.text isEqualToString:self.passWordLabel.text]) {
-        return YES;
-    }
-    
-    self.createAccountButtonTapped.enabled = NO;
-    return NO;
+    return (username.length > 5 && ![username containsString:@" "]);
 }
 
 
-// Create a new user in Firebase
--(void)createNewUserWithCompletion:(void (^)(BOOL finished)) completion {
+-(BOOL)isPasswordValid:(NSString *)password {
+    
+    return (password.length > 7 && ![password containsString:@" "] );
     
 }
 
-- (IBAction)usernameDidEnd:(id)sender {
-    if (self.userNameLabel.text.length >2) {
-        
-    }
+
+- (BOOL)isEmailValid:(NSString *)email {
+    
+    return (email.length > 5 && [email containsString:@"@"] && ![email containsString:@" "]);
+    
 }
 
-- (IBAction)emailDidEnd:(id)sender {
-    if (![self emailIsValid]) {
-        [UIView animateWithDuration:0.50 animations:^{
-            self.emailLabel.backgroundColor = [UIColor colorWithRed:247.0f/255.0f green:121.0f/255.0f blue:121.0f/255.0f alpha:1.0];
-             }];
-        } else {
-            self.emailLabel.backgroundColor = [UIColor whiteColor];
+-(BOOL)isPasswordSame {
+    return ([self.verifyPasswordLabel.text isEqualToString:self.passWordLabel.text]);
+    
+}
+
+
+-(void)textFieldDidEndEditing:(UITextField *)textField {
+    //check what text field it is and do proper validating
+    
+    if(textField == self.userNameLabel) {
+        if(self.userNameLabel.text.length > 0) {
+            
+            [self checkUsernameValidityWithCompletion:^(BOOL isValid) {
+                if(!(isValid)) {
+                 
+                    [self animateTextField:textField];
+                    self.usernameWarning.text = @"* Username already taken";
+                    self.usernameWarning.hidden = NO;
+                }
+            }];
         }
-}
-
-- (IBAction)passwordDidEnd:(id)sender {
+        
+        if(self.userNameLabel.text.length > 0 && ![self isUsernameValid:self.userNameLabel.text]) {
+            [self animateTextField: self.userNameLabel];
+            self.usernameWarning.hidden = NO;
+        }
+        
+    }
+    else if(textField == self.emailLabel) {
+        
+        if(self.emailLabel.text.length > 0 && ![self isEmailValid:self.emailLabel.text]) {
+            
+            [self animateTextField: self.emailLabel];
+            self.emailWarning.hidden = NO;
+        }
+        
+    }
+    else if(textField == self.passWordLabel) {
+        
+        if(self.passWordLabel.text.length > 0 && ![self isPasswordValid:self.passWordLabel.text]) {
+           
+            [self animateTextField: self.passWordLabel];
+            self.passwordWarning.hidden = NO;
+        }
+        else {
+            self.verifyPasswordLabel.enabled = YES;
+        }
+         
+    }
+    else if (textField == self.verifyPasswordLabel) {
+        if(self.verifyPasswordLabel.text.length > 0 && ![self isPasswordSame]) {
+            
+            [self animateTextField: self.verifyPasswordLabel];
+            self.verifyPassWarning.hidden = NO;
+        }
+    }
     
-    if (![self passwordValid]) {
-        [UIView animateWithDuration:0.50 animations:^{
-            self.passWordLabel.backgroundColor = [UIColor colorWithRed:247.0f/255.0f green:121.0f/255.0f blue:121.0f/255.0f alpha:1.0];
-        }];
-        
-    } else { [UIView animateWithDuration:0.50 animations:^{
-        self.passWordLabel.backgroundColor = [UIColor whiteColor];
-    }];
-        
+    if([self allFieldsValid]) {
+        self.createAccountButtonTapped.enabled = YES;
     }
 }
 
-- (IBAction)confirmPasswordDidEnd:(id)sender {
-    if (![self confirmPassword]) {
-        [UIView animateWithDuration:0.50 animations:^{
-            self.verifyPasswordLabel.backgroundColor = [UIColor colorWithRed:247.0f/255.0f green:121.0f/255.0f blue:121.0f/255.0f alpha:1.0];
-        }];
-    } else {
-        [UIView animateWithDuration:0.50 animations:^{
-            self.verifyPasswordLabel.backgroundColor = [UIColor whiteColor];
-            self.createAccountButtonTapped.enabled = YES;
-        }];
+-(void)textFieldDidBeginEditing:(UITextField *)textField{
+
+    textField.backgroundColor = [UIColor whiteColor];
+    
+    if(textField == self.userNameLabel){
+        self.usernameWarning.hidden = YES;
+        self.usernameWarning.text = @"* Must be at least 7 characters long & cannot contain spaces";
+    }
+    if(textField == self.emailLabel){
+        self.emailWarning.hidden = YES;
         
     }
+    if(textField == self.passWordLabel){
+        self.passWordLabel.text = @"";
+        self.passwordWarning.hidden = YES;
+
+    }
+    if(textField == self.verifyPasswordLabel){
+        
+        self.verifyPasswordLabel.text = @"";
+        self.verifyPassWarning.hidden = YES;
+
+    }
+    
 }
 
 - (IBAction)createAccountButton:(id)sender {
@@ -142,12 +204,17 @@
     User *newUser = [[User alloc]initWithEmail:self.emailLabel.text username:self.userNameLabel.text];
     
     [FirebaseAPIClient registerNewUserWithUser:newUser password:self.passWordLabel.text completion:^(BOOL success) {
+        
+        
+        
         if (success) {
             
             NSLog(@"User with email %@ was successfully registered", self.emailLabel.text);
             
             [self dismissViewControllerAnimated:YES completion:nil];
+            
             [[NSNotificationCenter defaultCenter] postNotificationName:mainViewControllerStoryBoardID object:nil];
+            
         } else {
             
             NSLog(@"Something went wrong registering the user");
@@ -155,6 +222,27 @@
     }];
 }
 
+-(void)animateTextField:(UITextField *)textField {
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        
+        [UIView setAnimationRepeatCount:4.0];
+        
+        textField.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.4];
+        
+    }];
+    
+}
 
-             
+- (IBAction)cancelButtonPressed:(UIButton *)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+-(BOOL)allFieldsValid {
+    
+    return([self isEmailValid:self.emailLabel.text] && [self isPasswordValid:self.passWordLabel.text] && [self isUsernameValid:self.userNameLabel.text] && [self isPasswordSame]);
+}
+
 @end

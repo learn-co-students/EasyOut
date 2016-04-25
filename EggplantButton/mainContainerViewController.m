@@ -26,6 +26,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.backgroundColor = [UIColor clearColor];
+
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(menuButtonTapped:)
                                                  name:@"menuButtonTapped"
@@ -68,6 +71,7 @@
     
     [UIView animateWithDuration:0.2 animations:^{
         self.sideMenuContainer.alpha = 0;
+
         self.viewContainer.alpha = 1;
     }];
     
@@ -84,12 +88,7 @@
                                                         object:nil];
 }
 
-- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event
-{
-    if ( event.subtype == UIEventSubtypeMotionShake )
-    {
-        
-    }
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
     
     if ( [super respondsToSelector:@selector(motionEnded:withEvent:)] )
         [super motionEnded:motion withEvent:event];

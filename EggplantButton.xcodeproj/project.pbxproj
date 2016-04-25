@@ -29,7 +29,6 @@
 		4C9A037D1CAB064200CA9A02 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9A037C1CAB064200CA9A02 /* main.m */; };
 		4C9A03801CAB064200CA9A02 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9A037F1CAB064200CA9A02 /* AppDelegate.m */; };
 		4C9A038B1CAB064200CA9A02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C9A038A1CAB064200CA9A02 /* Assets.xcassets */; };
-		4C9A038E1CAB064200CA9A02 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C9A038C1CAB064200CA9A02 /* LaunchScreen.storyboard */; };
 		4C9C96271CC58C0600C7094A /* FirebaseIntegrationTestFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9C96261CC58C0600C7094A /* FirebaseIntegrationTestFunctions.swift */; };
 		4C9C962A1CC6ABAF00C7094A /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9C96291CC6ABAF00C7094A /* Constants.m */; };
 		4CAD0CC51CB568C4008162CE /* FirebaseIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAD0CC41CB568C4008162CE /* FirebaseIntegration.swift */; };
@@ -63,6 +62,8 @@
 		9A491A7A1CC7389F002353C6 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A491A6A1CC7381F002353C6 /* Roboto-Regular.ttf */; };
 		9A491A7B1CC7389F002353C6 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A491A6B1CC7381F002353C6 /* Roboto-Thin.ttf */; };
 		9A491A7C1CC7389F002353C6 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A491A6C1CC7381F002353C6 /* Roboto-ThinItalic.ttf */; };
+		9A5ABC7D1CCDBD8400C1C71E /* ItineraryReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A5ABC7C1CCDBD8400C1C71E /* ItineraryReviewCell.xib */; };
+		9A5ABC801CCDBE9100C1C71E /* ItineraryReviewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5ABC7F1CCDBE9100C1C71E /* ItineraryReviewTableViewCell.m */; };
 		9A5AEC321CBF476B009F2BEA /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5AEC311CBF476B009F2BEA /* UserProfileViewController.m */; };
 		9A5AEC341CBF4795009F2BEA /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A5AEC331CBF4795009F2BEA /* UserProfile.storyboard */; };
 		9A74DC521CBF391900B63B0B /* FilterView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A74DC511CBF391900B63B0B /* FilterView.storyboard */; };
@@ -156,6 +157,9 @@
 		9A491A6A1CC7381F002353C6 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		9A491A6B1CC7381F002353C6 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		9A491A6C1CC7381F002353C6 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
+		9A5ABC7C1CCDBD8400C1C71E /* ItineraryReviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItineraryReviewCell.xib; sourceTree = "<group>"; };
+		9A5ABC7E1CCDBE9100C1C71E /* ItineraryReviewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItineraryReviewTableViewCell.h; sourceTree = "<group>"; };
+		9A5ABC7F1CCDBE9100C1C71E /* ItineraryReviewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItineraryReviewTableViewCell.m; sourceTree = "<group>"; };
 		9A5AEC301CBF476B009F2BEA /* UserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
 		9A5AEC311CBF476B009F2BEA /* UserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
 		9A5AEC331CBF4795009F2BEA /* UserProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
@@ -284,6 +288,9 @@
 				9AA058781CAEAA57000A6AA8 /* ActivityCard.xib */,
 				4C358D711CADCDF700257756 /* ActivityCardView.h */,
 				4C358D721CADCDF700257756 /* ActivityCardView.m */,
+				9A5ABC7C1CCDBD8400C1C71E /* ItineraryReviewCell.xib */,
+				9A5ABC7E1CCDBE9100C1C71E /* ItineraryReviewTableViewCell.h */,
+				9A5ABC7F1CCDBE9100C1C71E /* ItineraryReviewTableViewCell.m */,
 			);
 			name = Views;
 			path = ..;
@@ -503,13 +510,13 @@
 				9A491A7B1CC7389F002353C6 /* Roboto-Thin.ttf in Resources */,
 				4C1DE15F1CB8410900AFBCF5 /* LobsterTwo-Bold.otf in Resources */,
 				4CBBC6091CBA97B0006683D8 /* Main.storyboard in Resources */,
-				4C9A038E1CAB064200CA9A02 /* LaunchScreen.storyboard in Resources */,
 				9A491A761CC7389F002353C6 /* Roboto-Light.ttf in Resources */,
 				9A491A781CC7389F002353C6 /* Roboto-Medium.ttf in Resources */,
 				9A491A7C1CC7389F002353C6 /* Roboto-ThinItalic.ttf in Resources */,
 				4C9A038B1CAB064200CA9A02 /* Assets.xcassets in Resources */,
 				9A5AEC341CBF4795009F2BEA /* UserProfile.storyboard in Resources */,
 				4C0EE1531CBDA0930092C39A /* ItineraryHistoryView.storyboard in Resources */,
+				9A5ABC7D1CCDBD8400C1C71E /* ItineraryReviewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,6 +580,7 @@
 				4C0EE1591CBDA2E70092C39A /* ItineraryHistoryTableViewController.m in Sources */,
 				4CBBC6061CBA96DF006683D8 /* setupButton.m in Sources */,
 				78A7F6D81CC1672700DD4937 /* sideMenuViewController.m in Sources */,
+				9A5ABC801CCDBE9100C1C71E /* ItineraryReviewTableViewCell.m in Sources */,
 				4C9C962A1CC6ABAF00C7094A /* Constants.m in Sources */,
 				9A5AEC321CBF476B009F2BEA /* UserProfileViewController.m in Sources */,
 				4C358D381CAD62CE00257756 /* CardViewController.m in Sources */,
