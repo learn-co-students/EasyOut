@@ -37,6 +37,26 @@
 		4CBBC6061CBA96DF006683D8 /* setupButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBBC6011CBA96DF006683D8 /* setupButton.m */; };
 		4CBBC6091CBA97B0006683D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CBBC6081CBA97B0006683D8 /* Main.storyboard */; };
 		4CBBF0871CBBEE09005BB352 /* Tip.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBBF0861CBBEE09005BB352 /* Tip.m */; };
+		4CD9FF6F1CCE602E00D3E603 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CD9FF5F1CCE602E00D3E603 /* Roboto-Black.ttf */; };
+		4CD9FF701CCE602E00D3E603 /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CD9FF601CCE602E00D3E603 /* Roboto-BlackItalic.ttf */; };
+		4CD9FF711CCE602E00D3E603 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CD9FF611CCE602E00D3E603 /* Roboto-Bold.ttf */; };
+		4CD9FF721CCE602E00D3E603 /* Roboto-BoldCondensed.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CD9FF621CCE602E00D3E603 /* Roboto-BoldCondensed.ttf */; };
+		4CD9FF731CCE602E00D3E603 /* Roboto-BoldCondensedItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CD9FF631CCE602E00D3E603 /* Roboto-BoldCondensedItalic.ttf */; };
+		4CD9FF741CCE602E00D3E603 /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CD9FF641CCE602E00D3E603 /* Roboto-BoldItalic.ttf */; };
+		4CD9FF751CCE602E00D3E603 /* Roboto-Condensed.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CD9FF651CCE602E00D3E603 /* Roboto-Condensed.ttf */; };
+		4CD9FF761CCE602E00D3E603 /* Roboto-CondensedItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CD9FF661CCE602E00D3E603 /* Roboto-CondensedItalic.ttf */; };
+		4CD9FF771CCE602E00D3E603 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CD9FF671CCE602E00D3E603 /* Roboto-Italic.ttf */; };
+		4CD9FF781CCE602E00D3E603 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CD9FF681CCE602E00D3E603 /* Roboto-Light.ttf */; };
+		4CD9FF791CCE602E00D3E603 /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CD9FF691CCE602E00D3E603 /* Roboto-LightItalic.ttf */; };
+		4CD9FF7A1CCE602E00D3E603 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CD9FF6A1CCE602E00D3E603 /* Roboto-Medium.ttf */; };
+		4CD9FF7B1CCE602E00D3E603 /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CD9FF6B1CCE602E00D3E603 /* Roboto-MediumItalic.ttf */; };
+		4CD9FF7C1CCE602E00D3E603 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CD9FF6C1CCE602E00D3E603 /* Roboto-Regular.ttf */; };
+		4CD9FF7D1CCE602E00D3E603 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CD9FF6D1CCE602E00D3E603 /* Roboto-Thin.ttf */; };
+		4CD9FF7E1CCE602E00D3E603 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CD9FF6E1CCE602E00D3E603 /* Roboto-ThinItalic.ttf */; };
+		4CD9FF851CCE605400D3E603 /* CircleLabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CD9FF7F1CCE605400D3E603 /* CircleLabel.xib */; };
+		4CD9FF861CCE605400D3E603 /* CircleLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD9FF811CCE605400D3E603 /* CircleLabelView.m */; };
+		4CD9FF871CCE605400D3E603 /* ItineraryReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CD9FF821CCE605400D3E603 /* ItineraryReviewCell.xib */; };
+		4CD9FF881CCE605400D3E603 /* ItineraryReviewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD9FF841CCE605400D3E603 /* ItineraryReviewTableViewCell.m */; };
 		752C207F8039FC0AF3F24A9C /* Pods_EggplantButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 620C2EAF950D8ACD2F96FDC8 /* Pods_EggplantButton.framework */; };
 		787EEDFB1CC6B51A00555A16 /* ActivityCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C358D721CADCDF700257756 /* ActivityCardView.m */; };
 		78A7F6C71CBD44AC00DD4937 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78A7F6C61CBD44AC00DD4937 /* CoreMotion.framework */; };
@@ -47,28 +67,11 @@
 		78A7F6D51CC0217D00DD4937 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AB65BBB1CBD95E4008A99CF /* Login.storyboard */; };
 		78A7F6D81CC1672700DD4937 /* sideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78A7F6D71CC1672700DD4937 /* sideMenuViewController.m */; };
 		9A33839B1CBC5416004B8EFE /* ActivityCardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3383981CBC5416004B8EFE /* ActivityCardCollectionViewCell.m */; };
-		9A491A5C1CC7247C002353C6 /* CircleLabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A491A5B1CC7247C002353C6 /* CircleLabel.xib */; };
-		9A491A6F1CC7389F002353C6 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A491A5F1CC7381E002353C6 /* Roboto-Bold.ttf */; };
-		9A491A701CC7389F002353C6 /* Roboto-BoldCondensed.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A491A601CC7381E002353C6 /* Roboto-BoldCondensed.ttf */; };
-		9A491A721CC7389F002353C6 /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A491A621CC7381F002353C6 /* Roboto-BoldItalic.ttf */; };
-		9A491A731CC7389F002353C6 /* Roboto-Condensed.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A491A631CC7381F002353C6 /* Roboto-Condensed.ttf */; };
-		9A491A741CC7389F002353C6 /* Roboto-CondensedItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A491A641CC7381F002353C6 /* Roboto-CondensedItalic.ttf */; };
-		9A491A751CC7389F002353C6 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A491A651CC7381F002353C6 /* Roboto-Italic.ttf */; };
-		9A491A761CC7389F002353C6 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A491A661CC7381F002353C6 /* Roboto-Light.ttf */; };
-		9A491A771CC7389F002353C6 /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A491A671CC7381F002353C6 /* Roboto-LightItalic.ttf */; };
-		9A491A781CC7389F002353C6 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A491A681CC7381F002353C6 /* Roboto-Medium.ttf */; };
-		9A491A791CC7389F002353C6 /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A491A691CC7381F002353C6 /* Roboto-MediumItalic.ttf */; };
-		9A491A7A1CC7389F002353C6 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A491A6A1CC7381F002353C6 /* Roboto-Regular.ttf */; };
-		9A491A7B1CC7389F002353C6 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A491A6B1CC7381F002353C6 /* Roboto-Thin.ttf */; };
-		9A491A7C1CC7389F002353C6 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A491A6C1CC7381F002353C6 /* Roboto-ThinItalic.ttf */; };
-		9A5ABC7D1CCDBD8400C1C71E /* ItineraryReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A5ABC7C1CCDBD8400C1C71E /* ItineraryReviewCell.xib */; };
-		9A5ABC801CCDBE9100C1C71E /* ItineraryReviewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5ABC7F1CCDBE9100C1C71E /* ItineraryReviewTableViewCell.m */; };
 		9A5AEC321CBF476B009F2BEA /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5AEC311CBF476B009F2BEA /* UserProfileViewController.m */; };
 		9A5AEC341CBF4795009F2BEA /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A5AEC331CBF4795009F2BEA /* UserProfile.storyboard */; };
 		9A74DC521CBF391900B63B0B /* FilterView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A74DC511CBF391900B63B0B /* FilterView.storyboard */; };
 		9A74DC551CBF39E600B63B0B /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74DC541CBF39E600B63B0B /* FilterViewController.m */; };
 		9A8C888A1CC44D710053EC00 /* FoursquareAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8C88891CC44D710053EC00 /* FoursquareAPIClient.m */; };
-		9A8C88951CC6671F0053EC00 /* CircleLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8C88941CC6671F0053EC00 /* CircleLabelView.m */; };
 		9AA058791CAEAA57000A6AA8 /* ActivityCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AA058781CAEAA57000A6AA8 /* ActivityCard.xib */; };
 		9ACC8C171CBD398E00909704 /* DetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ACC8C161CBD398E00909704 /* DetailView.storyboard */; };
 		9ACC8C1A1CBD399800909704 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACC8C191CBD399800909704 /* DetailViewController.m */; };
@@ -128,6 +131,28 @@
 		4CBBC6081CBA97B0006683D8 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		4CBBF0851CBBEE09005BB352 /* Tip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tip.h; path = EggplantButton/Tip.h; sourceTree = "<group>"; };
 		4CBBF0861CBBEE09005BB352 /* Tip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tip.m; path = EggplantButton/Tip.m; sourceTree = "<group>"; };
+		4CD9FF5F1CCE602E00D3E603 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Black.ttf"; path = "EggplantButton/Roboto-Black.ttf"; sourceTree = "<group>"; };
+		4CD9FF601CCE602E00D3E603 /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-BlackItalic.ttf"; path = "EggplantButton/Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
+		4CD9FF611CCE602E00D3E603 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Bold.ttf"; path = "EggplantButton/Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		4CD9FF621CCE602E00D3E603 /* Roboto-BoldCondensed.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-BoldCondensed.ttf"; path = "EggplantButton/Roboto-BoldCondensed.ttf"; sourceTree = "<group>"; };
+		4CD9FF631CCE602E00D3E603 /* Roboto-BoldCondensedItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-BoldCondensedItalic.ttf"; path = "EggplantButton/Roboto-BoldCondensedItalic.ttf"; sourceTree = "<group>"; };
+		4CD9FF641CCE602E00D3E603 /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-BoldItalic.ttf"; path = "EggplantButton/Roboto-BoldItalic.ttf"; sourceTree = "<group>"; };
+		4CD9FF651CCE602E00D3E603 /* Roboto-Condensed.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Condensed.ttf"; path = "EggplantButton/Roboto-Condensed.ttf"; sourceTree = "<group>"; };
+		4CD9FF661CCE602E00D3E603 /* Roboto-CondensedItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-CondensedItalic.ttf"; path = "EggplantButton/Roboto-CondensedItalic.ttf"; sourceTree = "<group>"; };
+		4CD9FF671CCE602E00D3E603 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Italic.ttf"; path = "EggplantButton/Roboto-Italic.ttf"; sourceTree = "<group>"; };
+		4CD9FF681CCE602E00D3E603 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Light.ttf"; path = "EggplantButton/Roboto-Light.ttf"; sourceTree = "<group>"; };
+		4CD9FF691CCE602E00D3E603 /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-LightItalic.ttf"; path = "EggplantButton/Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
+		4CD9FF6A1CCE602E00D3E603 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Medium.ttf"; path = "EggplantButton/Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		4CD9FF6B1CCE602E00D3E603 /* Roboto-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-MediumItalic.ttf"; path = "EggplantButton/Roboto-MediumItalic.ttf"; sourceTree = "<group>"; };
+		4CD9FF6C1CCE602E00D3E603 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Regular.ttf"; path = "EggplantButton/Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		4CD9FF6D1CCE602E00D3E603 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Thin.ttf"; path = "EggplantButton/Roboto-Thin.ttf"; sourceTree = "<group>"; };
+		4CD9FF6E1CCE602E00D3E603 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-ThinItalic.ttf"; path = "EggplantButton/Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
+		4CD9FF7F1CCE605400D3E603 /* CircleLabel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CircleLabel.xib; path = EggplantButton/CircleLabel.xib; sourceTree = "<group>"; };
+		4CD9FF801CCE605400D3E603 /* CircleLabelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CircleLabelView.h; path = EggplantButton/CircleLabelView.h; sourceTree = "<group>"; };
+		4CD9FF811CCE605400D3E603 /* CircleLabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CircleLabelView.m; path = EggplantButton/CircleLabelView.m; sourceTree = "<group>"; };
+		4CD9FF821CCE605400D3E603 /* ItineraryReviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ItineraryReviewCell.xib; path = EggplantButton/ItineraryReviewCell.xib; sourceTree = "<group>"; };
+		4CD9FF831CCE605400D3E603 /* ItineraryReviewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItineraryReviewTableViewCell.h; path = EggplantButton/ItineraryReviewTableViewCell.h; sourceTree = "<group>"; };
+		4CD9FF841CCE605400D3E603 /* ItineraryReviewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItineraryReviewTableViewCell.m; path = EggplantButton/ItineraryReviewTableViewCell.m; sourceTree = "<group>"; };
 		5B0FD8E68B26336D4AE48A9A /* Pods-EggplantButton.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EggplantButton.release.xcconfig"; path = "Pods/Target Support Files/Pods-EggplantButton/Pods-EggplantButton.release.xcconfig"; sourceTree = "<group>"; };
 		620C2EAF950D8ACD2F96FDC8 /* Pods_EggplantButton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EggplantButton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		78A7F6C61CBD44AC00DD4937 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
@@ -140,23 +165,6 @@
 		78A7F6D71CC1672700DD4937 /* sideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sideMenuViewController.m; sourceTree = "<group>"; };
 		9A3383971CBC5416004B8EFE /* ActivityCardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActivityCardCollectionViewCell.h; path = EggplantButton/ActivityCardCollectionViewCell.h; sourceTree = "<group>"; };
 		9A3383981CBC5416004B8EFE /* ActivityCardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActivityCardCollectionViewCell.m; path = EggplantButton/ActivityCardCollectionViewCell.m; sourceTree = "<group>"; };
-		9A491A5B1CC7247C002353C6 /* CircleLabel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CircleLabel.xib; sourceTree = "<group>"; };
-		9A491A5F1CC7381E002353C6 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
-		9A491A601CC7381E002353C6 /* Roboto-BoldCondensed.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BoldCondensed.ttf"; sourceTree = "<group>"; };
-		9A491A621CC7381F002353C6 /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BoldItalic.ttf"; sourceTree = "<group>"; };
-		9A491A631CC7381F002353C6 /* Roboto-Condensed.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Condensed.ttf"; sourceTree = "<group>"; };
-		9A491A641CC7381F002353C6 /* Roboto-CondensedItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-CondensedItalic.ttf"; sourceTree = "<group>"; };
-		9A491A651CC7381F002353C6 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
-		9A491A661CC7381F002353C6 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
-		9A491A671CC7381F002353C6 /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
-		9A491A681CC7381F002353C6 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
-		9A491A691CC7381F002353C6 /* Roboto-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-MediumItalic.ttf"; sourceTree = "<group>"; };
-		9A491A6A1CC7381F002353C6 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
-		9A491A6B1CC7381F002353C6 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
-		9A491A6C1CC7381F002353C6 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
-		9A5ABC7C1CCDBD8400C1C71E /* ItineraryReviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItineraryReviewCell.xib; sourceTree = "<group>"; };
-		9A5ABC7E1CCDBE9100C1C71E /* ItineraryReviewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItineraryReviewTableViewCell.h; sourceTree = "<group>"; };
-		9A5ABC7F1CCDBE9100C1C71E /* ItineraryReviewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItineraryReviewTableViewCell.m; sourceTree = "<group>"; };
 		9A5AEC301CBF476B009F2BEA /* UserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
 		9A5AEC311CBF476B009F2BEA /* UserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
 		9A5AEC331CBF4795009F2BEA /* UserProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
@@ -165,8 +173,6 @@
 		9A74DC541CBF39E600B63B0B /* FilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterViewController.m; sourceTree = "<group>"; };
 		9A8C88881CC44D710053EC00 /* FoursquareAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoursquareAPIClient.h; sourceTree = "<group>"; };
 		9A8C88891CC44D710053EC00 /* FoursquareAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoursquareAPIClient.m; sourceTree = "<group>"; };
-		9A8C88931CC6671F0053EC00 /* CircleLabelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleLabelView.h; sourceTree = "<group>"; };
-		9A8C88941CC6671F0053EC00 /* CircleLabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleLabelView.m; sourceTree = "<group>"; };
 		9AA058781CAEAA57000A6AA8 /* ActivityCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ActivityCard.xib; path = EggplantButton/ActivityCard.xib; sourceTree = "<group>"; };
 		9AB65BBB1CBD95E4008A99CF /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		9ACC8C161CBD398E00909704 /* DetailView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DetailView.storyboard; sourceTree = "<group>"; };
@@ -250,19 +256,22 @@
 		4C1DE15E1CB83E5A00AFBCF5 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				9A491A5F1CC7381E002353C6 /* Roboto-Bold.ttf */,
-				9A491A601CC7381E002353C6 /* Roboto-BoldCondensed.ttf */,
-				9A491A621CC7381F002353C6 /* Roboto-BoldItalic.ttf */,
-				9A491A631CC7381F002353C6 /* Roboto-Condensed.ttf */,
-				9A491A641CC7381F002353C6 /* Roboto-CondensedItalic.ttf */,
-				9A491A651CC7381F002353C6 /* Roboto-Italic.ttf */,
-				9A491A661CC7381F002353C6 /* Roboto-Light.ttf */,
-				9A491A671CC7381F002353C6 /* Roboto-LightItalic.ttf */,
-				9A491A681CC7381F002353C6 /* Roboto-Medium.ttf */,
-				9A491A691CC7381F002353C6 /* Roboto-MediumItalic.ttf */,
-				9A491A6A1CC7381F002353C6 /* Roboto-Regular.ttf */,
-				9A491A6B1CC7381F002353C6 /* Roboto-Thin.ttf */,
-				9A491A6C1CC7381F002353C6 /* Roboto-ThinItalic.ttf */,
+				4CD9FF5F1CCE602E00D3E603 /* Roboto-Black.ttf */,
+				4CD9FF601CCE602E00D3E603 /* Roboto-BlackItalic.ttf */,
+				4CD9FF611CCE602E00D3E603 /* Roboto-Bold.ttf */,
+				4CD9FF621CCE602E00D3E603 /* Roboto-BoldCondensed.ttf */,
+				4CD9FF631CCE602E00D3E603 /* Roboto-BoldCondensedItalic.ttf */,
+				4CD9FF641CCE602E00D3E603 /* Roboto-BoldItalic.ttf */,
+				4CD9FF651CCE602E00D3E603 /* Roboto-Condensed.ttf */,
+				4CD9FF661CCE602E00D3E603 /* Roboto-CondensedItalic.ttf */,
+				4CD9FF671CCE602E00D3E603 /* Roboto-Italic.ttf */,
+				4CD9FF681CCE602E00D3E603 /* Roboto-Light.ttf */,
+				4CD9FF691CCE602E00D3E603 /* Roboto-LightItalic.ttf */,
+				4CD9FF6A1CCE602E00D3E603 /* Roboto-Medium.ttf */,
+				4CD9FF6B1CCE602E00D3E603 /* Roboto-MediumItalic.ttf */,
+				4CD9FF6C1CCE602E00D3E603 /* Roboto-Regular.ttf */,
+				4CD9FF6D1CCE602E00D3E603 /* Roboto-Thin.ttf */,
+				4CD9FF6E1CCE602E00D3E603 /* Roboto-ThinItalic.ttf */,
 				4C1DE15A1CB83E5000AFBCF5 /* LobsterTwo-Bold.otf */,
 				4C1DE15B1CB83E5000AFBCF5 /* LobsterTwo-BoldItalic.otf */,
 				4C1DE15C1CB83E5000AFBCF5 /* LobsterTwo-Italic.otf */,
@@ -275,17 +284,17 @@
 		4C8E5A521CB74E4C005E1625 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				9A491A5B1CC7247C002353C6 /* CircleLabel.xib */,
-				9A8C88931CC6671F0053EC00 /* CircleLabelView.h */,
-				9A8C88941CC6671F0053EC00 /* CircleLabelView.m */,
+				4CD9FF7F1CCE605400D3E603 /* CircleLabel.xib */,
+				4CD9FF801CCE605400D3E603 /* CircleLabelView.h */,
+				4CD9FF811CCE605400D3E603 /* CircleLabelView.m */,
+				4CD9FF821CCE605400D3E603 /* ItineraryReviewCell.xib */,
+				4CD9FF831CCE605400D3E603 /* ItineraryReviewTableViewCell.h */,
+				4CD9FF841CCE605400D3E603 /* ItineraryReviewTableViewCell.m */,
 				9A3383971CBC5416004B8EFE /* ActivityCardCollectionViewCell.h */,
 				9A3383981CBC5416004B8EFE /* ActivityCardCollectionViewCell.m */,
 				9AA058781CAEAA57000A6AA8 /* ActivityCard.xib */,
 				4C358D711CADCDF700257756 /* ActivityCardView.h */,
 				4C358D721CADCDF700257756 /* ActivityCardView.m */,
-				9A5ABC7C1CCDBD8400C1C71E /* ItineraryReviewCell.xib */,
-				9A5ABC7E1CCDBE9100C1C71E /* ItineraryReviewTableViewCell.h */,
-				9A5ABC7F1CCDBE9100C1C71E /* ItineraryReviewTableViewCell.m */,
 			);
 			name = Views;
 			path = ..;
@@ -484,34 +493,37 @@
 			buildActionMask = 2147483647;
 			files = (
 				78A7F6D51CC0217D00DD4937 /* Login.storyboard in Resources */,
-				9A491A741CC7389F002353C6 /* Roboto-CondensedItalic.ttf in Resources */,
-				9A491A6F1CC7389F002353C6 /* Roboto-Bold.ttf in Resources */,
-				9A491A701CC7389F002353C6 /* Roboto-BoldCondensed.ttf in Resources */,
+				4CD9FF791CCE602E00D3E603 /* Roboto-LightItalic.ttf in Resources */,
+				4CD9FF7D1CCE602E00D3E603 /* Roboto-Thin.ttf in Resources */,
+				4CD9FF7B1CCE602E00D3E603 /* Roboto-MediumItalic.ttf in Resources */,
 				9ACC8C171CBD398E00909704 /* DetailView.storyboard in Resources */,
-				9A491A5C1CC7247C002353C6 /* CircleLabel.xib in Resources */,
 				9A74DC521CBF391900B63B0B /* FilterView.storyboard in Resources */,
 				9AA058791CAEAA57000A6AA8 /* ActivityCard.xib in Resources */,
-				9A491A731CC7389F002353C6 /* Roboto-Condensed.ttf in Resources */,
 				4C1DE1621CB8410900AFBCF5 /* LobsterTwo-Regular.otf in Resources */,
 				4C1DE1601CB8410900AFBCF5 /* LobsterTwo-BoldItalic.otf in Resources */,
-				9A491A7A1CC7389F002353C6 /* Roboto-Regular.ttf in Resources */,
-				9A491A751CC7389F002353C6 /* Roboto-Italic.ttf in Resources */,
+				4CD9FF7E1CCE602E00D3E603 /* Roboto-ThinItalic.ttf in Resources */,
 				4C1DE1611CB8410900AFBCF5 /* LobsterTwo-Italic.otf in Resources */,
-				9A491A771CC7389F002353C6 /* Roboto-LightItalic.ttf in Resources */,
+				4CD9FF711CCE602E00D3E603 /* Roboto-Bold.ttf in Resources */,
+				4CD9FF871CCE605400D3E603 /* ItineraryReviewCell.xib in Resources */,
+				4CD9FF721CCE602E00D3E603 /* Roboto-BoldCondensed.ttf in Resources */,
 				4C64EC471CBAA78200FB3A45 /* ItineraryView.storyboard in Resources */,
-				9A491A721CC7389F002353C6 /* Roboto-BoldItalic.ttf in Resources */,
+				4CD9FF6F1CCE602E00D3E603 /* Roboto-Black.ttf in Resources */,
+				4CD9FF731CCE602E00D3E603 /* Roboto-BoldCondensedItalic.ttf in Resources */,
 				4CBBC5FB1CBA9618006683D8 /* Button.storyboard in Resources */,
-				9A491A791CC7389F002353C6 /* Roboto-MediumItalic.ttf in Resources */,
-				9A491A7B1CC7389F002353C6 /* Roboto-Thin.ttf in Resources */,
+				4CD9FF701CCE602E00D3E603 /* Roboto-BlackItalic.ttf in Resources */,
 				4C1DE15F1CB8410900AFBCF5 /* LobsterTwo-Bold.otf in Resources */,
 				4CBBC6091CBA97B0006683D8 /* Main.storyboard in Resources */,
-				9A491A761CC7389F002353C6 /* Roboto-Light.ttf in Resources */,
-				9A491A781CC7389F002353C6 /* Roboto-Medium.ttf in Resources */,
-				9A491A7C1CC7389F002353C6 /* Roboto-ThinItalic.ttf in Resources */,
+				4CD9FF771CCE602E00D3E603 /* Roboto-Italic.ttf in Resources */,
+				4CD9FF751CCE602E00D3E603 /* Roboto-Condensed.ttf in Resources */,
+				4CD9FF7C1CCE602E00D3E603 /* Roboto-Regular.ttf in Resources */,
 				4C9A038B1CAB064200CA9A02 /* Assets.xcassets in Resources */,
 				9A5AEC341CBF4795009F2BEA /* UserProfile.storyboard in Resources */,
+				4CD9FF7A1CCE602E00D3E603 /* Roboto-Medium.ttf in Resources */,
+				4CD9FF761CCE602E00D3E603 /* Roboto-CondensedItalic.ttf in Resources */,
+				4CD9FF781CCE602E00D3E603 /* Roboto-Light.ttf in Resources */,
+				4CD9FF851CCE605400D3E603 /* CircleLabel.xib in Resources */,
 				4C0EE1531CBDA0930092C39A /* ItineraryHistoryView.storyboard in Resources */,
-				9A5ABC7D1CCDBD8400C1C71E /* ItineraryReviewCell.xib in Resources */,
+				4CD9FF741CCE602E00D3E603 /* Roboto-BoldItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -575,7 +587,6 @@
 				4C0EE1591CBDA2E70092C39A /* ItineraryHistoryTableViewController.m in Sources */,
 				4CBBC6061CBA96DF006683D8 /* setupButton.m in Sources */,
 				78A7F6D81CC1672700DD4937 /* sideMenuViewController.m in Sources */,
-				9A5ABC801CCDBE9100C1C71E /* ItineraryReviewTableViewCell.m in Sources */,
 				4C9C962A1CC6ABAF00C7094A /* Constants.m in Sources */,
 				9A5AEC321CBF476B009F2BEA /* UserProfileViewController.m in Sources */,
 				4C358D381CAD62CE00257756 /* CardViewController.m in Sources */,
@@ -584,10 +595,10 @@
 				4C64EC441CBAA78200FB3A45 /* CreateAccountViewController.m in Sources */,
 				4C02D1E11CB6E72C0031F978 /* User.m in Sources */,
 				9ACC8C1A1CBD399800909704 /* DetailViewController.m in Sources */,
-				9A8C88951CC6671F0053EC00 /* CircleLabelView.m in Sources */,
 				4C433C031CB9539C00059C92 /* Activity.m in Sources */,
 				9A33839B1CBC5416004B8EFE /* ActivityCardCollectionViewCell.m in Sources */,
 				4C02D1E41CB6E8A00031F978 /* Itinerary.m in Sources */,
+				4CD9FF881CCE605400D3E603 /* ItineraryReviewTableViewCell.m in Sources */,
 				4CBBC6051CBA96DF006683D8 /* LogInViewController.m in Sources */,
 				4C9A03801CAB064200CA9A02 /* AppDelegate.m in Sources */,
 				78A7F6D41CBFFDAF00DD4937 /* mainContainerViewController.m in Sources */,
@@ -597,6 +608,7 @@
 				4C9C96271CC58C0600C7094A /* FirebaseIntegrationTestFunctions.swift in Sources */,
 				4CBBC6041CBA96DF006683D8 /* AppViewController.m in Sources */,
 				4C64EC341CBAA6BB00FB3A45 /* ActivitiesDataStore.m in Sources */,
+				4CD9FF861CCE605400D3E603 /* CircleLabelView.m in Sources */,
 				4CBBF0871CBBEE09005BB352 /* Tip.m in Sources */,
 				4C9A037D1CAB064200CA9A02 /* main.m in Sources */,
 				0A12C1171CC6C8450043475F /* ItineraryViewController.m in Sources */,

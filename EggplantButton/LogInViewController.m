@@ -29,7 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor clearColor];
+//    self.view.backgroundColor = [UIColor clearColor];
 
     
     self.emailLabel.delegate = self;
@@ -165,7 +165,7 @@
 
 - (BOOL)isEmailValid:(NSString *)email {
     
-    return (email.length > 5 && [email containsString:@"@"] && ![email containsString:@" "]);
+    return (email.length > 5 && [email containsString:@"@"] && ![email containsString:@" "] && [email containsString:@"."]);
     
 }
 
