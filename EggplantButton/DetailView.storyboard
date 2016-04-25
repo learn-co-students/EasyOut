@@ -16,7 +16,7 @@
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--Activity Detail-->
+        <!--Detail View Controller-->
         <scene sceneID="7tk-ac-ACP">
             <objects>
                 <viewController storyboardIdentifier="DetailView" id="ck0-ww-g9b" customClass="DetailViewController" sceneMemberID="viewController">
@@ -106,7 +106,7 @@
                             <constraint firstItem="cg9-NR-E1m" firstAttribute="leading" secondItem="8be-iO-s5k" secondAttribute="leading" id="WVG-S4-NdV"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Activity Detail" id="FJJ-9F-MP4">
+                    <navigationItem key="navigationItem" id="FJJ-9F-MP4">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="PvR-5S-AYm">
                             <connections>
                                 <action selector="backButtonPressed:" destination="ck0-ww-g9b" id="TcI-UD-Mug"/>
