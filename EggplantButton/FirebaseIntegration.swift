@@ -418,10 +418,8 @@ import Firebase
         
         print("Attempting to retrieve all itineraries")
         
-        // Set root Firebase reference
+        // Set Firebase references
         let ref = Firebase(url:firebaseRootRef)
-        
-        // Set references for new itinerary
         let itinerariesRef = ref.childByAppendingPath("itineraries")
         
         // Create an observe event for the itineraries reference
@@ -439,37 +437,22 @@ import Firebase
         
         print("Attempting to get itinerary with itineraryID:\(itineraryID)")
         
-        // Get all itineraries
-        print("Calling getAllItineraries function")
-        getAllItinerariesWithCompletion { (itineraries) in
+        // Set Firebase references
+        let ref = Firebase(url:firebaseRootRef)
+        let itinerariesRef = ref.childByAppendingPath("itineraries")
+        let itineraryRef = itinerariesRef.childByAppendingPath(itineraryID)
+        
+        // Get itinerary ref from Firebase
+        print("Getting snapshot of itinerary reference \(itineraryRef.description)")
+        itineraryRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
             
-            // Check if itineraries were returned
-            print("Checking if itineraries were returned from the getAllItineraries function")
-            if let itineraries = itineraries {
-                
-                // Check if the itineraries dictionary contains a key matching the itineraryID
-                print("Checking if the returned itineraries contain one that matches the itineraryID")
-                if let itineraryDictionary = itineraries[itineraryID] {
-                    
-                    // Create Itinerary object from itineraryDictionary
-                    let itinerary: Itinerary = Itinerary.init(firebaseItineraryDictionary: itineraryDictionary as! [NSObject : AnyObject])
-                    
-                    // Send the matching itinerary to the completion block
-                    print("Found a matching itinerary")
-                    completion(itinerary)
-                } else {
-                    
-                    // Send nil to the completion block
-                    print("Did not find a matching itinerary")
-                    completion(nil)
-                }
-            } else {
-                
-                // Send nil to the completion block
-                print("Itineraries were not returned")
-                completion(nil)
-            }
-        }
+            print("Got itinerary value from snapshot\n\(snapshot.value)")
+            
+            // Create Itinerary object from snapshot value
+            let itinerary : Itinerary = Itinerary.init(firebaseItineraryDictionary: snapshot.value as! [NSObject : AnyObject])
+            
+            completion(itinerary)
+        })
     }
     
     // Remove itinerary from Firebase within both the itineraries dictionary as well as from the saved itineraries of the associated user

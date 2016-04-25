@@ -73,7 +73,7 @@
     
     // MORE DETAILS URL
     if (![keys containsObject:@"moreDetailsURL"]) {
-        [newDictionary setObject:[[NSURL alloc] init] forKey:@"moreDetailsURL"];
+        [newDictionary setObject:[[NSURL alloc] initWithString:@"https://google.com"] forKey:@"moreDetailsURL"];
     } else {
         NSLog(@"moreDetailsURL exist for current activity, but we aren't getting them from Firebase");
     }
