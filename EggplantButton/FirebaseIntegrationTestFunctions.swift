@@ -18,8 +18,13 @@ import Firebase
         
         // Create default test criteria
         let ref = Firebase(url:firebaseRootRef)
-//        let image : UIImage = UIImage(named:"city")!
+        let image : UIImage = UIImage(named:"city")!
         print("authID.uid: \(ref.authData.uid)")
+        
+        // Check user's itineraries and activities for each itinerary
+        FirebaseAPIClient.getUserFromFirebaseWithUserID(ref.authData.uid) { (user, success) in
+            print(user.savedItineraries)
+        }
         
         
 //        // Check save image function

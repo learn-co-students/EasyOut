@@ -349,8 +349,8 @@ import Firebase
                                    "address1" : address1,
                                    "type" : activityObject.type,
                                    "imageURL" : activityObject.imageURL.description,
-                                   //                                   "price" : activityObject.price,
-                //                                   "moreDetailsURL" : activityObject.moreDetailsURL
+//                                   "price" : activityObject.price,
+//                                   "moreDetailsURL" : activityObject.moreDetailsURL
             ]
             
             activities.append(activityDictionary)
