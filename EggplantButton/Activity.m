@@ -58,6 +58,15 @@
     
     if (self) {
         
+        
+        
+//        @property (strong, nonatomic) NSString *name;
+//        @property (strong, nonatomic) NSArray *address;
+//        @property (strong, nonatomic) NSString *type;
+//        @property (strong, nonatomic) NSURL *imageURL;
+//        @property (strong, nonatomic) NSString *price;
+//        @property (strong, nonatomic) NSURL *moreDetailsURL;
+        
     }
     
     return self;

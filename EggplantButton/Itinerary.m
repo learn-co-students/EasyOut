@@ -53,6 +53,8 @@
     NSMutableArray *ratingKeys = [[NSMutableArray alloc] init];
     
     // Check for empty dictionaries that Firebase may not have saved
+    
+    // ACTIVITIES
     if (![keys containsObject:@"activities"]) {
         [newDictionary setObject:[[NSMutableArray alloc] init] forKey:@"activities"];
     } else {
@@ -63,7 +65,6 @@
             
             // Convert activities in Firebase to Activity objects
             Activity *activity = [[Activity alloc] initWithFirebaseDictionary:activityDictionary];
-            [newDictionary setObject:activity forKey:@"activities"];
             
             // Add new Activity objects to an array
             [activitiesArray addObject:activity];
@@ -76,6 +77,7 @@
         [newDictionary setObject:activitiesArray forKey:@"activities"];
     }
     
+    // PHOTOS
     if (![keys containsObject:@"photos"]) {
         [newDictionary setObject:[[NSMutableArray alloc] init] forKey:@"photos"];
     } else {
@@ -91,12 +93,14 @@
         }
     }
     
+    // TIPS
     if (![keys containsObject:@"tips"]) {
         [newDictionary setObject:[[NSMutableDictionary alloc] init] forKey:@"tips"];
     } else {
         NSLog(@"Tips exist for current itinerary, but we aren't getting them from Firebase");
     }
     
+    // RATINGS
     if (![keys containsObject:@"ratings"]) {
         [newDictionary setObject:[[NSMutableDictionary alloc] init] forKey:@"ratings"];
     } else {
