@@ -35,15 +35,19 @@
         
         [mAddress addObject: address];
         [mAddress addObject: activityDictionary[@"venue"][@"location"][@"formattedAddress"][1]];
+        
         _address = mAddress ;
         _type = activityDictionary[@"venue"][@"shortName"];
     
         if ([activityDictionary[@"venue"][@"photos"][@"groups"] count] > 0 ) {
+            
             _imageURL = [NSURL URLWithString: [NSString stringWithFormat: @"%@%@%@", activityDictionary[@"venue"][@"photos"][@"groups"][0][@"items"][0][@"prefix"], @"115x115", activityDictionary[@"venue"][@"photos"][@"groups"][0][@"items"][0][@"suffix"]]];
         }
         else {
+            
             _imageURL = [NSURL URLWithString:@"https://cdn1.iconfinder.com/data/icons/social-17/48/photos2-512.png"];
         }
+        
         _price = activityDictionary[@"price"][@"currency"];
         _moreDetailsURL = activityDictionary[@"venue"][@"tips"];
         
@@ -56,16 +60,32 @@
     
     self = [super init];
     
+    NSMutableDictionary *newDictionary = [dictionary mutableCopy];
+    
+    NSArray *keys = [dictionary allKeys];
+    
+    // PRICE
+    if (![keys containsObject:@"price"]) {
+        [newDictionary setObject:[[NSString alloc] init] forKey:@"price"];
+    } else {
+        NSLog(@"Price exists for current activity, but we aren't getting them from Firebase");
+    }
+    
+    // MORE DETAILS URL
+    if (![keys containsObject:@"moreDetailsURL"]) {
+        [newDictionary setObject:[[NSURL alloc] init] forKey:@"moreDetailsURL"];
+    } else {
+        NSLog(@"moreDetailsURL exist for current activity, but we aren't getting them from Firebase");
+    }
+    
     if (self) {
         
-        
-        
-//        @property (strong, nonatomic) NSString *name;
-//        @property (strong, nonatomic) NSArray *address;
-//        @property (strong, nonatomic) NSString *type;
-//        @property (strong, nonatomic) NSURL *imageURL;
-//        @property (strong, nonatomic) NSString *price;
-//        @property (strong, nonatomic) NSURL *moreDetailsURL;
+        _name = newDictionary[@"name"];
+        _address = @[newDictionary[@"address0"], newDictionary[@"address1"]];
+        _type = newDictionary[@"type"];
+        _imageURL = [NSURL URLWithString:newDictionary[@"imageURL"]];
+        _price = newDictionary[@"price"];
+        _moreDetailsURL = [NSURL URLWithString:newDictionary[@"moreDetailsURL"]];
         
     }
     
