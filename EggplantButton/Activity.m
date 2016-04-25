@@ -85,7 +85,7 @@
         _type = newDictionary[@"type"];
         _imageURL = [NSURL URLWithString:newDictionary[@"imageURL"]];
         _price = newDictionary[@"price"];
-        _moreDetailsURL = [NSURL URLWithString:newDictionary[@"moreDetailsURL"]];
+        _moreDetailsURL = newDictionary[@"moreDetailsURL"];
         
     }
     

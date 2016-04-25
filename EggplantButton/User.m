@@ -41,6 +41,7 @@
     NSArray *keys = [dictionary allKeys];
     
     NSMutableArray *itineraryKeys = [[NSMutableArray alloc] init];
+    NSMutableDictionary *itineraryObjects = [[NSMutableDictionary alloc] init];
     NSMutableArray *tipKeys = [[NSMutableArray alloc] init];
     NSMutableArray *ratingKeys = [[NSMutableArray alloc] init];
     NSMutableArray *associatedImageKeys = [[NSMutableArray alloc] init];
@@ -54,9 +55,13 @@
         
         for (NSString *key in itineraryKeys) {
             [FirebaseAPIClient getItineraryWithItineraryID:key completion:^(Itinerary * itinerary) {
-                [newDictionary[@"savedItineraries"] setObject:itinerary forKey:key];
+                [itineraryObjects setObject:itinerary forKey:key];
             }];
         }
+        
+        [newDictionary[@"savedItineraries"] removeAllObjects];
+        
+        newDictionary[@"savedItineraries"] = itineraryObjects;
     }
     
     if (![keys containsObject:@"tips"]) {
