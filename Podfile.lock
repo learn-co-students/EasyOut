@@ -19,7 +19,6 @@ PODS:
   - Firebase (2.5.1)
   - GoogleMaps (1.13.0)
   - Masonry (1.0.0)
-  - pop (1.0.9)
   - UIView+Shake (1.1.5)
 
 DEPENDENCIES:
@@ -29,7 +28,6 @@ DEPENDENCIES:
   - Firebase
   - GoogleMaps
   - Masonry
-  - pop (~> 1.0)
   - UIView+Shake
 
 SPEC CHECKSUMS:
@@ -39,7 +37,6 @@ SPEC CHECKSUMS:
   Firebase: 3565ea88b830f28f2c77ecc524622bc71a20d085
   GoogleMaps: 7a6caeb8336d7cb42982e969fc9b1b20a889fe79
   Masonry: b529bb169217897b6354d4b56b1fada6d475b13d
-  pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
   UIView+Shake: 2d2185006d38ee5daed07f14c0989f703f86682f
 
 COCOAPODS: 0.39.0

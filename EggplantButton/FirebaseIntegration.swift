@@ -22,7 +22,7 @@ import Firebase
             error, authData in
             
             if (error != nil) {
-                // an error occurred while attempting login
+                // An error occurred while attempting login
                 if let errorCode = FAuthenticationError(rawValue: error.code) {
                     switch (errorCode) {
                     case .UserDoesNotExist:
@@ -56,7 +56,7 @@ import Firebase
     // Log user out
     class func logOutUser() {
         
-//        print("Attempting to log user out")
+        print("Attempting to log user out")
         
         // Set root Firebase reference
         let ref = Firebase(url:firebaseRootRef)
@@ -65,12 +65,12 @@ import Firebase
         if ref.authData != nil {
             
             // Unauthorize (log out) user
-//            print("Logging out user with useriD \(ref.authData.uid)")
+            print("Logging out user with useriD \(ref.authData.uid)")
             ref.unauth()
-//            print("User logged out")
+            print("User logged out")
             
         } else {
-//            print("No user currently logged in")
+            print("No user currently logged in")
         }
         
     }
@@ -79,7 +79,7 @@ import Firebase
     // Register a new user in firebase given a User object and password
     class func registerNewUserWithUser(user: User, password: String, completion: (Bool) -> ()) {
         
-//        print("Attempting to register user with\nUsername: \(user.username)\nEmail: \(user.email)\nPassword: \(password)")
+        print("Attempting to register user with\nUsername: \(user.username)\nEmail: \(user.email)\nPassword: \(password)")
         
         // Set root Firebase reference
         let ref = Firebase(url:firebaseRootRef)
@@ -89,26 +89,26 @@ import Firebase
             
             // Check for any errors and continue if there are none
             if error != nil {
-//                print("There was an error creating the user \(error.description)")
+                print("There was an error creating the user \(error.description)")
                 completion(false)
             } else {
                 
                 // Check if the userID was created in registration attempt and set it if it was
                 guard let uid = result["uid"] as? String else { completion(false);
                     
-//                    print("No userID found for user reference when registering user with email \(user.email)."); 
+                    print("No userID found for user reference when registering user with email \(user.email)."); 
                     return }
                 
-//                print("Result of user registration attempt:\n\(result)")
-//                
-//                print("Successfully created user account with uid \(uid)")
+                print("Result of user registration attempt:\n\(result)")
+                
+                print("Successfully created user account with uid \(uid)")
                 
                 // Set references for new user
                 let usersRef = ref.childByAppendingPath("users")
                 let userRef = usersRef.childByAppendingPath(uid)
                 
                 // Set properties for new user account
-//                print("Setting values for new user")
+                print("Setting values for new user")
                 userRef.setValue([
                     "userID" : uid,
                     "username" : user.username,
@@ -125,19 +125,19 @@ import Firebase
                 ])
                 
                 // We should actually call firebase to pull values for new user and make sure everything was set correctly
-//                print("Registered new user: \(userRef)")
+                print("Registered new user: \(userRef)")
             }
             
             // Log in the user
-//            print("Calling logInUser from within createUser completion block")
+            print("Calling logInUser from within createUser completion block")
             self.logInUserWithEmail(user.email, password: password, completion: { (authData, error) in
                 if error != nil {
-//                    print("****Error trying to log user in after registration: \(error)")
+                    print("****Error trying to log user in after registration: \(error)")
                     
                     completion(false)
                 } else {
                     
-//                    print("Logged in user with userID \(authData.uid) after registration")
+                    print("Logged in user with userID \(authData.uid) after registration")
                     
                     completion(true)
                 }
@@ -149,7 +149,7 @@ import Firebase
     // Return list of all users
     class func getAllUsersWithCompletion(completion: Array<String> -> Void) {
     
-//        print("Getting a list of all users at the users reference in Firebase")
+        print("Getting a list of all users at the users reference in Firebase")
         
         // Set root Firebase reference
         let ref = Firebase(url:firebaseRootRef)
@@ -166,17 +166,17 @@ import Firebase
                 // Add each username value for each user reference to the allUsernames array
                 for child in snapshot.children{
                     if let username = child.value["username"] as? String {
-//                        print("Adding \(username) to the allUsernames array")
+                        print("Adding \(username) to the allUsernames array")
                         allUsernames.append(username.lowercaseString)
                     }
                 }
                 
-//                print("All usernames inside the observe block:\n\(allUsernames)")
+                print("All usernames inside the observe block:\n\(allUsernames)")
             
                 completion(allUsernames)
                 
             }, withCancelBlock: { error in
-//                print("****Error retrieving all usernames:\n\(error.description)")
+                print("****Error retrieving all usernames:\n\(error.description)")
                 completion([])
         })
     }
@@ -185,7 +185,7 @@ import Firebase
     // Return list of all email addresses
     class func getAllEmailsWithCompletion(completion: Array<String> -> Void) {
         
-//        print("Getting a list of all emails at the users reference in Firebase")
+        print("Getting a list of all emails at the users reference in Firebase")
         
         // Set root Firebase reference
         let ref = Firebase(url:firebaseRootRef)
@@ -207,12 +207,12 @@ import Firebase
                 }
             }
             
-//            print("Successfully received all users")
+            print("Successfully received all users")
             
             completion(allEmailAddresses)
             
             }, withCancelBlock: { error in
-//                print("****Error retrieving all email addresses:\n\(error.description)")
+                print("****Error retrieving all email addresses:\n\(error.description)")
                 completion([])
         })
     }
@@ -221,7 +221,7 @@ import Firebase
     // Create a User object from Firebase data using a userID and return User object and success state
     class func getUserFromFirebaseWithUserID(userID: String, completion: (user: User, success: Bool) -> Void) {
         
-//        print("Creating user object from user reference \(userID)")
+        print("Creating user object from user reference \(userID)")
         
         // Set root Firebase reference
         let ref = Firebase(url:firebaseRootRef)
@@ -233,17 +233,17 @@ import Firebase
         // Read data at user reference
         userRef.observeEventType(.Value, withBlock: { snapshot in
             let sv = snapshot.value
-//            print("User ref:\n\(sv)")
+            print("User ref:\n\(sv)")
             
             // Create new User object
             let newUser : User = User.init(firebaseUserDictionary: sv as! Dictionary)
             
-//            print("Created User object for \(newUser.username)")
+            print("Created User object for \(newUser.username)")
             
             completion(user: newUser, success: true)
             
             }, withCancelBlock: { error in
-//                print("****Error retrieving user in user creation:\n\(error.description)")
+                print("****Error retrieving user in user creation:\n\(error.description)")
                 completion(user: User.init(), success: false)
         })
     }

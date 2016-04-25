@@ -7,7 +7,6 @@ target 'EggplantButton' do
 
 pod 'AFNetworking'
 pod 'Masonry'
-pod 'pop', '~> 1.0'
 pod 'Firebase'
 pod 'Button', '~> 4'
 pod 'DeepLinkKit'
