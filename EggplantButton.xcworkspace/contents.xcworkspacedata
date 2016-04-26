@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:nyc.gpx">
-   </FileRef>
-   <FileRef
       location = "group:EggplantButton.xcodeproj">
    </FileRef>
    <FileRef

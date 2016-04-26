@@ -8,6 +8,7 @@
 
 #import "DetailViewController.h"
 #import <GoogleMaps/GoogleMaps.h>
+#import <GoogleMaps/GMSGeometryUtils.h>
 #import <AFNetworking/AFImageDownloader.h>
 #import "Constants.h"
 
@@ -37,7 +38,7 @@
     
     self.view.backgroundColor = [UIColor clearColor];
 
-    [self generateGoogleMap];
+//    [self generateGoogleMap];
     
     self.nameLabel.text = self.activity.name;
     self.imageView.image = nil;
@@ -58,7 +59,28 @@
     self.addressLabel.text = [NSString stringWithFormat:@"%@ %@", self.activity.address[0], self.activity.address[1]];
     
     
+    CLLocation *userLocation = [[CLLocation alloc]initWithLatitude:self.latitude longitude:self.longitude];
+    
+    NSString *address = [NSString stringWithFormat:@"%@ %@", self.activity.address[0], self.activity.address[1]];
+    
+    CLLocationCoordinate2D location = [self getLocationFromAddressString: address];
+    
+    CLLocation *activityLocation = [[CLLocation alloc]initWithLatitude:location.latitude longitude:location.longitude];
+
+    CLLocationDistance distance = [userLocation distanceFromLocation: activityLocation];
+        
+    NSLog(@"%f", distance);
+    
+    
     }
+
+-(void)viewDidAppear:(BOOL)animated{
+    
+    [super viewDidAppear:animated];
+    
+    [self generateGoogleMap];
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -93,13 +115,20 @@
 }
 
 -(void)generateGoogleMap {
+    
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:self.latitude
                                                             longitude:self.longitude
-                                                                 zoom:16];
+                                                                 zoom:13];
+
     
     self.mapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
-    
+
     [self.mapUIView addSubview:self.mapView];
+    
+    CLLocationCoordinate2D user = CLLocationCoordinate2DMake(self.latitude, self.longitude);
+    
+    NSString *address = [NSString stringWithFormat:@"%@ %@", self.activity.address[0], self.activity.address[1]];
+    CLLocationCoordinate2D location = [self getLocationFromAddressString: address];
     
     self.mapView.translatesAutoresizingMaskIntoConstraints = NO;
     
@@ -117,10 +146,6 @@
     //MARKER FOR ACTIVITIES
     UIImage *markerImage = [GMSMarker markerImageWithColor:[Constants vikingBlueColor]];
     
-    NSString *address = [NSString stringWithFormat:@"%@ %@", self.activity.address[0], self.activity.address[1]];
-    
-    CLLocationCoordinate2D location = [self getLocationFromAddressString: address];
-    
     // Creates a marker in the center of the map.
     
     GMSMarker *marker = [[GMSMarker alloc] init];
@@ -129,6 +154,23 @@
     marker.snippet = address;
     marker.map = self.mapView;
     marker.icon = markerImage;
+    
+//    GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithCoordinate:user coordinate:location];
+//    
+////    [self.mapView moveCamera:[GMSCameraUpdate fitBounds:bounds]];
+//
+//    
+//    camera = [self.mapView cameraForBounds:bounds insets:UIEdgeInsetsZero];
+//    self.mapView.camera = camera;
 }
+
+
+- (IBAction)detailButtonPressed:(id)sender {
+    
+    NSLog(@"%@", self.activity.moreDetailsURL);
+    
+    [[UIApplication sharedApplication] openURL: self.activity.moreDetailsURL];
+}
+
 
 @end

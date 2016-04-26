@@ -15,6 +15,8 @@
 @property (strong, nonatomic) NSString *type;
 @property (strong, nonatomic) NSURL *imageURL;
 @property (strong, nonatomic) NSString *price;
+@property (strong, nonatomic) NSString *openStatus;
+@property (strong, nonatomic) NSURL *icon;
 @property (strong, nonatomic) NSURL *moreDetailsURL;
 
 

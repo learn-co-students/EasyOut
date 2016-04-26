@@ -171,7 +171,7 @@ typedef NS_ENUM(NSInteger, Month) {
 -(void)generateGoogleMap{
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:self.latitude
                                                             longitude:self.longitude
-                                                                 zoom:16];
+                                                                 zoom:12];
     
     self.gpsMapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     
