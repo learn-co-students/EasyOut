@@ -10,8 +10,6 @@
 #import "CardViewController.h"
 #import "sideMenuViewController.h"
 
-
-
 @interface mainContainerViewController ()
 
 @property (weak, nonatomic) IBOutlet UIView * sideMenuContainer;

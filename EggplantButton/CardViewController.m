@@ -20,6 +20,7 @@
 #import "Constants.h"
 #import "UIView+Shake.h"
 
+
 @interface CardViewController () <UIScrollViewDelegate, CLLocationManagerDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (strong, nonatomic) ActivitiesDataStore *dataStore;
@@ -30,7 +31,6 @@
 @property (nonatomic, strong) CLLocation *mostRecentLocation;
 @property (nonatomic) CLLocationDegrees latitude;
 @property (nonatomic) CLLocationDegrees longitude;
-
 
 //COLLECTIONS
 @property (weak, nonatomic) IBOutlet UICollectionView *topRowCollection;
@@ -171,14 +171,12 @@
 }
 
 
-
 #pragma mark - Side Menu
 
 - (IBAction)menuButtonTapped:(UIBarButtonItem *)sender {
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"menuButtonTapped"
                                                         object:nil];
-   
 }
 
 - (void) profileButtonTapped: (NSNotification *) notification {
@@ -198,7 +196,6 @@
 - (void) logoutButtonTapped: (NSNotification *) notification {
     
     [FirebaseAPIClient logOutUser];
-
 }
 
 
@@ -212,7 +209,6 @@
         collectionView.dataSource = self;
         
         [collectionView registerClass:[ActivityCardCollectionViewCell class] forCellWithReuseIdentifier:@"cardCell"];
-
     }
     
     NSArray *topRowOptions = @[@"arts", @"sights"];
@@ -224,7 +220,6 @@
                 [self.topRowCollection reloadData];
             }];
         }
-
     }];
     
     [self.dataStore getActivityforSection:@"food"Location:[NSString stringWithFormat:@"%f,%f",self.latitude,self.longitude] WithCompletion:^(BOOL success) {
@@ -235,7 +230,6 @@
                 [self.middleRowCollection reloadData];
             }];
         }
-
     }];
     
     [self.dataStore getActivityforSection:@"drinks" Location:[NSString stringWithFormat:@"%f,%f",self.latitude,self.longitude] WithCompletion:^(BOOL success) {
@@ -247,7 +241,6 @@
             }];
         }
     }];
-    
 }
 
 
@@ -263,8 +256,6 @@
         layout.itemSize = CGSizeMake(itemWidth, collectionView.frame.size.height);
     }
 }
-
-
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
 
@@ -303,9 +294,6 @@
 
     return cell;
 }
-
-
-
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -386,7 +374,6 @@
                               withDelta:10   // 10 points wide
          ];
     }
-
 }
 
 #pragma mark - Save Itinerary Button Tapped 
@@ -447,15 +434,12 @@
     if (self.firstCardLocked || self.secondCardLocked || self.thirdCardLocked) {
         [self performSegueWithIdentifier:@"ItinerarySegue" sender:nil]; 
     }
-    
-    
 }
 
 
 #pragma mark - Shake Gesture
 
 - (void) shakeStarted: (NSNotification *) notification {
-{
     
         [self shuffleCards];
 
@@ -474,8 +458,6 @@
         [self.bottomRowCollection shake:10   // 10 times
                               withDelta:10   // 10 points wide
          ];
-    }
-    
     }
 }
 
@@ -513,14 +495,10 @@
 // Segue to itinerary view
 - (IBAction)saveButtonPressed:(UIButton *)sender {
     
-    
-
-
 }
 
 
 - (IBAction)filterButtonPressed:(UIBarButtonItem *)sender {
-
 
 }
 

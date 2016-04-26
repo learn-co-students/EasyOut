@@ -90,7 +90,7 @@
     }
     
     
-    self = [self initWithUserID:newDictionary[@"userID]"]
+    self = [self initWithUserID:newDictionary[@"userID"]
                        username:newDictionary[@"username"]
                           email:newDictionary[@"email"]
                             bio:newDictionary[@"bio"]

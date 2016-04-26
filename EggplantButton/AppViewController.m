@@ -7,7 +7,9 @@
 //
 
 #import "AppViewController.h"
-
+#import <Masonry/Masonry.h>
+#import "Secrets.h"
+#import "Firebase.h"
 
 @interface AppViewController ()
 
