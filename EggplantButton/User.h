@@ -27,7 +27,7 @@
 -(instancetype) initWithEmail:(NSString *)email
                     username:(NSString *)username;
 
--(instancetype) initWithFirebaseUserDictionary:(NSDictionary *)dictionary;
+//-(instancetype) initWithFirebaseUserDictionary:(NSDictionary *)dictionary;
 
 -(instancetype) initWithUserID:(NSString *)userID
                       username:(NSString *)username
