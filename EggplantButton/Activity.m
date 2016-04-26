@@ -56,7 +56,7 @@
         
         NSString *priceStr;
         
-        switch ([(NSNumber*)activityDictionary[@"venue"][@"price"][@"tier"] integerValue]) {
+        switch ([(NSNumber *)activityDictionary[@"venue"][@"price"][@"tier"] integerValue]) {
             case 1:
                 priceStr = @"$";
                 break;
@@ -69,13 +69,13 @@
             case 4:
                 priceStr = @"$$$$";
                 break;
-                
             default:
                 priceStr = @"$";
                 break;
         }
         
         _price = priceStr;
+
 
         _moreDetailsURL = activityDictionary[@"tips"][0][@"canonicalUrl"];
      
@@ -84,7 +84,8 @@
         _icon = [NSURL URLWithString: [NSString stringWithFormat:@"%@%@%@", activityDictionary[@"venue"][@"categories"][0][@"icon"][@"prefix"], @"88", activityDictionary[@"venue"][@"categories"][0][@"icon"][@"suffix"]]];
         
         
-        
+        float distanceInMeters = [(NSNumber *)activityDictionary[@"venue"][@"location"][@"distance"] floatValue] * (float)0.000621371;
+
         _distance = [NSString stringWithFormat:@"%.2f",[(NSNumber *)activityDictionary[@"venue"][@"location"][@"distance"] floatValue] * (float)0.000621371];
 
         
@@ -124,6 +125,7 @@
         _price = newDictionary[@"price"];
         _moreDetailsURL = newDictionary[@"moreDetailsURL"];
         
+
     }
     
     return self;
