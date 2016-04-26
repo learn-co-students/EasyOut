@@ -52,14 +52,29 @@
             _imageURL = [NSURL URLWithString:@"https://cdn1.iconfinder.com/data/icons/social-17/48/photos2-512.png"];
         }
         
-        if(activityDictionary[@"venue"][@"price"][@"currency"]) {
-            
-            _price = activityDictionary[@"venue"][@"price"][@"currency"];
+        NSString *priceStr;
+        
+        switch ([(NSNumber *)activityDictionary[@"venue"][@"price"][@"tier"] integerValue]) {
+            case 1:
+                priceStr = @"$";
+                break;
+            case 2:
+                priceStr = @"$$";
+                break;
+            case 3:
+                priceStr = @"$$$";
+                break;
+            case 4:
+                priceStr = @"$$$$";
+                break;
+            default:
+                priceStr = @"$";
+                break;
         }
-        else {
-            _price = @"$";
-
-        }
+        
+        
+        _price = priceStr;
+       
         _moreDetailsURL = activityDictionary[@"tips"][0][@"canonicalUrl"];
      
         _openStatus = activityDictionary[@"venue"][@"hours"][@"status"];
@@ -67,9 +82,10 @@
         _icon = [NSURL URLWithString: [NSString stringWithFormat:@"%@%@%@", activityDictionary[@"venue"][@"categories"][0][@"icon"][@"prefix"], @"88", activityDictionary[@"venue"][@"categories"][0][@"icon"][@"suffix"]]];
         
         
+        float distanceInMeters = [(NSNumber *)activityDictionary[@"venue"][@"location"][@"distance"] floatValue] * (float)0.000621371;
+
         
-        _distance = [[activityDictionary[@"venue"][@"location"][@"distance"] floatValue] * [0.000621371 floatValue];
-        
+        _distance = [[NSNumber numberWithFloat:distanceInMeters] stringValue];
     }
     
     return self;
