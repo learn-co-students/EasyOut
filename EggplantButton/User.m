@@ -42,8 +42,8 @@
     
     NSMutableArray *itineraryKeys = [[NSMutableArray alloc] init];
     NSMutableDictionary *itineraryObjects = [[NSMutableDictionary alloc] init];
-    NSMutableArray *tipKeys = [[NSMutableArray alloc] init];
-    NSMutableArray *ratingKeys = [[NSMutableArray alloc] init];
+//    NSMutableArray *tipKeys = [[NSMutableArray alloc] init];
+//    NSMutableArray *ratingKeys = [[NSMutableArray alloc] init];
     NSMutableArray *associatedImageKeys = [[NSMutableArray alloc] init];
     
     // Check for empty dictionaries that Firebase may not have saved
@@ -142,6 +142,10 @@
     NSLog(@"User initialized in designated initializer with username: %@", username);
     
     return self;
+}
+
++(void) initWithFirebaseUserDictionary:(NSDictionary *)dictionary completion:(void (^)(User *user))completion {
+    
 }
 
 @end
