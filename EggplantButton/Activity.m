@@ -35,7 +35,14 @@
         
         [mAddress addObject: address];
         [mAddress addObject: activityDictionary[@"venue"][@"location"][@"formattedAddress"][1]];
-        _address = mAddress ;
+         _address = mAddress ;
+        
+        NSMutableArray *fAddress = [[NSMutableArray alloc]init];
+        [fAddress addObject:(NSString *)activityDictionary[@"venue"][@"location"][@"formattedAddress"][0]];
+        [fAddress addObject:(NSString *)activityDictionary[@"venue"][@"location"][@"formattedAddress"][1]];
+        
+        _fullAddress = fAddress;
+        
         _type = activityDictionary[@"venue"][@"categories"][0][@"shortName"];
     
         if ([activityDictionary[@"venue"][@"photos"][@"groups"] count] > 0 ) {
@@ -44,13 +51,24 @@
         else {
             _imageURL = [NSURL URLWithString:@"https://cdn1.iconfinder.com/data/icons/social-17/48/photos2-512.png"];
         }
-        _price = activityDictionary[@"price"][@"currency"];
-        _moreDetailsURL = activityDictionary[@"venue"][@"tips"][@"canonicalUrl"];
+        
+        if(activityDictionary[@"venue"][@"price"][@"currency"]) {
+            
+            _price = activityDictionary[@"venue"][@"price"][@"currency"];
+        }
+        else {
+            _price = @"$";
+
+        }
+        _moreDetailsURL = activityDictionary[@"tips"][0][@"canonicalUrl"];
      
         _openStatus = activityDictionary[@"venue"][@"hours"][@"status"];
         
         _icon = [NSURL URLWithString: [NSString stringWithFormat:@"%@%@%@", activityDictionary[@"venue"][@"categories"][0][@"icon"][@"prefix"], @"88", activityDictionary[@"venue"][@"categories"][0][@"icon"][@"suffix"]]];
         
+        
+        
+        _distance = [[activityDictionary[@"venue"][@"location"][@"distance"] floatValue] * [0.000621371 floatValue];
         
     }
     

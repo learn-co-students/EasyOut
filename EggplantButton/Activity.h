@@ -12,13 +12,14 @@
 
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSArray *address;
+@property (strong, nonatomic) NSArray *fullAddress;
 @property (strong, nonatomic) NSString *type;
 @property (strong, nonatomic) NSURL *imageURL;
 @property (strong, nonatomic) NSString *price;
 @property (strong, nonatomic) NSString *openStatus;
 @property (strong, nonatomic) NSURL *icon;
 @property (strong, nonatomic) NSURL *moreDetailsURL;
-
+@property (strong, nonatomic) NSString *distance;
 
 -(instancetype)initWithDictionary:(NSDictionary *)activityDictionary;
 

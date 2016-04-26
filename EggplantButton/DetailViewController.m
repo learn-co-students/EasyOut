@@ -38,7 +38,7 @@
     
     self.view.backgroundColor = [UIColor clearColor];
 
-//    [self generateGoogleMap];
+    [self generateGoogleMap];
     
     self.nameLabel.text = self.activity.name;
     self.imageView.image = nil;
@@ -58,6 +58,13 @@
     
     self.addressLabel.text = [NSString stringWithFormat:@"%@ %@", self.activity.address[0], self.activity.address[1]];
     
+    [self getDistanceFromLocation];
+
+    
+    
+    }
+
+-(void)getDistanceFromLocation {
     
     CLLocation *userLocation = [[CLLocation alloc]initWithLatitude:self.latitude longitude:self.longitude];
     
@@ -66,21 +73,12 @@
     CLLocationCoordinate2D location = [self getLocationFromAddressString: address];
     
     CLLocation *activityLocation = [[CLLocation alloc]initWithLatitude:location.latitude longitude:location.longitude];
-
+    
     CLLocationDistance distance = [userLocation distanceFromLocation: activityLocation];
-        
+    
     NSLog(@"%f", distance);
-    
-    
-    }
-
--(void)viewDidAppear:(BOOL)animated{
-    
-    [super viewDidAppear:animated];
-    
-    [self generateGoogleMap];
-    
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -120,15 +118,17 @@
                                                             longitude:self.longitude
                                                                  zoom:13];
 
-    
     self.mapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
-
     [self.mapUIView addSubview:self.mapView];
     
-    CLLocationCoordinate2D user = CLLocationCoordinate2DMake(self.latitude, self.longitude);
+    //COORDINATES FOR USER AND ACTIVITY
     
+    CLLocationCoordinate2D user = CLLocationCoordinate2DMake(self.latitude, self.longitude);
     NSString *address = [NSString stringWithFormat:@"%@ %@", self.activity.address[0], self.activity.address[1]];
     CLLocationCoordinate2D location = [self getLocationFromAddressString: address];
+    
+    
+    // CONSTRAINTS
     
     self.mapView.translatesAutoresizingMaskIntoConstraints = NO;
     
@@ -166,9 +166,7 @@
 
 
 - (IBAction)detailButtonPressed:(id)sender {
-    
-    NSLog(@"%@", self.activity.moreDetailsURL);
-    
+        
     [[UIApplication sharedApplication] openURL: self.activity.moreDetailsURL];
 }
 

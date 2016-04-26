@@ -66,6 +66,11 @@
     [self.contentView.trailingAnchor constraintEqualToAnchor:self.trailingAnchor constant:-20].active = YES;
     
     self.contentView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
+    
+    self.contentView.layer.cornerRadius = 5.0;
+    self.contentView.layer.borderColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5].CGColor;
+    self.contentView.layer.borderWidth = 2.0;
+    
 //    self.checkButton.layer.borderColor = [[UIColor blackColor] colorWithAlphaComponent:0.6].CGColor;
 //    self.checkButton.layer.borderWidth = 3;
 }
@@ -81,8 +86,8 @@
 -(void)updateUI {
     
     self.nameLabel.text = self.activity.name;
-    self.addressLabel.text = self.activity.address[0];
-    self.addressLabel2.text = self.activity.address[1];
+    self.addressLabel.text = self.activity.fullAddress[0];
+    self.addressLabel2.text = self.activity.fullAddress[1];
     
     AFImageDownloader *downloader = [[AFImageDownloader alloc] init];
     downloader.downloadPrioritizaton = AFImageDownloadPrioritizationLIFO;

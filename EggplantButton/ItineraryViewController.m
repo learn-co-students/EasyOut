@@ -118,7 +118,7 @@ typedef NS_ENUM(NSInteger, Month) {
             break;
     }
     
-    return [NSString stringWithFormat:@"Your Itinerary for\n%@ %lu, %lu", month, [components day], [components year]];
+    return [NSString stringWithFormat:@"%@ %lu, %lu", month, [components day], [components year]];
     
 //    NSLog(@"Day: %ld", [components day]);
 //    NSLog(@"Month: %ld", [components month]);
