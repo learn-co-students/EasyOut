@@ -15,7 +15,7 @@
 #import "Secrets.h"
 
 
-@interface ItineraryHistoryTableViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface ItineraryHistoryTableViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -34,12 +34,12 @@
     self.view.backgroundColor = [UIColor clearColor];
     
     self.itineraries = [[NSMutableArray alloc]init];
-
+    
     self.tableView.delegate = self;
     
     [self pullUserFromFirebaseWithCompletion:^(BOOL success) {
         if(success) {
-
+            
             self.itineraryIDs = [self.user.savedItineraries allKeys];
             
             for(NSString *key in self.itineraryIDs) {
@@ -51,8 +51,8 @@
                     NSLog(@"%lu", (unsigned long)itinerary.activities.count);
                     
                 }];
-            
-            
+                
+                
             }
         }
     }];
@@ -93,12 +93,12 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ItineraryCell" forIndexPath:indexPath];
     
-//    Itinerary *currentItinerary = self.titlesOfItineraries[indexPath.row];
-//    NSLog(@"what is current One: %@", currentItinerary);
-//    cell.textLabel.text = self.titlesOfItineraries[indexPath.row];
-//
-//    NSArray *activities = self.itineraryEvents[indexPath.row];
-//    
+    //    Itinerary *currentItinerary = self.titlesOfItineraries[indexPath.row];
+    //    NSLog(@"what is current One: %@", currentItinerary);
+    //    cell.textLabel.text = self.titlesOfItineraries[indexPath.row];
+    //
+    //    NSArray *activities = self.itineraryEvents[indexPath.row];
+    //    
     
     return cell;
 }
