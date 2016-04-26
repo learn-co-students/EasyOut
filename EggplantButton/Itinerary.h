@@ -18,7 +18,7 @@
 @property (strong, nonatomic) NSDate *creationDate;
 @property (strong, nonatomic) NSMutableArray *photos;
 @property (strong, nonatomic) NSMutableDictionary *ratings;
-@property (strong, nonatomic) NSMutableArray *tips;
+@property (strong, nonatomic) NSMutableDictionary *tips;
 @property (strong, nonatomic) NSString *title;
 @property (nonatomic) NSUInteger durationInMins;
 @property (nonatomic) NSUInteger priceRange;

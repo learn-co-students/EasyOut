@@ -64,18 +64,6 @@
         newDictionary[@"savedItineraries"] = itineraryObjects;
     }
     
-    if (![keys containsObject:@"tips"]) {
-        [newDictionary setObject:[[NSMutableDictionary alloc] init] forKey:@"tips"];
-    } else {
-        NSLog(@"Tips exist for current user, but we aren't getting them from Firebase");
-    }
-    
-    if (![keys containsObject:@"ratings"]) {
-        [newDictionary setObject:[[NSMutableDictionary alloc] init] forKey:@"ratings"];
-    } else {
-        NSLog(@"Ratings exist for current user, but we aren't getting them from Firebase");
-    }
-    
     if (![keys containsObject:@"associatedImages"]) {
         [newDictionary setObject:[[NSMutableDictionary alloc] init] forKey:@"associatedImages"];
     } else {
@@ -89,6 +77,17 @@
         }
     }
     
+    if (![keys containsObject:@"tips"]) {
+        [newDictionary setObject:[[NSMutableDictionary alloc] init] forKey:@"tips"];
+    } else {
+        NSLog(@"Tips exist for current user, but we aren't getting them from Firebase");
+    }
+    
+    if (![keys containsObject:@"ratings"]) {
+        [newDictionary setObject:[[NSMutableDictionary alloc] init] forKey:@"ratings"];
+    } else {
+        NSLog(@"Ratings exist for current user, but we aren't getting them from Firebase");
+    }
     
     self = [self initWithUserID:newDictionary[@"userID"]
                        username:newDictionary[@"username"]

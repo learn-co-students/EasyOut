@@ -31,7 +31,7 @@
         _creationDate = creationDate;
         _photos = [[NSMutableArray alloc] init];
         _ratings = [[NSMutableDictionary alloc] init];
-        _tips = [[NSMutableArray alloc] init];
+        _tips = [[NSMutableDictionary alloc] init];
         _title = [NSString stringWithFormat:@"Itinerary for %@", dateString];
         _durationInMins = 480;
         _priceRange = 0;
@@ -136,6 +136,21 @@
                durationInMins:(NSUInteger)durationInMins
                    priceRange:(NSUInteger)priceRange
 {
+    
+    self = [super init];
+    
+    if (self) {
+        _userID = userID;
+        _itineraryID = itineraryID;
+        _title = title;
+        _creationDate = creationDate;
+        _activities = activities;
+        _photos = photos;
+        _ratings = ratings;
+        _tips = tips;
+        _durationInMins = durationInMins;
+        _priceRange = priceRange;
+    }
     
     return self;
 }
