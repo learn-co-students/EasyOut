@@ -424,7 +424,7 @@ import Firebase
         
         // Create an observe event for the itineraries reference
         itinerariesRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
-            print("Successfully received snapshot at itineraries reference")
+            print("Successfully received snapshot at itineraries reference:\(snapshot.value)")
             completion(itineraries: (snapshot.value as! Dictionary))
             }, withCancelBlock: { error in
                 print("****Error while trying to retrieve itineraries:\n\(error.description)")
@@ -444,9 +444,11 @@ import Firebase
         
         // Get itinerary ref from Firebase
         print("Getting snapshot of itinerary reference \(itineraryRef.description)")
+        
+        
         itineraryRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
             
-            print("Got itinerary value from snapshot\n\(snapshot.value)")
+            print("Got itinerary value from snapshot")
             
             // Create Itinerary object from snapshot value
             let itinerary : Itinerary = Itinerary.init(firebaseItineraryDictionary: snapshot.value as! [NSObject : AnyObject])

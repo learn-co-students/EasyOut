@@ -13,7 +13,6 @@
 #import "Constants.h"
 
 
-
 @interface DetailViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -25,15 +24,12 @@
 
 
 @property (weak, nonatomic) IBOutlet UIButton *moreDetailLabel;
-
 @property (weak, nonatomic) IBOutlet UIView *mapUIView;
-
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
-
 @property (strong, nonatomic) GMSMapView *mapView;
 
-
 @end
+
 
 @implementation DetailViewController
 
@@ -161,7 +157,6 @@
     
     
     // CONSTRAINTS
-    
     self.mapView.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self.mapView.topAnchor constraintEqualToAnchor:self.mapUIView.topAnchor].active = YES;
@@ -170,7 +165,6 @@
     [self.mapView.trailingAnchor constraintEqualToAnchor:self.mapUIView.trailingAnchor].active = YES;
     
     //MARKER FOR US
-    
     GMSMarker *userLoc = [[GMSMarker alloc]init];
     userLoc.position = CLLocationCoordinate2DMake(self.latitude, self.longitude);
     userLoc.map = self.mapView;
@@ -179,7 +173,6 @@
     UIImage *markerImage = [GMSMarker markerImageWithColor:[Constants vikingBlueColor]];
     
     // Creates a marker in the center of the map.
-    
     GMSMarker *marker = [[GMSMarker alloc] init];
     marker.position = location;
     marker.title = self.activity.name;

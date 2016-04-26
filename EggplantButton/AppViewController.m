@@ -7,7 +7,11 @@
 //
 
 #import "AppViewController.h"
-
+#import <Masonry/Masonry.h>
+#import "Secrets.h"
+#import "Firebase.h"
+#import "User.h"
+#import "EggplantButton-Swift.h"
 
 @interface AppViewController ()
 
@@ -17,6 +21,9 @@
 // Current VC property for swapping VCs in the container view
 @property (strong, nonatomic) UIViewController *currentViewController;
 
+// Current User
+@property (strong, nonatomic) User *user;
+
 @end
 
 @implementation AppViewController
@@ -25,13 +32,18 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor clearColor];
-
     
     Firebase *ref = [[Firebase alloc] initWithUrl:firebaseRootRef];
     
+    self.user = [[User alloc] init];
+    
     if (ref.authData) {
         UIViewController *mainVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:mainViewControllerStoryBoardID];
-    
+        
+        [FirebaseAPIClient getUserFromFirebaseWithUserID:ref.authData.uid completion:^(User * user, BOOL success) {
+            self.user = user;
+        }];
+        
         [self setEmbeddedViewController:mainVC];
     }
     else {
@@ -40,7 +52,6 @@
     }
     
     [self addNotificationObservers];
-    
 }
 
 -(void)addNotificationObservers {
@@ -49,7 +60,6 @@
                                              selector:@selector(backToMain)
                                                  name:mainViewControllerStoryBoardID
                                                object:nil];
-    
 }
 
 -(void)backToMain {
