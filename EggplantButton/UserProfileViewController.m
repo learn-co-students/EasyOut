@@ -14,15 +14,8 @@
 
 @interface UserProfileViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
-@property (strong, nonatomic) User * user;
-
-
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *userImage;
-@property (weak, nonatomic) IBOutlet UILabel *bioLabel;
-@property (weak, nonatomic) IBOutlet CircleLabelView *tipsLabel;
-@property (weak, nonatomic) IBOutlet CircleLabelView *ratedLabel;
-@property (weak, nonatomic) IBOutlet CircleLabelView *itineraryLabel;
 
 @end
 
@@ -39,19 +32,10 @@
             self.usernameLabel.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.4];
             self.usernameLabel.text = self.user.username;
             
-            self.bioLabel.text = self.user.bio;
             
             self.userImage.layer.cornerRadius = (self.userImage.frame.size.width)/2;
             self.userImage.clipsToBounds = YES;
             self.userImage.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
-            
-            self.tipsLabel.type = Tips;
-            self.ratedLabel.type = Ratings;
-            self.itineraryLabel.type = Itineraries;
-            
-            [self.tipsLabel createCircleLabel];
-            [self.ratedLabel createCircleLabel];
-            [self.itineraryLabel createCircleLabel];
             
             if(![self.user.profilePhoto isEqualToString:@""]){
                 [FirebaseAPIClient getImageForImageID:self.user.profilePhoto completion:^(UIImage * image) {
@@ -74,6 +58,28 @@
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"city"]]];
     
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    
+    __block NSArray *itineraryIDs = [[NSMutableArray alloc]init];
+    
+    
+    [self pullUserFromFirebaseWithCompletion:^(BOOL success) {
+        if(success) {
+            
+            itineraryIDs = [self.user.savedItineraries allKeys];
+            
+            for(NSString *key in itineraryIDs) {
+                
+                [FirebaseAPIClient getItineraryWithItineraryID:key completion:^(Itinerary * itinerary) {
+                    
+                    NSLog(@"%@", itinerary);
+                    
+                }];
+                
+                
+            }
+        }
+    }];
+
     
 
 }

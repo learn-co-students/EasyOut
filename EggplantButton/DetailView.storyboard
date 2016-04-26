@@ -6,10 +6,9 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="LobsterTwo-Regular.otf">
-            <string>LobsterTwo</string>
-        </mutableArray>
         <mutableArray key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
@@ -17,7 +16,7 @@
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--Detail View Controller-->
+        <!--Details-->
         <scene sceneID="7tk-ac-ACP">
             <objects>
                 <viewController storyboardIdentifier="DetailView" id="ck0-ww-g9b" customClass="DetailViewController" sceneMemberID="viewController">
@@ -29,72 +28,66 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="cg9-NR-E1m">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="cg9-NR-E1m">
                                 <rect key="frame" x="0.0" y="25" width="600" height="570"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RE0-mt-IIW">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="7"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RE0-mt-IIW">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="33"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="LobsterTwo" family="Lobster Two" pointSize="30"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="28"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleAspectFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6dJ-HA-9CB" userLabel="Navigation Stack">
-                                        <rect key="frame" x="0.0" y="12" width="600" height="150"/>
+                                    <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="6dJ-HA-9CB" userLabel="Navigation Stack">
+                                        <rect key="frame" x="0.0" y="41" width="600" height="150"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Zt-zx-9ns">
-                                                <rect key="frame" x="0.0" y="0.0" width="350" height="150"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="300" height="150"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="150" id="URg-FO-Rec"/>
                                                 </constraints>
                                             </imageView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rko-w0-IJw" userLabel="Distance View">
-                                                <rect key="frame" x="350" y="0.0" width="250" height="150"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Xhn-oZ-hbL">
+                                                <rect key="frame" x="300" y="0.0" width="300" height="150"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="abz-gB-laK">
+                                                        <rect key="frame" x="100" y="0.0" width="100" height="100"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="abz-gB-laK" secondAttribute="height" multiplier="1:1" id="Jd6-bk-Uil"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vov-Wt-p8G">
+                                                        <rect key="frame" x="128" y="103" width="44" height="22"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GlP-5k-7Am">
+                                                        <rect key="frame" x="128" y="128" width="44" height="22"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="0Zt-zx-9ns" firstAttribute="width" secondItem="Rko-w0-IJw" secondAttribute="height" multiplier="7:3" id="jxy-17-y7S"/>
+                                            <constraint firstItem="abz-gB-laK" firstAttribute="width" secondItem="0Zt-zx-9ns" secondAttribute="height" multiplier="2:3" id="tgx-tr-830"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cwm-DN-IFX" userLabel="Map Stack">
-                                        <rect key="frame" x="0.0" y="167" width="600" height="236"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fQZ-KW-UEp" userLabel="Detail Stack">
+                                        <rect key="frame" x="0.0" y="199" width="600" height="94"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SWl-eB-RaB" userLabel="MapView">
-                                                <rect key="frame" x="8" y="8" width="584" height="202"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T7E-FC-b6E" userLabel="Address">
-                                                <rect key="frame" x="8" y="210" width="584" height="18"/>
-                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="fQZ-KW-UEp" userLabel="Detail Stack">
-                                        <rect key="frame" x="0.0" y="408" width="600" height="162"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5H0-U4-5mg" userLabel="Open Status">
-                                                <rect key="frame" x="8" y="8" width="584" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5H0-U4-5mg" userLabel="Open Status">
+                                                <rect key="frame" x="8" y="8" width="584" height="34"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sTR-Ul-vcL" userLabel="Type">
-                                                <rect key="frame" x="8" y="34" width="584" height="21"/>
-                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o31-v6-CSf">
-                                                <rect key="frame" x="8" y="60" width="584" height="94"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o31-v6-CSf">
+                                                <rect key="frame" x="8" y="52" width="584" height="34"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                                 <inset key="contentEdgeInsets" minX="2" minY="2" maxX="2" maxY="2"/>
@@ -106,6 +99,26 @@
                                                     <action selector="detailButtonPressed:" destination="ck0-ww-g9b" eventType="touchUpInside" id="gbi-8f-DeX"/>
                                                 </connections>
                                             </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="5H0-U4-5mg" firstAttribute="height" secondItem="o31-v6-CSf" secondAttribute="height" id="LKO-NU-B7j"/>
+                                        </constraints>
+                                        <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cwm-DN-IFX" userLabel="Map Stack">
+                                        <rect key="frame" x="0.0" y="301" width="600" height="269"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SWl-eB-RaB" userLabel="MapView">
+                                                <rect key="frame" x="8" y="8" width="584" height="231"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T7E-FC-b6E" userLabel="Address">
+                                                <rect key="frame" x="8" y="239" width="584" height="22"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                     </stackView>
@@ -120,7 +133,7 @@
                             <constraint firstItem="cg9-NR-E1m" firstAttribute="leading" secondItem="8be-iO-s5k" secondAttribute="leading" id="WVG-S4-NdV"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="FJJ-9F-MP4">
+                    <navigationItem key="navigationItem" title="Details" id="FJJ-9F-MP4">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="PvR-5S-AYm">
                             <connections>
                                 <action selector="backButtonPressed:" destination="ck0-ww-g9b" id="TcI-UD-Mug"/>
@@ -129,11 +142,14 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addressLabel" destination="T7E-FC-b6E" id="pkh-xP-eb2"/>
-                        <outlet property="distanceView" destination="Rko-w0-IJw" id="Trj-qW-ych"/>
+                        <outlet property="distanceLabel" destination="GlP-5k-7Am" id="afs-C9-lAX"/>
+                        <outlet property="iconImage" destination="abz-gB-laK" id="280-Dy-LYi"/>
                         <outlet property="imageView" destination="0Zt-zx-9ns" id="yjK-ri-Tse"/>
                         <outlet property="mapUIView" destination="SWl-eB-RaB" id="yqG-9O-sdB"/>
                         <outlet property="moreDetailLabel" destination="o31-v6-CSf" id="NBt-1J-ltN"/>
                         <outlet property="nameLabel" destination="RE0-mt-IIW" id="Slc-hp-byq"/>
+                        <outlet property="openStatus" destination="5H0-U4-5mg" id="W4b-3n-Eog"/>
+                        <outlet property="typeLabel" destination="Vov-Wt-p8G" id="lO1-lF-teY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qei-ef-srQ" userLabel="First Responder" sceneMemberID="firstResponder"/>

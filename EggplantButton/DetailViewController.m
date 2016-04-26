@@ -18,8 +18,12 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UIView *distanceView;
-@property (weak, nonatomic) IBOutlet UIButton *phoneNumberButton;
+@property (weak, nonatomic) IBOutlet UIImageView *iconImage;
+@property (weak, nonatomic) IBOutlet UILabel *typeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *openStatus;
+
+
 @property (weak, nonatomic) IBOutlet UIButton *moreDetailLabel;
 
 @property (weak, nonatomic) IBOutlet UIView *mapUIView;
@@ -40,21 +44,14 @@
 
     [self generateGoogleMap];
     
+    [self downloadImageWithURL:self.activity.imageURL setTo:self.imageView];
+    [self downloadImageWithURL:self.activity.icon setTo:self.iconImage];
     self.nameLabel.text = self.activity.name;
-    self.imageView.image = nil;
+    self.typeLabel.text = self.activity.type;
+    self.distanceLabel.text = [NSString stringWithFormat:@"%@ miles away", self.activity.distance];
+
+    [self setImageIcon:[UIImage imageNamed:@"whiteClock"] WithText: self.activity.openStatus forLabel:self.openStatus];
     
-    AFImageDownloader *downloader = [[AFImageDownloader alloc] init];
-    downloader.downloadPrioritizaton = AFImageDownloadPrioritizationLIFO;
-    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:self.activity.imageURL];
-    
-    self.imageView.image = nil;
-    Activity *activityWhoseImageWeAreDownloading = self.activity;
-    
-    [downloader downloadImageForURLRequest:urlRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *responseObject) {
-        if(self.activity == activityWhoseImageWeAreDownloading) {
-            self.imageView.image = responseObject;
-        }
-    } failure:nil];
     
     self.addressLabel.text = [NSString stringWithFormat:@"%@ %@", self.activity.address[0], self.activity.address[1]];
     
@@ -63,6 +60,41 @@
     
     
     }
+
+-(void)setImageIcon:(UIImage*)image WithText:(NSString*)strText forLabel:(UILabel *)label{
+    
+    NSTextAttachment *attachment = [[NSTextAttachment alloc] init];
+    attachment.image = image;
+    float offsetY = label.frame.size.height/-2; //This can be dynamic with respect to size of image and UILabel
+    attachment.bounds = CGRectIntegral( CGRectMake(0, 0, label.frame.size.height, label.frame.size.height));
+    
+    NSMutableAttributedString *attachmentString = [[NSMutableAttributedString alloc] initWithAttributedString:[NSAttributedString attributedStringWithAttachment:attachment]];
+    NSMutableAttributedString *myString= [[NSMutableAttributedString alloc] initWithString:strText];
+    
+    [attachmentString appendAttributedString:myString];
+    
+    label.attributedText = attachmentString;
+}
+
+
+-(void)downloadImageWithURL:(NSURL *)imageURL setTo:(UIImageView *)imageView {
+    
+//    imageView = nil;
+    AFImageDownloader *downloader = [[AFImageDownloader alloc] init];
+    downloader.downloadPrioritizaton = AFImageDownloadPrioritizationLIFO;
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:imageURL];
+    
+    imageView.image = nil;
+    
+    Activity *activityWhoseImageWeAreDownloading = self.activity;
+    
+    [downloader downloadImageForURLRequest:urlRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *responseObject) {
+        if(self.activity == activityWhoseImageWeAreDownloading) {
+            imageView.image = responseObject;
+        }
+    } failure:nil];
+
+}
 
 -(void)getDistanceFromLocation {
     
@@ -116,7 +148,7 @@
     
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:self.latitude
                                                             longitude:self.longitude
-                                                                 zoom:13];
+                                                                 zoom:14];
 
     self.mapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     [self.mapUIView addSubview:self.mapView];
