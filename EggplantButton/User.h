@@ -24,10 +24,10 @@
 @property (strong, nonatomic) NSMutableDictionary *associatedImages;
 
 
--(instancetype)initWithEmail:(NSString *)email
+-(instancetype) initWithEmail:(NSString *)email
                     username:(NSString *)username;
 
--(instancetype) initWithFirebaseUserDictionary:(NSDictionary *)dictionary;
+//-(instancetype) initWithFirebaseUserDictionary:(NSDictionary *)dictionary;
 
 -(instancetype) initWithUserID:(NSString *)userID
                       username:(NSString *)username
@@ -41,5 +41,7 @@
                   profilePhoto:(NSString *)profilePhoto
                     reputation:(NSUInteger)reputation
               associatedImages:(NSMutableDictionary *)associatedImages;
+
++(void) initWithFirebaseUserDictionary:(NSDictionary *)dictionary completion:(void (^)(User *user))completion;
 
 @end

@@ -234,15 +234,19 @@ import Firebase
             print("User ref:\n\(sv)")
             
             // Create new User object
-            let newUser : User = User.init(firebaseUserDictionary: sv as! Dictionary)
+//            let newUser : User = User.init(firebaseUserDictionary: sv as! Dictionary)
             
-            print("Created User object for \(newUser.username)")
+            // Initialize new User object
+            User.initWithFirebaseUserDictionary(sv as! Dictionary, completion: { (user) in
+                
+                print("Created User object with completion block for \(user.username)")
+                
+                completion(user: user, success: true)
+            })
             
-            completion(user: newUser, success: true)
-            
-            }, withCancelBlock: { error in
-                print("****Error retrieving user in user creation:\n\(error.description)")
-                completion(user: User.init(), success: false)
+        }, withCancelBlock: { error in
+            print("****Error retrieving user in user creation:\n\(error.description)")
+            completion(user: User.init(), success: false)
         })
     }
     
