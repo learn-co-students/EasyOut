@@ -469,7 +469,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4C9A03731CAB064200CA9A02 /* Build configuration list for PBXProject "EasyOut" */;
+			buildConfigurationList = 4C9A03731CAB064200CA9A02 /* Build configuration list for PBXProject "EggplantButton" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -756,7 +756,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4C9A03731CAB064200CA9A02 /* Build configuration list for PBXProject "EasyOut" */ = {
+		4C9A03731CAB064200CA9A02 /* Build configuration list for PBXProject "EggplantButton" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4C9A03901CAB064200CA9A02 /* Debug */,

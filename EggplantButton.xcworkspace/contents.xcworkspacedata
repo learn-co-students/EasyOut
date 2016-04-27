@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/llee/Labs/ios-0216-team-eggplant/EasyOut.xcodeproj">
+      location = "group:/Users/llee/Labs/ios-0216-team-eggplant/EggplantButton.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

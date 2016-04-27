@@ -28,12 +28,25 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *checkButton;
 
+@property (weak, nonatomic) UIActivityIndicatorView * spinner;
 
 
 @end
 
 @implementation ActivityCardView
 
+- (void) viewWillAppear:(BOOL)animated {
+    self.spinner = [[UIActivityIndicatorView alloc]
+                    initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    self.spinner.center = CGPointMake((self.contentView.frame.size.width/2), (self.contentView.frame.size.height/2));
+    self.spinner.hidesWhenStopped = YES;
+    [self.spinner startAnimating];
+    [self.contentView addSubview:self.spinner];
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    [self.spinner removeFromSuperview];
+}
 
 -(instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];

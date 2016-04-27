@@ -26,31 +26,7 @@
     [self setupUberButton];
     
     [self setupRezyButton];
-    
-    
-    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    spinner.color = [Constants vikingBlueColor];
-    [self.view addSubview:spinner];
-    [spinner startAnimating];
-    spinner.hidesWhenStopped = YES;
-    
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        // lots of code run in the background
-        
-        
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            // stop and remove the spinner on the main thread when done
-            
-            
-            [spinner removeFromSuperview];
-        });
-    });
-
-    
-    
-    
+      
 
 }
 
