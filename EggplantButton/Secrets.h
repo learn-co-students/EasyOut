@@ -10,7 +10,7 @@
 
 
 // Button
-extern NSString * const APP_ID;
+extern NSString * const BUTTON_APP_ID;
 extern NSString * const REZY_BUTTON_ID;
 extern NSString * const UBER_BUTTON_ID;
 

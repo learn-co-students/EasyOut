@@ -25,14 +25,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    // Initialize Google Maps Services
     [GMSServices provideAPIKey:googlePlacesAPI];
     
-    //set background
-    
+    // Set background
     UIImage *background = [self imageByScalingAndCroppingForSize:self.window.frame.size image:[UIImage imageNamed:@"skyline"]];
     
     [self.window setBackgroundColor:[UIColor colorWithPatternImage: background]];
-    
     
     // Set navigation bar appearance
     [UINavigationBar appearance].barTintColor = [Constants vikingBlueColor];
@@ -43,11 +42,8 @@
     [[UIBarButtonItem appearance] setTitleTextAttributes:@{
                                                            NSFontAttributeName: [UIFont fontWithName:@"Lobster Two" size:20.0f]
                                                            } forState:(UIControlStateNormal)];
-
-    [UINavigationBar appearance].barTintColor = [Constants vikingBlueColor];
-    [UIBarButtonItem appearance].tintColor = [UIColor whiteColor];
     [[UINavigationBar appearance] setTranslucent:YES ];
-
+    
     return YES;
 }
 

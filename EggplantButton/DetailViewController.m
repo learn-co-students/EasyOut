@@ -11,6 +11,8 @@
 #import <GoogleMaps/GMSGeometryUtils.h>
 #import <AFNetworking/AFImageDownloader.h>
 #import "Constants.h"
+#import "Secrets.h"
+#import <Button/Button.h>
 
 
 @interface DetailViewController ()
@@ -20,14 +22,16 @@
 @property (weak, nonatomic) IBOutlet UIImageView *iconImage;
 @property (weak, nonatomic) IBOutlet UILabel *typeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
-@property (weak, nonatomic) IBOutlet UIButton *hoursLabel;
+@property (weak, nonatomic) IBOutlet UILabel *hoursLabel;
 
-
-@property (weak, nonatomic) IBOutlet UIButton *moreDetailLabel;
 @property (weak, nonatomic) IBOutlet UIView *mapUIView;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (strong, nonatomic) GMSMapView *mapView;
 
+@property (weak, nonatomic) IBOutlet UIImageView *uberIcon;
+@property (weak, nonatomic) IBOutlet UIButton *uberButton;
+
+@property (nonatomic, strong) BTNDropinButton *dropinButton;
 @property (weak, nonatomic) UIActivityIndicatorView * spinner;
 
 @end
@@ -49,54 +53,52 @@
 }
 
 - (void)viewDidLoad {
+
     [super viewDidLoad];
-    
+
     self.view.backgroundColor = [UIColor clearColor];
 
     [self generateGoogleMap];
-    
+
     [self downloadImageWithURL:self.activity.imageURL setTo:self.imageView];
     [self downloadImageWithURL:self.activity.icon setTo:self.iconImage];
     self.nameLabel.text = self.activity.name;
     self.typeLabel.text = self.activity.type;
     self.distanceLabel.text = [NSString stringWithFormat:@"%@ miles away", self.activity.distance];
-    [self.hoursLabel setTitle: self.activity.openStatus forState:UIControlStateNormal];
-    
+    self.hoursLabel.text = self.activity.openStatus;
     self.addressLabel.text = [NSString stringWithFormat:@"%@ %@", self.activity.address[0], self.activity.address[1]];
-    
+
     [self getDistanceFromLocation];
 
-    
-    
-    }
+//    [self setupUberButton];
+}
 
 -(void)setImageIcon:(UIImage*)image WithText:(NSString*)strText forLabel:(UILabel *)label{
-    
+
     NSTextAttachment *attachment = [[NSTextAttachment alloc] init];
     attachment.image = image;
     float offsetY = -label.bounds.size.height/2.0; //This can be dynamic with respect to size of image and UILabel
     attachment.bounds = CGRectIntegral( CGRectMake(0, offsetY, label.frame.size.height, label.frame.size.height));
-    
+
     NSMutableAttributedString *attachmentString = [[NSMutableAttributedString alloc] initWithAttributedString:[NSAttributedString attributedStringWithAttachment:attachment]];
     NSMutableAttributedString *myString= [[NSMutableAttributedString alloc] initWithString:strText];
-    
+
     [attachmentString appendAttributedString:myString];
-    
+
     label.attributedText = attachmentString;
 }
 
 
 -(void)downloadImageWithURL:(NSURL *)imageURL setTo:(UIImageView *)imageView {
-    
-//    imageView = nil;
+
     AFImageDownloader *downloader = [[AFImageDownloader alloc] init];
     downloader.downloadPrioritizaton = AFImageDownloadPrioritizationLIFO;
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:imageURL];
-    
+
     imageView.image = nil;
-    
+
     Activity *activityWhoseImageWeAreDownloading = self.activity;
-    
+
     [downloader downloadImageForURLRequest:urlRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *responseObject) {
         if(self.activity == activityWhoseImageWeAreDownloading) {
             imageView.image = responseObject;
@@ -106,27 +108,22 @@
 }
 
 -(void)getDistanceFromLocation {
-    
+
     CLLocation *userLocation = [[CLLocation alloc]initWithLatitude:self.latitude longitude:self.longitude];
-    
+
     NSString *address = [NSString stringWithFormat:@"%@ %@", self.activity.address[0], self.activity.address[1]];
-    
+
     CLLocationCoordinate2D location = [self getLocationFromAddressString: address];
-    
+
     CLLocation *activityLocation = [[CLLocation alloc]initWithLatitude:location.latitude longitude:location.longitude];
-    
+
     CLLocationDistance distance = [userLocation distanceFromLocation: activityLocation];
-    
+
     NSLog(@"%f", distance);
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 - (IBAction)backButtonPressed:(UIBarButtonItem *)sender {
-    
+
     [[self navigationController] popViewControllerAnimated:YES];
 }
 
@@ -144,47 +141,45 @@
             }
         }
     }
+
     CLLocationCoordinate2D center;
     center.latitude=latitude;
     center.longitude = longitude;
-    
-    
+
     return center;
-    
 }
 
 -(void)generateGoogleMap {
-    
+
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:self.latitude
                                                             longitude:self.longitude
                                                                  zoom:14];
 
     self.mapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     [self.mapUIView addSubview:self.mapView];
-    
+
     //COORDINATES FOR USER AND ACTIVITY
-    
-    CLLocationCoordinate2D user = CLLocationCoordinate2DMake(self.latitude, self.longitude);
+
     NSString *address = [NSString stringWithFormat:@"%@ %@", self.activity.address[0], self.activity.address[1]];
     CLLocationCoordinate2D location = [self getLocationFromAddressString: address];
-    
-    
+
+
     // CONSTRAINTS
     self.mapView.translatesAutoresizingMaskIntoConstraints = NO;
-    
+
     [self.mapView.topAnchor constraintEqualToAnchor:self.mapUIView.topAnchor].active = YES;
     [self.mapView.bottomAnchor constraintEqualToAnchor:self.mapUIView.bottomAnchor].active = YES;
     [self.mapView.leadingAnchor constraintEqualToAnchor:self.mapUIView.leadingAnchor].active = YES;
     [self.mapView.trailingAnchor constraintEqualToAnchor:self.mapUIView.trailingAnchor].active = YES;
-    
+
     //MARKER FOR US
     GMSMarker *userLoc = [[GMSMarker alloc]init];
     userLoc.position = CLLocationCoordinate2DMake(self.latitude, self.longitude);
     userLoc.map = self.mapView;
-    
+
     //MARKER FOR ACTIVITIES
     UIImage *markerImage = [GMSMarker markerImageWithColor:[Constants vikingBlueColor]];
-    
+
     // Creates a marker in the center of the map.
     GMSMarker *marker = [[GMSMarker alloc] init];
     marker.position = location;
@@ -192,21 +187,70 @@
     marker.snippet = address;
     marker.map = self.mapView;
     marker.icon = markerImage;
-    
+
 //    GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithCoordinate:user coordinate:location];
-//    
+//
 ////    [self.mapView moveCamera:[GMSCameraUpdate fitBounds:bounds]];
 //
-//    
+//
 //    camera = [self.mapView cameraForBounds:bounds insets:UIEdgeInsetsZero];
 //    self.mapView.camera = camera;
 }
 
 
 - (IBAction)detailButtonPressed:(id)sender {
-        
+
     [[UIApplication sharedApplication] openURL: self.activity.moreDetailsURL];
 }
 
+- (IBAction)uberButtonTapped:(id)sender {
+
+}
+
+- (void)setupUberButton {
+
+    // Initialize Button integration
+    [[Button sharedButton] configureWithApplicationId:BUTTON_APP_ID
+                                           completion:NULL];
+
+    // Allow Button to request location
+    [Button allowButtonToRequestLocationPermission:YES];
+
+    // Set up Uber Button
+    self.dropinButton = [[BTNDropinButton alloc] initWithButtonId:BUTTON_APP_ID];
+    [self.uberIcon addSubview:self.dropinButton];
+
+    // Set Uber Button appearance
+    [self.dropinButton.leadingAnchor constraintEqualToAnchor:self.uberIcon.leadingAnchor].active = YES;
+    [self.dropinButton.trailingAnchor constraintEqualToAnchor:self.uberIcon.trailingAnchor].active = YES;
+    [self.dropinButton.topAnchor constraintEqualToAnchor:self.uberIcon.topAnchor].active = YES;
+    [self.dropinButton.bottomAnchor constraintEqualToAnchor:self.uberIcon.bottomAnchor].active = YES;
+
+    self.dropinButton.alpha = 0.01;
+
+    BTNLocation *location = [BTNLocation locationWithLatitude:self.latitude
+                                                    longitude:self.longitude];
+
+    BTNContext *context = [BTNContext contextWithSubjectLocation:location];
+
+
+
+    // Check if Uber is available and display button if it is
+    [[Button sharedButton] willDisplayButtonWithId:BUTTON_APP_ID
+                                           context:context
+                                        completion:^(BOOL willDisplay) {
+        if (willDisplay) {
+            // An action is available for this button and context.
+
+            // Prepare the Button for display
+            [self.dropinButton prepareWithContext:context completion:^(BOOL isDisplayable) {
+                if (!isDisplayable) {
+                    // Hide the Uber icon
+                    self.uberIcon.alpha = 0.0;
+                }
+            }];
+        }
+    }];
+}
 
 @end

@@ -15,8 +15,6 @@
 
 //@property (weak, nonatomic) IBOutlet BTNDropinButton *dropinButton;
 
-- (void) setupRezyButton;
-
 - (void) setupUberButton;
 
 @end

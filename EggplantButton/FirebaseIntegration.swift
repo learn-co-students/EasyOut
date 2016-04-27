@@ -447,12 +447,9 @@ import Firebase
         let itineraryRef = itinerariesRef.childByAppendingPath(itineraryID)
         
         // Get itinerary ref from Firebase
-        print("Getting snapshot of itinerary reference \(itineraryRef.description)")
-        
-        
         itineraryRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
             
-            print("Got itinerary value from snapshot")
+            print("Got itinerary \(itineraryID) value from snapshot")
             
             // Create Itinerary object from snapshot value
             let itinerary : Itinerary = Itinerary.init(firebaseItineraryDictionary: snapshot.value as! [NSObject : AnyObject])
@@ -770,14 +767,14 @@ import Firebase
         
         // Set Firebase references
         let ref = Firebase(url:firebaseRootRef)
-        let usersRef = ref.childByAppendingPath("users")
-        let imagesRef = ref.childByAppendingPath("images")
-        let itinerariesRef = ref.childByAppendingPath("itineraries")
-        let currentUserRef = usersRef.childByAppendingPath(ref.authData.uid)
-        let associatedImagesRef = currentUserRef.childByAppendingPath("associatedImages")
-        let savedItinerariesRef = currentUserRef.childByAppendingPath("savedItineraries")
+//        let usersRef = ref.childByAppendingPath("users")
+//        let imagesRef = ref.childByAppendingPath("images")
+//        let itinerariesRef = ref.childByAppendingPath("itineraries")
+//        let currentUserRef = usersRef.childByAppendingPath(ref.authData.uid)
+//        let associatedImagesRef = currentUserRef.childByAppendingPath("associatedImages")
+//        let savedItinerariesRef = currentUserRef.childByAppendingPath("savedItineraries")
         
-        // Remove all user itineraries and associated images
+        // TODO: Remove all user itineraries and associated images
         
         
         FirebaseAPIClient.logOutUser()
