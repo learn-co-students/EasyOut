@@ -72,7 +72,7 @@
 
     [self getDistanceFromLocation];
 
-    //[self setupUberButton];
+    [self setupUberButton];
     
     [self setupRealUberButton];
 }
@@ -238,6 +238,14 @@
     
     BTNContext *context = [BTNContext contextWithSubjectLocation:location];
     
+    [[Button sharedButton] willDisplayButtonWithId:UBER_BUTTON_ID
+                                           context:context
+                                        completion:^(BOOL willDisplay) {
+                                            if (willDisplay) {
+                                                // An action is available for this button and context.
+                                                NSLog(@"uberButton available'");
+                                            }
+                                        }];
     
     
     // Check if Uber is available and display button if it is
