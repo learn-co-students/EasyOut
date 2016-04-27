@@ -49,10 +49,26 @@
 @property (weak, nonatomic) IBOutlet UIButton *createItineraryButton;
 @property (weak, nonatomic) IBOutlet UIButton *randomizeCardsButton;
 
+@property (weak, nonatomic) UIActivityIndicatorView * spinner;
+
 @end
 
 
 @implementation CardViewController
+
+- (void) viewWillAppear:(BOOL)animated {
+    self.spinner = [[UIActivityIndicatorView alloc]
+                    initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    self.spinner.center = CGPointMake((self.view.frame.size.width/2), (self.view.frame.size.height/2));
+    self.spinner.hidesWhenStopped = YES;
+    [self.spinner startAnimating];
+    [self.view addSubview:self.spinner];
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.spinner removeFromSuperview];
+}
 
 - (void)viewDidLoad {
     
@@ -65,7 +81,8 @@
     self.dataStore = [ActivitiesDataStore sharedDataStore];
     
     [self getCardData];
-  
+    
+    
     self.topRowCollection.backgroundColor = [UIColor clearColor];
     self.middleRowCollection.backgroundColor = [UIColor clearColor];
     self.bottomRowCollection.backgroundColor = [UIColor clearColor];
@@ -114,11 +131,6 @@
     
 }
 
-
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    
-}
 
 
 #pragma mark - Locking/Unlocking Cards
@@ -275,8 +287,15 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+
     ActivityCardCollectionViewCell *cell = (ActivityCardCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"cardCell" forIndexPath:indexPath];
+    
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc]
+                                        initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    spinner.center = CGPointMake(160, 240);
+    spinner.hidesWhenStopped = YES;
+    [cell.cardView addSubview:spinner];
+    [spinner startAnimating];
     
     if(collectionView == self.topRowCollection) {
         

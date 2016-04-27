@@ -28,10 +28,25 @@
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (strong, nonatomic) GMSMapView *mapView;
 
+@property (weak, nonatomic) UIActivityIndicatorView * spinner;
+
 @end
 
 
 @implementation DetailViewController
+
+- (void) viewWillAppear:(BOOL)animated {
+    self.spinner = [[UIActivityIndicatorView alloc]
+                    initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    self.spinner.center = CGPointMake((self.view.frame.size.width/2), (self.view.frame.size.height/2));
+    self.spinner.hidesWhenStopped = YES;
+    [self.spinner startAnimating];
+    [self.view addSubview:self.spinner];
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    [self.spinner removeFromSuperview];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

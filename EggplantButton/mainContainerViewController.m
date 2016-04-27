@@ -14,6 +14,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView * sideMenuContainer;
 @property (weak, nonatomic) IBOutlet UIView * viewContainer;
+@property (weak, nonatomic) UIActivityIndicatorView * spinner;
 
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer * mainViewTapGestureRecognizer;
 
@@ -21,11 +22,25 @@
 
 @implementation mainContainerViewController
 
+- (void) viewWillAppear:(BOOL)animated {
+    self.spinner = [[UIActivityIndicatorView alloc]
+                                        initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    self.spinner.center = CGPointMake((self.view.frame.size.width/2), (self.view.frame.size.height/2));
+    self.spinner.hidesWhenStopped = YES;
+    [self.spinner startAnimating];
+    [self.view addSubview:self.spinner];
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    [self.spinner removeFromSuperview];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor clearColor];
-
+    
+    
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(menuButtonTapped:)
@@ -37,7 +52,6 @@
                                              selector:@selector(sideMenuFadeAway:)
                                                  name:@"sideMenuFadeAway"
                                                object:nil];
-    
 
 }
 
