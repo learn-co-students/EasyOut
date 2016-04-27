@@ -48,6 +48,9 @@
     [[Button sharedButton] configureWithApplicationId:BUTTON_APP_ID
                                            completion:NULL];
     
+    // Allow Button to request location
+    [Button allowButtonToRequestLocationPermission:YES];
+    
     return YES;
 }
 

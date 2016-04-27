@@ -31,7 +31,8 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *uberIcon;
 @property (weak, nonatomic) IBOutlet UIButton *uberButton;
-@property (nonatomic, strong) BTNDropinButton *button;
+
+@property (nonatomic, strong) BTNDropinButton *dropinButton;
 
 @end
 
@@ -39,6 +40,7 @@
 @implementation DetailViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor clearColor];
@@ -55,7 +57,7 @@
     
     [self getDistanceFromLocation];
 
-    [self setupUberButton];
+//    [self setupUberButton];
 }
 
 -(void)setImageIcon:(UIImage*)image WithText:(NSString*)strText forLabel:(UILabel *)label{
@@ -76,7 +78,6 @@
 
 -(void)downloadImageWithURL:(NSURL *)imageURL setTo:(UIImageView *)imageView {
     
-//    imageView = nil;
     AFImageDownloader *downloader = [[AFImageDownloader alloc] init];
     downloader.downloadPrioritizaton = AFImageDownloadPrioritizationLIFO;
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:imageURL];
@@ -108,11 +109,6 @@
     NSLog(@"%f", distance);
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 - (IBAction)backButtonPressed:(UIBarButtonItem *)sender {
     
     [[self navigationController] popViewControllerAnimated:YES];
@@ -132,13 +128,12 @@
             }
         }
     }
+    
     CLLocationCoordinate2D center;
     center.latitude=latitude;
     center.longitude = longitude;
     
-    
     return center;
-    
 }
 
 -(void)generateGoogleMap {
@@ -202,18 +197,38 @@
 
 - (void)setupUberButton {
     // Set up Uber Button
-    self.button = [[BTNDropinButton alloc] initWithButtonId:BUTTON_APP_ID];
-    [self.uberIcon addSubview:self.button];
+    self.dropinButton = [[BTNDropinButton alloc] initWithButtonId:BUTTON_APP_ID];
+    [self.uberIcon addSubview:self.dropinButton];
     
     // Set Uber Button appearance
-    [self.button.leadingAnchor constraintEqualToAnchor:self.uberIcon.leadingAnchor].active = YES;
-    [self.button.trailingAnchor constraintEqualToAnchor:self.uberIcon.trailingAnchor].active = YES;
-    [self.button.topAnchor constraintEqualToAnchor:self.uberIcon.topAnchor].active = YES;
-    [self.button.bottomAnchor constraintEqualToAnchor:self.uberIcon.bottomAnchor].active = YES;
+    [self.dropinButton.leadingAnchor constraintEqualToAnchor:self.uberIcon.leadingAnchor].active = YES;
+    [self.dropinButton.trailingAnchor constraintEqualToAnchor:self.uberIcon.trailingAnchor].active = YES;
+    [self.dropinButton.topAnchor constraintEqualToAnchor:self.uberIcon.topAnchor].active = YES;
+    [self.dropinButton.bottomAnchor constraintEqualToAnchor:self.uberIcon.bottomAnchor].active = YES;
     
-    BTNLocation *location = [BTNLocation locationWithName:@"Parm"
-                                                 latitude:40.7237889
-                                                longitude:-73.997];
+    BTNLocation *location = [BTNLocation locationWithLatitude:self.latitude
+                                                    longitude:self.longitude];
+    
+    BTNContext *context = [BTNContext contextWithSubjectLocation:location];
+    
+    
+    
+    // Check if Uber is available and display button if it is
+    [[Button sharedButton] willDisplayButtonWithId:BUTTON_APP_ID
+                                           context:context
+                                        completion:^(BOOL willDisplay) {
+        if (willDisplay) {
+            // An action is available for this button and context.
+            
+            // Prepare the Button for display
+            [self.dropinButton prepareWithContext:context completion:^(BOOL isDisplayable) {
+                if (!isDisplayable) {
+                    // Hide the Uber icon
+                    self.uberIcon.alpha = 0.0;
+                }
+            }];
+        }
+    }];
 }
 
 @end
