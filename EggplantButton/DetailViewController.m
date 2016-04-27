@@ -20,7 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *iconImage;
 @property (weak, nonatomic) IBOutlet UILabel *typeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
-@property (weak, nonatomic) IBOutlet UILabel *openStatus;
+@property (weak, nonatomic) IBOutlet UIButton *hoursLabel;
 
 
 @property (weak, nonatomic) IBOutlet UIButton *moreDetailLabel;
@@ -45,9 +45,7 @@
     self.nameLabel.text = self.activity.name;
     self.typeLabel.text = self.activity.type;
     self.distanceLabel.text = [NSString stringWithFormat:@"%@ miles away", self.activity.distance];
-
-    [self setImageIcon:[UIImage imageNamed:@"whiteClock"] WithText: self.activity.openStatus forLabel:self.openStatus];
-    
+    [self.hoursLabel setTitle: self.activity.openStatus forState:UIControlStateNormal];
     
     self.addressLabel.text = [NSString stringWithFormat:@"%@ %@", self.activity.address[0], self.activity.address[1]];
     
@@ -61,8 +59,8 @@
     
     NSTextAttachment *attachment = [[NSTextAttachment alloc] init];
     attachment.image = image;
-    float offsetY = label.frame.size.height/-2; //This can be dynamic with respect to size of image and UILabel
-    attachment.bounds = CGRectIntegral( CGRectMake(0, 0, label.frame.size.height, label.frame.size.height));
+    float offsetY = -label.bounds.size.height/2.0; //This can be dynamic with respect to size of image and UILabel
+    attachment.bounds = CGRectIntegral( CGRectMake(0, offsetY, label.frame.size.height, label.frame.size.height));
     
     NSMutableAttributedString *attachmentString = [[NSMutableAttributedString alloc] initWithAttributedString:[NSAttributedString attributedStringWithAttachment:attachment]];
     NSMutableAttributedString *myString= [[NSMutableAttributedString alloc] initWithString:strText];

@@ -33,6 +33,9 @@
 @property (nonatomic) CLLocationDegrees longitude;
 
 //COLLECTIONS
+
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+
 @property (weak, nonatomic) IBOutlet UICollectionView *topRowCollection;
 @property (weak, nonatomic) IBOutlet UICollectionView *middleRowCollection;
 @property (weak, nonatomic) IBOutlet UICollectionView *bottomRowCollection;
@@ -43,7 +46,6 @@
 @property (nonatomic) BOOL thirdCardLocked;
 
 //BUTTONS
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *filterNavButton;
 @property (weak, nonatomic) IBOutlet UIButton *createItineraryButton;
 @property (weak, nonatomic) IBOutlet UIButton *randomizeCardsButton;
 
@@ -73,6 +75,7 @@
     self.randomizeCardsButton.backgroundColor = [Constants vikingBlueColor];
     self.createItineraryButton.titleLabel.font = [UIFont fontWithName:@"Lobster Two" size:20.0f];
     self.randomizeCardsButton.titleLabel.font = [UIFont fontWithName:@"Lobster Two" size:20.0f];
+    
     
     // Set appearance of navigation bar
     self.navigationController.navigationBar.topItem.title = @"EasyOut";
@@ -441,7 +444,9 @@
 
 - (void) shakeStarted: (NSNotification *) notification {
     
-        [self shuffleCards];
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+
+    [self shuffleCards];
 
         
     if(!self.firstCardLocked) {
@@ -490,16 +495,10 @@
 }
 
 
-#pragma mark - Button Things
-
-// Segue to itinerary view
-- (IBAction)saveButtonPressed:(UIButton *)sender {
-    
-}
+#pragma mark - Helper Methods
 
 
-- (IBAction)filterButtonPressed:(UIBarButtonItem *)sender {
 
-}
+
 
 @end

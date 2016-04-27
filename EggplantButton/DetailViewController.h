@@ -19,4 +19,7 @@
 @property (nonatomic) CLLocationDegrees latitude;
 @property (nonatomic) CLLocationDegrees longitude;
 
+
+-(void)downloadImageWithURL:(NSURL *)imageURL setTo:(UIImageView *)imageView;
+
 @end

@@ -53,8 +53,11 @@
     [self.view.centerXAnchor constraintEqualToAnchor:self.centerXAnchor].active = YES;
     [self.view.centerYAnchor constraintEqualToAnchor:self.centerYAnchor].active = YES;
     
-    self.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.4];
+    self.backgroundColor = [UIColor clearColor];
     
+    self.view.layer.cornerRadius = 5.0;
+    self.view.layer.borderColor = [[UIColor whiteColor] colorWithAlphaComponent:0.4].CGColor;
+    self.view.layer.borderWidth = 2.0;
 }
 
 

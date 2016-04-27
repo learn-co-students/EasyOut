@@ -12,6 +12,7 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import "EggplantButton-Swift.h"
 #import "ItineraryReviewTableViewCell.h"
+#import <AFNetworking/AFImageDownloader.h>
 
 
 
@@ -24,20 +25,7 @@
 
 @property (strong, nonatomic) GMSMapView *gpsMapView;
 
-typedef NS_ENUM(NSInteger, Month) {
-    January = 1,
-    February,
-    March,
-    April,
-    May,
-    June,
-    July,
-    August,
-    September,
-    October,
-    November,
-    December
-};
+
 
 @end
 
@@ -46,7 +34,7 @@ typedef NS_ENUM(NSInteger, Month) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.dateLabel.text = [self getDate];
+    self.navigationItem.title = [self getDate];
     
     self.view.backgroundColor = [UIColor clearColor];
     
@@ -119,10 +107,6 @@ typedef NS_ENUM(NSInteger, Month) {
     }
     
     return [NSString stringWithFormat:@"%@ %lu, %lu", month, [components day], [components year]];
-    
-//    NSLog(@"Day: %ld", [components day]);
-//    NSLog(@"Month: %ld", [components month]);
-//    NSLog(@"Year: %ld", [components year]);
 }
 
 //TABLE THINGS
@@ -136,9 +120,14 @@ typedef NS_ENUM(NSInteger, Month) {
     
     ItineraryReviewTableViewCell *cell = (ItineraryReviewTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"ActivityCell" forIndexPath:indexPath];
     
-    cell.nameLabel.text = ((Activity *)self.itinerary.activities[indexPath.row]).name;
-    cell.addressLabel.text = [NSString stringWithFormat:@"%@ %@", ((Activity *)self.itinerary.activities[indexPath.row]).address[0], ((Activity *)self.itinerary.activities[indexPath.row]).address[1]];
-
+    Activity *activity = ((Activity *)self.itinerary.activities[indexPath.row]);
+    
+    cell.nameLabel.text = activity.name;
+    cell.addressLabel.text = activity.address[0];
+    cell.cityStateLabel.text = activity.address[1];
+    cell.distanceLabel.text = [NSString stringWithFormat:@"%@ mi away", activity.distance];
+    [self downloadImageWithURL:activity.icon setTo:cell.iconImage];
+    
     return cell;
 }
 
@@ -171,7 +160,7 @@ typedef NS_ENUM(NSInteger, Month) {
 -(void)generateGoogleMap{
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:self.latitude
                                                             longitude:self.longitude
-                                                                 zoom:12];
+                                                                 zoom:14];
     
     self.gpsMapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     
@@ -212,6 +201,24 @@ typedef NS_ENUM(NSInteger, Month) {
         marker.icon = markerImage;
         
     }
+}
+
+#pragma mark - Helper
+
+-(void)downloadImageWithURL:(NSURL *)imageURL setTo:(UIImageView *)imageView {
+    
+    //    imageView = nil;
+    AFImageDownloader *downloader = [[AFImageDownloader alloc] init];
+    downloader.downloadPrioritizaton = AFImageDownloadPrioritizationLIFO;
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:imageURL];
+    
+    imageView.image = nil;
+    
+    [downloader downloadImageForURLRequest:urlRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *responseObject) {
+            imageView.image = responseObject;
+        
+    } failure:nil];
+    
 }
 
 @end

@@ -79,12 +79,14 @@
 
         _moreDetailsURL = activityDictionary[@"tips"][0][@"canonicalUrl"];
      
-        _openStatus = activityDictionary[@"venue"][@"hours"][@"status"];
+        if(!activityDictionary[@"venue"][@"hours"][@"status"]) {
+            _openStatus = @"Hours unavailable";
+        }
+        else {
+            _openStatus = activityDictionary[@"venue"][@"hours"][@"status"];
+        }
         
         _icon = [NSURL URLWithString: [NSString stringWithFormat:@"%@%@%@", activityDictionary[@"venue"][@"categories"][0][@"icon"][@"prefix"], @"88", activityDictionary[@"venue"][@"categories"][0][@"icon"][@"suffix"]]];
-        
-        
-        float distanceInMeters = [(NSNumber *)activityDictionary[@"venue"][@"location"][@"distance"] floatValue] * (float)0.000621371;
 
         _distance = [NSString stringWithFormat:@"%.2f",[(NSNumber *)activityDictionary[@"venue"][@"location"][@"distance"] floatValue] * (float)0.000621371];
 

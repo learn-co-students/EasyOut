@@ -5,11 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <mutableArray key="Roboto-Regular.ttf">
-            <string>Roboto-Regular</string>
-        </mutableArray>
-    </customFonts>
     <scenes>
         <!--Itinerary View Controller-->
         <scene sceneID="i0i-Ip-Uy9">
@@ -23,53 +18,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i2t-RE-MhZ">
-                                <rect key="frame" x="0.0" y="20" width="600" height="26"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="25"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="fQo-FS-wSZ">
-                                <rect key="frame" x="20" y="66" width="560" height="514"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fQo-FS-wSZ">
+                                <rect key="frame" x="20" y="20" width="560" height="560"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="amg-HW-q90">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="247"/>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nVZ-sy-KNk">
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="275"/>
+                                    </view>
+                                    <tableView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="amg-HW-q90">
+                                        <rect key="frame" x="0.0" y="285" width="560" height="275"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="separatorColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="sectionIndexColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ActivityCell" rowHeight="70" id="tba-Bf-JjV" customClass="ItineraryReviewTableViewCell">
-                                                <rect key="frame" x="0.0" y="28" width="560" height="70"/>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ActivityCell" rowHeight="90" id="tba-Bf-JjV" customClass="ItineraryReviewTableViewCell">
+                                                <rect key="frame" x="0.0" y="28" width="560" height="90"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tba-Bf-JjV" id="uck-10-k43">
-                                                    <rect key="frame" x="0.0" y="0.0" width="560" height="69"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="560" height="89"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableViewCellContentView>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nVZ-sy-KNk">
-                                        <rect key="frame" x="0.0" y="267" width="560" height="247"/>
-                                    </view>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="T0v-aO-3Ot" firstAttribute="top" secondItem="fQo-FS-wSZ" secondAttribute="bottom" constant="20" id="NWp-Y0-3cQ"/>
-                            <constraint firstItem="fQo-FS-wSZ" firstAttribute="leading" secondItem="TM5-Ju-Che" secondAttribute="leadingMargin" id="VsO-pD-QjR"/>
-                            <constraint firstItem="fQo-FS-wSZ" firstAttribute="trailing" secondItem="TM5-Ju-Che" secondAttribute="trailingMargin" id="bBu-gx-702"/>
-                            <constraint firstItem="i2t-RE-MhZ" firstAttribute="width" secondItem="TM5-Ju-Che" secondAttribute="width" id="etc-fq-dVd"/>
-                            <constraint firstItem="i2t-RE-MhZ" firstAttribute="top" secondItem="NBD-Jf-WSI" secondAttribute="bottom" constant="20" id="fA5-zL-2ge"/>
-                            <constraint firstItem="fQo-FS-wSZ" firstAttribute="top" secondItem="i2t-RE-MhZ" secondAttribute="bottom" constant="20" id="oMM-9N-Fpo"/>
-                            <constraint firstItem="i2t-RE-MhZ" firstAttribute="centerX" secondItem="TM5-Ju-Che" secondAttribute="centerX" id="x1S-lm-pJd"/>
+                            <constraint firstItem="T0v-aO-3Ot" firstAttribute="top" secondItem="fQo-FS-wSZ" secondAttribute="bottom" constant="20" id="31r-vk-lCQ"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="fQo-FS-wSZ" secondAttribute="leading" id="Vig-Hh-S3S"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fQo-FS-wSZ" secondAttribute="trailing" id="f4t-7V-Ub9"/>
+                            <constraint firstItem="fQo-FS-wSZ" firstAttribute="top" secondItem="NBD-Jf-WSI" secondAttribute="bottom" constant="20" id="u4K-7T-jou"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
-                        <outlet property="dateLabel" destination="i2t-RE-MhZ" id="TLf-sy-FgK"/>
                         <outlet property="itineraryTableView" destination="amg-HW-q90" id="R4z-8d-vpt"/>
                         <outlet property="mapView" destination="nVZ-sy-KNk" id="UhQ-Co-LjR"/>
                     </connections>

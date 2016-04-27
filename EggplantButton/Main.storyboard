@@ -107,13 +107,13 @@
                                     </collectionView>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hhF-uU-Inp" userLabel="Button Stack">
-                                <rect key="frame" x="16" y="555" width="343" height="50"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hhF-uU-Inp" userLabel="Button Stack">
+                                <rect key="frame" x="16" y="565" width="343" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D12-lf-tgx" userLabel="Save Itinerary Button">
                                         <rect key="frame" x="0.0" y="0.0" width="167" height="50"/>
                                         <fontDescription key="fontDescription" name="LobsterTwo" family="Lobster Two" pointSize="21"/>
-                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="3" maxY="0.0"/>
                                         <state key="normal" title="Save Itinerary" image="save">
@@ -125,6 +125,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vrG-5j-TCQ" userLabel="Randomize Cards Button">
                                         <rect key="frame" x="177" y="0.0" width="166" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="LobsterTwo" family="Lobster Two" pointSize="21"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -146,11 +147,11 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="VU8-K5-T2e" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="5dS-E8-lEo"/>
+                            <constraint firstItem="VU8-K5-T2e" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="15" id="Hz6-cU-MXS"/>
                             <constraint firstItem="hhF-uU-Inp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="LQf-yx-Pud"/>
                             <constraint firstItem="hhF-uU-Inp" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Piz-kd-xmS"/>
                             <constraint firstItem="VU8-K5-T2e" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="RA7-c0-rcj"/>
                             <constraint firstItem="VU8-K5-T2e" firstAttribute="bottom" secondItem="hhF-uU-Inp" secondAttribute="top" constant="-15" id="fpw-Nz-Rpz"/>
-                            <constraint firstItem="VU8-K5-T2e" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="15" id="nBc-lt-vsh"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hhF-uU-Inp" secondAttribute="bottom" constant="8" symbolic="YES" id="tLe-Um-Ccv"/>
                         </constraints>
                     </view>
@@ -236,7 +237,7 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Ujk-eF-ZtS" firstAttribute="top" secondItem="bWx-kL-uTS" secondAttribute="top" id="1om-nS-v3l"/>
-                            <constraint firstAttribute="trailing" secondItem="8oa-sp-fTI" secondAttribute="trailing" id="3bG-Pj-Nkg"/>
+                            <constraint firstItem="8oa-sp-fTI" firstAttribute="trailing" secondItem="bWx-kL-uTS" secondAttribute="trailing" id="3bG-Pj-Nkg"/>
                             <constraint firstItem="63I-4i-s4b" firstAttribute="top" secondItem="8oa-sp-fTI" secondAttribute="bottom" id="NU4-Am-9KV"/>
                             <constraint firstItem="63I-4i-s4b" firstAttribute="top" secondItem="Ujk-eF-ZtS" secondAttribute="bottom" id="NuC-dj-mup"/>
                             <constraint firstItem="8oa-sp-fTI" firstAttribute="top" secondItem="bWx-kL-uTS" secondAttribute="top" id="nuL-bu-kzX"/>
@@ -311,7 +312,7 @@
                                 <size key="titleShadowOffset" width="2.2250738585072014e-308" height="1"/>
                                 <state key="normal" title="Log Out">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="logoutButtonTapped:" destination="3L1-dU-ywu" eventType="touchUpInside" id="Wzv-HU-1eR"/>
@@ -326,6 +327,7 @@
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2tM-t7-nEo">
                                                 <rect key="frame" x="0.0" y="0.0" width="179" height="179"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="2tM-t7-nEo" secondAttribute="height" multiplier="1:1" id="XUA-nB-61h"/>
                                                 </constraints>
@@ -357,7 +359,7 @@
                                         <size key="titleShadowOffset" width="2.2250738585072014e-308" height="1"/>
                                         <state key="normal" title="Profile">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="profileButtonTapped:" destination="3L1-dU-ywu" eventType="touchUpInside" id="uct-gk-LsY"/>
@@ -369,7 +371,7 @@
                                         <size key="titleShadowOffset" width="2.2250738585072014e-308" height="1"/>
                                         <state key="normal" title="Itinerary History">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="itineraryHistoryButtonTapped:" destination="3L1-dU-ywu" eventType="touchUpInside" id="iHJ-ft-Igw"/>

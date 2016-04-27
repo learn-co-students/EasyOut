@@ -3,48 +3,93 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ItineraryReviewTableViewCell">
             <connections>
                 <outlet property="addressLabel" destination="kZe-4c-FKY" id="Lb7-de-k88"/>
+                <outlet property="cityStateLabel" destination="Dbl-6q-CFx" id="W2n-ZN-qZM"/>
+                <outlet property="distanceLabel" destination="zwJ-Gk-2YN" id="9MI-iD-046"/>
+                <outlet property="iconImage" destination="9NN-jc-k3Y" id="4as-CO-AML"/>
                 <outlet property="nameLabel" destination="R4k-oh-L8A" id="efj-jp-0S2"/>
                 <outlet property="view" destination="iN0-l3-epB" id="34c-JN-eA4"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="601" height="130"/>
+            <rect key="frame" x="0.0" y="0.0" width="601" height="177"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lK3-La-4e9">
-                    <rect key="frame" x="8" y="8" width="593" height="122"/>
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Kvi-rc-SHR">
+                    <rect key="frame" x="5" y="5" width="591" height="167"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R4k-oh-L8A">
-                            <rect key="frame" x="0.0" y="0.0" width="593" height="72"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kZe-4c-FKY">
-                            <rect key="frame" x="0.0" y="51" width="593" height="71"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lK3-La-4e9">
+                            <rect key="frame" x="0.0" y="0.0" width="496" height="167"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R4k-oh-L8A">
+                                    <rect key="frame" x="0.0" y="0.0" width="496" height="67"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kZe-4c-FKY">
+                                    <rect key="frame" x="0.0" y="49" width="496" height="68"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dbl-6q-CFx">
+                                    <rect key="frame" x="0.0" y="100" width="496" height="67"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CNQ-c6-9jt">
+                            <rect key="frame" x="506" y="0.0" width="85" height="167"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zwJ-Gk-2YN">
+                                    <rect key="frame" x="0.0" y="0.0" width="85" height="86"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9NN-jc-k3Y">
+                                    <rect key="frame" x="0.0" y="82" width="85" height="85"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="9NN-jc-k3Y" secondAttribute="height" multiplier="1:1" id="AMX-fe-2RP"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                        </stackView>
                     </subviews>
                 </stackView>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="lK3-La-4e9" secondAttribute="bottomMargin" id="AMF-LT-RDS"/>
-                <constraint firstItem="lK3-La-4e9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" id="D0a-yb-Qqo"/>
-                <constraint firstAttribute="trailing" secondItem="lK3-La-4e9" secondAttribute="trailingMargin" id="HQR-Je-JK2"/>
-                <constraint firstItem="lK3-La-4e9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="mRd-am-B3Z"/>
+                <constraint firstAttribute="trailing" secondItem="Kvi-rc-SHR" secondAttribute="trailing" constant="5" id="7eu-7h-xyK"/>
+                <constraint firstItem="Kvi-rc-SHR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="IFp-5p-3T3"/>
+                <constraint firstItem="Kvi-rc-SHR" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="Zqx-1U-can"/>
+                <constraint firstAttribute="bottom" secondItem="Kvi-rc-SHR" secondAttribute="bottom" constant="5" id="vfQ-Zq-loe"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="169.5" y="-167"/>
+            <point key="canvasLocation" x="169.5" y="-143.5"/>
         </view>
+        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TUu-cZ-FvQ">
+            <rect key="frame" x="0.0" y="0.0" width="42" height="21"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+            <nil key="highlightedColor"/>
+        </label>
     </objects>
 </document>

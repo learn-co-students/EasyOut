@@ -9,6 +9,23 @@
 #import <Foundation/Foundation.h>
 #import "UIKit/UIKit.h"
 
+typedef NS_ENUM(NSInteger, Month) {
+    January = 1,
+    February,
+    March,
+    April,
+    May,
+    June,
+    July,
+    August,
+    September,
+    October,
+    November,
+    December
+};
+
+
+
 @interface Constants : NSObject
 
 + (UIColor *)vikingBlueColor;
