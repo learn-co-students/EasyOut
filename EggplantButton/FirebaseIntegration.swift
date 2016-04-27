@@ -447,9 +447,6 @@ import Firebase
         let itineraryRef = itinerariesRef.childByAppendingPath(itineraryID)
         
         // Get itinerary ref from Firebase
-        print("Getting snapshot of itinerary reference \(itineraryRef.description)")
-        
-        
         itineraryRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
             
             print("Got itinerary \(itineraryID) value from snapshot")

@@ -34,9 +34,6 @@
 @property (nonatomic) CLLocationDegrees longitude;
 
 //COLLECTIONS
-
-@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
-
 @property (weak, nonatomic) IBOutlet UICollectionView *topRowCollection;
 @property (weak, nonatomic) IBOutlet UICollectionView *middleRowCollection;
 @property (weak, nonatomic) IBOutlet UICollectionView *bottomRowCollection;
@@ -58,65 +55,27 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-
-    self.view.backgroundColor = [UIColor clearColor];
     
-    [self setUpCoreLocation];
+    // Create weak reference to self so setup can take place within Core Location setup block
+    __weak typeof(self) weakSelf = self;
     
-#warning disable the following temporary location coordinates before shipping
-    self.latitude = 40.7484;
-    self.longitude = 73.9857;
+    // Wait for Core Location to be set up before setting up the data store and getting card data
+    [self setUpCoreLocationWithCompletion:^(bool success) {
+        if (success) {
+            
+            // Setup the data store
+            weakSelf.dataStore = [ActivitiesDataStore sharedDataStore];
+            
+            // Get card data
+            [weakSelf getCardData];
+        }
+    }];
     
-    self.dataStore = [ActivitiesDataStore sharedDataStore];
+    // Set appearances of this view controller
+    [self setAppearances];
     
-    [self getCardData];
-  
-    self.topRowCollection.backgroundColor = [UIColor clearColor];
-    self.middleRowCollection.backgroundColor = [UIColor clearColor];
-    self.bottomRowCollection.backgroundColor = [UIColor clearColor];
-    
-    // Set appearance of bottom buttons
-    self.createItineraryButton.backgroundColor = [Constants vikingBlueColor];
-    self.randomizeCardsButton.backgroundColor = [Constants vikingBlueColor];
-    self.createItineraryButton.titleLabel.font = [UIFont fontWithName:@"Lobster Two" size:20.0f];
-    self.randomizeCardsButton.titleLabel.font = [UIFont fontWithName:@"Lobster Two" size:20.0f];
-    
-    
-    // Set appearance of navigation bar
-    self.navigationController.navigationBar.topItem.title = @"EasyOut";
-    [self.navigationController.navigationBar setTitleTextAttributes: @{NSForegroundColorAttributeName:[UIColor whiteColor],
-                                                                       NSFontAttributeName:[UIFont fontWithName:@"Lobster Two" size:30]}];
-
-    
-    // listening for segue notifications from sideMenu
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(profileButtonTapped:)
-                                                 name:@"profileButtonTapped"
-                                               object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(pastItinerariesButtonTapped:)
-                                                 name:@"pastItinerariesButtonTapped"
-                                               object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(logoutButtonTapped:)
-                                                 name:@"logoutButtonTapped"
-                                               object:nil];
-    
-    //listening for shake gesture notification
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(shakeStarted:)
-                                                 name:@"shakeStarted"
-                                               object:nil];
-    
-    //listening for check button notification
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(disableCheckedCard:)
-                                                 name:@"checkBoxChecked"
-                                               object:nil];
-    
-    
+    // Add notification center observers
+    [self addNCObservers];
 }
 
 
@@ -330,7 +289,9 @@
 
 #pragma mark - Core Location
 
--(void)setUpCoreLocation {
+-(void)setUpCoreLocationWithCompletion:(void (^)(bool success))completion {
+    
+    NSLog(@"Setting up Core Location");
     
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
@@ -345,6 +306,13 @@
     
     self.latitude = self.locationManager.location.coordinate.latitude;
     self.longitude = self.locationManager.location.coordinate.longitude;
+    
+    if (self.latitude != 0) {
+        completion(YES);
+    } else {
+        NSLog(@"Can't find location");
+        completion(NO);
+    }
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
@@ -500,10 +468,57 @@
 }
 
 
-#pragma mark - Helper Methods
+- (void)addNCObservers {
+    
+    // listening for segue notifications from sideMenu
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(profileButtonTapped:)
+                                                 name:@"profileButtonTapped"
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(pastItinerariesButtonTapped:)
+                                                 name:@"pastItinerariesButtonTapped"
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(logoutButtonTapped:)
+                                                 name:@"logoutButtonTapped"
+                                               object:nil];
+    
+    //listening for shake gesture notification
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(shakeStarted:)
+                                                 name:@"shakeStarted"
+                                               object:nil];
+    
+    //listening for check button notification
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(disableCheckedCard:)
+                                                 name:@"checkBoxChecked"
+                                               object:nil];
+}
 
-
-
-
+- (void)setAppearances {
+    
+    self.view.backgroundColor = [UIColor clearColor];
+    
+    // Set background of card collections to be clear
+    self.topRowCollection.backgroundColor = [UIColor clearColor];
+    self.middleRowCollection.backgroundColor = [UIColor clearColor];
+    self.bottomRowCollection.backgroundColor = [UIColor clearColor];
+    
+    // Set appearance of bottom buttons
+    self.createItineraryButton.backgroundColor = [Constants vikingBlueColor];
+    self.randomizeCardsButton.backgroundColor = [Constants vikingBlueColor];
+    self.createItineraryButton.titleLabel.font = [UIFont fontWithName:@"Lobster Two" size:20.0f];
+    self.randomizeCardsButton.titleLabel.font = [UIFont fontWithName:@"Lobster Two" size:20.0f];
+    
+    
+    // Set appearance of navigation bar
+    self.navigationController.navigationBar.topItem.title = @"EasyOut";
+    [self.navigationController.navigationBar setTitleTextAttributes: @{NSForegroundColorAttributeName:[UIColor whiteColor],
+                                                                       NSFontAttributeName:[UIFont fontWithName:@"Lobster Two" size:30]}];
+}
 
 @end

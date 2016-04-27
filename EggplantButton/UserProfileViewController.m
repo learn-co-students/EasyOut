@@ -49,9 +49,7 @@
         }
     }];
     
-    
     [self setUpCamera];
-
     
     self.view.contentMode = UIViewContentModeCenter;
     self.view.contentMode = UIViewContentModeScaleAspectFit;
@@ -61,7 +59,6 @@
     
     __block NSArray *itineraryIDs = [[NSMutableArray alloc]init];
     
-    
     [self pullUserFromFirebaseWithCompletion:^(BOOL success) {
         if(success) {
             
@@ -70,18 +67,10 @@
             for(NSString *key in itineraryIDs) {
                 
                 [FirebaseAPIClient getItineraryWithItineraryID:key completion:^(Itinerary * itinerary) {
-                    
-                    NSLog(@"%@", itinerary);
-                    
                 }];
-                
-                
             }
         }
     }];
-
-    
-
 }
 
 -(void)pullUserFromFirebaseWithCompletion:(void(^)(BOOL success))completion {
@@ -125,7 +114,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
     
@@ -133,15 +121,15 @@
     
 
     [FirebaseAPIClient saveProfilePhotoForCurrentUser:chosenImage completion:^(BOOL success) {
-        NSLog(@"success! profile pic saved");
+        NSLog(@"Success! profile pic saved");
     }];
 
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     [self dismissViewControllerAnimated:YES
                              completion:nil];
-
 }
 
 - (IBAction)editPictureButtonPressed:(UIButton *)sender {
@@ -195,7 +183,5 @@
     [self presentViewController: picker animated:YES completion:NULL];
     
 }
-
-
 
 @end

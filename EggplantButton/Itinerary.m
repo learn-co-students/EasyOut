@@ -119,7 +119,7 @@
                      priceRange:[newDictionary[@"priceRange"] integerValue]
             ];
     
-    NSLog(@"%@ initialized from Firebase dictionary", newDictionary[@"title"]);
+//    NSLog(@"%@ initialized from Firebase dictionary", newDictionary[@"title"]);
     
     return self;
 }
