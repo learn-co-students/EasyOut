@@ -25,6 +25,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    [[Button sharedButton] configureWithApplicationId:@"BUTTON_APP_ID"
+                                           completion:NULL];
     // Initialize Google Maps Services
     [GMSServices provideAPIKey:googlePlacesAPI];
     

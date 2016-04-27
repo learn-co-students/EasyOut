@@ -31,6 +31,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *uberIcon;
 @property (weak, nonatomic) IBOutlet UIButton *uberButton;
 
+@property (strong, nonatomic) BTNDropinButton * longUberButton;
+
 @property (nonatomic, strong) BTNDropinButton *dropinButton;
 @property (weak, nonatomic) UIActivityIndicatorView * spinner;
 
@@ -70,7 +72,9 @@
 
     [self getDistanceFromLocation];
 
-    [self setupUberButton];
+    //[self setupUberButton];
+    
+    [self setupRealUberButton];
 }
 
 -(void)setImageIcon:(UIImage*)image WithText:(NSString*)strText forLabel:(UILabel *)label{
@@ -143,7 +147,7 @@
     }
 
     CLLocationCoordinate2D center;
-    center.latitude=latitude;
+    center.latitude = latitude;
     center.longitude = longitude;
 
     return center;
@@ -207,17 +211,50 @@
 
 }
 
+- (void) setupRealUberButton {
+    self.longUberButton = [[BTNDropinButton alloc] initWithButtonId:@"UBER_BUTTON_ID"];
+    [self.view addSubview:self.longUberButton];
+    
+    self.longUberButton.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self.longUberButton.heightAnchor constraintEqualToConstant:40.0f].active = YES;
+    [self.longUberButton.widthAnchor constraintEqualToConstant:180.0f].active =YES;
+    [self.longUberButton.bottomAnchor constraintEqualToAnchor:self.mapUIView.bottomAnchor constant:-10].active = YES;
+    [self.longUberButton.rightAnchor constraintEqualToAnchor:self.uberIcon.leftAnchor constant:-10].active = YES;
+    
+    [[BTNDropinButton appearance] setBackgroundColor:[UIColor whiteColor]];
+    [[BTNDropinButton appearance] setContentInsets:UIEdgeInsetsMake(0.0, 16.0, 0.0, 15.0)];
+    [[BTNDropinButton appearance] setIconSize:26.0];
+    [[BTNDropinButton appearance] setIconLabelSpacing:13.0];
+    [[BTNDropinButton appearance] setFont:[UIFont systemFontOfSize:12.0]];
+    [[BTNDropinButton appearance] setTextColor:[UIColor blackColor]];
+    [[BTNDropinButton appearance] setBorderWidth:1];
+    [[BTNDropinButton appearance] setCornerRadius: 5.0];
+    [[BTNDropinButton appearance] setHighlightedBackgroundColor:[UIColor lightGrayColor]];
+    [[BTNDropinButton appearance] setHighlightedTextColor:[UIColor whiteColor]];
+    
+    BTNLocation *location = [BTNLocation locationWithLatitude:self.latitude
+                                                    longitude:self.longitude];
+    
+    BTNContext *context = [BTNContext contextWithSubjectLocation:location];
+    
+    
+    
+    // Check if Uber is available and display button if it is
+    [self.longUberButton prepareWithContext:context completion:^(BOOL isDisplayable) {
+        if (!isDisplayable) {
+            // If a button has no action, it completes as not displayable.
+            self.longUberButton.alpha = 0;
+        }
+    }];
+
+}
+
+
 - (void)setupUberButton {
 
-    // Initialize Button integration
-    [[Button sharedButton] configureWithApplicationId:BUTTON_APP_ID
-                                           completion:NULL];
-
-    // Allow Button to request location
-    [Button allowButtonToRequestLocationPermission:YES];
-
     // Set up Uber Button
-    self.dropinButton = [[BTNDropinButton alloc] initWithButtonId:BUTTON_APP_ID];
+    self.dropinButton = [[BTNDropinButton alloc] initWithButtonId:UBER_BUTTON_ID];
     [self.uberIcon addSubview:self.dropinButton];
 
     // Set Uber Button appearance
@@ -236,7 +273,7 @@
 
 
     // Check if Uber is available and display button if it is
-    [[Button sharedButton] willDisplayButtonWithId:BUTTON_APP_ID
+    [[Button sharedButton] willDisplayButtonWithId:UBER_BUTTON_ID
                                            context:context
                                         completion:^(BOOL willDisplay) {
         if (willDisplay) {
@@ -252,5 +289,6 @@
         }
     }];
 }
+
 
 @end
