@@ -25,6 +25,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    
+    
     [GMSServices provideAPIKey:googlePlacesAPI];
     
     //set background

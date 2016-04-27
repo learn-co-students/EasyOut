@@ -10,12 +10,16 @@
 #import "EggplantButton-Swift.h"
 #import "Firebase.h"
 #import "Secrets.h"
+#import "Itinerary.h"
 #import "CircleLabelView.h"
 
-@interface UserProfileViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface UserProfileViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *userImage;
+@property (weak, nonatomic) IBOutlet UITableView *itineraryTable;
+
+@property (strong, nonatomic) NSMutableArray *itineraries;
 
 @end
 
@@ -26,6 +30,49 @@
     
     self.view.backgroundColor = [UIColor clearColor];
     
+    self.itineraryTable.delegate = self;
+    self.itineraryTable.dataSource = self;
+    
+    [self pullUserFromFirebase];
+    
+    [self pullItinerariesForUser];
+    
+    [self setUpCamera];
+
+}
+
+#pragma mark - table
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    NSLog(@"ITINERARY COUNT: %lu", self.itineraries.count);
+    
+    return self.itineraries.count;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"userProfileCell" forIndexPath:indexPath];
+    
+    cell.textLabel.text = ((Itinerary *)self.itineraries[indexPath.row]).title;
+    
+    return cell;
+}
+
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
+    
+}
+
+
+
+
+
+#pragma mark - pull info
+
+-(void)pullUserFromFirebase {
     [self pullUserFromFirebaseWithCompletion:^(BOOL success) {
         if(success) {
             
@@ -48,19 +95,12 @@
             }
         }
     }];
-    
-    
-    [self setUpCamera];
+}
 
-    
-    self.view.contentMode = UIViewContentModeCenter;
-    self.view.contentMode = UIViewContentModeScaleAspectFit;
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"city"]]];
-    
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    
+-(void)pullItinerariesForUser {
     __block NSArray *itineraryIDs = [[NSMutableArray alloc]init];
     
+    self.itineraries = [[NSMutableArray alloc]init];
     
     [self pullUserFromFirebaseWithCompletion:^(BOOL success) {
         if(success) {
@@ -71,7 +111,9 @@
                 
                 [FirebaseAPIClient getItineraryWithItineraryID:key completion:^(Itinerary * itinerary) {
                     
-                    NSLog(@"%@", itinerary);
+                    [self.itineraries addObject:itinerary];
+                    
+                    [self.itineraryTable reloadData];
                     
                 }];
                 
@@ -79,8 +121,6 @@
             }
         }
     }];
-
-    
 
 }
 

@@ -87,8 +87,8 @@
         
         // Get the image for each key
         for (NSString *key in photoKeys) {
-            [FirebaseAPIClient getItineraryWithItineraryID:key completion:^(Itinerary * itinerary) {
-                newDictionary[@"photos"][key] = itinerary;
+            [FirebaseAPIClient getImageForImageID:key completion:^(UIImage *image) {
+                newDictionary[@"photos"][key] = image;
             }];
         }
     }

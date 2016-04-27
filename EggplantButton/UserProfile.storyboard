@@ -97,6 +97,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="itineraryTable" destination="utp-SR-wfg" id="Bbw-nS-3jQ"/>
                         <outlet property="userImage" destination="CUH-f1-A53" id="0OV-TO-biy"/>
                         <outlet property="usernameLabel" destination="NY3-4j-T4K" id="PWL-Ka-aHx"/>
                     </connections>
