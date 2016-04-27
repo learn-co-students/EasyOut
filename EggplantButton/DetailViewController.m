@@ -22,9 +22,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *iconImage;
 @property (weak, nonatomic) IBOutlet UILabel *typeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
-@property (weak, nonatomic) IBOutlet UIButton *hoursLabel;
+@property (weak, nonatomic) IBOutlet UILabel *hoursLabel;
 
-@property (weak, nonatomic) IBOutlet UIButton *moreDetailLabel;
 @property (weak, nonatomic) IBOutlet UIView *mapUIView;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (strong, nonatomic) GMSMapView *mapView;
@@ -52,7 +51,7 @@
     self.nameLabel.text = self.activity.name;
     self.typeLabel.text = self.activity.type;
     self.distanceLabel.text = [NSString stringWithFormat:@"%@ miles away", self.activity.distance];
-    [self.hoursLabel setTitle: self.activity.openStatus forState:UIControlStateNormal];
+    self.hoursLabel.text = self.activity.openStatus;
     self.addressLabel.text = [NSString stringWithFormat:@"%@ %@", self.activity.address[0], self.activity.address[1]];
     
     [self getDistanceFromLocation];
@@ -205,6 +204,8 @@
     [self.dropinButton.trailingAnchor constraintEqualToAnchor:self.uberIcon.trailingAnchor].active = YES;
     [self.dropinButton.topAnchor constraintEqualToAnchor:self.uberIcon.topAnchor].active = YES;
     [self.dropinButton.bottomAnchor constraintEqualToAnchor:self.uberIcon.bottomAnchor].active = YES;
+    
+    self.dropinButton.alpha = 0.01;
     
     BTNLocation *location = [BTNLocation locationWithLatitude:self.latitude
                                                     longitude:self.longitude];

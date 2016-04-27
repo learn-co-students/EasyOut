@@ -19,6 +19,7 @@
 #import "ItineraryViewController.h"
 #import "Constants.h"
 #import "UIView+Shake.h"
+#import <AudioToolbox/AudioServices.h>
 
 
 @interface CardViewController () <UIScrollViewDelegate, CLLocationManagerDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
@@ -417,7 +418,7 @@
     
     if (!self.firstCardLocked && !self.secondCardLocked && !self.thirdCardLocked ) {
         
-        UIAlertController *chooseOneItinerary= [UIAlertController alertControllerWithTitle:@"Uh oh!"
+        UIAlertController *chooseOneItinerary= [UIAlertController alertControllerWithTitle:@"Oops!"
                                                                                 message:@"Please choose one or more activities"
                                                                          preferredStyle:UIAlertControllerStyleAlert];
         
@@ -444,7 +445,7 @@
 
 - (void) shakeStarted: (NSNotification *) notification {
     
-    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+    AudioServicesPlayAlertSound(1352);
 
     [self shuffleCards];
 
