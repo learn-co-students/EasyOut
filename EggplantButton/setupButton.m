@@ -12,7 +12,6 @@
 
 @interface setupButton ()
 
-@property (nonatomic, strong) BTNDropinButton * rezybutton;
 @property (nonatomic, strong) BTNDropinButton * uberbutton;
 
 @end
@@ -22,54 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
     [self setupUberButton];
-    
-    [self setupRezyButton];
-
-}
-
-- (void) setupRezyButton {
-    
-    // Initializing button
-    self.rezybutton = [[BTNDropinButton alloc] initWithButtonId:REZY_BUTTON_ID];
-    [self.view addSubview:self.rezybutton];
-    
-    self.view.translatesAutoresizingMaskIntoConstraints = NO;
-    self.rezybutton.translatesAutoresizingMaskIntoConstraints = NO;
-    
-    
-    
-    [self.rezybutton.widthAnchor constraintEqualToConstant:190].active = YES;
-    [self.rezybutton.heightAnchor constraintEqualToConstant:40].active = YES;
-    [self.rezybutton.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
-    
-    [self.rezybutton.topAnchor constraintEqualToAnchor: self.uberbutton.bottomAnchor constant:20].active = YES;
-    
-    [[BTNDropinButton appearance] setContentInsets:UIEdgeInsetsMake(0.0, 15.0, 0.0, 10.0)];
-    [[BTNDropinButton appearance] setIconSize:26.0];
-    [[BTNDropinButton appearance] setIconLabelSpacing:13.0];
-    [[BTNDropinButton appearance] setFont:[UIFont systemFontOfSize:12.0]];
-    [[BTNDropinButton appearance] setBorderWidth:1];
-    [[BTNDropinButton appearance] setCornerRadius: 5.0];
-    [[BTNDropinButton appearance] setHighlightedBackgroundColor: [UIColor grayColor]];
-    [[BTNDropinButton appearance] setHighlightedTextColor:[UIColor whiteColor]];
-    
-//    // Setup your context.
-//    BTNLocation *userLocation = [BTNLocation locationWithLatitude:<#latitude#> longitude:<#longitude#>];
-//    BTNContext *context = [BTNContext contextWithUserLocation:userLocation];
-    
-    BTNLocation *location = [BTNLocation locationWithName:@"Parm"
-                                                 latitude:40.7237889
-                                                longitude:-73.997];
-    BTNContext *context = [BTNContext contextWithSubjectLocation:location];
-    
-    [self.rezybutton prepareWithContext:context completion:^(BOOL isDisplayable) {
-        if (!isDisplayable) {
-            // If a button has no action, it completes as not displayable.
-        }
-    }];
-    
 }
 
 - (void) setupUberButton {

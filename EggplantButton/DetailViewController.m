@@ -22,11 +22,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
 @property (weak, nonatomic) IBOutlet UIButton *hoursLabel;
 
-
 @property (weak, nonatomic) IBOutlet UIButton *moreDetailLabel;
 @property (weak, nonatomic) IBOutlet UIView *mapUIView;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (strong, nonatomic) GMSMapView *mapView;
+
+@property (weak, nonatomic) IBOutlet UIButton *uberButton;
 
 @end
 
@@ -46,7 +47,6 @@
     self.typeLabel.text = self.activity.type;
     self.distanceLabel.text = [NSString stringWithFormat:@"%@ miles away", self.activity.distance];
     [self.hoursLabel setTitle: self.activity.openStatus forState:UIControlStateNormal];
-    
     self.addressLabel.text = [NSString stringWithFormat:@"%@ %@", self.activity.address[0], self.activity.address[1]];
     
     [self getDistanceFromLocation];
@@ -193,5 +193,8 @@
     [[UIApplication sharedApplication] openURL: self.activity.moreDetailsURL];
 }
 
+- (IBAction)uberButtonTapped:(id)sender {
+    
+}
 
 @end

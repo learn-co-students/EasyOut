@@ -47,22 +47,22 @@
                                                 </constraints>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Xhn-oZ-hbL">
-                                                <rect key="frame" x="308" y="0.0" width="292" height="150"/>
+                                                <rect key="frame" x="308" y="0.0" width="293" height="150"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="abz-gB-laK">
-                                                        <rect key="frame" x="96" y="0.0" width="100" height="100"/>
+                                                        <rect key="frame" x="97" y="0.0" width="100" height="100"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="abz-gB-laK" secondAttribute="height" multiplier="1:1" id="Jd6-bk-Uil"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vov-Wt-p8G">
-                                                        <rect key="frame" x="124" y="103" width="44" height="22"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vov-Wt-p8G">
+                                                        <rect key="frame" x="125" y="104" width="44" height="22"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GlP-5k-7Am">
-                                                        <rect key="frame" x="124" y="128" width="44" height="22"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GlP-5k-7Am">
+                                                        <rect key="frame" x="125" y="129" width="44" height="22"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
@@ -74,11 +74,11 @@
                                             <constraint firstItem="abz-gB-laK" firstAttribute="width" secondItem="0Zt-zx-9ns" secondAttribute="height" multiplier="2:3" id="tgx-tr-830"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fQZ-KW-UEp" userLabel="Detail Stack">
-                                        <rect key="frame" x="0.0" y="199" width="600" height="86"/>
+                                    <stackView opaque="NO" contentMode="scaleAspectFit" misplaced="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fQZ-KW-UEp" userLabel="Detail Stack">
+                                        <rect key="frame" x="0.0" y="199" width="600" height="87"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleAspectFit" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ya-Nj-cGN">
-                                                <rect key="frame" x="8" y="8" width="584" height="26"/>
+                                            <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" misplaced="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ya-Nj-cGN">
+                                                <rect key="frame" x="8" y="8" width="584" height="27"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                                 <inset key="contentEdgeInsets" minX="2" minY="2" maxX="2" maxY="2"/>
@@ -90,8 +90,8 @@
                                                     <action selector="detailButtonPressed:" destination="ck0-ww-g9b" eventType="touchUpInside" id="rfN-dK-AEb"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o31-v6-CSf">
-                                                <rect key="frame" x="8" y="44" width="584" height="34"/>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o31-v6-CSf">
+                                                <rect key="frame" x="8" y="45" width="584" height="34"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                                 <inset key="contentEdgeInsets" minX="2" minY="2" maxX="2" maxY="2"/>
@@ -106,14 +106,45 @@
                                         </subviews>
                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cwm-DN-IFX" userLabel="Map Stack">
-                                        <rect key="frame" x="0.0" y="293" width="600" height="277"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cwm-DN-IFX" userLabel="Map Stack">
+                                        <rect key="frame" x="0.0" y="294" width="600" height="277"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SWl-eB-RaB" userLabel="MapView">
+                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SWl-eB-RaB" userLabel="MapView">
                                                 <rect key="frame" x="8" y="8" width="584" height="239"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IY3-fs-Obp" userLabel="Uber Icon">
+                                                        <rect key="frame" x="519.5" y="5" width="59.5" height="59.5"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="IY3-fs-Obp" secondAttribute="height" id="0e8-u4-opm"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U6X-rI-8fH" userLabel="Uber Button">
+                                                        <rect key="frame" x="526" y="20" width="46" height="30"/>
+                                                        <connections>
+                                                            <action selector="uberButtonTapped:" destination="ck0-ww-g9b" eventType="touchUpInside" id="Pcr-Z5-Ehl"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstItem="U6X-rI-8fH" firstAttribute="leading" secondItem="SWl-eB-RaB" secondAttribute="leading" id="5hK-KF-1az"/>
+                                                    <constraint firstItem="IY3-fs-Obp" firstAttribute="height" secondItem="SWl-eB-RaB" secondAttribute="height" id="6NG-pv-ETT"/>
+                                                    <constraint firstAttribute="bottom" secondItem="U6X-rI-8fH" secondAttribute="bottom" id="9FP-DD-Qgv"/>
+                                                    <constraint firstItem="U6X-rI-8fH" firstAttribute="leading" secondItem="SWl-eB-RaB" secondAttribute="leading" id="Irz-5Y-yhw"/>
+                                                    <constraint firstItem="U6X-rI-8fH" firstAttribute="trailing" secondItem="IY3-fs-Obp" secondAttribute="trailing" id="Q2e-16-Nlr"/>
+                                                    <constraint firstAttribute="trailing" secondItem="U6X-rI-8fH" secondAttribute="trailing" id="YHf-Nq-oZg"/>
+                                                    <constraint firstAttribute="trailing" secondItem="U6X-rI-8fH" secondAttribute="trailing" id="c4L-2P-dMc"/>
+                                                    <constraint firstItem="IY3-fs-Obp" firstAttribute="trailing" secondItem="SWl-eB-RaB" secondAttribute="trailing" constant="-5" id="cDs-Sb-Cv0"/>
+                                                    <constraint firstAttribute="bottom" secondItem="U6X-rI-8fH" secondAttribute="bottom" id="dXh-QG-d8t"/>
+                                                    <constraint firstItem="U6X-rI-8fH" firstAttribute="leading" secondItem="IY3-fs-Obp" secondAttribute="leading" id="deC-t9-XUZ"/>
+                                                    <constraint firstItem="U6X-rI-8fH" firstAttribute="top" secondItem="SWl-eB-RaB" secondAttribute="top" id="iE8-6q-ea7"/>
+                                                    <constraint firstItem="U6X-rI-8fH" firstAttribute="top" secondItem="SWl-eB-RaB" secondAttribute="top" id="oKo-Q4-74z"/>
+                                                    <constraint firstItem="IY3-fs-Obp" firstAttribute="top" secondItem="SWl-eB-RaB" secondAttribute="top" constant="5" id="oqZ-Ac-5zQ"/>
+                                                    <constraint firstItem="U6X-rI-8fH" firstAttribute="bottom" secondItem="IY3-fs-Obp" secondAttribute="bottom" id="q0D-Gu-lSP"/>
+                                                    <constraint firstItem="U6X-rI-8fH" firstAttribute="top" secondItem="IY3-fs-Obp" secondAttribute="top" id="qb2-ui-62v"/>
+                                                </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T7E-FC-b6E" userLabel="Address">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T7E-FC-b6E" userLabel="Address">
                                                 <rect key="frame" x="8" y="247" width="584" height="22"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
@@ -151,6 +182,7 @@
                         <outlet property="moreDetailLabel" destination="o31-v6-CSf" id="NBt-1J-ltN"/>
                         <outlet property="nameLabel" destination="RE0-mt-IIW" id="Slc-hp-byq"/>
                         <outlet property="typeLabel" destination="Vov-Wt-p8G" id="lO1-lF-teY"/>
+                        <outlet property="uberButton" destination="U6X-rI-8fH" id="T78-82-Ko1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qei-ef-srQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
