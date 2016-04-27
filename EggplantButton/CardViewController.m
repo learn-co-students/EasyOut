@@ -62,7 +62,11 @@
     self.view.backgroundColor = [UIColor clearColor];
     
     [self setUpCoreLocation];
-
+    
+#warning disable the following temporary location coordinates before shipping
+    self.latitude = 40.7484;
+    self.longitude = 73.9857;
+    
     self.dataStore = [ActivitiesDataStore sharedDataStore];
     
     [self getCardData];

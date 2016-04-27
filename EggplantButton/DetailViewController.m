@@ -195,6 +195,14 @@
 }
 
 - (void)setupUberButton {
+    
+    // Initialize Button integration
+    [[Button sharedButton] configureWithApplicationId:BUTTON_APP_ID
+                                           completion:NULL];
+    
+    // Allow Button to request location
+    [Button allowButtonToRequestLocationPermission:YES];
+    
     // Set up Uber Button
     self.dropinButton = [[BTNDropinButton alloc] initWithButtonId:BUTTON_APP_ID];
     [self.uberIcon addSubview:self.dropinButton];
