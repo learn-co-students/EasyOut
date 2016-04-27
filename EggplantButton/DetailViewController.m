@@ -70,7 +70,7 @@
 
     [self getDistanceFromLocation];
 
-//    [self setupUberButton];
+    [self setupUberButton];
 }
 
 -(void)setImageIcon:(UIImage*)image WithText:(NSString*)strText forLabel:(UILabel *)label{
