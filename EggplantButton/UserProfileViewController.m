@@ -40,6 +40,12 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor clearColor];
+    self.view.contentMode = UIViewContentModeCenter;
+    self.view.contentMode = UIViewContentModeScaleAspectFit;
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"city"]]];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    
+    __block NSArray *itineraryIDs = [[NSMutableArray alloc]init];
     
     [self pullUserFromFirebaseWithCompletion:^(BOOL success) {
         if(success) {
@@ -56,36 +62,23 @@
                 [FirebaseAPIClient getImageForImageID:self.user.profilePhoto completion:^(UIImage * image) {
                     self.userImage.image =image;
                 }];
-            }
             
-            else {
+                itineraryIDs = [self.user.savedItineraries allKeys];
+                
+                for(NSString *key in itineraryIDs) {
+                    
+                    [FirebaseAPIClient getItineraryWithItineraryID:key completion:^(Itinerary * itinerary) {
+                    }];
+                }
+                
+            } else {
+                
                 self.userImage.image = [UIImage imageNamed:@"defaultProfilePic"];
             }
         }
     }];
     
     [self setUpCamera];
-    
-    self.view.contentMode = UIViewContentModeCenter;
-    self.view.contentMode = UIViewContentModeScaleAspectFit;
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"city"]]];
-    
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    
-    __block NSArray *itineraryIDs = [[NSMutableArray alloc]init];
-    
-    [self pullUserFromFirebaseWithCompletion:^(BOOL success) {
-        if(success) {
-            
-            itineraryIDs = [self.user.savedItineraries allKeys];
-            
-            for(NSString *key in itineraryIDs) {
-                
-                [FirebaseAPIClient getItineraryWithItineraryID:key completion:^(Itinerary * itinerary) {
-                }];
-            }
-        }
-    }];
 }
 
 -(void)pullUserFromFirebaseWithCompletion:(void(^)(BOOL success))completion {

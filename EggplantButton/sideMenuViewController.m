@@ -44,12 +44,10 @@
             }
         }
 
-    // Set appearance of side menu view controller
-    self.view.backgroundColor = [Constants vikingBlueColor];
-    
+        // Set appearance of side menu view controller
+        self.view.backgroundColor = [Constants vikingBlueColor];
 
-        }];
-    
+    }];
 }
 
 

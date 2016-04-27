@@ -221,8 +221,6 @@
     
     [FirebaseAPIClient registerNewUserWithUser:newUser password:self.passWordLabel.text completion:^(BOOL success) {
         
-        
-        
         if (success) {
             
             NSLog(@"User with email %@ was successfully registered", self.emailLabel.text);
