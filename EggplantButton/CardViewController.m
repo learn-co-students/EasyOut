@@ -552,6 +552,26 @@
     UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK"
                                                  style:UIAlertActionStyleDefault
                                                handler:^(UIAlertAction * action) {
+                                                   
+                                                   // Create weak reference to self so setup can take place within Core Location setup block
+                                                   __weak typeof(self) weakSelf = self;
+                                                   
+                                                   // Wait for Core Location to be set up before setting up the data store and getting card data
+                                                   [self setUpCoreLocationWithCompletion:^(bool success) {
+                                                       if (success) {
+                                                           
+                                                           // Setup the data store
+                                                           weakSelf.dataStore = [ActivitiesDataStore sharedDataStore];
+                                                           
+                                                           // Get card data
+                                                           [weakSelf getCardData];
+                                                       } else {
+                                                           
+                                                           // Show an alert letting the user know we don't have location information
+                                                           [weakSelf showNoLocationAlert];
+                                                       }
+                                                   }];
+                                                   
                                                    [alert dismissViewControllerAnimated:YES completion:nil];
                                                }];
     
