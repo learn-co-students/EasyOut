@@ -452,7 +452,7 @@ import Firebase
         
         itineraryRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
             
-            print("Got itinerary value from snapshot")
+            print("Got itinerary \(itineraryID) value from snapshot")
             
             // Create Itinerary object from snapshot value
             let itinerary : Itinerary = Itinerary.init(firebaseItineraryDictionary: snapshot.value as! [NSObject : AnyObject])
