@@ -11,6 +11,8 @@
 #import <GoogleMaps/GMSGeometryUtils.h>
 #import <AFNetworking/AFImageDownloader.h>
 #import "Constants.h"
+#import "Secrets.h"
+#import <Button/Button.h>
 
 
 @interface DetailViewController ()
@@ -27,7 +29,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (strong, nonatomic) GMSMapView *mapView;
 
+@property (weak, nonatomic) IBOutlet UIImageView *uberIcon;
 @property (weak, nonatomic) IBOutlet UIButton *uberButton;
+@property (nonatomic, strong) BTNDropinButton *button;
 
 @end
 
@@ -51,9 +55,8 @@
     
     [self getDistanceFromLocation];
 
-    
-    
-    }
+    [self setupUberButton];
+}
 
 -(void)setImageIcon:(UIImage*)image WithText:(NSString*)strText forLabel:(UILabel *)label{
     
@@ -195,6 +198,22 @@
 
 - (IBAction)uberButtonTapped:(id)sender {
     
+}
+
+- (void)setupUberButton {
+    // Set up Uber Button
+    self.button = [[BTNDropinButton alloc] initWithButtonId:BUTTON_APP_ID];
+    [self.uberIcon addSubview:self.button];
+    
+    // Set Uber Button appearance
+    [self.button.leadingAnchor constraintEqualToAnchor:self.uberIcon.leadingAnchor].active = YES;
+    [self.button.trailingAnchor constraintEqualToAnchor:self.uberIcon.trailingAnchor].active = YES;
+    [self.button.topAnchor constraintEqualToAnchor:self.uberIcon.topAnchor].active = YES;
+    [self.button.bottomAnchor constraintEqualToAnchor:self.uberIcon.bottomAnchor].active = YES;
+    
+    BTNLocation *location = [BTNLocation locationWithName:@"Parm"
+                                                 latitude:40.7237889
+                                                longitude:-73.997];
 }
 
 @end

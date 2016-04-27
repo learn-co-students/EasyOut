@@ -32,13 +32,13 @@
                                 <rect key="frame" x="0.0" y="25" width="600" height="570"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RE0-mt-IIW">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="33"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="0.0"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="28"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="6dJ-HA-9CB" userLabel="Navigation Stack">
-                                        <rect key="frame" x="0.0" y="41" width="600" height="150"/>
+                                        <rect key="frame" x="0.0" y="8" width="600" height="150"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Zt-zx-9ns">
                                                 <rect key="frame" x="0.0" y="0.0" width="293" height="150"/>
@@ -55,13 +55,13 @@
                                                             <constraint firstAttribute="width" secondItem="abz-gB-laK" secondAttribute="height" multiplier="1:1" id="Jd6-bk-Uil"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vov-Wt-p8G">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vov-Wt-p8G">
                                                         <rect key="frame" x="125" y="104" width="44" height="22"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GlP-5k-7Am">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GlP-5k-7Am">
                                                         <rect key="frame" x="125" y="129" width="44" height="22"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -75,10 +75,10 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleAspectFit" misplaced="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fQZ-KW-UEp" userLabel="Detail Stack">
-                                        <rect key="frame" x="0.0" y="199" width="600" height="87"/>
+                                        <rect key="frame" x="0.0" y="166" width="600" height="59"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" misplaced="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ya-Nj-cGN">
-                                                <rect key="frame" x="8" y="8" width="584" height="27"/>
+                                            <button opaque="NO" contentMode="scaleAspectFit" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ya-Nj-cGN">
+                                                <rect key="frame" x="8" y="8" width="584" height="0.0"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                                 <inset key="contentEdgeInsets" minX="2" minY="2" maxX="2" maxY="2"/>
@@ -90,8 +90,8 @@
                                                     <action selector="detailButtonPressed:" destination="ck0-ww-g9b" eventType="touchUpInside" id="rfN-dK-AEb"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o31-v6-CSf">
-                                                <rect key="frame" x="8" y="45" width="584" height="34"/>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o31-v6-CSf">
+                                                <rect key="frame" x="8" y="18" width="584" height="33"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                                 <inset key="contentEdgeInsets" minX="2" minY="2" maxX="2" maxY="2"/>
@@ -107,12 +107,12 @@
                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cwm-DN-IFX" userLabel="Map Stack">
-                                        <rect key="frame" x="0.0" y="294" width="600" height="277"/>
+                                        <rect key="frame" x="0.0" y="233" width="600" height="338"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SWl-eB-RaB" userLabel="MapView">
-                                                <rect key="frame" x="8" y="8" width="584" height="239"/>
+                                                <rect key="frame" x="8" y="8" width="584" height="300"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IY3-fs-Obp" userLabel="Uber Icon">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="UberLogo" translatesAutoresizingMaskIntoConstraints="NO" id="IY3-fs-Obp" userLabel="Uber Icon">
                                                         <rect key="frame" x="519.5" y="5" width="59.5" height="59.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="IY3-fs-Obp" secondAttribute="height" id="0e8-u4-opm"/>
@@ -127,25 +127,17 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstItem="U6X-rI-8fH" firstAttribute="leading" secondItem="SWl-eB-RaB" secondAttribute="leading" id="5hK-KF-1az"/>
                                                     <constraint firstItem="IY3-fs-Obp" firstAttribute="height" secondItem="SWl-eB-RaB" secondAttribute="height" id="6NG-pv-ETT"/>
-                                                    <constraint firstAttribute="bottom" secondItem="U6X-rI-8fH" secondAttribute="bottom" id="9FP-DD-Qgv"/>
-                                                    <constraint firstItem="U6X-rI-8fH" firstAttribute="leading" secondItem="SWl-eB-RaB" secondAttribute="leading" id="Irz-5Y-yhw"/>
                                                     <constraint firstItem="U6X-rI-8fH" firstAttribute="trailing" secondItem="IY3-fs-Obp" secondAttribute="trailing" id="Q2e-16-Nlr"/>
-                                                    <constraint firstAttribute="trailing" secondItem="U6X-rI-8fH" secondAttribute="trailing" id="YHf-Nq-oZg"/>
-                                                    <constraint firstAttribute="trailing" secondItem="U6X-rI-8fH" secondAttribute="trailing" id="c4L-2P-dMc"/>
                                                     <constraint firstItem="IY3-fs-Obp" firstAttribute="trailing" secondItem="SWl-eB-RaB" secondAttribute="trailing" constant="-5" id="cDs-Sb-Cv0"/>
-                                                    <constraint firstAttribute="bottom" secondItem="U6X-rI-8fH" secondAttribute="bottom" id="dXh-QG-d8t"/>
                                                     <constraint firstItem="U6X-rI-8fH" firstAttribute="leading" secondItem="IY3-fs-Obp" secondAttribute="leading" id="deC-t9-XUZ"/>
-                                                    <constraint firstItem="U6X-rI-8fH" firstAttribute="top" secondItem="SWl-eB-RaB" secondAttribute="top" id="iE8-6q-ea7"/>
-                                                    <constraint firstItem="U6X-rI-8fH" firstAttribute="top" secondItem="SWl-eB-RaB" secondAttribute="top" id="oKo-Q4-74z"/>
                                                     <constraint firstItem="IY3-fs-Obp" firstAttribute="top" secondItem="SWl-eB-RaB" secondAttribute="top" constant="5" id="oqZ-Ac-5zQ"/>
                                                     <constraint firstItem="U6X-rI-8fH" firstAttribute="bottom" secondItem="IY3-fs-Obp" secondAttribute="bottom" id="q0D-Gu-lSP"/>
                                                     <constraint firstItem="U6X-rI-8fH" firstAttribute="top" secondItem="IY3-fs-Obp" secondAttribute="top" id="qb2-ui-62v"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T7E-FC-b6E" userLabel="Address">
-                                                <rect key="frame" x="8" y="247" width="584" height="22"/>
+                                                <rect key="frame" x="8" y="308" width="584" height="22"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -183,6 +175,7 @@
                         <outlet property="nameLabel" destination="RE0-mt-IIW" id="Slc-hp-byq"/>
                         <outlet property="typeLabel" destination="Vov-Wt-p8G" id="lO1-lF-teY"/>
                         <outlet property="uberButton" destination="U6X-rI-8fH" id="T78-82-Ko1"/>
+                        <outlet property="uberIcon" destination="IY3-fs-Obp" id="XqS-xE-Xoq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qei-ef-srQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -191,6 +184,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="UberLogo" width="300" height="300"/>
         <image name="moreInfo" width="31" height="30"/>
     </resources>
 </document>
