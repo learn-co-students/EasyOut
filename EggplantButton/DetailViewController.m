@@ -146,7 +146,6 @@
     
     //COORDINATES FOR USER AND ACTIVITY
     
-    CLLocationCoordinate2D user = CLLocationCoordinate2DMake(self.latitude, self.longitude);
     NSString *address = [NSString stringWithFormat:@"%@ %@", self.activity.address[0], self.activity.address[1]];
     CLLocationCoordinate2D location = [self getLocationFromAddressString: address];
     

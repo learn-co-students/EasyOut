@@ -770,14 +770,14 @@ import Firebase
         
         // Set Firebase references
         let ref = Firebase(url:firebaseRootRef)
-        let usersRef = ref.childByAppendingPath("users")
-        let imagesRef = ref.childByAppendingPath("images")
-        let itinerariesRef = ref.childByAppendingPath("itineraries")
-        let currentUserRef = usersRef.childByAppendingPath(ref.authData.uid)
-        let associatedImagesRef = currentUserRef.childByAppendingPath("associatedImages")
-        let savedItinerariesRef = currentUserRef.childByAppendingPath("savedItineraries")
+//        let usersRef = ref.childByAppendingPath("users")
+//        let imagesRef = ref.childByAppendingPath("images")
+//        let itinerariesRef = ref.childByAppendingPath("itineraries")
+//        let currentUserRef = usersRef.childByAppendingPath(ref.authData.uid)
+//        let associatedImagesRef = currentUserRef.childByAppendingPath("associatedImages")
+//        let savedItinerariesRef = currentUserRef.childByAppendingPath("savedItineraries")
         
-        // Remove all user itineraries and associated images
+        // TODO: Remove all user itineraries and associated images
         
         
         FirebaseAPIClient.logOutUser()

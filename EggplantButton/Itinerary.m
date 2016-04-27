@@ -49,8 +49,8 @@
     NSArray *keys = [dictionary allKeys];
     
     NSMutableArray *photoKeys = [[NSMutableArray alloc] init];
-    NSMutableArray *tipKeys = [[NSMutableArray alloc] init];
-    NSMutableArray *ratingKeys = [[NSMutableArray alloc] init];
+//    NSMutableArray *tipKeys = [[NSMutableArray alloc] init];
+//    NSMutableArray *ratingKeys = [[NSMutableArray alloc] init];
     
     // Check for empty dictionaries that Firebase may not have saved
     

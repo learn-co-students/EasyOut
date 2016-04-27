@@ -123,7 +123,7 @@
                     
                     User *newUser = [[User alloc] createUserFromDictionary:newDictionary];
                     
-                    NSLog(@"User initialized from Firebase dictionary");
+                    NSLog(@"User %@ initialized from Firebase dictionary", newDictionary[@"name"]);
                     
                     completion(newUser);
                 }];
