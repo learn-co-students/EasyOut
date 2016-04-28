@@ -56,9 +56,7 @@
     
     [self pullItinerariesForUser];
     
-    
     [self setUpCamera];
-
 }
 
 #pragma mark - table
@@ -81,14 +79,8 @@
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    
-    
+    // Open Detail View Controller
 }
-
-
-
-
 
 #pragma mark - pull info
 
@@ -119,6 +111,7 @@
 
 -(void)pullItinerariesForUser {
     
+    // Change to pull Itineraries directly from Firebase using keys in the user reference
     
     [self pullUserFromFirebaseWithCompletion:^(BOOL success) {
         if(success) {
@@ -147,16 +140,12 @@
 -(void)pullUserFromFirebaseWithCompletion:(void(^)(BOOL success))completion {
     
     Firebase *ref = [[Firebase alloc] initWithUrl:firebaseRootRef];
-    
-    NSString *authDataID = ref.authData.uid;
-    
+        
     [FirebaseAPIClient getUserFromFirebaseWithUserID:ref.authData.uid completion:^(User * user, BOOL success) {
         
         NSLog(@"Returned from Firebase with User object");
         
         self.user = user;
-        
-        
         
         completion(YES);
     }];

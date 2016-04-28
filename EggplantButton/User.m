@@ -77,125 +77,33 @@
     
     NSMutableDictionary *newDictionary = [dictionary mutableCopy];
     
-    NSArray *keys = [dictionary allKeys];
-    
-    NSMutableArray *itineraryKeys = [[NSMutableArray alloc] init];
-    NSMutableDictionary *itineraryObjects = [[NSMutableDictionary alloc] init];
-    //    NSMutableArray *tipKeys = [[NSMutableArray alloc] init];
-    //    NSMutableArray *ratingKeys = [[NSMutableArray alloc] init];
-    NSMutableArray *associatedImageKeys = [[NSMutableArray alloc] init];
+    NSArray *userElementKeys = [dictionary allKeys];
     
     // Check for empty dictionaries that Firebase may not have saved
-    if (![keys containsObject:@"tips"]) {
+    if (![userElementKeys containsObject:@"tips"]) {
+        NSLog(@"User has no tips");
         [newDictionary setObject:[[NSMutableDictionary alloc] init] forKey:@"tips"];
-    } else {
-        NSLog(@"Tips exist for current user, but we aren't getting them from Firebase");
     }
     
-    if (![keys containsObject:@"ratings"]) {
+    if (![userElementKeys containsObject:@"ratings"]) {
+        NSLog(@"User has no ratings");
         [newDictionary setObject:[[NSMutableDictionary alloc] init] forKey:@"ratings"];
-    } else {
-        NSLog(@"Ratings exist for current user, but we aren't getting them from Firebase");
     }
     
-    if (![keys containsObject:@"savedItineraries"]) {
+    if (![userElementKeys containsObject:@"savedItineraries"]) {
+        NSLog(@"User has no saved itineraries");
         [newDictionary setObject:[[NSMutableDictionary alloc] init] forKey:@"savedItineraries"];
-        
-        itineraryKeys = [[dictionary[@"savedItineraries"] allKeys] mutableCopy];
-        
-        for (NSString *key in itineraryKeys) {
-            [FirebaseAPIClient getItineraryWithItineraryID:key
-                                                completion:^(Itinerary * itinerary) {
-                                                    [itineraryObjects setObject:itinerary
-                                                                         forKey:key];
-                                                }];
-        }
-        
-        [newDictionary[@"savedItineraries"] removeAllObjects];
-        
-        newDictionary[@"savedItineraries"] = itineraryObjects;
-        
-        if (![keys containsObject:@"associatedImages"]) {
-            
-            NSLog(@"User has no associated images");
-            
-            [newDictionary setObject:[[NSMutableDictionary alloc] init] forKey:@"associatedImages"];
-            
-            User *newUser = [[User alloc] createUserFromDictionary:newDictionary];
-            
-            NSLog(@"User %@ initialized from Firebase dictionary", newDictionary[@"name"]);
-            
-            completion(newUser);
-        } else {
-            
-            NSLog(@"User does have associated images");
-            
-            associatedImageKeys = [[dictionary[@"associatedImages"] allKeys] mutableCopy];
-            
-            for (NSString *key in associatedImageKeys) {
-                [FirebaseAPIClient getImageForImageID:key
-                                           completion:^(UIImage * image) {
-                                               
-                                               [newDictionary[@"associatedImages"] setObject:image
-                                                                                      forKey:key];
-                                               
-                                               User *newUser = [[User alloc] createUserFromDictionary:newDictionary];
-                                               
-                                               NSLog(@"User %@ initialized from Firebase dictionary", newDictionary[@"name"]);
-                                               
-                                               completion(newUser);
-                                           }];
-            }
-        }
-    } else {
-        
-        itineraryKeys = [[dictionary[@"savedItineraries"] allKeys] mutableCopy];
-        
-        for (NSString *key in itineraryKeys) {
-            [FirebaseAPIClient getItineraryWithItineraryID:key
-                                                completion:^(Itinerary * itinerary) {
-                [itineraryObjects setObject:itinerary
-                                     forKey:key];
-            }];
-        }
-        
-        [newDictionary[@"savedItineraries"] removeAllObjects];
-        
-        newDictionary[@"savedItineraries"] = itineraryObjects;
-        
-        if (![keys containsObject:@"associatedImages"]) {
-            
-            NSLog(@"User has no associated images");
-            
-            [newDictionary setObject:[[NSMutableDictionary alloc] init] forKey:@"associatedImages"];
-            
-            User *newUser = [[User alloc] createUserFromDictionary:newDictionary];
-            
-            NSLog(@"User %@ initialized from Firebase dictionary", newDictionary[@"name"]);
-            
-            completion(newUser);
-        } else {
-            
-            NSLog(@"User does have associated images");
-            
-            associatedImageKeys = [[dictionary[@"associatedImages"] allKeys] mutableCopy];
-            
-            for (NSString *key in associatedImageKeys) {
-                [FirebaseAPIClient getImageForImageID:key
-                                           completion:^(UIImage * image) {
-                                               
-                    [newDictionary[@"associatedImages"] setObject:image
-                                                           forKey:key];
-                    
-                    User *newUser = [[User alloc] createUserFromDictionary:newDictionary];
-                    
-                    NSLog(@"User %@ initialized from Firebase dictionary", newDictionary[@"name"]);
-                    
-                    completion(newUser);
-                }];
-            }
-        }
     }
+        
+    if (![userElementKeys containsObject:@"associatedImages"]) {
+        NSLog(@"User has no associated images");
+        [newDictionary setObject:[[NSMutableDictionary alloc] init] forKey:@"associatedImages"];
+    }
+
+    User *newUser = [[User alloc] createUserFromDictionary:newDictionary];
+    NSLog(@"User %@ initialized from Firebase dictionary", newDictionary[@"name"]);
+    
+    completion(newUser);
 }
 
 // Internal method for creating a User from parsed Firebase dictionary
