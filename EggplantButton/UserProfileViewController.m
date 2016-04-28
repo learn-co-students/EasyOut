@@ -48,11 +48,11 @@
     __block NSArray *itineraryIDs = [[NSMutableArray alloc]init];
     
     [self pullUserFromFirebaseWithCompletion:^(BOOL success) {
+        
         if(success) {
             
             self.usernameLabel.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.4];
             self.usernameLabel.text = self.user.username;
-            
             
             self.userImage.layer.cornerRadius = (self.userImage.frame.size.width)/2;
             self.userImage.clipsToBounds = YES;
@@ -62,18 +62,18 @@
                 [FirebaseAPIClient getImageForImageID:self.user.profilePhoto completion:^(UIImage * image) {
                     self.userImage.image =image;
                 }];
-            
-                itineraryIDs = [self.user.savedItineraries allKeys];
-                
-                for(NSString *key in itineraryIDs) {
-                    
-                    [FirebaseAPIClient getItineraryWithItineraryID:key completion:^(Itinerary * itinerary) {
-                    }];
-                }
                 
             } else {
-                
+
                 self.userImage.image = [UIImage imageNamed:@"defaultProfilePic"];
+            }
+            
+            itineraryIDs = [self.user.savedItineraries allKeys];
+            
+            for(NSString *key in itineraryIDs) {
+                
+                [FirebaseAPIClient getItineraryWithItineraryID:key completion:^(Itinerary * itinerary) {
+                }];
             }
         }
     }];

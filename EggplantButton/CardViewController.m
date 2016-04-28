@@ -78,12 +78,10 @@
     // Wait for Core Location to be set up before setting up the data store and getting card data
     [self setUpCoreLocationWithCompletion:^(bool success) {
         if (success) {
-
-            // Setup the data store
-            weakSelf.dataStore = [ActivitiesDataStore sharedDataStore];
-
-            // Get card data
-            [weakSelf getCardData];
+            
+            // Set up data store and cards
+            [weakSelf initializeCards];
+            
         } else {
             
             // Show an alert letting the user know we don't have location information
@@ -325,11 +323,14 @@
 
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [self.locationManager startUpdatingLocation];
+    
+    NSLog(@"Hello Jim = start updatingLocation called.");
 
     self.latitude = self.locationManager.location.coordinate.latitude;
     self.longitude = self.locationManager.location.coordinate.longitude;
 
     if (self.latitude != 0) {
+        NSLog(@"Latitude: %f\nLongitude: %f", self.latitude, self.longitude);
         completion(YES);
     } else {
         NSLog(@"Can't find location");
@@ -338,6 +339,8 @@
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+    
+    NSLog(@"didUpdateLocation called - %@", locations.lastObject);
 
     if (self.mostRecentLocation == nil) {
 
@@ -492,7 +495,7 @@
 
 - (void)addNCObservers {
 
-    // listening for segue notifications from sideMenu
+    // Listening for segue notifications from sideMenu
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(profileButtonTapped:)
                                                  name:@"profileButtonTapped"
@@ -508,16 +511,22 @@
                                                  name:@"logoutButtonTapped"
                                                object:nil];
 
-    //listening for shake gesture notification
+    // Listening for shake gesture notification
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(shakeStarted:)
                                                  name:@"shakeStarted"
                                                object:nil];
 
-    //listening for check button notification
+    // Listening for check button notification
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(disableCheckedCard:)
                                                  name:@"checkBoxChecked"
+                                               object:nil];
+    
+    // Listening for location did update
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(initializeCards)
+                                                 name:@"locationDidUpdate"
                                                object:nil];
 }
 
@@ -552,19 +561,18 @@
     UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK"
                                                  style:UIAlertActionStyleDefault
                                                handler:^(UIAlertAction * action) {
-                                                   
+
                                                    // Create weak reference to self so setup can take place within Core Location setup block
                                                    __weak typeof(self) weakSelf = self;
                                                    
                                                    // Wait for Core Location to be set up before setting up the data store and getting card data
                                                    [self setUpCoreLocationWithCompletion:^(bool success) {
+                                                       
                                                        if (success) {
                                                            
-                                                           // Setup the data store
-                                                           weakSelf.dataStore = [ActivitiesDataStore sharedDataStore];
+                                                           // Set up the data store and cards
+                                                           [weakSelf initializeCards];
                                                            
-                                                           // Get card data
-                                                           [weakSelf getCardData];
                                                        } else {
                                                            
                                                            // Show an alert letting the user know we don't have location information
@@ -578,6 +586,18 @@
     [alert addAction:ok];
     
     [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)initializeCards {
+    
+    // Create weak reference to self so setup can take place within Core Location setup block
+    __weak typeof(self) weakSelf = self;
+
+    // Setup the data store
+    weakSelf.dataStore = [ActivitiesDataStore sharedDataStore];
+    
+    // Get card data
+    [weakSelf getCardData];
 }
 
 @end
