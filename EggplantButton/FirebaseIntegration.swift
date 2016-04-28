@@ -23,8 +23,6 @@ import Firebase
         ref.authUser(email, password: password) {
             error, authData in
             
-            print("Result of attempt to authenticate user: \(error), authData: \(authData)")
-            
             if (error != nil) {
                 // an error occurred while attempting login
                 if let errorCode = FAuthenticationError(rawValue: error.code) {
@@ -85,7 +83,7 @@ import Firebase
     // Register a new user in firebase given a User object and password
     class func registerNewUserWithUser(user: User, password: String, completion: (Bool) -> ()) {
         
-        print("Attempting to register user with\nUsername: \(user.username)\nEmail: \(user.email)\nPassword: \(password)")
+        print("Attempting to register user with email: \(user.email)")
         
         // Set root Firebase reference
         let ref = Firebase(url:firebaseRootRef)
@@ -138,6 +136,7 @@ import Firebase
                     print("****Error trying to log user in after registration: \(error)")
                 } else {
                     print("Logged in user with userID \(authData.uid) after registration")
+                    completion(true)
                 }
             })
         })

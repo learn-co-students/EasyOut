@@ -65,6 +65,7 @@
 }
 
 -(void)passInPriorUserInput {
+    
     //Populate any fields that were populated at login
     if(self.inputEmail) {
         self.emailLabel.text = self.inputEmail;
