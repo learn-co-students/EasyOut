@@ -230,14 +230,15 @@ import Firebase
         
         // Read data at user reference
         userRef.observeEventType(.Value, withBlock: { snapshot in
-            let sv = snapshot.value
+            let sv = snapshot.value as? NSDictionary
+            
+        
+            
+            
             print("User ref:\n\(sv)")
             
-            // Create new User object
-//            let newUser : User = User.init(firebaseUserDictionary: sv as! Dictionary)
-            
             // Initialize new User object
-            User.initWithFirebaseUserDictionary(sv as! Dictionary, completion: { (user) in
+            User.initWithFirebaseUserDictionary(sv as? [NSObject : AnyObject], completion: { (user) in
                 
                 print("Created User object with completion block for \(user.username)")
                 
@@ -447,12 +448,9 @@ import Firebase
         let itineraryRef = itinerariesRef.childByAppendingPath(itineraryID)
         
         // Get itinerary ref from Firebase
-        print("Getting snapshot of itinerary reference \(itineraryRef.description)")
-        
-        
         itineraryRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
             
-            print("Got itinerary value from snapshot")
+            print("Got itinerary \(itineraryID) value from snapshot")
             
             // Create Itinerary object from snapshot value
             let itinerary : Itinerary = Itinerary.init(firebaseItineraryDictionary: snapshot.value as! [NSObject : AnyObject])
@@ -770,14 +768,14 @@ import Firebase
         
         // Set Firebase references
         let ref = Firebase(url:firebaseRootRef)
-        let usersRef = ref.childByAppendingPath("users")
-        let imagesRef = ref.childByAppendingPath("images")
-        let itinerariesRef = ref.childByAppendingPath("itineraries")
-        let currentUserRef = usersRef.childByAppendingPath(ref.authData.uid)
-        let associatedImagesRef = currentUserRef.childByAppendingPath("associatedImages")
-        let savedItinerariesRef = currentUserRef.childByAppendingPath("savedItineraries")
+//        let usersRef = ref.childByAppendingPath("users")
+//        let imagesRef = ref.childByAppendingPath("images")
+//        let itinerariesRef = ref.childByAppendingPath("itineraries")
+//        let currentUserRef = usersRef.childByAppendingPath(ref.authData.uid)
+//        let associatedImagesRef = currentUserRef.childByAppendingPath("associatedImages")
+//        let savedItinerariesRef = currentUserRef.childByAppendingPath("savedItineraries")
         
-        // Remove all user itineraries and associated images
+        // TODO: Remove all user itineraries and associated images
         
         
         FirebaseAPIClient.logOutUser()

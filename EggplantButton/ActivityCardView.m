@@ -13,6 +13,7 @@
 #import <AFNetworking/AFImageDownloader.h>
 #import <AFNetworking/AFNetworking.h>
 #import "QuartzCore/CALayer.h"
+#import "Constants.h"
 
 
 @interface ActivityCardView ()
@@ -79,6 +80,7 @@
     
     _activity = activity;
     [self updateUI];
+    
 }
 
 

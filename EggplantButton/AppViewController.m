@@ -35,6 +35,8 @@
     
     Firebase *ref = [[Firebase alloc] initWithUrl:firebaseRootRef];
     
+//    [ref unauth];
+    
     self.user = [[User alloc] init];
     
     if (ref.authData) {

@@ -49,8 +49,8 @@
     NSArray *keys = [dictionary allKeys];
     
     NSMutableArray *photoKeys = [[NSMutableArray alloc] init];
-    NSMutableArray *tipKeys = [[NSMutableArray alloc] init];
-    NSMutableArray *ratingKeys = [[NSMutableArray alloc] init];
+//    NSMutableArray *tipKeys = [[NSMutableArray alloc] init];
+//    NSMutableArray *ratingKeys = [[NSMutableArray alloc] init];
     
     // Check for empty dictionaries that Firebase may not have saved
     
@@ -119,7 +119,7 @@
                      priceRange:[newDictionary[@"priceRange"] integerValue]
             ];
     
-    NSLog(@"User initialized from Firebase dictionary");
+//    NSLog(@"%@ initialized from Firebase dictionary", newDictionary[@"title"]);
     
     return self;
 }

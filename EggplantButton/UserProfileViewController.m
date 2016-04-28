@@ -21,21 +21,41 @@
 
 @property (strong, nonatomic) NSMutableArray *itineraries;
 
+@property (weak, nonatomic) UIActivityIndicatorView * spinner;
+
 @end
 
 @implementation UserProfileViewController
+
+- (void) viewWillAppear:(BOOL)animated {
+    self.spinner = [[UIActivityIndicatorView alloc]
+                    initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    self.spinner.center = CGPointMake((self.view.frame.size.width/2), (self.view.frame.size.height/2));
+    self.spinner.hidesWhenStopped = YES;
+    [self.spinner startAnimating];
+    [self.view addSubview:self.spinner];
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    [self.spinner removeFromSuperview];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor clearColor];
+    self.view.contentMode = UIViewContentModeCenter;
+    self.view.contentMode = UIViewContentModeScaleAspectFit;
+
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    
+    self.itineraries = [[NSMutableArray alloc]init];
     
     self.itineraryTable.delegate = self;
     self.itineraryTable.dataSource = self;
     
-    [self pullUserFromFirebase];
-    
     [self pullItinerariesForUser];
+    
     
     [self setUpCamera];
 
@@ -74,11 +94,11 @@
 
 -(void)pullUserFromFirebase {
     [self pullUserFromFirebaseWithCompletion:^(BOOL success) {
+        
         if(success) {
             
             self.usernameLabel.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.4];
             self.usernameLabel.text = self.user.username;
-            
             
             self.userImage.layer.cornerRadius = (self.userImage.frame.size.width)/2;
             self.userImage.clipsToBounds = YES;
@@ -88,9 +108,9 @@
                 [FirebaseAPIClient getImageForImageID:self.user.profilePhoto completion:^(UIImage * image) {
                     self.userImage.image =image;
                 }];
-            }
-            
-            else {
+                
+            } else {
+
                 self.userImage.image = [UIImage imageNamed:@"defaultProfilePic"];
             }
         }
@@ -98,14 +118,12 @@
 }
 
 -(void)pullItinerariesForUser {
-    __block NSArray *itineraryIDs = [[NSMutableArray alloc]init];
     
-    self.itineraries = [[NSMutableArray alloc]init];
     
     [self pullUserFromFirebaseWithCompletion:^(BOOL success) {
         if(success) {
-            
-            itineraryIDs = [self.user.savedItineraries allKeys];
+
+            NSArray *itineraryIDs = [self.user.savedItineraries allKeys];
             
             for(NSString *key in itineraryIDs) {
                 
@@ -115,22 +133,30 @@
                     
                     [self.itineraryTable reloadData];
                     
+
                 }];
-                
-                
             }
+        } else {
+            NSLog(@"operation was unsuccessful");
         }
     }];
 
+    
 }
 
 -(void)pullUserFromFirebaseWithCompletion:(void(^)(BOOL success))completion {
     
     Firebase *ref = [[Firebase alloc] initWithUrl:firebaseRootRef];
     
+    NSString *authDataID = ref.authData.uid;
+    
     [FirebaseAPIClient getUserFromFirebaseWithUserID:ref.authData.uid completion:^(User * user, BOOL success) {
         
+        NSLog(@"Returned from Firebase with User object");
+        
         self.user = user;
+        
+        
         
         completion(YES);
     }];
@@ -165,7 +191,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
     
@@ -173,15 +198,15 @@
     
 
     [FirebaseAPIClient saveProfilePhotoForCurrentUser:chosenImage completion:^(BOOL success) {
-        NSLog(@"success! profile pic saved");
+        NSLog(@"Success! profile pic saved");
     }];
 
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     [self dismissViewControllerAnimated:YES
                              completion:nil];
-
 }
 
 - (IBAction)editPictureButtonPressed:(UIButton *)sender {
@@ -235,7 +260,5 @@
     [self presentViewController: picker animated:YES completion:NULL];
     
 }
-
-
 
 @end

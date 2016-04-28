@@ -16,6 +16,8 @@ NSString * const FSQ_BASE_URL= @"https://api.foursquare.com/";
 @implementation FoursquareAPIClient
 
 +(void)getActivityforSection:(NSString *)section Location:(NSString *)location WithCompletion:(void (^) (NSArray *activities)) completion {
+    
+    NSLog(@"Getting activities from Foursquare");
  
     NSString *urlString = [NSString stringWithFormat: @"%@v2/venues/explore?client_id=%@&client_secret=%@&v=20140806&m=foursquare&ll=%@&limit=50&openNow=1&section=%@&venuePhotos=1", FSQ_BASE_URL, FOURSQUARE_CLIENT_ID, FOURSQUARE_CLIENT_SECRET,location,section];
     
@@ -28,22 +30,23 @@ NSString * const FSQ_BASE_URL= @"https://api.foursquare.com/";
     
     NSURLSessionTask *task = [session dataTaskWithURL:url completionHandler:^(NSData * data, NSURLResponse * response, NSError *  error) {
         
+        NSLog(@"Making NSURLSessionTask call to %@", urlString);
+        
         if(error) {
+            
             NSLog(@"Error: %@", error.description);
-
+            
             return;
         }
 
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
 
         if(httpResponse.statusCode != 200) {
-
-            NSLog(@"Something went wrong :( Status code %lu", httpResponse.statusCode);
+            
+            NSLog(@"Something went wrong calling Foursquare! Status code %lu", httpResponse.statusCode);
         }
         
         NSDictionary *activityDictionary = [NSJSONSerialization JSONObjectWithData:data  options:0 error:nil];
-        
-    
         
         completion(activityDictionary[@"response"][@"groups"][0][@"items"]);
         
@@ -51,8 +54,8 @@ NSString * const FSQ_BASE_URL= @"https://api.foursquare.com/";
     
  
     [task resume];
-    
 }
+
 //    NSString *forusquareURL = [NSString stringWithFormat:@"%@latlong=%@,%@&radius=15&startDateTime=%@&apikey=%@",TM_BASE_URL ,lat,lng,dateString,consumerKey];
 //    
 //    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
