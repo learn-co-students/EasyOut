@@ -21,7 +21,7 @@
 
 @property (strong, nonatomic) NSMutableArray *itineraries;
 
-@property (weak, nonatomic) UIActivityIndicatorView * spinner;
+@property (strong, nonatomic) UIActivityIndicatorView * spinner;
 
 @end
 
