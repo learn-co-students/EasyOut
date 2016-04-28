@@ -43,7 +43,7 @@ NSString * const FSQ_BASE_URL= @"https://api.foursquare.com/";
 
         if(httpResponse.statusCode != 200) {
             
-            NSLog(@"Something went wrong! Status code %lu", httpResponse.statusCode);
+            NSLog(@"Something went wrong calling Foursquare! Status code %lu", httpResponse.statusCode);
         }
         
         NSDictionary *activityDictionary = [NSJSONSerialization JSONObjectWithData:data  options:0 error:nil];

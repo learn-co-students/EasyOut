@@ -230,14 +230,13 @@ import Firebase
         
         // Read data at user reference
         userRef.observeEventType(.Value, withBlock: { snapshot in
-            let sv = snapshot.value
+            let sv = snapshot.value as! NSDictionary
+            
+            
             print("User ref:\n\(sv)")
             
-            // Create new User object
-//            let newUser : User = User.init(firebaseUserDictionary: sv as! Dictionary)
-            
             // Initialize new User object
-            User.initWithFirebaseUserDictionary(sv as! Dictionary, completion: { (user) in
+            User.initWithFirebaseUserDictionary(sv as [NSObject : AnyObject], completion: { (user) in
                 
                 print("Created User object with completion block for \(user.username)")
                 

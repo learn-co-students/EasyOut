@@ -85,7 +85,11 @@
     
     Firebase *ref = [[Firebase alloc] initWithUrl:firebaseRootRef];
     
+    NSString *authDataID = ref.authData.uid;
+    
     [FirebaseAPIClient getUserFromFirebaseWithUserID:ref.authData.uid completion:^(User * user, BOOL success) {
+        
+        NSLog(@"Returned from Firebase with User object");
         
         self.user = user;
         

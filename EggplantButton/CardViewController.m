@@ -47,7 +47,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *createItineraryButton;
 @property (weak, nonatomic) IBOutlet UIButton *randomizeCardsButton;
 
-@property (weak, nonatomic) UIActivityIndicatorView * spinner;
+@property (strong, nonatomic) UIActivityIndicatorView * spinner;
 
 @end
 
@@ -324,11 +324,6 @@
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [self.locationManager startUpdatingLocation];
     
-    NSLog(@"Hello Jim = start updatingLocation called.");
-
-    self.latitude = self.locationManager.location.coordinate.latitude;
-    self.longitude = self.locationManager.location.coordinate.longitude;
-
     if (self.latitude != 0) {
         NSLog(@"Latitude: %f\nLongitude: %f", self.latitude, self.longitude);
         completion(YES);
@@ -346,7 +341,10 @@
 
         self.mostRecentLocation = [locations lastObject];
     }
-
+    
+    self.latitude = self.locationManager.location.coordinate.latitude;
+    self.longitude = self.locationManager.location.coordinate.longitude;
+    
     [self.locationManager stopUpdatingLocation];
 }
 
@@ -522,12 +520,6 @@
                                              selector:@selector(disableCheckedCard:)
                                                  name:@"checkBoxChecked"
                                                object:nil];
-    
-    // Listening for location did update
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(initializeCards)
-                                                 name:@"locationDidUpdate"
-                                               object:nil];
 }
 
 - (void)setAppearances {
@@ -587,9 +579,8 @@
     
     [self presentViewController:alert animated:YES completion:nil];
 }
-
-- (void)initializeCards {
     
+- (void) initializeCards {
     // Create weak reference to self so setup can take place within Core Location setup block
     __weak typeof(self) weakSelf = self;
 
