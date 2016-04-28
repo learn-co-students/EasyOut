@@ -54,7 +54,13 @@
     self.itineraryTable.delegate = self;
     self.itineraryTable.dataSource = self;
     
-    [self pullItinerariesForUser];
+    [self pullUserFromFirebaseWithCompletion:^(BOOL success) {
+        if (success) {
+            NSLog(@"Pulled user from Firebase");
+        } else {
+            NSLog(@"Failed to pull user from Firebase");
+        }
+    }];
     
     [self setUpCamera];
 }
@@ -63,7 +69,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    NSLog(@"ITINERARY COUNT: %lu", self.itineraries.count);
+    NSLog(@"Itinerary count: %lu", self.itineraries.count);
     
     return self.itineraries.count;
 }
@@ -71,7 +77,6 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"userProfileCell" forIndexPath:indexPath];
-    
     cell.textLabel.text = ((Itinerary *)self.itineraries[indexPath.row]).title;
     
     return cell;
@@ -84,10 +89,18 @@
 
 #pragma mark - pull info
 
--(void)pullUserFromFirebase {
-    [self pullUserFromFirebaseWithCompletion:^(BOOL success) {
+-(void)pullUserFromFirebaseWithCompletion:(void(^)(BOOL success))completion {
+    
+    Firebase *ref = [[Firebase alloc] initWithUrl:firebaseRootRef];
+        
+    [FirebaseAPIClient getUserFromFirebaseWithUserID:ref.authData.uid completion:^(User * user, BOOL success) {
+        
+        NSLog(@"Returned from Firebase with User object");
+        self.user = user;
         
         if(success) {
+            
+            NSLog(@"User succesfully pulled from Firebase");
             
             self.usernameLabel.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.4];
             self.usernameLabel.text = self.user.username;
@@ -97,69 +110,48 @@
             self.userImage.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
             
             if(![self.user.profilePhoto isEqualToString:@""]){
+                
                 [FirebaseAPIClient getImageForImageID:self.user.profilePhoto completion:^(UIImage * image) {
                     self.userImage.image =image;
                 }];
                 
             } else {
-
                 self.userImage.image = [UIImage imageNamed:@"defaultProfilePic"];
             }
+            
+            [self pullItinerariesForUser];
+            
+            completion(YES);
+            
+        } else {
+            
+            NSLog(@"User not pulled from Firebase");
+            
+            completion(NO);
         }
     }];
 }
 
 -(void)pullItinerariesForUser {
     
-    // Change to pull Itineraries directly from Firebase using keys in the user reference
+    NSArray *itineraryIDs = [self.user.savedItineraries allKeys];
     
-    [self pullUserFromFirebaseWithCompletion:^(BOOL success) {
-        if(success) {
-
-            NSArray *itineraryIDs = [self.user.savedItineraries allKeys];
-            
-            for(NSString *key in itineraryIDs) {
-                
-                [FirebaseAPIClient getItineraryWithItineraryID:key completion:^(Itinerary * itinerary) {
-                    
-                    [self.itineraries addObject:itinerary];
-                    
-                    [self.itineraryTable reloadData];
-                    
-
-                }];
-            }
-        } else {
-            NSLog(@"operation was unsuccessful");
-        }
-    }];
-
-    
-}
-
--(void)pullUserFromFirebaseWithCompletion:(void(^)(BOOL success))completion {
-    
-    Firebase *ref = [[Firebase alloc] initWithUrl:firebaseRootRef];
+    for(NSString *key in itineraryIDs) {
         
-    [FirebaseAPIClient getUserFromFirebaseWithUserID:ref.authData.uid completion:^(User * user, BOOL success) {
-        
-        NSLog(@"Returned from Firebase with User object");
-        
-        self.user = user;
-        
-        completion(YES);
-    }];
+        [FirebaseAPIClient getItineraryWithItineraryID:key completion:^(Itinerary * itinerary) {
+            [self.itineraries addObject:itinerary];
+            [self.itineraryTable reloadData];
+        }];
+    }
 }
 
 -(void)setUpCamera {
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-
         
         UIAlertController * noCameraAlert =   [UIAlertController
                                                alertControllerWithTitle:@"Error"
                                                message:@"Device has no camera"
                                                preferredStyle:UIAlertControllerStyleAlert];
-        
         
         UIAlertAction* ok = [UIAlertAction
                              actionWithTitle:@"OK"
@@ -171,7 +163,6 @@
                              }];
         [noCameraAlert addAction:ok];
         [self presentViewController:noCameraAlert animated:YES completion:nil];
-        
     }
 }
 
@@ -185,7 +176,6 @@
     
     self.userImage.image = chosenImage;
     
-
     [FirebaseAPIClient saveProfilePhotoForCurrentUser:chosenImage completion:^(BOOL success) {
         NSLog(@"Success! profile pic saved");
     }];
@@ -229,8 +219,6 @@
     [editPicture addAction: cancel];
 
     [self presentViewController:editPicture animated:YES completion:nil];
-    
-    
 }
 
 -(void)takeAPictureWithPicker:(UIImagePickerController *)picker {
@@ -238,8 +226,6 @@
     picker.sourceType = UIImagePickerControllerSourceTypeCamera;
     
     [self presentViewController: picker animated:YES completion:NULL];
-    
-    
 }
 
 -(void)selectAPictureWithPicker:(UIImagePickerController *)picker {
@@ -247,7 +233,6 @@
     picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     
     [self presentViewController: picker animated:YES completion:NULL];
-    
 }
 
 @end

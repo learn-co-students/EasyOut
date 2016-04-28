@@ -18,13 +18,24 @@
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *userImage;
 
-
 @end
 
 @implementation sideMenuViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // Set appearance of side menu view controller
+    self.view.backgroundColor = [Constants vikingBlueColor];
+    
+    // Set the user info for the side menu
+    [self addUserInfoToMenu];
+}
+
+- (void)addUserInfoToMenu {
+    
+//    Firebase *ref = [[Firebase alloc] initWithUrl:firebaseRootRef];
+//    Firebase *userRef = [[ref childByAppendingPath:@"users"] childByAppendingPath:[NSString stringWithFormat:@"%@", ref.authData.uid]];
     
     [self pullUserFromFirebaseWithCompletion:^(BOOL success) {
         if(success) {
@@ -38,18 +49,13 @@
             
             if(![self.user.profilePhoto isEqualToString:@""]){
                 [FirebaseAPIClient getImageForImageID:self.user.profilePhoto completion:^(UIImage * image) {
-                    self.userImage.image =image;
+                    self.userImage.image = image;
                 }];
-            
+                
             }
         }
-
-        // Set appearance of side menu view controller
-        self.view.backgroundColor = [Constants vikingBlueColor];
-
     }];
 }
-
 
 - (void)pullUserFromFirebaseWithCompletion:(void(^)(BOOL success))completion {
     
