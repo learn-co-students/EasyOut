@@ -431,6 +431,12 @@
     };
 
     if (self.firstCardLocked || self.secondCardLocked || self.thirdCardLocked) {
+        
+        // Save Itinerary to FireBase
+        [FirebaseAPIClient saveItineraryWithItinerary:self.itinerary completion:^(NSString * savedItinerary) {
+            NSLog(@" Itinerary saved : %@",savedItinerary);
+        }];
+        
         [self performSegueWithIdentifier:@"ItinerarySegue" sender:nil];
     }
 }

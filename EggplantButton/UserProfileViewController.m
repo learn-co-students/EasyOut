@@ -71,18 +71,15 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    
     return self.itineraries.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSLog(@"Tableview is %@", tableView);
-    NSLog(@"indexPath is %@", indexPath);
+    NSLog(@"Creating table view cell at indexPath.row %li", indexPath.row);
     
     HistoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"userProfileCell"
                                                                  forIndexPath:indexPath];
-    
     
     cell.itineraryLabel.text = ((Itinerary *)self.itineraries[indexPath.row]).title;
     
@@ -92,7 +89,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSLog(@"CELL PRESSED!!!");
+    NSLog(@"Itinerary at indexPath.row %li tapped from user profile", indexPath.row);
 }
 
 #pragma mark - pull info

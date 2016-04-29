@@ -41,17 +41,14 @@
 
 -(void)commonInit {
     
-    NSLog(@"commonInit is called!!!!!!!!!!!!!!");
+    NSLog(@"Itinerary history table view cell initializing");
     
     [[NSBundle mainBundle] loadNibNamed:@"HistoryTableCell" owner:self options:nil];
-    
-//    self.contentView.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self addSubview:self.view];
     
     self.view.translatesAutoresizingMaskIntoConstraints = NO;
 
-    
     [self.view.heightAnchor constraintEqualToAnchor:self.heightAnchor].active = YES;
     [self.view.widthAnchor constraintEqualToAnchor:self.widthAnchor].active = YES;
     [self.view.centerXAnchor constraintEqualToAnchor:self.centerXAnchor].active = YES;

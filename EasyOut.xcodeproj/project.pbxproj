@@ -25,6 +25,9 @@
 		4C64EC451CBAA78200FB3A45 /* EggplantButton.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C64EC3D1CBAA78200FB3A45 /* EggplantButton.xcdatamodeld */; };
 		4C64EC471CBAA78200FB3A45 /* ItineraryView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C64EC411CBAA78200FB3A45 /* ItineraryView.storyboard */; };
 		4C64EC481CBAA78200FB3A45 /* UserHistory.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C64EC421CBAA78200FB3A45 /* UserHistory.xcdatamodeld */; };
+		4C6C89BD1CD394CE0088266B /* HistoryTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C6C89B91CD394CE0088266B /* HistoryTableCell.xib */; };
+		4C6C89BE1CD394CE0088266B /* HistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C6C89BB1CD394CE0088266B /* HistoryTableViewCell.m */; };
+		4C6C89BF1CD394CE0088266B /* HistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C6C89BC1CD394CE0088266B /* HistoryTableViewCell.xib */; };
 		4C9A037D1CAB064200CA9A02 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9A037C1CAB064200CA9A02 /* main.m */; };
 		4C9A03801CAB064200CA9A02 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9A037F1CAB064200CA9A02 /* AppDelegate.m */; };
 		4C9A038B1CAB064200CA9A02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C9A038A1CAB064200CA9A02 /* Assets.xcassets */; };
@@ -67,8 +70,6 @@
 		78A7F6D51CC0217D00DD4937 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AB65BBB1CBD95E4008A99CF /* Login.storyboard */; };
 		78A7F6D81CC1672700DD4937 /* sideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78A7F6D71CC1672700DD4937 /* sideMenuViewController.m */; };
 		9A33839B1CBC5416004B8EFE /* ActivityCardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3383981CBC5416004B8EFE /* ActivityCardCollectionViewCell.m */; };
-		9A4A94481CD2A39600EDE09B /* HistoryTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A4A94471CD2A39600EDE09B /* HistoryTableCell.xib */; };
-		9A4A944B1CD2A8D100EDE09B /* HistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4A944A1CD2A8D100EDE09B /* HistoryTableViewCell.m */; };
 		9A5AEC321CBF476B009F2BEA /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5AEC311CBF476B009F2BEA /* UserProfileViewController.m */; };
 		9A5AEC341CBF4795009F2BEA /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A5AEC331CBF4795009F2BEA /* UserProfile.storyboard */; };
 		9A74DC521CBF391900B63B0B /* FilterView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A74DC511CBF391900B63B0B /* FilterView.storyboard */; };
@@ -111,6 +112,10 @@
 		4C64EC3E1CBAA78200FB3A45 /* EggplantButton.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EggplantButton.xcdatamodel; sourceTree = "<group>"; };
 		4C64EC411CBAA78200FB3A45 /* ItineraryView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ItineraryView.storyboard; sourceTree = "<group>"; };
 		4C64EC431CBAA78200FB3A45 /* UserHistory.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserHistory.xcdatamodel; sourceTree = "<group>"; };
+		4C6C89B91CD394CE0088266B /* HistoryTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HistoryTableCell.xib; path = EggplantButton/HistoryTableCell.xib; sourceTree = "<group>"; };
+		4C6C89BA1CD394CE0088266B /* HistoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryTableViewCell.h; path = EggplantButton/HistoryTableViewCell.h; sourceTree = "<group>"; };
+		4C6C89BB1CD394CE0088266B /* HistoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryTableViewCell.m; path = EggplantButton/HistoryTableViewCell.m; sourceTree = "<group>"; };
+		4C6C89BC1CD394CE0088266B /* HistoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HistoryTableViewCell.xib; path = EggplantButton/HistoryTableViewCell.xib; sourceTree = "<group>"; };
 		4C9A03781CAB064200CA9A02 /* EggplantButton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EggplantButton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C9A037C1CAB064200CA9A02 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4C9A037E1CAB064200CA9A02 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -167,9 +172,6 @@
 		78A7F6D71CC1672700DD4937 /* sideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sideMenuViewController.m; sourceTree = "<group>"; };
 		9A3383971CBC5416004B8EFE /* ActivityCardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActivityCardCollectionViewCell.h; path = EggplantButton/ActivityCardCollectionViewCell.h; sourceTree = "<group>"; };
 		9A3383981CBC5416004B8EFE /* ActivityCardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActivityCardCollectionViewCell.m; path = EggplantButton/ActivityCardCollectionViewCell.m; sourceTree = "<group>"; };
-		9A4A94471CD2A39600EDE09B /* HistoryTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryTableCell.xib; sourceTree = "<group>"; };
-		9A4A94491CD2A8D100EDE09B /* HistoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryTableViewCell.h; sourceTree = "<group>"; };
-		9A4A944A1CD2A8D100EDE09B /* HistoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryTableViewCell.m; sourceTree = "<group>"; };
 		9A5AEC301CBF476B009F2BEA /* UserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
 		9A5AEC311CBF476B009F2BEA /* UserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
 		9A5AEC331CBF4795009F2BEA /* UserProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
@@ -300,9 +302,10 @@
 				9AA058781CAEAA57000A6AA8 /* ActivityCard.xib */,
 				4C358D711CADCDF700257756 /* ActivityCardView.h */,
 				4C358D721CADCDF700257756 /* ActivityCardView.m */,
-				9A4A94471CD2A39600EDE09B /* HistoryTableCell.xib */,
-				9A4A94491CD2A8D100EDE09B /* HistoryTableViewCell.h */,
-				9A4A944A1CD2A8D100EDE09B /* HistoryTableViewCell.m */,
+				4C6C89B91CD394CE0088266B /* HistoryTableCell.xib */,
+				4C6C89BA1CD394CE0088266B /* HistoryTableViewCell.h */,
+				4C6C89BB1CD394CE0088266B /* HistoryTableViewCell.m */,
+				4C6C89BC1CD394CE0088266B /* HistoryTableViewCell.xib */,
 			);
 			name = Views;
 			path = ..;
@@ -501,6 +504,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				78A7F6D51CC0217D00DD4937 /* Login.storyboard in Resources */,
+				4C6C89BD1CD394CE0088266B /* HistoryTableCell.xib in Resources */,
 				4CD9FF791CCE602E00D3E603 /* Roboto-LightItalic.ttf in Resources */,
 				4CD9FF7D1CCE602E00D3E603 /* Roboto-Thin.ttf in Resources */,
 				4CD9FF7B1CCE602E00D3E603 /* Roboto-MediumItalic.ttf in Resources */,
@@ -522,9 +526,9 @@
 				4C1DE15F1CB8410900AFBCF5 /* LobsterTwo-Bold.otf in Resources */,
 				4CBBC6091CBA97B0006683D8 /* Main.storyboard in Resources */,
 				4CD9FF771CCE602E00D3E603 /* Roboto-Italic.ttf in Resources */,
-				9A4A94481CD2A39600EDE09B /* HistoryTableCell.xib in Resources */,
 				4CD9FF751CCE602E00D3E603 /* Roboto-Condensed.ttf in Resources */,
 				4CD9FF7C1CCE602E00D3E603 /* Roboto-Regular.ttf in Resources */,
+				4C6C89BF1CD394CE0088266B /* HistoryTableViewCell.xib in Resources */,
 				4C9A038B1CAB064200CA9A02 /* Assets.xcassets in Resources */,
 				9A5AEC341CBF4795009F2BEA /* UserProfile.storyboard in Resources */,
 				4CD9FF7A1CCE602E00D3E603 /* Roboto-Medium.ttf in Resources */,
@@ -597,7 +601,6 @@
 				4CBBC6061CBA96DF006683D8 /* setupButton.m in Sources */,
 				78A7F6D81CC1672700DD4937 /* sideMenuViewController.m in Sources */,
 				4C9C962A1CC6ABAF00C7094A /* Constants.m in Sources */,
-				9A4A944B1CD2A8D100EDE09B /* HistoryTableViewCell.m in Sources */,
 				9A5AEC321CBF476B009F2BEA /* UserProfileViewController.m in Sources */,
 				4C358D381CAD62CE00257756 /* CardViewController.m in Sources */,
 				9A8C888A1CC44D710053EC00 /* FoursquareAPIClient.m in Sources */,
@@ -605,6 +608,7 @@
 				4C64EC441CBAA78200FB3A45 /* CreateAccountViewController.m in Sources */,
 				4C02D1E11CB6E72C0031F978 /* User.m in Sources */,
 				9ACC8C1A1CBD399800909704 /* DetailViewController.m in Sources */,
+				4C6C89BE1CD394CE0088266B /* HistoryTableViewCell.m in Sources */,
 				4C433C031CB9539C00059C92 /* Activity.m in Sources */,
 				9A33839B1CBC5416004B8EFE /* ActivityCardCollectionViewCell.m in Sources */,
 				4C02D1E41CB6E8A00031F978 /* Itinerary.m in Sources */,

@@ -14,7 +14,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView * sideMenuContainer;
 @property (weak, nonatomic) IBOutlet UIView * viewContainer;
-@property (weak, nonatomic) UIActivityIndicatorView * spinner;
+@property (strong, nonatomic) UIActivityIndicatorView * spinner;
 
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer * mainViewTapGestureRecognizer;
 

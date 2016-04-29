@@ -27,8 +27,6 @@
 
 @property (strong, nonatomic) UIActivityIndicatorView * spinner;
 
-
-
 @end
 
 @implementation ItineraryViewController
@@ -60,15 +58,7 @@
     
     self.itineraryTableView.translatesAutoresizingMaskIntoConstraints = NO;
     
-    
     [self generateGoogleMap];
-    
-     //save Itinerary to FireBase
-    
-    [FirebaseAPIClient saveItineraryWithItinerary:self.itinerary completion:^(NSString * savedItinerary) {
-        NSLog(@" Itinerary saved : %@",savedItinerary);
-    }];
-    
   }
 -(NSString *)getDate {
     NSDate *now = [NSDate date];

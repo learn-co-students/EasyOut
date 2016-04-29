@@ -21,7 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *invalidPasswordWarning;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
 
-@property (weak, nonatomic) UIActivityIndicatorView * spinner;
+@property (strong, nonatomic) UIActivityIndicatorView * spinner;
 
 
 @end

@@ -32,7 +32,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *uberButton;
 
 @property (nonatomic, strong) BTNDropinButton *dropinButton;
-@property (weak, nonatomic) UIActivityIndicatorView * spinner;
+@property (strong, nonatomic) UIActivityIndicatorView * spinner;
 
 @end
 
