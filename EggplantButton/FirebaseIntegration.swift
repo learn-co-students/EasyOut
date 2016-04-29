@@ -478,9 +478,7 @@ import Firebase
                 
                 // Check that the userID associated with the itinerary matches the userID of the current user
                 if realItinerary.userID == ref.authData.uid {
-                    
-                    // TODO: MOVE CONTENTS TO A NEW FUNCTION
-                    
+                                        
                     // If the userIDs are a match, remove the itinerary from the itineraries reference
                     let itineraryRef = itinerariesRef.childByAppendingPath(itineraryID)
                     itineraryRef.removeValueWithCompletionBlock({ (error, result) in
@@ -490,18 +488,18 @@ import Firebase
                             completion(success: false)
                         } else {
                             print("Itinerary removed successfully from itineraries dictionary in Firebase")
-                            
-                            // Call method to remove itinerary from user's savedItineraries
-                            print("Calling method to remove itinerary from user's savedItineraries")
-                            self.removeItineraryFromUserWithUserID(ref.authData.uid, itineraryID: itineraryID, completion: { (success) in
-                                if success {
-                                    print("Itinerary was successfully removed from user's savedItineraries")
-                                    completion(success: true)
-                                } else {
-                                    print("Itinerary was not successfully removed from savedItineraries")
-                                    completion(success: false)
-                                }
-                            })
+                        }
+                    })
+                    
+                    // Call method to remove itinerary from user's savedItineraries
+                    print("Calling method to remove itinerary from user's savedItineraries")
+                    self.removeItineraryFromUserWithUserID(ref.authData.uid, itineraryID: itineraryID, completion: { (success) in
+                        if success {
+                            print("Itinerary was successfully removed from user's savedItineraries")
+                            completion(success: true)
+                        } else {
+                            print("Itinerary was not successfully removed from savedItineraries")
+                            completion(success: false)
                         }
                     })
                 }
