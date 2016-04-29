@@ -30,8 +30,6 @@ NSString * const FSQ_BASE_URL= @"https://api.foursquare.com/";
     
     NSURLSessionTask *task = [session dataTaskWithURL:url completionHandler:^(NSData * data, NSURLResponse * response, NSError *  error) {
         
-        NSLog(@"Making NSURLSessionTask call to %@", urlString);
-        
         if(error) {
             
             NSLog(@"Error: %@", error.description);
@@ -55,27 +53,5 @@ NSString * const FSQ_BASE_URL= @"https://api.foursquare.com/";
  
     [task resume];
 }
-
-//    NSString *forusquareURL = [NSString stringWithFormat:@"%@latlong=%@,%@&radius=15&startDateTime=%@&apikey=%@",TM_BASE_URL ,lat,lng,dateString,consumerKey];
-//    
-//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-//    
-//    [manager GET:ticketMasterURL parameters:nil progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *responseObject) {
-//        
-//        NSLog(@"%@", ticketMasterURL);
-//        
-//        NSArray *events = responseObject[@"_embedded"][@"events"];
-//        
-//        completionBlock(events);
-//        
-//    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-//        
-//        NSLog(@"Error: %@", error);
-//        
-//    }];
-    
-    
-
-
 
 @end
