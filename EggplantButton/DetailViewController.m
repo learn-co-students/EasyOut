@@ -110,13 +110,9 @@
 -(void)getDistanceFromLocation {
 
     CLLocation *userLocation = [[CLLocation alloc]initWithLatitude:self.latitude longitude:self.longitude];
-
     NSString *address = [NSString stringWithFormat:@"%@ %@", self.activity.address[0], self.activity.address[1]];
-
     CLLocationCoordinate2D location = [self getLocationFromAddressString: address];
-
     CLLocation *activityLocation = [[CLLocation alloc]initWithLatitude:location.latitude longitude:location.longitude];
-
     CLLocationDistance distance = [userLocation distanceFromLocation: activityLocation];
 
     NSLog(@"%f", distance);

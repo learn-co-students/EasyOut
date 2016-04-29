@@ -45,9 +45,10 @@
                                             <constraint firstAttribute="height" constant="150" id="GIN-g2-AR3"/>
                                         </constraints>
                                     </imageView>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="utp-SR-wfg">
+                                    <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="utp-SR-wfg">
                                         <rect key="frame" x="19" y="220" width="337" height="383"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" red="0.36960259470000001" green="0.80310696039999996" blue="0.83317307689999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="userProfileCell" id="NKB-Fu-1W7" customClass="HistoryTableViewCell">
                                                 <rect key="frame" x="0.0" y="28" width="337" height="44"/>
@@ -57,7 +58,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableViewCellContentView>
                                                 <connections>
-                                                    <segue destination="8rl-hq-p4L" kind="presentation" identifier="segueFromProfileToItinerary" id="zM4-hT-KbE"/>
+                                                    <segue destination="8rl-hq-p4L" kind="show" identifier="ItinerarySegue" id="zM4-hT-KbE"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -68,8 +69,8 @@
                                     <constraint firstItem="NY3-4j-T4K" firstAttribute="width" secondItem="2gT-zw-ciG" secondAttribute="width" id="p1n-Rd-RLq"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wqM-ut-nAZ">
-                                <rect key="frame" x="219" y="181" width="44" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wqM-ut-nAZ" userLabel="Edit Photo Button">
+                                <rect key="frame" x="214" y="171" width="44" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="wqM-ut-nAZ" secondAttribute="height" multiplier="1:1" id="2a1-xJ-EU7"/>
@@ -87,8 +88,8 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wqM-ut-nAZ" firstAttribute="bottom" secondItem="CUH-f1-A53" secondAttribute="bottom" id="4uN-6K-E9a"/>
-                            <constraint firstItem="wqM-ut-nAZ" firstAttribute="trailing" secondItem="CUH-f1-A53" secondAttribute="trailing" id="I2d-4g-XIR"/>
+                            <constraint firstItem="wqM-ut-nAZ" firstAttribute="bottom" secondItem="CUH-f1-A53" secondAttribute="bottom" constant="-10" id="4uN-6K-E9a"/>
+                            <constraint firstItem="wqM-ut-nAZ" firstAttribute="trailing" secondItem="CUH-f1-A53" secondAttribute="trailing" constant="-5" id="I2d-4g-XIR"/>
                             <constraint firstItem="j2c-rs-nw6" firstAttribute="top" secondItem="2gT-zw-ciG" secondAttribute="bottom" id="fEB-qT-UmS"/>
                             <constraint firstItem="2gT-zw-ciG" firstAttribute="centerX" secondItem="ef1-Kv-N7b" secondAttribute="centerX" id="kFY-0K-C5C"/>
                             <constraint firstItem="2gT-zw-ciG" firstAttribute="top" secondItem="tLR-p9-NTb" secondAttribute="bottom" id="mcj-zP-Far"/>

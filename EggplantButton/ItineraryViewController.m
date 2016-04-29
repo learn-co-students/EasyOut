@@ -15,8 +15,6 @@
 #import <AFNetworking/AFImageDownloader.h>
 
 
-
-
 @interface ItineraryViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *itineraryTableView;
@@ -59,7 +57,8 @@
     self.itineraryTableView.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self generateGoogleMap];
-  }
+}
+
 -(NSString *)getDate {
     NSDate *now = [NSDate date];
     NSCalendar *calendar = [[NSCalendar alloc]
@@ -136,8 +135,6 @@
     return cell;
 }
 
-
-
 //MAP THINGS
 -(CLLocationCoordinate2D) getLocationFromAddressString: (NSString*) addressStr {
     double latitude = 0, longitude = 0;
@@ -153,13 +150,12 @@
             }
         }
     }
+    
     CLLocationCoordinate2D center;
     center.latitude=latitude;
     center.longitude = longitude;
 
-    
     return center;
-    
 }
 
 -(void)generateGoogleMap{
@@ -178,14 +174,10 @@
     [self.gpsMapView.leadingAnchor constraintEqualToAnchor:self.mapView.leadingAnchor].active = YES;
     [self.gpsMapView.trailingAnchor constraintEqualToAnchor:self.mapView.trailingAnchor].active = YES;
     
-    
-    
     //MARKER FOR US
-    
     GMSMarker *userLoc = [[GMSMarker alloc]init];
     userLoc.position = CLLocationCoordinate2DMake(self.latitude, self.longitude);
     userLoc.map = self.gpsMapView;
-    
     
     //MARKER FOR ACTIVITIES
     UIImage *markerImage = [GMSMarker markerImageWithColor:[Constants vikingBlueColor]];
@@ -197,14 +189,12 @@
         CLLocationCoordinate2D location = [self getLocationFromAddressString: address];
         
         // Creates a marker in the center of the map.
-        
         GMSMarker *marker = [[GMSMarker alloc] init];
         marker.position = location;
         marker.title = activity.name;
         marker.snippet = address;
         marker.map = self.gpsMapView;
         marker.icon = markerImage;
-        
     }
 }
 
@@ -212,7 +202,7 @@
 
 -(void)downloadImageWithURL:(NSURL *)imageURL setTo:(UIImageView *)imageView {
     
-    //    imageView = nil;
+    // imageView = nil;
     AFImageDownloader *downloader = [[AFImageDownloader alloc] init];
     downloader.downloadPrioritizaton = AFImageDownloadPrioritizationLIFO;
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:imageURL];
@@ -223,7 +213,6 @@
             imageView.image = responseObject;
         
     } failure:nil];
-    
 }
 
 @end
