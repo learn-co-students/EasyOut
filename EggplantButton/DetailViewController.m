@@ -229,8 +229,6 @@
 
     BTNContext *context = [BTNContext contextWithSubjectLocation:location];
 
-
-
     // Check if Uber is available and display button if it is
     [[Button sharedButton] willDisplayButtonWithId:BUTTON_APP_ID
                                            context:context
