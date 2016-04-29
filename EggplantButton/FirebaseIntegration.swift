@@ -76,7 +76,6 @@ import Firebase
         } else {
             print("No user currently logged in")
         }
-        
     }
     
     
@@ -353,6 +352,9 @@ import Firebase
                                    "address1" : address1,
                                    "type" : activityObject.type,
                                    "imageURL" : activityObject.imageURL.description,
+                                   "icon" : activityObject.icon.description,
+                                   "distance" : activityObject.distance,
+                                   "openStatus" : activityObject.openStatus
 //                                   "price" : activityObject.price,
 //                                   "moreDetailsURL" : activityObject.moreDetailsURL
             ]

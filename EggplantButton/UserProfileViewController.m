@@ -61,6 +61,8 @@
     self.itineraryTable.delegate = self;
     self.itineraryTable.dataSource = self;
     
+    self.itineraryTable.allowsMultipleSelectionDuringEditing = NO;
+    
     self.itineraryTable.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self pullUserFromFirebaseWithCompletion:^(BOOL success) {
@@ -103,6 +105,29 @@
     self.itinerary = self.itineraries[indexPath.row];
     
     [self performSegueWithIdentifier:@"ItinerarySegue" sender:nil];
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        // Determine itinerary to be removed
+        Itinerary *itinerary = self.itineraries[indexPath.row];
+        
+        // Remove itinerary from user and itineraries reference
+        [FirebaseAPIClient removeItineraryWithItineraryID:itinerary.itineraryID completion:^(BOOL success) {
+            if (success) {
+                NSLog(@"Successfully removed itinerary %@ from Firebase", itinerary.itineraryID);
+            } else {
+                NSLog(@"Failed to remove itinerary %@ from Firebase", itinerary.itineraryID);
+            }
+        }];
+        
+        // Remove itinerary from array of itineraries
+        [self.itineraries removeObjectAtIndex:indexPath.row];
+        
+        // Remove cell from table view
+        [self.itineraryTable deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
 }
 
 #pragma mark - pull info
