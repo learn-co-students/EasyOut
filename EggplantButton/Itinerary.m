@@ -22,7 +22,7 @@
     if(self) {
         
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        dateFormatter.dateFormat = @"yyyy-MM-dd";
+        dateFormatter.dateFormat = @"EEEE',' MMM dd";
         NSString *dateString = [dateFormatter stringFromDate:creationDate];
         
         _itineraryID = @"";
@@ -32,7 +32,7 @@
         _photos = [[NSMutableArray alloc] init];
         _ratings = [[NSMutableDictionary alloc] init];
         _tips = [[NSMutableDictionary alloc] init];
-        _title = [NSString stringWithFormat:@"Itinerary for %@", dateString];
+        _title = dateString;
         _durationInMins = 480;
         _priceRange = 0;
     }

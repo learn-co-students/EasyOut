@@ -9,7 +9,7 @@
         <!--Itinerary View Controller-->
         <scene sceneID="i0i-Ip-Uy9">
             <objects>
-                <viewController storyboardIdentifier="ItinerarySegue" id="Sxq-3e-1Jn" customClass="ItineraryViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ItineraryView" id="Sxq-3e-1Jn" customClass="ItineraryViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NBD-Jf-WSI"/>
                         <viewControllerLayoutGuide type="bottom" id="T0v-aO-3Ot"/>

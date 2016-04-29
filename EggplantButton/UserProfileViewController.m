@@ -12,6 +12,7 @@
 #import "Secrets.h"
 #import "Itinerary.h"
 #import "CircleLabelView.h"
+#import "HistoryTableViewCell.h"
 
 @interface UserProfileViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 
@@ -54,6 +55,8 @@
     self.itineraryTable.delegate = self;
     self.itineraryTable.dataSource = self;
     
+    self.itineraryTable.translatesAutoresizingMaskIntoConstraints = NO;
+    
     [self pullUserFromFirebaseWithCompletion:^(BOOL success) {
         if (success) {
             NSLog(@"Pulled user from Firebase");
@@ -62,29 +65,34 @@
         }
     }];
     
-    [self setUpCamera];
 }
 
 #pragma mark - table
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    NSLog(@"Itinerary count: %lu", self.itineraries.count);
     
     return self.itineraries.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"userProfileCell" forIndexPath:indexPath];
-    cell.textLabel.text = ((Itinerary *)self.itineraries[indexPath.row]).title;
+    NSLog(@"Tableview is %@", tableView);
+    NSLog(@"indexPath is %@", indexPath);
+    
+    HistoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"userProfileCell"
+                                                                 forIndexPath:indexPath];
+    
+    
+    cell.itineraryLabel.text = ((Itinerary *)self.itineraries[indexPath.row]).title;
     
     return cell;
 }
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Open Detail View Controller
+    
+    NSLog(@"CELL PRESSED!!!");
 }
 
 #pragma mark - pull info
@@ -222,6 +230,8 @@
 }
 
 -(void)takeAPictureWithPicker:(UIImagePickerController *)picker {
+    
+    [self setUpCamera];
     
     picker.sourceType = UIImagePickerControllerSourceTypeCamera;
     

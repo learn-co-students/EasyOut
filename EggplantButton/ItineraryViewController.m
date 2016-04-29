@@ -25,7 +25,7 @@
 
 @property (strong, nonatomic) GMSMapView *gpsMapView;
 
-@property (weak, nonatomic) UIActivityIndicatorView * spinner;
+@property (strong, nonatomic) UIActivityIndicatorView * spinner;
 
 
 
