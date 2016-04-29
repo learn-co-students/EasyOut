@@ -78,7 +78,17 @@
     }];
 }
 
-#pragma mark - table
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.identifier isEqualToString:@"ItinerarySegue"]) {
+        ItineraryViewController *destinationVC = [segue destinationViewController];
+        destinationVC.itinerary = self.itinerary;
+        destinationVC.latitude = self.latitude;
+        destinationVC.longitude = self.longitude;
+    }
+}
+
+#pragma mark - Itineraries Table
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
@@ -127,10 +137,13 @@
         
         // Remove cell from table view
         [self.itineraryTable deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        
+        // Reload table data
+//        [self.itineraryTable reloadData];
     }
 }
 
-#pragma mark - pull info
+#pragma mark - Pull Info
 
 -(void)pullUserFromFirebaseWithCompletion:(void(^)(BOOL success))completion {
     
@@ -189,6 +202,8 @@
     }
 }
 
+#pragma mark - Camera and Profile Photo
+
 -(void)setUpCamera {
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         
@@ -208,11 +223,6 @@
         [noCameraAlert addAction:ok];
         [self presentViewController:noCameraAlert animated:YES completion:nil];
     }
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
@@ -279,16 +289,6 @@
     picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     
     [self presentViewController: picker animated:YES completion:NULL];
-}
-
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-    if ([segue.identifier isEqualToString:@"ItinerarySegue"]) {
-        ItineraryViewController *destinationVC = [segue destinationViewController];
-        destinationVC.itinerary = self.itinerary;
-        destinationVC.latitude = self.latitude;
-        destinationVC.longitude = self.longitude;
-    }
 }
 
 
