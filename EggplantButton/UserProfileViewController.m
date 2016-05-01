@@ -62,7 +62,6 @@
     self.itineraryTable.dataSource = self;
     
     self.itineraryTable.allowsMultipleSelectionDuringEditing = NO;
-    
     self.itineraryTable.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self pullUserFromFirebaseWithCompletion:^(BOOL success) {
@@ -73,10 +72,11 @@
         }
     }];
     
-    [self setUpCoreLocationWithCompletion:^(bool success) {
-        NSLog(@"Current location retrieved");
-    }];
+    [self setUpCoreLocation];
 }
+
+
+#pragma mark - Itineraries Table
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
@@ -87,8 +87,6 @@
         destinationVC.longitude = self.longitude;
     }
 }
-
-#pragma mark - Itineraries Table
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
@@ -253,12 +251,12 @@
                                   message:NULL
                                   preferredStyle:UIAlertControllerStyleActionSheet];
     
-    UIAlertAction* takePhoto = [UIAlertAction actionWithTitle:@"Take a New Profile Picture"
+    UIAlertAction* takePhoto = [UIAlertAction actionWithTitle:@"Take new profile photo"
                                                         style:UIAlertActionStyleDefault
                                                       handler:^(UIAlertAction * action) {
                                                              [self takeAPictureWithPicker:picker];
                                                          }];
-    UIAlertAction* selectPhoto = [UIAlertAction actionWithTitle:@"Select Profile Picture"
+    UIAlertAction* selectPhoto = [UIAlertAction actionWithTitle:@"Select profile photo"
                                                           style: UIAlertActionStyleDefault
                                                         handler:^(UIAlertAction * action) {
                                                                 [self selectAPictureWithPicker:picker];
@@ -294,7 +292,7 @@
 
 #pragma mark - Core Location
 
--(void)setUpCoreLocationWithCompletion:(void (^)(bool success))completion {
+-(void)setUpCoreLocation {
     
     NSLog(@"Setting up Core Location");
     
@@ -307,14 +305,6 @@
     
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [self.locationManager startUpdatingLocation];
-    
-    if (self.latitude != 0) {
-        NSLog(@"Latitude: %f\nLongitude: %f", self.latitude, self.longitude);
-        completion(YES);
-    } else {
-        NSLog(@"Can't find location");
-        completion(NO);
-    }
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
@@ -329,6 +319,12 @@
     self.longitude = self.locationManager.location.coordinate.longitude;
     
     [self.locationManager stopUpdatingLocation];
+    
+    if (self.latitude != 0) {
+        NSLog(@"Latitude: %f\nLongitude: %f", self.latitude, self.longitude);
+    } else {
+        NSLog(@"Can't find location");
+    }
 }
 
 @end
