@@ -78,16 +78,6 @@
 
 #pragma mark - Itineraries Table
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-    if ([segue.identifier isEqualToString:@"ItinerarySegue"]) {
-        ItineraryViewController *destinationVC = [segue destinationViewController];
-        destinationVC.itinerary = self.itinerary;
-        destinationVC.latitude = self.latitude;
-        destinationVC.longitude = self.longitude;
-    }
-}
-
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     return self.itineraries.count;
@@ -115,6 +105,18 @@
     [self performSegueWithIdentifier:@"ItinerarySegue" sender:nil];
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    NSLog(@"Preparing for segue from User Profile");
+    
+    if ([segue.identifier isEqualToString:@"ItinerarySegue"]) {
+        ItineraryViewController *destinationVC = [segue destinationViewController];
+        destinationVC.itinerary = self.itinerary;
+        destinationVC.latitude = self.latitude;
+        destinationVC.longitude = self.longitude;
+    }
+}
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         
@@ -122,7 +124,8 @@
         Itinerary *itinerary = self.itineraries[indexPath.row];
         
         // Remove itinerary from user and itineraries reference
-        [FirebaseAPIClient removeItineraryWithItineraryID:itinerary.itineraryID completion:^(BOOL success) {
+        [FirebaseAPIClient removeItineraryWithItineraryID:itinerary.itineraryID
+                                               completion:^(BOOL success) {
             if (success) {
                 NSLog(@"Successfully removed itinerary %@ from Firebase", itinerary.itineraryID);
             } else {
