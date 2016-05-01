@@ -11,11 +11,14 @@ We use information you provide to authenticate you and deliver content to you an
 ##Information Collection And Use
 To use our application, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you. Personally identifiable information may include, but is not limited to your name ("Personal Information"). We ask you to sign in to our application with an email address.
 
+##Name
+If you choose to submit it, your name will be stored. We may use this in communications to you and to give credit for the content you choose to share publically.
+
 ##Email
-To use our application, you must register and sign in with a email address. We do not receive or store your password for your email account.
+To use our application, you must register and sign in with a email address. We do not receive or store your password for your email account. Your email address will not be shared publically without your permission.
 
 ##Itinerary Information
-When you create an itinerary, we collect the information about that itinerary, including activities and locations saved to that itinerary.
+When you create an itinerary, we collect the information about that itinerary, including activities and locations saved to that itinerary. Itineraries may be displayed and shared publically, and may include your username.
 
 ##Geo-location Information
 When you search for activities, if you grant permission to your device's location services, your location will be used to find activities near you. Your location is not stored.

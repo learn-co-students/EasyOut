@@ -73,22 +73,8 @@
 
     [super viewDidLoad];
 
-    // Create weak reference to self so setup can take place within Core Location setup block
-    __weak typeof(self) weakSelf = self;
-
     // Wait for Core Location to be set up before setting up the data store and getting card data
-    [self setUpCoreLocationWithCompletion:^(bool success) {
-        if (success) {
-            
-            // Set up data store and cards
-            [weakSelf initializeCards];
-            
-        } else {
-            
-            // Show an alert letting the user know we don't have location information
-            [weakSelf showNoLocationAlert];
-        }
-    }];
+    [self setUpCoreLocation];
 
     // Set appearances of this view controller
     [self setAppearances];
@@ -213,7 +199,6 @@
 
     [self.dataStore getActivityforSection:@"drinks" Location:[NSString stringWithFormat:@"%f,%f",self.latitude,self.longitude] WithCompletion:^(BOOL success) {
 
-
         if (success) {
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 [self.bottomRowCollection reloadData];
@@ -307,7 +292,7 @@
 
 #pragma mark - Core Location
 
--(void)setUpCoreLocationWithCompletion:(void (^)(bool success))completion {
+-(void)setUpCoreLocation {
 
     NSLog(@"Setting up Core Location");
 
@@ -320,14 +305,6 @@
 
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [self.locationManager startUpdatingLocation];
-    
-    if (self.latitude != 0) {
-        NSLog(@"Latitude: %f\nLongitude: %f", self.latitude, self.longitude);
-        completion(YES);
-    } else {
-        NSLog(@"Can't find location");
-        completion(NO);
-    }
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
@@ -342,6 +319,21 @@
     self.longitude = self.locationManager.location.coordinate.longitude;
     
     [self.locationManager stopUpdatingLocation];
+    
+    if (self.latitude != 0 && self.longitude != 0) {
+        
+        NSLog(@"Latitude: %f\nLongitude: %f", self.latitude, self.longitude);
+        
+        // Set up data store and cards
+        [self initializeCards];
+        
+    } else {
+        
+        NSLog(@"Location could not be determined");
+        
+        // Show an alert letting the user know we don't have location information
+        [self showNoLocationAlert];
+    }
 }
 
 
@@ -551,27 +543,12 @@
     UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK"
                                                  style:UIAlertActionStyleDefault
                                                handler:^(UIAlertAction * action) {
-
-       // Create weak reference to self so setup can take place within Core Location setup block
-       __weak typeof(self) weakSelf = self;
-       
-       // Wait for Core Location to be set up before setting up the data store and getting card data
-       [self setUpCoreLocationWithCompletion:^(bool success) {
-           
-           if (success) {
-               
-               // Set up the data store and cards
-               [weakSelf initializeCards];
-               
-           } else {
-               
-               // Show an alert letting the user know we don't have location information
-               [weakSelf showNoLocationAlert];
-           }
-       }];
-       
-       [alert dismissViewControllerAnimated:YES completion:nil];
-   }];
+                                                   
+                                                   // Wait for Core Location to be set up before setting up the data store and getting card data
+                                                   [self setUpCoreLocation];
+                                                   
+                                                   [alert dismissViewControllerAnimated:YES completion:nil];
+                                               }];
     
     [alert addAction:ok];
     
