@@ -95,7 +95,6 @@
     return cell;
 }
 
-
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSLog(@"Itinerary at indexPath.row %li tapped from user profile", indexPath.row);
@@ -143,6 +142,7 @@
 //        [self.itineraryTable reloadData];
     }
 }
+
 
 #pragma mark - Pull Info
 
@@ -201,7 +201,10 @@
             [self.itineraryTable reloadData];
         }];
     }
+    
+    // TODO: Add logic to sort itineraries by date
 }
+
 
 #pragma mark - Camera and Profile Photo
 
