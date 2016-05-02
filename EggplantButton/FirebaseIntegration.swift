@@ -354,7 +354,8 @@ import Firebase
                                    "imageURL" : activityObject.imageURL.description,
                                    "icon" : activityObject.icon.description,
                                    "distance" : activityObject.distance,
-                                   "openStatus" : activityObject.openStatus
+                                   "openStatus" : activityObject.openStatus,
+                                   "isPublic" : activityObject.isPublic
 //                                   "price" : activityObject.price,
 //                                   "moreDetailsURL" : activityObject.moreDetailsURL
             ]
@@ -372,7 +373,8 @@ import Firebase
             "tips" : itinerary.tips,
             "photos" : itinerary.photos,
             "userID" : ref.authData.uid,
-            "title" : itinerary.title
+            "title" : itinerary.title,
+            "isPublic" : itinerary.isPublic
             ])
         
         print("Added new itinerary with title: \(itinerary.title) and ID: \(newItineraryID)")

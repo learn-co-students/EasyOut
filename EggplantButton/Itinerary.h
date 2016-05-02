@@ -22,6 +22,7 @@
 @property (strong, nonatomic) NSString *title;
 @property (nonatomic) NSUInteger durationInMins;
 @property (nonatomic) NSUInteger priceRange;
+@property (nonatomic) BOOL isPublic;
 
 -(instancetype)initWithActivities:(NSMutableArray *) activities
                            userID:(NSString *)userID
@@ -38,6 +39,7 @@
                       ratings:(NSMutableDictionary *)ratings
                          tips:(NSMutableDictionary *)tips
                durationInMins:(NSUInteger)durationInMins
-                   priceRange:(NSUInteger)priceRange;
+                   priceRange:(NSUInteger)priceRange
+                     isPublic:(BOOL)isPublic;
 
 @end
