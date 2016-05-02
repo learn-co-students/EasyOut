@@ -198,11 +198,23 @@
         
         [FirebaseAPIClient getItineraryWithItineraryID:key completion:^(Itinerary * itinerary) {
             [self.itineraries addObject:itinerary];
+            [self sortItinerariesByCreationDate];
             [self.itineraryTable reloadData];
         }];
     }
+}
+
+-(void)sortItinerariesByCreationDate {
     
-    // TODO: Add logic to sort itineraries by date
+    // Sort itineraries by creationDate
+    NSMutableArray *temporaryItineraryArray = [self.itineraries mutableCopy];
+    
+    NSSortDescriptor *dateDescriptor = [NSSortDescriptor
+                                        sortDescriptorWithKey:@"creationDate"
+                                        ascending:NO];
+    NSArray *sortDescriptors = [NSArray arrayWithObject:dateDescriptor];
+    self.itineraries = [[temporaryItineraryArray
+                         sortedArrayUsingDescriptors:sortDescriptors] mutableCopy];
 }
 
 
