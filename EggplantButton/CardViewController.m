@@ -72,10 +72,32 @@
 - (void)viewDidLoad {
 
     [super viewDidLoad];
+    
+//    if([CLLocationManager locationServicesEnabled]) {
+//        
+//        NSLog(@"Location services enabled");
+//        
+//        // Wait for Core Location to be set up before setting up the data store and getting card data
+//        [self setUpCoreLocation];
+//        
+//        if([CLLocationManager authorizationStatus]==kCLAuthorizationStatusDenied) {
+//            
+//            NSLog(@"EasyOut not authorized to use location services");
+//            
+//            // Alert user that location is unavailable
+//            [self showNoLocationAlert];
+//        }
+//    } else {
+//        
+//        NSLog(@"Location services not enabled");
+//        
+//        // Alert user that location is unavailable
+//        [self showNoLocationAlert];
+//    }
 
     // Wait for Core Location to be set up before setting up the data store and getting card data
     [self setUpCoreLocation];
-
+    
     // Set appearances of this view controller
     [self setAppearances];
 
@@ -95,13 +117,11 @@
         self.firstCardLocked = self.firstCardLocked ? NO : YES;
         self.firstCardLocked ? [self disableScroll] : [self enableScroll];
 
-    }
-    else if ([self.middleRowCollection indexPathForCell:cardCellSuperview]) {
+    } else if ([self.middleRowCollection indexPathForCell:cardCellSuperview]) {
         self.secondCardLocked = self.secondCardLocked ? NO : YES;
         self.secondCardLocked ? [self disableScroll] : [self enableScroll];
 
-    }
-    else {
+    } else {
         self.thirdCardLocked = self.thirdCardLocked ? NO : YES;
         self.thirdCardLocked ? [self disableScroll] : [self enableScroll];
 
@@ -119,7 +139,6 @@
     if(self.thirdCardLocked) {
         self.bottomRowCollection.scrollEnabled = NO;
     }
-
 }
 
 // enables scroll when card is unlocked

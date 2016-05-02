@@ -73,7 +73,7 @@
 +(void) initWithFirebaseUserDictionary:(NSDictionary *)dictionary
                             completion:(void (^)(User *user))completion {
     
-    NSLog(@"Dictionary passed into user initializer: %@", dictionary);
+    NSLog(@"Dictionary passed into user initializer");
     
     NSMutableDictionary *newDictionary = [dictionary mutableCopy];
     
