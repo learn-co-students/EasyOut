@@ -52,7 +52,7 @@
     
     self.tableView.delegate = self;
     
-        
+    [self addItinerariesToTableView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -75,6 +75,8 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ItineraryCell" forIndexPath:indexPath];
     
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     //    Itinerary *currentItinerary = self.titlesOfItineraries[indexPath.row];
     //    NSLog(@"what is current One: %@", currentItinerary);
     //    cell.textLabel.text = self.titlesOfItineraries[indexPath.row];
@@ -84,4 +86,30 @@
     
     return cell;
 }
+
+-(void)addItinerariesToTableView {
+    
+    for (NSString *key in self.itineraryIDs) {
+        
+        [FirebaseAPIClient getItineraryWithItineraryID:key completion:^(Itinerary * itinerary) {
+            [self.itineraries addObject:itinerary];
+            [self sortItinerariesByCreationDate];
+            [self.tableView reloadData];
+        }];
+    }
+}
+
+-(void)sortItinerariesByCreationDate {
+    
+    // Sort itineraries by creationDate
+    NSMutableArray *temporaryItineraryArray = [self.itineraries mutableCopy];
+    
+    NSSortDescriptor *dateDescriptor = [NSSortDescriptor
+                                        sortDescriptorWithKey:@"creationDate"
+                                        ascending:NO];
+    NSArray *sortDescriptors = [NSArray arrayWithObject:dateDescriptor];
+    self.itineraries = [[temporaryItineraryArray
+                         sortedArrayUsingDescriptors:sortDescriptors] mutableCopy];
+}
+
 @end

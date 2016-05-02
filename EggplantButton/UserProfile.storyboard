@@ -58,7 +58,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableViewCellContentView>
                                                 <connections>
-                                                    <segue destination="8rl-hq-p4L" kind="show" identifier="ItinerarySegue" id="zM4-hT-KbE"/>
+                                                    <segue destination="8rl-hq-p4L" kind="show" identifier="ItineraryFromUserProfileSegue" id="zM4-hT-KbE"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
