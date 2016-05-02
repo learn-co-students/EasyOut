@@ -144,6 +144,35 @@ import Firebase
     }
     
     
+    // Remove user account from Firebase
+    class func removeUserFromFirebaseWithEmail(email:String, password:String, competion:(Bool) -> ()) {
+        
+        // Set Firebase references
+        let ref = Firebase(url:firebaseRootRef)
+        //        let usersRef = ref.childByAppendingPath("users")
+        //        let imagesRef = ref.childByAppendingPath("images")
+        //        let itinerariesRef = ref.childByAppendingPath("itineraries")
+        //        let currentUserRef = usersRef.childByAppendingPath(ref.authData.uid)
+        //        let associatedImagesRef = currentUserRef.childByAppendingPath("associatedImages")
+        //        let savedItinerariesRef = currentUserRef.childByAppendingPath("savedItineraries")
+        
+        // TODO: Remove all user itineraries and associated images
+        
+        
+        FirebaseAPIClient.logOutUser()
+        
+        print("Attempting to remove user with email \(email)")
+        
+        ref.removeUser(email, password: password) { (error:NSError!) in
+            if error != nil {
+                print("Error while removing user: \(error.description)")
+            }
+        }
+        
+        competion(true)
+    }
+    
+    
     // Return list of all users
     class func getAllUsersWithCompletion(completion: Array<String> -> Void) {
         
@@ -752,53 +781,6 @@ import Firebase
         }
     }
     
-    
-    // Convert date objects to strings
-    class func convertDateToStringWithDate(date:NSDate) -> String {
-        
-        // Create date formatter and set format style
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        
-        // Format date into string
-        let dateString = dateFormatter.stringFromDate(date)
-        
-        print("Converted date into: \(dateString)")
-        
-        // Send back the converted date
-        return dateString
-    }
-    
-    
-    // Remove user account from Firebase
-    class func removeUserFromFirebaseWithEmail(email:String, password:String, competion:(Bool) -> ()) {
-        
-        // Set Firebase references
-        let ref = Firebase(url:firebaseRootRef)
-//        let usersRef = ref.childByAppendingPath("users")
-//        let imagesRef = ref.childByAppendingPath("images")
-//        let itinerariesRef = ref.childByAppendingPath("itineraries")
-//        let currentUserRef = usersRef.childByAppendingPath(ref.authData.uid)
-//        let associatedImagesRef = currentUserRef.childByAppendingPath("associatedImages")
-//        let savedItinerariesRef = currentUserRef.childByAppendingPath("savedItineraries")
-        
-        // TODO: Remove all user itineraries and associated images
-        
-        
-        FirebaseAPIClient.logOutUser()
-        
-        print("Attempting to remove user with email \(email)")
-        
-        ref.removeUser(email, password: password) { (error:NSError!) in
-            if error != nil {
-                print("Error while removing user: \(error.description)")
-            }
-        }
-        
-        competion(true)
-    }
-    
-    
     // Resize an image to fit in a Firebase value
     class func resizeImage(oldImage: UIImage, completion: (scaledImage: UIImage) -> Void) {
         
@@ -840,6 +822,25 @@ import Firebase
         
         // Return the scaled image
         completion(scaledImage: newImage)
+    }
+
+    
+    // MARK: Helper Functions
+    
+    // Convert date objects to strings
+    class func convertDateToStringWithDate(date:NSDate) -> String {
+        
+        // Create date formatter and set format style
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        // Format date into string
+        let dateString = dateFormatter.stringFromDate(date)
+        
+        print("Converted date into: \(dateString)")
+        
+        // Send back the converted date
+        return dateString
     }
     
 }
