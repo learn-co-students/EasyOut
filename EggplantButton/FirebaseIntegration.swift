@@ -11,6 +11,8 @@ import Firebase
 
 @objc class FirebaseAPIClient: NSObject {
     
+    // MARK: User Authentication
+    
     // Login and authenticate user given email and password
     class func logInUserWithEmail(email:String, password:String, completion: (authData: FAuthData!, error: NSError!) -> Void) {
         
@@ -321,6 +323,8 @@ import Firebase
     }
     
     
+    // MARK: Itineraries
+    
     class func saveItineraryWithItinerary(itinerary: Itinerary, completion: (itineraryID: String) -> Void) {
         
         print("Attempting to save new itinerary: \(itinerary.title)")
@@ -538,6 +542,8 @@ import Firebase
         }
     }
     
+    
+    // MARK: Images
     
     // Create a new image reference in Firebase and return its unique ID
     class func saveNewImageWithImage(image: UIImage, completion: (imageID: String, success: Bool) -> Void) {

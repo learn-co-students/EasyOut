@@ -94,6 +94,11 @@
         }
     }
     
+    // PUBLIC IDENTIFIER
+    if (![keys containsObject:@"isPublic"]) {
+        [newDictionary setObject:@NO forKey:@"isPublic"];
+    }
+    
     // TIPS
     if (![keys containsObject:@"tips"]) {
         [newDictionary setObject:[[NSMutableDictionary alloc] init] forKey:@"tips"];
@@ -118,7 +123,7 @@
                            tips:newDictionary[@"tips"]
                  durationInMins:[newDictionary[@"durationInMins"] integerValue]
                      priceRange:[newDictionary[@"priceRange"] integerValue]
-                       isPublic:newDictionary[@"isPublic"]
+                       isPublic:[newDictionary[@"isPublic"] boolValue]
             ];
     
 //    NSLog(@"%@ initialized from Firebase dictionary", newDictionary[@"title"]);
