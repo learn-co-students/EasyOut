@@ -453,7 +453,7 @@ import Firebase
     }
     
     
-    // Return list of all itineraries
+    // Return an unsorted dictionary of all itineraries
     class func getAllItinerariesWithCompletion(completion:(itineraries: [String:AnyObject]?) -> Void) {
         
         print("Attempting to retrieve all itineraries")
@@ -472,7 +472,7 @@ import Firebase
         })
     }
     
-    
+    // Return an Itinerary object given an itineraryID
     class func getItineraryWithItineraryID(itineraryID: String, completion: Itinerary? -> Void) {
         
         print("Attempting to get itinerary with itineraryID:\(itineraryID)")

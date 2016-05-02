@@ -118,11 +118,6 @@
     NSLog(@"%f", distance);
 }
 
-- (IBAction)backButtonPressed:(UIBarButtonItem *)sender {
-
-    [[self navigationController] popViewControllerAnimated:YES];
-}
-
 -(CLLocationCoordinate2D) getLocationFromAddressString: (NSString*) addressStr {
     double latitude = 0, longitude = 0;
     NSString *esc_addr =  [addressStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
@@ -193,6 +188,10 @@
 //    self.mapView.camera = camera;
 }
 
+- (IBAction)backButtonPressed:(UIBarButtonItem *)sender {
+    
+    [[self navigationController] popViewControllerAnimated:YES];
+}
 
 - (IBAction)detailButtonPressed:(id)sender {
 
