@@ -115,7 +115,7 @@
     CLLocation *activityLocation = [[CLLocation alloc]initWithLatitude:location.latitude longitude:location.longitude];
     CLLocationDistance distance = [userLocation distanceFromLocation: activityLocation];
 
-    NSLog(@"%f", distance);
+    NSLog(@"Distance: %f", distance);
 }
 
 -(CLLocationCoordinate2D) getLocationFromAddressString: (NSString*) addressStr {
@@ -134,7 +134,7 @@
     }
 
     CLLocationCoordinate2D center;
-    center.latitude=latitude;
+    center.latitude = latitude;
     center.longitude = longitude;
 
     return center;

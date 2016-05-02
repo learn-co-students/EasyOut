@@ -131,7 +131,7 @@
     cell.nameLabel.text = activity.name;
     cell.addressLabel.text = activity.address[0];
     cell.cityStateLabel.text = activity.address[1];
-    cell.distanceLabel.text = [NSString stringWithFormat:@"%f mi away", [self getDistanceFromLocationOfActivity:activity]];
+    cell.distanceLabel.text = [NSString stringWithFormat:@"%.02f mi away", roundf([self getDistanceFromLocationOfActivity:activity] * (float)0.000621371 * 100.0) / 100.0];
     [self downloadImageWithURL:activity.icon setTo:cell.iconImage];
     
     return cell;
@@ -211,7 +211,7 @@
     }
     
     CLLocationCoordinate2D center;
-    center.latitude=latitude;
+    center.latitude = latitude;
     center.longitude = longitude;
     
     return center;
