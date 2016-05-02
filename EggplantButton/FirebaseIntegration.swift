@@ -399,7 +399,7 @@ import Firebase
         print("Setting values for new itinerary with itineraryID: \(newItineraryID)")
         newItineraryRef.setValue([
             "itineraryID" : newItineraryID,
-            "creationDate" : convertDateToStringWithDate(itinerary.creationDate),
+            "creationDate" : itinerary.creationDate.timeIntervalSince1970,
             "activities" : activities,
             "ratings" : itinerary.ratings,
             "tips" : itinerary.tips,
@@ -454,7 +454,7 @@ import Firebase
     
     
     // Return a sorted dictionary of 100 most recent itineraries
-    class func getMostRecentItinerariesWithCompletion(completion:(itineraries: [String : Itinerary]?) -> Void) {
+    class func getMostRecentItinerariesWithCompletion(completion:(itineraries: [Itinerary]?) -> Void) {
         
         print("Attempting to retrieve all itineraries")
         
@@ -465,13 +465,23 @@ import Firebase
         // Create an ordered observe event for the itineraries reference
         itinerariesRef.queryOrderedByChild("creationDate").queryLimitedToLast(100)
             .observeEventType(.Value, withBlock: { snapshot in
+                
                 print("Successfully received snapshot at itineraries reference")
                 
+                var itinerary : Itinerary = Itinerary()
+                let itinerariesDictionary : Dictionary = snapshot.value as! [NSObject : AnyObject]
+                var mostRecentItineraries = [Itinerary]()
                 
+                // For each itinerary dictionary pulled from Firebase, create an Itinerary object and add it to an array
+                for itineraryDictionary in itinerariesDictionary.values {
+                    itinerary = Itinerary.init(firebaseItineraryDictionary: itineraryDictionary as! [NSObject : AnyObject])
+                    mostRecentItineraries.append(itinerary)
+                }
                 
+                print("Pulled \(mostRecentItineraries.count) most recent itineraries from Firebase")
                 
+                completion(itineraries: mostRecentItineraries)
                 
-                completion(itineraries: (snapshot.value as! Dictionary))
                 }, withCancelBlock: { error in
                     print("****Error while trying to retrieve itineraries:\n\(error.description)")
                     completion(itineraries: nil)
