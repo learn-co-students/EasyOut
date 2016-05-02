@@ -387,8 +387,7 @@ import Firebase
                                    "imageURL" : activityObject.imageURL.description,
                                    "icon" : activityObject.icon.description,
                                    "distance" : activityObject.distance,
-                                   "openStatus" : activityObject.openStatus,
-                                   "isPublic" : activityObject.isPublic
+                                   "openStatus" : activityObject.openStatus
 //                                   "price" : activityObject.price,
 //                                   "moreDetailsURL" : activityObject.moreDetailsURL
             ]
