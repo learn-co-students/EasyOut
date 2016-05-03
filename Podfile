@@ -12,5 +12,6 @@ pod 'Button', '~> 4'
 pod 'DeepLinkKit'
 pod 'UIView+Shake'
 pod 'GoogleMaps'
+pod "FontAwesomeKit", :git => 'https://github.com/PrideChung/FontAwesomeKit.git'
 
 end

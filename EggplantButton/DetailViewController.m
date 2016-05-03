@@ -7,12 +7,15 @@
 //
 
 #import "DetailViewController.h"
+
 #import <GoogleMaps/GoogleMaps.h>
 #import <GoogleMaps/GMSGeometryUtils.h>
 #import <AFNetworking/AFImageDownloader.h>
+#import <FontAwesomeKit/FontAwesomeKit.h>
+#import <Button/Button.h>
+
 #import "Constants.h"
 #import "Secrets.h"
-#import <Button/Button.h>
 
 
 @interface DetailViewController ()
@@ -61,16 +64,42 @@
     [self generateGoogleMap];
 
     [self downloadImageWithURL:self.activity.imageURL setTo:self.imageView];
+    
     [self downloadImageWithURL:self.activity.icon setTo:self.iconImage];
+    
     self.nameLabel.text = self.activity.name;
+    
     self.typeLabel.text = self.activity.type;
+    
     self.distanceLabel.text = [NSString stringWithFormat:@"%@ miles away", self.activity.distance];
-    self.hoursLabel.text = self.activity.openStatus;
-    self.addressLabel.text = [NSString stringWithFormat:@"%@ %@", self.activity.address[0], self.activity.address[1]];
 
+    [self setupAttributedLabels];
+    
     [self getDistanceFromLocation];
 
     [self setupUberButton];
+}
+
+
+-(void)setupAttributedLabels {
+    
+    FAKFontAwesome *clockIcon = [FAKFontAwesome clockOIconWithSize:25];
+    [clockIcon addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor]];
+    
+    FAKFoundationIcons *mapIcon = [FAKFoundationIcons markerIconWithSize:25];
+    [mapIcon addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor]];
+    
+    NSMutableAttributedString *clockString = [[clockIcon attributedString] mutableCopy];
+    
+    [clockString appendAttributedString: [[NSAttributedString alloc]initWithString: [NSString stringWithFormat: @" %@", self.activity.openStatus]]];
+    self.hoursLabel.attributedText =  clockString;
+    
+    NSMutableAttributedString *mapString = [[mapIcon attributedString] mutableCopy];
+    
+    [mapString appendAttributedString: [[NSAttributedString alloc]initWithString: [NSString stringWithFormat: @" %@ %@", self.activity.address[0], self.activity.address[1]]]];
+    
+    self.addressLabel.attributedText = mapString;
+
 }
 
 -(void)setImageIcon:(UIImage*)image WithText:(NSString*)strText forLabel:(UILabel *)label{
@@ -179,13 +208,6 @@
     marker.map = self.mapView;
     marker.icon = markerImage;
 
-//    GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithCoordinate:user coordinate:location];
-//
-////    [self.mapView moveCamera:[GMSCameraUpdate fitBounds:bounds]];
-//
-//
-//    camera = [self.mapView cameraForBounds:bounds insets:UIEdgeInsetsZero];
-//    self.mapView.camera = camera;
 }
 
 - (IBAction)backButtonPressed:(UIBarButtonItem *)sender {

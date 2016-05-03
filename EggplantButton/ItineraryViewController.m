@@ -12,6 +12,7 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import "EggplantButton-Swift.h"
 #import "ItineraryReviewTableViewCell.h"
+#import "ActivityCardView.h"
 #import <AFNetworking/AFImageDownloader.h>
 
 
@@ -214,6 +215,24 @@
     center.longitude = longitude;
     
     return center;
+}
+
+#pragma mark - segue
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSLog(@"SELECTED: ", @"lu", indexPath.row);
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.identifier isEqualToString:@"historyToDetailSegue"]) {
+        DetailViewController *destinationVC = [segue destinationViewController];
+//        ItineraryReviewTableViewCell *cell = sender;
+        destinationVC.activity = self.itinerary.activities[[self.itineraryTableView indexPathForSelectedRow].row];
+    }
+    
+    
 }
 
 #pragma mark - Helper
