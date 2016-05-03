@@ -85,8 +85,6 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSLog(@"Creating table view cell at indexPath.row %li", indexPath.row);
-    
     HistoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"userProfileCell"
                                                                  forIndexPath:indexPath];
     
@@ -96,8 +94,6 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    NSLog(@"Itinerary at indexPath.row %li tapped from user profile", indexPath.row);
     
     self.itinerary = self.itineraries[indexPath.row];
     
@@ -151,12 +147,9 @@
         
     [FirebaseAPIClient getUserFromFirebaseWithUserID:ref.authData.uid completion:^(User * user, BOOL success) {
         
-        NSLog(@"Returned from Firebase with User object");
         self.user = user;
         
         if (success) {
-            
-            NSLog(@"User succesfully pulled from Firebase");
             
             self.usernameLabel.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.4];
             self.usernameLabel.text = self.user.username;
@@ -181,8 +174,6 @@
             completion(YES);
             
         } else {
-            
-            NSLog(@"User not pulled from Firebase");
             
             completion(NO);
         }
@@ -311,8 +302,6 @@
 
 -(void)setUpCoreLocation {
     
-    NSLog(@"Setting up Core Location");
-    
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
     
@@ -325,9 +314,7 @@
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
-    
-    NSLog(@"didUpdateLocation called - %@", locations.lastObject);
-    
+        
     if (self.mostRecentLocation == nil) {
         self.mostRecentLocation = [locations lastObject];
     }
