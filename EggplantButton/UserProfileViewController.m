@@ -89,23 +89,21 @@
                                                                  forIndexPath:indexPath];
     
     cell.itineraryLabel.text = ((Itinerary *)self.itineraries[indexPath.row]).title;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    cell.itinerary = self.itineraries[indexPath.row];
     
     return cell;
-}
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    self.itinerary = self.itineraries[indexPath.row];
-    
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     NSLog(@"Preparing for segue from User Profile");
     
-    if ([segue.identifier isEqualToString:@"ItinerarySegue"]) {
+    if ([segue.identifier isEqualToString:@"ItineraryFromUserProfileSegue"]) {
         ItineraryViewController *destinationVC = [segue destinationViewController];
-        destinationVC.itinerary = self.itinerary;
+        HistoryTableViewCell *cell = sender;
+        destinationVC.itinerary = cell.itinerary;
         destinationVC.latitude = self.latitude;
         destinationVC.longitude = self.longitude;
     }

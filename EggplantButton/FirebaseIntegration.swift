@@ -399,7 +399,7 @@ import Firebase
         print("Setting values for new itinerary with itineraryID: \(newItineraryID)")
         newItineraryRef.setValue([
             "itineraryID" : newItineraryID,
-            "creationDate" : convertDateToStringWithDate(itinerary.creationDate),
+            "creationDate" : itinerary.creationDate.timeIntervalSince1970,
             "activities" : activities,
             "ratings" : itinerary.ratings,
             "tips" : itinerary.tips,
@@ -453,8 +453,8 @@ import Firebase
     }
     
     
-    // Return an unsorted dictionary of all itineraries
-    class func getAllItinerariesWithCompletion(completion:(itineraries: [String:AnyObject]?) -> Void) {
+    // Return a sorted dictionary of 100 most recent itineraries
+    class func getMostRecentItinerariesWithCompletion(completion:(itineraries: [Itinerary]?) -> Void) {
         
         print("Attempting to retrieve all itineraries")
         
@@ -462,14 +462,30 @@ import Firebase
         let ref = Firebase(url:firebaseRootRef)
         let itinerariesRef = ref.childByAppendingPath("itineraries")
         
-        // Create an observe event for the itineraries reference
-        itinerariesRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
-            print("Successfully received snapshot at itineraries reference:\(snapshot.value)")
-            completion(itineraries: (snapshot.value as! Dictionary))
-            }, withCancelBlock: { error in
-                print("****Error while trying to retrieve itineraries:\n\(error.description)")
-                completion(itineraries: nil)
-        })
+        // Create an ordered observe event for the itineraries reference
+        itinerariesRef.queryOrderedByChild("creationDate").queryLimitedToLast(100)
+            .observeEventType(.Value, withBlock: { snapshot in
+                
+                print("Successfully received snapshot at itineraries reference")
+                
+                var itinerary : Itinerary = Itinerary()
+                let itinerariesDictionary : Dictionary = snapshot.value as! [NSObject : AnyObject]
+                var mostRecentItineraries = [Itinerary]()
+                
+                // For each itinerary dictionary pulled from Firebase, create an Itinerary object and add it to an array
+                for itineraryDictionary in itinerariesDictionary.values {
+                    itinerary = Itinerary.init(firebaseItineraryDictionary: itineraryDictionary as! [NSObject : AnyObject])
+                    mostRecentItineraries.append(itinerary)
+                }
+                
+                print("Pulled \(mostRecentItineraries.count) most recent itineraries from Firebase")
+                
+                completion(itineraries: mostRecentItineraries)
+                
+                }, withCancelBlock: { error in
+                    print("****Error while trying to retrieve itineraries:\n\(error.description)")
+                    completion(itineraries: nil)
+            })
     }
     
     // Return an Itinerary object given an itineraryID

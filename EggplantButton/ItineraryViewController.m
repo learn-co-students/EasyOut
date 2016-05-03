@@ -54,6 +54,8 @@
     self.itineraryTableView.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self generateGoogleMap];
+    
+    NSLog(@"Itinerary View loaded");
 }
 
 -(NSString *)getDate {
