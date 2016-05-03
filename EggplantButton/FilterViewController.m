@@ -30,6 +30,8 @@
 - (IBAction)backButtonPressed:(UIBarButtonItem *)sender {
     
     [self.navigationController popViewControllerAnimated:YES];
+    
+    NSLog(@"Back button tapped");
 }
 
 @end

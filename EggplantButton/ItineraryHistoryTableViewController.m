@@ -11,21 +11,27 @@
 #import "Itinerary.h"
 #import "User.h"
 #import "Firebase.h"
-#import "ItineraryDisplayTableViewCell.h"
 #import "Secrets.h"
+#import "HistoryTableViewCell.h"
+#import "ItineraryViewController.h"
+#import "mainContainerViewController.h"
 
 
-@interface ItineraryHistoryTableViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface ItineraryHistoryTableViewController () <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) NSArray *itineraryIDs;
 @property (strong, nonatomic) NSMutableArray *itineraries;
-
 @property (strong, nonatomic) UIActivityIndicatorView * spinner;
-
+@property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, strong) CLLocation *mostRecentLocation;
+@property (nonatomic) CLLocationDegrees latitude;
+@property (nonatomic) CLLocationDegrees longitude;
+@property (strong, nonatomic) NSMutableArray *usernames;
 
 @end
+
 
 @implementation ItineraryHistoryTableViewController
 
@@ -48,11 +54,22 @@
     
     self.view.backgroundColor = [UIColor clearColor];
     
+//    super.mainViewTapGestureRecognizer.enabled = NO;
+    
     self.itineraries = [[NSMutableArray alloc]init];
     
     self.tableView.delegate = self;
+    self.tableView.dataSource = self;
     
     [self addItinerariesToTableView];
+}
+
+-(void)addItinerariesToTableView {
+    
+    [FirebaseAPIClient getMostRecentItinerariesWithCompletion:^(NSArray<Itinerary *> * _Nullable itineraries) {
+        self.itineraries = (NSMutableArray *)itineraries;
+        [self.tableView reloadData];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -60,56 +77,78 @@
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return self.itineraryIDs.count;
+    return 1;
 }
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    return 1;
-    
+    return self.itineraries.count;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ItineraryCell" forIndexPath:indexPath];
+    HistoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"itineraryCell"
+                                                                 forIndexPath:indexPath];
+    
+    cell.itinerary = self.itineraries[indexPath.row];
+    cell.itineraryLabel.text = cell.itinerary.title;
+    [FirebaseAPIClient getUsernameForUserID:cell.itinerary.userID completion:^(NSString * _Nonnull username) {
+        cell.userLabel.text = username;
+    }];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    //    Itinerary *currentItinerary = self.titlesOfItineraries[indexPath.row];
-    //    NSLog(@"what is current One: %@", currentItinerary);
-    //    cell.textLabel.text = self.titlesOfItineraries[indexPath.row];
-    //
-    //    NSArray *activities = self.itineraryEvents[indexPath.row];
-    //    
     
     return cell;
 }
 
--(void)addItinerariesToTableView {
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"Selected cell at indexPath.row %li", indexPath.row);
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    for (NSString *key in self.itineraryIDs) {
-        
-        [FirebaseAPIClient getItineraryWithItineraryID:key completion:^(Itinerary * itinerary) {
-            [self.itineraries addObject:itinerary];
-            [self sortItinerariesByCreationDate];
-            [self.tableView reloadData];
-        }];
+    NSLog(@"Preparing for segue from Itinerary Feed");
+    
+    if ([segue.identifier isEqualToString:@"segueFromItineraryFeedToItinerary"]) {
+        ItineraryViewController *destinationVC = [segue destinationViewController];
+        HistoryTableViewCell *cell = sender;
+        destinationVC.itinerary = cell.itinerary;
+        destinationVC.latitude = self.latitude;
+        destinationVC.longitude = self.longitude;
     }
 }
 
--(void)sortItinerariesByCreationDate {
+
+#pragma mark - Core Location
+
+-(void)setUpCoreLocation {
     
-    // Sort itineraries by creationDate
-    NSMutableArray *temporaryItineraryArray = [self.itineraries mutableCopy];
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
     
-    NSSortDescriptor *dateDescriptor = [NSSortDescriptor
-                                        sortDescriptorWithKey:@"creationDate"
-                                        ascending:NO];
-    NSArray *sortDescriptors = [NSArray arrayWithObject:dateDescriptor];
-    self.itineraries = [[temporaryItineraryArray
-                         sortedArrayUsingDescriptors:sortDescriptors] mutableCopy];
+    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [self.locationManager requestWhenInUseAuthorization];
+    }
+    
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [self.locationManager startUpdatingLocation];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+    
+    if (self.mostRecentLocation == nil) {
+        self.mostRecentLocation = [locations lastObject];
+    }
+    
+    self.latitude = self.locationManager.location.coordinate.latitude;
+    self.longitude = self.locationManager.location.coordinate.longitude;
+    
+    [self.locationManager stopUpdatingLocation];
+    
+    if (self.latitude != 0) {
+        NSLog(@"Latitude: %f\nLongitude: %f", self.latitude, self.longitude);
+    } else {
+        NSLog(@"Can't find location");
+    }
 }
 
 @end
