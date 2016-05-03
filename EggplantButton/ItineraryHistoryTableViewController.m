@@ -14,6 +14,7 @@
 #import "Secrets.h"
 #import "HistoryTableViewCell.h"
 #import "ItineraryViewController.h"
+#import "mainContainerViewController.h"
 
 
 @interface ItineraryHistoryTableViewController () <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>
@@ -23,14 +24,13 @@
 @property (strong, nonatomic) NSArray *itineraryIDs;
 @property (strong, nonatomic) NSMutableArray *itineraries;
 @property (strong, nonatomic) UIActivityIndicatorView * spinner;
-
-// LOCATION
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) CLLocation *mostRecentLocation;
 @property (nonatomic) CLLocationDegrees latitude;
 @property (nonatomic) CLLocationDegrees longitude;
 
 @end
+
 
 @implementation ItineraryHistoryTableViewController
 
@@ -52,6 +52,8 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor clearColor];
+    
+//    super.mainViewTapGestureRecognizer.enabled = NO;
     
     self.itineraries = [[NSMutableArray alloc]init];
     

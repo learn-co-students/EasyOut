@@ -27,7 +27,6 @@
 		4C64EC481CBAA78200FB3A45 /* UserHistory.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C64EC421CBAA78200FB3A45 /* UserHistory.xcdatamodeld */; };
 		4C6C89BD1CD394CE0088266B /* HistoryTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C6C89B91CD394CE0088266B /* HistoryTableCell.xib */; };
 		4C6C89BE1CD394CE0088266B /* HistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C6C89BB1CD394CE0088266B /* HistoryTableViewCell.m */; };
-		4C6C89BF1CD394CE0088266B /* HistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C6C89BC1CD394CE0088266B /* HistoryTableViewCell.xib */; };
 		4C9A037D1CAB064200CA9A02 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9A037C1CAB064200CA9A02 /* main.m */; };
 		4C9A03801CAB064200CA9A02 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9A037F1CAB064200CA9A02 /* AppDelegate.m */; };
 		4C9A038B1CAB064200CA9A02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C9A038A1CAB064200CA9A02 /* Assets.xcassets */; };
@@ -115,7 +114,6 @@
 		4C6C89B91CD394CE0088266B /* HistoryTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HistoryTableCell.xib; path = EggplantButton/HistoryTableCell.xib; sourceTree = "<group>"; };
 		4C6C89BA1CD394CE0088266B /* HistoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryTableViewCell.h; path = EggplantButton/HistoryTableViewCell.h; sourceTree = "<group>"; };
 		4C6C89BB1CD394CE0088266B /* HistoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryTableViewCell.m; path = EggplantButton/HistoryTableViewCell.m; sourceTree = "<group>"; };
-		4C6C89BC1CD394CE0088266B /* HistoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HistoryTableViewCell.xib; path = EggplantButton/HistoryTableViewCell.xib; sourceTree = "<group>"; };
 		4C9A03781CAB064200CA9A02 /* EggplantButton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EggplantButton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C9A037C1CAB064200CA9A02 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4C9A037E1CAB064200CA9A02 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -305,7 +303,6 @@
 				4C6C89B91CD394CE0088266B /* HistoryTableCell.xib */,
 				4C6C89BA1CD394CE0088266B /* HistoryTableViewCell.h */,
 				4C6C89BB1CD394CE0088266B /* HistoryTableViewCell.m */,
-				4C6C89BC1CD394CE0088266B /* HistoryTableViewCell.xib */,
 			);
 			name = Views;
 			path = ..;
@@ -528,7 +525,6 @@
 				4CD9FF771CCE602E00D3E603 /* Roboto-Italic.ttf in Resources */,
 				4CD9FF751CCE602E00D3E603 /* Roboto-Condensed.ttf in Resources */,
 				4CD9FF7C1CCE602E00D3E603 /* Roboto-Regular.ttf in Resources */,
-				4C6C89BF1CD394CE0088266B /* HistoryTableViewCell.xib in Resources */,
 				4C9A038B1CAB064200CA9A02 /* Assets.xcassets in Resources */,
 				9A5AEC341CBF4795009F2BEA /* UserProfile.storyboard in Resources */,
 				4CD9FF7A1CCE602E00D3E603 /* Roboto-Medium.ttf in Resources */,
