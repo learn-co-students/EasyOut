@@ -132,7 +132,7 @@
         [self.itineraryTable deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         
         // Reload table data
-//        [self.itineraryTable reloadData];
+        [self.itineraryTable reloadData];
     }
 }
 
@@ -181,6 +181,8 @@
 -(void)pullItinerariesForUser {
     
     NSArray *itineraryIDs = [self.user.savedItineraries allKeys];
+    
+    self.itineraries = [@[] mutableCopy];
     
     for (NSString *key in itineraryIDs) {
         

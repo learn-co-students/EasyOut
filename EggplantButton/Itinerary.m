@@ -53,12 +53,6 @@
 //    NSMutableArray *tipKeys = [[NSMutableArray alloc] init];
 //    NSMutableArray *ratingKeys = [[NSMutableArray alloc] init];
     
-    
-    // Convert CREATION DATE from NSInteger to NSDate
-    NSInteger interval = newDictionary[@"creationDate"];
-    NSDate *creationDate = [NSDate dateWithTimeIntervalSince1970:interval];
-    [newDictionary setObject:creationDate forKey:@"creationDate"];
-    
     // Check for empty dictionaries that Firebase may not have saved
     
     // ACTIVITIES
