@@ -289,7 +289,7 @@
                 <viewControllerPlaceholder storyboardIdentifier="LoginViewController" storyboardName="Login" id="ThO-gH-bWu" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mX2-b2-DD6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-435.5" y="667"/>
+            <point key="canvasLocation" x="-599.5" y="575"/>
         </scene>
         <!--Side Menu View Controller-->
         <scene sceneID="x9h-0l-jTD">
@@ -316,7 +316,7 @@
                                 </state>
                                 <connections>
                                     <action selector="logoutButtonTapped:" destination="3L1-dU-ywu" eventType="touchUpInside" id="Wzv-HU-1eR"/>
-                                    <segue destination="ThO-gH-bWu" kind="show" id="7rl-af-VmM"/>
+                                    <segue destination="ThO-gH-bWu" kind="show" identifier="LogoutSegue" id="7rl-af-VmM"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="oa3-68-VNE">
@@ -350,7 +350,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Gyi-n7-ZWf" userLabel="Button Stack">
                                 <rect key="frame" x="25" y="267" width="152" height="86"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j6a-DZ-UOp">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j6a-DZ-UOp">
                                         <rect key="frame" x="0.0" y="0.0" width="152" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="bcF-OX-o5Z"/>
@@ -365,7 +365,7 @@
                                             <action selector="profileButtonTapped:" destination="3L1-dU-ywu" eventType="touchUpInside" id="uct-gk-LsY"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hOL-Ei-CQk">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hOL-Ei-CQk">
                                         <rect key="frame" x="0.0" y="49" width="152" height="37"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="21"/>
                                         <size key="titleShadowOffset" width="2.2250738585072014e-308" height="1"/>

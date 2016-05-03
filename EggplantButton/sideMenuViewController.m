@@ -67,7 +67,6 @@
         
         completion(YES);
     }];
-
 }
 
 - (IBAction)profileButtonTapped:(id)sender {
@@ -77,8 +76,8 @@
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"sideMenuFadeAway"
                                                         object:nil];
-
     
+    NSLog(@"Profile button tapped");
 }
 
 - (IBAction)itineraryHistoryButtonTapped:(id)sender {
@@ -88,19 +87,18 @@
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"sideMenuFadeAway"
                                                         object:nil];
-    
+    NSLog(@"Itinerary History button tapped");
 }
 
 - (IBAction)logoutButtonTapped:(id)sender {
     
-
     [[NSNotificationCenter defaultCenter] postNotificationName:@"logoutButtonTapped"
                                                         object:nil];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"sideMenuFadeAway"
                                                         object:nil];
-   
-   
+    
+    NSLog(@"Log Out button tapped");
 }
 
 @end

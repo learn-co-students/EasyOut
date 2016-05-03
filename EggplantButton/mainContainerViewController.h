@@ -10,4 +10,6 @@
 
 @interface mainContainerViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer * mainViewTapGestureRecognizer;
+
 @end

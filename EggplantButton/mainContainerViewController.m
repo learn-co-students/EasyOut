@@ -16,8 +16,6 @@
 @property (weak, nonatomic) IBOutlet UIView * viewContainer;
 @property (strong, nonatomic) UIActivityIndicatorView * spinner;
 
-@property (strong, nonatomic) IBOutlet UITapGestureRecognizer * mainViewTapGestureRecognizer;
-
 @end
 
 @implementation mainContainerViewController
@@ -64,6 +62,8 @@
         self.sideMenuContainer.alpha = 0.95;
         self.viewContainer.alpha = 0.6;
     }];
+    
+    NSLog(@"Menu button tapped");
 }
 
 - (IBAction)mainViewTapped:(id)sender {
@@ -75,6 +75,8 @@
         self.sideMenuContainer.alpha = 0;
         self.viewContainer.alpha = 1;
     }];
+    
+    NSLog(@"Main View tapped");
 }
 
 - (void) sideMenuFadeAway: (NSNotification *) notification {
@@ -87,6 +89,8 @@
     
     self.mainViewTapGestureRecognizer.enabled = NO;
     self.viewContainer.subviews[0].userInteractionEnabled = YES;
+
+    NSLog(@"Side Menu fading away");
 }
 
 - (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event {
