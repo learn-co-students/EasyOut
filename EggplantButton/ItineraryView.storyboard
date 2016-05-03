@@ -48,8 +48,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="T0v-aO-3Ot" firstAttribute="top" secondItem="fQo-FS-wSZ" secondAttribute="bottom" constant="20" id="31r-vk-lCQ"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="fQo-FS-wSZ" secondAttribute="leading" id="Vig-Hh-S3S"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="fQo-FS-wSZ" secondAttribute="trailing" id="f4t-7V-Ub9"/>
+                            <constraint firstItem="fQo-FS-wSZ" firstAttribute="leading" secondItem="TM5-Ju-Che" secondAttribute="leadingMargin" id="Vig-Hh-S3S"/>
+                            <constraint firstItem="fQo-FS-wSZ" firstAttribute="trailing" secondItem="TM5-Ju-Che" secondAttribute="trailingMargin" id="f4t-7V-Ub9"/>
                             <constraint firstItem="fQo-FS-wSZ" firstAttribute="top" secondItem="NBD-Jf-WSI" secondAttribute="bottom" constant="20" id="u4K-7T-jou"/>
                         </constraints>
                     </view>

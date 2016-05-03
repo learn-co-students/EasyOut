@@ -51,6 +51,7 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor clearColor];
+    
     self.view.contentMode = UIViewContentModeCenter;
     self.view.contentMode = UIViewContentModeScaleAspectFit;
 

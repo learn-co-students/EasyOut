@@ -17,6 +17,27 @@ PODS:
   - Button (4.4.2)
   - DeepLinkKit (1.2.1)
   - Firebase (2.5.1)
+  - FontAwesomeKit (2.2.1):
+    - FontAwesomeKit/Core (= 2.2.1)
+    - FontAwesomeKit/FontAwesome (= 2.2.1)
+    - FontAwesomeKit/FoundationIcons (= 2.2.1)
+    - FontAwesomeKit/IonIcons (= 2.2.1)
+    - FontAwesomeKit/Material (= 2.2.1)
+    - FontAwesomeKit/Octicons (= 2.2.1)
+    - FontAwesomeKit/Zocial (= 2.2.1)
+  - FontAwesomeKit/Core (2.2.1)
+  - FontAwesomeKit/FontAwesome (2.2.1):
+    - FontAwesomeKit/Core
+  - FontAwesomeKit/FoundationIcons (2.2.1):
+    - FontAwesomeKit/Core
+  - FontAwesomeKit/IonIcons (2.2.1):
+    - FontAwesomeKit/Core
+  - FontAwesomeKit/Material (2.2.1):
+    - FontAwesomeKit/Core
+  - FontAwesomeKit/Octicons (2.2.1):
+    - FontAwesomeKit/Core
+  - FontAwesomeKit/Zocial (2.2.1):
+    - FontAwesomeKit/Core
   - GoogleMaps (1.13.0)
   - Masonry (1.0.0)
   - UIView+Shake (1.1.5)
@@ -26,15 +47,26 @@ DEPENDENCIES:
   - Button (~> 4)
   - DeepLinkKit
   - Firebase
+  - FontAwesomeKit (from `https://github.com/PrideChung/FontAwesomeKit.git`)
   - GoogleMaps
   - Masonry
   - UIView+Shake
+
+EXTERNAL SOURCES:
+  FontAwesomeKit:
+    :git: https://github.com/PrideChung/FontAwesomeKit.git
+
+CHECKOUT OPTIONS:
+  FontAwesomeKit:
+    :commit: eac30313fee77f6db1b6832b1d4b7d8f2007b381
+    :git: https://github.com/PrideChung/FontAwesomeKit.git
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Button: 49cd2e0f46b40d77e1bc3538561a8b8490ae5b63
   DeepLinkKit: 4c3a713b7ecc6c6e25ba56c87d0c728f6035a9ef
   Firebase: 3565ea88b830f28f2c77ecc524622bc71a20d085
+  FontAwesomeKit: 3614979b3dbb0ec3f7fac1bd760b91f66c31db67
   GoogleMaps: 7a6caeb8336d7cb42982e969fc9b1b20a889fe79
   Masonry: b529bb169217897b6354d4b56b1fada6d475b13d
   UIView+Shake: 2d2185006d38ee5daed07f14c0989f703f86682f
