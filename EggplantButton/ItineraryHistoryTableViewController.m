@@ -28,6 +28,7 @@
 @property (nonatomic, strong) CLLocation *mostRecentLocation;
 @property (nonatomic) CLLocationDegrees latitude;
 @property (nonatomic) CLLocationDegrees longitude;
+@property (strong, nonatomic) NSMutableArray *usernames;
 
 @end
 
@@ -88,11 +89,13 @@
     HistoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"itineraryCell"
                                                                  forIndexPath:indexPath];
     
-    cell.itineraryLabel.text = ((Itinerary *)self.itineraries[indexPath.row]).title;
+    cell.itinerary = self.itineraries[indexPath.row];
+    cell.itineraryLabel.text = cell.itinerary.title;
+    [FirebaseAPIClient getUsernameForUserID:cell.itinerary.userID completion:^(NSString * _Nonnull username) {
+        cell.userLabel.text = username;
+    }];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    cell.itinerary = self.itineraries[indexPath.row];
     
     return cell;
 }

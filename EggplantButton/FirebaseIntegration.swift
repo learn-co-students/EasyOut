@@ -174,7 +174,7 @@ import Firebase
     
     
     // Return list of all users
-    class func getAllUsersWithCompletion(completion: Array<String> -> Void) {
+    class func getAllUsernamesWithCompletion(completion: Array<String> -> Void) {
         
         print("Getting a list of all users at the users reference in Firebase")
         
@@ -261,11 +261,6 @@ import Firebase
         userRef.observeEventType(.Value, withBlock: { snapshot in
             let sv = snapshot.value as? NSDictionary
             
-        
-            
-            
-            print("User ref:\n\(sv)")
-            
             // Initialize new User object
             User.initWithFirebaseUserDictionary(sv as? [NSObject : AnyObject], completion: { (user) in
                 
@@ -310,7 +305,7 @@ import Firebase
         print("Checking if \(username) exists in Firebase")
         
         // Call function to retrieve all usernames in Firebase
-        getAllUsersWithCompletion { (allUsernames) in
+        getAllUsernamesWithCompletion { (allUsernames) in
             
             print("Filtering returned usernames by \(username)")
             
@@ -349,6 +344,25 @@ import Firebase
                 completion(doesExist: true)
             }
         }
+    }
+    
+    // Get username for a given userID
+    class func getUsernameForUserID(userID: String, completion: String -> Void) {
+        print("Creating user object from user reference \(userID)")
+        
+        // Set root Firebase reference
+        let ref = Firebase(url:firebaseRootRef)
+        
+        // Set Firebase references
+        let usersRef = ref.childByAppendingPath("users")
+        let userRef = usersRef.childByAppendingPath(userID)
+        let usernameRef = userRef.childByAppendingPath("username")
+        
+        // Read data at user reference
+        usernameRef.observeEventType(.Value, withBlock: { snapshot in
+            print(snapshot)
+            completion(snapshot.value as! String)
+        })
     }
     
     

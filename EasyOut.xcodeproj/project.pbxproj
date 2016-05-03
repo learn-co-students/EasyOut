@@ -25,7 +25,9 @@
 		4C64EC451CBAA78200FB3A45 /* EggplantButton.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C64EC3D1CBAA78200FB3A45 /* EggplantButton.xcdatamodeld */; };
 		4C64EC471CBAA78200FB3A45 /* ItineraryView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C64EC411CBAA78200FB3A45 /* ItineraryView.storyboard */; };
 		4C64EC481CBAA78200FB3A45 /* UserHistory.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C64EC421CBAA78200FB3A45 /* UserHistory.xcdatamodeld */; };
-		4C6C89BD1CD394CE0088266B /* HistoryTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C6C89B91CD394CE0088266B /* HistoryTableCell.xib */; };
+		4C6B66E81CD9467D001A7321 /* UserProfileItineraryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C6B66E71CD9467D001A7321 /* UserProfileItineraryTableViewCell.xib */; };
+		4C6B66EB1CD9478C001A7321 /* UserProfileItineraryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C6B66EA1CD9478C001A7321 /* UserProfileItineraryTableViewCell.m */; };
+		4C6C89BD1CD394CE0088266B /* HistoryViewTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C6C89B91CD394CE0088266B /* HistoryViewTableCell.xib */; };
 		4C6C89BE1CD394CE0088266B /* HistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C6C89BB1CD394CE0088266B /* HistoryTableViewCell.m */; };
 		4C9A037D1CAB064200CA9A02 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9A037C1CAB064200CA9A02 /* main.m */; };
 		4C9A03801CAB064200CA9A02 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9A037F1CAB064200CA9A02 /* AppDelegate.m */; };
@@ -111,7 +113,10 @@
 		4C64EC3E1CBAA78200FB3A45 /* EggplantButton.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EggplantButton.xcdatamodel; sourceTree = "<group>"; };
 		4C64EC411CBAA78200FB3A45 /* ItineraryView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ItineraryView.storyboard; sourceTree = "<group>"; };
 		4C64EC431CBAA78200FB3A45 /* UserHistory.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserHistory.xcdatamodel; sourceTree = "<group>"; };
-		4C6C89B91CD394CE0088266B /* HistoryTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HistoryTableCell.xib; path = EggplantButton/HistoryTableCell.xib; sourceTree = "<group>"; };
+		4C6B66E71CD9467D001A7321 /* UserProfileItineraryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UserProfileItineraryTableViewCell.xib; path = EggplantButton/UserProfileItineraryTableViewCell.xib; sourceTree = "<group>"; };
+		4C6B66E91CD9478C001A7321 /* UserProfileItineraryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserProfileItineraryTableViewCell.h; path = EggplantButton/UserProfileItineraryTableViewCell.h; sourceTree = "<group>"; };
+		4C6B66EA1CD9478C001A7321 /* UserProfileItineraryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserProfileItineraryTableViewCell.m; path = EggplantButton/UserProfileItineraryTableViewCell.m; sourceTree = "<group>"; };
+		4C6C89B91CD394CE0088266B /* HistoryViewTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HistoryViewTableCell.xib; path = EggplantButton/HistoryViewTableCell.xib; sourceTree = "<group>"; };
 		4C6C89BA1CD394CE0088266B /* HistoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryTableViewCell.h; path = EggplantButton/HistoryTableViewCell.h; sourceTree = "<group>"; };
 		4C6C89BB1CD394CE0088266B /* HistoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryTableViewCell.m; path = EggplantButton/HistoryTableViewCell.m; sourceTree = "<group>"; };
 		4C9A03781CAB064200CA9A02 /* EggplantButton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EggplantButton.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -300,9 +305,12 @@
 				9AA058781CAEAA57000A6AA8 /* ActivityCard.xib */,
 				4C358D711CADCDF700257756 /* ActivityCardView.h */,
 				4C358D721CADCDF700257756 /* ActivityCardView.m */,
-				4C6C89B91CD394CE0088266B /* HistoryTableCell.xib */,
+				4C6C89B91CD394CE0088266B /* HistoryViewTableCell.xib */,
 				4C6C89BA1CD394CE0088266B /* HistoryTableViewCell.h */,
 				4C6C89BB1CD394CE0088266B /* HistoryTableViewCell.m */,
+				4C6B66E71CD9467D001A7321 /* UserProfileItineraryTableViewCell.xib */,
+				4C6B66E91CD9478C001A7321 /* UserProfileItineraryTableViewCell.h */,
+				4C6B66EA1CD9478C001A7321 /* UserProfileItineraryTableViewCell.m */,
 			);
 			name = Views;
 			path = ..;
@@ -501,11 +509,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				78A7F6D51CC0217D00DD4937 /* Login.storyboard in Resources */,
-				4C6C89BD1CD394CE0088266B /* HistoryTableCell.xib in Resources */,
+				4C6C89BD1CD394CE0088266B /* HistoryViewTableCell.xib in Resources */,
 				4CD9FF791CCE602E00D3E603 /* Roboto-LightItalic.ttf in Resources */,
 				4CD9FF7D1CCE602E00D3E603 /* Roboto-Thin.ttf in Resources */,
 				4CD9FF7B1CCE602E00D3E603 /* Roboto-MediumItalic.ttf in Resources */,
 				9ACC8C171CBD398E00909704 /* DetailView.storyboard in Resources */,
+				4C6B66E81CD9467D001A7321 /* UserProfileItineraryTableViewCell.xib in Resources */,
 				9A74DC521CBF391900B63B0B /* FilterView.storyboard in Resources */,
 				9AA058791CAEAA57000A6AA8 /* ActivityCard.xib in Resources */,
 				4C1DE1621CB8410900AFBCF5 /* LobsterTwo-Regular.otf in Resources */,
@@ -609,6 +618,7 @@
 				9A33839B1CBC5416004B8EFE /* ActivityCardCollectionViewCell.m in Sources */,
 				4C02D1E41CB6E8A00031F978 /* Itinerary.m in Sources */,
 				4CD9FF881CCE605400D3E603 /* ItineraryReviewTableViewCell.m in Sources */,
+				4C6B66EB1CD9478C001A7321 /* UserProfileItineraryTableViewCell.m in Sources */,
 				4CBBC6051CBA96DF006683D8 /* LogInViewController.m in Sources */,
 				4C9A03801CAB064200CA9A02 /* AppDelegate.m in Sources */,
 				78A7F6D41CBFFDAF00DD4937 /* mainContainerViewController.m in Sources */,

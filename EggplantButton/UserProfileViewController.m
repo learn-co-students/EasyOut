@@ -12,7 +12,7 @@
 #import "Secrets.h"
 #import "Itinerary.h"
 #import "CircleLabelView.h"
-#import "HistoryTableViewCell.h"
+#import "UserProfileItineraryTableViewCell.h"
 #import "ItineraryViewController.h"
 
 @interface UserProfileViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>
@@ -85,13 +85,12 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    HistoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"itineraryCell"
+    UserProfileItineraryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"itineraryCell"
                                                                  forIndexPath:indexPath];
-    
-    cell.itineraryLabel.text = ((Itinerary *)self.itineraries[indexPath.row]).title;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
     cell.itinerary = self.itineraries[indexPath.row];
+    cell.itineraryLabel.text = cell.itinerary.title;
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }
@@ -102,7 +101,7 @@
     
     if ([segue.identifier isEqualToString:@"ItineraryFromUserProfileSegue"]) {
         ItineraryViewController *destinationVC = [segue destinationViewController];
-        HistoryTableViewCell *cell = sender;
+        UserProfileItineraryTableViewCell *cell = sender;
         destinationVC.itinerary = cell.itinerary;
         destinationVC.latitude = self.latitude;
         destinationVC.longitude = self.longitude;

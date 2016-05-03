@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UserProfileItineraryTableViewCell">
+            <connections>
+                <outlet property="view" destination="iN0-l3-epB" id="27q-Xy-Vfp"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="UserProfileItineraryTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="638" height="108"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5C7-Tr-jtF">
+                    <rect key="frame" x="552" y="11" width="86" height="86"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="5C7-Tr-jtF" secondAttribute="height" multiplier="1:1" id="DLR-7E-DBo" userLabel="aspect = 1:1"/>
+                    </constraints>
+                    <state key="normal" image="arrow_left"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rg5-jL-LOg" userLabel="Itinerary Label">
+                    <rect key="frame" x="10" y="0.0" width="638" height="108"/>
+                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="rg5-jL-LOg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="7Wm-Bk-T9s"/>
+                <constraint firstItem="5C7-Tr-jtF" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.8" id="7qJ-nA-elv"/>
+                <constraint firstItem="5C7-Tr-jtF" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="Ll8-km-0QV"/>
+                <constraint firstItem="rg5-jL-LOg" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="MI4-cL-nVc"/>
+                <constraint firstItem="rg5-jL-LOg" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="bvj-K5-tWh"/>
+                <constraint firstItem="5C7-Tr-jtF" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="cCK-o7-Anc"/>
+                <constraint firstItem="rg5-jL-LOg" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="vzu-q1-gA3"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="itineraryLabel" destination="rg5-jL-LOg" id="S4c-pM-6Gg"/>
+            </connections>
+            <point key="canvasLocation" x="364" y="273"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="arrow_left" width="512" height="512"/>
+    </resources>
+</document>
