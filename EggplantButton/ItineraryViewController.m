@@ -21,7 +21,6 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *itineraryTableView;
 @property (weak, nonatomic) IBOutlet UIView *mapView;
-@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 @property (strong, nonatomic) GMSMapView *gpsMapView;
 
