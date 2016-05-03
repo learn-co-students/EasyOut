@@ -14,11 +14,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UserProfileItineraryTableViewCell">
             <connections>
+                <outlet property="itineraryLabel" destination="rg5-jL-LOg" id="8LW-zN-HjZ"/>
                 <outlet property="view" destination="iN0-l3-epB" id="27q-Xy-Vfp"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="UserProfileItineraryTableViewCell">
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="638" height="108"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -48,9 +49,6 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <connections>
-                <outlet property="itineraryLabel" destination="rg5-jL-LOg" id="S4c-pM-6Gg"/>
-            </connections>
             <point key="canvasLocation" x="364" y="273"/>
         </view>
     </objects>
