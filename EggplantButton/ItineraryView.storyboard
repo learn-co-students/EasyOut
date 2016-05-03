@@ -39,6 +39,9 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="560" height="89"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <segue destination="ZPC-gc-TyD" kind="show" identifier="historyToDetailSegue" id="GRH-Nj-9M8"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
@@ -62,6 +65,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ngn-J4-if4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="623" y="76"/>
+        </scene>
+        <!--DetailView-->
+        <scene sceneID="Nv2-R1-G3N">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DetailView" id="ZPC-gc-TyD" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Oys-lH-Jdt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1115.5" y="76"/>
         </scene>
     </scenes>
 </document>
