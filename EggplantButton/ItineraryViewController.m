@@ -50,9 +50,7 @@
     
     self.itineraryTableView.delegate = self;
     self.itineraryTableView.dataSource = self;
-    
-    [self.itineraryTableView registerClass:[ItineraryReviewTableViewCell class] forCellReuseIdentifier:@"activityCell"];
-    
+        
     self.itineraryTableView.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self generateGoogleMap];

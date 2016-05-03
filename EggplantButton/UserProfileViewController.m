@@ -101,7 +101,6 @@
     
     self.itinerary = self.itineraries[indexPath.row];
     
-    [self performSegueWithIdentifier:@"ItinerarySegue" sender:nil];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
