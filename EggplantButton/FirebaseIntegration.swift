@@ -11,6 +11,8 @@ import Firebase
 
 @objc class FirebaseAPIClient: NSObject {
     
+    // MARK: User Authentication
+    
     // Login and authenticate user given email and password
     class func logInUserWithEmail(email:String, password:String, completion: (authData: FAuthData!, error: NSError!) -> Void) {
         
@@ -76,7 +78,6 @@ import Firebase
         } else {
             print("No user currently logged in")
         }
-        
     }
     
     
@@ -140,6 +141,35 @@ import Firebase
                 }
             })
         })
+    }
+    
+    
+    // Remove user account from Firebase
+    class func removeUserFromFirebaseWithEmail(email:String, password:String, competion:(Bool) -> ()) {
+        
+        // Set Firebase references
+        let ref = Firebase(url:firebaseRootRef)
+        //        let usersRef = ref.childByAppendingPath("users")
+        //        let imagesRef = ref.childByAppendingPath("images")
+        //        let itinerariesRef = ref.childByAppendingPath("itineraries")
+        //        let currentUserRef = usersRef.childByAppendingPath(ref.authData.uid)
+        //        let associatedImagesRef = currentUserRef.childByAppendingPath("associatedImages")
+        //        let savedItinerariesRef = currentUserRef.childByAppendingPath("savedItineraries")
+        
+        // TODO: Remove all user itineraries and associated images
+        
+        
+        FirebaseAPIClient.logOutUser()
+        
+        print("Attempting to remove user with email \(email)")
+        
+        ref.removeUser(email, password: password) { (error:NSError!) in
+            if error != nil {
+                print("Error while removing user: \(error.description)")
+            }
+        }
+        
+        competion(true)
     }
     
     
@@ -322,6 +352,8 @@ import Firebase
     }
     
     
+    // MARK: Itineraries
+    
     class func saveItineraryWithItinerary(itinerary: Itinerary, completion: (itineraryID: String) -> Void) {
         
         print("Attempting to save new itinerary: \(itinerary.title)")
@@ -353,6 +385,9 @@ import Firebase
                                    "address1" : address1,
                                    "type" : activityObject.type,
                                    "imageURL" : activityObject.imageURL.description,
+                                   "icon" : activityObject.icon.description,
+                                   "distance" : activityObject.distance,
+                                   "openStatus" : activityObject.openStatus
 //                                   "price" : activityObject.price,
 //                                   "moreDetailsURL" : activityObject.moreDetailsURL
             ]
@@ -370,7 +405,8 @@ import Firebase
             "tips" : itinerary.tips,
             "photos" : itinerary.photos,
             "userID" : ref.authData.uid,
-            "title" : itinerary.title
+            "title" : itinerary.title,
+            "isPublic" : itinerary.isPublic
             ])
         
         print("Added new itinerary with title: \(itinerary.title) and ID: \(newItineraryID)")
@@ -417,7 +453,7 @@ import Firebase
     }
     
     
-    // Return list of all itineraries
+    // Return an unsorted dictionary of all itineraries
     class func getAllItinerariesWithCompletion(completion:(itineraries: [String:AnyObject]?) -> Void) {
         
         print("Attempting to retrieve all itineraries")
@@ -436,7 +472,7 @@ import Firebase
         })
     }
     
-    
+    // Return an Itinerary object given an itineraryID
     class func getItineraryWithItineraryID(itineraryID: String, completion: Itinerary? -> Void) {
         
         print("Attempting to get itinerary with itineraryID:\(itineraryID)")
@@ -476,9 +512,7 @@ import Firebase
                 
                 // Check that the userID associated with the itinerary matches the userID of the current user
                 if realItinerary.userID == ref.authData.uid {
-                    
-                    // TODO: MOVE CONTENTS TO A NEW FUNCTION
-                    
+                                        
                     // If the userIDs are a match, remove the itinerary from the itineraries reference
                     let itineraryRef = itinerariesRef.childByAppendingPath(itineraryID)
                     itineraryRef.removeValueWithCompletionBlock({ (error, result) in
@@ -488,18 +522,18 @@ import Firebase
                             completion(success: false)
                         } else {
                             print("Itinerary removed successfully from itineraries dictionary in Firebase")
-                            
-                            // Call method to remove itinerary from user's savedItineraries
-                            print("Calling method to remove itinerary from user's savedItineraries")
-                            self.removeItineraryFromUserWithUserID(ref.authData.uid, itineraryID: itineraryID, completion: { (success) in
-                                if success {
-                                    print("Itinerary was successfully removed from user's savedItineraries")
-                                    completion(success: true)
-                                } else {
-                                    print("Itinerary was not successfully removed from savedItineraries")
-                                    completion(success: false)
-                                }
-                            })
+                        }
+                    })
+                    
+                    // Call method to remove itinerary from user's savedItineraries
+                    print("Calling method to remove itinerary from user's savedItineraries")
+                    self.removeItineraryFromUserWithUserID(ref.authData.uid, itineraryID: itineraryID, completion: { (success) in
+                        if success {
+                            print("Itinerary was successfully removed from user's savedItineraries")
+                            completion(success: true)
+                        } else {
+                            print("Itinerary was not successfully removed from savedItineraries")
+                            completion(success: false)
                         }
                     })
                 }
@@ -536,6 +570,8 @@ import Firebase
         }
     }
     
+    
+    // MARK: Images
     
     // Create a new image reference in Firebase and return its unique ID
     class func saveNewImageWithImage(image: UIImage, completion: (imageID: String, success: Bool) -> Void) {
@@ -744,53 +780,6 @@ import Firebase
         }
     }
     
-    
-    // Convert date objects to strings
-    class func convertDateToStringWithDate(date:NSDate) -> String {
-        
-        // Create date formatter and set format style
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        
-        // Format date into string
-        let dateString = dateFormatter.stringFromDate(date)
-        
-        print("Converted date into: \(dateString)")
-        
-        // Send back the converted date
-        return dateString
-    }
-    
-    
-    // Remove user account from Firebase
-    class func removeUserFromFirebaseWithEmail(email:String, password:String, competion:(Bool) -> ()) {
-        
-        // Set Firebase references
-        let ref = Firebase(url:firebaseRootRef)
-//        let usersRef = ref.childByAppendingPath("users")
-//        let imagesRef = ref.childByAppendingPath("images")
-//        let itinerariesRef = ref.childByAppendingPath("itineraries")
-//        let currentUserRef = usersRef.childByAppendingPath(ref.authData.uid)
-//        let associatedImagesRef = currentUserRef.childByAppendingPath("associatedImages")
-//        let savedItinerariesRef = currentUserRef.childByAppendingPath("savedItineraries")
-        
-        // TODO: Remove all user itineraries and associated images
-        
-        
-        FirebaseAPIClient.logOutUser()
-        
-        print("Attempting to remove user with email \(email)")
-        
-        ref.removeUser(email, password: password) { (error:NSError!) in
-            if error != nil {
-                print("Error while removing user: \(error.description)")
-            }
-        }
-        
-        competion(true)
-    }
-    
-    
     // Resize an image to fit in a Firebase value
     class func resizeImage(oldImage: UIImage, completion: (scaledImage: UIImage) -> Void) {
         
@@ -832,6 +821,25 @@ import Firebase
         
         // Return the scaled image
         completion(scaledImage: newImage)
+    }
+
+    
+    // MARK: Helper Functions
+    
+    // Convert date objects to strings
+    class func convertDateToStringWithDate(date:NSDate) -> String {
+        
+        // Create date formatter and set format style
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        // Format date into string
+        let dateString = dateFormatter.stringFromDate(date)
+        
+        print("Converted date into: \(dateString)")
+        
+        // Send back the converted date
+        return dateString
     }
     
 }

@@ -35,6 +35,7 @@
         _title = dateString;
         _durationInMins = 480;
         _priceRange = 0;
+        _isPublic = NO;
     }
     
     return self;
@@ -93,6 +94,11 @@
         }
     }
     
+    // PUBLIC IDENTIFIER
+    if (![keys containsObject:@"isPublic"]) {
+        [newDictionary setObject:@NO forKey:@"isPublic"];
+    }
+    
     // TIPS
     if (![keys containsObject:@"tips"]) {
         [newDictionary setObject:[[NSMutableDictionary alloc] init] forKey:@"tips"];
@@ -117,6 +123,7 @@
                            tips:newDictionary[@"tips"]
                  durationInMins:[newDictionary[@"durationInMins"] integerValue]
                      priceRange:[newDictionary[@"priceRange"] integerValue]
+                       isPublic:[newDictionary[@"isPublic"] boolValue]
             ];
     
 //    NSLog(@"%@ initialized from Firebase dictionary", newDictionary[@"title"]);
@@ -135,6 +142,7 @@
                          tips:(NSMutableDictionary *)tips
                durationInMins:(NSUInteger)durationInMins
                    priceRange:(NSUInteger)priceRange
+                     isPublic:(BOOL)isPublic
 {
     
     self = [super init];
@@ -150,6 +158,7 @@
         _tips = tips;
         _durationInMins = durationInMins;
         _priceRange = priceRange;
+        _isPublic = isPublic;
     }
     
     return self;

@@ -119,15 +119,15 @@
     }
     
     if (self) {
-        
         _name = newDictionary[@"name"];
         _address = @[newDictionary[@"address0"], newDictionary[@"address1"]];
         _type = newDictionary[@"type"];
         _imageURL = [NSURL URLWithString:newDictionary[@"imageURL"]];
         _price = newDictionary[@"price"];
         _moreDetailsURL = newDictionary[@"moreDetailsURL"];
-        
-
+        _icon = [NSURL URLWithString:newDictionary[@"icon"]];
+        _distance = newDictionary[@"distance"];
+        _openStatus = newDictionary[@"openStatus"];
     }
     
     return self;

@@ -55,7 +55,6 @@
 
 }
 
-
 - (void) menuButtonTapped: (NSNotification *) notification {
     
     self.mainViewTapGestureRecognizer.enabled = YES;
@@ -88,12 +87,9 @@
     
     self.mainViewTapGestureRecognizer.enabled = NO;
     self.viewContainer.subviews[0].userInteractionEnabled = YES;
-    
 }
 
-- (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event
-
-{
+- (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event {
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"shakeStarted"
                                                         object:nil];

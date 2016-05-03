@@ -15,8 +15,6 @@
 #import <AFNetworking/AFImageDownloader.h>
 
 
-
-
 @interface ItineraryViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *itineraryTableView;
@@ -58,7 +56,8 @@
     self.itineraryTableView.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self generateGoogleMap];
-  }
+}
+
 -(NSString *)getDate {
     NSDate *now = [NSDate date];
     NSCalendar *calendar = [[NSCalendar alloc]
@@ -113,7 +112,9 @@
     return [NSString stringWithFormat:@"%@ %lu, %lu", month, [components day], [components year]];
 }
 
-//TABLE THINGS
+
+#pragma mark - Table View
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     return self.itinerary.activities.count;
@@ -129,37 +130,14 @@
     cell.nameLabel.text = activity.name;
     cell.addressLabel.text = activity.address[0];
     cell.cityStateLabel.text = activity.address[1];
-    cell.distanceLabel.text = [NSString stringWithFormat:@"%@ mi away", activity.distance];
+    cell.distanceLabel.text = [NSString stringWithFormat:@"%.02f mi away", roundf([self getDistanceFromLocationOfActivity:activity] * (float)0.000621371 * 100.0) / 100.0];
     [self downloadImageWithURL:activity.icon setTo:cell.iconImage];
     
     return cell;
 }
 
 
-
-//MAP THINGS
--(CLLocationCoordinate2D) getLocationFromAddressString: (NSString*) addressStr {
-    double latitude = 0, longitude = 0;
-    NSString *esc_addr =  [addressStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    NSString *req = [NSString stringWithFormat:@"http://maps.google.com/maps/api/geocode/json?sensor=false&address=%@", esc_addr];
-    NSString *result = [NSString stringWithContentsOfURL:[NSURL URLWithString:req] encoding:NSUTF8StringEncoding error:NULL];
-    if (result) {
-        NSScanner *scanner = [NSScanner scannerWithString:result];
-        if ([scanner scanUpToString:@"\"lat\" :" intoString:nil] && [scanner scanString:@"\"lat\" :" intoString:nil]) {
-            [scanner scanDouble:&latitude];
-            if ([scanner scanUpToString:@"\"lng\" :" intoString:nil] && [scanner scanString:@"\"lng\" :" intoString:nil]) {
-                [scanner scanDouble:&longitude];
-            }
-        }
-    }
-    CLLocationCoordinate2D center;
-    center.latitude=latitude;
-    center.longitude = longitude;
-
-    
-    return center;
-    
-}
+#pragma mark - Map and Location
 
 -(void)generateGoogleMap{
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:self.latitude
@@ -177,14 +155,10 @@
     [self.gpsMapView.leadingAnchor constraintEqualToAnchor:self.mapView.leadingAnchor].active = YES;
     [self.gpsMapView.trailingAnchor constraintEqualToAnchor:self.mapView.trailingAnchor].active = YES;
     
-    
-    
-    //MARKER FOR US
-    
+    //MARKER FOR USER
     GMSMarker *userLoc = [[GMSMarker alloc]init];
     userLoc.position = CLLocationCoordinate2DMake(self.latitude, self.longitude);
     userLoc.map = self.gpsMapView;
-    
     
     //MARKER FOR ACTIVITIES
     UIImage *markerImage = [GMSMarker markerImageWithColor:[Constants vikingBlueColor]];
@@ -196,22 +170,57 @@
         CLLocationCoordinate2D location = [self getLocationFromAddressString: address];
         
         // Creates a marker in the center of the map.
-        
         GMSMarker *marker = [[GMSMarker alloc] init];
         marker.position = location;
         marker.title = activity.name;
         marker.snippet = address;
         marker.map = self.gpsMapView;
         marker.icon = markerImage;
-        
     }
+}
+
+-(CLLocationDistance)getDistanceFromLocationOfActivity:(Activity *)activity {
+    
+    NSLog(@"Getting distance from %@", activity.name);
+    
+    CLLocation *userLocation = [[CLLocation alloc]initWithLatitude:self.latitude longitude:self.longitude];
+    NSString *address = [NSString stringWithFormat:@"%@ %@", activity.address[0], activity.address[1]];
+    CLLocationCoordinate2D location = [self getLocationFromAddressString: address];
+    CLLocation *activityLocation = [[CLLocation alloc]initWithLatitude:location.latitude longitude:location.longitude];
+    CLLocationDistance distance = [userLocation distanceFromLocation: activityLocation];
+    
+    NSLog(@"Distance: %f", distance);
+    
+    return distance;
+}
+
+-(CLLocationCoordinate2D) getLocationFromAddressString: (NSString*) addressStr {
+    double latitude = 0, longitude = 0;
+    NSString *esc_addr =  [addressStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    NSString *req = [NSString stringWithFormat:@"http://maps.google.com/maps/api/geocode/json?sensor=false&address=%@", esc_addr];
+    NSString *result = [NSString stringWithContentsOfURL:[NSURL URLWithString:req] encoding:NSUTF8StringEncoding error:NULL];
+    if (result) {
+        NSScanner *scanner = [NSScanner scannerWithString:result];
+        if ([scanner scanUpToString:@"\"lat\" :" intoString:nil] && [scanner scanString:@"\"lat\" :" intoString:nil]) {
+            [scanner scanDouble:&latitude];
+            if ([scanner scanUpToString:@"\"lng\" :" intoString:nil] && [scanner scanString:@"\"lng\" :" intoString:nil]) {
+                [scanner scanDouble:&longitude];
+            }
+        }
+    }
+    
+    CLLocationCoordinate2D center;
+    center.latitude = latitude;
+    center.longitude = longitude;
+    
+    return center;
 }
 
 #pragma mark - Helper
 
 -(void)downloadImageWithURL:(NSURL *)imageURL setTo:(UIImageView *)imageView {
     
-    //    imageView = nil;
+    // imageView = nil;
     AFImageDownloader *downloader = [[AFImageDownloader alloc] init];
     downloader.downloadPrioritizaton = AFImageDownloadPrioritizationLIFO;
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:imageURL];
@@ -222,7 +231,6 @@
             imageView.image = responseObject;
         
     } failure:nil];
-    
 }
 
 @end

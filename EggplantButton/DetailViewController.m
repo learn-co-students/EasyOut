@@ -110,21 +110,12 @@
 -(void)getDistanceFromLocation {
 
     CLLocation *userLocation = [[CLLocation alloc]initWithLatitude:self.latitude longitude:self.longitude];
-
     NSString *address = [NSString stringWithFormat:@"%@ %@", self.activity.address[0], self.activity.address[1]];
-
     CLLocationCoordinate2D location = [self getLocationFromAddressString: address];
-
     CLLocation *activityLocation = [[CLLocation alloc]initWithLatitude:location.latitude longitude:location.longitude];
-
     CLLocationDistance distance = [userLocation distanceFromLocation: activityLocation];
 
-    NSLog(@"%f", distance);
-}
-
-- (IBAction)backButtonPressed:(UIBarButtonItem *)sender {
-
-    [[self navigationController] popViewControllerAnimated:YES];
+    NSLog(@"Distance: %f", distance);
 }
 
 -(CLLocationCoordinate2D) getLocationFromAddressString: (NSString*) addressStr {
@@ -143,7 +134,7 @@
     }
 
     CLLocationCoordinate2D center;
-    center.latitude=latitude;
+    center.latitude = latitude;
     center.longitude = longitude;
 
     return center;
@@ -197,6 +188,10 @@
 //    self.mapView.camera = camera;
 }
 
+- (IBAction)backButtonPressed:(UIBarButtonItem *)sender {
+    
+    [[self navigationController] popViewControllerAnimated:YES];
+}
 
 - (IBAction)detailButtonPressed:(id)sender {
 

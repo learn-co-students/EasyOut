@@ -13,16 +13,22 @@
 #import "Itinerary.h"
 #import "CircleLabelView.h"
 #import "HistoryTableViewCell.h"
+#import "ItineraryViewController.h"
 
-@interface UserProfileViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface UserProfileViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *userImage;
 @property (weak, nonatomic) IBOutlet UITableView *itineraryTable;
-
 @property (strong, nonatomic) NSMutableArray *itineraries;
-
+@property (strong, nonatomic) Itinerary *itinerary;
 @property (strong, nonatomic) UIActivityIndicatorView * spinner;
+
+// LOCATION
+@property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, strong) CLLocation *mostRecentLocation;
+@property (nonatomic) CLLocationDegrees latitude;
+@property (nonatomic) CLLocationDegrees longitude;
 
 @end
 
@@ -55,6 +61,7 @@
     self.itineraryTable.delegate = self;
     self.itineraryTable.dataSource = self;
     
+    self.itineraryTable.allowsMultipleSelectionDuringEditing = NO;
     self.itineraryTable.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self pullUserFromFirebaseWithCompletion:^(BOOL success) {
@@ -65,9 +72,11 @@
         }
     }];
     
+    [self setUpCoreLocation];
 }
 
-#pragma mark - table
+
+#pragma mark - Itineraries Table
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
@@ -86,13 +95,56 @@
     return cell;
 }
 
-
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSLog(@"Itinerary at indexPath.row %li tapped from user profile", indexPath.row);
+    
+    self.itinerary = self.itineraries[indexPath.row];
+    
+    [self performSegueWithIdentifier:@"ItinerarySegue" sender:nil];
 }
 
-#pragma mark - pull info
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    NSLog(@"Preparing for segue from User Profile");
+    
+    if ([segue.identifier isEqualToString:@"ItinerarySegue"]) {
+        ItineraryViewController *destinationVC = [segue destinationViewController];
+        destinationVC.itinerary = self.itinerary;
+        destinationVC.latitude = self.latitude;
+        destinationVC.longitude = self.longitude;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        // Determine itinerary to be removed
+        Itinerary *itinerary = self.itineraries[indexPath.row];
+        
+        // Remove itinerary from user and itineraries reference
+        [FirebaseAPIClient removeItineraryWithItineraryID:itinerary.itineraryID
+                                               completion:^(BOOL success) {
+            if (success) {
+                NSLog(@"Successfully removed itinerary %@ from Firebase", itinerary.itineraryID);
+            } else {
+                NSLog(@"Failed to remove itinerary %@ from Firebase", itinerary.itineraryID);
+            }
+        }];
+        
+        // Remove itinerary from array of itineraries
+        [self.itineraries removeObjectAtIndex:indexPath.row];
+        
+        // Remove cell from table view
+        [self.itineraryTable deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        
+        // Reload table data
+//        [self.itineraryTable reloadData];
+    }
+}
+
+
+#pragma mark - Pull Info
 
 -(void)pullUserFromFirebaseWithCompletion:(void(^)(BOOL success))completion {
     
@@ -103,7 +155,7 @@
         NSLog(@"Returned from Firebase with User object");
         self.user = user;
         
-        if(success) {
+        if (success) {
             
             NSLog(@"User succesfully pulled from Firebase");
             
@@ -115,12 +167,13 @@
             self.userImage.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
             
             if(![self.user.profilePhoto isEqualToString:@""]){
-                
+
                 [FirebaseAPIClient getImageForImageID:self.user.profilePhoto completion:^(UIImage * image) {
-                    self.userImage.image =image;
+                    self.userImage.image = image;
                 }];
                 
             } else {
+                
                 self.userImage.image = [UIImage imageNamed:@"defaultProfilePic"];
             }
             
@@ -141,14 +194,31 @@
     
     NSArray *itineraryIDs = [self.user.savedItineraries allKeys];
     
-    for(NSString *key in itineraryIDs) {
+    for (NSString *key in itineraryIDs) {
         
         [FirebaseAPIClient getItineraryWithItineraryID:key completion:^(Itinerary * itinerary) {
             [self.itineraries addObject:itinerary];
+            [self sortItinerariesByCreationDate];
             [self.itineraryTable reloadData];
         }];
     }
 }
+
+-(void)sortItinerariesByCreationDate {
+    
+    // Sort itineraries by creationDate
+    NSMutableArray *temporaryItineraryArray = [self.itineraries mutableCopy];
+    
+    NSSortDescriptor *dateDescriptor = [NSSortDescriptor
+                                        sortDescriptorWithKey:@"creationDate"
+                                        ascending:NO];
+    NSArray *sortDescriptors = [NSArray arrayWithObject:dateDescriptor];
+    self.itineraries = [[temporaryItineraryArray
+                         sortedArrayUsingDescriptors:sortDescriptors] mutableCopy];
+}
+
+
+#pragma mark - Camera and Profile Photo
 
 -(void)setUpCamera {
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
@@ -171,18 +241,13 @@
     }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
     
     self.userImage.image = chosenImage;
     
     [FirebaseAPIClient saveProfilePhotoForCurrentUser:chosenImage completion:^(BOOL success) {
-        NSLog(@"Success! profile pic saved");
+        NSLog(@"Success! Profile pic saved");
     }];
 
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -204,12 +269,12 @@
                                   message:NULL
                                   preferredStyle:UIAlertControllerStyleActionSheet];
     
-    UIAlertAction* takePhoto = [UIAlertAction actionWithTitle:@"Take a New Profile Picture"
+    UIAlertAction* takePhoto = [UIAlertAction actionWithTitle:@"Take new profile photo"
                                                         style:UIAlertActionStyleDefault
                                                       handler:^(UIAlertAction * action) {
                                                              [self takeAPictureWithPicker:picker];
                                                          }];
-    UIAlertAction* selectPhoto = [UIAlertAction actionWithTitle:@"Select Profile Picture"
+    UIAlertAction* selectPhoto = [UIAlertAction actionWithTitle:@"Select profile photo"
                                                           style: UIAlertActionStyleDefault
                                                         handler:^(UIAlertAction * action) {
                                                                 [self selectAPictureWithPicker:picker];
@@ -240,6 +305,44 @@
     picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     
     [self presentViewController: picker animated:YES completion:NULL];
+}
+
+
+#pragma mark - Core Location
+
+-(void)setUpCoreLocation {
+    
+    NSLog(@"Setting up Core Location");
+    
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    
+    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [self.locationManager requestWhenInUseAuthorization];
+    }
+    
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [self.locationManager startUpdatingLocation];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+    
+    NSLog(@"didUpdateLocation called - %@", locations.lastObject);
+    
+    if (self.mostRecentLocation == nil) {
+        self.mostRecentLocation = [locations lastObject];
+    }
+    
+    self.latitude = self.locationManager.location.coordinate.latitude;
+    self.longitude = self.locationManager.location.coordinate.longitude;
+    
+    [self.locationManager stopUpdatingLocation];
+    
+    if (self.latitude != 0) {
+        NSLog(@"Latitude: %f\nLongitude: %f", self.latitude, self.longitude);
+    } else {
+        NSLog(@"Can't find location");
+    }
 }
 
 @end

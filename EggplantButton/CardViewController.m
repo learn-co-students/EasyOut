@@ -27,26 +27,27 @@
 @property (strong, nonatomic) ActivitiesDataStore *dataStore;
 @property (strong, nonatomic) Itinerary *itinerary;
 
-//LOCATION
+// LOCATION
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) CLLocation *mostRecentLocation;
 @property (nonatomic) CLLocationDegrees latitude;
 @property (nonatomic) CLLocationDegrees longitude;
 
-//COLLECTIONS
+// COLLECTIONS
 @property (weak, nonatomic) IBOutlet UICollectionView *topRowCollection;
 @property (weak, nonatomic) IBOutlet UICollectionView *middleRowCollection;
 @property (weak, nonatomic) IBOutlet UICollectionView *bottomRowCollection;
 
-//CARD PROPERTIES
+// CARD PROPERTIES
 @property (nonatomic) BOOL firstCardLocked;
 @property (nonatomic) BOOL secondCardLocked;
 @property (nonatomic) BOOL thirdCardLocked;
 
-//BUTTONS
+// BUTTONS
 @property (weak, nonatomic) IBOutlet UIButton *createItineraryButton;
 @property (weak, nonatomic) IBOutlet UIButton *randomizeCardsButton;
 
+// SPINNER
 @property (strong, nonatomic) UIActivityIndicatorView * spinner;
 
 @end
@@ -71,31 +72,38 @@
 - (void)viewDidLoad {
 
     [super viewDidLoad];
-
-    // Create weak reference to self so setup can take place within Core Location setup block
-    __weak typeof(self) weakSelf = self;
+    
+//    if([CLLocationManager locationServicesEnabled]) {
+//        
+//        NSLog(@"Location services enabled");
+//        
+//        // Wait for Core Location to be set up before setting up the data store and getting card data
+//        [self setUpCoreLocation];
+//        
+//        if([CLLocationManager authorizationStatus]==kCLAuthorizationStatusDenied) {
+//            
+//            NSLog(@"EasyOut not authorized to use location services");
+//            
+//            // Alert user that location is unavailable
+//            [self showNoLocationAlert];
+//        }
+//    } else {
+//        
+//        NSLog(@"Location services not enabled");
+//        
+//        // Alert user that location is unavailable
+//        [self showNoLocationAlert];
+//    }
 
     // Wait for Core Location to be set up before setting up the data store and getting card data
-    [self setUpCoreLocationWithCompletion:^(bool success) {
-        if (success) {
-            
-            // Set up data store and cards
-            [weakSelf initializeCards];
-            
-        } else {
-            
-            // Show an alert letting the user know we don't have location information
-            [weakSelf showNoLocationAlert];
-        }
-    }];
-
+    [self setUpCoreLocation];
+    
     // Set appearances of this view controller
     [self setAppearances];
 
     // Add notification center observers
     [self addNCObservers];
 }
-
 
 
 #pragma mark - Locking/Unlocking Cards
@@ -109,13 +117,11 @@
         self.firstCardLocked = self.firstCardLocked ? NO : YES;
         self.firstCardLocked ? [self disableScroll] : [self enableScroll];
 
-    }
-    else if ([self.middleRowCollection indexPathForCell:cardCellSuperview]) {
+    } else if ([self.middleRowCollection indexPathForCell:cardCellSuperview]) {
         self.secondCardLocked = self.secondCardLocked ? NO : YES;
         self.secondCardLocked ? [self disableScroll] : [self enableScroll];
 
-    }
-    else {
+    } else {
         self.thirdCardLocked = self.thirdCardLocked ? NO : YES;
         self.thirdCardLocked ? [self disableScroll] : [self enableScroll];
 
@@ -133,7 +139,6 @@
     if(self.thirdCardLocked) {
         self.bottomRowCollection.scrollEnabled = NO;
     }
-
 }
 
 // enables scroll when card is unlocked
@@ -147,7 +152,6 @@
     if(!self.thirdCardLocked) {
         self.bottomRowCollection.scrollEnabled = YES;
     }
-
 }
 
 
@@ -214,7 +218,6 @@
 
     [self.dataStore getActivityforSection:@"drinks" Location:[NSString stringWithFormat:@"%f,%f",self.latitude,self.longitude] WithCompletion:^(BOOL success) {
 
-
         if (success) {
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 [self.bottomRowCollection reloadData];
@@ -248,7 +251,6 @@
     else {
         return self.dataStore.drinks.count;
     }
-
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -309,7 +311,7 @@
 
 #pragma mark - Core Location
 
--(void)setUpCoreLocationWithCompletion:(void (^)(bool success))completion {
+-(void)setUpCoreLocation {
 
     NSLog(@"Setting up Core Location");
 
@@ -317,20 +319,11 @@
     self.locationManager.delegate = self;
 
     if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
-
         [self.locationManager requestWhenInUseAuthorization];
     }
 
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [self.locationManager startUpdatingLocation];
-    
-    if (self.latitude != 0) {
-        NSLog(@"Latitude: %f\nLongitude: %f", self.latitude, self.longitude);
-        completion(YES);
-    } else {
-        NSLog(@"Can't find location");
-        completion(NO);
-    }
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
@@ -338,7 +331,6 @@
     NSLog(@"didUpdateLocation called - %@", locations.lastObject);
 
     if (self.mostRecentLocation == nil) {
-
         self.mostRecentLocation = [locations lastObject];
     }
     
@@ -346,6 +338,21 @@
     self.longitude = self.locationManager.location.coordinate.longitude;
     
     [self.locationManager stopUpdatingLocation];
+    
+    if (self.latitude != 0 && self.longitude != 0) {
+        
+        NSLog(@"Latitude: %f\nLongitude: %f", self.latitude, self.longitude);
+        
+        // Set up data store and cards
+        [self initializeCards];
+        
+    } else {
+        
+        NSLog(@"Location could not be determined");
+        
+        // Show an alert letting the user know we don't have location information
+        [self showNoLocationAlert];
+    }
 }
 
 
@@ -354,8 +361,8 @@
 - (IBAction)randomizeTapped:(id)sender {
 
     // makes the phone vibrate
-    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-
+    AudioServicesPlayAlertSound(1352);
+    
     [self shuffleCards];
 
     if(!self.firstCardLocked) {
@@ -374,6 +381,7 @@
          ];
     }
 }
+
 
 #pragma mark - Save Itinerary Button Tapped
 
@@ -426,8 +434,6 @@
         [chooseOneItinerary addAction:okAction];
 
         [self presentViewController:chooseOneItinerary animated:YES completion:nil];
-
-
     };
 
     if (self.firstCardLocked || self.secondCardLocked || self.thirdCardLocked) {
@@ -444,7 +450,7 @@
 
 #pragma mark - Shake Gesture
 
-- (void) shakeStarted: (NSNotification *) notification {
+- (void) shakeStarted:(NSNotification *) notification {
 
     AudioServicesPlayAlertSound(1352);
 
@@ -467,8 +473,6 @@
          ];
     }
 }
-
-
 
 -(void)shuffleCards{
     GKARC4RandomSource *randomSource = [GKARC4RandomSource new];
@@ -495,7 +499,6 @@
         }];
     }
 }
-
 
 - (void)addNCObservers {
 
@@ -559,24 +562,9 @@
     UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK"
                                                  style:UIAlertActionStyleDefault
                                                handler:^(UIAlertAction * action) {
-
-                                                   // Create weak reference to self so setup can take place within Core Location setup block
-                                                   __weak typeof(self) weakSelf = self;
                                                    
                                                    // Wait for Core Location to be set up before setting up the data store and getting card data
-                                                   [self setUpCoreLocationWithCompletion:^(bool success) {
-                                                       
-                                                       if (success) {
-                                                           
-                                                           // Set up the data store and cards
-                                                           [weakSelf initializeCards];
-                                                           
-                                                       } else {
-                                                           
-                                                           // Show an alert letting the user know we don't have location information
-                                                           [weakSelf showNoLocationAlert];
-                                                       }
-                                                   }];
+                                                   [self setUpCoreLocation];
                                                    
                                                    [alert dismissViewControllerAnimated:YES completion:nil];
                                                }];
