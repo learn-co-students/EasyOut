@@ -92,6 +92,7 @@
     
     cell.itineraryLabel.text = ((Itinerary *)self.itineraries[indexPath.row]).title;
     
+    
     return cell;
 }
 
