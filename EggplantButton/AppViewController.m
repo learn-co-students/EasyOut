@@ -35,9 +35,9 @@
     
     Firebase *ref = [[Firebase alloc] initWithUrl:firebaseRootRef];
     
-    [FirebaseAPIClient getMostRecentItinerariesWithCompletion:^(NSArray<Itinerary *> * _Nullable itineraries) {
-        NSLog(@"%@", itineraries);
-    }];
+//    [FirebaseAPIClient getMostRecentItinerariesWithCompletion:^(NSArray<Itinerary *> * _Nullable itineraries) {
+//        NSLog(@"%@", itineraries);
+//    }];
     
 //    [ref unauth];
     

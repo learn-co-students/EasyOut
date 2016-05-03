@@ -113,8 +113,8 @@
         <!--ItineraryView-->
         <scene sceneID="M1C-X6-2dh">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="ItineraryView" storyboardName="ItineraryView" id="8rl-hq-p4L" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X61-eJ-ip4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardIdentifier="ItineraryView" storyboardName="ItineraryView" id="8rl-hq-p4L" sceneMemberID="viewController"/>
             </objects>
             <point key="canvasLocation" x="-1141.5" y="-986"/>
         </scene>
