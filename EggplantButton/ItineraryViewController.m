@@ -19,7 +19,6 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *itineraryTableView;
 @property (weak, nonatomic) IBOutlet UIView *mapView;
-@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 @property (strong, nonatomic) GMSMapView *gpsMapView;
 
@@ -51,9 +50,7 @@
     
     self.itineraryTableView.delegate = self;
     self.itineraryTableView.dataSource = self;
-    
-    [self.itineraryTableView registerClass:[ItineraryReviewTableViewCell class] forCellReuseIdentifier:@"activityCell"];
-    
+        
     self.itineraryTableView.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self generateGoogleMap];

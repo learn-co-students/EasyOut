@@ -59,6 +59,8 @@
     self.view.layer.cornerRadius = 5.0;
     self.view.layer.borderColor = [[UIColor whiteColor] colorWithAlphaComponent:0.4].CGColor;
     self.view.layer.borderWidth = 2.0;
+    
+    self.itinerary = [[Itinerary alloc] init];
 }
 
 @end

@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Itinerary.h"
 
 @interface HistoryTableViewCell : UITableViewCell
 
 @property (strong, nonatomic) IBOutlet UIView *view;
 @property (weak, nonatomic) IBOutlet UILabel *itineraryLabel;
-
+@property (strong, nonatomic) Itinerary *itinerary;
 
 @end
