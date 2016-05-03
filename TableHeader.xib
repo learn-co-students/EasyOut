@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Roboto-Bold.ttf">
+            <string>Roboto-Bold</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TableHeader">
+            <connections>
+                <outlet property="view" destination="iN0-l3-epB" id="3OW-7C-Uk6"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TableHeader">
+            <rect key="frame" x="0.0" y="0.0" width="587" height="80"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hY2-G0-kcw">
+                    <rect key="frame" x="0.0" y="0.0" width="587" height="80"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noun_412441_cc" translatesAutoresizingMaskIntoConstraints="NO" id="Rbq-px-ADC">
+                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="Rbq-px-ADC" secondAttribute="height" multiplier="1:1" id="air-L4-IoO"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recent Itineraries" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="698-FK-6XK">
+                            <rect key="frame" x="90" y="27" width="497" height="26"/>
+                            <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="22"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="hY2-G0-kcw" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="2HF-Zl-cNc"/>
+                <constraint firstItem="hY2-G0-kcw" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Uok-pd-2k3"/>
+                <constraint firstItem="hY2-G0-kcw" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="Y2j-If-9cV"/>
+                <constraint firstItem="hY2-G0-kcw" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="pHj-Ai-vPi"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="591.5" y="60"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="noun_412441_cc" width="700" height="700"/>
+    </resources>
+</document>
