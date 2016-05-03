@@ -85,7 +85,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    HistoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"userProfileCell"
+    HistoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"itineraryCell"
                                                                  forIndexPath:indexPath];
     
     cell.itineraryLabel.text = ((Itinerary *)self.itineraries[indexPath.row]).title;

@@ -11,8 +11,9 @@
 #import "Itinerary.h"
 #import "User.h"
 #import "Firebase.h"
-#import "ItineraryDisplayTableViewCell.h"
 #import "Secrets.h"
+#import "HistoryTableViewCell.h"
+#import "ItineraryViewController.h"
 
 
 @interface ItineraryHistoryTableViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -21,9 +22,7 @@
 
 @property (strong, nonatomic) NSArray *itineraryIDs;
 @property (strong, nonatomic) NSMutableArray *itineraries;
-
 @property (strong, nonatomic) UIActivityIndicatorView * spinner;
-
 
 @end
 
@@ -51,6 +50,7 @@
     self.itineraries = [[NSMutableArray alloc]init];
     
     self.tableView.delegate = self;
+    self.tableView.dataSource = self;
     
     [self addItinerariesToTableView];
 }
@@ -60,43 +60,33 @@
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return self.itineraryIDs.count;
+    return 1;
 }
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    return 1;
-    
+    return self.itineraries.count;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ItineraryCell" forIndexPath:indexPath];
+    HistoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"itineraryCell"
+                                                                 forIndexPath:indexPath];
+    
+    cell.itineraryLabel.text = ((Itinerary *)self.itineraries[indexPath.row]).title;
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    //    Itinerary *currentItinerary = self.titlesOfItineraries[indexPath.row];
-    //    NSLog(@"what is current One: %@", currentItinerary);
-    //    cell.textLabel.text = self.titlesOfItineraries[indexPath.row];
-    //
-    //    NSArray *activities = self.itineraryEvents[indexPath.row];
-    //    
+    cell.itinerary = self.itineraries[indexPath.row];
     
     return cell;
 }
 
 -(void)addItinerariesToTableView {
     
-    for (NSString *key in self.itineraryIDs) {
-        
-        [FirebaseAPIClient getItineraryWithItineraryID:key completion:^(Itinerary * itinerary) {
-            [self.itineraries addObject:itinerary];
-            [self sortItinerariesByCreationDate];
-            [self.tableView reloadData];
-        }];
-    }
+    [FirebaseAPIClient getMostRecentItinerariesWithCompletion:^(NSArray<Itinerary *> * _Nullable itineraries) {
+        self.itineraries = (NSMutableArray *)itineraries;
+        [self.tableView reloadData];
+    }];
 }
 
 -(void)sortItinerariesByCreationDate {
@@ -111,5 +101,19 @@
     self.itineraries = [[temporaryItineraryArray
                          sortedArrayUsingDescriptors:sortDescriptors] mutableCopy];
 }
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    NSLog(@"Preparing for segue from User Profile");
+    
+    if ([segue.identifier isEqualToString:@"ItineraryFromUserProfileSegue"]) {
+        ItineraryViewController *destinationVC = [segue destinationViewController];
+        HistoryTableViewCell *cell = sender;
+        destinationVC.itinerary = cell.itinerary;
+        destinationVC.latitude = self.latitude;
+        destinationVC.longitude = self.longitude;
+    }
+}
+
 
 @end

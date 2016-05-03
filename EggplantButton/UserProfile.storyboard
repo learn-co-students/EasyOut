@@ -50,7 +50,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" red="0.36960259470000001" green="0.80310696039999996" blue="0.83317307689999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="userProfileCell" id="NKB-Fu-1W7" customClass="HistoryTableViewCell">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="itineraryCell" id="NKB-Fu-1W7" customClass="HistoryTableViewCell">
                                                 <rect key="frame" x="0.0" y="28" width="337" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NKB-Fu-1W7" id="nXg-5g-Trz">
@@ -113,8 +113,8 @@
         <!--ItineraryView-->
         <scene sceneID="M1C-X6-2dh">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="X61-eJ-ip4" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewControllerPlaceholder storyboardIdentifier="ItineraryView" storyboardName="ItineraryView" id="8rl-hq-p4L" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X61-eJ-ip4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1141.5" y="-986"/>
         </scene>
