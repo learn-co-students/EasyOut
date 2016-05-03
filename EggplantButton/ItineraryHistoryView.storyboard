@@ -7,12 +7,12 @@
     </dependencies>
     <scenes>
         <!--ItineraryView-->
-        <scene sceneID="D7i-0Z-4zp">
+        <scene sceneID="NOW-Ht-gpl">
             <objects>
-                <viewControllerPlaceholder storyboardName="ItineraryView" id="PQg-d4-gV6" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Mpj-HV-Gp3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="ItineraryView" id="2hL-eY-Lg8" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BLZ-G7-XEj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3245.5" y="85"/>
+            <point key="canvasLocation" x="2932.5" y="55"/>
         </scene>
         <!--Itinerary Feed-->
         <scene sceneID="L8L-w7-oci">
@@ -39,6 +39,9 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="2hL-eY-Lg8" kind="show" identifier="segueFromItineraryFeedToItinerary" id="2Tq-8k-LqI"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
