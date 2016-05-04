@@ -340,10 +340,10 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Gyi-n7-ZWf" userLabel="Button Stack">
-                                <rect key="frame" x="24" y="267" width="152" height="86"/>
+                                <rect key="frame" x="26" y="267" width="148" height="86"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j6a-DZ-UOp">
-                                        <rect key="frame" x="0.0" y="0.0" width="152" height="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="148" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="bcF-OX-o5Z"/>
                                         </constraints>
@@ -358,7 +358,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hOL-Ei-CQk">
-                                        <rect key="frame" x="0.0" y="49" width="152" height="37"/>
+                                        <rect key="frame" x="0.0" y="49" width="148" height="37"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="21"/>
                                         <size key="titleShadowOffset" width="2.2250738585072014e-308" height="1"/>
                                         <state key="normal" title="Itinerary History">

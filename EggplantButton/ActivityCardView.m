@@ -9,7 +9,6 @@
 
 #import "ActivityCardView.h"
 #import "ActivityCardCollectionViewCell.h"
-#import "Event.h"
 #import <AFNetworking/AFImageDownloader.h>
 #import <AFNetworking/AFNetworking.h>
 #import "QuartzCore/CALayer.h"

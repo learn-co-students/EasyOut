@@ -14,7 +14,6 @@
 #import "CircleLabelView.h"
 #import "UserProfileItineraryTableViewCell.h"
 #import "ItineraryViewController.h"
-#import "TableHeader.h"
 
 @interface UserProfileViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>
 

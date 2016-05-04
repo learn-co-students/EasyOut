@@ -7,8 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Restaurant.h"
-#import "Event.h"
 #import "Activity.h"
 
 
