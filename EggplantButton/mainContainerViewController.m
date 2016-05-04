@@ -83,9 +83,7 @@
 }
 
 -(void)blurBackgroundView {
-    
-//    self.viewContainer.backgroundColor = [UIColor clearColor];
-    
+        
     UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
     self.blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
     self.blurEffectView.frame = self.view.bounds;
@@ -95,8 +93,6 @@
 }
 
 -(void)unblurBackgroundView {
-    
-//    self.viewContainer.backgroundColor = [UIColor blackColor];
     
     [self.blurEffectView removeFromSuperview];
 }
