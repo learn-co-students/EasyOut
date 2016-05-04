@@ -38,7 +38,7 @@ PODS:
     - FontAwesomeKit/Core
   - FontAwesomeKit/Zocial (2.2.1):
     - FontAwesomeKit/Core
-  - GoogleMaps (1.13.0)
+  - GoogleMaps (1.13.1)
   - Masonry (1.0.0)
   - UIView+Shake (1.1.5)
 
@@ -67,7 +67,7 @@ SPEC CHECKSUMS:
   DeepLinkKit: 4c3a713b7ecc6c6e25ba56c87d0c728f6035a9ef
   Firebase: 3565ea88b830f28f2c77ecc524622bc71a20d085
   FontAwesomeKit: 3614979b3dbb0ec3f7fac1bd760b91f66c31db67
-  GoogleMaps: 7a6caeb8336d7cb42982e969fc9b1b20a889fe79
+  GoogleMaps: 8935220056a6cc8e9ca298b4da4ae530620aa71b
   Masonry: b529bb169217897b6354d4b56b1fada6d475b13d
   UIView+Shake: 2d2185006d38ee5daed07f14c0989f703f86682f
 

@@ -61,6 +61,7 @@
     [UIView animateWithDuration:0.2 animations:^{
         self.sideMenuContainer.alpha = 0.95;
         self.viewContainer.alpha = 0.6;
+        [self blurBackgroundView];
     }];
     
     NSLog(@"Menu button tapped");
@@ -74,16 +75,33 @@
     [UIView animateWithDuration:0.2 animations:^{
         self.sideMenuContainer.alpha = 0;
         self.viewContainer.alpha = 1;
+        [self blurBackgroundView];
     }];
     
     NSLog(@"Main View tapped");
+}
+
+-(void)blurBackgroundView {
+    
+    if (!UIAccessibilityIsReduceTransparencyEnabled()) {
+        self.view.backgroundColor = [UIColor clearColor];
+        
+        UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+        UIVisualEffectView *blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+        blurEffectView.frame = self.view.bounds;
+        blurEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        
+        [self.view addSubview:blurEffectView];
+    }
+    else {
+        self.view.backgroundColor = [UIColor blackColor];
+    }
 }
 
 - (void) sideMenuFadeAway: (NSNotification *) notification {
     
     [UIView animateWithDuration:0.2 animations:^{
         self.sideMenuContainer.alpha = 0;
-
         self.viewContainer.alpha = 1;
     }];
     
