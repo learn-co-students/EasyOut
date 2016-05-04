@@ -54,12 +54,11 @@
     
     self.view.backgroundColor = [UIColor clearColor];
     
-//    super.mainViewTapGestureRecognizer.enabled = NO;
-    
     self.itineraries = [[NSMutableArray alloc]init];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.tableView.userInteractionEnabled = YES;
     
     [self addItinerariesToTableView];
 }

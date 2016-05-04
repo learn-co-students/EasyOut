@@ -65,6 +65,8 @@
         [self blurBackgroundView];
     }];
     
+    self.sideMenuContainer.hidden = NO;
+    
     NSLog(@"Menu button tapped");
 }
 
@@ -81,6 +83,7 @@
     UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
     self.blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
     self.blurEffectView.frame = self.view.bounds;
+    self.blurEffectView.alpha = 0.5;
     self.blurEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     [self.viewContainer addSubview:self.blurEffectView];
@@ -92,7 +95,7 @@
 }
 
 - (void) sideMenuFadeAway: (NSNotification *) notification {
-    
+        
     [UIView animateWithDuration:0.2 animations:^{
         self.sideMenuContainer.alpha = 0;
         self.viewContainer.alpha = 1;
@@ -101,6 +104,7 @@
     
     self.mainViewTapGestureRecognizer.enabled = NO;
     self.viewContainer.subviews[0].userInteractionEnabled = YES;
+    self.sideMenuContainer.hidden = YES;
 
     NSLog(@"Side Menu fading away");
 }
