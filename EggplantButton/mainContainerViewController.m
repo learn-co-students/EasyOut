@@ -70,14 +70,8 @@
 
 - (IBAction)mainViewTapped:(id)sender {
     
-    self.mainViewTapGestureRecognizer.enabled = NO;
-    self.viewContainer.subviews[0].userInteractionEnabled = YES;
-    
-    [UIView animateWithDuration:0.2 animations:^{
-        self.sideMenuContainer.alpha = 0;
-        self.viewContainer.alpha = 1;
-        [self unblurBackgroundView];
-    }];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"sideMenuFadeAway"
+                                                        object:nil];
     
     NSLog(@"Main View tapped");
 }
