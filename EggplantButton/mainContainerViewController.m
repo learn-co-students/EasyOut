@@ -102,6 +102,7 @@
     [UIView animateWithDuration:0.2 animations:^{
         self.sideMenuContainer.alpha = 0;
         self.viewContainer.alpha = 1;
+        [self unblurBackgroundView];
     }];
     
     self.mainViewTapGestureRecognizer.enabled = NO;
