@@ -1,13 +1,13 @@
 //
 //  ItineraryHistoryTableViewController.m
-//  EggplantButton
+//  EasyOut
 //
 //  Created by Ian Alexander Rahman on 4/12/16.
-//  Copyright © 2016 Team Eggplant Button. All rights reserved.
+//  Copyright © 2016 EasyOut. All rights reserved.
 //
 
 #import "ItineraryHistoryTableViewController.h"
-#import "EggplantButton-Swift.h"
+#import "EasyOut-Swift.h"
 #import "Itinerary.h"
 #import "User.h"
 #import "Firebase.h"

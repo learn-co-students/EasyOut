@@ -1,9 +1,9 @@
 //
 //  Constants.h
-//  EggplantButton
+//  EasyOut
 //
 //  Created by Ian Alexander Rahman on 4/19/16.
-//  Copyright © 2016 Team Eggplant Button. All rights reserved.
+//  Copyright © 2016 EasyOut. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

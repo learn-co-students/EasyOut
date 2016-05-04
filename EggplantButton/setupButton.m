@@ -1,9 +1,9 @@
 //
 //  setupButton.m
-//  EggplantButton
+//  EasyOut
 //
 //  Created by Lisa Lee on 4/4/16.
-//  Copyright © 2016 Team Eggplant Button. All rights reserved.
+//  Copyright © 2016 EasyOut. All rights reserved.
 //
 
 #import "setupButton.h"

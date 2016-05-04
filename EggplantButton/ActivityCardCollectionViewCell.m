@@ -1,9 +1,9 @@
 //
 //  ActivityCardCollectionViewCell.m
-//  EggplantButton
+//  EasyOut
 //
 //  Created by Stephanie on 4/8/16.
-//  Copyright © 2016 Team Eggplant Button. All rights reserved.
+//  Copyright © 2016 EasyOut. All rights reserved.
 //
 
 #import "ActivityCardCollectionViewCell.h"

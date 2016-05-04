@@ -1,15 +1,15 @@
 //
 //  sideMenuViewController.m
-//  EggplantButton
+//  EasyOut
 //
 //  Created by Lisa Lee on 4/15/16.
-//  Copyright © 2016 Team Eggplant Button. All rights reserved.
+//  Copyright © 2016 EasyOut. All rights reserved.
 //
 
 #import "sideMenuViewController.h"
 #import "Secrets.h"
 #import "Firebase.h"
-#import "EggplantButton-Swift.h"
+#import "EasyOut-Swift.h"
 #import "Constants.h"
 
 

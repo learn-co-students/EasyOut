@@ -1,16 +1,16 @@
 //
 //  ItineraryViewController.m
-//  EggplantButton
+//  EasyOut
 //
 //  Created by Adrian Brown  on 4/19/16.
-//  Copyright © 2016 Team Eggplant Button. All rights reserved.
+//  Copyright © 2016 EasyOut. All rights reserved.
 //
 
 #import "ItineraryViewController.h"
 #import "Activity.h"
 #import "Constants.h"
 #import <GoogleMaps/GoogleMaps.h>
-#import "EggplantButton-Swift.h"
+#import "EasyOut-Swift.h"
 #import "ItineraryReviewTableViewCell.h"
 #import "ActivityCardView.h"
 #import <AFNetworking/AFImageDownloader.h>
@@ -221,7 +221,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSLog(@"SELECTED: ", @"lu", indexPath.row);
+    NSLog(@"SELECTED: %lu", indexPath.row);
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

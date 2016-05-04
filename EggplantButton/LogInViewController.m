@@ -1,6 +1,6 @@
 //
 //  LogInViewController.m
-//  EggplantButton
+//  EasyOut
 //
 //  Created by Adrian Brown  on 4/7/16.
 //  Copyright © 2016 Team Eggplant Button. All rights reserved.
@@ -8,7 +8,7 @@
 
 #import "LogInViewController.h"
 #import "Secrets.h"
-#import "EggplantButton-Swift.h"
+#import "EasyOut-Swift.h"
 #import "Firebase.h"
 #import "CreateAccountViewController.h"
 
