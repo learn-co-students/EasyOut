@@ -157,7 +157,7 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="fEg-oX-WV2">
-                        <barButtonItem key="leftBarButtonItem" image="hamburgerMenu" style="plain" id="31r-AO-Stk">
+                        <barButtonItem key="leftBarButtonItem" image="hamburgerMenu" id="31r-AO-Stk">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="menuButtonTapped:" destination="BYZ-38-t0r" id="hfr-BY-jz5"/>
@@ -177,14 +177,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1121.5" y="464.5"/>
-        </scene>
-        <!--filterView-->
-        <scene sceneID="MuF-Bf-EaV">
-            <objects>
-                <viewControllerPlaceholder storyboardName="FilterView" referencedIdentifier="filterView" id="N6m-nR-JnJ" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TY3-W1-vhs" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1580.5" y="227"/>
         </scene>
         <!--ItineraryView-->
         <scene sceneID="evW-UL-NHe">
@@ -347,8 +339,8 @@
                                     <constraint firstItem="QAn-KC-cd3" firstAttribute="width" secondItem="oa3-68-VNE" secondAttribute="width" multiplier="0.9" id="AgM-wD-JV7"/>
                                 </constraints>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Gyi-n7-ZWf" userLabel="Button Stack">
-                                <rect key="frame" x="25" y="267" width="152" height="86"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Gyi-n7-ZWf" userLabel="Button Stack">
+                                <rect key="frame" x="24" y="267" width="152" height="86"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j6a-DZ-UOp">
                                         <rect key="frame" x="0.0" y="0.0" width="152" height="34"/>
@@ -391,6 +383,7 @@
                             <constraint firstItem="utd-AB-OgT" firstAttribute="bottom" secondItem="COR-WQ-UzG" secondAttribute="bottomMargin" constant="-20" id="ncN-7E-fNF"/>
                         </constraints>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="userImage" destination="2tM-t7-nEo" id="CuX-4F-gye"/>
                         <outlet property="usernameLabel" destination="vh4-OL-ZXU" id="VpV-2C-Rd3"/>
