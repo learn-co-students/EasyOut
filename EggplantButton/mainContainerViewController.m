@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIView * sideMenuContainer;
 @property (weak, nonatomic) IBOutlet UIView * viewContainer;
 @property (strong, nonatomic) UIActivityIndicatorView * spinner;
+@property (strong, nonatomic) UIVisualEffectView *blurEffectView;
 
 @end
 
@@ -75,7 +76,7 @@
     [UIView animateWithDuration:0.2 animations:^{
         self.sideMenuContainer.alpha = 0;
         self.viewContainer.alpha = 1;
-        [self blurBackgroundView];
+        [self unblurBackgroundView];
     }];
     
     NSLog(@"Main View tapped");
@@ -83,19 +84,21 @@
 
 -(void)blurBackgroundView {
     
-    if (!UIAccessibilityIsReduceTransparencyEnabled()) {
-        self.view.backgroundColor = [UIColor clearColor];
-        
-        UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
-        UIVisualEffectView *blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-        blurEffectView.frame = self.view.bounds;
-        blurEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        
-        [self.view addSubview:blurEffectView];
-    }
-    else {
-        self.view.backgroundColor = [UIColor blackColor];
-    }
+//    self.viewContainer.backgroundColor = [UIColor clearColor];
+    
+    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+    self.blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+    self.blurEffectView.frame = self.view.bounds;
+    self.blurEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    
+    [self.viewContainer addSubview:self.blurEffectView];
+}
+
+-(void)unblurBackgroundView {
+    
+//    self.viewContainer.backgroundColor = [UIColor blackColor];
+    
+    [self.blurEffectView removeFromSuperview];
 }
 
 - (void) sideMenuFadeAway: (NSNotification *) notification {
