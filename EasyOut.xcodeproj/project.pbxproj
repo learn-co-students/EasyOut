@@ -60,7 +60,6 @@
 		4CD9FF861CCE605400D3E603 /* CircleLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD9FF811CCE605400D3E603 /* CircleLabelView.m */; };
 		4CD9FF871CCE605400D3E603 /* ItineraryReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CD9FF821CCE605400D3E603 /* ItineraryReviewCell.xib */; };
 		4CD9FF881CCE605400D3E603 /* ItineraryReviewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD9FF841CCE605400D3E603 /* ItineraryReviewTableViewCell.m */; };
-		752C207F8039FC0AF3F24A9C /* Pods_EggplantButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 620C2EAF950D8ACD2F96FDC8 /* Pods_EggplantButton.framework */; };
 		787EEDFB1CC6B51A00555A16 /* ActivityCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C358D721CADCDF700257756 /* ActivityCardView.m */; };
 		78A7F6C71CBD44AC00DD4937 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78A7F6C61CBD44AC00DD4937 /* CoreMotion.framework */; };
 		78A7F6CB1CBD44C500DD4937 /* GameplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78A7F6CA1CBD44C500DD4937 /* GameplayKit.framework */; };
@@ -198,7 +197,6 @@
 				78A7F6CD1CBDA1FC00DD4937 /* AudioToolbox.framework in Frameworks */,
 				78A7F6CB1CBD44C500DD4937 /* GameplayKit.framework in Frameworks */,
 				78A7F6C71CBD44AC00DD4937 /* CoreMotion.framework in Frameworks */,
-				752C207F8039FC0AF3F24A9C /* Pods_EggplantButton.framework in Frameworks */,
 				4C0428231CDA5C81008E52CB /* GameKit.framework in Frameworks */,
 				F4E25B66C8B63CDBD782D4CB /* Pods_EasyOut.framework in Frameworks */,
 			);
