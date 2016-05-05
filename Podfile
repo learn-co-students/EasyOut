@@ -6,9 +6,8 @@ use_frameworks!
 target 'EasyOut' do
 
 pod 'AFNetworking'
-pod 'Masonry'
 pod 'Firebase'
-pod 'Button', '~> 4'
+#pod 'Button', '~> 4'
 pod 'DeepLinkKit'
 pod 'UIView+Shake'
 pod 'GoogleMaps'

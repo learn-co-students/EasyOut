@@ -7,7 +7,6 @@
 //
 
 #import "AppViewController.h"
-#import <Masonry/Masonry.h>
 #import "Secrets.h"
 #import "Firebase.h"
 #import "User.h"
@@ -35,10 +34,7 @@
     
     Firebase *ref = [[Firebase alloc] initWithUrl:firebaseRootRef];
     
-//    [FirebaseAPIClient getMostRecentItinerariesWithCompletion:^(NSArray<Itinerary *> * _Nullable itineraries) {
-//        NSLog(@"%@", itineraries);
-//    }];
-    
+    // Uncomment the following line to log out of current user account upon app start
 //    [ref unauth];
     
     self.user = [[User alloc] init];
@@ -98,9 +94,14 @@
     
     [self addChildViewController:controller];
     [self.containerView addSubview:controller.view];
-    [controller.view mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(@0);
-    }];
+    
+    controller.view.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [controller.view.leadingAnchor constraintEqualToAnchor:self.containerView.leadingAnchor].active = YES;
+    [controller.view.trailingAnchor constraintEqualToAnchor:self.containerView.trailingAnchor].active = YES;
+    [controller.view.topAnchor constraintEqualToAnchor:self.containerView.topAnchor].active = YES;
+    [controller.view.bottomAnchor constraintEqualToAnchor:self.containerView.bottomAnchor].active = YES;
+
     [controller didMoveToParentViewController:self];
 }
 

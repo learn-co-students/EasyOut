@@ -12,7 +12,7 @@
 #import <GoogleMaps/GMSGeometryUtils.h>
 #import <AFNetworking/AFImageDownloader.h>
 #import <FontAwesomeKit/FontAwesomeKit.h>
-#import <Button/Button.h>
+//#import <Button/Button.h>
 
 #import "Constants.h"
 #import "Secrets.h"
@@ -34,7 +34,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *uberIcon;
 @property (weak, nonatomic) IBOutlet UIButton *uberButton;
 
-@property (nonatomic, strong) BTNDropinButton *dropinButton;
+//@property (nonatomic, strong) BTNDropinButton *dropinButton;
 @property (strong, nonatomic) UIActivityIndicatorView * spinner;
 
 @end
@@ -225,47 +225,47 @@
 }
 
 - (void)setupUberButton {
-
-    // Initialize Button integration
-    [[Button sharedButton] configureWithApplicationId:BUTTON_APP_ID
-                                           completion:NULL];
-
-    // Allow Button to request location
-    [Button allowButtonToRequestLocationPermission:YES];
-
-    // Set up Uber Button
-    self.dropinButton = [[BTNDropinButton alloc] initWithButtonId:BUTTON_APP_ID];
-    [self.uberIcon addSubview:self.dropinButton];
-
-    // Set Uber Button appearance
-    [self.dropinButton.leadingAnchor constraintEqualToAnchor:self.uberIcon.leadingAnchor].active = YES;
-    [self.dropinButton.trailingAnchor constraintEqualToAnchor:self.uberIcon.trailingAnchor].active = YES;
-    [self.dropinButton.topAnchor constraintEqualToAnchor:self.uberIcon.topAnchor].active = YES;
-    [self.dropinButton.bottomAnchor constraintEqualToAnchor:self.uberIcon.bottomAnchor].active = YES;
-
-    self.dropinButton.alpha = 0.01;
-
-    BTNLocation *location = [BTNLocation locationWithLatitude:self.latitude
-                                                    longitude:self.longitude];
-
-    BTNContext *context = [BTNContext contextWithSubjectLocation:location];
-
-    // Check if Uber is available and display button if it is
-    [[Button sharedButton] willDisplayButtonWithId:BUTTON_APP_ID
-                                           context:context
-                                        completion:^(BOOL willDisplay) {
-        if (willDisplay) {
-            // An action is available for this button and context.
-
-            // Prepare the Button for display
-            [self.dropinButton prepareWithContext:context completion:^(BOOL isDisplayable) {
-                if (!isDisplayable) {
-                    // Hide the Uber icon
-                    self.uberIcon.alpha = 0.0;
-                }
-            }];
-        }
-    }];
+//
+//    // Initialize Button integration
+//    [[Button sharedButton] configureWithApplicationId:BUTTON_APP_ID
+//                                           completion:NULL];
+//
+//    // Allow Button to request location
+//    [Button allowButtonToRequestLocationPermission:YES];
+//
+//    // Set up Uber Button
+//    self.dropinButton = [[BTNDropinButton alloc] initWithButtonId:BUTTON_APP_ID];
+//    [self.uberIcon addSubview:self.dropinButton];
+//
+//    // Set Uber Button appearance
+//    [self.dropinButton.leadingAnchor constraintEqualToAnchor:self.uberIcon.leadingAnchor].active = YES;
+//    [self.dropinButton.trailingAnchor constraintEqualToAnchor:self.uberIcon.trailingAnchor].active = YES;
+//    [self.dropinButton.topAnchor constraintEqualToAnchor:self.uberIcon.topAnchor].active = YES;
+//    [self.dropinButton.bottomAnchor constraintEqualToAnchor:self.uberIcon.bottomAnchor].active = YES;
+//
+//    self.dropinButton.alpha = 0.01;
+//
+//    BTNLocation *location = [BTNLocation locationWithLatitude:self.latitude
+//                                                    longitude:self.longitude];
+//
+//    BTNContext *context = [BTNContext contextWithSubjectLocation:location];
+//
+//    // Check if Uber is available and display button if it is
+//    [[Button sharedButton] willDisplayButtonWithId:BUTTON_APP_ID
+//                                           context:context
+//                                        completion:^(BOOL willDisplay) {
+//        if (willDisplay) {
+//            // An action is available for this button and context.
+//
+//            // Prepare the Button for display
+//            [self.dropinButton prepareWithContext:context completion:^(BOOL isDisplayable) {
+//                if (!isDisplayable) {
+//                    // Hide the Uber icon
+//                    self.uberIcon.alpha = 0.0;
+//                }
+//            }];
+//        }
+//    }];
 }
 
 @end
