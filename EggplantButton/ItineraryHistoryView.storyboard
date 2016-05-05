@@ -16,7 +16,7 @@
         <!--Itinerary Feed-->
         <scene sceneID="L8L-w7-oci">
             <objects>
-                <viewController storyboardIdentifier="ItineraryHistoryTableViewController" title="PastItineraries" id="hnC-la-dHs" userLabel="Itinerary Feed" customClass="ItineraryHistoryTableViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ItineraryHistoryTableViewController" title="PastItineraries" automaticallyAdjustsScrollViewInsets="NO" id="hnC-la-dHs" userLabel="Itinerary Feed" customClass="ItineraryHistoryTableViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fpy-aA-y3n"/>
                         <viewControllerLayoutGuide type="bottom" id="IHK-a9-0by"/>
@@ -31,7 +31,7 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="itineraryCell" rowHeight="90" id="bQo-oG-0rt" customClass="ItineraryReviewTableViewCell">
-                                        <rect key="frame" x="0.0" y="65" width="560" height="90"/>
+                                        <rect key="frame" x="0.0" y="1" width="560" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bQo-oG-0rt" id="mNb-ll-5cU">
                                             <rect key="frame" x="0.0" y="0.0" width="560" height="89"/>
@@ -53,7 +53,7 @@
                             <constraint firstItem="Qyl-Wz-MJq" firstAttribute="top" secondItem="fpy-aA-y3n" secondAttribute="bottom" constant="10" id="t0a-cs-u1z"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="7GN-Za-CiC"/>
+                    <navigationItem key="navigationItem" title="All Recent Itineraries" id="UNq-TU-dsB"/>
                     <connections>
                         <outlet property="tableView" destination="Qyl-Wz-MJq" id="f2B-no-5OL"/>
                     </connections>
