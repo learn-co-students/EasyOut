@@ -13,12 +13,13 @@
 #import <AFNetworking/AFImageDownloader.h>
 #import <FontAwesomeKit/FontAwesomeKit.h>
 #import <Button/Button.h>
+#import <SafariServices/SafariServices.h>
 
 #import "Constants.h"
 #import "Secrets.h"
 
 
-@interface DetailViewController ()
+@interface DetailViewController () <SFSafariViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
@@ -32,6 +33,8 @@
 @property (strong, nonatomic) GMSMapView *mapView;
 
 @property (weak, nonatomic) IBOutlet UIImageView *uberIcon;
+
+@property (weak, nonatomic) IBOutlet UIButton *moreDetail;
 @property (weak, nonatomic) IBOutlet UIButton *uberButton;
 
 @property (nonatomic, strong) BTNDropinButton *dropinButton;
@@ -89,16 +92,26 @@
     FAKFoundationIcons *mapIcon = [FAKFoundationIcons markerIconWithSize:25];
     [mapIcon addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor]];
     
-    NSMutableAttributedString *clockString = [[clockIcon attributedString] mutableCopy];
+    FAKFontAwesome *fourIcon = [FAKFontAwesome foursquareIconWithSize:25];
+    [fourIcon addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor]];
     
-    [clockString appendAttributedString: [[NSAttributedString alloc]initWithString: [NSString stringWithFormat: @" %@", self.activity.openStatus]]];
+    NSMutableAttributedString *clockString = [[NSMutableAttributedString alloc]initWithString:@" "];
+    NSAttributedString *clockAttr = [clockIcon attributedString];
+    [clockString appendAttributedString: clockAttr];
+    [clockString appendAttributedString: [[NSAttributedString alloc]initWithString: [NSString stringWithFormat: @"  %@", self.activity.openStatus]]];
     self.hoursLabel.attributedText =  clockString;
     
-    NSMutableAttributedString *mapString = [[mapIcon attributedString] mutableCopy];
-    
-    [mapString appendAttributedString: [[NSAttributedString alloc]initWithString: [NSString stringWithFormat: @" %@ %@", self.activity.address[0], self.activity.address[1]]]];
-    
+    NSMutableAttributedString *mapString = [[NSMutableAttributedString alloc]initWithString:@" "];
+    NSAttributedString *mapAtr = [mapIcon attributedString];
+    [mapString appendAttributedString: mapAtr];
+    [mapString appendAttributedString: [[NSAttributedString alloc]initWithString: [NSString stringWithFormat: @"  %@ %@", self.activity.address[0], self.activity.address[1]]]];
     self.addressLabel.attributedText = mapString;
+    
+    NSMutableAttributedString *fourString = [[NSMutableAttributedString alloc]initWithString:@" "];
+    NSAttributedString *fourAtr = [fourIcon attributedString];
+    [fourString appendAttributedString: fourAtr];
+    [fourString appendAttributedString: [[NSAttributedString alloc]initWithString: @"  More Detail"]];
+    [self.moreDetail setAttributedTitle: fourString forState: UIControlStateNormal];
 
 }
 
@@ -174,10 +187,16 @@
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:self.latitude
                                                             longitude:self.longitude
                                                                  zoom:14];
+    
+    
 
     self.mapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     [self.mapUIView addSubview:self.mapView];
 
+    
+    UIEdgeInsets mapInsets = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0);
+    self.mapView.padding = mapInsets;
+    
     //COORDINATES FOR USER AND ACTIVITY
 
     NSString *address = [NSString stringWithFormat:@"%@ %@", self.activity.address[0], self.activity.address[1]];
@@ -215,10 +234,15 @@
     [[self navigationController] popViewControllerAnimated:YES];
 }
 
-- (IBAction)detailButtonPressed:(id)sender {
 
-    [[UIApplication sharedApplication] openURL: self.activity.moreDetailsURL];
+- (IBAction)detailButtonPressed:(UIButton *)sender {
+    
+    SFSafariViewController *safariVC = [[SFSafariViewController alloc] initWithURL: [NSURL URLWithString: [NSString stringWithFormat: @"%@?ref:%@", self.activity.moreDetailsURL,FOURSQUARE_CLIENT_ID]]];
+    safariVC.delegate = self;
+    [self presentViewController:safariVC animated:NO completion:nil];
 }
+
+
 
 - (IBAction)uberButtonTapped:(id)sender {
 

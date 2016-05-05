@@ -18,7 +18,7 @@
 @property (strong, nonatomic) NSString *price;
 @property (strong, nonatomic) NSString *openStatus;
 @property (strong, nonatomic) NSURL *icon;
-@property (strong, nonatomic) NSURL *moreDetailsURL;
+@property (strong, nonatomic) NSString *moreDetailsURL;
 @property (strong, nonatomic) NSString *distance;
 
 -(instancetype)initWithDictionary:(NSDictionary *)activityDictionary;

@@ -110,9 +110,9 @@
     
     [FirebaseAPIClient logInUserWithEmail:self.emailLabel.text password:self.passwordLabel.text completion:^(FAuthData *authData, NSError *error) {
         
-        if (error != nil) {
+        if (error) {
             
-            [self generateErrorMessage:error];
+            [self generateLoginAlertForError:error];
             
         }
         else {
