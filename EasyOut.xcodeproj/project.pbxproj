@@ -34,7 +34,6 @@
 		4C9C96271CC58C0600C7094A /* FirebaseIntegrationTestFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9C96261CC58C0600C7094A /* FirebaseIntegrationTestFunctions.swift */; };
 		4C9C962A1CC6ABAF00C7094A /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9C96291CC6ABAF00C7094A /* Constants.m */; };
 		4CAD0CC51CB568C4008162CE /* FirebaseIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAD0CC41CB568C4008162CE /* FirebaseIntegration.swift */; };
-		4CBBC5FB1CBA9618006683D8 /* Button.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CBBC5FA1CBA9618006683D8 /* Button.storyboard */; };
 		4CBBC6041CBA96DF006683D8 /* AppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBBC5FD1CBA96DF006683D8 /* AppViewController.m */; };
 		4CBBC6051CBA96DF006683D8 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBBC5FF1CBA96DF006683D8 /* LogInViewController.m */; };
 		4CBBC6061CBA96DF006683D8 /* setupButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBBC6011CBA96DF006683D8 /* setupButton.m */; };
@@ -129,7 +128,6 @@
 		4C9C96291CC6ABAF00C7094A /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		4CAD0CBF1CB56574008162CE /* EasyOut-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EasyOut-Bridging-Header.h"; sourceTree = "<group>"; };
 		4CAD0CC41CB568C4008162CE /* FirebaseIntegration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseIntegration.swift; path = EggplantButton/FirebaseIntegration.swift; sourceTree = "<group>"; };
-		4CBBC5FA1CBA9618006683D8 /* Button.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Button.storyboard; sourceTree = "<group>"; };
 		4CBBC5FC1CBA96DF006683D8 /* AppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppViewController.h; sourceTree = "<group>"; };
 		4CBBC5FD1CBA96DF006683D8 /* AppViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppViewController.m; sourceTree = "<group>"; };
 		4CBBC5FE1CBA96DF006683D8 /* LogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
@@ -383,7 +381,6 @@
 				9AB65BBB1CBD95E4008A99CF /* Login.storyboard */,
 				9ACC8C161CBD398E00909704 /* DetailView.storyboard */,
 				4CBBC6081CBA97B0006683D8 /* Main.storyboard */,
-				4CBBC5FA1CBA9618006683D8 /* Button.storyboard */,
 				4C64EC411CBAA78200FB3A45 /* ItineraryView.storyboard */,
 				4C9A038C1CAB064200CA9A02 /* LaunchScreen.storyboard */,
 				9A74DC511CBF391900B63B0B /* FilterView.storyboard */,
@@ -531,7 +528,6 @@
 				4C64EC471CBAA78200FB3A45 /* ItineraryView.storyboard in Resources */,
 				4CD9FF6F1CCE602E00D3E603 /* Roboto-Black.ttf in Resources */,
 				4CD9FF731CCE602E00D3E603 /* Roboto-BoldCondensedItalic.ttf in Resources */,
-				4CBBC5FB1CBA9618006683D8 /* Button.storyboard in Resources */,
 				4CD9FF701CCE602E00D3E603 /* Roboto-BlackItalic.ttf in Resources */,
 				4C1DE15F1CB8410900AFBCF5 /* LobsterTwo-Bold.otf in Resources */,
 				4CBBC6091CBA97B0006683D8 /* Main.storyboard in Resources */,

@@ -86,9 +86,6 @@
                             </constraints>
                         </stackView>
                     </subviews>
-                    <constraints>
-                        <constraint firstItem="lK3-La-4e9" firstAttribute="leading" secondItem="Kvi-rc-SHR" secondAttribute="leading" constant="5" id="uDZ-87-sEs"/>
-                    </constraints>
                 </stackView>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
@@ -98,6 +95,7 @@
                 <constraint firstItem="Kvi-rc-SHR" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="Zqx-1U-can"/>
                 <constraint firstItem="Kvi-rc-SHR" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" constant="-5" id="vfQ-Zq-loe"/>
             </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="169.5" y="-143.5"/>
         </view>

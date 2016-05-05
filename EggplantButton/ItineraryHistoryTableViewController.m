@@ -15,6 +15,9 @@
 #import "HistoryTableViewCell.h"
 #import "ItineraryViewController.h"
 #import "mainContainerViewController.h"
+#import "Constants.h"
+#import "ItineraryReviewTableViewCell.h"
+#import <AFNetworking/AFImageDownloader.h>
 
 
 @interface ItineraryHistoryTableViewController () <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>
@@ -60,7 +63,7 @@
     self.tableView.dataSource = self;
     self.tableView.userInteractionEnabled = YES;
     
-    [self addItinerariesToTableView];
+    [self setUpCoreLocation];
 }
 
 -(void)addItinerariesToTableView {
@@ -76,25 +79,73 @@
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
+    return self.itineraries.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.itineraries.count;
+    
+    // Identify current itinerary
+    Itinerary *itinerary = self.itineraries[section];
+    
+    // Return number of activities as rows
+    return itinerary.activities.count;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 50;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    
+    NSLog(@"Creating header for itinerary #%li", section + 1);
+    
+    // 0. Define current itinerary
+    Itinerary *itinerary = self.itineraries[section];
+    
+    // 1. The view for the header
+    UIView* headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 100)];
+    
+    // 2. Set a custom background color and a border
+    headerView.backgroundColor = [Constants vikingBlueColor];
+    headerView.layer.borderColor = [[UIColor whiteColor]colorWithAlphaComponent:0.5].CGColor;
+    headerView.layer.borderWidth = 2.0;
+    headerView.layer.cornerRadius = 5.0;
+    
+    // 3. Add a label
+    UILabel* headerLabel = [[UILabel alloc] init];
+    headerLabel.frame = CGRectMake(5, 0, tableView.frame.size.width -5, 50);
+    headerLabel.backgroundColor = [UIColor clearColor];
+    headerLabel.textColor = [UIColor whiteColor];
+    headerLabel.font = [UIFont fontWithName:@"Roboto-Bold" size:20.0];
+    headerLabel.text = itinerary.title;
+    headerLabel.textAlignment = NSTextAlignmentLeft;
+    
+    // 4. Add the label to the header view
+    [headerView addSubview:headerLabel];
+    
+    // 5. Return section header
+    return headerView;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    HistoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"itineraryCell"
-                                                                 forIndexPath:indexPath];
+    NSLog(@"Creating cell for activity #%li", indexPath.row + 1);
     
-    cell.itinerary = self.itineraries[indexPath.row];
-    cell.itineraryLabel.text = cell.itinerary.title;
-    [FirebaseAPIClient getUsernameForUserID:cell.itinerary.userID completion:^(NSString * _Nonnull username) {
-        cell.userLabel.text = username;
-    }];
+    ItineraryReviewTableViewCell *cell = (ItineraryReviewTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"itineraryCell" forIndexPath:indexPath];
     
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    Itinerary *itinerary = self.itineraries[indexPath.section];
+    
+    Activity *activity = ((Activity *)itinerary.activities[indexPath.row]);
+    
+    cell.nameLabel.text = activity.name;
+    cell.addressLabel.text = activity.address[0];
+    cell.cityStateLabel.text = activity.address[1];
+    
+    [self getDistanceFromLocationOfActivity:activity
+                                 completion:^(CLLocationDistance distance) {
+                                     cell.distanceLabel.text = [NSString stringWithFormat:@"%.02f mi away", roundf(distance * (float)0.000621371 * 100.0) / 100.0];
+                                 }];
+    [self downloadImageWithURL:activity.icon setTo:cell.iconImage];
     
     return cell;
 }
@@ -144,10 +195,77 @@
     [self.locationManager stopUpdatingLocation];
     
     if (self.latitude != 0) {
+        
         NSLog(@"Latitude: %f\nLongitude: %f", self.latitude, self.longitude);
+        
+        [self addItinerariesToTableView];
     } else {
         NSLog(@"Can't find location");
     }
 }
+
+
+#pragma mark - Map and Location
+
+-(void)getDistanceFromLocationOfActivity:(Activity *)activity completion:(void(^)(CLLocationDistance distance))completion {
+    
+    NSLog(@"Getting distance from %@", activity.name);
+    
+    CLLocation *userLocation = [[CLLocation alloc]initWithLatitude:self.latitude longitude:self.longitude];
+    NSString *address = [NSString stringWithFormat:@"%@ %@", activity.address[0], activity.address[1]];
+    
+    [self getLocationFromAddressString:address
+                            completion:^(CLLocationCoordinate2D location) {
+                                
+                                CLLocation *activityLocation = [[CLLocation alloc]initWithLatitude:location.latitude longitude:location.longitude];
+                                CLLocationDistance distance = [userLocation distanceFromLocation: activityLocation];
+                                
+                                NSLog(@"Distance: %f", distance);
+                                
+                                completion(distance);
+                            }];
+    
+}
+
+-(void) getLocationFromAddressString: (NSString*) addressStr completion:(void(^)(CLLocationCoordinate2D location))completion {
+    double latitude = 0, longitude = 0;
+    NSString *esc_addr =  [addressStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    NSString *req = [NSString stringWithFormat:@"http://maps.google.com/maps/api/geocode/json?sensor=false&address=%@", esc_addr];
+    NSString *result = [NSString stringWithContentsOfURL:[NSURL URLWithString:req] encoding:NSUTF8StringEncoding error:NULL];
+    if (result) {
+        NSScanner *scanner = [NSScanner scannerWithString:result];
+        if ([scanner scanUpToString:@"\"lat\" :" intoString:nil] && [scanner scanString:@"\"lat\" :" intoString:nil]) {
+            [scanner scanDouble:&latitude];
+            if ([scanner scanUpToString:@"\"lng\" :" intoString:nil] && [scanner scanString:@"\"lng\" :" intoString:nil]) {
+                [scanner scanDouble:&longitude];
+            }
+        }
+    }
+    
+    CLLocationCoordinate2D center;
+    center.latitude = latitude;
+    center.longitude = longitude;
+    
+    completion(center);
+}
+
+
+#pragma mark - Helper
+
+-(void)downloadImageWithURL:(NSURL *)imageURL setTo:(UIImageView *)imageView {
+    
+    // imageView = nil;
+    AFImageDownloader *downloader = [[AFImageDownloader alloc] init];
+    downloader.downloadPrioritizaton = AFImageDownloadPrioritizationLIFO;
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:imageURL];
+    
+    imageView.image = nil;
+    
+    [downloader downloadImageForURLRequest:urlRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *responseObject) {
+        imageView.image = responseObject;
+        
+    } failure:nil];
+}
+
 
 @end

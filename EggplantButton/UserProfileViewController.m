@@ -14,6 +14,8 @@
 #import "CircleLabelView.h"
 #import "UserProfileItineraryTableViewCell.h"
 #import "ItineraryViewController.h"
+#import "Constants.h"
+
 
 @interface UserProfileViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>
 
@@ -80,7 +82,6 @@
 #pragma mark - Itineraries Table
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    
     return 50;
 }
 
@@ -90,7 +91,7 @@
     UIView* headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 100)];
     
     // 2. Set a custom background color and a border
-    headerView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
+    headerView.backgroundColor = [Constants vikingBlueColor];
     headerView.layer.borderColor = [[UIColor whiteColor]colorWithAlphaComponent:0.5].CGColor;
     headerView.layer.borderWidth = 2.0;
     headerView.layer.cornerRadius = 5.0;

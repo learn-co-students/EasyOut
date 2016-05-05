@@ -51,7 +51,8 @@
                                              selector:@selector(sideMenuFadeAway:)
                                                  name:@"sideMenuFadeAway"
                                                object:nil];
-
+    
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
 }
 
 - (void) menuButtonTapped: (NSNotification *) notification {
@@ -117,8 +118,9 @@
 
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
     
-    if ( [super respondsToSelector:@selector(motionEnded:withEvent:)] )
+    if ( [super respondsToSelector:@selector(motionEnded:withEvent:)] ) {
         [super motionEnded:motion withEvent:event];
+    }
 }
 
 
