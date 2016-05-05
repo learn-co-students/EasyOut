@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -22,49 +21,36 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" userLabel="History Table View Cell">
-            <rect key="frame" x="0.0" y="0.0" width="605" height="90"/>
+            <rect key="frame" x="0.0" y="0.0" width="605" height="169"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dkj-kB-m5f">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dkj-kB-m5f">
                     <rect key="frame" x="10" y="5" width="605" height="45"/>
                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pHz-GE-dKA" userLabel="User Label">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pHz-GE-dKA" userLabel="User Label">
                     <rect key="frame" x="10" y="45" width="605" height="40"/>
                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mtT-G9-5iq">
-                    <rect key="frame" x="533" y="9" width="72" height="72"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="mtT-G9-5iq" secondAttribute="height" multiplier="1:1" id="OpA-qD-Lam" userLabel="aspect = 1:1"/>
-                    </constraints>
-                    <state key="normal" image="arrow_left"/>
-                </button>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="mtT-G9-5iq" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.8" id="26H-3l-A5m"/>
                 <constraint firstItem="Dkj-kB-m5f" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="30j-Xm-Js7"/>
                 <constraint firstItem="pHz-GE-dKA" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" constant="-5" id="4mJ-80-NVL"/>
                 <constraint firstItem="pHz-GE-dKA" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="5yD-fu-mgK"/>
                 <constraint firstItem="pHz-GE-dKA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="KRH-9e-2JG"/>
-                <constraint firstItem="mtT-G9-5iq" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="LCo-cy-mAQ"/>
                 <constraint firstItem="Dkj-kB-m5f" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.5" id="Nyq-IF-ec5"/>
                 <constraint firstItem="Dkj-kB-m5f" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="PJ8-pL-GeN"/>
                 <constraint firstItem="pHz-GE-dKA" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.45" id="WHM-kh-1Qi"/>
-                <constraint firstItem="mtT-G9-5iq" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="hL5-wo-vfG"/>
                 <constraint firstItem="Dkj-kB-m5f" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="wNr-7F-wvC"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="280.5" y="-72"/>
+            <point key="canvasLocation" x="280.5" y="-32.5"/>
         </view>
     </objects>
-    <resources>
-        <image name="arrow_left" width="512" height="512"/>
-    </resources>
 </document>
