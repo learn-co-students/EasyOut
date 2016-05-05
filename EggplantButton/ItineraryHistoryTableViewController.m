@@ -66,12 +66,29 @@
     [self setUpCoreLocation];
 }
 
+
+#pragma mark - Table View
+
 -(void)addItinerariesToTableView {
     
     [FirebaseAPIClient getMostRecentItinerariesWithCompletion:^(NSArray<Itinerary *> * _Nullable itineraries) {
         self.itineraries = (NSMutableArray *)itineraries;
+        [self sortItinerariesByCreationDate];
         [self.tableView reloadData];
     }];
+}
+
+-(void)sortItinerariesByCreationDate {
+    
+    // Sort itineraries by creationDate
+    NSMutableArray *temporaryItineraryArray = [self.itineraries mutableCopy];
+    
+    NSSortDescriptor *dateDescriptor = [NSSortDescriptor
+                                        sortDescriptorWithKey:@"creationDate"
+                                        ascending:NO];
+    NSArray *sortDescriptors = [NSArray arrayWithObject:dateDescriptor];
+    self.itineraries = [[temporaryItineraryArray
+                         sortedArrayUsingDescriptors:sortDescriptors] mutableCopy];
 }
 
 - (void)didReceiveMemoryWarning {

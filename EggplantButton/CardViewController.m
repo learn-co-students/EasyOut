@@ -70,7 +70,6 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self.spinner removeFromSuperview];
 }
 
 - (void)viewDidLoad {
@@ -188,6 +187,8 @@
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 [self.topRowCollection reloadData];
             }];
+            
+            [self.spinner removeFromSuperview];
         }
     }];
 
@@ -198,6 +199,8 @@
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 [self.middleRowCollection reloadData];
             }];
+            
+            [self.spinner removeFromSuperview];
         }
     }];
 
@@ -207,6 +210,8 @@
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 [self.bottomRowCollection reloadData];
             }];
+            
+            [self.spinner removeFromSuperview];
         }
     }];
 }
