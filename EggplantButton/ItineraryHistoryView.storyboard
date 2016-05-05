@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--ItineraryView-->
@@ -26,13 +25,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qyl-Wz-MJq">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="90" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="Qyl-Wz-MJq">
                                 <rect key="frame" x="20" y="74" width="560" height="516"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="itineraryCell" rowHeight="90" id="bQo-oG-0rt" customClass="ItineraryReviewTableViewCell">
-                                        <rect key="frame" x="0.0" y="92" width="560" height="90"/>
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="itineraryCell" rowHeight="90" id="bQo-oG-0rt" customClass="ItineraryReviewTableViewCell">
+                                        <rect key="frame" x="0.0" y="65" width="560" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bQo-oG-0rt" id="mNb-ll-5cU">
                                             <rect key="frame" x="0.0" y="0.0" width="560" height="89"/>
@@ -48,23 +47,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="leadingMargin" secondItem="Qyl-Wz-MJq" secondAttribute="leading" id="5Zz-nw-SdZ"/>
-                            <constraint firstItem="Qyl-Wz-MJq" firstAttribute="top" secondItem="fpy-aA-y3n" secondAttribute="bottom" constant="10" id="8O0-bG-zYM"/>
-                            <constraint firstItem="IHK-a9-0by" firstAttribute="top" secondItem="Qyl-Wz-MJq" secondAttribute="bottom" constant="10" id="KE8-c9-LNZ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Qyl-Wz-MJq" secondAttribute="trailing" id="bAn-Mb-Lhp"/>
-                            <constraint firstItem="Qyl-Wz-MJq" firstAttribute="top" secondItem="fpy-aA-y3n" secondAttribute="bottom" constant="10" id="dfw-Pq-DHp"/>
-                            <constraint firstItem="Qyl-Wz-MJq" firstAttribute="leading" secondItem="xv8-U6-6Lp" secondAttribute="leading" constant="20" id="rhU-d4-K3U"/>
-                            <constraint firstItem="IHK-a9-0by" firstAttribute="top" secondItem="Qyl-Wz-MJq" secondAttribute="bottom" constant="10" id="tMs-Aq-wu1"/>
-                            <constraint firstAttribute="trailing" secondItem="Qyl-Wz-MJq" secondAttribute="trailing" constant="20" id="tYY-Ux-VXs"/>
+                            <constraint firstItem="Qyl-Wz-MJq" firstAttribute="leading" secondItem="xv8-U6-6Lp" secondAttribute="leading" constant="20" id="0kG-zd-b6l"/>
+                            <constraint firstItem="IHK-a9-0by" firstAttribute="top" secondItem="Qyl-Wz-MJq" secondAttribute="bottom" constant="10" id="eke-GH-aYv"/>
+                            <constraint firstAttribute="trailing" secondItem="Qyl-Wz-MJq" secondAttribute="trailing" constant="20" id="eui-kt-vSk"/>
+                            <constraint firstItem="Qyl-Wz-MJq" firstAttribute="top" secondItem="fpy-aA-y3n" secondAttribute="bottom" constant="10" id="t0a-cs-u1z"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="5Zz-nw-SdZ"/>
-                                <exclude reference="8O0-bG-zYM"/>
-                                <exclude reference="bAn-Mb-Lhp"/>
-                                <exclude reference="KE8-c9-LNZ"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="7GN-Za-CiC"/>
                     <connections>
