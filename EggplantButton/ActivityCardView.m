@@ -1,15 +1,14 @@
 
 //
 //  ActivityCardView.m
-//  EggplantButton
+//  EasyOut
 //
 //  Created by Ian Alexander Rahman on 3/31/16.
-//  Copyright © 2016 Team Eggplant Button. All rights reserved.
+//  Copyright © 2016 EasyOut. All rights reserved.
 //
 
 #import "ActivityCardView.h"
 #import "ActivityCardCollectionViewCell.h"
-#import "Event.h"
 #import <AFNetworking/AFImageDownloader.h>
 #import <AFNetworking/AFNetworking.h>
 #import "QuartzCore/CALayer.h"

@@ -1,20 +1,19 @@
 //
 //  UserProfileViewController.m
-//  EggplantButton
+//  EasyOut
 //
 //  Created by Stephanie on 4/13/16.
-//  Copyright © 2016 Team Eggplant Button. All rights reserved.
+//  Copyright © 2016 EasyOut. All rights reserved.
 //
 
 #import "UserProfileViewController.h"
-#import "EggplantButton-Swift.h"
+#import "EasyOut-Swift.h"
 #import "Firebase.h"
 #import "Secrets.h"
 #import "Itinerary.h"
 #import "CircleLabelView.h"
 #import "UserProfileItineraryTableViewCell.h"
 #import "ItineraryViewController.h"
-#import "TableHeader.h"
 
 @interface UserProfileViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>
 

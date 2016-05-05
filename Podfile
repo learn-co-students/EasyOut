@@ -3,12 +3,11 @@
 # Uncomment this line if you're using Swift
 use_frameworks!
 
-target 'EggplantButton' do
+target 'EasyOut' do
 
 pod 'AFNetworking'
-pod 'Masonry'
 pod 'Firebase'
-pod 'Button', '~> 4'
+#pod 'Button', '~> 4'
 pod 'DeepLinkKit'
 pod 'UIView+Shake'
 pod 'GoogleMaps'

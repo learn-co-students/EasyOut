@@ -1,9 +1,9 @@
 //
 //  mainContainerViewController.m
-//  EggplantButton
+//  EasyOut
 //
 //  Created by Lisa Lee on 4/14/16.
-//  Copyright © 2016 Team Eggplant Button. All rights reserved.
+//  Copyright © 2016 EasyOut. All rights reserved.
 //
 
 #import "mainContainerViewController.h"

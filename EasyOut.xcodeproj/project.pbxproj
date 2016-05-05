@@ -11,6 +11,7 @@
 		4C02D1E11CB6E72C0031F978 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C02D1E01CB6E72C0031F978 /* User.m */; };
 		4C02D1E41CB6E8A00031F978 /* Itinerary.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C02D1E31CB6E8A00031F978 /* Itinerary.m */; };
 		4C02D1E71CB6EDD40031F978 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C02D1E61CB6EDD40031F978 /* Photo.m */; };
+		4C0428231CDA5C81008E52CB /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C0428221CDA5C81008E52CB /* GameKit.framework */; };
 		4C0EE1531CBDA0930092C39A /* ItineraryHistoryView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C0EE1521CBDA0930092C39A /* ItineraryHistoryView.storyboard */; };
 		4C0EE1591CBDA2E70092C39A /* ItineraryHistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0EE1581CBDA2E70092C39A /* ItineraryHistoryTableViewController.m */; };
 		4C1DE15F1CB8410900AFBCF5 /* LobsterTwo-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4C1DE15A1CB83E5000AFBCF5 /* LobsterTwo-Bold.otf */; };
@@ -22,9 +23,7 @@
 		4C433C031CB9539C00059C92 /* Activity.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C433C021CB9539C00059C92 /* Activity.m */; };
 		4C64EC341CBAA6BB00FB3A45 /* ActivitiesDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C64EC331CBAA6BB00FB3A45 /* ActivitiesDataStore.m */; };
 		4C64EC441CBAA78200FB3A45 /* CreateAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C64EC3C1CBAA78200FB3A45 /* CreateAccountViewController.m */; };
-		4C64EC451CBAA78200FB3A45 /* EggplantButton.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C64EC3D1CBAA78200FB3A45 /* EggplantButton.xcdatamodeld */; };
 		4C64EC471CBAA78200FB3A45 /* ItineraryView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C64EC411CBAA78200FB3A45 /* ItineraryView.storyboard */; };
-		4C64EC481CBAA78200FB3A45 /* UserHistory.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C64EC421CBAA78200FB3A45 /* UserHistory.xcdatamodeld */; };
 		4C6B66E81CD9467D001A7321 /* UserProfileItineraryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C6B66E71CD9467D001A7321 /* UserProfileItineraryTableViewCell.xib */; };
 		4C6B66EB1CD9478C001A7321 /* UserProfileItineraryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C6B66EA1CD9478C001A7321 /* UserProfileItineraryTableViewCell.m */; };
 		4C6C89BD1CD394CE0088266B /* HistoryViewTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C6C89B91CD394CE0088266B /* HistoryViewTableCell.xib */; };
@@ -61,10 +60,8 @@
 		4CD9FF861CCE605400D3E603 /* CircleLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD9FF811CCE605400D3E603 /* CircleLabelView.m */; };
 		4CD9FF871CCE605400D3E603 /* ItineraryReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CD9FF821CCE605400D3E603 /* ItineraryReviewCell.xib */; };
 		4CD9FF881CCE605400D3E603 /* ItineraryReviewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD9FF841CCE605400D3E603 /* ItineraryReviewTableViewCell.m */; };
-		752C207F8039FC0AF3F24A9C /* Pods_EggplantButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 620C2EAF950D8ACD2F96FDC8 /* Pods_EggplantButton.framework */; };
 		787EEDFB1CC6B51A00555A16 /* ActivityCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C358D721CADCDF700257756 /* ActivityCardView.m */; };
 		78A7F6C71CBD44AC00DD4937 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78A7F6C61CBD44AC00DD4937 /* CoreMotion.framework */; };
-		78A7F6C91CBD44B500DD4937 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78A7F6C81CBD44B500DD4937 /* GameKit.framework */; };
 		78A7F6CB1CBD44C500DD4937 /* GameplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78A7F6CA1CBD44C500DD4937 /* GameplayKit.framework */; };
 		78A7F6CD1CBDA1FC00DD4937 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78A7F6CC1CBDA1FC00DD4937 /* AudioToolbox.framework */; };
 		78A7F6D41CBFFDAF00DD4937 /* mainContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78A7F6D31CBFFDAF00DD4937 /* mainContainerViewController.m */; };
@@ -77,15 +74,15 @@
 		9A74DC551CBF39E600B63B0B /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74DC541CBF39E600B63B0B /* FilterViewController.m */; };
 		9A8C888A1CC44D710053EC00 /* FoursquareAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8C88891CC44D710053EC00 /* FoursquareAPIClient.m */; };
 		9AA058791CAEAA57000A6AA8 /* ActivityCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AA058781CAEAA57000A6AA8 /* ActivityCard.xib */; };
-		9AA726E81CD93E8C00E1F91E /* TableHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA726E71CD93E8C00E1F91E /* TableHeader.m */; };
-		9AA726EA1CD93E9C00E1F91E /* TableHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AA726E91CD93E9C00E1F91E /* TableHeader.xib */; };
 		9ACC8C171CBD398E00909704 /* DetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ACC8C161CBD398E00909704 /* DetailView.storyboard */; };
 		9ACC8C1A1CBD399800909704 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACC8C191CBD399800909704 /* DetailViewController.m */; };
+		F4E25B66C8B63CDBD782D4CB /* Pods_EasyOut.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F61332334E4FCAE904AD1FDF /* Pods_EasyOut.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0A12C1151CC6C8450043475F /* ItineraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItineraryViewController.h; sourceTree = "<group>"; };
 		0A12C1161CC6C8450043475F /* ItineraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItineraryViewController.m; sourceTree = "<group>"; };
+		1A23E0232DBBF2C8F43C2149 /* Pods-EasyOut.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyOut.release.xcconfig"; path = "Pods/Target Support Files/Pods-EasyOut/Pods-EasyOut.release.xcconfig"; sourceTree = "<group>"; };
 		478A5D5E5340BA05712F05CE /* Pods-EggplantButton.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EggplantButton.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EggplantButton/Pods-EggplantButton.debug.xcconfig"; sourceTree = "<group>"; };
 		4C02D1DF1CB6E72C0031F978 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = EggplantButton/User.h; sourceTree = "<group>"; };
 		4C02D1E01CB6E72C0031F978 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = EggplantButton/User.m; sourceTree = "<group>"; };
@@ -93,6 +90,7 @@
 		4C02D1E31CB6E8A00031F978 /* Itinerary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Itinerary.m; path = EggplantButton/Itinerary.m; sourceTree = "<group>"; };
 		4C02D1E51CB6EDD40031F978 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Photo.h; path = EggplantButton/Photo.h; sourceTree = "<group>"; };
 		4C02D1E61CB6EDD40031F978 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Photo.m; path = EggplantButton/Photo.m; sourceTree = "<group>"; };
+		4C0428221CDA5C81008E52CB /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		4C0EE1521CBDA0930092C39A /* ItineraryHistoryView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ItineraryHistoryView.storyboard; path = EggplantButton/ItineraryHistoryView.storyboard; sourceTree = SOURCE_ROOT; };
 		4C0EE1571CBDA2E70092C39A /* ItineraryHistoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItineraryHistoryTableViewController.h; sourceTree = "<group>"; };
 		4C0EE1581CBDA2E70092C39A /* ItineraryHistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItineraryHistoryTableViewController.m; sourceTree = "<group>"; };
@@ -112,16 +110,14 @@
 		4C64EC331CBAA6BB00FB3A45 /* ActivitiesDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivitiesDataStore.m; sourceTree = "<group>"; };
 		4C64EC3B1CBAA78200FB3A45 /* CreateAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateAccountViewController.h; sourceTree = "<group>"; };
 		4C64EC3C1CBAA78200FB3A45 /* CreateAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateAccountViewController.m; sourceTree = "<group>"; };
-		4C64EC3E1CBAA78200FB3A45 /* EggplantButton.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EggplantButton.xcdatamodel; sourceTree = "<group>"; };
 		4C64EC411CBAA78200FB3A45 /* ItineraryView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ItineraryView.storyboard; sourceTree = "<group>"; };
-		4C64EC431CBAA78200FB3A45 /* UserHistory.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserHistory.xcdatamodel; sourceTree = "<group>"; };
 		4C6B66E71CD9467D001A7321 /* UserProfileItineraryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UserProfileItineraryTableViewCell.xib; path = EggplantButton/UserProfileItineraryTableViewCell.xib; sourceTree = "<group>"; };
 		4C6B66E91CD9478C001A7321 /* UserProfileItineraryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserProfileItineraryTableViewCell.h; path = EggplantButton/UserProfileItineraryTableViewCell.h; sourceTree = "<group>"; };
 		4C6B66EA1CD9478C001A7321 /* UserProfileItineraryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserProfileItineraryTableViewCell.m; path = EggplantButton/UserProfileItineraryTableViewCell.m; sourceTree = "<group>"; };
 		4C6C89B91CD394CE0088266B /* HistoryViewTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HistoryViewTableCell.xib; path = EggplantButton/HistoryViewTableCell.xib; sourceTree = "<group>"; };
 		4C6C89BA1CD394CE0088266B /* HistoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryTableViewCell.h; path = EggplantButton/HistoryTableViewCell.h; sourceTree = "<group>"; };
 		4C6C89BB1CD394CE0088266B /* HistoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryTableViewCell.m; path = EggplantButton/HistoryTableViewCell.m; sourceTree = "<group>"; };
-		4C9A03781CAB064200CA9A02 /* EggplantButton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EggplantButton.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C9A03781CAB064200CA9A02 /* EasyOut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyOut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C9A037C1CAB064200CA9A02 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4C9A037E1CAB064200CA9A02 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4C9A037F1CAB064200CA9A02 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -131,7 +127,7 @@
 		4C9C96261CC58C0600C7094A /* FirebaseIntegrationTestFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseIntegrationTestFunctions.swift; path = EggplantButton/FirebaseIntegrationTestFunctions.swift; sourceTree = "<group>"; };
 		4C9C96281CC6ABAF00C7094A /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		4C9C96291CC6ABAF00C7094A /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
-		4CAD0CBF1CB56574008162CE /* EggplantButton-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EggplantButton-Bridging-Header.h"; sourceTree = "<group>"; };
+		4CAD0CBF1CB56574008162CE /* EasyOut-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EasyOut-Bridging-Header.h"; sourceTree = "<group>"; };
 		4CAD0CC41CB568C4008162CE /* FirebaseIntegration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseIntegration.swift; path = EggplantButton/FirebaseIntegration.swift; sourceTree = "<group>"; };
 		4CBBC5FA1CBA9618006683D8 /* Button.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Button.storyboard; sourceTree = "<group>"; };
 		4CBBC5FC1CBA96DF006683D8 /* AppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppViewController.h; sourceTree = "<group>"; };
@@ -168,13 +164,13 @@
 		5B0FD8E68B26336D4AE48A9A /* Pods-EggplantButton.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EggplantButton.release.xcconfig"; path = "Pods/Target Support Files/Pods-EggplantButton/Pods-EggplantButton.release.xcconfig"; sourceTree = "<group>"; };
 		620C2EAF950D8ACD2F96FDC8 /* Pods_EggplantButton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EggplantButton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		78A7F6C61CBD44AC00DD4937 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
-		78A7F6C81CBD44B500DD4937 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		78A7F6CA1CBD44C500DD4937 /* GameplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameplayKit.framework; path = System/Library/Frameworks/GameplayKit.framework; sourceTree = SDKROOT; };
 		78A7F6CC1CBDA1FC00DD4937 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		78A7F6D21CBFFDAF00DD4937 /* mainContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mainContainerViewController.h; sourceTree = "<group>"; };
 		78A7F6D31CBFFDAF00DD4937 /* mainContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mainContainerViewController.m; sourceTree = "<group>"; };
 		78A7F6D61CC1672700DD4937 /* sideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sideMenuViewController.h; sourceTree = "<group>"; };
 		78A7F6D71CC1672700DD4937 /* sideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sideMenuViewController.m; sourceTree = "<group>"; };
+		99B7F8078F0F3BAC0B862B71 /* Pods-EasyOut.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyOut.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EasyOut/Pods-EasyOut.debug.xcconfig"; sourceTree = "<group>"; };
 		9A3383971CBC5416004B8EFE /* ActivityCardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActivityCardCollectionViewCell.h; path = EggplantButton/ActivityCardCollectionViewCell.h; sourceTree = "<group>"; };
 		9A3383981CBC5416004B8EFE /* ActivityCardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActivityCardCollectionViewCell.m; path = EggplantButton/ActivityCardCollectionViewCell.m; sourceTree = "<group>"; };
 		9A5AEC301CBF476B009F2BEA /* UserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
@@ -186,13 +182,11 @@
 		9A8C88881CC44D710053EC00 /* FoursquareAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoursquareAPIClient.h; sourceTree = "<group>"; };
 		9A8C88891CC44D710053EC00 /* FoursquareAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoursquareAPIClient.m; sourceTree = "<group>"; };
 		9AA058781CAEAA57000A6AA8 /* ActivityCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ActivityCard.xib; path = EggplantButton/ActivityCard.xib; sourceTree = "<group>"; };
-		9AA726E61CD93E8C00E1F91E /* TableHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableHeader.h; sourceTree = "<group>"; };
-		9AA726E71CD93E8C00E1F91E /* TableHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableHeader.m; sourceTree = "<group>"; };
-		9AA726E91CD93E9C00E1F91E /* TableHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableHeader.xib; sourceTree = "<group>"; };
 		9AB65BBB1CBD95E4008A99CF /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		9ACC8C161CBD398E00909704 /* DetailView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DetailView.storyboard; sourceTree = "<group>"; };
 		9ACC8C181CBD399800909704 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		9ACC8C191CBD399800909704 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		F61332334E4FCAE904AD1FDF /* Pods_EasyOut.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyOut.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,9 +196,9 @@
 			files = (
 				78A7F6CD1CBDA1FC00DD4937 /* AudioToolbox.framework in Frameworks */,
 				78A7F6CB1CBD44C500DD4937 /* GameplayKit.framework in Frameworks */,
-				78A7F6C91CBD44B500DD4937 /* GameKit.framework in Frameworks */,
 				78A7F6C71CBD44AC00DD4937 /* CoreMotion.framework in Frameworks */,
-				752C207F8039FC0AF3F24A9C /* Pods_EggplantButton.framework in Frameworks */,
+				4C0428231CDA5C81008E52CB /* GameKit.framework in Frameworks */,
+				F4E25B66C8B63CDBD782D4CB /* Pods_EasyOut.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,10 +307,6 @@
 				4C6C89B91CD394CE0088266B /* HistoryViewTableCell.xib */,
 				4C6C89BA1CD394CE0088266B /* HistoryTableViewCell.h */,
 				4C6C89BB1CD394CE0088266B /* HistoryTableViewCell.m */,
-				4C6C89BC1CD394CE0088266B /* HistoryTableViewCell.xib */,
-				9AA726E91CD93E9C00E1F91E /* TableHeader.xib */,
-				9AA726E61CD93E8C00E1F91E /* TableHeader.h */,
-				9AA726E71CD93E8C00E1F91E /* TableHeader.m */,
 				4C6B66E71CD9467D001A7321 /* UserProfileItineraryTableViewCell.xib */,
 				4C6B66E91CD9478C001A7321 /* UserProfileItineraryTableViewCell.h */,
 				4C6B66EA1CD9478C001A7321 /* UserProfileItineraryTableViewCell.m */,
@@ -337,7 +327,7 @@
 		4C9A036F1CAB064200CA9A02 = {
 			isa = PBXGroup;
 			children = (
-				4C9A037A1CAB064200CA9A02 /* EggplantButton */,
+				4C9A037A1CAB064200CA9A02 /* EasyOut */,
 				4C9A03791CAB064200CA9A02 /* Products */,
 				D03BCDC2BCFE4F0C6C8F9E65 /* Pods */,
 				4F35EC6547E403BF1EA8A91A /* Frameworks */,
@@ -347,12 +337,12 @@
 		4C9A03791CAB064200CA9A02 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4C9A03781CAB064200CA9A02 /* EggplantButton.app */,
+				4C9A03781CAB064200CA9A02 /* EasyOut.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4C9A037A1CAB064200CA9A02 /* EggplantButton */ = {
+		4C9A037A1CAB064200CA9A02 /* EasyOut */ = {
 			isa = PBXGroup;
 			children = (
 				4CBBC6141CBAA170006683D8 /* App Delegate */,
@@ -368,6 +358,7 @@
 				4C1DE15E1CB83E5A00AFBCF5 /* Fonts */,
 				4C9A038A1CAB064200CA9A02 /* Assets.xcassets */,
 			);
+			name = EasyOut;
 			path = EggplantButton;
 			sourceTree = "<group>";
 		};
@@ -377,7 +368,7 @@
 				4C270CA61CAB08A2003E0195 /* Secrets.h */,
 				4C270CA71CAB08A2003E0195 /* Secrets.m */,
 				4C9A037C1CAB064200CA9A02 /* main.m */,
-				4CAD0CBF1CB56574008162CE /* EggplantButton-Bridging-Header.h */,
+				4CAD0CBF1CB56574008162CE /* EasyOut-Bridging-Header.h */,
 				4C9A038F1CAB064200CA9A02 /* Info.plist */,
 				4C9C96281CC6ABAF00C7094A /* Constants.h */,
 				4C9C96291CC6ABAF00C7094A /* Constants.m */,
@@ -404,8 +395,6 @@
 		4CBBC60A1CBA9836006683D8 /* DataStores */ = {
 			isa = PBXGroup;
 			children = (
-				4C64EC3D1CBAA78200FB3A45 /* EggplantButton.xcdatamodeld */,
-				4C64EC421CBAA78200FB3A45 /* UserHistory.xcdatamodeld */,
 				4C64EC321CBAA6BB00FB3A45 /* ActivitiesDataStore.h */,
 				4C64EC331CBAA6BB00FB3A45 /* ActivitiesDataStore.m */,
 			);
@@ -433,11 +422,12 @@
 		4F35EC6547E403BF1EA8A91A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4C0428221CDA5C81008E52CB /* GameKit.framework */,
 				78A7F6CC1CBDA1FC00DD4937 /* AudioToolbox.framework */,
 				78A7F6CA1CBD44C500DD4937 /* GameplayKit.framework */,
-				78A7F6C81CBD44B500DD4937 /* GameKit.framework */,
 				78A7F6C61CBD44AC00DD4937 /* CoreMotion.framework */,
 				620C2EAF950D8ACD2F96FDC8 /* Pods_EggplantButton.framework */,
+				F61332334E4FCAE904AD1FDF /* Pods_EasyOut.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -447,6 +437,8 @@
 			children = (
 				478A5D5E5340BA05712F05CE /* Pods-EggplantButton.debug.xcconfig */,
 				5B0FD8E68B26336D4AE48A9A /* Pods-EggplantButton.release.xcconfig */,
+				99B7F8078F0F3BAC0B862B71 /* Pods-EasyOut.debug.xcconfig */,
+				1A23E0232DBBF2C8F43C2149 /* Pods-EasyOut.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -454,9 +446,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4C9A03771CAB064200CA9A02 /* EggplantButton */ = {
+		4C9A03771CAB064200CA9A02 /* EasyOut */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4C9A03921CAB064200CA9A02 /* Build configuration list for PBXNativeTarget "EggplantButton" */;
+			buildConfigurationList = 4C9A03921CAB064200CA9A02 /* Build configuration list for PBXNativeTarget "EasyOut" */;
 			buildPhases = (
 				89BFBFE7484337AF3D790DAC /* Check Pods Manifest.lock */,
 				4C9A03741CAB064200CA9A02 /* Sources */,
@@ -469,9 +461,9 @@
 			);
 			dependencies = (
 			);
-			name = EggplantButton;
+			name = EasyOut;
 			productName = EggplantButton;
-			productReference = 4C9A03781CAB064200CA9A02 /* EggplantButton.app */;
+			productReference = 4C9A03781CAB064200CA9A02 /* EasyOut.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -487,8 +479,11 @@
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = KXY9EDFTF5;
 						SystemCapabilities = {
-							com.apple.Push = {
+							com.apple.GameCenter = {
 								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 0;
 							};
 						};
 					};
@@ -507,7 +502,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4C9A03771CAB064200CA9A02 /* EggplantButton */,
+				4C9A03771CAB064200CA9A02 /* EasyOut */,
 			);
 		};
 /* End PBXProject section */
@@ -541,7 +536,6 @@
 				4C1DE15F1CB8410900AFBCF5 /* LobsterTwo-Bold.otf in Resources */,
 				4CBBC6091CBA97B0006683D8 /* Main.storyboard in Resources */,
 				4CD9FF771CCE602E00D3E603 /* Roboto-Italic.ttf in Resources */,
-				9AA726EA1CD93E9C00E1F91E /* TableHeader.xib in Resources */,
 				4CD9FF751CCE602E00D3E603 /* Roboto-Condensed.ttf in Resources */,
 				4CD9FF7C1CCE602E00D3E603 /* Roboto-Regular.ttf in Resources */,
 				4C9A038B1CAB064200CA9A02 /* Assets.xcassets in Resources */,
@@ -570,7 +564,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EggplantButton/Pods-EggplantButton-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EasyOut/Pods-EasyOut-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		89BFBFE7484337AF3D790DAC /* Check Pods Manifest.lock */ = {
@@ -600,7 +594,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EggplantButton/Pods-EggplantButton-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EasyOut/Pods-EasyOut-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -611,8 +605,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				787EEDFB1CC6B51A00555A16 /* ActivityCardView.m in Sources */,
-				4C64EC451CBAA78200FB3A45 /* EggplantButton.xcdatamodeld in Sources */,
-				9AA726E81CD93E8C00E1F91E /* TableHeader.m in Sources */,
 				4C0EE1591CBDA2E70092C39A /* ItineraryHistoryTableViewController.m in Sources */,
 				4CBBC6061CBA96DF006683D8 /* setupButton.m in Sources */,
 				78A7F6D81CC1672700DD4937 /* sideMenuViewController.m in Sources */,
@@ -643,7 +635,6 @@
 				4CBBF0871CBBEE09005BB352 /* Tip.m in Sources */,
 				4C9A037D1CAB064200CA9A02 /* main.m in Sources */,
 				0A12C1171CC6C8450043475F /* ItineraryViewController.m in Sources */,
-				4C64EC481CBAA78200FB3A45 /* UserHistory.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -747,7 +738,7 @@
 		};
 		4C9A03931CAB064200CA9A02 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 478A5D5E5340BA05712F05CE /* Pods-EggplantButton.debug.xcconfig */;
+			baseConfigurationReference = 99B7F8078F0F3BAC0B862B71 /* Pods-EasyOut.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -759,7 +750,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = TEB.EggplantButton;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "EggplantButton/EggplantButton-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "EggplantButton/EasyOut-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -767,7 +758,7 @@
 		};
 		4C9A03941CAB064200CA9A02 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B0FD8E68B26336D4AE48A9A /* Pods-EggplantButton.release.xcconfig */;
+			baseConfigurationReference = 1A23E0232DBBF2C8F43C2149 /* Pods-EasyOut.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -779,7 +770,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = TEB.EggplantButton;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "EggplantButton/EggplantButton-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "EggplantButton/EasyOut-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -796,7 +787,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4C9A03921CAB064200CA9A02 /* Build configuration list for PBXNativeTarget "EggplantButton" */ = {
+		4C9A03921CAB064200CA9A02 /* Build configuration list for PBXNativeTarget "EasyOut" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4C9A03931CAB064200CA9A02 /* Debug */,
@@ -806,29 +797,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		4C64EC3D1CBAA78200FB3A45 /* EggplantButton.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				4C64EC3E1CBAA78200FB3A45 /* EggplantButton.xcdatamodel */,
-			);
-			currentVersion = 4C64EC3E1CBAA78200FB3A45 /* EggplantButton.xcdatamodel */;
-			path = EggplantButton.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-		4C64EC421CBAA78200FB3A45 /* UserHistory.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				4C64EC431CBAA78200FB3A45 /* UserHistory.xcdatamodel */,
-			);
-			currentVersion = 4C64EC431CBAA78200FB3A45 /* UserHistory.xcdatamodel */;
-			path = UserHistory.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 4C9A03701CAB064200CA9A02 /* Project object */;
 }
