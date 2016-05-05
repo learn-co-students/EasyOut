@@ -548,7 +548,7 @@
 
 
     // Set appearance of navigation bar
-    self.navigationController.navigationBar.topItem.title = @"EasyOut";
+    self.navigationController.navigationBar.topItem.title = @"";
     [self.navigationController.navigationBar setTitleTextAttributes: @{NSForegroundColorAttributeName:[UIColor whiteColor],
                                                                        NSFontAttributeName:[UIFont fontWithName:@"Lobster Two" size:30]}];
 }
