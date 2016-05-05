@@ -63,7 +63,7 @@
     self.tableView.dataSource = self;
     self.tableView.userInteractionEnabled = YES;
     
-    [self addItinerariesToTableView];
+    [self setUpCoreLocation];
 }
 
 -(void)addItinerariesToTableView {
@@ -140,7 +140,11 @@
     cell.nameLabel.text = activity.name;
     cell.addressLabel.text = activity.address[0];
     cell.cityStateLabel.text = activity.address[1];
-    cell.distanceLabel.text = [NSString stringWithFormat:@"%.02f mi away", roundf([self getDistanceFromLocationOfActivity:activity] * (float)0.000621371 * 100.0) / 100.0];
+    
+    [self getDistanceFromLocationOfActivity:activity
+                                 completion:^(CLLocationDistance distance) {
+                                     cell.distanceLabel.text = [NSString stringWithFormat:@"%.02f mi away", roundf(distance * (float)0.000621371 * 100.0) / 100.0];
+                                 }];
     [self downloadImageWithURL:activity.icon setTo:cell.iconImage];
     
     return cell;
@@ -191,7 +195,10 @@
     [self.locationManager stopUpdatingLocation];
     
     if (self.latitude != 0) {
+        
         NSLog(@"Latitude: %f\nLongitude: %f", self.latitude, self.longitude);
+        
+        [self addItinerariesToTableView];
     } else {
         NSLog(@"Can't find location");
     }
@@ -200,22 +207,27 @@
 
 #pragma mark - Map and Location
 
--(CLLocationDistance)getDistanceFromLocationOfActivity:(Activity *)activity {
+-(void)getDistanceFromLocationOfActivity:(Activity *)activity completion:(void(^)(CLLocationDistance distance))completion {
     
     NSLog(@"Getting distance from %@", activity.name);
     
     CLLocation *userLocation = [[CLLocation alloc]initWithLatitude:self.latitude longitude:self.longitude];
     NSString *address = [NSString stringWithFormat:@"%@ %@", activity.address[0], activity.address[1]];
-    CLLocationCoordinate2D location = [self getLocationFromAddressString: address];
-    CLLocation *activityLocation = [[CLLocation alloc]initWithLatitude:location.latitude longitude:location.longitude];
-    CLLocationDistance distance = [userLocation distanceFromLocation: activityLocation];
     
-    NSLog(@"Distance: %f", distance);
+    [self getLocationFromAddressString:address
+                            completion:^(CLLocationCoordinate2D location) {
+                                
+                                CLLocation *activityLocation = [[CLLocation alloc]initWithLatitude:location.latitude longitude:location.longitude];
+                                CLLocationDistance distance = [userLocation distanceFromLocation: activityLocation];
+                                
+                                NSLog(@"Distance: %f", distance);
+                                
+                                completion(distance);
+                            }];
     
-    return distance;
 }
 
--(CLLocationCoordinate2D) getLocationFromAddressString: (NSString*) addressStr {
+-(void) getLocationFromAddressString: (NSString*) addressStr completion:(void(^)(CLLocationCoordinate2D location))completion {
     double latitude = 0, longitude = 0;
     NSString *esc_addr =  [addressStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     NSString *req = [NSString stringWithFormat:@"http://maps.google.com/maps/api/geocode/json?sensor=false&address=%@", esc_addr];
@@ -234,7 +246,7 @@
     center.latitude = latitude;
     center.longitude = longitude;
     
-    return center;
+    completion(center);
 }
 
 

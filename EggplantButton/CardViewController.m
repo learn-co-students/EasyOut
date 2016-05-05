@@ -79,6 +79,9 @@
 
     // Wait for Core Location to be set up before setting up the data store and getting card data
     [self setUpCoreLocation];
+    
+    // Set appearances of this view controller
+    [self setAppearances];
 
     // Add notification center observers
     [self addNCObservers];
