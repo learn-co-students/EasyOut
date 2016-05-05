@@ -55,6 +55,9 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [self.spinner removeFromSuperview];
+    
+    [self generateGoogleMap];
+
 }
 
 - (void)viewDidLoad {
@@ -63,7 +66,6 @@
 
     self.view.backgroundColor = [UIColor clearColor];
 
-    [self generateGoogleMap];
 
     [self downloadImageWithURL:self.activity.imageURL setTo:self.imageView];
     
@@ -182,24 +184,25 @@
 }
 
 -(void)generateGoogleMap {
-
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:self.latitude
-                                                            longitude:self.longitude
-                                                                 zoom:14];
-    
-    
-
-    self.mapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
-    [self.mapUIView addSubview:self.mapView];
-
-    
-    UIEdgeInsets mapInsets = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0);
-    self.mapView.padding = mapInsets;
     
     //COORDINATES FOR USER AND ACTIVITY
-
+    
     NSString *address = [NSString stringWithFormat:@"%@ %@", self.activity.address[0], self.activity.address[1]];
     CLLocationCoordinate2D location = [self getLocationFromAddressString: address];
+    CLLocationCoordinate2D user = CLLocationCoordinate2DMake(self.latitude, self.longitude);
+    
+    self.mapView = [[GMSMapView alloc]init];
+    
+    [self.mapView setMinZoom:14 maxZoom:18];
+    
+    GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithCoordinate:location coordinate:user];
+    
+//    [self.mapView moveCamera:[GMSCameraUpdate fitBounds:bounds withEdgeInsets:UIEdgeInsetsZero]];
+    
+    GMSCameraPosition *camera = [self.mapView cameraForBounds:bounds insets:UIEdgeInsetsZero];
+    self.mapView.camera = camera;
+    
+    [self.mapUIView addSubview:self.mapView];
 
 
     // CONSTRAINTS
@@ -230,7 +233,7 @@
 
 - (IBAction)backButtonPressed:(UIBarButtonItem *)sender {
     
-    [[self navigationController] popViewControllerAnimated:YES];
+    [[self navigationController] popViewControllerAnimated:NO];
 }
 
 
