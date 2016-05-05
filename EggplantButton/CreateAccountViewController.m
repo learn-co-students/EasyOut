@@ -244,9 +244,7 @@
         [UIView setAnimationRepeatCount:4.0];
         
         textField.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.4];
-        
     }];
-    
 }
 
 - (IBAction)cancelButtonPressed:(UIButton *)sender {

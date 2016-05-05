@@ -91,7 +91,7 @@
     UIView* headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 100)];
     
     // 2. Set a custom background color and a border
-    headerView.backgroundColor = [[Constants vikingBlueColor] colorWithAlphaComponent:0.5];
+    headerView.backgroundColor = [Constants vikingBlueColor];
     headerView.layer.borderColor = [[UIColor whiteColor]colorWithAlphaComponent:0.5].CGColor;
     headerView.layer.borderWidth = 2.0;
     headerView.layer.cornerRadius = 5.0;
@@ -99,7 +99,7 @@
     // 3. Add a label
     UILabel* headerLabel = [[UILabel alloc] init];
     headerLabel.frame = CGRectMake(2, 0, tableView.frame.size.width -5, 50);
-    headerLabel.backgroundColor = [Constants vikingBlueColor];
+    headerLabel.backgroundColor = [UIColor clearColor];
     headerLabel.textColor = [UIColor whiteColor];
     headerLabel.font = [UIFont fontWithName:@"Roboto-Bold" size:22.0];
     headerLabel.text = @" Recent Itineraries:";

@@ -56,6 +56,10 @@
 @implementation CardViewController
 
 - (void) viewWillAppear:(BOOL)animated {
+    
+    // Set appearances of this view controller
+    [self setAppearances];
+    
     self.spinner = [[UIActivityIndicatorView alloc]
                     initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     self.spinner.center = CGPointMake((self.view.frame.size.width/2), (self.view.frame.size.height/2));
@@ -72,39 +76,17 @@
 - (void)viewDidLoad {
 
     [super viewDidLoad];
-    
-//    if([CLLocationManager locationServicesEnabled]) {
-//        
-//        NSLog(@"Location services enabled");
-//        
-//        // Wait for Core Location to be set up before setting up the data store and getting card data
-//        [self setUpCoreLocation];
-//        
-//        if([CLLocationManager authorizationStatus]==kCLAuthorizationStatusDenied) {
-//            
-//            NSLog(@"EasyOut not authorized to use location services");
-//            
-//            // Alert user that location is unavailable
-//            [self showNoLocationAlert];
-//        }
-//    } else {
-//        
-//        NSLog(@"Location services not enabled");
-//        
-//        // Alert user that location is unavailable
-//        [self showNoLocationAlert];
-//    }
 
     // Wait for Core Location to be set up before setting up the data store and getting card data
     [self setUpCoreLocation];
-    
-    // Set appearances of this view controller
-    [self setAppearances];
 
     // Add notification center observers
     [self addNCObservers];
 }
 
+- (void) viewWillDisappear:(BOOL)animated {
+    self.navigationController.navigationBar.topItem.title = @"";
+}
 
 #pragma mark - Locking/Unlocking Cards
 - (void) disableCheckedCard: (NSNotification *) notification {
@@ -548,7 +530,7 @@
 
 
     // Set appearance of navigation bar
-    self.navigationController.navigationBar.topItem.title = @"";
+    self.navigationController.navigationBar.topItem.title = @"EasyOut";
     [self.navigationController.navigationBar setTitleTextAttributes: @{NSForegroundColorAttributeName:[UIColor whiteColor],
                                                                        NSFontAttributeName:[UIFont fontWithName:@"Lobster Two" size:30]}];
 }
