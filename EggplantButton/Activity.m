@@ -100,7 +100,7 @@
     
     self = [super init];
     
-    NSMutableDictionary *newDictionary = [dictionary mutableCopy];
+    NSMutableDictionary *newDictionary = [dictionary mutableCopy];g
     
     NSArray *keys = [dictionary allKeys];
     
