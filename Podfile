@@ -5,12 +5,11 @@ use_frameworks!
 
 target 'EasyOut' do
 
-pod 'AFNetworking'
-pod 'Firebase'
-#pod 'Button', '~> 4'
-pod 'DeepLinkKit'
-pod 'UIView+Shake'
-pod 'GoogleMaps'
-pod "FontAwesomeKit", :git => 'https://github.com/PrideChung/FontAwesomeKit.git'
+  pod 'AFNetworking'
+  pod 'Firebase'
+  pod 'DeepLinkKit'
+  pod 'UIView+Shake'
+  pod 'GoogleMaps'
+  pod "FontAwesomeKit", :git => 'https://github.com/PrideChung/FontAwesomeKit.git'
 
 end
